@@ -5,7 +5,8 @@ dir_magic() {
         if [ -d "$1" ]; then
 
                 rm -rf  "$1";    
-                echo "DELETING $1";
+                #echo `DELETING`;
+		#echo "$1";
         fi
 
         mkdir "$1";
