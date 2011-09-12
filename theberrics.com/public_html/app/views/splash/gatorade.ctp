@@ -26,6 +26,15 @@ var swfPlayer = "/swf/BerricsPlayer.swf";
 
 </script>
 <style type='text/css'>
+
+body {
+
+	background-color:black;
+	background-image:url(/img/splash/gatorade/bg.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+
 .d-post-bit .text-content {
 
 	display:none;
@@ -37,7 +46,11 @@ var swfPlayer = "/swf/BerricsPlayer.swf";
 
 }
 </style>
-<div style='width:728px; margin:auto; padding-top:50px;'>
+<div>
+<div style='width:728px; margin:auto; padding-top:5px;'>
+	<div style='text-align:center;'>
+		<img src='/img/splash/gatorade/go-all.png' border='0'/>
+	</div>
 	<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 
 </div>
@@ -46,4 +59,4 @@ var swfPlayer = "/swf/BerricsPlayer.swf";
 		<img src='/img/splash/enter-the-berrics-large.jpg' border='0' />
 	</a>
 </div>
-
+</div>
