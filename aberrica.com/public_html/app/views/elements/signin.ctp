@@ -1,0 +1,1 @@
+Sign in <a href='/identity/login/send_to_facebook'><img src='/img/fb-icon.png' align="absmiddle" border='0' /></a>

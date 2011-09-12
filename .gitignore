@@ -1,0 +1,9 @@
+tmp/
+cache/img/
+*.mp4
+*.mp3
+*.mov
+*.zip
+!.gitignore
+!.keep
+*.log

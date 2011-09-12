@@ -1,0 +1,91 @@
+@CHARSET "UTF-8";
+* {
+
+	margin:0px;
+	padding:0px;
+
+}
+
+body {
+
+	background-color:#000000;
+	color:white;
+	font-family:arial;
+	font-size:100%;
+}
+
+#page-container {
+	
+	width:750px;	
+	margin:auto;
+}
+
+
+#footer {
+
+	text-align:center;
+
+}
+
+#content {
+
+	
+
+
+}
+
+
+#content label {
+
+	clear:both;
+	display:block;
+	font-size:150%;
+	color:#999999;
+}
+
+#content div.text {
+
+	
+	margin-bottom:5px;	
+	
+	
+}
+
+#content div.text input {
+
+	font-size:160%;
+	width:100%;
+
+}
+
+#content div.select select {
+
+	font-size:160%;
+	width:250px;
+}
+
+#content div.submit {
+	
+	padding:20px;
+	text-align:center;	
+	
+}
+
+#content div.submit input {
+
+	text-align:center;
+	font-size:1.5em;
+	padding:10px;
+	
+}
+
+#content .confirmation {
+
+
+	padding:20px;
+	text-align:center;
+	font-size:150%;
+	color:#999999;
+
+
+}

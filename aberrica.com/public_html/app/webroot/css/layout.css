@@ -1,0 +1,142 @@
+@CHARSET "UTF-8";
+* {
+
+	padding:0px;
+	margin:0px;
+
+}
+
+body {
+
+	font-family:Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:95%;
+	
+}
+
+a {
+	
+}
+
+p {}
+
+h1,h2,h3,h4,h5,h6 {
+	
+	
+}
+
+#main-container {}
+
+#page-wrapper-left {}
+
+#page-wrapper-right {}
+
+#page-container {
+
+	width:980px;
+	margin:auto;
+	border:1px solid #999999;
+	border-top:none;
+	border-bottom:none;
+}
+
+#header-container {}
+
+#header-container .top-bar {
+
+	height:35px;
+	border-bottom:1px solid #999999;
+
+	line-height:35px;
+	font-size:110%;
+}
+
+#header {
+
+	position:relative;
+	height:170px;
+	border-bottom:1px solid #999999;
+}
+
+#header .header-logo {
+
+	width:80%;
+	margin:auto;
+	margin-top:20px;	
+	text-align:center;
+	border:1px solid #999999;
+	height:110px;
+	line-height:110px;
+}
+
+#header .main-nav-container {
+
+	
+		margin-top:10px;
+	
+}
+
+
+/*
+TOP NAV
+*/
+
+#header .main-nav-container {
+
+	text-align:center;	
+	
+}
+
+#header .main-nav-container .main-nav {
+	
+	display:inline-block;
+	margin:auto;
+	
+	border:1px solid #999999;
+}
+
+#header .main-nav-container .main-nav ul {
+
+	list-style:none;	
+	
+}
+
+#header .main-nav-container .main-nav li {
+
+	float:left;	
+	height:25px;
+	line-height:25px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+
+
+#body-container {}
+
+#body-content {}
+
+#footer-container {}
+
+#footer {}
+
+
+
+/*
+
+BANNERS
+
+*/
+.banner-624x90 {
+
+	width:624px;
+	height:90px;
+	background-color:#cccccc;
+
+}
+
+.banner-300x250 {
+
+	height:250px;
+	width:300px;
+	background-color:#cccccc;
+}

@@ -1,0 +1,65 @@
+<?php 
+$_SERVER['DEVSERVER']=1;
+class MailerShell extends Shell {
+	
+	public $uses = array("EmailMessage","CanteenOrder","User");
+	private $email = null;
+	private $controller = null;
+	
+	public function initialize() {
+		
+		parent::initialize();
+		App::import("Component","Email");
+		App::import("Core","Controller");
+		$this->email =& new EmailComponent(null);
+		$this->controller =& new Controller();
+		$this->email->initialize($this->controller);
+		
+	}
+	
+	public function process_queue() {
+
+		//grab 50 emails
+		$emails = $this->EmailMessage->find("all",array(
+		
+			"conditions"=>array(
+				"EmailMessage.processed"=>0
+			),
+			"contain"=>array()
+		
+		));	
+		
+		foreach($emails as $msg) {
+			
+			$e = $msg['EmailMessage'];
+			
+			$this->email->reset();
+			$this->email->to = $e['to'];
+			$this->email->from = $e['from'];
+			$this->email->subject=$e['subject'];
+			$this->email->cc = explode(",",$e['cc']);
+			$this->email->bcc = $e['bcc'];
+			$this->email->sendAs = $e['send_as'];
+			$this->email->template = $e['template'];
+			
+			$this->controller->set(compact("msg"));
+			
+			if($this->email->send()) {
+				
+				$this->EmailMessage->create();
+				$this->EmailMessage->id = $e['id'];
+				$this->EmailMessage->save(array("processed"=>1,"send_date"=>date("Y-m-d H:i:s")));
+				
+			}
+				
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+}

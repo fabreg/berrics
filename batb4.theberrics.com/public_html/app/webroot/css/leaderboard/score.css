@@ -1,0 +1,226 @@
+@CHARSET "UTF-8";
+
+#profile-header {
+
+	height:131px;
+	background-image:url(/img/layout/batb-profile-header.png);
+	background-repeat:no-repeat;
+	position:relative;
+	
+}
+
+#profile-header .links {
+	
+	position:absolute;	
+	left:380px;
+	top:108px;
+}
+
+#profile-header .links a {
+
+	color:black;
+	font-weight:bold;
+	text-decoration:underline;
+		font-size:140%;
+}
+
+
+#score {
+
+
+}
+
+#score .left {
+	
+	width:510px;	
+	float:left;
+	background-color:black;
+	color:white;
+}
+
+#score .right {
+	
+	width:300px;
+	float:right;
+}
+
+
+#user-profile {
+
+
+	color:white;
+	position:relative;
+
+}
+
+#user-profile a {
+
+	color:white;	
+	
+}
+
+#user-profile .name {
+
+	font-size:230%;
+	font-weight:bold;	
+	padding:8px;
+	padding-bottom:2px;
+}
+
+#user-profile .profile-image {
+
+	float:left;
+	margin:8px;	
+	border:2px solid #cccccc;
+}
+
+#user-profile .rank {
+
+	position:absolute;
+	right:0px;
+	font-size:125%;
+	font-weight:bold;
+	text-decoration:underline;
+	top:0px;
+	padding:10px;
+	
+}
+
+
+#total {
+	
+	
+}
+
+#total .score-header {
+
+	font-size:200%;	
+	font-weight:bold;
+	color:white;
+	padding:3px;
+}
+
+#total table {
+
+	width:97%;	
+	margin:auto;
+	border-top:1px solid #ffffff;
+	font-size:180%;
+}
+
+#total th {
+
+	padding:3px;
+
+}
+
+#total td {
+	
+	padding:4px;
+	border-bottom:1px solid #cccccc;
+
+}
+
+#total .total-row td {
+
+	border-bottom:none;
+	
+}
+
+#total .total-cell {
+	
+	text-align:right;	
+	
+}
+
+#total .total {
+
+	text-align:center;	
+	
+}
+
+
+#votes {
+
+	
+
+}
+
+.vote {
+	
+	
+}
+
+.vote .title-row td {
+
+	background-color:#000000;	
+	color:#999999;
+}
+
+.vote table {
+	
+	width:100%;
+	border:1px solid #999999;
+	border-top:none;
+	border-left:none;
+	margin-bottom:1px;
+}
+
+.vote table tr {
+
+		background-color:transparent;
+	
+}
+
+.vote td {
+
+	font-size:130%;	
+	text-align:center;
+	border:1px solid #999999;
+	border-right:none;
+	border-bottom:none;
+	padding:3px;
+	color:#000000;
+	
+}
+
+.vote .left {
+	
+	width:35%;
+	
+}
+
+.vote .center {
+	
+	width:15%;
+	
+}
+
+.vote .right {
+	
+	width:35%;
+	
+}
+
+.vote .rps-row .center {
+
+	white-space:nowrap;	
+	
+}
+
+
+.vote .result {
+	
+	width:15%;	
+	
+}
+.voting-header {
+
+	background-image:url(/img/layout/history-header.png);
+	background-position:top center;
+	background-repeat:no-repeat;
+	height:39px;	
+	
+}
+
+

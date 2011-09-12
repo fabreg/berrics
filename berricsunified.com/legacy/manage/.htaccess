@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "UNIFIED"
+AuthUserFile /home/sites/berrics/htpasswd
+Require valid-user
