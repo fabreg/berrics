@@ -1,0 +1,2 @@
+#!/bin/bash
+find -P /home/sites/berrics -iname cake_* ! -iname '*.*' -exec rm -v {} \;

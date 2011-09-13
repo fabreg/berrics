@@ -1,0 +1,4 @@
+#!/bin/bash
+
+## copy the dev code to the stagin directory
+rsync -vaz --delete --exclude-from /home/sites/berrics.shell/exclude.txt /home/sites/berrics.dev/ /home/sites/berrics.staging/
