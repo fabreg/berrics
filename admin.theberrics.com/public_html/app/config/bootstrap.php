@@ -56,7 +56,7 @@ if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 		"components"=>array("/home/sites/berrics.dev/sharedComponents/")
 	
 	));
-	
+
 } else {
 	
 	App::build(array(
