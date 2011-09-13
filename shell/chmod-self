@@ -1,0 +1,4 @@
+
+chmod -R 777 ../admin.theberrics.com/public_html/app/tmp
+chmod -R 777 ../theberrics.com/public_html/app/tmp
+
