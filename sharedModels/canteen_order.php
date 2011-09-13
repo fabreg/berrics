@@ -51,7 +51,6 @@ class CanteenOrder extends AppModel {
 		
 		));
 		
-		
 		return $order;
 		
 		

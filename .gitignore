@@ -7,3 +7,4 @@ admin.theberrics.com/public_html/app/webroot/cache/img/
 !.gitignore
 !.keep
 *.log
+.DS_Store
