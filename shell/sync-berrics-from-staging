@@ -1,7 +1,9 @@
 #!/bin/bash
 
 rsync -vaz --delete --exclude-from /home/sites/berrics/shell/exclude.txt  /home/sites/berrics.staging/ /home/sites/berrics/
+/home/sites/berrics/shell/chmod-self;
 rsync -vaz --delete --exclude-from /home/sites/berrics/shell/exclude.txt  /home/sites/berrics.staging/ root@web2:/home/sites/berrics/
+
 
 ssh root@web4 'apachectl -k graceful-stop';
 sleep 7;
