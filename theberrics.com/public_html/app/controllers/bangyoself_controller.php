@@ -191,4 +191,13 @@ class BangyoselfController extends BerricsAppController {
 	}
 	
 	
+	public function facebook() {
+		
+		
+		
+	}
+	
+	
+	
+	
 }
