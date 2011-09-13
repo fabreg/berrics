@@ -41,8 +41,24 @@
  *
  */
 //FORCE DEVSERVER!
+$uname = php_uname('n');
+if($uname == 'WEB2VM.THEBERRICS') {
 
-if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
+	App::build(array(
+	
+		"models"=>array("/home/sites/sharedModels/"),
+		'plugins' => array('/home/sites/sharedPlugins/'),
+	 	'vendors' => array('/home/sites/sharedVendors/'),
+		'controllers' => array('/home/sites/sharedControllers/'),
+		'helpers' => array('/home/sites/sharedHelpers/'),
+		'behaviors'=>array('/home/sites/sharedBehaviors/'),
+		"views"=>array("/home/sites/sharedViews/"),
+		"components"=>array("/home/sites/sharedComponents/")
+	
+	));
+
+
+} else if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 	
 	App::build(array(
 	
@@ -56,7 +72,7 @@ if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 		"components"=>array("/home/sites/berrics.dev/sharedComponents/")
 	
 	));
-	
+
 } else {
 	
 	App::build(array(

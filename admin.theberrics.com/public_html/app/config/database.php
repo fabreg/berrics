@@ -67,11 +67,9 @@ class DATABASE_CONFIG {
 
 		$uname = php_uname('n');
 
-
-		if($uname == 'WEB2VM') {
+		if($uname == 'WEB2VM.THEBERRICS') {
 			
 			$this->default['host'] = $this->master['host'] = '127.0.0.1';
-	
 		}	
 
 	}
