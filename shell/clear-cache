@@ -1,0 +1,5 @@
+#!/bin/bash
+ssh root@web4 '/home/sites/berrics.shell/clear-cache-self';
+ssh root@web5 '/home/sites/berrics.shell/clear-cache-self';
+ssh root@web7 '/home/sites/berrics.shell/clear-cache-self';
+/home/sites/berrics.shell/clear-cache-self
