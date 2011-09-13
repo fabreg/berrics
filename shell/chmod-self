@@ -1,0 +1,9 @@
+#LIVE
+chmod -R 777 /home/sites/berrics/admin.theberrics.com/public_html/app/tmp
+chmod -R 777 /home/sites/berrics/theberrics.com/public_html/app/tmp
+chmod -R 777 /home/sites/berrics/admin.theberrics.com/public_html/app/webroot/dfp
+
+#DEV
+chmod -R 777 /home/sites/berrics.dev/admin.theberrics.com/public_html/app/webroot/dfp
+chmod -R 777 /home/sites/berrics.dev/admin.theberrics.com/public_html/app/tmp
+chmod -R 777 /home/sites/berrics.dev/theberrics.com/public_html/app/tmp

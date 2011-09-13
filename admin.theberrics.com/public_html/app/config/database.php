@@ -63,5 +63,25 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 	);
 	
+	public function __construct() {
+
+		$uname = php_uname('n');
+
+		if($uname == 'WEB2VM.THEBERRICS') {
+			
+			$this->default['host'] = $this->master['host'] = '127.0.0.1';
+		}	
+
+	}
+
+
+	function DATABASE_CONFIG() 
+    { 
+        $this->__construct(); 
+    } 
+
+
+
 	
+
 }
