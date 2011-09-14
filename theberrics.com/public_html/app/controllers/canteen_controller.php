@@ -69,7 +69,8 @@ class CanteenController extends CanteenAppController {
 		$prod_ids = $this->CanteenProduct->find("all",array(
 			"fields"=>array("CanteenProduct.id"),
 			"conditions"=>array(
-				"CanteenProduct.canteen_category_id"=>$category['CanteenCategory']['id']
+				"CanteenProduct.canteen_category_id"=>$category['CanteenCategory']['id'],
+				"CanteenProduct.parent_canteen_product_id"=>NULL
 			),
 			"contain"=>array()
 		));
@@ -78,9 +79,11 @@ class CanteenController extends CanteenAppController {
 		
 		$products = array();
 		
+		//die(print_r($prod_ids));
+		
 		foreach($prod_ids as $id) {
 			
-			$products[] = $this->CanteenProduct->returnProduct(array("condition"=>array("CanteenProduct.id"=>$id)));
+			$products[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$id)),$this->isAdmin(),false,array("no_related"=>true));
 			
 		}
 		

@@ -18,3 +18,34 @@ body {
 	margin-left:75px;
 
 }
+
+
+
+/*
+	CANTEEN PRODUCT THUMB
+*/
+.canteen-product-thumb {
+	
+	width:262px;
+	height:262px;
+	position:relative;
+}	
+
+.canteen-product-thumb a {
+
+	text-decoration:none;
+
+}
+
+.canteen-product-thumb img {
+
+	display:block;
+	border:none;
+
+}
+
+.canteen-product-thumb .info {
+
+	display:none;
+
+}
