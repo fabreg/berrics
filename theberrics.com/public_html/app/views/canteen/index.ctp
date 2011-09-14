@@ -7,7 +7,7 @@
 
 <?php foreach($products as $p): ?>
 
-<div><a href='/canteen/merchandise/<?php echo $p['CanteenProduct']['uri']; ?>'><?php echo $p['CanteenProduct']['name']; ?></a></div>
+<div><a href='/canteen/item/<?php echo $p['CanteenProduct']['uri']; ?>'><?php echo $p['CanteenProduct']['name']; ?></a></div>
 
 <?php endforeach; ?>
 </div>

@@ -41,6 +41,52 @@ class CanteenController extends CanteenAppController {
 		$this->set(compact("products"));
 		
 	}
+
+	public function category() {
+		
+		$this->loadModel("CanteenCategory");
+		$this->loadModel("CanteenProduct");
+		
+		$uri = $this->params['uri'];
+		
+		$cat_token = "canteen_cat_".md5($uri);
+		
+		if(($category = Cache::read($cat_token,"1min")) === false) {
+
+			$category = $this->CanteenCategory->find("first",array(
+			
+				"conditions"=>array("CanteenCategory.uri"=>$uri,"CanteenCategory.active"=>1),
+				"contain"=>array()
+			
+			));
+
+			Cache::write($cat_token,$category,"1min");
+			
+		}
+
+		$this->set(compact("category"));
+		
+		$prod_ids = $this->CanteenProduct->find("all",array(
+			"fields"=>array("CanteenProduct.id"),
+			"conditions"=>array(
+				"CanteenProduct.canteen_category_id"=>$category['CanteenCategory']['id']
+			),
+			"contain"=>array()
+		));
+		
+		$prod_ids = Set::extract("/CanteenProduct/id",$prod_ids);
+		
+		$products = array();
+		
+		foreach($prod_ids as $id) {
+			
+			$products[] = $this->CanteenProduct->returnProduct(array("condition"=>array("CanteenProduct.id"=>$id)));
+			
+		}
+		
+		$this->set(compact("products"));
+		
+	}
 	
 	public function order($id = false) {
 		
