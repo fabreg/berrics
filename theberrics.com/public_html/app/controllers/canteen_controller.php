@@ -41,6 +41,8 @@ class CanteenController extends CanteenAppController {
 		$this->set(compact("products"));
 		
 	}
+
+	
 	
 	public function order($id = false) {
 		

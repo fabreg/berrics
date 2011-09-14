@@ -22,7 +22,13 @@ Router::connect("/dailyopspost.php",array("controller"=>"dailyops","action"=>"le
 //the canteen
 if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI']) && isset($_SERVER['DEVSERVER'])) {
 	
-	Router::connect("/canteen/merchandise/:uri",
+	Router::connect("/canteen/:uri",
+					array("controller"=>"canteen","action"=>"category"),
+					array(
+						"uri"=>"[a-z\-_0-9]{3,}.html"
+					));
+	
+	Router::connect("/canteen/item/:uri",
 					array(
 						"controller"=>"canteen_product",
 						"action"=>"view"
