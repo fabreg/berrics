@@ -42,7 +42,22 @@ class CanteenController extends CanteenAppController {
 		
 	}
 
-	
+	public function category() {
+		
+		$this->loadModel("CanteenCategory");
+		
+		$uri = $this->params['uri'];
+		
+		$category = $this->CanteenCategory->find("first",array(
+		
+			"conditions"=>array("CanteenCategory.uri"=>$uri,"CanteenCategory.active"=>1)
+		
+		));
+		
+		$this->set(compact("category"));
+		
+		
+	}
 	
 	public function order($id = false) {
 		
