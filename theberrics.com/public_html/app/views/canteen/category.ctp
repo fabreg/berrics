@@ -1,14 +1,19 @@
+<style>
+#top-banner-container {
+	
+	display:none;
+
+}
+</style>
 <?php 
 foreach($products as $p):
 ?>
-<div>
-
-</div>
+<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
 <?php 
 endforeach;
 ?>
 <?php
 
 print_r($category);
-print_r($products);
+pr($products);
 ?>
