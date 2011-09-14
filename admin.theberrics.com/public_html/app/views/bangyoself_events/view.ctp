@@ -31,7 +31,7 @@ $(document).ready(function() {
 <h2><?php echo $e['name']; ?></h2>
 <div class='form'>
 	<fieldset>
-		<legend>Search File</legend>
+		<legend>Search Filess</legend>
 	<?php 
 	
 		echo $this->Form->create("BangyoselfEntry",array("id"=>"search-form"));
@@ -97,8 +97,13 @@ $(document).ready(function() {
 					<a href='/bangyoself_events/create_post/<?php echo $e['id']; ?>'>Create Post</a>
 				<?php 
 				
-					endif;
+					else:
 				
+				?>
+				<a href='/bangyoself_events/delete_post/<?php echo $e['id']; ?>'>Delete Post</a>
+				<?php 
+				
+					endif; 
 				?>
 				<a href='http://img.theberrics.com/bang-yoself/<?php echo $e['file_name']; ?>' target='_blank'>View File</a>
 			</td>
