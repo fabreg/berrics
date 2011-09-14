@@ -44,7 +44,6 @@
 	}
 	
 	ini_set("session.cookie_domain",".theberrics.com");
-	ini_set('session.cookie_lifetime', 0); 
 	
 /**
  * CakePHP Log Level:
