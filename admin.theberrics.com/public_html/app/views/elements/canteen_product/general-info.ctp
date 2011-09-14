@@ -33,6 +33,7 @@ $(document).ready(function() {
 				echo $this->Form->input("pub_date");
 				echo $this->Form->input("pub_time");
 				echo $this->Form->input("name");
+				echo $this->Form->input("sub_title");
 				echo $this->Form->input("description");
 				echo $this->Form->input("brand_id");
 				echo $this->Form->input("canteen_category_id");
