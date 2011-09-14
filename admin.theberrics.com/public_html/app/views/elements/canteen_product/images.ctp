@@ -50,7 +50,21 @@ if(count($this->data['CanteenProductImage'])>0):
 				?>
 			
 			</td>
-			<td>-</td>
+			<td>
+			<?php 
+				
+					if($img['thumb_image'] == 1) {
+						
+						echo "Yes";
+						
+					} else {
+						
+						echo $this->Form->submit("Promote",array("name"=>"data[PromoteThumbImage][{$img['id']}]"));
+						
+					}
+				
+				?>
+			</td>
 			<td class='actions'>
 				<?php echo $this->Form->submit("RemoveImage",array("name"=>"data[RemoveImage][{$img['id']}]")); ?>
 			</td>
