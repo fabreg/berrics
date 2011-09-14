@@ -4,3 +4,17 @@ body {
 
 }
 
+#canteen-container {
+
+
+}
+
+#canteen-navbar {
+
+	background-image:url(/img/layout/canteen/canteen-nav-bg.jpg);
+	width:963px;
+	height:58px;
+	margin-top:-70px;
+	margin-left:75px;
+
+}
