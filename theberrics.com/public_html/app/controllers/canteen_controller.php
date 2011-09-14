@@ -76,7 +76,15 @@ class CanteenController extends CanteenAppController {
 		
 		$prod_ids = Set::extract("/CanteenProduct/id",$prod_ids);
 		
-		//die(print_r($prod_ids));
+		$products = array();
+		
+		foreach($prod_ids as $id) {
+			
+			$products[] = $this->CanteenProduct->returnProduct(array("condition"=>array("CanteenProduct.id"=>$id)));
+			
+		}
+		
+		$this->set(compact("products"));
 		
 	}
 	
