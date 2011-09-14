@@ -29,6 +29,8 @@ body {
 	width:262px;
 	height:262px;
 	position:relative;
+	cursor:pointer;
+	
 }	
 
 .canteen-product-thumb a {
@@ -41,11 +43,39 @@ body {
 
 	display:block;
 	border:none;
-
+	
+	
 }
 
 .canteen-product-thumb .info {
 
 	display:none;
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-image:url(/img/layout/canteen/blk-pix.png);
+	
+}
 
+.canteen-product-thumb .info .info-spacer {
+
+	height:100px;	
+	
+}
+
+.canteen-product-thumb .info .brand {
+	
+	font-size:11px;
+	color:#999;
+	font-family:'Arial';
+}
+
+.canteen-product-thumb .info .name {
+	
+	font-size:17px;
+	font-family:'Courier';
+	letter-spacing:.5px;
+	
 }
