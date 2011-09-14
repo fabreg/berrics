@@ -567,7 +567,9 @@ class DailyopsController extends AdminAppController {
 			
 			if(isset($this->params['named']['Dailyop.publish_date'])) {
 				
-				$this->data['Dailyop']['publish_date'] = $this->paginate['Dailyop']['conditions'][] = "DATE(Dailyop.publish_date) = '{$this->params['named']['publish_date']}'";
+				$this->paginate['Dailyop']['conditions'][] = "DATE(Dailyop.publish_date) = '{$this->params['named']['Dailyop.publish_date']}'";
+				
+				$this->data['Dailyop']['publish_date'] = $this->params['named']['Dailyop.publish_date'];
 				
 			}
 			

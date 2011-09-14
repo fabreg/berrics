@@ -38,6 +38,7 @@ $(document).ready(function() {
 			<th><?php echo $this->Paginator->sort("Created","CanteenOrder.created")?></th>
 			<th><?php echo $this->Paginator->sort("Modified","CanteenOrder.modified")?></th>
 			<th>ShipName / BillName</th>
+			<th><?php echo $this->Paginator->sort("Email","CanteenOrder.email"); ?></th>
 			<th>Country (S/B/G)</th>
 			<th><?php echo $this->Paginator->sort("Currency","CanteenOrder.currency_id"); ?></th>
 			<th><?php echo $this->Paginator->sort("ShippingTotal","CanteenOrder.shipping_total"); ?></th>
@@ -138,6 +139,9 @@ $(document).ready(function() {
 			<td align='center'>
 				<?php echo $o['CanteenOrder']['first_name']; ?> <?php echo $o['CanteenOrder']['last_name']; ?> / 
 				<?php echo $o['CanteenOrder']['bill_first_name']; ?> <?php echo $o['CanteenOrder']['bill_last_name']; ?>
+			</td>
+			<td align='center'>
+				<?php echo $o['CanteenOrder']['email']; ?>
 			</td>
 			<td nowrap width='1%' align='center'>
 				<?php echo $o['CanteenOrder']['country']; ?>/<?php echo $o['CanteenOrder']['bill_country']; ?>/<?php echo $o['CanteenOrder']['geoip_country_code']; ?>

@@ -131,6 +131,12 @@ class CanteenProductsController extends AdminAppController {
 				
 			}
 			
+			if(isset($this->data['PromoteThumbImage'])) {
+				
+				$this->promoteThumbImage();
+				
+			}
+			
 			if(isset($this->data['RemoveImage'])) {
 				
 				$this->removeImage();
@@ -244,6 +250,34 @@ class CanteenProductsController extends AdminAppController {
 	
 	private function promoteThumbImage() {
 		
+		$prod_id = $this->data['CanteenProduct']['id'];
+		
+		//demote all the images
+		
+		$this->CanteenProduct->CanteenProductImage->updateAll(
+			array(
+				"front_image"=>0
+			),
+			array(
+				"canteen_product_id"=>$prod_id
+			)
+		);
+		
+		foreach($this->data['PromoteThumbImage'] as $k=>$v) {
+			
+			$image_id = $k;
+			
+		}
+		
+		
+		$this->CanteenProduct->CanteenProductImage->create();
+		$this->CanteenProduct->CanteenProductImage->id = $image_id;
+		
+		$this->CanteenProduct->CanteenProductImage->save(array(
+		
+			"thumb_image"=>1
+		
+		));
 		
 		
 		
