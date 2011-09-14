@@ -58,5 +58,9 @@ body {
 	<a href='/dailyops'>
 		<img src='/img/splash/enter-the-berrics-large.jpg' border='0' />
 	</a>
+	<div style='padding-top:20px;'>
+		Music By: Blue Foundation "Redhook" (Out soon on <a href="http://www.dpc-rec.dk/">DPC Records</a>)
+	</div>
 </div>
+
 </div>

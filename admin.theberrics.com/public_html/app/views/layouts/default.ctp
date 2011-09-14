@@ -3,7 +3,6 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -27,6 +26,7 @@
 		<div id="header">
 		
 			<?php echo $this->Html->link(__('The Berrics Backend Stuff', true), '/'); ?>
+			<div style='font-size:11px; font-style:italic; color:#e9e9e9;'><?php echo php_uname('n'); ?></div>
 			<div class='top-nav'>
 				<?php echo $this->element("top-nav/top-nav"); ?>
 			</div>

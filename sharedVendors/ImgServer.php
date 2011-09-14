@@ -13,7 +13,20 @@ class ImgServer {
 		
 		set_include_path($oldPath);
 		
-		$this->sftp = new Net_SFTP('10.181.80.17');
+		$uname = php_uname('n');
+		
+		switch($uname) {
+			
+			case "WEB2VM.THEBERRICS":
+				$this->sftp = new Net_SFTP('50.56.79.100');
+			break;
+			default:
+				$this->sftp = new Net_SFTP('10.181.80.17');
+			break;
+			
+		}
+		
+		
 		
 	}
 	
