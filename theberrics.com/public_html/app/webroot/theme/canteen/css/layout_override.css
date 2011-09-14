@@ -63,7 +63,7 @@ body {
 
 .canteen-product-thumb .info .info-spacer {
 
-	height:181px;	
+	height:183px;	
 	
 }
 
@@ -90,6 +90,7 @@ body {
 	font-family:'Courier';
 	text-indent:4px;	
 	font-style:italic;
+	
 }
 
 .canteen-product-thumb .info .price {
@@ -98,6 +99,7 @@ body {
 	padding-right:5px;
 	font-family:'Courier';
 	font-size:20px;
+	
 }
 
 
