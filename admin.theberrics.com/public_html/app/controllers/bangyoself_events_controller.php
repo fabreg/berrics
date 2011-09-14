@@ -112,6 +112,21 @@ class BangyoselfEventsController extends AdminAppController {
 	
 	}
 	
+	public function delete_post($id) {
+		
+		
+		$this->BangyoselfEvent->BangyoselfEntry->id = $id;
+		
+		$this->BangyoselfEvent->BangyoselfEntry->save(array(
+			"dailyop_id"=>''
+		));
+		
+		$event = $this->BangyoselfEvent->BangyoselfEntry->read();
+		
+		return $this->redirect("/bangyoself_events/view/".$event['BangyoselfEntry']['bangyoself_event_id']);
+		
+	}
+	
 	
 
 	function add() {
