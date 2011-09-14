@@ -68,6 +68,9 @@
 		
 		echo $scripts_for_layout;
 	?>
+	<?php if(isset($_GET['t']) && $_GET['t'] == 1): ?>
+	<style>#top-banner-container { display:none; }</style>
+	<?php endif; ?>
 </head>
 <body>
 

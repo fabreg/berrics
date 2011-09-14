@@ -254,12 +254,12 @@ class MediaHelper extends AppHelper {
 		
 		//determine which file we should be showing
 		$img = false;
-		$img = Set::extract("/CanteenProductImage[thumb_image=1]",$canteen_product);
+		$img = Set::extract("/CanteenProductImage[thumb_image=1]/",$canteen_product);
 		
-		if(count($img)<=0) $img = Set::extract("CanteenProductImage[front_image=1]",$canteen_product);
+		if(count($img)<=0) $img = Set::extract("CanteenProductImage[front_image=1]/",$canteen_product);
 		
 		if(count($img)<=0) $img[0] = $canteen_product['CanteenProductImage'][0];
-		
+
 		$size['src'] = "/product-img/".$img[0]['file_name'];
 		
 		$q = http_build_query($size);

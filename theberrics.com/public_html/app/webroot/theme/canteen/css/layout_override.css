@@ -18,3 +18,90 @@ body {
 	margin-left:75px;
 
 }
+
+
+
+/*
+	CANTEEN PRODUCT THUMB
+*/
+.canteen-product-thumb {
+	
+	width:262px;
+	height:262px;
+	position:relative;
+	cursor:pointer;
+	
+}	
+
+.canteen-product-thumb a {
+
+	text-decoration:none;
+
+}
+
+.canteen-product-thumb img {
+
+	display:block;
+	border:none;
+	
+	
+}
+
+.canteen-product-thumb .info {
+
+	display:none;
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-image:url(/img/layout/canteen/blk-pix.png);
+	text-shadow: 2px 2px 2px #000000;
+	filter: dropshadow(color=#000000, offx=2, offy=2);
+
+}
+
+.canteen-product-thumb .info .info-spacer {
+
+	height:183px;	
+	
+}
+
+.canteen-product-thumb .info .brand {
+	
+	font-size:11px;
+	color:#999;
+	font-family:'Arial';
+	text-indent:4px;
+}
+
+.canteen-product-thumb .info .name {
+	
+	font-size:17px;
+	font-family:'Courier';
+	letter-spacing:.5px;
+	text-indent:4px;
+	
+}
+
+.canteen-product-thumb .info .sub-title {
+
+	font-size:14px;
+	font-family:'Courier';
+	text-indent:4px;	
+	font-style:italic;
+	
+}
+
+.canteen-product-thumb .info .price {
+	
+	text-align:right;	
+	padding-right:5px;
+	font-family:'Courier';
+	font-size:20px;
+	
+}
+
+
+
+
