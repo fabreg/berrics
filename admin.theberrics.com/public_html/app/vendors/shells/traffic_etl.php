@@ -1,6 +1,6 @@
 <?php
 
-$_SERVER['DEVSERVER']=1;
+//$_SERVER['DEVSERVER']=1;
 
 class TrafficEtlShell extends Shell {
 	
