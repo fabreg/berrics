@@ -68,29 +68,44 @@ $(document).ready(function() {
 </script>
 <div class='form index'>
 	<h2>Canteen Orders &nbsp;&nbsp;&nbsp;<span style='font-size:14px; font-weight:bold;'></span></h2>
-	<div style='font-size:20px;'>
-		<a href='/canteen_orders/search'>Search</a> | <a href='/canteen_orders'>Clear</a>
-	</div>
-	<p>
-	<?php
-		echo $this->Paginator->counter(array(
+	<div>
+		<div style='float:left; width:48%;'>
+			<div style='font-size:20px;'>
+				<a href='/canteen_orders/search'>Search</a> | <a href='/canteen_orders'>Clear</a>
+			</div>
+			<p>
+				<?php
+					echo $this->Paginator->counter(array(
 						'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-		));
-	?>	
-	</p>
-
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+					));
+				?>	
+			</p>
+		
+			<div class="paging">
+				<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+			 | 	<?php echo $this->Paginator->numbers();?>
+		 |
+				<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+			</div>
+			<div style='padding:10px;'>
+			<?php 
+				echo $this->Form->create("CanteenBatch",array("url"=>"/canteen_batches/add_to_batch/","id"=>"batch-form"));
+				echo $this->Form->input("CanteenBatch.id",array("options"=>$batches,"label"=>"Batch","empty"=>"Add To New Batch"));
+				echo $this->Form->end("Add Selected To Batch");
+			?>
+			</div>
+		</div>
+		<div style='float:right; width:48%;'>
+			<fieldset>
+				<legend>Quick Stats</legend>
+				<div>
+					
+				</div>
+			</fieldset>
+		</div>
+		<div style='clear:both;'></div>
 	</div>
-	<div style='padding:10px;'>
-	<?php 
-		echo $this->Form->create("CanteenBatch",array("url"=>"/canteen_batches/add_to_batch/","id"=>"batch-form"));
-		echo $this->Form->input("CanteenBatch.id",array("options"=>$batches,"label"=>"Batch","empty"=>"Add To New Batch"));
-		echo $this->Form->end("Add Selected To Batch");
-	?>
-	</div>
+	
+	
 	<?php echo $this->element("canteen_orders/index-table"); ?>
 </div>
