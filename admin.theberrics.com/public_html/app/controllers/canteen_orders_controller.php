@@ -131,8 +131,17 @@ class CanteenOrdersController extends AdminAppController {
 			
 			if(isset($this->params['named']['CanteenOrder.date_start']) && isset($this->params['named']['CanteenOrder.date_end'])) {
 				
+				//compare and call them an idoit
+				
+				if(strtotime(base64_decode($this->params['named']['CanteenOrder.date_start']))>strtotime(base64_decode($this->params['named']['CanteenOrder.date_end']))) {
+					
+					$this->Session->setFlash("Hey, how can the start date be ahead of the end date??? I'll email John and have him come over and explain it to you");
+					return $this->redirect("/canteen_orders/search");
+				}
+				
+				
 				$this->paginate['CanteenOrder']['conditions'][] = 
-				"DATE(CanteenOrder.create) BETWEEN '".base64_decode($this->params['named']['CanteenOrder.date_start'])."' AND '".base64_decode($this->params['named']['CanteenOrder.date_end'])."'";
+				"DATE(CanteenOrder.created) BETWEEN '".base64_decode($this->params['named']['CanteenOrder.date_start'])."' AND '".base64_decode($this->params['named']['CanteenOrder.date_end'])."'";
 		
 			}
 			
