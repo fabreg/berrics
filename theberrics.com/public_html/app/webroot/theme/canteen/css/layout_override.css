@@ -109,5 +109,143 @@ body {
 }
 
 
+/*
+	CANTEEN INVOICE
+	
+*/
+
+#canteen-order-confirmation {
+
+	background-image:url(/img/layout/canteen/order-conf-bg.jpg);
+	height:668px;
+	color:#222;
+	position:relative;
+	font-family:"Courier New", Courier, monospace;
+	font-size:13px;
+	width:728px;
+	float:left;
+}
+
+#canteen-order-confirmation a {
+
+	color:inherit;
+
+}
+
+#canteen-order-confirmation .message {
+	
+	font-size:14px;
+	width:95%;
+	margin:auto;
+	font-family:'Times New Roman';
+	text-align:justify;
+	text-indent:15px;
+	font-weight:600;
+}
+
+
+
+#canteen-order-confirmation .top-spacer {
+
+	height:75px;
+
+}
+
+#canteen-order-confirmation .ship-to {
+	
+	float:left;
+	width:52%;
+	margin-left:4%;
+	font-weight:bold;
+}
+
+#canteen-order-confirmation .bill-to {
+	
+	float:right;
+	width:39%;
+	margin-right:3%;
+	font-weight:bold;
+}
+
+#canteen-order-confirmation .heading {
+
+	font-weight:bold;
+	font-size:16px;
+	font-family:'Times New Roman';
+	
+}
+
+#canteen-order-confirmation .customer {
+
+	padding-top:10px;
+
+}
+
+#canteen-order-confirmation .items {
+	
+	width:95%;
+	margin:auto;
+	margin-top:10px;
+}
+
+#canteen-order-confirmation .items table {
+	
+	width:100%;
+	border:none;
+}
+#canteen-order-confirmation .items table th {
+
+	font-family:'Times New Roman';
+	font-size:16px;
+	border-bottom:1px solid #333;
+
+}
+#canteen-order-confirmation .items table td {
+
+	padding:2px;
+	border-bottom:1px solid #333;
+	padding-top:6px;
+	padding-bottom:6px;
+	font-weight:600;
+}
+
+#canteen-order-confirmation .totals {
+
+	
+	width:95%;
+	margin:auto;
+	margin-top:10px;
+}
+
+#canteen-order-confirmation .totals table {
+
+	width:200px;
+	float:right;
+	font-weight:600;
+
+}
+
+#canteen-order-confirmation .totals table td {
+	
+	padding:3px;
+	
+
+}
+
+#canteen-order-confirmation .totals table td:nth-child(1) {
+	
+	font-family:'Times New Roman';
+	font-weight:bold;
+
+}
+
+#canteen-order-confirmation .totals table td:nth-child(2) {
+
+border-bottom:1px solid #333;
+
+}
+
+
+
 
 

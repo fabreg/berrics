@@ -59,7 +59,7 @@ class CanteenCartController extends CanteenAppController {
 					$this->data['CanteenOrder']['wh_status'] = 
 					"pending";
 					
-					$this->data['CanteenOrder']['ip_address'] = (empty(env("GEOIP_ADDR"))) ? env("REMOTE_ADDR"):env("GEOIP_ADDR");
+					$this->data['CanteenOrder']['ip_address'] = (empty($_SERVER["GEOIP_ADDR"])) ? $_SERVER["REMOTE_ADDR"]:$_SERVER["GEOIP_ADDR"];
 					
 					if(empty($this->data['CanteenOrder']['geoip_country_code'])) $this->data['CanteenOrder']['geoip_country_code'] = 'US';
 					
