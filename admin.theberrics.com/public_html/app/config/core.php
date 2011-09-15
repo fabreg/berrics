@@ -43,6 +43,7 @@
 		
 	}
 	ini_set("session.cookie_domain",".theberrics.com");
+	
 
 /**
  * CakePHP Log Level:
