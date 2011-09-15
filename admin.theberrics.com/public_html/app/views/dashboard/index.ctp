@@ -285,7 +285,7 @@ function resetPostFilters() {
 					<tr>
 						<td align='right' width='1%' nowrap ><?php echo strtoupper($s['CanteenOrder']['order_status']); ?></td>
 						<td>
-							<a href='/canteen_orders/index/CanteenOrder.order_status:<?php echo $s['CanteenOrder']['order_status']; ?>'><?php echo $s[0]['total']; ?></a>
+							<a href='/canteen_orders/index/s:1/CanteenOrder.order_status:<?php echo base64_encode($s['CanteenOrder']['order_status']); ?>'><?php echo $s[0]['total']; ?> <span style='font-style:italic;'>(view)</span></a>
 						</td>
 					</tr>
 					<?php endforeach; ?>
