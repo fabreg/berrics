@@ -110,6 +110,22 @@ class CanteenOrdersController extends AdminAppController {
 				
 			}
 			
+			if(isset($this->params['named']['CanteenOrder.wh_status']) && !empty($this->params['named']['CanteenOrder.wh_status'])) {
+				
+					$this->paginate['CanteenOrder']['conditions']['CanteenOrder.wh_status'] = 
+					$this->data['CanteenOrder']['wh_status'] = 
+					base64_decode($this->params['named']['CanteenOrder.wh_status']);
+				
+			}
+			
+			if(isset($this->params['named']['CanteenOrder.shipping_status']) && !empty($this->params['named']['CanteenOrder.shipping_status'])) {
+				
+					$this->paginate['CanteenOrder']['conditions']['CanteenOrder.shipping_status'] = 
+					$this->data['CanteenOrder']['shipping_status'] = 
+					base64_decode($this->params['named']['CanteenOrder.shipping_status']);
+				
+			}
+			
 			if(isset($this->params['named']['CanteenOrder.email']) && !empty($this->params['named']['CanteenOrder.email'])) {
 				
 					$this->paginate['CanteenOrder']['conditions']['CanteenOrder.email LIKE'] = 

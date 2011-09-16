@@ -1,16 +1,13 @@
 <div id='canteen-product-thumbs'>
-<?php foreach($products as $p): ?>
-<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
-<?php endforeach; ?>
-</div>
-<div>
-
-<?php foreach($products as $p): ?>
-
-<div><a href='/canteen/item/<?php echo $p['CanteenProduct']['uri']; ?>'><?php echo $p['CanteenProduct']['name']; ?></a></div>
-
-<?php endforeach; ?>
-</div>
+	<dl>
+	<?php foreach($cats as $c): ?>
+		<?php if($c['CanteenCategory']['parent_id'] == 0): ?>
+		<dt><?php echo $c['CanteenCategory']['name']; ?></dt>
+		<?php else:?>
+		<dd>-<a href='/canteen/<?php echo $c['CanteenCategory']['uri']; ?>'><?php echo $c['CanteenCategory']['name']; ?></a></dd>
+		<?php endif;?>
+	<?php endforeach; ?>
+	</dl>
 <pre>
 <?php print_r($this->Session->read()); ?>
 </pre>

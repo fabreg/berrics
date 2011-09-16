@@ -32,7 +32,7 @@ class CanteenCartController extends CanteenAppController {
 				
 			$this->CanteenOrder->set($this->data);
 			
-			$errors = $this->CanteenOrder->invalidFields();
+			$errors = $this->CanteenOrder->invalidFields(); 
 			
 			if(count($errors)>0) {
 				
@@ -59,15 +59,15 @@ class CanteenCartController extends CanteenAppController {
 					$this->data['CanteenOrder']['wh_status'] = 
 					"pending";
 					
-					$this->data['CanteenOrder']['ip_address'] = env("GEOIP_ADDR");
+					$this->data['CanteenOrder']['ip_address'] = (empty($_SERVER["GEOIP_ADDR"])) ? $_SERVER["REMOTE_ADDR"]:$_SERVER["GEOIP_ADDR"];
+					
+					if(empty($this->data['CanteenOrder']['geoip_country_code'])) $this->data['CanteenOrder']['geoip_country_code'] = 'US';
 					
 					$this->CanteenOrder->saveAll($this->data);
 				
 					$order = $this->CanteenOrder->returnAdminOrder($this->CanteenOrder->id);
 
 					$this->updateOrderSession($order);
-					
-					
 					
 					return $this->process(array("CardData"=>$this->data['CardData']));
 					

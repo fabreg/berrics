@@ -4,32 +4,34 @@ class CanteenCategory extends AppModel {
 	
 	public $actsAs = array("GroupTree");
 	
-	public function grabTree() {
+
+	public function treeList() {
 		
 		
 		$tree = $this->find("all",array(
 		
-			"order"=>array("AberricaCategory.parent_id"=>"ASC","AberricaCategory.lft"=>"ASC"),
+			"order"=>array("CanteenCategory.parent_id"=>"ASC","CanteenCategory.lft"=>"ASC"),
 			"contain"=>array()
 		
 		));
 		
-		$top = Set::extract("/AberricaCategory[parent_id=0]",$tree);
+		$top = Set::extract("/CanteenCategory[parent_id=0]",$tree);
 		
 		$cats = array();
 		
 		foreach($top as $v) {
 			
-			$key = $v['AberricaCategory']['id'];
+			$key = $v['CanteenCategory']['name'];
 			
-			$cats[$key] = $v;
+			$cats[$key] = array();
 			
-			$cats[$key]['subs'] = Set::extract("/AberricaCategory[parent_id={$key}]",$tree);
-			
+			//$cats[$key]['subs'] = Set::extract("/CanteenCategory[parent_id={$key}]",$tree);
+			$c = Set::extract("/CanteenCategory[parent_id={$v['CanteenCategory']['id']}]",$tree);
+			foreach($c as $cc) $cats[$key][$cc['CanteenCategory']['id']] = $cc['CanteenCategory']['name'];
 			
 		}
 		
-		return $tree;
+		return $cats;
 		
 	}
 }

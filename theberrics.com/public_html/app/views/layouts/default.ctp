@@ -84,6 +84,11 @@
 							
 							?>
 					</div>
+					<div id='top-widget'>
+						<?php if($this->theme == "canteen"): ?>
+							<?php echo $this->element("canteen/cart-widget"); ?>
+						<?php endif; ?>
+					</div>
 				</div>
 				<div class='bottom-edge'>
 				

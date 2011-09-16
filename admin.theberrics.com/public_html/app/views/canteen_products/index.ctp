@@ -1,8 +1,35 @@
-<div class='index'>
+<div class='index form'>
 	<h2>Canteen Products</h2>
-	<table cellspacing='0'>
+	
+	<fieldset>
+		<legend>Filter</legend>
+		<?php 
+		
+			echo $this->Form->create("CanteenProduct",array("url"=>array("action"=>"filter")));
+			echo $this->Form->input("canteen_category_id",array("options"=>$canteenCategories,"empty"=>true));
+			echo $this->Form->end("Run Filter");
+		?>
+	</fieldset>
+	
+	<p>
+				<?php
+					echo $this->Paginator->counter(array(
+						'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+					));
+				?>	
+			</p>
+		
+			<div class="paging">
+				<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+			 | 	<?php echo $this->Paginator->numbers();?>
+		 |
+				<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+			</div>
+					
+	<table cellspacing='0' style='font-size:12px;'>
 		<tr>
-			<th>Front Image</th>
+			<th>Thumb Image</th>
+			<th><?php echo $this->Paginator->sort("active"); ?></th>
 			<th><?php echo $this->Paginator->sort("id"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
@@ -16,17 +43,31 @@
 				$c = $prod['CanteenCategory'];
 		?>
 		<tr>
-			<td>
+			<td width='1%' nowrap>
 				<?php if(isset($prod['CanteenProductImage'][0])): ?>
-				<?php echo $this->Media->productThumb($prod['CanteenProductImage'][0],array("w"=>120)); ?>
+				<?php echo $this->Media->productThumb($prod['CanteenProductImage'][0],array("w"=>50)); ?>
 				<?php else: ?>
 				No Image
 				<?php endif; ?>
 			</td>
-			<td><?php echo $p['id']; ?></td>
-			<td><?php echo $p['modified']; ?></td>
+			<td align='center'>
+				<?php 
+				
+					switch($p['active']) {
+					
+						case 1:
+							echo "<span style='color:green;'>YES</span>";
+						break;
+						default:
+							echo "<span style='color:red;'>NO</span>";
+						break;
+					}
+				?>
+			</td>
+			<td align='center' nowrap width='1%'><?php echo $p['id']; ?></td>
+			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
 			<td><?php echo $p['name']; ?></td>
-			<td><?php echo $c['name']; ?></td>
+			<td align='center' nowrap width='1%'><?php echo $c['name']; ?></td>
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 			</td>

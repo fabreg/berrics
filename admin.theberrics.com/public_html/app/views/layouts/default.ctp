@@ -42,6 +42,15 @@
 		
 		</div>
 	</div>
+	<div>
+	<?php 
+		if(strpos($_SERVER['HTTP_USER_AGENT'],"iPhone")):
+	?>
+	<?php echo $this->element("top-nav/top-nav"); ?>
+	<?php 
+		endif;
+	?>
+	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

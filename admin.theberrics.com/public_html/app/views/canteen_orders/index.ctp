@@ -97,10 +97,24 @@ $(document).ready(function() {
 		</div>
 		<div style='float:right; width:48%;'>
 			<fieldset>
-				<legend>Quick Stats</legend>
+				<legend>Search Conditions</legend>
+				<?php if(isset($this->params['named']['s']) && $this->params['named']['s'] == 1): ?>
 				<div>
-					
+					<?php foreach($this->params['named'] as $k=>$v): ?>
+						
+						<?php if(!in_array($k,array("s","page","sort"))): ?>
+						<span style='padding:4px; font-size:12px;'><a href=''><strong><?php echo strtoupper(str_replace("CanteenOrder.","",$k)); ?></strong> : <?php echo base64_decode($v); ?></a></span>
+						<?php endif; ?>
+						
+						
+					<?php endforeach; ?>
 				</div>
+				<?php else: ?>
+				<div>
+					* No search conditions *
+				</div>
+				<?php endif; ?>
+				
 			</fieldset>
 		</div>
 		<div style='clear:both;'></div>

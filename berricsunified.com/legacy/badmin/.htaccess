@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Access to /UNIFIED/badmin"
-AuthUserFile /kunden/homepages/8/d265767712/htpasswd
-Require user 2Kd834sHp3

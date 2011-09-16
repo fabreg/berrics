@@ -616,21 +616,8 @@ class CanteenOrder extends AppModel {
 		foreach($order['CanteenOrderItem'] as $i) {
 			
 			$qty = $i['quantity'];
-			$prod = (count($i['CanteenProductOption'])>0) ? $i['CanteenProductOption']:$i['CanteenProduct'];
 			
-			$this->CanteenOrderItem->create();
-			$this->CanteenOrderItem->id = $i['id'];
-			$this->CanteenOrderItem->save(array(
-				"inv_status"=>0
-			));
-			
-			//update the products qty in inventory
-			
-			$this->CanteenOrderItem->CanteenProduct->create();
-			$this->CanteenOrderItem->CanteenProduct->id = $prod['id'];
-			$this->CanteenOrderItem->CanteenProduct->save(array(
-				"quantity"=>($prod['quantity'] + $qty)
-			));
+			$this->CanteenOrderItem->returnToStock($i['id'],$qty);
 			
 		}
 		

@@ -32,13 +32,14 @@ $(document).ready(function() {
 			<th><input type='checkbox' id='check-all' /></th>
 			<?php endif; ?>
 			<th><?php echo $this->Paginator->sort("Order ID","CanteenOrder.id")?></th>
+			<th><?php echo $this->Paginator->sort("Created","CanteenOrder.created")?></th>
+			<th><?php echo $this->Paginator->sort("Modified","CanteenOrder.modified")?></th>
 			<th><?php echo $this->Paginator->sort("Order Status","CanteenOrder.order_status");?></th>
 			<th><?php echo $this->Paginator->sort("Shipping Status","CanteenOrder.shipping_status");?></th>
 			<th><?php echo $this->Paginator->sort("WH Status","CanteenOrder.wh_status");?></th>
-			<th><?php echo $this->Paginator->sort("Created","CanteenOrder.created")?></th>
-			<th><?php echo $this->Paginator->sort("Modified","CanteenOrder.modified")?></th>
-			<th>ShipName / BillName</th>
-			<th><?php echo $this->Paginator->sort("Email","CanteenOrder.email"); ?></th>
+			<th>ShipName / Email</th>
+			<th><?php echo $this->Paginator->sort("Ship Postal","CanteenOrder.postal"); ?></th>
+			<th><?php echo $this->Paginator->sort("Ship City","CanteenOrder.city")?></th>
 			<th>Country (S/B/G)</th>
 			<th><?php echo $this->Paginator->sort("Currency","CanteenOrder.currency_id"); ?></th>
 			<th><?php echo $this->Paginator->sort("ShippingTotal","CanteenOrder.shipping_total"); ?></th>
@@ -131,17 +132,24 @@ $(document).ready(function() {
 			<td align='center' width='1%'><input type='checkbox' class='order-check' value='<?php echo $o['CanteenOrder']['id']; ?>'/></td>
 			<?php  endif; ?>
 			<td style='font-size:9px;' nowrap width='1%'><?php echo strtoupper($o['CanteenOrder']['id']); ?></td>
+			<td nowrap width='1%' align='center'><?php echo $this->Time->niceShort($o['CanteenOrder']['created']); ?></td>
+			<td nowrap width='1%' align='center'><?php echo $this->Time->niceShort($o['CanteenOrder']['modified']); ?></td>
 			<td style='<?php echo $style; ?>' nowrap width='1%' align='center'><?php echo strtoupper($o['CanteenOrder']['order_status']); ?></td>
 			<td nowrap width='1%' align='center' style='<?php echo $sh_style; ?>'><?php echo strtoupper($o['CanteenOrder']['shipping_status']); ?></td>
 			<td nowrap width='1%' align='center' style='<?php echo $wh_style; ?>' ><?php echo strtoupper($o['CanteenOrder']['wh_status']); ?></td>
-			<td nowrap width='1%' align='center'><?php echo $this->Time->niceShort($o['CanteenOrder']['created']); ?></td>
-			<td nowrap width='1%' align='center'><?php echo $this->Time->niceShort($o['CanteenOrder']['modified']); ?></td>
-			<td align='center'>
-				<?php echo $o['CanteenOrder']['first_name']; ?> <?php echo $o['CanteenOrder']['last_name']; ?> / 
-				<?php echo $o['CanteenOrder']['bill_first_name']; ?> <?php echo $o['CanteenOrder']['bill_last_name']; ?>
+			
+		
+			<td align='center' nowrap>
+				<?php echo $o['CanteenOrder']['first_name']; ?> <?php echo $o['CanteenOrder']['last_name']; ?>
+				<br />
+				<?php echo $o['CanteenOrder']['email']; ?>
+			</td>
+			<td align='center' nowrap>
+				
+				<?php echo $o['CanteenOrder']['postal']; ?>
 			</td>
 			<td align='center'>
-				<?php echo $o['CanteenOrder']['email']; ?>
+				<?php echo $o['CanteenOrder']['city']; ?>
 			</td>
 			<td nowrap width='1%' align='center'>
 				<?php echo $o['CanteenOrder']['country']; ?>/<?php echo $o['CanteenOrder']['bill_country']; ?>/<?php echo $o['CanteenOrder']['geoip_country_code']; ?>

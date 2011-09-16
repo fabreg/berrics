@@ -15,6 +15,34 @@ class CanteenProductsController extends AdminAppController {
 		
 	}	
 	
+	public function filter() {
+		
+		if(count($this->data)>0) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"s"=>true
+				);
+				
+				
+				foreach($this->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						$url[$k.".".$kk]=$vv;
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+		
+		
+	}
+	
 	
 	public function index() {
 		
@@ -38,9 +66,28 @@ class CanteenProductsController extends AdminAppController {
 		
 		);
 		
+		if(isset($this->params['named']['s'])) {
+
+			if(isset($this->params['named']['CanteenProduct.canteen_category_id'])) {
+				
+				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.canteen_category_id'] = 
+				$this->data['CanteenProduct']['canteen_category_id'] = 
+				$this->params['named']['CanteenProduct.canteen_category_id'];
+				
+			}
+			
+			
+			
+		}
+
+		//set some menus
+		
+		$canteenCategories = $this->CanteenProduct->CanteenCategory->treeList();
+	
 		$products = $this->Paginate("CanteenProduct");
 		
-		$this->set(compact("products"));
+		$this->set(compact("products","canteenCategories"));
+		
 		
 	}
 	
@@ -168,8 +215,10 @@ class CanteenProductsController extends AdminAppController {
 	
 	private function canteenProductSelects() {
 		
-		$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->find("list"));
+		//$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->find("list"));
+		$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->treeList());
 		$this->set("brands",$this->CanteenProduct->Brand->find("list"));
+		
 	}
 	
 	
