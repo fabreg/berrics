@@ -49,10 +49,12 @@ body {
 
 #bang-yoself-3 .video {
 	
-	margin:auto;
-	width:728px;
-
+	
+	width:758px;
+	background-color:#000;
+	margin-left:58px;
 }
+
 
 #bang-yoself-3 .votes {
 
@@ -68,6 +70,8 @@ body {
 	margin-top:8px;
 	margin-bottom:8px;
 }
+
+
 
 #bang-yoself-3 .footer {
 
@@ -101,7 +105,13 @@ body {
 
 #bang-yoself-3 .d-post-bit,#bang-yoself-3 .d-post-bit .container-top {
 
-	background-color:#111;
+	background-color:#000;
+	width:758px;
+}
+
+#bang-yoself-3 .d-post-bit .display-media {
+
+	margin-left:25px;
 
 }
 
@@ -136,16 +146,18 @@ body {
 	<div class='top-header'>
 		 
 	</div> 
-	<div class='video'>
-	<?php if(isset($viewing)): ?>
-	<div style='height:8px;'></div>
-	<?php echo $this->element("dailyops/post-bit",array("dop"=>$viewing)); ?>
-	<?php endif;?>
+	<div class='video-wrapper'>
+		<div class='video'>
+			<?php if(isset($viewing)): ?>
+			
+				<?php echo $this->element("dailyops/post-bit",array("dop"=>$viewing)); ?>
+			<?php endif;?>
+		</div>
 	</div>
 	<div class='votes'>
 		<?php 
 			foreach($posts as $post):
-				for($i=1;$i<10;$i++):
+				
 		?>
 		<div class='finalist'>
 			<a href='/<?php echo $post['Post']['DailyopSection']['uri']; ?>/<?php echo $post['Post']['Dailyop']['uri']; ?>'>
@@ -158,7 +170,7 @@ body {
 			</a>
 		</div>
 		<?php  
-				endfor;
+				
 			endforeach;
 		?>
 		<div style='clear:both;'></div>
