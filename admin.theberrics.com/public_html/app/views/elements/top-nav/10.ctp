@@ -188,6 +188,7 @@
 			<li class='li-sub-nav-button'>
 				<a href='/canteen_orders'>Manage Orders</a>
 			</li>
+			<li class='li-sub-nav-header'>Batches</li>
 			<li class='li-sub-nav-button'>
 				<a href='/canteen_batches'>Manage Batches</a>
 			</li>

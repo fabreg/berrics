@@ -62,7 +62,16 @@ class CanteenBatchesController extends AdminAppController {
 	}
 	
 	function index() {
+		
 		$this->CanteenBatch->recursive = 0;
+		
+		$this->paginate['CanteenBatch'] = array(
+			"order"=>array(
+				"CanteenBatch.id"=>"DESC"
+			)
+		);
+		
+		
 		$this->set('canteenBatches', $this->paginate());
 	}
 

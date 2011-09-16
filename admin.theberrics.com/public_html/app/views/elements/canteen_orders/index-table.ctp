@@ -37,9 +37,7 @@ $(document).ready(function() {
 			<th><?php echo $this->Paginator->sort("Order Status","CanteenOrder.order_status");?></th>
 			<th><?php echo $this->Paginator->sort("Shipping Status","CanteenOrder.shipping_status");?></th>
 			<th><?php echo $this->Paginator->sort("WH Status","CanteenOrder.wh_status");?></th>
-
-			<th>ShipName / BillName</th>
-			<th><?php echo $this->Paginator->sort("Email","CanteenOrder.email"); ?></th>
+			<th>ShipName / Email</th>
 			<th><?php echo $this->Paginator->sort("Ship Postal","CanteenOrder.postal"); ?></th>
 			<th><?php echo $this->Paginator->sort("Ship City","CanteenOrder.city")?></th>
 			<th>Country (S/B/G)</th>
@@ -140,14 +138,13 @@ $(document).ready(function() {
 			<td nowrap width='1%' align='center' style='<?php echo $sh_style; ?>'><?php echo strtoupper($o['CanteenOrder']['shipping_status']); ?></td>
 			<td nowrap width='1%' align='center' style='<?php echo $wh_style; ?>' ><?php echo strtoupper($o['CanteenOrder']['wh_status']); ?></td>
 			
-			<td align='center'>
-				<?php echo $o['CanteenOrder']['first_name']; ?> <?php echo $o['CanteenOrder']['last_name']; ?> / 
-				<?php echo $o['CanteenOrder']['bill_first_name']; ?> <?php echo $o['CanteenOrder']['bill_last_name']; ?>
-			</td>
+		
 			<td align='center'>
 				<?php echo $o['CanteenOrder']['email']; ?>
 			</td>
-			<td align='center'>
+			<td align='center' nowrap>
+				<?php echo $o['CanteenOrder']['first_name']; ?> <?php echo $o['CanteenOrder']['last_name']; ?>
+				<br />
 				<?php echo $o['CanteenOrder']['postal']; ?>
 			</td>
 			<td align='center'>
