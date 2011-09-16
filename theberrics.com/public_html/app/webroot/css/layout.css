@@ -64,6 +64,16 @@ TOP BANNER
     left:0px;   
     
 }
+#top-widget {
+
+	position:absolute;
+	width:318px;
+	height:95px;	
+	right:0px;
+	top:5px;
+	
+}
+
 /**
 HEADER NAVIATION BAR
 */
@@ -1897,9 +1907,14 @@ COMMANDER (BATCOM / UN / RECRUIT)
 }
 
 
+/*
 
+CANTEEN CART WIDGET THING
 
+*/
 
-
-
-
+#canteen-cart-widget {
+	
+		
+	
+}

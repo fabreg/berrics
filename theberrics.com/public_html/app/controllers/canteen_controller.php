@@ -20,25 +20,13 @@ class CanteenController extends CanteenAppController {
 	
 	public function index() {
 		
-		$this->loadModel("CanteenProduct");
+		$this->loadModel("CanteenCategory");
 		
-		$products = $this->CanteenProduct->find("all",array(
-		
-			"contain"=>array(
-				"CanteenProductImage",
-				"CanteenProductPrice"=>array(
-					"Currency"
-				)
-			),
-			"conditions"=>array(
-				
-					"CanteenProduct.parent_canteen_product_id"=>NULL
-				
-			)
-		
+		$cats = $this->CanteenCategory->find("all",array(
+			"order"=>array("CanteenCategory.lft"=>"ASC")
 		));
 		
-		$this->set(compact("products"));
+		$this->set(compact("cats"));
 		
 	}
 
