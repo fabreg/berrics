@@ -168,8 +168,10 @@ class CanteenProductsController extends AdminAppController {
 	
 	private function canteenProductSelects() {
 		
-		$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->find("list"));
+		//$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->find("list"));
+		$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->treeList());
 		$this->set("brands",$this->CanteenProduct->Brand->find("list"));
+		
 	}
 	
 	
