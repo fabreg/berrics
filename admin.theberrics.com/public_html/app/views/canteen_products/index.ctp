@@ -2,7 +2,7 @@
 	<h2>Canteen Products</h2>
 	<table cellspacing='0'>
 		<tr>
-			<th>Front Image</th>
+			<th>Thumb Image</th>
 			<th><?php echo $this->Paginator->sort("id"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
@@ -18,7 +18,7 @@
 		<tr>
 			<td>
 				<?php if(isset($prod['CanteenProductImage'][0])): ?>
-				<?php echo $this->Media->productThumb($prod['CanteenProductImage'][0],array("w"=>120)); ?>
+				<?php echo $this->Media->productThumb($prod['CanteenProductImage'][0],array("w"=>50)); ?>
 				<?php else: ?>
 				No Image
 				<?php endif; ?>
