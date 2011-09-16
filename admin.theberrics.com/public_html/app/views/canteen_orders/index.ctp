@@ -103,7 +103,7 @@ $(document).ready(function() {
 					<?php foreach($this->params['named'] as $k=>$v): ?>
 						
 						<?php if(!in_array($k,array("s","page","sort"))): ?>
-						<span style='padding:4px; font-size:12px;'><a href=''><?php echo str_replace("CanteenOrder.","",$k); ?>:<?php echo base64_decode($v); ?></a></span>
+						<span style='padding:4px; font-size:12px;'><a href=''><strong><?php echo strtoupper(str_replace("CanteenOrder.","",$k)); ?></strong> : <?php echo base64_decode($v); ?></a></span>
 						<?php endif; ?>
 						
 						

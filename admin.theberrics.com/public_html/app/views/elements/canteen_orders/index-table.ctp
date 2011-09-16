@@ -139,12 +139,13 @@ $(document).ready(function() {
 			<td nowrap width='1%' align='center' style='<?php echo $wh_style; ?>' ><?php echo strtoupper($o['CanteenOrder']['wh_status']); ?></td>
 			
 		
-			<td align='center'>
-				<?php echo $o['CanteenOrder']['email']; ?>
-			</td>
 			<td align='center' nowrap>
 				<?php echo $o['CanteenOrder']['first_name']; ?> <?php echo $o['CanteenOrder']['last_name']; ?>
 				<br />
+				<?php echo $o['CanteenOrder']['email']; ?>
+			</td>
+			<td align='center' nowrap>
+				
 				<?php echo $o['CanteenOrder']['postal']; ?>
 			</td>
 			<td align='center'>
