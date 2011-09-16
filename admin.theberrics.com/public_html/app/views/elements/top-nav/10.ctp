@@ -35,6 +35,10 @@
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Create Report",array("controller"=>"dfp_reports","action"=>"choose_company")); ?>
 			</li>
+			<li class='li-sub-nav-header'>Gateway Accounts</li>
+			<li class='li-sub-nav-button'>
+				<?php echo $this->Html->link("Generate Report",array("controller"=>"gateway_reports","action"=>"index")); ?>
+			</li>
 		</ul>
 	</li>
 	<li class='li-button'>
