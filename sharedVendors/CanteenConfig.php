@@ -26,7 +26,7 @@ class CanteenConfig {
 					"AUD"=>array("AU"),
 					"BRL"=>array("BR")
 				),
-				"gateway_account_id"=>1,
+				"gateway_account_id"=>2,
 				"tax_regions"=>array(
 					"US-CA"=>9.25
 				)
