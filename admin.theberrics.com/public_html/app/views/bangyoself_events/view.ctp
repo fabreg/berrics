@@ -31,7 +31,7 @@ $(document).ready(function() {
 <h2><?php echo $e['name']; ?></h2>
 <div class='form'>
 	<fieldset>
-		<legend>Search Filess</legend>
+		<legend>Search Files</legend>
 	<?php 
 	
 		echo $this->Form->create("BangyoselfEntry",array("id"=>"search-form"));
