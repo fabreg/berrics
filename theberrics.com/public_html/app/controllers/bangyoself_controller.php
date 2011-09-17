@@ -45,7 +45,7 @@ class BangyoselfController extends BerricsAppController {
 			
 		}
 		$this->params['action'] = "voting";
-		$this->theme = $this->params['section'];
+		$this->theme = 'bang-yoself-3';
 		//update
 		$this->set("title_for_layout","LRG Presents: BANG YOSELF! 3");
 		
