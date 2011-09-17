@@ -8,7 +8,7 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 }
 
 //how should we open the splash page?
-if(strtotime('2011-09-16')<time()) {
+if(strtotime('2011-09-16')>time()) {
 	
 	Router::connect('/',array("controller"=>"splash","action"=>"gatorade"));
 	
