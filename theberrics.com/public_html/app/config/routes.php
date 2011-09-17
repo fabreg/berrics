@@ -8,8 +8,15 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 }
 
 //how should we open the splash page?
+if(strtotime('2011-09-16')<time()) {
+	
+	Router::connect('/',array("controller"=>"splash","action"=>"gatorade"));
+	
+} else {
+	
+	Router::connect('/',array("controller"=>"splash","action"=>"index"));
+}
 
-Router::connect('/',array("controller"=>"splash","action"=>"gatorade"));
 
 Router::connect("/t-shirts",array("controller"=>"apparel","action"=>"index"));
 
@@ -26,7 +33,8 @@ if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI']) && isset($_SERVER['DEVS
 					array("controller"=>"canteen","action"=>"category"),
 					array(
 						"uri"=>"[a-z\-_0-9]{3,}.html"
-					));
+					)
+	);
 	
 	Router::connect("/canteen/item/:uri",
 					array(
