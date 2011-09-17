@@ -179,11 +179,6 @@ body {
 
 }
 
-#top-banner {
-
-	margin-left:150px;
-		
-}
 
 </style>
 <div id='bang-yoself'>

@@ -61,14 +61,32 @@ body {
 	margin-top:10px;
 	margin-bottom:10px;
 	padding-left:16px;
+	display:block;
 } 
 #bang-yoself-3 .votes .finalist {
-
+	position:relative;
 	float:left;
 	margin-left:26px;
 	margn-right:26px;
 	margin-top:8px;
 	margin-bottom:8px;
+	
+}
+
+
+
+#bang-yoself-3 .votes .finalist .hover {
+
+	display:none;
+	background-image:url(/img/layout/by3/by3-over.png);
+	background-position:center center;
+	background-repeat:no-repeat;
+	width:250px;
+	height:150px;
+	position:absolute;
+	top:0px;
+	left:0px;
+	cursor:pointer;
 }
 
 
@@ -142,6 +160,28 @@ body {
 }
 
 </style> 
+<script>
+$(document).ready(function() { 
+
+
+	$("#bang-yoself-3 .votes .finalist").hover(
+		function() { 
+			$(this).find(".hover").fadeIn();
+		},
+		function() { 
+
+			$(this).find(".hover").hide();
+
+		}
+	).click(function() { 
+
+		var href = $(this).find("a").attr("href");
+		document.location.href = href;
+		return false;
+	});
+	
+});
+</script>
 <div id='bang-yoself-3'>
 	<div class='top-header'>
 		 
@@ -160,6 +200,7 @@ body {
 				
 		?>
 		<div class='finalist'>
+			<div class='hover'></div>
 			<a href='/<?php echo $post['Post']['DailyopSection']['uri']; ?>/<?php echo $post['Post']['Dailyop']['uri']; ?>'>
 				<?php 
 					
