@@ -41,6 +41,7 @@
  *
  */
 //FORCE DEVSERVER!
+
 if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 	
 	App::build(array(
@@ -51,10 +52,11 @@ if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 		'controllers' => array('/home/sites/berrics.dev/sharedControllers/'),
 		'helpers' => array('/home/sites/berrics.dev/sharedHelpers/'),
 		'behaviors'=>array('/home/sites/berrics.dev/sharedBehaviors/'),
-		"views"=>array("/home/sites/berrics.dev/sharedViews/")
+		"views"=>array("/home/sites/berrics.dev/sharedViews/"),
+		"components"=>array("/home/sites/berrics.dev/sharedComponents/")
 	
 	));
-	
+
 } else {
 	
 	App::build(array(
@@ -65,11 +67,13 @@ if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 		'controllers' => array('/home/sites/berrics/sharedControllers/'),
 		'helpers' => array('/home/sites/berrics/sharedHelpers/'),
 		'behaviors'=>array('/home/sites/berrics/sharedBehaviors/'),
-		"views"=>array("/home/sites/berrics/sharedViews/")
+		"views"=>array("/home/sites/berrics/sharedViews/"),
+		"components"=>array("/home/sites/berrics/sharedComponents/")
 	));
 	
 	
 }
+
 
 
 
@@ -82,3 +86,4 @@ if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
  * Inflector::rules('plural', array('rules' => array(), 'irregular' => array(), 'uninflected' => array()));
  *
  */
+?>
