@@ -367,10 +367,12 @@ class Dailyop extends AppModel {
 			
 			switch($post['Dailyop']['dailyop_section_id']) {
 				
-				case 3: //reda
-				case 6: //mikey
-				case 20: //trajextory
-					$useDate = $post['Dailyop']['publish_date'];
+
+				case 64: //by3
+					$hidden = true;
+				break;
+				default:
+					$hidden = false;
 				break;
 				
 			}
@@ -392,14 +394,23 @@ class Dailyop extends AppModel {
 				
 				$tmp = array_shift($tagPosts);
 				
+				if($hidden) {
+					$p = $this->returnPost(array(
 				
-				$p = $this->returnPost(array(
-			
-					"Dailyop.id"=>$tmp,
-					"Dailyop.promo !="=>1,
-					"Dailyop.hidden"=>0
-			
-				));
+						"Dailyop.id"=>$tmp,
+						"Dailyop.promo !="=>1
+				
+					));
+					
+				} else {
+					$p = $this->returnPost(array(
+				
+						"Dailyop.id"=>$tmp,
+						"Dailyop.promo !="=>1,
+						"Dailyop.hidden"=>0
+				
+					));
+				}
 				
 				if(isset($p['Dailyop']['id'])) {
 					
