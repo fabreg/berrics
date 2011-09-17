@@ -188,8 +188,17 @@ body {
 		<div style='clear:both;'></div>
 	</div>
 </div>
+
 <?php 
-
-pr($posts);
-
+if(preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI'])):
+?>
+<div id="dailyops" style='width:790px; margin:auto;'>
+<div id='paging-menu'>
+<div class='right'>
+<a href="/2011/09/16" title="September 15th, 2011"><span>September 16th, 2011</span></a>
+</div>
+</div>
+</div>
+<?php 
+endif;
 ?>
