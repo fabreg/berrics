@@ -69,12 +69,12 @@
 			<li class='li-sub-nav-button'>
 				<a href='/currencies'>Currency Manager</a>
 			</li>
-			<!-- 
+			
 			<li class='li-sub-nav-header'>Gateway Accounts</li>
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Manage Accounts",array("controller"=>"gateway_accounts","action"=>"index")); ?>
 			</li>
-			-->
+			
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Add New Account",array("controller"=>"gateway_accounts","action"=>"add")); ?>
 			</li>
