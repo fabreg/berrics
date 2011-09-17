@@ -1,8 +1,8 @@
 <?php 
 
-App::import("Controller","BerricsApp");
+App::import("Controller","Dailyops");
 
-class BangyoselfController extends BerricsAppController {
+class BangyoselfController extends DailyopsController {
 	
 	
 	public $uses = array(
@@ -184,6 +184,8 @@ class BangyoselfController extends BerricsAppController {
 				$this->set(compact("viewing"));
 				
 			}
+			
+			$this->setFacebookMetaImg($viewing['DailyopMediaItem'][1]['MediaFile']);
 			
 		}
 		
