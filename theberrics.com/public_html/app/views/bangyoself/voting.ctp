@@ -231,12 +231,15 @@ $(document).ready(function() {
 </div>
 
 <?php 
-if(preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI'])):
+if(preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI']) || (isset($this->params['year']) && isset($this->params['month']) && isset($this->params['day']))):
 ?>
 <div id="dailyops" style='width:790px; margin:auto;'>
 <div id='paging-menu'>
+<div class='left'>
+<a href="/2011/09/18" title="September 18th, 2011"><span>September 18th, 2011</span></a>
+</div>
 <div class='right'>
-<a href="/2011/09/16" title="September 15th, 2011"><span>September 16th, 2011</span></a>
+<a href="/2011/09/16" title="September 16th, 2011"><span>September 16th, 2011</span></a>
 </div>
 </div>
 </div>
