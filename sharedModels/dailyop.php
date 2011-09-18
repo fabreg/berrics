@@ -278,6 +278,10 @@ class Dailyop extends AppModel {
 	
 	public function getNextDate($date = false, $older = true , $section_id = false) {
 		
+		//do a hack for bangyoself 3
+		
+		if(($older && ($date == '2011-09-18')) || (!$older && ($date == '2011-09-16'))) return "2011-09-17";
+		
 		$cond = array(
 			"OR"=>array(
 				array(
