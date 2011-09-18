@@ -48,7 +48,19 @@ class HomeRoute extends CakeRoute {
 			$params['pass'][2] = $params['day'];
 		}
 		
-		if(date('Y-m-d')=='2011-09-17' && preg_match('/(\/dailyops)/',$_SERVER['REQUEST_URI'])) {
+		
+		/*
+		 * WOW, GOOD LUCK REMEMBERING WTF THIS IS ALL ABOUT
+		 * 
+		 * 
+		 * FIX BANG YOSELF INDESICIVNESS
+		 */
+		if(
+			$params['year'] == '2011' && 
+			$params['month'] == '09' && 
+			$params['day'] == '17'
+		
+		) {
 			
 			$params['controller'] = "bangyoself";
 			$params['action'] = "voting";
