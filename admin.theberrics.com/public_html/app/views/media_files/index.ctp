@@ -156,7 +156,11 @@ function imageHover() {
 		<td><?php echo $mediaFile['Website']['name']; ?></td>
 		<td><?php echo $mediaFile['MediaFile']['name']; ?>&nbsp;</td>
  
-		<td><?php echo $mediaTypes[$mediaFile['MediaFile']['media_type']]; ?>&nbsp;</td>
+		<td><?php echo $mediaTypes[$mediaFile['MediaFile']['media_type']]; ?>&nbsp;
+		<?php if($mediaFile['MediaFile']['limelight_mediavault_active']==1): ?>
+		<div style='font-weight:bold; color:Red;'>*SECURED</div>
+		<?php endif; ?>
+		</td>
 		<td><?php echo $mediaFile['MediaFile']['legacy_id']; ?>&nbsp;</td>
 		<td class="actions">
 			

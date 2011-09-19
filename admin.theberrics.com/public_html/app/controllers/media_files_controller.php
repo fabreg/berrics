@@ -569,7 +569,7 @@ class MediaFilesController extends AdminAppController {
 				
 			} else if($this->data['MediaFile']['send_to_limelight'] == 1) {
 				
-				if($this->sendToLimelight($fileName,$filePath)) {
+				if($this->sendToLimelight($fileName,$filePath,$this->data['MediaFile']['limelight_mediavault_active'])) {
 					
 					$this->MediaFile->create();
 					
@@ -628,7 +628,7 @@ class MediaFilesController extends AdminAppController {
 		
 	}
 	
-	private function sendToLimelight($file,$file_path) {
+	private function sendToLimelight($file,$file_path,$secure = false) {
 		
 		
 		$ftp = ftp_connect("berrics.upload.llnw.net");
@@ -636,6 +636,12 @@ class MediaFilesController extends AdminAppController {
 		ftp_login($ftp,"berrics-ht","yteem8");
 		
 		ftp_pasv($ftp, true);
+		
+		if($secure) {
+			
+			ftp_chdir($ftp,"s");
+			
+		}
 		
 		$upload = ftp_put($ftp,$file,$file_path,FTP_BINARY);
 		ftp_close($ftp);
