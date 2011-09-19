@@ -172,6 +172,15 @@ class BangyoselfEventsController extends AdminAppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
+	public function update_facebook_likes($id) {
+		
+		$this->BangyoselfEvent->BangyoselfEntry->update_facebook_likes($id);
+		
+		return $this->redirect(array("action"=>"view",$this->BangyoselfEvent->BangyoselfEntry->field("bangyoself_event_id",array("id"=>$id))));
+		
+		
+	}
+	
 	
 	
 	
