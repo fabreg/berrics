@@ -22,6 +22,7 @@
 		<legend>CDN Info</legend>
 		<?php 
 		echo $this->Form->input("send_to_limelight",array("type"=>"checkbox","value"=>1,"checked"=>true,"label"=>"Send To Limelight (* File will be instantly available *)"));
+		echo $this->Form->input("limelight_mediavault_active",array("label"=>"Protect Content With Limelight Media Vault ** ONLY FOR ON DEMAND **"));
 		echo $this->Form->input("send_to_brightcove",array("type"=>"checkbox","value"=>"1","disabled"=>true));
 		
 		?>

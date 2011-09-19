@@ -628,7 +628,7 @@ class MediaFilesController extends AdminAppController {
 		
 	}
 	
-	private function sendToLimelight($file,$file_path) {
+	private function sendToLimelight($file,$file_path,$secure = false) {
 		
 		
 		$ftp = ftp_connect("berrics.upload.llnw.net");
@@ -636,6 +636,12 @@ class MediaFilesController extends AdminAppController {
 		ftp_login($ftp,"berrics-ht","yteem8");
 		
 		ftp_pasv($ftp, true);
+		
+		if($secure) {
+			
+			$ftp_chdir($ftp,"s");
+			
+		}
 		
 		$upload = ftp_put($ftp,$file,$file_path,FTP_BINARY);
 		ftp_close($ftp);
