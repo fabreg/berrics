@@ -569,7 +569,7 @@ class MediaFilesController extends AdminAppController {
 				
 			} else if($this->data['MediaFile']['send_to_limelight'] == 1) {
 				
-				if($this->sendToLimelight($fileName,$filePath)) {
+				if($this->sendToLimelight($fileName,$filePath,$this->data['MediaFile']['limelight_mediavault_active'])) {
 					
 					$this->MediaFile->create();
 					
@@ -639,7 +639,7 @@ class MediaFilesController extends AdminAppController {
 		
 		if($secure) {
 			
-			$ftp_chdir($ftp,"s");
+			ftp_chdir($ftp,"s");
 			
 		}
 		
