@@ -100,12 +100,14 @@ $(document).ready(function() {
 					else:
 				
 				?>
+				<a href='/bangyoself_events/update_facebook_likes/<?php echo $e['id']; ?>'>Update Facebook Likes</a>
 				<a href='/bangyoself_events/delete_post/<?php echo $e['id']; ?>'>Delete Post</a>
 				<?php 
 				
 					endif; 
 				?>
 				<a href='http://img.theberrics.com/bang-yoself/<?php echo $e['file_name']; ?>' target='_blank'>View File</a>
+				
 			</td>
 		</tr>
 		<?php 
