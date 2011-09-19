@@ -596,6 +596,8 @@ class Dailyop extends AppModel {
 						
 						$m = $item['MediaFile'];
 						
+						if(!isset($m['media_type'])) continue;
+						
 						switch($m['media_type']) {
 							
 							case "bcove":
