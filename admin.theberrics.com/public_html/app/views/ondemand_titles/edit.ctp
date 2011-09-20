@@ -12,7 +12,7 @@ if($this->params['action'] == "add") {
 
 $tag_str = '';
 
-foreach($this->data['Tag'] as $tag) $tag_str .= $tag['name'].", ";
+if(isset($this->data['Tag'])) foreach($this->data['Tag'] as $tag) $tag_str .= $tag['name'].", ";
 
 $tag_str = ltrim($tag_str,",");
 
@@ -54,6 +54,7 @@ $(document).ready(function() {
 		echo $this->Form->input('release_date',array("type"=>"text"));
 		echo $this->Form->input('title');
 		echo $this->Form->input('description');
+		echo $this->Form->input("uri");
 		echo $this->Form->input('user_id',array("label"=>"Video Owner"));
 		echo $this->Form->input("tags",array("value"=>$tag_str));
 		echo $this->Form->input('image_cover',array("type"=>"file","label"=>"Cover Image"));
@@ -61,7 +62,7 @@ $(document).ready(function() {
 		
 	?>
 	</fieldset>
-	
+	<?php if(isset($this->data)): ?>
 	<fieldset>
 		<legend>
 			Media Items
@@ -82,10 +83,10 @@ $(document).ready(function() {
 						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.display_weight",array("options"=>$item_num));?>
 					</td>
 					<td width='1%' nowrap>
-						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.active")?>
+						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.active");?>
 					</td>
 					<td width='1%' nowrap>
-						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.trailer")?>
+						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.trailer");?>
 					</td>
 					<td width='1%'>
 						<?php echo $this->Media->mediaThumb(array("MediaFile"=>$m,"w"=>100)); ?>
@@ -97,6 +98,6 @@ $(document).ready(function() {
 			</table>
 		</div>
 	</fieldset>
-	
+	<?php endif; ?>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
