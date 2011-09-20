@@ -77,6 +77,10 @@ class OndemandTitlesController extends AdminAppController {
 				"conditions"=>array("OndemandTitle.id"=>$id)
 			
 			));
+			
+			$this->data['OndemandTitle']['pub_date'] = date("Y-m-d",strtotime($this->data['OndemandTitle']['publish_date']));
+			$this->data['OndemandTitle']['pub_time'] = date("G:i",strtotime($this->data['OndemandTitle']['publish_date']));
+			
 		}
 	}
 

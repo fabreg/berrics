@@ -14,6 +14,8 @@ $tag_str = '';
 
 foreach($this->data['Tag'] as $tag) $tag_str .= $tag['name'].", ";
 
+$tag_str = ltrim($tag_str,",");
+
 ?>
 <script>
 

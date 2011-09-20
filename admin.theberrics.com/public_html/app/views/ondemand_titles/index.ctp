@@ -59,7 +59,9 @@
 			<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["release_date"]); ?></td>
 			
 			<td><?php echo$t["title"]; ?></td>
-			<td>-</td>
+			<td class='actions'>
+				<a href='/ondemand_titles/edit/<?php echo $t['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
+			</td>
 		</tr>	
 		<?php endforeach; ?>
 	</table>
