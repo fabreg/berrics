@@ -1,48 +1,5 @@
-<div class="ondemandTitles index">
-	<h2><?php __('Ondemand Titles');?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('description');?></th>
-			<th><?php echo $this->Paginator->sort('active');?></th>
-			<th><?php echo $this->Paginator->sort('publish_date');?></th>
-			<th><?php echo $this->Paginator->sort('user_id');?></th>
-			<th><?php echo $this->Paginator->sort('hd');?></th>
-			<th><?php echo $this->Paginator->sort('image_cover');?></th>
-			<th><?php echo $this->Paginator->sort('image_back');?></th>
-			<th class="actions"><?php __('Actions');?></th>
-	</tr>
-	<?php
-	$i = 0;
-	foreach ($ondemandTitles as $ondemandTitle):
-		$class = null;
-		if ($i++ % 2 == 0) {
-			$class = ' class="altrow"';
-		}
-	?>
-	<tr<?php echo $class;?>>
-		<td><?php echo $ondemandTitle['OndemandTitle']['id']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['created']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['modified']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['title']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['description']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['active']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['publish_date']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['user_id']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['hd']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['image_cover']; ?>&nbsp;</td>
-		<td><?php echo $ondemandTitle['OndemandTitle']['image_back']; ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $ondemandTitle['OndemandTitle']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $ondemandTitle['OndemandTitle']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $ondemandTitle['OndemandTitle']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $ondemandTitle['OndemandTitle']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
+<div class='index form'>
+<h2>On.Demand Titles</h2>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
@@ -56,10 +13,56 @@
  |
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Ondemand Title', true), array('action' => 'add')); ?></li>
-	</ul>
+	
+	<table cellspacing='0'>
+		<tr>
+			<th><?php echo $this->Paginator->sort("id"); ?></th>
+			<th>Cover Image</th>
+			<th>Back Cover Image</th>
+			<th><?php echo $this->Paginator->sort("active")?></th>
+			<th><?php echo $this->Paginator->sort("hd"); ?></th>
+			<th><?php echo $this->Paginator->sort("created"); ?></th>
+			<th><?php echo $this->Paginator->sort("modified"); ?></th>
+			<th><?php echo $this->Paginator->sort("publish_date"); ?></th>
+			<th><?php echo $this->Paginator->sort("release_date"); ?></th>
+			<th><?php echo $this->Paginator->sort("title"); ?></th>
+			<th>-</th>
+		</tr>
+		<?php 
+			foreach($ondemandTitles as $title):
+					$t = $title['OndemandTitle']; 
+		?>
+		<tr>
+			<td align='center' width='2%' nowrap><?php echo $t["id"]; ?></td>
+			<td  align='center' width='5%' nowrap>-</td>
+			<td align='center' width='5%' nowrap>-</td>
+			<td  align='center' width='2%' nowrap>
+			<?php 
+			
+				switch($t["active"]) {
+				
+					case "1":
+						echo "<span style='color:green;'>Yes</span>";
+					break;
+					default:
+						echo "<span> style='color:red;'>No</span>";
+					break;
+					
+				} 
+
+			?>
+			</td>
+			<td align='center' width='2%' nowrap><?php echo $t["hd"]; ?></td>
+			<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["created"]); ?></td>
+			<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["modified"]); ?></td>
+			<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["publish_date"]); ?></td>
+			<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["release_date"]); ?></td>
+			
+			<td><?php echo$t["title"]; ?></td>
+			<td class='actions'>
+				<a href='/ondemand_titles/edit/<?php echo $t['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
+			</td>
+		</tr>	
+		<?php endforeach; ?>
+	</table>
 </div>

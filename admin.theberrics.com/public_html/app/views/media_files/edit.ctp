@@ -2,6 +2,8 @@
 
 //reduce tags in to comma seperated string
 
+App::import("Vendor","LLMediaVault",array("file"=>"LLMediaVault.php"));
+
 $tag_array = Set::extract("/Tag/name",$this->data);
 
 $tag_str = implode(",",$tag_array);
@@ -41,7 +43,14 @@ $types = MediaFile::mediaFileTypes();
 			
 		?>
 		<div style='padding-top:10px; font-style:italic;'>
-			http://berrics.vo.llnwd.net/o45/<?php echo $this->data['MediaFile']['limelight_file']; ?>
+			<?php if($this->data['MediaFile']['limelight_mediavault_active']==1): ?>
+
+				<?php echo MediaFile::returnSecureUrl($this->data['MediaFile']); ?>
+
+			<?php else: ?>
+				http://berrics.vo.llnwd.net/o45/<?php echo $this->data['MediaFile']['limelight_file']; ?>
+			<?php endif; ?>
+			
 		</div>
 	</fieldset>
 <fieldset>

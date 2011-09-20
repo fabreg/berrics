@@ -64,9 +64,29 @@ class OndemandTitlesController extends AdminAppController {
 			$this->uploadBackImage();
 			$this->fixPublishDate();
 			
-			if ($this->OndemandTitle->save($this->data)) {
+			if ($this->OndemandTitle->saveAll($this->data)) {
+				
 				$this->Session->setFlash(__('The ondemand title has been saved', true));
+				
+				//attach media files
+				if(isset($this->data['AddMediaFile'])) {
+					
+					$this->redirect(array(
+					
+						"controller"=>"media_files",
+						"action"=>"attach_media",
+						"OndemandTitleMediaItem",
+						"ondemand_title_id",
+						$this->data['OndemandTitle']['id'],
+						base64_encode($this->here)
+					
+					));
+					
+				}
+				
+				
 				$this->redirect(array('action' => 'index'));
+				
 			} else {
 				$this->Session->setFlash(__('The ondemand title could not be saved. Please, try again.', true));
 			}
@@ -74,9 +94,19 @@ class OndemandTitlesController extends AdminAppController {
 		if (empty($this->data)) {
 			$this->data = $this->OndemandTitle->find("first",array(
 			
-				"conditions"=>array("OndemandTitle.id"=>$id)
+				"conditions"=>array("OndemandTitle.id"=>$id),
+				"contain"=>array(
+					"Brand",
+					"Tag",
+					"OndemandTitleMediaItem"=>array("MediaFile","order"=>array("OndemandTitleMediaItem.display_weight"=>"ASC")),
+					"User"
+				)
 			
 			));
+			
+			$this->data['OndemandTitle']['pub_date'] = date("Y-m-d",strtotime($this->data['OndemandTitle']['publish_date']));
+			$this->data['OndemandTitle']['pub_time'] = date("G:i",strtotime($this->data['OndemandTitle']['publish_date']));
+			
 		}
 	}
 
