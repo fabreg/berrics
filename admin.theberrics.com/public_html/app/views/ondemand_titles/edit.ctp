@@ -27,6 +27,9 @@ $(document).ready(function() {
 	    showPeriod: false,
 	    showLeadingZero: false
 	});
+	$("#OndemandTitleReleaseDate").datepicker({
+		"dateFormat":"yy-mm-dd"
+	});
 	
 });
 
@@ -42,6 +45,7 @@ $(document).ready(function() {
 		echo $this->Form->input('hd');
 		echo $this->Form->input('pub_date');
 		echo $this->Form->input('pub_time');
+		echo $this->Form->input('release_date',array("type"=>"text"));
 		echo $this->Form->input('title');
 		echo $this->Form->input('description');
 		echo $this->Form->input('user_id',array("label"=>"Video Owner"));
