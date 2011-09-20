@@ -5,8 +5,8 @@ class OndemandTitle extends AppModel {
 	
 	public $belongsTo = array(
 	
-		"Brand"
-	
+		
+		"User"
 	);
 	
 	public $hasAndBelongsToMany = array(
@@ -15,6 +15,11 @@ class OndemandTitle extends AppModel {
 		"Brand"
 	
 	);
+	
+	public $hasMany = array(
+		"OndemandTitleMediaItem"
+	);
+	
 	
 	
 	

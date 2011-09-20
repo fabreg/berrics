@@ -94,6 +94,9 @@ class Tag extends AppModel {
 				
 				//check to see if the tag exists
 				$new_tag=trim(strtolower($v));
+				
+				if(empty($new_tag)) continue;
+				
 				$slug = Inflector::slug(trim(preg_replace('/[^\w\d_ -]/si', '', $new_tag)));
 	
 				

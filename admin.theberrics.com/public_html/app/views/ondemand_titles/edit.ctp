@@ -16,6 +16,10 @@ foreach($this->data['Tag'] as $tag) $tag_str .= $tag['name'].", ";
 
 $tag_str = ltrim($tag_str,",");
 
+$item_num = array();
+
+for($i=1;$i<=99;$i++) $item_num[$i] = $i;
+
 ?>
 <script>
 
@@ -36,7 +40,7 @@ $(document).ready(function() {
 });
 
 </script>
-<div class="ondemandTitles form">
+<div class="ondemandTitles form ">
 <?php echo $this->Form->create('OndemandTitle',array("enctype"=>"multipart/form-data"));?>
 	<fieldset>
  		<legend><?php echo $verb; ?></legend>
@@ -57,5 +61,42 @@ $(document).ready(function() {
 		
 	?>
 	</fieldset>
+	
+	<fieldset>
+		<legend>
+			Media Items
+		</legend>
+		<div class='media-items index'>
+			<div>
+				<?php 
+					echo $this->Form->submit("Update");
+					echo $this->Form->submit("Add Media File",array("name"=>"data[AddMediaFile]"));
+					
+				?>
+			</div>
+			<table cellspacing='0'>
+				<?php foreach($this->data['OndemandTitleMediaItem'] as $key=>$item): $m = $item['MediaFile']; ?>
+				<tr>
+					<td nowrap width='1%'>
+						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.id"); ?>
+						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.display_weight",array("options"=>$item_num));?>
+					</td>
+					<td width='1%' nowrap>
+						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.active")?>
+					</td>
+					<td width='1%' nowrap>
+						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.trailer")?>
+					</td>
+					<td width='1%'>
+						<?php echo $this->Media->mediaThumb(array("MediaFile"=>$m,"w"=>100)); ?>
+					</td>
+					<td><?php echo $m['name']; ?></td>
+					<td></td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+		</div>
+	</fieldset>
+	
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
