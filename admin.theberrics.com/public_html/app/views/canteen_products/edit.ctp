@@ -22,6 +22,10 @@
 		?>
 	</fieldset>
 	<fieldset>
+		<legend>Style Code Options</legend>
+		<?php echo $this->element("canteen_product/style-code-options")?>
+	</fieldset>
+	<fieldset>
 		<legend>Options & Quantities</legend>
 		<?php echo $this->element("canteen_product/qty-options"); ?>
 	</fieldset>

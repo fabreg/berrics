@@ -5,83 +5,113 @@
 
 ?>
 <style>
+#product-standard-view {
 
-#left-col {
+	height:559px;
+	background-image:url(/img/layout/canteen/standard-view/prod-bg.jpg);
+	
 
-	width:100%;
-	float:none;
 
 }
+#product-standard-view .product-info {
 
-#product-standard-view .left {
-
-	width:430px;
-	float:left;
-}
-
-#product-standard-view .right {
-
-	width:600px;
 	float:right;
-	
-}
-
-#product-info h1 {
-
-	font-size:28px;
+	width:492px;
 
 }
-#options-select-div {
 
+#product-standard-view .product-info h1 {
+
+	font-size:24px;
+	color:#000;
+	height:70px;
+	line-height:70px;
+}
+
+#product-standard-view .product-info .style-code {
+
+	color:#663333;
+	font-style:italic;
 	text-align:right;
-
-
-}
-
-#qty-div {
-
+	padding-right:10px;
+	padding-top:19px;
+	font-size:15px;
+	font-weight:bold;
 	
+}
+
+#product-standard-view .product-img {
+
 
 }
 
-#add-to-cart-div {
+#product-standard-view .product-info .name {
 
-
+	margin-top:10px;
+	
+	position:relative;
+	height:70px;
 }
 
-.canteen-product-option-div {
+#product-standard-view .product-info .name .price {
 
-	width:80px;
-	float:left;
-	border:1px solid #ccc;
-	padding:3px;
-	text-align:center;
-	margin-right:3px;
-
+	position:absolute;
+	right:10px;
+	top:0px;
+	width:95px;
 }
-.product-options {
+#product-standard-view .product-info .description {
 
-	clear:both;
-
+	font-family:'courier';
+	font-size:13px;
+	padding-right:20px;
+	color:#000;
+	text-align:justify;
 }
-
 </style>
 <div id='product-standard-view'>
-	<div class='right'>
-		<div id='product-info'>
-			<h1><?php echo $product['Brand']['name']; ?> | <?php echo $product['CanteenProduct']['name']; ?></h1>
+		
+		<div class='product-info'>
+			<div class='style-code'>
+				Item#: <?php echo $product['CanteenProduct']['style_code']; ?>
+			</div>
+			<div class='name'>
+				<h1><?php echo $product['CanteenProduct']['name']; ?></h1>
+				<div class='price'>
+					<div class='label'>Price</div>
+						<?php 
+
+							echo $price['Currency']['symbol']." ".$price['price']; 
+				
+						?>
+				</div>
+				<div style=clear:both;'></div>
+			</div>
+			<div class='description'>
+				<?php 
+					echo nl2br($product['CanteenProduct']['description']);
+				?>
+			</div>
+			<?php if(isset($product['RelatedStyles']) && count($product['RelatedStyles'])>0): ?>
+			<div class='aux-options'>
+				<div class='label'></div>
+				<?php foreach($product['RelatedStyles'] as $s): ?>
+				<div class='aux-option'>
+					
+				</div>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
 			<?php 
 			
 				echo $this->element("canteen_product/pricing-options");
 			
 			?>
 			<div style='clear:both;'></div>
-			<?php 
-				echo nl2br($product['CanteenProduct']['description']);
-			?>
+				
 		</div>
-	</div>
-	<div class='left'>
+		
+	
 		<div id='product-img'>
 			<?php 
 				foreach($product['CanteenProductImage'] as $k=>$img):
@@ -102,8 +132,11 @@
 		<?php 
 			echo $this->element("canteen_product/related-styles");
 		?>
-	</div>
+	
 	<!--  Product Image -->
 
 
 </div>
+<?php 
+pr($product);
+?>

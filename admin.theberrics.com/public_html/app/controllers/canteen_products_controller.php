@@ -168,6 +168,8 @@ class CanteenProductsController extends AdminAppController {
 			
 			$this->data['Tag'] = $this->CanteenProduct->Tag->parseTags($this->data['CanteenProduct']['tags']);
 			
+			if(!is_uploaded_file($this->data['CanteenProduct']['style_code_image']['tmp_name'])) unset($this->data['CanteenProduct']['style_code_image']);
+			
 			$this->CanteenProduct->saveAll($this->data);
 			
 			
@@ -195,6 +197,8 @@ class CanteenProductsController extends AdminAppController {
 				$this->removeOption();
 				
 			}
+			
+			
 			
 			
 			return $this->flash("Product Updated Successfully","/canteen_products/edit/".$this->data['CanteenProduct']['id']);
