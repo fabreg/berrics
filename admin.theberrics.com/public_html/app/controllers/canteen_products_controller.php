@@ -170,6 +170,12 @@ class CanteenProductsController extends AdminAppController {
 			
 			if(!is_uploaded_file($this->data['CanteenProduct']['style_code_image']['tmp_name'])) unset($this->data['CanteenProduct']['style_code_image']);
 			
+			if(isset($this->data['UploadStyleCodeImage'])) {
+				
+				$this->uploadStyleCodeImage();
+				
+			}
+			
 			$this->CanteenProduct->saveAll($this->data);
 			
 			
@@ -435,7 +441,38 @@ class CanteenProductsController extends AdminAppController {
 	}
 	
 	
-	
+	private function uploadStyleCodeImage() {
+		
+		$file = $this->data['CanteenProduct']['style_code_image'];
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		if(!is_uploaded_file($file['tmp_name']) || !in_array($ext,array("jpg","jpeg","png","gif"))) {
+			
+			return false;
+			
+		}
+		
+		$fileName = md5(time().uniqid()).".".$ext;
+		
+		//move the file over to the temp dir
+		if(move_uploaded_file($file['tmp_name'],TMP.$fileName)) {
+			
+			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+			
+			ImgServer::instance()->upload_product_image($fileName,TMP.$fileName);
+			
+			unlink(TMP.$fileName);
+			
+			$this->data['CanteenProduct']['style_code_image'] = $fileName;
+			
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
 	
 	
 	
