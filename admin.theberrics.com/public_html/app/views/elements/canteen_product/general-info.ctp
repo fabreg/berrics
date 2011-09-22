@@ -30,6 +30,8 @@ $(document).ready(function() {
 				echo $this->Form->input("active");
 				echo $this->Form->input("allow_free_shipping");
 				echo $this->Form->input("allow_discount");
+				echo $this->Form->input("featured");
+				echo $this->Form->input("display_weight");
 				echo $this->Form->input("pub_date");
 				echo $this->Form->input("pub_time");
 				echo $this->Form->input("name");

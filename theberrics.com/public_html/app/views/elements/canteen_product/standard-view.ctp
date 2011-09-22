@@ -100,7 +100,7 @@
 
 #product-standard-view .product-info .description {
 	
-	width:88%;
+	width:435px;
 	
 	font-family:'courier';
 	font-size:13px;
@@ -115,7 +115,7 @@
 #product-standard-view .style-code-options .options-div {
 
 	border:1px solid #999;
-	width:88%;
+	width:455px;
 	
 }
 
@@ -125,6 +125,9 @@
 	width:50px;
 	text-align:center;
 	float:left;
+	padding-left:4px;
+	padding-right:4px;
+	cursor:pointer;
 }
 
 #product-standard-view .style-code-options .options-div .option .check {
@@ -135,9 +138,84 @@
 	height:17px;
 	clear:both;
 	margin:auto;
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+#product-standard-view .style-code-options .options-div .option .checked {
+
+	background-image:url(/img/layout/canteen/standard-view/checked.png);
+
+}
+
+#product-standard-view .product-options {
+
+	width:455px;
+
+}
+
+#product-standard-view .product-options .options-div {
+
+	border:1px solid #999;
+	
+
+}
+
+#product-standard-view .product-options .options-div .option {
+
+	float:left;
+	border-right:1px solid #999;
+	font-family:'Courier';
+	font-size:22px;
+	color:#333;
+	text-align:center;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+#product-standard-view .product-options .options-div .option .check {
+
+	background-image:url(/img/layout/canteen/standard-view/unchecked.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	height:17px;
+	clear:both;
+	margin:auto;
+	margin-top:2px;
+	margin-bottom:2px;
+	width:45px;
 
 }
 </style>
+<script>
+$(document).ready(function() { 
+
+
+
+	$('.options-div .option .check:eq(0)').addClass('checked');
+
+
+	initStyleClick();
+	
+});
+
+
+function initStyleClick() {
+
+
+	$("#product-standard-view .style-code-options .option").click(function() { 
+
+		var uri = $(this).attr("uri");
+
+		return document.location.href = uri;
+				
+	});
+	
+	
+}
+
+
+</script>
 <div id='product-standard-view'>
 		
 		<div class='product-info'>
@@ -168,20 +246,39 @@
 				?>
 			</div>
 			<?php endif; ?>
-			<?php if(isset($product['RelatedStyles']) && count($product['RelatedStyles'])>0): ?>
+			<?php if(isset($product['RelatedStyles']) && count($product['RelatedStyles'])>0): 
+						array_push($product['RelatedStyles'],array("CanteenProduct"=>$product['CanteenProduct']));
+						$product['RelatedStyles'] = array_reverse($product['RelatedStyles']);
+			?>
 			<div class='style-code-options'>
 				<label><?php echo $product['CanteenProduct']['style_code_label']; ?>:</label>
 				<div class='options-div'>
+					
 					<?php foreach($product['RelatedStyles'] as $s): ?>
-					<div class='option'>
+					<div class='option' uri='<?php echo $s['CanteenProduct']['uri']; ?>'>
 						<div class='check'>
 							
 						</div>
-						<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&w=40' border='0' alt='' />
+						<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&w=35' border='0' alt='' />
 					</div>
 					<?php endforeach; ?>
 					<div style='clear:both;'></div>
 				</div>
+			</div>
+			<?php endif; ?>
+			<?php if(isset($product['CanteenProductOption']) && count($product['CanteenProductOption'])>0): ?>
+			<div class='product-options'>
+				<label>CHOOSE AN OPTION:</label>
+				<div class='options-div'>
+					<?php foreach($product['CanteenProductOption'] as $o): ?>
+					<div class='option'>
+						<div class='check'></div>
+						<?php echo $o['opt_value']; ?>
+					</div>
+					<?php endforeach; ?>
+					<div style='clear:both;'></div>
+				</div>
+				<div style='clear:both;'></div>
 			</div>
 			<?php endif; ?>
 			<?php 
