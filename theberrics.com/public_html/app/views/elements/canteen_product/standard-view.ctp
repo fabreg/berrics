@@ -166,11 +166,12 @@
 	float:left;
 	border-right:1px solid #999;
 	font-family:'Courier';
-	font-size:22px;
+	font-size:26px;
 	color:#333;
 	text-align:center;
 	padding-left:3px;
 	padding-right:3px;
+	cursor:pointer;
 }
 
 #product-standard-view .product-options .options-div .option .check {
@@ -186,6 +187,43 @@
 	width:45px;
 
 }
+#product-standard-view .product-options .options-div .option .checked {
+
+	background-image:url(/img/layout/canteen/standard-view/checked.png);
+
+}
+
+#product-standard-view .submit input {
+
+	padding:0px;
+	text-indent:-1000000px;
+	margin:0px;
+	background-color:transparent;
+	border:none;
+	background-image:url(/img/layout/canteen/standard-view/add-to-cart.jpg);
+	height:28px;
+	width:213px;
+	cursor:pointer;
+}
+
+#product-standard-view .submit-button {
+
+
+	float:left;
+	margin-top:20px;
+
+}
+#product-standard-view .zuckerberg-shoutout {
+
+	float:right;
+	margin-top:24px;
+
+}
+#product-standard-view .zuckerberg-shoutout span {
+	
+	float:left;
+
+}
 </style>
 <script>
 $(document).ready(function() { 
@@ -196,6 +234,9 @@ $(document).ready(function() {
 
 
 	initStyleClick();
+	initOptionClick();
+
+	$("#product-standard-view .product-options .option:eq(0)").click();
 	
 });
 
@@ -214,11 +255,49 @@ function initStyleClick() {
 	
 }
 
+function initOptionClick() {
+
+
+	$("#product-standard-view .product-options .option").click(function() { 
+
+
+		var id = $(this).attr("canteen_product_option_id");
+
+		//pop the field
+
+		$("#CanteenOrderItemCanteenProductOptionId").val(id);
+
+
+		//uncheckk allllllll of them
+
+		$("#product-standard-view .product-options .option .check").removeClass("checked");
+
+		//now check me!
+		$(this).find(".check").addClass("checked");
+		
+	});
+
+	
+}
+
+
 
 </script>
 <div id='product-standard-view'>
 		
 		<div class='product-info'>
+			<?php 
+					$o = $product['CanteenProductOption'];
+
+$uri = "/canteen/cart/add";
+
+if($this->Session->check("CanteenAdminAddItem.canteen_order_item")) {
+	
+	$uri = "http://dev.admin.theberrics.com/canteen_orders/add_item";
+	
+}
+					echo $this->Form->create("CanteenOrder",array("url"=>$uri));
+			?>
 			<div class='style-code'>
 				Item#: <?php echo $product['CanteenProduct']['style_code']; ?>
 			</div>
@@ -227,7 +306,7 @@ function initStyleClick() {
 				<h2><?php echo $product['CanteenProduct']['sub_title']?>&nbsp;</h2>
 			</div>
 			<div class='pricing'>
-					<label>PRICE (<?php echo strtoupper($user_currency_id); ?>)</label>
+					<label>PRICE: (<?php echo strtoupper($user_currency_id); ?>)</label>
 					<div class='price'>
 						<?php 
  
@@ -251,7 +330,7 @@ function initStyleClick() {
 						$product['RelatedStyles'] = array_reverse($product['RelatedStyles']);
 			?>
 			<div class='style-code-options'>
-				<label><?php echo $product['CanteenProduct']['style_code_label']; ?>:</label>
+				<label><?php echo strtoupper($product['CanteenProduct']['style_code_label']); ?>:</label>
 				<div class='options-div'>
 					
 					<?php foreach($product['RelatedStyles'] as $s): ?>
@@ -271,7 +350,7 @@ function initStyleClick() {
 				<label>CHOOSE AN OPTION:</label>
 				<div class='options-div'>
 					<?php foreach($product['CanteenProductOption'] as $o): ?>
-					<div class='option'>
+					<div class='option' canteen_product_option_id='<?php echo $o['id']; ?>'>
 						<div class='check'></div>
 						<?php echo $o['opt_value']; ?>
 					</div>
@@ -280,14 +359,32 @@ function initStyleClick() {
 				</div>
 				<div style='clear:both;'></div>
 			</div>
+			<?php else: ?>
+			
 			<?php endif; ?>
-			<?php 
+
 			
-				echo $this->element("canteen_product/pricing-options");
-			
-			?>
-			<div style='clear:both;'></div>
+			<div id='h-fields' style='display:none;'>
+				<?php 
 				
+					echo $this->Form->input("CanteenOrderItem.quantity",array("type"=>"hidden","value"=>"1"));
+					echo $this->Form->input("CanteenOrderItem.canteen_product_id",array("type"=>"hidden","value"=>$product['CanteenProduct']['id']));
+					echo $this->Form->input("CanteenOrderItem.canteen_product_option_id",array("type"=>"hidden"));
+				?>
+			</div>
+			
+			<div class='submit-button'>
+				<?php echo $this->Form->submit("Add to Cart"); ?>
+			</div>
+			<div class='zuckerberg-shoutout'>
+				<div style='float:left; margin-right:4px;'>
+						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://".$_SERVER['SERVER_NAME'].$url; ?>" data-text='<?php echo addslashes($d['name']." ".$d['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
+				</div> 
+				<fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME']."/canteen/item/".$product['CanteenProduct']['uri']); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like>
+				
+			</div>
+			<div style='clear:both;'></div>
+			<?php echo $this->Form->end(); ?>
 		</div>
 		
 	
