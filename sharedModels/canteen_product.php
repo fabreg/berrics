@@ -92,7 +92,8 @@ class CanteenProduct extends AppModel {
 								"CanteenProductImage.front_image"=>"DESC",
 								"CanteenProductImage.display_weight"=>"ASC"
 							)
-						)
+						),
+						"Meta"
 
 				);
 				

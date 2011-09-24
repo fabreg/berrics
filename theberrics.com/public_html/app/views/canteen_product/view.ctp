@@ -9,13 +9,8 @@ $o = $product['CanteenProductOption'];
 
 $user_currency = CanteenConfig::returnUserCurrencyId($_SERVER['GEOIP_COUNTRY_CODE']);
 
-if(isset($_GET['currency'])) {
-	
-	$user_currency = $_GET['currency'];
-	
-}
 
-$price = Set::extract("/CanteenProductPrice[currency_id={$user_currency}]",$product);
+$price = Set::extract("/CanteenProductPrice[currency_id={$user_currency_id}]",$product);
 
 $price = $price[0]['CanteenProductPrice'];
 

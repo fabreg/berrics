@@ -85,8 +85,9 @@ function initOptionClick() {
 								<div class='price'>
 									<?php 
 			 
-										echo $price['Currency']['symbol']." ".$price['price']; 
-							
+										//echo $price['Currency']['symbol']." ".$price['price']; 
+										echo $this->Number->currency($price['price'],$user_currency_id);	
+										//echo $this->Store->formatMoney($price['price'],$user_currency_id);
 									?>
 								</div>
 						</div>
@@ -137,6 +138,21 @@ function initOptionClick() {
 						<?php else: ?>
 						
 						<?php endif; ?>
+						
+						<?php if(count($product['Meta'])>0): ?>
+						<div class='product-specs'>
+							<label>SPECIFICATIONS:</label>
+							<div class='meta-div'>
+								<?php foreach($product['Meta'] as $m): ?>
+								<dl>
+									<dt><?php echo strtoupper($m['key']); ?>:</dt>
+									<dd><?php echo strtoupper($m['val']); ?></dd>
+								</dl>
+								<?php endforeach; ?>
+								<div style='clear:both;'></div>
+							</div>
+						</div>
+						<?php endif; ?>
 						<div id='h-fields' style='display:none;'>
 							<?php
 								echo $this->Form->input("CanteenOrderItem.quantity",array("type"=>"hidden","value"=>"1"));
@@ -159,13 +175,14 @@ function initOptionClick() {
 					
 				
 					<div class='product-img'>
+						<div class='main-image'>
 						<?php 
 							foreach($product['CanteenProductImage'] as $k=>$img):
 						?>
 							<?php 
 								if($k==0):
 							?>
-							<?php echo $this->Media->productThumb($img,array("w"=>500)); ?>
+							<?php echo $this->Media->productThumb($img,array("w"=>485)); ?>
 							<?php else: ?>
 							
 							<?php 
@@ -174,6 +191,7 @@ function initOptionClick() {
 						<?php 
 							endforeach;
 						?>
+						</div>
 					</div>
 					<div style='clear:both;'></div>
 				</div>

@@ -254,7 +254,7 @@ border-bottom:1px solid #333;
 #product-standard-view {
 
 	
-
+	margin-top:20px;
 
 }
 
@@ -308,16 +308,12 @@ border-bottom:1px solid #333;
 
 }
 
-#product-standard-view .product-info .name {
 
-
-}
 
 #product-standard-view .product-info h1 {
 
 	font-size:24px;
 	color:#000;
-	
 	line-height:24px;
 	
 }
@@ -348,16 +344,30 @@ border-bottom:1px solid #333;
 
 		float:left;
 		width:542px;
+		min-height:540px;
+}
+#product-standard-view .product-img .main-image {
+	
 		background-image:url(/img/layout/canteen/standard-view/merch-image-bg.jpg);
 		height:540px;
+		position:relative;	
+		background-repeat:no-repeat;
+	
+}
+#product-standard-view .product-img .main-image img {
+	
+	position:absolute;
+	top:25px;
+	left:25px;	
+	
 }
 
 #product-standard-view .product-info .name {
 
-	margin-top:10px;
+	margin-top:25px;
 	float:left;
 	position:relative;
-	height:70px;
+	height:65px;
 }
 
 #product-standard-view .product-info .pricing {
@@ -397,6 +407,34 @@ border-bottom:1px solid #333;
 
 	border:1px solid #999;
 	width:455px;
+	
+}
+
+#product-standard-view .product-specs .meta-div {
+	
+	border:1px solid #999;	
+	width:455px;
+	
+}
+
+#product-standard-view .product-specs dl {
+	
+	float:left;
+	width:21%;
+	font-size:11px;
+	margin:1.2%;
+	color:#666;
+}
+
+#product-standard-view .product-specs dt {
+	
+	font-weight:bold;
+	
+	
+}
+
+#product-standard-view .product-specs  dd {
+	
 	
 }
 
