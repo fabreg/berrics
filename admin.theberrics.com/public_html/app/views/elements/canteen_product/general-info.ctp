@@ -30,6 +30,8 @@ $(document).ready(function() {
 				echo $this->Form->input("active");
 				echo $this->Form->input("allow_free_shipping");
 				echo $this->Form->input("allow_discount");
+				echo $this->Form->input("featured");
+				echo $this->Form->input("display_weight");
 				echo $this->Form->input("pub_date");
 				echo $this->Form->input("pub_time");
 				echo $this->Form->input("name");
@@ -37,7 +39,6 @@ $(document).ready(function() {
 				echo $this->Form->input("description");
 				echo $this->Form->input("brand_id");
 				echo $this->Form->input("canteen_category_id");
-				echo $this->Form->input("style_code");
 				echo $this->Form->input("tags",array("value"=>$tag_str));
 				echo $this->Form->input("uri");
 				echo $this->Form->input("shipping_weight");

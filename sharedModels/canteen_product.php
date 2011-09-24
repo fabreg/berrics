@@ -7,7 +7,8 @@ class CanteenProduct extends AppModel {
 	
 		"CanteenProductOption"=>array(
 			"className"=>"CanteenProduct",
-			"foreignKey"=>"parent_canteen_product_id"
+			"foreignKey"=>"parent_canteen_product_id",
+			"order"=>array("CanteenProductOption.display_weight"=>"ASC")
 		),
 		"CanteenProductPrice",
 		"CanteenProductImage"
@@ -39,10 +40,7 @@ class CanteenProduct extends AppModel {
 					"Currency"
 				),
 				"CanteenProductOption"=>array(
-					"order"=>array(
-						"CanteenProductOption.opt_label"=>"ASC",
-						"CanteenProductOption.opt_value"=>"ASC"
-					),
+				
 					"conditions"=>array(
 						"CanteenProductOption.active"=>1,
 						"CanteenProductOption.deleted"=>0
@@ -135,7 +133,7 @@ class CanteenProduct extends AppModel {
 				
 				));
 				
-				if(!$inner_call && !isset($extra['no_related'])) {
+				if(!$inner_call && !isset($extra['no_related']) && !empty($prod['CanteenProduct']['style_code'])) {
 					
 					$related_styles = array();
 					

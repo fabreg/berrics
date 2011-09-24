@@ -45,7 +45,7 @@
 						echo "<span style='color:green;'>Yes</span>";
 					break;
 					default:
-						echo "<span> style='color:red;'>No</span>";
+						echo "<span style='color:red;'>No</span>";
 					break;
 					
 				} 

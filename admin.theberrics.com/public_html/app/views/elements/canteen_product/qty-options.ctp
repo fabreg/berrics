@@ -5,6 +5,7 @@ if(count($this->data['CanteenProductOption'])>0):
 <div class='index'>
 <table cellspacing='0'>
 <tr>
+	<th align='left'>Display Weight</th>
 	<th align='left'>Label</th>
 	<th align='left'>Value</th>
 	<th align='left'>Qty</th>
@@ -15,6 +16,9 @@ if(count($this->data['CanteenProductOption'])>0):
 	echo $this->Form->input("CanteenProductOption.{$k}.id");
 ?>
 	<tr>
+		<td>
+			<input type='text' name='data[CanteenProductOption][<?php echo $k; ?>][display_weight]' value='<?php echo $o['display_weight']; ?>' />
+		</td>
 		<td>
 			<input type='text' name='data[CanteenProductOption][<?php echo $k; ?>][opt_label]' value='<?php echo $o['opt_label']; ?>' />
 		</td>
