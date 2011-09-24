@@ -18,7 +18,7 @@
 			"vader/jquery-ui-1.8.11.custom"
 		
 		),"stylesheet",array("inline"=>false));
-		$this->set("title_for_layout","The Berrics - The Most Award Winning Skateboarding Site In The World");
+		$this->set("title_for_layout","DC Riot Tour Europe");
 ?>
 <script>
 
