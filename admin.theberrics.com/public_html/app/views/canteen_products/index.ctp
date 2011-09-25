@@ -30,7 +30,8 @@
 		<tr>
 			<th>Thumb Image</th>
 			<th><?php echo $this->Paginator->sort("active"); ?></th>
-			<th><?php echo $this->Paginator->sort("id"); ?></th>
+			<th><?php echo $this->Paginator->sort("featured"); ?></th>
+			<th><?php echo $this->Paginator->sort("style_code"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
@@ -64,7 +65,21 @@
 					}
 				?>
 			</td>
-			<td align='center' nowrap width='1%'><?php echo $p['id']; ?></td>
+			<td align='center'>
+				<?php 
+				
+					switch($p['featured']) {
+					
+						case 1:
+							echo "<span style='color:green;'>YES</span>";
+						break;
+						default:
+							echo "<span style='color:red;'>NO</span>";
+						break;
+					}
+				?>
+			</td>
+			<td align='center' nowrap width='1%'><?php echo $p['style_code']; ?></td>
 			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
 			<td><?php echo $p['name']; ?></td>
 			<td align='center' nowrap width='1%'><?php echo $c['name']; ?></td>
