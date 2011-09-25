@@ -12,8 +12,11 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 	
 	$url = '/gen-ops/go-all-day.html';
 	
+} else if ($post['Dailyop']['uri'] == "powell-united-nations.html") {
+	
+	$url = '/united-nations/powell-peralta.html';
+	
 }
-
 
 
 ?>
