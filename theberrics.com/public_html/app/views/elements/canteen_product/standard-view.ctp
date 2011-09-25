@@ -1,3 +1,8 @@
+<?php 
+
+$this->set("title_for_layout",$product['CanteenProduct']['name']." By:".$product['Brand']['name']);
+$this->set("meta_d",$product['CanteenProduct']['description']);
+?>
 <script>
 $(document).ready(function() { 
 
@@ -56,6 +61,11 @@ function initOptionClick() {
 
 
 </script>
+<div style='height:30px;'>
+<?php if($this->Session->check("is_admin")): ?>
+<a href='http://dev.admin.theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>' target='_blank'>Edit</a>
+<?php endif; ?>
+</div>
 <div id='product-standard-view'>
 		<div class='container'>
 			<div class='container-top'>
@@ -191,6 +201,9 @@ function initOptionClick() {
 						<?php 
 							endforeach;
 						?>
+						</div>
+						<div class='thumbs'>
+							
 						</div>
 					</div>
 					<div style='clear:both;'></div>

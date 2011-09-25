@@ -333,8 +333,8 @@ border-bottom:1px solid #333;
 	color:#663333;
 	font-style:italic;
 	text-align:right;
-	padding-right:10px;
-	padding-top:19px;
+	padding-right:45px;
+	padding-top:17px;
 	font-size:15px;
 	font-weight:bold;
 	
@@ -420,9 +420,9 @@ border-bottom:1px solid #333;
 #product-standard-view .product-specs dl {
 	
 	float:left;
-	width:21%;
+	width:23%;
 	font-size:11px;
-	margin:1.2%;
+	margin:1%;
 	color:#666;
 }
 
