@@ -57,6 +57,27 @@
 	color:#777;
 }
 
+#canteen-cart .items table .item-wrapper {
+
+	position:relative;
+
+}
+
+
+#canteen-cart .items table .item-wrapper .delete {
+
+	position:absolute;
+	font-size:11px;
+	font-family:'Arial';
+	text-decoration:underline;
+	cursor:pointer;
+	font-weight:bold;
+	bottom:0px;
+	right:0px;
+	color:#666;
+	
+}
+
 #canteen-cart .items table .qty {
 
 	width:65px;
@@ -241,7 +262,7 @@
 
 #canteen-cart .checkout .form label {
 
-	width:93px;
+	width:102px;
 	background-color:#757575;
 	font-size:12px;
 	display:block;
@@ -249,7 +270,7 @@
 	float:left;
 	height:25px;
 	line-height:25px;
-	text-indent:10px;
+	text-indent:6px;
 	margin-top:3px;
 }
 
@@ -272,10 +293,26 @@
 	border:outset 1px white;
 	margin:0px;
 	margin-left:5px;
-	width:175px;
+	width:165px;
 }
 
 </style>
+<script>
+$(document).ready(function() { 
+
+
+	$("div[hash]").click(function() { 
+
+		var id = $(this).attr("hash");
+		
+		document.location.href = '/canteen/cart/remove/'+id;
+		
+	});
+	
+	
+});
+</script>
+<?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here)); ?>
 <div id='canteen-cart'>
 	<div class='header'>
 		<h1>THE CANTEEN // SHOPPING CART</h1>
@@ -320,12 +357,15 @@
 								?>
 							</td>
 							<td valign='top' >
-								<span class='brand'><?php echo strtoupper($item['Brand']['name']); ?></span>
-								<br />
-								<?php echo $item['CanteenProduct']['name']; ?><?php echo (!empty($item['CanteenProduct']['sub_title'])) ? " - ".$item['CanteenProduct']['sub_title']:""; ?>
-								<?php if(isset($item['CanteenProductOption'][0]['id'])): ?>
-								<br /><span class='product-option'><?php echo strtoupper($item['CanteenProductOption'][0]['opt_label']); ?>:<?php echo strtoupper($item['CanteenProductOption'][0]['opt_value']); ?></span>
-								<?php endif; ?>
+								<div class='item-wrapper'>
+									<div class='delete' hash='<?php echo $item['hash']; ?>'>REMOVE</div>
+									<span class='brand'><?php echo strtoupper($item['Brand']['name']); ?></span>
+									<br />
+									<?php echo $item['CanteenProduct']['name']; ?><?php echo (!empty($item['CanteenProduct']['sub_title'])) ? " - ".$item['CanteenProduct']['sub_title']:""; ?>
+									<?php if(isset($item['CanteenProductOption'][0]['id'])): ?>
+									<br /><span class='product-option'><?php echo strtoupper($item['CanteenProductOption'][0]['opt_label']); ?>:<?php echo strtoupper($item['CanteenProductOption'][0]['opt_value']); ?></span>
+									<?php endif; ?>
+								</div>
 							</td>
 							<td align='center' class='qty'><?php echo $item['quantity']; ?></td>
 							<td class='price'><?php echo $this->Number->currency($item['price'],$user_currency_id); ?></td>
@@ -370,3 +410,4 @@
 		<img border='0' alt='' src='/img/layout/canteen/cart/cart-bottom.jpg' />
 	</div>
 </div>
+<?php echo $this->Form->end(); ?>
