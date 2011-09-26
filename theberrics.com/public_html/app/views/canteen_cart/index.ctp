@@ -194,6 +194,87 @@
 	background-image:url(/img/layout/canteen/cart/form-bottom.jpg);
 	height:24px;
 }
+#canteen-cart .checkout .form .shipping {
+
+	float:left;
+	width:310px;
+	min-height:100px;
+	
+	margin-left:28px;
+}
+
+#canteen-cart .checkout .form .billing {
+
+	float:right;
+	width:310px;
+	min-height:100px;
+
+	margin-right:15px;
+}
+
+#canteen-cart .checkout .form .heading {
+
+	padding-top:11px;
+
+}
+#canteen-cart .checkout .form .heading h2 {
+
+	font-size:26px;
+	color:#a3a3a3;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+	font-weight:normal;
+	
+}
+#canteen-cart .checkout .form h3 {
+
+	font-size:12px;
+	font-family:'Arial';
+	font-weight:bold;
+	color:#333;
+	padding:0px;
+	margin:0px;
+	padding-top:8px;
+	padding-bottom:10px;
+}
+
+#canteen-cart .checkout .form label {
+
+	width:93px;
+	background-color:#757575;
+	font-size:12px;
+	display:block;
+	font-family:'Courier';
+	float:left;
+	height:25px;
+	line-height:25px;
+	text-indent:10px;
+	margin-top:3px;
+}
+
+#canteen-cart .checkout .form div.input {
+
+	height:31px;
+	line-height:31px;
+
+}
+
+
+
+#canteen-cart .checkout .form div.text input,#canteen-cart .checkout .form div.select select {
+	
+	height:23px;
+	line-height:23px;
+	font-family:'Arial';
+	font-size:14px;
+	color:#333;
+	border:outset 1px white;
+	margin:0px;
+	margin-left:5px;
+	width:175px;
+}
+
 </style>
 <div id='canteen-cart'>
 	<div class='header'>
@@ -268,7 +349,15 @@
 				<div class='form'>
 					<div class='container'>
 						<div class='container-top'>
-							
+							<div class='heading'>
+								<h2>CHECKOUT</h2>
+							</div>
+							<div class='shipping'>
+								<h3>SHIPPING INFORMATION</h3>
+								<?php echo $this->element("checkout-forms/shipping-form"); ?>
+							</div>
+							<div class='billing'><h3>PAYMENT INFORMATION</h3><?php echo $this->element("checkout-forms/cc-form"); ?></div>
+							<div style='clear:both;'></div>
 						</div>
 					</div>
 					<div class='form-bottom'></div>
