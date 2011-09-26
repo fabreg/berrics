@@ -193,24 +193,32 @@ function initOptionClick() {
 				
 					<div class='product-img'>
 						<div class='main-image'>
-						<?php 
-							foreach($product['CanteenProductImage'] as $k=>$img):
-						?>
+								
 							<?php 
-								if($k==0):
+								
+								$img = Set::extract('/CanteenProductImage[front_image=1]',$product);
+								
+								if(count($img)<0) {
+									
+									$img = $product['CanteenProductImage'][0];
+									
+								} else {
+									
+									$img = $img[0]['CanteenProductImage'];
+									
+								}
+								
+								echo $this->Media->productThumb($img,array("w"=>485)); 
+								
 							?>
-							<?php echo $this->Media->productThumb($img,array("w"=>485)); ?>
-							<?php else: ?>
-							
-							<?php 
-								endif;
-							?>
-						<?php 
-							endforeach;
-						?>
+						
 						</div>
 						<div class='thumbs'>
-							
+							<?php foreach($product['CanteenProductImage'] as $img): ?>
+								<div class='img-thumb'>
+									<?php echo $this->Media->productThumb($img,array("w"=>50)); ?>
+								</div>
+							<?php endforeach;?>
 						</div>
 					</div>
 					<div style='clear:both;'></div>

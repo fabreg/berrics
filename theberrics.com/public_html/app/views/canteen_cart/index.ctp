@@ -1,6 +1,9 @@
 <style>
 
-#canteen-cart {} 
+#canteen-cart {
+
+
+} 
 
 
 #canteen-cart .items {
@@ -148,7 +151,7 @@
 	color:#000;
 	font-family:'Courier';
 	font-size:14px;
-		border:1px solid #c1c1c1;
+	border:1px solid #c1c1c1;
 	border-top:none;
 }
 
@@ -283,7 +286,7 @@
 
 
 
-#canteen-cart .checkout .form div.text input,#canteen-cart .checkout .form div.select select {
+#canteen-cart .checkout .form div.text input, #canteen-cart .checkout .form div.select select {
 	
 	height:23px;
 	line-height:23px;
@@ -304,13 +307,49 @@
 #same-as-shipping-check {
 
 	float:left;
-
+	margin-right:5px;
+	margin-top:9px;
 }
 
-#same-as-shipping-div label {
+#canteen-cart .checkout #same-as-shipping-div label {
 
 	width:240px;
 	text-align:left;
+}
+#canteen-cart #grand-total {
+
+	border:dotted 2px #999;
+	border-left:none;
+	border-right:none;
+	width:65%;
+	font-family:'Courier';
+	color:#000;
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+#canteen-cart #grand-total span {
+
+	color:#336633;
+
+}
+
+#canteen-cart .checkout .submit {
+
+	padding-top:10px;
+
+}
+
+#canteen-cart .checkout .submit input {
+
+	background-image:url(/img/layout/canteen/cart/complete-order-button.png);
+	height:35px;
+	width:216px;
+	border:none;
+	background-color:transparent;
+	text-indent:-100000px;
+	cursor:pointer;
+
 }
 
 </style>
@@ -444,6 +483,9 @@ function toggleBilling(check) {
 								?>
 								<div style='clear:both;'></div>
 								<?php echo $this->element("checkout-forms/billing-form"); ?>
+								<div id='grand-total'>
+									TOTAL: <span><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$user_currency_id); ?></span>
+								</div>
 								<?php echo $this->Form->submit("COMPLETE ORDER"); ?>
 							</div>
 							<div style='clear:both;'></div>

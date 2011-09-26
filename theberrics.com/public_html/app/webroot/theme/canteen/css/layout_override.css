@@ -372,6 +372,29 @@ border-bottom:1px solid #333;
 	
 }
 
+#product-standard-view .product-img .thumbs {
+
+	margin-left:25px;	
+	
+}
+
+#product-standard-view .product-img .thumbs .img-thumb {
+
+	height:62px;
+	width:63px;
+	background-image:url(/img/layout/canteen/standard-view/img-thumb-bg.jpg);
+	float:left;
+	margin-right:5px;	
+	
+}
+#product-standard-view .product-img .thumbs .img-thumb img {
+	
+	margin-top:6px;
+	margin-left:6px;	
+	
+}
+
+
 #product-standard-view .product-info .name {
 
 	margin-top:25px;

@@ -315,7 +315,7 @@ class CanteenProductsController extends AdminAppController {
 		
 		$this->CanteenProduct->CanteenProductImage->updateAll(
 			array(
-				"front_image"=>0
+				"thumb_image"=>0
 			),
 			array(
 				"canteen_product_id"=>$prod_id
@@ -473,22 +473,6 @@ class CanteenProductsController extends AdminAppController {
 		return false;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 }
