@@ -383,7 +383,7 @@ border-bottom:1px solid #333;
 #product-standard-view .product-img .thumbs {
 
 	margin-left:25px;	
-	
+	min-height:65px;
 }
 
 #product-standard-view .product-img .thumbs .img-thumb {
@@ -393,7 +393,7 @@ border-bottom:1px solid #333;
 	background-image:url(/img/layout/canteen/standard-view/img-thumb-bg.jpg);
 	float:left;
 	margin-right:5px;	
-	
+	cursor:pointer;
 }
 #product-standard-view .product-img .thumbs .img-thumb img {
 	
