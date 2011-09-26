@@ -295,6 +295,23 @@
 	margin-left:5px;
 	width:165px;
 }
+#billing-form {
+
+	display:none;
+
+}
+
+#same-as-shipping-check {
+
+	float:left;
+
+}
+
+#same-as-shipping-div label {
+
+	width:240px;
+	text-align:left;
+}
 
 </style>
 <script>
@@ -309,8 +326,31 @@ $(document).ready(function() {
 		
 	});
 	
-	
+	//the billing form
+	$("#same-as-shipping-check").click(function() { 
+
+		toggleBilling($("#same-as-shipping-check"));
+
+	});
+	toggleBilling($("#same-as-shipping-check"));
 });
+
+function toggleBilling(check) {
+
+
+	if($(check).is(':checked')) {
+
+		$("#billing-form").slideUp();
+		
+	} else {
+
+		$("#billing-form").slideDown();
+
+	}
+	
+
+	
+}
 </script>
 <?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here)); ?>
 <div id='canteen-cart'>
@@ -396,7 +436,16 @@ $(document).ready(function() {
 								<h3>SHIPPING INFORMATION</h3>
 								<?php echo $this->element("checkout-forms/shipping-form"); ?>
 							</div>
-							<div class='billing'><h3>PAYMENT INFORMATION</h3><?php echo $this->element("checkout-forms/cc-form"); ?></div>
+							<div class='billing'>
+								<h3>PAYMENT INFORMATION</h3>
+								<?php echo $this->element("checkout-forms/cc-form"); ?>
+								<?php 
+									echo $this->Form->input("same_as_shipping_checkbox",array("type"=>"checkbox","label"=>"Billing Address Same As Shipping",'id'=>'same-as-shipping-check',"div"=>array("id"=>"same-as-shipping-div")));
+								?>
+								<div style='clear:both;'></div>
+								<?php echo $this->element("checkout-forms/billing-form"); ?>
+								<?php echo $this->Form->submit("COMPLETE ORDER"); ?>
+							</div>
 							<div style='clear:both;'></div>
 						</div>
 					</div>
@@ -410,4 +459,9 @@ $(document).ready(function() {
 		<img border='0' alt='' src='/img/layout/canteen/cart/cart-bottom.jpg' />
 	</div>
 </div>
-<?php echo $this->Form->end(); ?>
+<?php 
+
+	echo $this->Form->input("currency_id",array("value"=>$user_currency_id,"type"=>"hidden"));
+	echo $this->Form->input("geoip_country_code",array("value"=>env("GEOIP_COUNTRY_CODE"),"type"=>"hidden"));
+	echo $this->Form->input("geoip_city",array("value"=>env("GEOIP_CITY"),"type"=>"hidden"));
+echo $this->Form->end(); ?>

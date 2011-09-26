@@ -83,9 +83,16 @@ function initOptionClick() {
 								}
 								echo $this->Form->create("CanteenOrder",array("url"=>$uri));
 						?>
-						<div class='style-code'>
-							Item#: <?php echo $product['CanteenProduct']['style_code']; ?>
+						<div class='codes'>
+							<div class='brand'>
+								<?php echo strtoupper($product['Brand']['name']); ?>
+							</div>
+							<div class='style-code'>
+								ITEM#: <?php echo $product['CanteenProduct']['style_code']; ?>
+							</div>
+							<div style='clear:both;'></div>
 						</div>
+						
 						<div class='name'>
 							<h1><?php echo $product['CanteenProduct']['name']; ?></h1>
 							<h2><?php echo $product['CanteenProduct']['sub_title']?>&nbsp;</h2>

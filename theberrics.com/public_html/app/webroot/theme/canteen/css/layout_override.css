@@ -328,11 +328,21 @@ border-bottom:1px solid #333;
 	text-indent:5px;
 }
 
-#product-standard-view .product-info .style-code {
+#product-standard-view .product-info .codes {}
+
+#product-standard-view .product-info .codes .brand {
+
+	float:left;	
+	font-size:14px;
+	color:#666;
+	padding-top:18px;
+}
+
+#product-standard-view .product-info .codes .style-code {
 
 	color:#663333;
 	font-style:italic;
-	text-align:right;
+	float:right;
 	padding-right:45px;
 	padding-top:17px;
 	font-size:15px;
