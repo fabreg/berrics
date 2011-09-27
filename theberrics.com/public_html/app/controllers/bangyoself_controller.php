@@ -152,6 +152,7 @@ class BangyoselfController extends DailyopsController {
 					"BangyoselfEntry.dailyop_id >"=>0
 				),
 				"contain"=>array(),
+				"order"=>"RAND()"
 			));
 			
 			//get the dop's
