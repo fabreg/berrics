@@ -83,9 +83,16 @@ function initOptionClick() {
 								}
 								echo $this->Form->create("CanteenOrder",array("url"=>$uri));
 						?>
-						<div class='style-code'>
-							Item#: <?php echo $product['CanteenProduct']['style_code']; ?>
+						<div class='codes'>
+							<div class='brand'>
+								<?php echo strtoupper($product['Brand']['name']); ?>
+							</div>
+							<div class='style-code'>
+								ITEM#: <?php echo $product['CanteenProduct']['style_code']; ?>
+							</div>
+							<div style='clear:both;'></div>
 						</div>
+						
 						<div class='name'>
 							<h1><?php echo $product['CanteenProduct']['name']; ?></h1>
 							<h2><?php echo $product['CanteenProduct']['sub_title']?>&nbsp;</h2>
@@ -124,7 +131,7 @@ function initOptionClick() {
 									<div class='check'>
 										
 									</div>
-									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&w=35' border='0' alt='' />
+									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35' border='0' alt='' />
 								</div>
 								<?php endforeach; ?>
 								<div style='clear:both;'></div>
@@ -186,24 +193,32 @@ function initOptionClick() {
 				
 					<div class='product-img'>
 						<div class='main-image'>
-						<?php 
-							foreach($product['CanteenProductImage'] as $k=>$img):
-						?>
+								
 							<?php 
-								if($k==0):
+								
+								$img = Set::extract('/CanteenProductImage[front_image=1]',$product);
+								
+								if(count($img)<0) {
+									
+									$img = $product['CanteenProductImage'][0];
+									
+								} else {
+									
+									$img = $img[0]['CanteenProductImage'];
+									
+								}
+								
+								echo $this->Media->productThumb($img,array("w"=>485)); 
+								
 							?>
-							<?php echo $this->Media->productThumb($img,array("w"=>485)); ?>
-							<?php else: ?>
-							
-							<?php 
-								endif;
-							?>
-						<?php 
-							endforeach;
-						?>
+						
 						</div>
 						<div class='thumbs'>
-							
+							<?php foreach($product['CanteenProductImage'] as $img): ?>
+								<div class='img-thumb'>
+									<?php echo $this->Media->productThumb($img,array("w"=>50)); ?>
+								</div>
+							<?php endforeach;?>
 						</div>
 					</div>
 					<div style='clear:both;'></div>

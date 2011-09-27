@@ -126,6 +126,8 @@ class CanteenCartController extends CanteenAppController {
 			
 		}
 		
+		$this->data['CanteenOrderItem']['hash'] = md5(time().mt_rand(999,9999));
+		
 		$cart['CanteenOrderItem'][] = $this->data['CanteenOrderItem'];
 		
 		$this->Session->write("CanteenOrder",$cart);
@@ -190,6 +192,32 @@ class CanteenCartController extends CanteenAppController {
 
 	}
 	
+	
+	public function remove($id) {
+		
+		//get the cart
+		
+		$cart = $this->Session->read("CanteenOrder");
+		
+		foreach($cart['CanteenOrderItem'] as $k=>$item) {
+			
+			if($id == $item['hash']) {
+				
+				unset($cart['CanteenOrderItem'][$k]);
+				
+				$this->Session->write("CanteenOrder",$cart);
+				
+				return $this->redirect("/canteen/cart");
+				
+			}
+			
+		}
+		
+		return $this->redirect("/canteen/cart");
+		
+	}
+	
+	
 	public function invoice($id = false) {
 		
 		if(!$id) {
@@ -209,7 +237,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-		public function print_invoice($id= false) {
+	public function print_invoice($id= false) {
 		
 		if(!$id) {
 			

@@ -71,7 +71,21 @@ class Lang {
 		
 	}
 	
-
+	public static function localeList() {
+		
+		App::import("Lib",'l10n');
+		
+		$l10n = new L10n();
+		
+		$lc = $l10n->catalog();
+		
+		$locales = array();
+		
+		foreach($lc as $l) $locales[$l['locale']] = $l['language'];
+		
+		return $locales;
+		
+	}
 	
 	
 }

@@ -40,7 +40,9 @@ class PhrasesController extends AdminAppController {
 		
 		$this->loadModel("Locale");
 		
-		$locales = $this->Locale->find("list",array("fields"=>array("Locale.locale","Locale.name"),"order"=>array("name"=>"ASC")));
+		//$locales = $this->Locale->find("list",array("fields"=>array("Locale.locale","Locale.name"),"order"=>array("name"=>"ASC")));
+		
+		$locales = Lang::localeList();
 		
 		$this->set("locales",$locales);
 		
