@@ -12,9 +12,14 @@ if(date('Y-m-d')=='2011-09-26') {
 	
 	Router::connect('/',array("controller"=>"splash","action"=>"dc"));
 	
+} else if(date('Y-m-d')=='2011-09-27') {
+	
+	Router::connect('/',array("controller"=>"bangyoself","action"=>"voting"));
+	
 } else {
 	
 	Router::connect('/',array("controller"=>"splash","action"=>"index"));
+	
 }
 
 
