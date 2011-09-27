@@ -230,7 +230,11 @@ $(document).ready(function() {
 	</div>
 </div>
 
-<?php 
+<?php if($_SERVER["REQUEST_URI"]=="/"): ?>
+
+<div style='text-align:center; padding:5px; font-size:24px;'><a style='color:white;' href='/dailyops'>ENTER THE BERRICS</a></div>
+<?php endif; ?>
+<?php
 if(preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI']) || (isset($this->params['year']) && isset($this->params['month']) && isset($this->params['day']))):
 ?>
 <div id="dailyops" style='width:790px; margin:auto;'>
