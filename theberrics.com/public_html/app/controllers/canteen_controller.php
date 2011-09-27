@@ -58,7 +58,9 @@ class CanteenController extends CanteenAppController {
 			"fields"=>array("CanteenProduct.id"),
 			"conditions"=>array(
 				"CanteenProduct.canteen_category_id"=>$category['CanteenCategory']['id'],
-				"CanteenProduct.parent_canteen_product_id"=>NULL
+				"CanteenProduct.parent_canteen_product_id"=>NULL,
+				"CanteenProduct.active"=>1,
+				"CanteenProduct.featured"=>1
 			),
 			"contain"=>array()
 		));

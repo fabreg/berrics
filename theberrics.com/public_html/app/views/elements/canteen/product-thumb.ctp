@@ -19,7 +19,7 @@ $price = Set::extract("/CanteenProductPrice[currency_id={$user_currency_id}]",$p
 		<a href='/canteen/item/<?php echo $product['CanteenProduct']['uri']; ?>' title="<?php echo addslashes($product['CanteenProduct']['name']); ?> By: <?php echo addslashes($product['Brand']['name']); ?>">
 		<?php 
 		
-			echo $this->Media->productListThumb($product,array("w"=>"262"));
+			echo $this->Media->productListThumb($product,array("w"=>"254"));
 		
 		?>
 		</a>

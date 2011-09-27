@@ -110,6 +110,7 @@ Router::connect(
     	"routeClass"=>"HomeRoute"
     )
 );
+
 Router::connect(
     '/dailyops',
     array('controller'=>'dailyops','action' => 'index'),
