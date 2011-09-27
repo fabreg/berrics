@@ -22,7 +22,9 @@ class CanteenProduct extends AppModel {
 	
 	public $hasAndBelongsToMany = array(
 	
-		"Meta",
+		"Meta"=>array(
+			"order"=>array("Meta.key"=>"ASC")
+		),
 		"Tag"	
 	
 	);
