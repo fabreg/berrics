@@ -95,7 +95,7 @@ class CanteenProduct extends AppModel {
 								"CanteenProductImage.display_weight"=>"ASC"
 							)
 						),
-						"Meta"
+						"Meta"=>array("order"=>array("Meta.key"=>"ASC"))
 
 				);
 				
