@@ -63,10 +63,14 @@ class LoginController extends IdentityAppController {
 	public function handle_facebook_callback($callback = false) {
 		
 		$fb = FacebookApi::instance();
-		
+
 		$fb_session = $fb->facebook->getSession();
 		
+	
+		
 		$fb_user = $fb->facebook->api("/me");
+		
+			
 		
 		$fb_data = array(
 		

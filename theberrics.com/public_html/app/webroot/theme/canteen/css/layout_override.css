@@ -24,7 +24,15 @@ body {
 	margin-left:75px;
 
 }
+#canteen-subnav {
 
+	background-image:url(/img/layout/canteen/sub-nav-bg.jpg);
+	height:43px;
+	margin-bottom:3px;	
+	margin-top:3px;
+	background-repeat:no-repeat;	
+	background-position:center center;
+}
 
 
 /*
@@ -32,8 +40,8 @@ body {
 */
 .canteen-product-thumb {
 	
-	width:262px;
-	height:262px;
+	width:254px;
+	height:254px;
 	position:relative;
 	cursor:pointer;
 	
