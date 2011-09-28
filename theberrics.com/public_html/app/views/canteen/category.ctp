@@ -35,6 +35,17 @@ $(document).ready(function() {
 		return false;
 
 	});
+
+
+	$("#reveal").click(function() { 
+
+		$('.canteen-product-thumb').each(function() { 
+
+			$(this).find('.info').toggle('slow');
+			
+		});
+		
+	});
 		
 });
 </script>
@@ -45,6 +56,7 @@ $(document).ready(function() {
 	<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
 	
 </div>
+<a id='reveal'>Reveal</a>
 <div style='clear:both;'></div>
 </div>
 <div id='canteen-category'>
