@@ -58,8 +58,8 @@ $this->Html->scriptEnd();
 	<div><img src="/img/layout/headquarters/headquarters_11.png"/></div>
 	<div email='info'><img src="/img/layout/headquarters/headquarters_12.png"/></div>
 	<div><img src="/img/layout/headquarters/headquarters_13.png"/></div>
-	<div email='skatetalk'><img src="/img/layout/headquarters/headquarters_14.png"/></div>
-	<div email='booshnews'><img src="/img/layout/headquarters/headquarters_15.png"/></div>
+	<div email='ryan'><img src="/img/layout/headquarters/headquarters_14.png"/></div>
+	<div email='leland'><img src="/img/layout/headquarters/headquarters_15.png"/></div>
 	<div><img src="/img/layout/headquarters/headquarters_16.png"/></div>
 	<div email='advertising'><img src="/img/layout/headquarters/headquarters_17.png"/></div>
 	<div email='kevin'><img src="/img/layout/headquarters/headquarters_18.png"/></div>
