@@ -56,7 +56,7 @@ class BerricsAppController extends AppController {
 	public function getUserCurrency() {
 		
 		$cid = "USD";
-		
+		$geo = (isset($_SERVER['GEOIP_COUNTRY_CODE'])) ? $_SERVER['GEOIP_COUNTRY_CODE']:"US";
 		if(isset($_GET['currency_override'])) {
 			
 			$cid = $_GET['currency_override'];
@@ -67,7 +67,7 @@ class BerricsAppController extends AppController {
 			
 		} else {
 			
-			$cid = CanteenConfig::returnUserCurrencyId($_SERVER['GEOIP_COUNTRY_CODE']);
+			$cid = CanteenConfig::returnUserCurrencyId();
 			
 		}
 		
