@@ -256,7 +256,6 @@ function initOptionClick() {
 					<div style='clear:both;'></div>
 				</div>
 			</div>
-			
 		</div>
 		<div class='container-bottom'></div>
 </div>
