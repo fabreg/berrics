@@ -51,7 +51,8 @@ class CanteenController extends CanteenAppController {
 				"CanteenProduct.active"=>1,
 				"CanteenProduct.featured"=>1
 			),
-			"contain"=>array()
+			"contain"=>array(),
+			"order"=>array("CanteenProduct.display_weight"=>"ASC")
 		));
 		
 		$prod_ids = Set::extract("/CanteenProduct/id",$prod_ids);
