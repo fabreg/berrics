@@ -58,12 +58,34 @@ class CanteenController extends CanteenAppController {
 		$prod_ids = Set::extract("/CanteenProduct/id",$prod_ids);
 		
 		$products = array();
-		
-		//die(print_r($prod_ids));
-		
+
 		foreach($prod_ids as $id) {
 			
-			$products[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$id)),$this->isAdmin(),false,array("no_related"=>true));
+			//$products[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$id)),$this->isAdmin(),false,array("no_related"=>true));
+			
+			$token = "cat_product_".$id;
+			
+			if(($p = Cache::read($token,"1min")) === false) {
+				
+				$p = $this->CanteenProduct->find("first",array(
+						"conditions"=>array(
+							"CanteenProduct.id"=>$id,
+							"CanteenProduct.active"=>1,
+							"CanteenProduct.featured"=>1,
+							
+						),
+						"contain"=>array(
+							"CanteenProductImage"=>array(),
+							"CanteenProductPrice",
+							"Brand"
+						)
+					));
+			
+				Cache::write($token,$p,"1min");
+				
+			}
+			
+			$products[] = $p;
 			
 		}
 		
