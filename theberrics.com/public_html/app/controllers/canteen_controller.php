@@ -107,6 +107,10 @@ class CanteenController extends CanteenAppController {
 				
 			}
 			
+		} else {
+			
+			return $this->cakeError("error404");
+			
 		}
 		
 	}
