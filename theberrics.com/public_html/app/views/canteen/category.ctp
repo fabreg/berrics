@@ -38,8 +38,14 @@ $(document).ready(function() {
 		
 });
 </script>
-<div id='canteen-subnav'>
-
+<div>
+<div id='canteen-crumb'>
+	<div class='left'></div>
+	<div class='right'></div>
+	<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
+	
+</div>
+<div style='clear:both;'></div>
 </div>
 <div id='canteen-category'>
 <?php 

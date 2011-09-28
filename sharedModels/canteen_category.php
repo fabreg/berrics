@@ -34,4 +34,36 @@ class CanteenCategory extends AppModel {
 		return $cats;
 		
 	}
+	
+	public function grabSubcat($cond) {
+		
+		$token = "canteen_grabSubcat_".md5(serialize($cond));
+		
+		if(($cat = Cache::read($token,"1min")) === false) {
+			
+			$cat = $this->find("first",array(
+				"conditions"=>$cond,
+				"contain"=>array()
+			));
+			
+			if(!empty($cat['CanteenCategory']['parent_id'])) {
+				
+				$p = $this->find("first",array(
+					"conditions"=>array(
+						"CanteenCategory.id"=>$cat['CanteenCategory']['parent_id']
+					),
+					"contain"=>array()
+				));
+				
+				$cat['Parent'] = $p['CanteenCategory'];
+				
+			}
+			
+			Cache::write($token,$cat,"1min");
+			
+		}
+		
+		return $cat;
+		
+	}
 }
