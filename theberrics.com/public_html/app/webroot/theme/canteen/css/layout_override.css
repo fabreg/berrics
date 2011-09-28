@@ -336,7 +336,9 @@ border-bottom:1px solid #333;
 	text-indent:5px;
 }
 
-#product-standard-view .product-info .codes {}
+#product-standard-view .product-info .codes {
+
+}
 
 #product-standard-view .product-info .codes .brand {
 
@@ -363,6 +365,7 @@ border-bottom:1px solid #333;
 		float:left;
 		width:542px;
 		min-height:540px;
+		display:block;
 }
 #product-standard-view .product-img .main-image {
 	
@@ -489,6 +492,7 @@ border-bottom:1px solid #333;
 	padding-left:4px;
 	padding-right:4px;
 	cursor:pointer;
+	
 }
 
 #product-standard-view .style-code-options .options-div .option .check {

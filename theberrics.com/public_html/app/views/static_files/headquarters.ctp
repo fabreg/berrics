@@ -53,7 +53,7 @@ $this->Html->scriptEnd();
 	<div email='joel'><img src="/img/layout/headquarters/headquarters_06.png"/></div>
 	<div email='lindsay'><img src="/img/layout/headquarters/headquarters_07.png"/></div>
 	<div><img src="/img/layout/headquarters/headquarters_08.png"/></div>
-	<div email='help'><img src="/img/layout/headquarters/headquarters_09.png"/></div>
+	<div email='prince'><img src="/img/layout/headquarters/headquarters_09.png"/></div>
 	<div email='greg'><img src="/img/layout/headquarters/headquarters_10.png"/></div>
 	<div><img src="/img/layout/headquarters/headquarters_11.png"/></div>
 	<div email='info'><img src="/img/layout/headquarters/headquarters_12.png"/></div>
@@ -65,8 +65,7 @@ $this->Html->scriptEnd();
 	<div email='kevin'><img src="/img/layout/headquarters/headquarters_18.png"/></div>
 	<div email='tim'><img src="/img/layout/headquarters/headquarters_19.png"/></div>
 	<div email='trickipedia'><img src="/img/layout/headquarters/headquarters_20.png"/></div>
-	<div email='skatetalk'><img src="/img/layout/headquarters/headquarters_21.png"/></div>
-	<div email='boosh'><img src="/img/layout/headquarters/headquarters_22.png"/></div>
+
 	<div><img src="/img/layout/headquarters/headquarters_23.png"/></div>
 	<div email='chase'><img src="/img/layout/headquarters/headquarters_24.png"/></div>
 	<div email='colin'><img src="/img/layout/headquarters/headquarters_25.png"/></div>
