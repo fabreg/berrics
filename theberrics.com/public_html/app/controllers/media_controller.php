@@ -44,8 +44,7 @@ class MediaController extends BerricsAppController {
 			$bc_info = BCAPI::instance()->bc->find("videobyid",array("video_id"=>$m['brightcove_id']));
 			
 			$m['brightcove_url'] = $bc_info->FLVURL;
-			
-			
+
 		}
 		
 		
