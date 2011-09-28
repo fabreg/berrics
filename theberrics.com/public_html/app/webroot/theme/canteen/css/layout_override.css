@@ -1273,6 +1273,42 @@ border-bottom:1px solid #333;
 }
 
 
+/*
+	
+	ORDER STATUS
+	
+*/
+
+#canteen-order-status {
+	
+	width:771px;
+	background-image:url(/img/layout/canteen/order-status-bg.jpg);
+	background-repeat:no-repeat;
+	height:659px;
+}
+
+
+#canteen-order-status .order-status {
+
+	float:left;
+	width:385px;
+	background-color:red;
+	min-height:150px;
+	
+}
+
+#canteen-order-status .order-notes {
+	
+	float:right;
+	width:375px;
+	border-left:1px solid #999;
+	min-height:150px;
+	margin-top:20px;
+}
+
+	
+
+
 
 
 
