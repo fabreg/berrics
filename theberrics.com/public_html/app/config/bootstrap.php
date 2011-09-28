@@ -44,7 +44,6 @@
 
 
 if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
-	
 	App::build(array(
 	
 		"models"=>array("/home/sites/berrics.dev/sharedModels/"),

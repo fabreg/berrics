@@ -3,7 +3,7 @@
 
 	float:left;
 	margin-left:5px;
-
+	margin-bottom:5px;
 }
 
 </style>
@@ -38,6 +38,9 @@ $(document).ready(function() {
 		
 });
 </script>
+<div id='canteen-subnav'>
+
+</div>
 <div id='canteen-category'>
 <?php 
 foreach($products as $p):

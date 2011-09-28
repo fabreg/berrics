@@ -15,6 +15,11 @@ $(document).ready(function() {
 	initOptionClick();
 
 	$("#product-standard-view .product-options .option:eq(0)").click();
+
+
+	initProductThumbs();
+
+	
 	
 });
 
@@ -30,6 +35,32 @@ function initStyleClick() {
 				
 	});
 	
+	
+}
+
+
+function initProductThumbs() {
+
+
+	$("#product-standard-view .thumbs .img-thumb").click(function() { 
+
+		var src = $(this).attr("img");
+
+		$(".product-img .main-image img").attr("src","http://img.theberrics.com/i.php?w=485&src=/product-img/"+src);
+
+		$("#product-standard-view .thumbs .img-thumb").attr("selected",0).css({"opacity":.5});
+
+		$(this).attr("selected",1).css({"opacity":1});
+		
+
+	}).css({
+
+		"opacity":.5
+
+	}).hover(function() { if($(this).attr("selected")!=1) $(this).css({"opacity":1}); },function() { if($(this).attr("selected")!=1) $(this).css({"opacity":.5}); });
+
+	$("#product-standard-view .thumbs .img-thumb");
+
 	
 }
 
@@ -208,23 +239,23 @@ function initOptionClick() {
 									
 								}
 								
-								echo $this->Media->productThumb($img,array("w"=>485)); 
+								echo $this->Media->productThumb($img,array("w"=>485),array("img"=>$img['file_name'])); 
 								
 							?>
 						
 						</div>
 						<div class='thumbs'>
 							<?php foreach($product['CanteenProductImage'] as $img): ?>
-								<div class='img-thumb'>
+								<div class='img-thumb' img='<?php echo $img['file_name']; ?>'>
 									<?php echo $this->Media->productThumb($img,array("w"=>50)); ?>
 								</div>
 							<?php endforeach;?>
+							<div style='clear:both;'></div>
 						</div>
 					</div>
 					<div style='clear:both;'></div>
 				</div>
 			</div>
-			
 		</div>
 		<div class='container-bottom'></div>
 </div>

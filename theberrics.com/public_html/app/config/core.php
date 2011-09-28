@@ -350,13 +350,6 @@
   		'serialize' => true, //[optional],
   	 	'duration'=> '1 Day', //[optional]
  	));
-	 Cache::config('30day', array(
- 		'engine' => 'File', //[required]
-  		'path' => WWW_ROOT."dfp", //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'dfp_report_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional],
-  	 	'duration'=> '30 Day', //[optional]
- 	));
+
  	
 Cache::config('default', array('engine' => 'File'));
