@@ -141,7 +141,7 @@ function validateExp() {
 	var t_year = d.getFullYear();
 
 	var valid = false;
-	if(((Number(year) == t_year) && (Number(month)+1) >= t_month) || (Number(year)>t_year)) {
+	if(((Number(year) == t_year) && (Number(month) >= (t_month+1)) || (Number(year)>t_year)) {
 
 		valid = true;
 		
