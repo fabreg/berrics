@@ -155,9 +155,12 @@ class NewsController extends DailyopsController {
 		
 	}
 	
-	public function events_menu() {
+	public function events_menu($page = 1) {
 		
 				
+		$token = "events_menu_".md5($page.$this->params['date_in']);
+		
+		
 		//"DATE(Dailyop.publish_date)<NOW()"
 		$this->paginate['Dailyop'] = array(
 			"conditions"=>array(
@@ -223,7 +226,6 @@ class NewsController extends DailyopsController {
 	}
 	
 	
-
 	
 	
 	

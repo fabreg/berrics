@@ -319,7 +319,15 @@
   		'lock' => false, //[optional]  use file locking
   		'serialize' => true, //[optional]
  	));
- 	
+ 	Cache::config('paginate_cache', array(
+ 		'engine' => 'File', //[required]
+ 		'duration'=> 1, //[optional]
+ 		'probability'=> 1, //[optional]
+  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'lock' => false, //[optional]  use file locking
+  		'serialize' => true, //[optional]
+ 	));
  	 Cache::config('5min', array(
  		'engine' => 'File', //[required]
   		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
