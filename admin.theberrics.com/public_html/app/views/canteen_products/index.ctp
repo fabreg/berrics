@@ -31,6 +31,7 @@
 			<th>Thumb Image</th>
 			<th><?php echo $this->Paginator->sort("active"); ?></th>
 			<th><?php echo $this->Paginator->sort("featured"); ?></th>
+			<th><?php echo $this->Paginator->sort("display_weight"); ?></th>
 			<th><?php echo $this->Paginator->sort("style_code"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
@@ -51,7 +52,7 @@
 				No Image
 				<?php endif; ?>
 			</td>
-			<td align='center'>
+			<td align='center' nowrap width='1%'>
 				<?php 
 				
 					switch($p['active']) {
@@ -65,7 +66,7 @@
 					}
 				?>
 			</td>
-			<td align='center'>
+			<td align='center' nowrap width='1%'>
 				<?php 
 				
 					switch($p['featured']) {
@@ -77,6 +78,13 @@
 							echo "<span style='color:red;'>NO</span>";
 						break;
 					}
+				?>
+			</td>
+			<td align='center' nowrap width='1%'>
+				<?php 
+				
+					echo $p['display_weight'];
+					
 				?>
 			</td>
 			<td align='center' nowrap width='1%'><?php echo $p['style_code']; ?></td>

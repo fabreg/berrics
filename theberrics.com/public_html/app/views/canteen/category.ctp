@@ -54,7 +54,6 @@ $(document).ready(function() {
 	<div class='left'></div>
 	<div class='right'></div>
 	<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
-	
 </div>
 <a id='reveal'>Reveal</a>
 <div style='clear:both;'></div>

@@ -19,7 +19,9 @@ body {
 #canteen-crumb {
 	
 	float:left;
-	
+	margin-left:5px;
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
 #canteen-crumb .right {
@@ -1285,6 +1287,7 @@ border-bottom:1px solid #333;
 	background-image:url(/img/layout/canteen/order-status-bg.jpg);
 	background-repeat:no-repeat;
 	height:659px;
+	padding-top:15px;
 }
 
 
@@ -1292,7 +1295,7 @@ border-bottom:1px solid #333;
 
 	float:left;
 	width:385px;
-	background-color:red;
+	
 	min-height:150px;
 	
 }
@@ -1303,12 +1306,103 @@ border-bottom:1px solid #333;
 	width:375px;
 	border-left:1px solid #999;
 	min-height:150px;
-	margin-top:20px;
+	margin-right:10px;
 }
 
+#canteen-order-status .heading {
+
+	border-bottom:dotted 2px #999;	
+	width:96%;
+	margin:auto;
+}
+
+#canteen-order-status .heading h1 {
+
+	font-weight:normal;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+	font-family:'Times New Roman';
+	font-size:24px;
+	color:#666;
 	
+}
+
+#canteen-order-status .order-status .visual {
+
+	border-bottom:dotted 2px #999;
+	height:100px;	
+	width:95%;
+	margin:auto;
+}
+
+#canteen-order-status .order-status .context {
+	
+	position:relative;	
+	
+	
+}
 
 
+#canteen-order-status .order-status .context .text-item {
+	color:black;
+	position:absolute;	
+	left:30px;
+	font-family:'Courier';
+	font-size:15px;
+	text-indent:8px;
+	font-weight:bold;
+}
+#canteen-order-status .order-status .context .text-item .heading {
+	text-indent:0px;
+	font-family:'Arial';
+	font-size:10px;
+	font-weight:bold;
+	border:none;
+	padding:0px;
+	margin:0px;
+	margin-bottom:13px;
+	text-align:left;
+	text-indent:none;
+	color:#666;
+	white-space:nowrap;
+}
+
+#canteen-order-status .order-status .context #order-id {
+
+		top:10px;
+		
+	
+}
+
+#canteen-order-status .order-status .context #created {
+
+		top:75px;
+		
+	
+}
+
+#canteen-order-status .order-status .context #modified {
+
+		top:75px;
+		left:208px;
+	
+}
+
+
+#canteen-order-status .order-status .context #order-status {
+
+		top:145px;
+	
+	
+}
+
+#canteen-order-status .order-status .context #wh-status {
+
+		top:210px;
+	
+	
+}
 
 
 

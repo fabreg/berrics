@@ -35,7 +35,7 @@ class CanteenCategory extends AppModel {
 				
 			}
 			
-			$cats['raw'] = $tree;
+			//$cats['raw'] = $tree;
 			
 			Cache::write($token,$cats,"1min");
 			
