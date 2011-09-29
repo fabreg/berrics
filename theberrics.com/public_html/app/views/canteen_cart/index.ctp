@@ -162,12 +162,12 @@ function validateExp() {
 	
 	
 }
-function Mod10(id) {  // v2.0
+function Mod10(id) {  
 
-	 var ele = $("#"+id);
-		var val = $(ele).val();
-		var ccNumb = val.replace(/\s+/g,'');
-		var parent = $(ele).parent();
+	var ele = $("#"+id);
+	var val = $(ele).val();
+	var ccNumb = val.replace(/\s+/g,'');
+	var parent = $(ele).parent();
 
 	var valid = "0123456789"  // Valid digits in a credit card number
 	var len = ccNumb.length;  // The length of the submitted cc number

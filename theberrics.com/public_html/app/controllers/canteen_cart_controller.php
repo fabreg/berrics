@@ -85,6 +85,8 @@ class CanteenCartController extends CanteenAppController {
 
 			$this->data = $this->CanteenOrder->calculateCartTotal($order);
 			$this->data['CanteenOrder']['same_as_shipping_checkbox']=1;
+			$geo_c = env("GEOIP_COUNTRY_CODE");
+			$this->data['CanteenOrder']['country'] = (strlen($geo_c)<=0) ? "US":$geo_c;
 			
 		}
 		
