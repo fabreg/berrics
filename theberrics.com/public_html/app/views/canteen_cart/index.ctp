@@ -76,7 +76,7 @@ function validateTextField(id) {
 
 		if(!$(parent).hasClass('bad')) {
 			//$(parent).removeClass('good');
-			$(parent).switchClass('good','bad','slow');
+			$(parent).switchClass('good','bad','fast');
 			
 
 		}
@@ -86,7 +86,7 @@ function validateTextField(id) {
 		if(!$(parent).hasClass('good')) {
 
 		//	$(parent).removeClass('bad');
-			$(parent).switchClass('bad','good','slow');
+			$(parent).switchClass('bad','good','fast');
 			
 		}
 
@@ -110,7 +110,7 @@ function validateEmail(id) {
 
 		   if(!$(parent).hasClass('bad')) {
 
-				$(parent).addClass('bad','slow');
+				$(parent).addClass('bad','fast');
 				$(parent).removeClass('good');
 
 			}
@@ -119,7 +119,7 @@ function validateEmail(id) {
 
 		   if(!$(parent).hasClass('good')) {
 
-				$(parent).addClass('good','slow');
+				$(parent).addClass('good','fast');
 				$(parent).removeClass('bad');
 			}
 
@@ -150,14 +150,14 @@ function validateExp() {
 	if(!valid) {
 
 	
-		$(pMonth).switchClass('good','bad','slow');
+		$(pMonth).switchClass('good','bad','fast');
 
-		$(pYear).switchClass('good','bad','slow');
+		$(pYear).switchClass('good','bad','fast');
 	} else {
 
 
-			$(pMonth).switchClass('bad','good','slow');
-			$(pYear).switchClass('bad','good','slow');
+			$(pMonth).switchClass('bad','good','fast');
+			$(pYear).switchClass('bad','good','fast');
 	}
 	
 	
