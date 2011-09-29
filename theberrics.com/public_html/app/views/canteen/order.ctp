@@ -31,6 +31,21 @@
 				<div class='heading'>WAREHOUSE STATUS:</div>
 				<?php echo strtoupper($order['CanteenOrder']['wh_status']); ?>
 			</div>
+			<!-- shipping status -->
+			<div class='text-item' id='shipping-status'>
+				<div class='heading'>SHIPPING STATUS:</div>
+				<?php echo strtoupper($order['CanteenOrder']['shipping_status']); ?>
+			</div>
+			<!-- shipping Carier -->
+			<div class='text-item' id='shipping-carrier'>
+				<div class='heading'>SHIPPING CARRIER:</div>
+				<?php echo strtoupper($order['CanteenOrder']['shipping_carrier']); ?>
+			</div>
+			<!-- shipping tracking -->
+			<div class='text-item' id='shipping-tracking'>
+				<div class='heading'>SHIPPING TRACKING:</div>
+				<?php echo strtoupper($order['CanteenOrder']['shipping_tracking']); ?>
+			</div>
 		</div>
 	</div>
 	<div class='order-notes'>

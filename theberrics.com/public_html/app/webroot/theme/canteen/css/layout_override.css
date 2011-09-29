@@ -1143,7 +1143,7 @@ border-bottom:1px solid #333;
 #canteen-cart .checkout .form .shipping {
 
 	float:left;
-	width:310px;
+	width:295px;
 	min-height:100px;
 	
 	margin-left:28px;
@@ -1152,10 +1152,10 @@ border-bottom:1px solid #333;
 #canteen-cart .checkout .form .billing {
 
 	float:right;
-	width:310px;
+	width:295px;
 	min-height:100px;
 
-	margin-right:15px;
+	margin-right:25px;
 }
 
 #canteen-cart .checkout .form .heading {
@@ -1273,6 +1273,23 @@ border-bottom:1px solid #333;
 	cursor:pointer;
 
 }
+
+#canteen-cart .checkout .form .good {
+
+	background-image:url(/img/layout/canteen/cart/good.png);
+	background-repeat:no-repeat;
+	background-position:center right;
+	
+}
+#canteen-cart .checkout .form .bad {
+
+	background-image:url(/img/layout/canteen/cart/bad.png);
+	background-repeat:no-repeat;
+	background-position:center right;
+	
+}
+
+
 
 
 /*
@@ -1403,6 +1420,34 @@ border-bottom:1px solid #333;
 	
 	
 }
+
+
+#canteen-order-status .order-status .context #shipping-status {
+
+		top:280px;
+	
+	
+}
+
+#canteen-order-status .order-status .context #shipping-carrier {
+
+		top:348px;
+	
+	
+}
+
+#canteen-order-status .order-status .context #shipping-tracking {
+
+		top:415px; 
+	
+	
+}
+
+
+
+
+
+
 
 
 
