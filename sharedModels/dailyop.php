@@ -777,10 +777,13 @@ class Dailyop extends AppModel {
 		if (!empty($extra['contain'])) {
 			$contain = $extra['contain'];
 		}
+		
+		if(is_array($extra['joins'])) $joins = $extra['joins'];
+
 		$uniqueCacheId = md5($uniqueCacheId);
 		$pagination = Cache::read('pagination-'.$this->alias.'-'.$uniqueCacheId, 'paginate_cache');
 		if (empty($pagination)) {
-			$pagination = $this->find('all', compact('conditions', 'fields', 'order', 'limit', 'page', 'recursive', 'group', 'contain'));
+			$pagination = $this->find('all', compact('conditions', 'fields', 'order', 'limit', 'page', 'recursive', 'group', 'contain','joins'));
 			Cache::write('pagination-'.$this->alias.'-'.$uniqueCacheId, $pagination, 'paginate_cache');
 		}
 		return $pagination;
@@ -796,10 +799,10 @@ class Dailyop extends AppModel {
 		if (!empty($extra['contain'])) {
 			$contain = $extra['contain'];
 		}
-
+			if(is_array($extra['joins'])) $joins = $extra['joins'];
 		$paginationcount = Cache::read('paginationcount-'.$this->alias.'-'.$uniqueCacheId, 'paginate_cache');
 		if (empty($paginationcount)) {
-			$paginationcount = $this->find('count', compact('conditions', 'contain', 'recursive'));
+			$paginationcount = $this->find('count', compact('conditions', 'contain', 'recursive','joins'));
 			Cache::write('paginationcount-'.$this->alias.'-'.$uniqueCacheId, $paginationcount, 'paginate_cache');
 		}
 		return $paginationcount;
