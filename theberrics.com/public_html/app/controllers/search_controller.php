@@ -85,6 +85,8 @@ class SearchController extends BerricsAppController {
 		
 		);
 			
+		$this->Dailyop->recursive = 2;
+		
 		$posts_data = $this->paginate("Dailyop");
 		
 		$posts_data_total = $this->params['paging']['Dailyop']['count'];
