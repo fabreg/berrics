@@ -148,16 +148,15 @@ function validateExp() {
 	}
 
 	if(!valid) {
-
-	
+		
 		$(pMonth).switchClass('good','bad','fast');
-
 		$(pYear).switchClass('good','bad','fast');
+		
 	} else {
 
+		$(pMonth).switchClass('bad','good','fast');
+		$(pYear).switchClass('bad','good','fast');
 
-			$(pMonth).switchClass('bad','good','fast');
-			$(pYear).switchClass('bad','good','fast');
 	}
 	
 	

@@ -73,7 +73,7 @@ class TagsController extends BerricsAppController {
 	public function paginate_posts($tag_id) {
 		
 		$this->loadModel("Dailyop");
-		
+		$this->Dailyop->recursive=2;
 		$this->paginate['Dailyop'] = array(
 		
 			"conditions"=>array(
