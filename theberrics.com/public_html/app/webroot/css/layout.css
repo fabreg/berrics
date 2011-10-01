@@ -1915,6 +1915,51 @@ CANTEEN CART WIDGET THING
 
 #canteen-cart-widget {
 	
+	position:absolute;
+	top:0px;
+	right:15px;
+	width:221px;
+	font-size:14px;
+	color:#666;
+	font-family:'Courier';
+	height:100px;
+}
+
+#canteen-cart-widget .header-img {
+	
+	height:32px;
+	background-image:url(/img/layout/canteen/cart/cart-widget-header.jpg);
+	
+}
+
+#canteen-cart-widget .account {
+	
+	padding-top:5px;
+	padding-bottom:5px;
+	
+}
+
+#canteen-cart-widget .cart-items {
+	
+	
+}
+
+#canteen-cart-widget .cart-items .cart-icon {
+
+	height:21px;
+	width:19px;
+	background-image:url(/img/layout/canteen/cart/cart-widget-icon.jpg);
+	float:right;	
+	
+}
+#canteen-cart-widget .cart-items .cart-link {
+	
+}
+
+#canteen-cart-widget .cart-items .item-count {
+
 		
 	
 }
+
+
