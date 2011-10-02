@@ -7,7 +7,6 @@
 			</div>
 			<div class='cart-link'><a href='/canteen/cart'>View Cart</a></div>
 			<div class='cart-icon'></div>
-			
 			<div style='clear:both;'></div>
 		</div>
 </div>
