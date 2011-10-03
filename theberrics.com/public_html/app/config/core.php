@@ -318,7 +318,7 @@ require_once('../../../../sharedConfig/cache_config.php');
 
 
  Cache::config('paginate_cache', array(
- 	'engine' => 'File', //[required]
+ 	'engine' => 'Memcache', //[required]
  	'duration'=> 120, //[optional]
  	'probability'=> 10000, //[optional]
   	'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
