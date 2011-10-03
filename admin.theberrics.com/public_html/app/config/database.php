@@ -3,7 +3,7 @@ class DATABASE_CONFIG {
 	
 	public $default = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.181.66.225',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -13,7 +13,7 @@ class DATABASE_CONFIG {
 	
 	public $master = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.181.91.233',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -24,7 +24,7 @@ class DATABASE_CONFIG {
 	
 	public $traffic = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.181.80.72',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -34,7 +34,7 @@ class DATABASE_CONFIG {
 	/*
 	public $default = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.181.66.238',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -44,7 +44,7 @@ class DATABASE_CONFIG {
 	
 	public $master = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.181.66.238',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -55,7 +55,7 @@ class DATABASE_CONFIG {
 	*/
 	public $legacy = array(
 		'driver' => 'mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.181.91.233',
 		'login' => 'john',
 		'password' => '19Berrics82',
