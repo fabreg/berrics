@@ -32,25 +32,14 @@ class CanteenController extends CanteenAppController {
 
 	public function category() {
 		
-		$this->loadModel("CanteenCategory");
+		$this->loadModel("CanteenCategory"); 
 		$this->loadModel("CanteenProduct");
 		
 		$uri = $this->params['uri'];
 		
-		$cat_token = "canteen_cat_".md5($uri);
-		
-		if(($category = Cache::read($cat_token,"1min")) === false) {
-
-			$category = $this->CanteenCategory->find("first",array(
-			
-				"conditions"=>array("CanteenCategory.uri"=>$uri,"CanteenCategory.active"=>1),
-				"contain"=>array()
-			
-			));
-
-			Cache::write($cat_token,$category,"1min");
-			
-		}
+		$category = $this->CanteenCategory->grabSubcat(array(
+			"CanteenCategory.uri"=>$uri
+		));
 
 		$this->set(compact("category"));
 		
@@ -62,18 +51,41 @@ class CanteenController extends CanteenAppController {
 				"CanteenProduct.active"=>1,
 				"CanteenProduct.featured"=>1
 			),
-			"contain"=>array()
+			"contain"=>array(),
+			"order"=>array("CanteenProduct.display_weight"=>"ASC")
 		));
 		
 		$prod_ids = Set::extract("/CanteenProduct/id",$prod_ids);
 		
 		$products = array();
-		
-		//die(print_r($prod_ids));
-		
+
 		foreach($prod_ids as $id) {
 			
-			$products[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$id)),$this->isAdmin(),false,array("no_related"=>true));
+			//$products[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$id)),$this->isAdmin(),false,array("no_related"=>true));
+			
+			$token = "cat_product_".$id;
+			
+			if(($p = Cache::read($token,"1min")) === false) {
+				
+				$p = $this->CanteenProduct->find("first",array(
+						"conditions"=>array(
+							"CanteenProduct.id"=>$id,
+							"CanteenProduct.active"=>1,
+							"CanteenProduct.featured"=>1,
+							
+						),
+						"contain"=>array(
+							"CanteenProductImage"=>array(),
+							"CanteenProductPrice",
+							"Brand"
+						)
+					));
+			
+				Cache::write($token,$p,"1min");
+				
+			}
+			
+			$products[] = $p;
 			
 		}
 		
@@ -94,6 +106,10 @@ class CanteenController extends CanteenAppController {
 				$this->set(compact("order"));
 				
 			}
+			
+		} else {
+			
+			return $this->cakeError("error404");
 			
 		}
 		

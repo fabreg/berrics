@@ -12,7 +12,7 @@ $price = Set::extract("/CanteenProductPrice[currency_id={$user_currency_id}]",$p
 		<div class='name'><?php echo strtoupper($product['CanteenProduct']['name']); ?></div>
 		<div class='sub-title'><?php echo $product['CanteenProduct']['sub_title']; ?>&nbsp;</div>
 		<div class='price'>
-			<?php echo $price[0]['CanteenProductPrice']['price']; ?>
+			<?php echo $this->Number->currency($price[0]['CanteenProductPrice']['price'],$user_currency_id); ?>
 		</div>
 	</div>
 	<div>

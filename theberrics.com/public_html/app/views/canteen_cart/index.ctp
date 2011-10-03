@@ -1,357 +1,5 @@
 <style>
 
-#canteen-cart {
-
-
-} 
-
-
-#canteen-cart .items {
-
-	width:86%;
-	margin-left:85px;
-
-}
-
-#canteen-cart .items table {
-	
-	width:100%;
-	font-size:14px;
-	color:#333;	
-	border:1px solid #c1c1c1;
-	border-right:none;
-	border-bottom:none;
-}
-
-#canteen-cart .items table th {
-
-	font-family:'Arial';
-	font-size:10px;
-	font-weight:bold;
-	border:1px solid #c1c1c1;
-	border-left:none;
-	border-top:none;
-	padding:8px;
-	
-}
-
-#canteen-cart .items table td {
-
-	border:1px solid #c1c1c1;
-	border-left:none;
-	border-top:none;
-	padding:3px;
-	color:black;
-	font-family:'Courier';
-	font-size:14px;
-}
-
-#canteen-cart .items table .price {
-
-	text-align:center;
-	width:130px;
-
-}
-#canteen-cart .items table td .brand {
-
-	font-family:'Arial';
-	font-size:11px;
-	font-weight:bold;
-	color:#777;
-}
-
-#canteen-cart .items table .item-wrapper {
-
-	position:relative;
-
-}
-
-
-#canteen-cart .items table .item-wrapper .delete {
-
-	position:absolute;
-	font-size:11px;
-	font-family:'Arial';
-	text-decoration:underline;
-	cursor:pointer;
-	font-weight:bold;
-	bottom:0px;
-	right:0px;
-	color:#666;
-	
-}
-
-#canteen-cart .items table .qty {
-
-	width:65px;
-	
-}
-
-#canteen-cart .items table .product-option {
-
-	font-style:italic;
-	color:#000;
-	font-size:13px;
-	font-family:'Courier';
-
-}
-
-#canteen-cart .items table .product-img {
-
-	padding-left:8px;
-	padding-right:8px;
-
-}
-
-#canteen-cart .container {
-
-	background-image:url(/img/layout/canteen/cart/cart-repeat-bg.jpg);
-	margin-top:346px;
-}
-
-#canteen-cart .container-top {
-
-	background-image:url(/img/layout/canteen/cart/cart-content-top.jpg);
-	background-repeat:no-repeat;
-	margin-top:-346px;
-
-}
-
-#canteen-cart .header {
-
-	background-image:url(/img/layout/canteen/cart/cart-top.jpg);
-	height:98px;
-
-}
-#canteen-cart .header h1 {
-
-	margin:0px;
-	padding:0px;
-	font-weight:normal;
-	font-size:20px;
-	color:#646464;
-	text-indent:82px;
-	padding-top:17px;
-}
-
-#canteen-cart .checkout {
-
-}
-
-#canteen-cart .checkout .totals {
-
-	float:right;
-	width:210px;
-	margin-right:62px;
-
-}
-
-#canteen-cart .checkout .totals dl {
-
-	color:#000;
-	font-family:'Courier';
-	font-size:14px;
-	border:1px solid #c1c1c1;
-	border-top:none;
-}
-
-#canteen-cart .checkout .totals dt {
-
-	width:120px;
-	text-align:left;
-	height:25px;
-	line-height:25px;
-	text-indent:10px;
-}
-
-#canteen-cart .checkout .totals dd {
-
-	height:25px;
-	line-height:25px;
-	margin-top:-25px;
-	margin-left:121px;
-	
-}
-
-#canteen-cart .grand-total, #canteen-cart .grand-total-label {
-
-	border:1px solid #000;
-	font-weight:bold;
-
-}
-
-#canteen-cart .checkout .totals .grand-total {
-
-	border-left:none;
-	margin-top:-27px;
-}
-#canteen-cart .grand-total-label {
-	
-	border-right:none;
-
-}
-
-#canteen-cart .checkout .form {
-
-	float:left;
-	width:684px;
-
-	margin-left:85px;
-	margin-top:10px;
-}
-#canteen-cart .checkout .form .container {
-
-
-	background-image:url(/img/layout/canteen/cart/form-repeat.jpg);
-	margin-top:302px;
-
-}
-
-#canteen-cart .checkout .form .container-top {
-
-	background-image:url(/img/layout/canteen/cart/form-top.jpg);
-	margin-top:-302px;
-	min-height:200px;
-}
-#canteen-cart .checkout .form .form-bottom {
-
-	background-image:url(/img/layout/canteen/cart/form-bottom.jpg);
-	height:24px;
-}
-#canteen-cart .checkout .form .shipping {
-
-	float:left;
-	width:310px;
-	min-height:100px;
-	
-	margin-left:28px;
-}
-
-#canteen-cart .checkout .form .billing {
-
-	float:right;
-	width:310px;
-	min-height:100px;
-
-	margin-right:15px;
-}
-
-#canteen-cart .checkout .form .heading {
-
-	padding-top:11px;
-
-}
-#canteen-cart .checkout .form .heading h2 {
-
-	font-size:26px;
-	color:#a3a3a3;
-	padding:0px;
-	margin:0px;
-	text-align:center;
-	font-weight:normal;
-	
-}
-#canteen-cart .checkout .form h3 {
-
-	font-size:12px;
-	font-family:'Arial';
-	font-weight:bold;
-	color:#333;
-	padding:0px;
-	margin:0px;
-	padding-top:8px;
-	padding-bottom:10px;
-}
-
-#canteen-cart .checkout .form label {
-
-	width:102px;
-	background-color:#757575;
-	font-size:12px;
-	display:block;
-	font-family:'Courier';
-	float:left;
-	height:25px;
-	line-height:25px;
-	text-indent:6px;
-	margin-top:3px;
-}
-
-#canteen-cart .checkout .form div.input {
-
-	height:31px;
-	line-height:31px;
-
-}
-
-
-
-#canteen-cart .checkout .form div.text input, #canteen-cart .checkout .form div.select select {
-	
-	height:23px;
-	line-height:23px;
-	font-family:'Arial';
-	font-size:14px;
-	color:#333;
-	border:outset 1px white;
-	margin:0px;
-	margin-left:5px;
-	width:165px;
-}
-#billing-form {
-
-	display:none;
-
-}
-
-#same-as-shipping-check {
-
-	float:left;
-	margin-right:5px;
-	margin-top:9px;
-}
-
-#canteen-cart .checkout #same-as-shipping-div label {
-
-	width:240px;
-	text-align:left;
-}
-#canteen-cart #grand-total {
-
-	border:dotted 2px #999;
-	border-left:none;
-	border-right:none;
-	width:65%;
-	font-family:'Courier';
-	color:#000;
-	margin-top:10px;
-	margin-bottom:10px;
-	
-}
-#canteen-cart #grand-total span {
-
-	color:#336633;
-
-}
-
-#canteen-cart .checkout .submit {
-
-	padding-top:10px;
-
-}
-
-#canteen-cart .checkout .submit input {
-
-	background-image:url(/img/layout/canteen/cart/complete-order-button.png);
-	height:35px;
-	width:216px;
-	border:none;
-	background-color:transparent;
-	text-indent:-100000px;
-	cursor:pointer;
-
-}
-
 </style>
 <script>
 $(document).ready(function() { 
@@ -386,9 +34,215 @@ function toggleBilling(check) {
 		$("#billing-form").slideDown();
 
 	}
-	
+
+	$('.form input[type=text],.form select').bind('blur keyup change',function() { 
+
+		var id = $(this).attr("id");
+
+		switch(id) {
+
+			//void all optional fields
+			case "CanteenOrderApt":
+			break;
+		
+			case "CanteenOrderEmail":
+				validateEmail(id);
+			break;
+			case "CardDataNumber":
+				Mod10(id);
+			break;
+			case "CardDataExpMonth":
+			case "CardDataExpYear":
+				validateExp();
+			break;
+			default:
+				validateTextField(id);
+			break;
+		
+		}
+
+		
+	});
 
 	
+}
+
+function validateTextField(id) {
+
+	var ele = $("#"+id);
+	var val = $(ele).val();
+	var parent = $(ele).parent();
+	if(val.length<2) {
+
+		if(!$(parent).hasClass('bad')) {
+			//$(parent).removeClass('good');
+			$(parent).switchClass('good','bad','fast');
+			
+
+		}
+		
+	} else {
+
+		if(!$(parent).hasClass('good')) {
+
+		//	$(parent).removeClass('bad');
+			$(parent).switchClass('bad','good','fast');
+			
+		}
+
+	}
+	
+}
+
+function validateSelect(id) {
+
+
+	
+}
+
+function validateEmail(id) {
+
+	 var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	 var ele = $("#"+id);
+		var val = $(ele).val();
+		var parent = $(ele).parent();
+	   if(reg.test(val) == false) {
+
+		   if(!$(parent).hasClass('bad')) {
+
+				$(parent).addClass('bad','fast');
+				$(parent).removeClass('good');
+
+			}
+			 
+	   } else {
+
+		   if(!$(parent).hasClass('good')) {
+
+				$(parent).addClass('good','fast');
+				$(parent).removeClass('bad');
+			}
+
+	   }
+	
+}
+
+function validateExp() {
+
+	//var ele = $("#"+id);
+	var pMonth = $("#CardDataExpMonth").parent();
+	var pYear = $("#CardDataExpYear").parent();
+	var month = $("#CardDataExpMonth").val();
+	var year = "20"+$("#CardDataExpYear").val();
+
+	var d = new Date();
+	
+	var t_month = d.getMonth();
+	var t_year = d.getFullYear();
+
+	var valid = false;
+	if(((Number(year) == t_year) && (Number(month) >= (t_month+1))) || (Number(year)>t_year)) {
+
+		valid = true;
+		
+	}
+
+	if(!valid) {
+		
+		$(pMonth).switchClass('good','bad','fast');
+		$(pYear).switchClass('good','bad','fast');
+		
+	} else {
+
+		$(pMonth).switchClass('bad','good','fast');
+		$(pYear).switchClass('bad','good','fast');
+
+	}
+	
+	
+}
+function Mod10(id) {  
+
+	var ele = $("#"+id);
+	var val = $(ele).val();
+	var ccNumb = val.replace(/\s+/g,'');
+	var parent = $(ele).parent();
+
+	var valid = "0123456789"  // Valid digits in a credit card number
+	var len = ccNumb.length;  // The length of the submitted cc number
+	var iCCN = parseInt(ccNumb);  // integer of ccNumb
+	var sCCN = ccNumb.toString();  // string of ccNumb
+	sCCN = sCCN.replace (/^s+|s+$/g,'');  // strip spaces
+	var iTotal = 0;  // integer total set at zero
+	var bNum = true;  // by default assume it is a number
+	var bResult = false;  // by default assume it is NOT a valid cc
+	var temp;  // temp variable for parsing string
+	var calc;  // used for calculation of each digit
+
+	// Determine if the ccNumb is in fact all numbers
+	for (var j=0; j<len; j++) {
+	  temp = "" + sCCN.substring(j, j+1);
+	  if (valid.indexOf(temp) == "-1"){bNum = false;}
+	}
+
+	// if it is NOT a number, you can either alert to the fact, or just pass a failure
+	if(!bNum){
+	  /*alert("Not a Number");*/bResult = false;
+	}
+
+	// Determine if it is the proper length 
+	if((len == 0)&&(bResult)){  // nothing, field is blank AND passed above # check
+	  bResult = false;
+	} else{  // ccNumb is a number and the proper length - let's see if it is a valid card number
+	  if(len >= 15){  // 15 or 16 for Amex or V/MC
+	    for(var i=len;i>0;i--){  // LOOP throught the digits of the card
+	      calc = parseInt(iCCN) % 10;  // right most digit
+	      calc = parseInt(calc);  // assure it is an integer
+	      iTotal += calc;  // running total of the card number as we loop - Do Nothing to first digit
+	      i--;  // decrement the count - move to the next digit in the card
+	      iCCN = iCCN / 10;                               // subtracts right most digit from ccNumb
+	      calc = parseInt(iCCN) % 10 ;    // NEXT right most digit
+	      calc = calc *2;                                 // multiply the digit by two
+	      // Instead of some screwy method of converting 16 to a string and then parsing 1 and 6 and then adding them to make 7,
+	      // I use a simple switch statement to change the value of calc2 to 7 if 16 is the multiple.
+	      switch(calc){
+	        case 10: calc = 1; break;       //5*2=10 & 1+0 = 1
+	        case 12: calc = 3; break;       //6*2=12 & 1+2 = 3
+	        case 14: calc = 5; break;       //7*2=14 & 1+4 = 5
+	        case 16: calc = 7; break;       //8*2=16 & 1+6 = 7
+	        case 18: calc = 9; break;       //9*2=18 & 1+8 = 9
+	        default: calc = calc;           //4*2= 8 &   8 = 8  -same for all lower numbers
+	      }                                               
+	    iCCN = iCCN / 10;  // subtracts right most digit from ccNum
+	    iTotal += calc;  // running total of the card number as we loop
+	  }  // END OF LOOP
+	  if ((iTotal%10)==0){  // check to see if the sum Mod 10 is zero
+	    bResult = true;  // This IS (or could be) a valid credit card number.
+	  } else {
+	    bResult = false;  // This could NOT be a valid credit card number
+	    }
+	  }
+	}
+	// change alert to on-page display or other indication as needed.
+	
+	if(!bResult) {
+	
+		   if(!$(parent).hasClass('bad')) {
+	
+				$(parent).addClass('bad');
+				$(parent).removeClass('good');
+	
+			}
+			 
+	} else {
+	
+		   if(!$(parent).hasClass('good')) {
+	
+				$(parent).addClass('good');
+				$(parent).removeClass('bad');
+			}
+	
+	}
 }
 </script>
 <?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here)); ?>
