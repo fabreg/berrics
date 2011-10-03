@@ -310,40 +310,21 @@
  *	));
  *
  */
-	Cache::config('1min', array(
- 		'engine' => 'File', //[required]
- 		'duration'=> 60, //[optional]
- 		'probability'=> 50, //[optional]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional]
- 	));
+
+	
+	require_once('../../../../sharedConfig/cache_config.php'); 	
+	
  	Cache::config('paginate_cache', array(
- 		'engine' => 'File', //[required]
+ 		'engine' => 'Memcache', //[required]
  		'duration'=> 1, //[optional]
  		'probability'=> 1, //[optional]
   		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'prefix' => 'cake_admin', //[optional]  prefix every cache file with this string
   		'lock' => false, //[optional]  use file locking
   		'serialize' => true, //[optional]
- 	));
- 	 Cache::config('5min', array(
- 		'engine' => 'File', //[required]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional],
-  	 	'duration'=> 300, //[optional]
- 	));
- 	
- 	 Cache::config('1day', array(
- 		'engine' => 'File', //[required]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional],
-  	 	'duration'=> '1 Day', //[optional]
+ 		"servers"=>array(
+ 			$memcache_server
+ 		)
  	));
 	 Cache::config('30day', array(
  		'engine' => 'File', //[required]
@@ -352,6 +333,7 @@
   		'lock' => false, //[optional]  use file locking
   		'serialize' => true, //[optional],
   	 	'duration'=> '30 Day', //[optional]
+
  	));
-	Cache::config('default', array('engine' => 'File'));
-?>
+
+ 	
