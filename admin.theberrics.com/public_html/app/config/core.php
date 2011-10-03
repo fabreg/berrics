@@ -322,9 +322,7 @@
   		'prefix' => 'cake_admin', //[optional]  prefix every cache file with this string
   		'lock' => false, //[optional]  use file locking
   		'serialize' => true, //[optional]
- 		"servers"=>array(
- 			$memcache_server
- 		)
+ 		"servers"=>$memcache_server
  	));
 	 Cache::config('30day', array(
  		'engine' => 'File', //[required]
