@@ -312,7 +312,7 @@
  */
 
 	
-	require_once('../../../../sharedConfig/cache_config.php'); 	
+	require_once('/home/sites/berrics.dev/sharedConfig/cache_config.php'); 	
 	
  	Cache::config('paginate_cache', array(
  		'engine' => 'Memcache', //[required]
