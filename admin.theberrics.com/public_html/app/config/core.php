@@ -312,17 +312,69 @@
  */
 
 	
-	require_once('/home/sites/berrics.dev/sharedConfig/cache_config.php'); 	
 	
+ 	Cache::config('1min', array(
+ 		'engine' => 'File', //[required]
+ 		'duration'=> 60, //[optional]
+ 		'probability'=> 5000, //[optional]
+  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'lock' => false, //[optional]  use file locking
+  		'serialize' => true, //[optional]
+ 	 	
+ 	));
+
+  	 Cache::config('5min', array(
+ 		'engine' => 'File', //[required]
+  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'lock' => false, //[optional]  use file locking
+  		'serialize' => true, //[optional],
+  	 	'duration'=> 300, //[optional]
+  	 	
+ 	));
+	
+ 	 Cache::config('30sec', array(
+ 		'engine' => 'File', //[required]
+ 		'duration'=> 30, //[optional]
+ 		'probability'=> 15000, //[optional]
+  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'lock' => false, //[optional]  use file locking
+  		'serialize' => true, //[optional]
+ 	 	
+ 	));
+ 	
+ 	 Cache::config('1day', array(
+ 		'engine' => 'File', //[required]
+  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'lock' => false, //[optional]  use file locking
+  		'serialize' => true, //[optional],
+  	 	'duration'=> '1 Day', //[optional]
+ 	 	
+ 	));
+
+ 	Cache::config('_cake_core_', array(
+ 			   'engine' => 'File',
+               'duration'=> 3600,
+               'probability'=> 10000,
+			 	
+ 	 ));
+
+	Cache::config('default', array(
+		'engine' => 'File',
+		
+	));
  	Cache::config('paginate_cache', array(
- 		'engine' => 'Memcache', //[required]
+ 		'engine' => 'File', //[required]
  		'duration'=> 1, //[optional]
  		'probability'=> 1, //[optional]
   		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
   		'prefix' => 'cake_admin', //[optional]  prefix every cache file with this string
   		'lock' => false, //[optional]  use file locking
   		'serialize' => true, //[optional]
- 		"servers"=>$memcache_server
+ 		
  	));
 	 Cache::config('30day', array(
  		'engine' => 'File', //[required]
