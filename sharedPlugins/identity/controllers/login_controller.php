@@ -33,12 +33,19 @@ class LoginController extends IdentityAppController {
 		
 	}
 	
-	public function logout() {
-		
+	public function logout($callback = false) {
 		
 		$this->Auth->logout();
 		
-		return $this->redirect("/");
+		$uri = "/";
+		
+		if($callback) {
+			
+			$uri = base64_decode($callback);
+			
+		}
+		
+		return $this->redirect($uri);
 		
 	}
 	
@@ -61,17 +68,13 @@ class LoginController extends IdentityAppController {
 	}
 	
 	public function handle_facebook_callback($callback = false) {
-		
+		$this->log("error","error");
 		$fb = FacebookApi::instance();
 
 		$fb_session = $fb->facebook->getSession();
-		
-	
-		
+
 		$fb_user = $fb->facebook->api("/me");
-		
-			
-		
+
 		$fb_data = array(
 		
 			"facebook_account_num" => $fb_user['id'],
@@ -81,6 +84,7 @@ class LoginController extends IdentityAppController {
 			"profile_image_url"=>"http://graph.facebook.com/".$fb_user['id']."/picture"
 		
 		);
+		
 		
 		
 		if($callback) {

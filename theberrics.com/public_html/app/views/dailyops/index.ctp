@@ -36,7 +36,7 @@ foreach($dailyops as $k=>$dop):
 	if($k == 0) {
 		
 		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style='color:#691400;'>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
-		echo "<div style='text-align:center;'><a href='/bang-yoself-3' title='Bang Yoself! 3'><img src='/img/layout/by3/BYS_toppost3.jpg' border='0' alt='Bang Yoself! 3' /></a></div>";
+		//echo "<div style='text-align:center;'><a href='/bang-yoself-3' title='Bang Yoself! 3'><img src='/img/layout/by3/BYS_toppost3.jpg' border='0' alt='Bang Yoself! 3' /></a></div>";
 	}
 
 	
