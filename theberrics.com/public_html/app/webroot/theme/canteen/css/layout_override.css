@@ -90,6 +90,8 @@ body {
 	cursor:pointer;
 	height:41px;
 	line-height:35px;
+	padding-left:3px;
+	padding-right:3px;
 }
 #canteen-navbar ul li a {
 
@@ -101,11 +103,18 @@ body {
 
 	position:absolute;	
 	top:41px;
-	background-color:#e9e9e9;
+	background-color:#111;
 	left:0px;
 	min-width:190px;
 	display:none;
+	border:1px solid #ccc;
+	border-top:none;
+}
+#canteen-navbar ul .over {
+
 	
+	color:#666;	
+
 }
 
 #canteen-navbar ul li ul li {
@@ -116,6 +125,7 @@ body {
 	height:22px;
 	font-size:16px;
 	line-height:22px;
+	font-style:italic;
 	
 }
 

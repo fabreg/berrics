@@ -7,12 +7,12 @@ $(document).ready(function() {
 			//$("#canteen-navbar ul li ul").hide();
 			
 			$(this).find("ul").show('normal');
-			
+			$(this).addClass("over");
 		},
 		function() { 
 
 			$(this).find("ul").hide();
-			
+			$(this).removeClass("over");
 		}
 	);
 
