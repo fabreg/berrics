@@ -5,6 +5,8 @@ App::import("Controller","BerricsApp");
 class AccountController extends BerricsAppController {
 	
 	
+	public $uses = array();
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -15,4 +17,17 @@ class AccountController extends BerricsAppController {
 		
 	}
 
+	public function index() {
+		
+		
+		
+	}
+	
+	public function canteen() {
+		
+		
+		
+	}
+	
+	
 }

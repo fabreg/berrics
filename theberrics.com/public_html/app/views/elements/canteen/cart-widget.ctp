@@ -4,7 +4,7 @@
 			<?php if(!$this->Session->check("Auth.User.id")): ?>
 			<a href='' rel='cart-login' callback='<?php echo base64_encode("/account"); ?>'>Login To Your Account</a>
 			<?php else: ?>
-			<a>My Account</a> | <a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a>
+			<a href='/account/canteen'>My Account</a> | <a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a>
 			<?php endif; ?>
 		</div>
 		<div class='cart-items'>
