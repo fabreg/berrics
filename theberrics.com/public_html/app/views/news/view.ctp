@@ -103,7 +103,7 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 		<div class='text-item'>
 			<?php echo $img_file; ?>
 			<?php 
-				echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".nl2br($t['text_content']); 
+				echo nl2br($t['text_content']); 
 			?>
 			<div style='clear:both;'></div>
 		</div>

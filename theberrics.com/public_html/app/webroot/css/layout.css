@@ -32,7 +32,7 @@ TOP BANNER
     top:0px;
     left:0px;
     width:100%;
-    z-index:15000;
+    z-index:1500;
     background-color:black;
 }
 
@@ -1936,7 +1936,7 @@ CANTEEN CART WIDGET THING
 	
 	padding-top:5px;
 	padding-bottom:5px;
-	
+	text-align:right;
 }
 
 #canteen-cart-widget .cart-items {
@@ -1991,3 +1991,59 @@ CANTEEN CART WIDGET THING
 }
 
 
+/*
+	LOGIN OVERLAY
+	
+*/
+
+#login-overlay {
+	
+	background-image:url(/img/layout/login/login-overlay-bg.png);
+	position:absolute;
+	width:100%;
+	top:0px;
+	left:0px;
+	z-index:1600;
+	min-height:200px;
+}
+
+#login-overlay-wrapper {
+
+	position:relative;
+	width:100%;
+		
+}
+
+
+#login-overlay-box {
+	
+	background-image:url(/img/layout/login/login-box-bg.jpg);
+	height:266px;
+	width:523px;
+	margin:auto;
+	-moz-box-shadow:1px 1px 6px 1px #000000;
+	-webkit-box-shadow:1px 1px 6px 1px #000000;
+	box-shadow:1px 1px 6px 1px #000000;
+	filter: progid:DXImageTransform.Microsoft.Shadow(strength=1, direction=135, color='#000000');
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=1, Direction=135, Color='#000000')";
+}
+
+#login-overlay-box h1 {
+
+	font-size:26px;
+	font-weight:normal;
+	color:#333;
+	text-align:center;	
+	padding:0px;
+	margin:0px;
+	padding-top:20px;
+}
+
+#login-overlay-box .facebook {
+
+	text-align:center;
+	padding-top:20px;	
+	
+}
+	
+	

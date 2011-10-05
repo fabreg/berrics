@@ -33,7 +33,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	if($_GET['t'] == 1) {
+	if(isset($_GET['t']) && $_GET['t'] == 1) {
 		
 		Configure::write('debug', 2);
 		
@@ -59,7 +59,7 @@
  *    Configure::write('log', E_ERROR | E_WARNING);
  *    Configure::write('log', E_ALL ^ E_NOTICE);
  */
-	Configure::write('log', false);
+	Configure::write('log', true);
 
 /**
  * Application wide charset encoding
@@ -313,51 +313,18 @@
  */
 
 //1 minute cache
- 	 Cache::config('1min', array(
- 		'engine' => 'File', //[required]
- 		'duration'=> 60, //[optional]
- 		'probability'=> 5000, //[optional]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional]
- 	));
+require_once('../../../../sharedConfig/cache_config.php'); 	
 
-  	 Cache::config('5min', array(
- 		'engine' => 'File', //[required]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional],
-  	 	'duration'=> 300, //[optional]
- 	));
-	
- 	 Cache::config('30sec', array(
- 		'engine' => 'File', //[required]
- 		'duration'=> 30, //[optional]
- 		'probability'=> 15000, //[optional]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional]
- 	));
- 	
- 	 Cache::config('1day', array(
- 		'engine' => 'File', //[required]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional],
-  	 	'duration'=> '1 Day', //[optional]
- 	));
- 	Cache::config('paginate_cache', array(
- 		'engine' => 'File', //[required]
- 		'duration'=> 120, //[optional]
- 		'probability'=> 10000, //[optional]
-  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
-  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
-  		'lock' => false, //[optional]  use file locking
-  		'serialize' => true, //[optional]
- 	));
- 	
-Cache::config('default', array('engine' => 'File'));
+
+
+ Cache::config('paginate_cache', array(
+ 	'engine' => 'Memcache', //[required]
+ 	'duration'=> 120, //[optional]
+ 	'probability'=> 10000, //[optional]
+  	'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  	'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  	'lock' => false, //[optional]  use file locking
+  	'serialize' => true, //[optional],
+ 	"servers"=>$memcache_server
+ ));
+

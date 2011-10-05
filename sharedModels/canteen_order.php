@@ -301,8 +301,7 @@ class CanteenOrder extends AppModel {
 			$screen = $this->screenOnlineOrder($CanteenOrder);
 			
 			switch($screen) {
-				
-				
+
 				case 1:
 					$method = "auth";
 				case 0:

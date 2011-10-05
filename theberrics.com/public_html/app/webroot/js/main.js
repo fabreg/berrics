@@ -20,6 +20,9 @@ $(document).ready(function() {
 	
 	(new Image()).src = "/img/layout/featured-bg.jpg";
 	
+	//init cart widget
+	CartWidget.docReady();
+	
 	//initTopNav();
 	initThumbHovers();
 	
@@ -460,6 +463,88 @@ function html5Video() {
 }
 
 
+/****
+ * 
+ * Canteen Widget
+ * 
+ */
+
+var CartWidget = {
+		
+		openLoginScreen:function() { 
+	
+			$('body').append("<div id='login-overlay'><div id='login-overlay-wrapper'><div id='login-overlay-box'><h1>- LOGIN TO THE BERRICS -</h1><div class='facebook'><a href='/identity/login/send_to_facebook'><img border='0' src='/img/login/facebook.png' /></a></div></div></div></div>");
+			this.handleResize("intro");
+			$("#login-overlay").click(function() { 
+				
+				CartWidget.handleClose();
+				
+			});
+		},
+		docReady:function() { 
+			
+			$("a[rel=cart-login]").click(function() { 
+				
+				CartWidget.openLoginScreen();
+				
+				return false;
+			});
+			
+		},
+		handleResize:function() { 
+		
+			
+			
+			var wh = $(window).height();
+			var ww = $(window).width();
+			
+			$('body,html').css({
+				
+				'overflow':'hidden'
+				
+			});
+			
+			if(arguments[0] == "intro") {
+				
+				$("#login-overlay-box").hide();
+				
+				$('#login-overlay').css({
+					
+					height:wh+'px'
+					
+				}).hide().fadeIn('normal',function() { 
+					
+					$("#login-overlay-box").slideDown('normal');
+					
+				});
+				
+				
+			} else {
+				
+				$('#login-overlay').css({
+					
+					height:wh+'px'
+					
+				});
+				
+			}
+			
+			
+			
+		},
+		handleClose:function() { 
+			
+			
+			$('body,html').css({
+				
+				'overflow':'auto'
+				
+			});
+			$("#login-overlay").remove();
+		}
+
+		
+};
 
 
 /*

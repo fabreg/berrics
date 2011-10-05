@@ -341,6 +341,8 @@ class Facebook
         // sig is good, use the signedRequest
         $session = $this->createSessionFromSignedRequest($signedRequest);
       }
+      
+      $_REQUEST['session'] = urldecode($_REQUEST['session']);
 
       // try loading session from $_REQUEST
       if (!$session && isset($_REQUEST['session'])) {
