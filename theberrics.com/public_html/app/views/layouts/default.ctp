@@ -37,7 +37,7 @@
 	<script type='text/javascript'>
 		var swfPlayer = "/swf/BerricsPlayer.swf";
 	</script>
-	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+	<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
 	
 	<?php
 		echo $fb_meta_img;
@@ -46,10 +46,10 @@
 		
 		echo $this->Html->script(array(
 		
-			"http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js",
-			"http://connect.facebook.net/en_US/all.js#xfbml=1",
-			"http://platform.twitter.com/widgets.js",
-			"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
+			"https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js",
+			"https://connect.facebook.net/en_US/all.js#xfbml=1",
+			"https://platform.twitter.com/widgets.js",
+			"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
 			"/js/jquery.scrollTo",
 			"jquery.swfobject",
 			"jquery.client"

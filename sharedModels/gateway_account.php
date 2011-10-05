@@ -292,7 +292,8 @@ class GatewayAccount extends AppModel {
 				"email"=>				$c['email'],
 				"postal"=>				$c['postal'],
 				"phone"=>				$c['phone'],
-				"cc_hash"=>				$cc['cc_hash']
+				"cc_hash"=>				$cc['cc_hash'],
+				"user_id"=>				$c['user_id']
 			
 			);
 			

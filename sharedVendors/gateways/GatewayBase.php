@@ -102,7 +102,6 @@ abstract class GatewayBase {
 			if(isset($this->user_billing_profile['postal'])) 		$this->customer['postal'] = 	$this->user_billing_profile['postal'];
 			if(isset($this->user_billing_profile['email'])) 		$this->customer['email'] = 		$this->user_billing_profile['email'];
 			if(isset($this->user_billing_profile['phone'])) 		$this->customer['phone'] = 		$this->user_billing_profile['phone'];
-			
 			if(isset($this->user_billing_profile['cc_hash'])) $this->card_data['cc_hash'] = $this->user_billing_profile['cc_hash'];
 			
 			

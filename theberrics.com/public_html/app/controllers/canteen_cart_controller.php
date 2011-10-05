@@ -42,6 +42,7 @@ class CanteenCartController extends CanteenAppController {
 				
 				if(!$this->Session->check("CanteenOrder.CanteenOrder.id")) {
 					
+					//did we check "same as shipping"?
 					if($this->data['CanteenOrder']['same_as_shipping_checkbox']==1) {
 						
 						$this->data['CanteenOrder']['bill_first_name'] = $this->data['CanteenOrder']['first_name'];
@@ -54,11 +55,13 @@ class CanteenCartController extends CanteenAppController {
 						
 					}
 					
+					//insert initial status as pending
 					$this->data['CanteenOrder']['order_status'] = 
 					$this->data['CanteenOrder']['shipping_status'] = 
 					$this->data['CanteenOrder']['wh_status'] = 
 					"pending";
 					
+					//set the IP address of the client
 					$this->data['CanteenOrder']['ip_address'] = (empty($_SERVER["GEOIP_ADDR"])) ? $_SERVER["REMOTE_ADDR"]:$_SERVER["GEOIP_ADDR"];
 					
 					if(empty($this->data['CanteenOrder']['geoip_country_code'])) $this->data['CanteenOrder']['geoip_country_code'] = 'US';
