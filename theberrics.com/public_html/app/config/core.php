@@ -33,7 +33,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	if($_GET['t'] == 1) {
+	if(isset($_GET['t']) && $_GET['t'] == 1) {
 		
 		Configure::write('debug', 2);
 		
@@ -59,7 +59,7 @@
  *    Configure::write('log', E_ERROR | E_WARNING);
  *    Configure::write('log', E_ALL ^ E_NOTICE);
  */
-	Configure::write('log', false);
+	Configure::write('log', true);
 
 /**
  * Application wide charset encoding

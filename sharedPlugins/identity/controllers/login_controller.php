@@ -1,5 +1,7 @@
 <?php
+
 App::import("Vendor","FacebookApi",array("file"=>"facebook_api.php"));
+
 class LoginController extends IdentityAppController {
 	
 	
@@ -15,19 +17,14 @@ class LoginController extends IdentityAppController {
 		
 		$this->Auth->allow("*");
 		
-		
 	}
 	
 	public function index() {
 		
 		
-		
 	}
-	
-	
-	
+
 	public function batb_login() {
-		
 		
 		
 		
@@ -68,7 +65,7 @@ class LoginController extends IdentityAppController {
 	}
 	
 	public function handle_facebook_callback($callback = false) {
-		$this->log("error","error");
+		
 		$fb = FacebookApi::instance();
 
 		$fb_session = $fb->facebook->getSession();
@@ -84,8 +81,6 @@ class LoginController extends IdentityAppController {
 			"profile_image_url"=>"http://graph.facebook.com/".$fb_user['id']."/picture"
 		
 		);
-		
-		
 		
 		if($callback) {
 			
@@ -108,41 +103,10 @@ class LoginController extends IdentityAppController {
 		
 		$this->userAccount = $this->User->locateLoginAccount($fb_data);
 		
-		/*
-		
-		//lets do some checks to see if this is the berrics admin panel
-		if($this->app_name == 'AdminPanel') {
-		
-			//double check to see if this is an admin
-			//so we can gracefully lock them out
-			if(!$this->userAccount['User']['user_group_id'] != '10') {
-				
-				die('Sorry brotha, your account does not have access to this section of the berrics.');
-				
-			}
-			
-		}
-		*/
-		
 		$this->authAccount();
 
 		return $this->redirect($callback);
-		
-		/*Array
-				(
-				    [id] => 1159116296
-				    [name] => John Hardy
-				    [first_name] => John
-				    [last_name] => Hardy
-				    [link] => http://www.facebook.com/profile.php?id=1159116296
-				    [gender] => male
-				    [email] => john.hardy@me.com
-				    [timezone] => -8
-				    [locale] => en_US
-				    [verified] => 1
-				    [updated_time] => 2009-10-27T14:42:20+0000
-				)
-		 */
+
 	}
 	
 	public function send_to_twitter() {
