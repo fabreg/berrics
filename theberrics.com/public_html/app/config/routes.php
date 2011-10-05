@@ -7,17 +7,7 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
-//how should we open the splash page?
-if(date('Y-m-d')=='2011-09-26') {
-	
-	Router::connect('/',array("controller"=>"splash","action"=>"dc"));
-	
-} else {
-	
-	Router::connect('/',array("controller"=>"splash","action"=>"index"));
-	
-}
-
+Router::connect('/',array("controller"=>"splash","action"=>"random"));
 
 Router::connect("/t-shirts",array("controller"=>"apparel","action"=>"index"));
 
