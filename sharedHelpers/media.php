@@ -71,8 +71,15 @@ class MediaHelper extends AppHelper {
 			
 		}
 		
+		$proto = 'https';
+		if(preg_match('/^(https)/g',$_SERVER['SCRIPT_URI'])) {
+			
+			$proto = 'https';
+			
+		}
+		
 		//return the thumbnail
-		return $this->Html->image("http://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,array("border"=>0));
+		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,array("border"=>0));
 			
 	}
 	
@@ -246,7 +253,15 @@ class MediaHelper extends AppHelper {
 		
 		$query = http_build_query($size);
 		
-		return "<img src='http://img.theberrics.com/i.php?".$query."' border='0' />";
+		$proto = 'http';
+		
+		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+			
+			$proto = 'https';
+			
+		}
+		
+		return "<img src='{$proto}://img.theberrics.com/i.php?".$query."' border='0' />";
 		
 	}
 	
@@ -264,7 +279,16 @@ class MediaHelper extends AppHelper {
 		
 		$q = http_build_query($size);
 		
-		return "<img alt='' border='0' src='http://img.theberrics.com/i.php?{$q}'/>";
+			
+		$proto = 'http';
+		
+		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+			
+			$proto = 'https';
+			
+		}
+		
+		return "<img alt='' border='0' src='{$proto}://img.theberrics.com/i.php?{$q}'/>";
 		
 	}
 	

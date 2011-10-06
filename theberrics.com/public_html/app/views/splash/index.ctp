@@ -20,7 +20,7 @@ echo $p['body_content'];
 ?>
 <?php 
 
-	if($_SERVER['GEOIP_ADDR'] == '66.134.86.75'):
+	if($_SERVER['GEOIP_ADDR'] == '66.134.86.705'):
 
 ?>
 <div class='comments' style='width:720px; margin:auto; padding:1px;margin-top:40px;'>

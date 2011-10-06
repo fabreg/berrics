@@ -170,9 +170,9 @@
 	qacct:"p-99F0_WrFhGi4w"
 	};
 	</script>
-	<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+	<script type="text/javascript" src="https://edge.quantserve.com/quant.js"></script>
 	<noscript>
-	<a href="http://www.quantcast.com/p-99F0_WrFhGi4w" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-99F0_WrFhGi4w.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/></a>
+	<a href="https://www.quantcast.com/p-99F0_WrFhGi4w" target="_blank"><img src="https://pixel.quantserve.com/pixel/p-99F0_WrFhGi4w.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/></a>
 	</noscript>
 	<!-- End Quantcast tag -->
 	
