@@ -18,12 +18,7 @@ $this->set(array(
 echo $p['body_content'];
 
 ?>
-<?php 
-
-	if($_SERVER['GEOIP_ADDR'] == '66.134.86.70'):
-
-?>
-<div class='comments' style='width:720px; margin:auto; padding:1px;margin-top:40px;'>
+<div class='comments' style='width:720px; margin:auto; padding:1px; padding-top:40px;'>
 	<div class='facebook'>
 		<div>
 			<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
@@ -33,8 +28,3 @@ echo $p['body_content'];
 	</div>
 	<div style='clear:both;'></div>
 </div>
-<?php 
-
-	endif;
-
-?>
