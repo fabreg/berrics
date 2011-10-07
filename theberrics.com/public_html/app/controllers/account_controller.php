@@ -25,7 +25,7 @@ class AccountController extends BerricsAppController {
 	
 	public function canteen() {
 		
-		
+		$this->theme = "canteen";
 		
 	}
 	

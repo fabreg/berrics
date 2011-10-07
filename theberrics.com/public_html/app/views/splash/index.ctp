@@ -10,11 +10,6 @@ $this->set(array(
 
 ));
 
-
-
-?>
-<?php 
-
 echo $p['body_content'];
 
 ?>
