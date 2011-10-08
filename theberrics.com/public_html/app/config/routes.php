@@ -7,7 +7,17 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
-Router::connect('/',array("controller"=>"splash","action"=>"index"));
+if(date('d') >=8) {
+	
+	Router::connect('/',array("controller"=>"splash","action"=>"ross"));
+	
+} else {
+	
+	Router::connect('/',array("controller"=>"splash","action"=>"index"));
+	
+}
+
+
 
 Router::connect("/t-shirts",array("controller"=>"apparel","action"=>"index"));
 

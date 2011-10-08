@@ -51,7 +51,7 @@ class CanteenCategory extends AppModel {
 		
 		$token = "canteen_grabSubcat_".md5(serialize($cond));
 		
-		if(($cat = Cache::read($token,"1min")) === false) {
+		if(($cat = Cache::read($token,"5min")) === false) {
 			
 			$cat = $this->find("first",array(
 				"conditions"=>$cond,
@@ -86,7 +86,7 @@ class CanteenCategory extends AppModel {
 		
 		$token = "canteen_categories_array_";
 		
-		if(($cats = Cache::read($token,"1min")) === false) {
+		if(($cats = Cache::read($token,"5min")) === false) {
 			
 			$tree = $this->find("all",array(
 			

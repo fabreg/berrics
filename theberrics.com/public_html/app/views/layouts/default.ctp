@@ -37,7 +37,7 @@
 	<script type='text/javascript'>
 		var swfPlayer = "/swf/BerricsPlayer.swf";
 	</script>
-	<script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+	<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script>
 	
 	<?php
 		echo $fb_meta_img;

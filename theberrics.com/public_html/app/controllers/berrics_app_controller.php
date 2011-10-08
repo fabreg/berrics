@@ -22,9 +22,18 @@ class BerricsAppController extends AppController {
 		
 		$this->setSections();
 		
+		$this->setCanteenCategories();
+		
 		$this->setFeaturedPost();
 		
 		$this->getUserCurrency();
+		
+	}
+	
+	public function setCanteenCategories() {
+		
+		$this->loadModel("CanteenCategory");
+		$this->set("main_canteen_categories",$this->CanteenCategory->treeArray());
 		
 	}
 	

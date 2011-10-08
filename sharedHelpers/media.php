@@ -72,7 +72,7 @@ class MediaHelper extends AppHelper {
 		}
 		
 		$proto = 'https';
-		if(preg_match('/^(https)/g',$_SERVER['SCRIPT_URI'])) {
+		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
 			
 			$proto = 'https';
 			
@@ -214,8 +214,15 @@ class MediaHelper extends AppHelper {
 			
 		}
 		
+				
+		$proto = 'http';
 		
-		echo $this->Html->image("http://img.theberrics.com/i.php?src=/berrics-icons/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
+		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+			
+			$proto = 'https';
+			
+		}
+		echo $this->Html->image("{$proto}://img.theberrics.com/i.php?src=/berrics-icons/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
 		
 	}
 	
