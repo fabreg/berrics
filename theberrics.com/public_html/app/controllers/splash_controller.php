@@ -179,7 +179,7 @@ class SplashController extends BerricsAppController {
 	
 	public function random() {
 		
-		$seed = mt_rand(1,4);
+		$seed = mt_rand(1,5);
 		
 		
 		switch($seed) {
