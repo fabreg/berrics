@@ -1,6 +1,7 @@
 <?php
 
 App::import("Controller","BerricsApp");
+App::import("Vendor","UpsApi",array("file"=>"UpsApi.php"));
 
 class TesterController extends BerricsAppController {
 	
@@ -19,7 +20,9 @@ class TesterController extends BerricsAppController {
 	
 	public function index() {
 		
+		$ups = new UpsApi();
 		
+		$ups->test();
 		
 	}
 	
