@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+
+body {
+
+	background-image:url(/img/layout/newsv2/bg.jpg);	
+	
+}
+
+#top-banner-container {
+
+	height:138px;
+	background-image:url(/img/layout/newsv2/bg.jpg);
+	-moz-box-shadow:0px 0px 10px #000000;
+	-webkit-box-shadow:0px 0px 10px #000000;
+	box-shadow:0px 0px 10px #000000;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+
+}
+
+#top-banner-container .bottom {
+
+	text-align:center;
+	background-image:url(/img/layout/newsv2/header-bottom-bg.png);
+	height:34px;
+	
+}
+
+#news-section {
+
+}
+
+#news-section .news-col {
+		
+	float:left;
+	width:33%;
+	
+}
