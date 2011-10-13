@@ -7,31 +7,19 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
-if($_SERVER['REQUEST_URI'] == "/") {
+if($_SERVER['SCRIPT_URL'] == "/") {
 	
-	$_dayOf = strtoupper(date("D"));
+	App::import("Lib","SplashRoute",array("file"=>"routes/SplashRoute.php"));
 	
-	if(in_array($_dayOf,Array("SUN","MON","WED"))) {
-		
-		App::import("Lib","SplashRoute",array("file"=>"routes/SplashRoute.php"));
-		
-		Router::connect(
-			"/",
-			array(//the default splash action
-				"controller"=>"splash","action"=>"random"
-			),
-			array(
-				"routeClass"=>"SplashRoute"
-			)
-		);
-		
-	} else {
-		
-		Router::connect('/',array("controller"=>"splash","action"=>"random"));
-		
-	}
-	
-	
+	Router::connect(
+		"/",
+		array(//the default splash action
+			"controller"=>"splash","action"=>"random"
+		),
+		array(
+			"routeClass"=>"SplashRoute"
+		)
+	);
 	
 }
 

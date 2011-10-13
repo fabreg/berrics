@@ -105,7 +105,6 @@ class Newsv2Controller extends DailyopsController {
 		
 	}
 	
-	
 	private function setUnified() {
 		
 		$this->loadModel("Dailyop");
@@ -113,7 +112,7 @@ class Newsv2Controller extends DailyopsController {
 		//get the date in param
 		$token = "news_unified_menu_".$this->params['date_in'];
 		
-		if(($unified = Cache::write($token,"1min")) === false) {
+		if(($unified = Cache::read($token,"1min")) === false) {
 			
 			$unified = $this->Dailyop->find("all",array(
 			
@@ -146,9 +145,9 @@ class Newsv2Controller extends DailyopsController {
 		$this->loadModel("Dailyop");
 		
 		//get the date in param
-		$token = "news_events_menu_".$this->params['date_in'];
+		$token = "news_events_menu__".$this->params['date_in'];
 		
-		if(($events = Cache::write($token,"1min")) === false) {
+		if(($events = Cache::read($token,"1min")) === false) {
 			
 			$events = $this->Dailyop->find("all",array(
 			
@@ -159,7 +158,6 @@ class Newsv2Controller extends DailyopsController {
 				"DATE(Dailyop.publish_date) = '{$this->params['date_in']}'"
 			),
 			"contain"=>array(
-				"UnifiedStore",
 				"DailyopTextItem"
 			),
 			"order"=>array("Dailyop.display_weight"=>"ASC")
