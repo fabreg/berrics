@@ -10,6 +10,14 @@ if($viewing['Dailyop']['id'] == 3112) {
 	
 }
 
+//check to see if there is a theme override and manually check for the CSS
+if(!empty($viewing['Dailyop']['theme_override'])) {
+	
+	$this->Html->css("/theme/{$viewing['Dailyop']['theme_override']}/css/layout_override.css","stylesheet",array("inline"=>false));
+	
+}
+
+
 #battle-commander
 //set the title
 $title_for_layout = $viewing['Dailyop']['name'];
