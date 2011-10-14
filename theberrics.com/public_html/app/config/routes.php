@@ -14,7 +14,7 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	Router::connect(
 		"/",
 		array(//the default splash action
-			"controller"=>"splash","action"=>"random"
+			"controller"=>"splash","action"=>"index"
 		),
 		array(
 			"routeClass"=>"SplashRoute"
