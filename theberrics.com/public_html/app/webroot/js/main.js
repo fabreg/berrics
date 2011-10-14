@@ -86,6 +86,12 @@ $(document).ready(function() {
 			
 		});
 		
+		$("#header-container").css({
+			
+			"margin-top":"0px"
+			
+		});
+		
 	}
 	
 	
