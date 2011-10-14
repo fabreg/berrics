@@ -20,7 +20,7 @@ class SplashRoute extends CakeRoute {
 			
 		}
 		
-		$news = true;
+		//$news = true;
 		
 		if($news) {
 			
