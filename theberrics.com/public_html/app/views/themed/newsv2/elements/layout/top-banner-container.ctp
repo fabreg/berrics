@@ -5,6 +5,9 @@
 		</a>
 	</div>
 	<div class='bottom'>
-		<img src='/img/layout/newsv2/header-bottom.png' />
+		<div class='inner'>
+			<div class='issue-date'><?php echo strtoupper(date("l F jS, Y",strtotime($this->params['date_in']))); ?></div>
+			<img src='/img/layout/newsv2/header-bottom.png' />
+		</div>
 	</div>
 </div>

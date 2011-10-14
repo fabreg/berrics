@@ -66,6 +66,9 @@ if(count($item['MediaFile'])>0) {
 ?>
 <div class='news-bit'>
 	<div class='title'><h3><a href='/news/<?php echo $post['Dailyop']['uri']; ?>'><?php echo $post['Dailyop']['name']; ?></a><h3></div>
+	<?php if(!empty($post['Dailyop']['sub_title'])): ?>
+	<div><h4><?php echo $post['Dailyop']['sub_title']; ?></h4></div>
+	<?php endif; ?>
 	<div style='text-align:center;'><?php echo $img_top; ?></div>
 	<div class='text-content'>
 		<?php echo $img_text; ?>

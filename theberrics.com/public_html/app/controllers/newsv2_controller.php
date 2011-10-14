@@ -78,7 +78,7 @@ class Newsv2Controller extends DailyopsController {
 		$this->setUnified();
 		
 		//lets get the events
-		$this->setEvents();
+		$this->setNewsEvents();
 		
 		
 	}
@@ -94,13 +94,19 @@ class Newsv2Controller extends DailyopsController {
 		
 		),$this->isAdmin());
 		
+		if(isset($post['Dailyop']['publish_date'])) {
+			
+			$this->params['date_in'] = date("Y-m-d",strtotime($post['Dailyop']['publish_date']));
+			
+		}
+		
 		$this->set(compact("post"));
 		
 		//set the unified news
 		$this->setUnified();
 		
 		//set the events
-		$this->setEvents();
+		$this->setNewsEvents();
 		
 		
 	}
@@ -140,21 +146,21 @@ class Newsv2Controller extends DailyopsController {
 		
 	}
 	
-	private function setEvents() {
+	private function setNewsEvents() {
 		
 		$this->loadModel("Dailyop");
 		
 		//get the date in param
-		$token = "news_events_menu__".$this->params['date_in'];
+		$token = "news_events_menu_".$this->params['date_in'];
 		
-		if(($events = Cache::read($token,"1min")) === false) {
+		if(($event_news = Cache::read($token,"1min")) === false) {
 			
-			$events = $this->Dailyop->find("all",array(
+			$event_news = $this->Dailyop->find("all",array(
 			
 				"conditions"=>array(
 				"Dailyop.dailyop_section_id"=>65,
 				"Dailyop.active"=>1,
-				"Dailyop.misc_category"=>"news-events",
+				"Dailyop.misc_category"=>"news-event",
 				"DATE(Dailyop.publish_date) = '{$this->params['date_in']}'"
 			),
 			"contain"=>array(
@@ -163,13 +169,13 @@ class Newsv2Controller extends DailyopsController {
 			"order"=>array("Dailyop.display_weight"=>"ASC")
 			));
 			
-			Cache::write($token,$events,"1min");
+			Cache::write($token,$event_news,"1min");
 			
 		}
 		
-		$this->set(compact("events"));
+		$this->set(compact("event_news"));
 		
-		return $events;
+		return $event_news;
 		
 	} 
 	
