@@ -1,5 +1,13 @@
 <div id='top-banner-container'>
-				<div class='inner'>
+				
+					<?php if(strtoupper(date("D"))=="SUN"): ?>
+						<div style='text-align:center;'>
+						<a href='/news'>
+							<img src='/img/layout/newsv2/Aberrican_Times_BannerTop.jpg' border='0' alt='0'/>
+						</a>
+						</div>
+					<?php else: ?>
+					<div class='inner'>
 					<div id='top-banner'>
 							<?php 
 							
@@ -12,8 +20,11 @@
 							<?php echo $this->element("canteen/cart-widget"); ?>
 						<?php endif; ?>
 					</div>
-				</div>
-				<div class='bottom-edge'>
+					</div>
+					<div class='bottom-edge'>
 				
 				</div>
+					<?php endif; ?>
+				
+				
 </div>
