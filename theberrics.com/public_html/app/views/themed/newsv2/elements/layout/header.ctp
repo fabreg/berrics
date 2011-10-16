@@ -6,7 +6,9 @@
 	?>
 <?php else: ?>
 <div class='enter-the-berrics'>
-<a href='/dailyops'>- ENTER THE BERRICS -</a>
+	<a href='/dailyops'>
+		<img border='0' src='/img/layout/newsv2/enter-button-top.jpg' />
+	</a>
 </div>
-<style>#header-container { height: 10px; }</style>
+<style>#header-container { height: 10px; margin-top:-35px; }</style>
 <?php endif; ?>

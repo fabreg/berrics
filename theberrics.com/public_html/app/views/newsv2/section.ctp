@@ -95,7 +95,9 @@ $this->set("title_for_layout","Aberrican Times | ".strtoupper(date("F jS, Y",str
 		</div>
 		<?php if($_SERVER['SCRIPT_URL'] == "/"): ?>
 			<div class='enter-the-berrics'>
-				<a href='/dailyops'>- ENTER THE BERRICS -</a>
+				<a href='/dailyops'>
+				<img style='padding-top:8px;' border='0' alt='' src='/img/layout/newsv2/enter-button-bottom.jpg' />
+				</a>
 			</div>
 		<?php endif; ?>
 	</div>
