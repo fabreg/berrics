@@ -76,6 +76,25 @@ $(document).ready(function() {
 		
 	}
 	
+	//let's remove the header if mobile
+	if(navigator.userAgent.toLowerCase().indexOf('mobile')>-1) {
+	
+		//remove fixed postion on top-banner-container
+		$("#top-banner-container").css({
+			
+			'position':'static'
+			
+		});
+		
+		$("#header-container").css({
+			
+			"margin-top":"0px"
+			
+		});
+		
+	}
+	
+	
 });
 
 function initTopNav() {

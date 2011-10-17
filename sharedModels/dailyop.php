@@ -282,21 +282,10 @@ class Dailyop extends AppModel {
 		
 		if(($older && ($date == '2011-09-18')) || (!$older && ($date == '2011-09-16'))) return "2011-09-17";
 		
-		$cond = array(
-			"OR"=>array(
-				array(
+		$cond =	array(
 						"Dailyop.active"=>1,
 						"Dailyop.hidden"=>0
-				),
-				array(
-					"Dailyop.active"=>1,
-					"Dailyop.hidden"=>1,
-					"Dailyop.dailyop_section_id"=>65
-				)
-			)
-			
-		
-		);
+				);
 		
 		
 		if($section_id) {
