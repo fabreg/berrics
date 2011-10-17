@@ -105,7 +105,7 @@ class DailyopsController extends BerricsAppController {
 		if($home_page && count($dailyops)<2 && !$batb_mode) {
 			
 			//let's get yesterdays posts
-			$yesterday = date("Y-m-d",strtotime("-1 Day",strtotime($dateIn)));
+			$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));
 			
 			$yd = $this->Dailyop->find("all",array(
 				
