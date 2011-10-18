@@ -105,7 +105,10 @@ class DailyopsController extends BerricsAppController {
 		if($home_page && count($dailyops)<2 && !$batb_mode) {
 			
 			//let's get yesterdays posts
-			$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));
+			//$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));
+			
+			//let's get the next post day based on a post that is in scope
+			$dateCond = $this->Dailyop->getNextDate($dateIn,true);
 			
 			$yd = $this->Dailyop->find("all",array(
 				
@@ -117,12 +120,11 @@ class DailyopsController extends BerricsAppController {
 					),
 					"order"=>array("Dailyop.publish_date"=>"DESC"),
 					"conditions"=>array(
-					
-						"DATE(Dailyop.publish_date) = '$yesterday'",
+						"DATE(Dailyop.publish_date) = '{$dateCond}'",
 						"Dailyop.publish_date < NOW()",
 						"Dailyop.active"=>1,
 						"Dailyop.hidden"=>0
-					
+						
 					)
 
 				));
@@ -567,7 +569,8 @@ class DailyopsController extends BerricsAppController {
 				),
 				"conditions"=>array(
 					"Dailyop.publish_date < NOW()",
-					"Dailyop.active"=>1
+					"Dailyop.active"=>1,
+					"Dailyop.hidden"=>0
 				),
 				"group"=>array(
 					"d","m","y"
