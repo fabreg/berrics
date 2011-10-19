@@ -35,7 +35,7 @@ class HomeRoute extends CakeRoute {
 		}
 		
 		
-		
+		$news=false;
 		
 		
 		if($news) {
