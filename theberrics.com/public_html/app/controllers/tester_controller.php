@@ -22,7 +22,7 @@ class TesterController extends BerricsAppController {
 		
 		$ups = new UpsApi();
 		
-		$ups->test(array(
+		$ups->estimateShipping(array(
 			"Shipping"=>array(
 				"first_name"=>"John",
 				"last_name"=>"Hardy",
@@ -32,7 +32,10 @@ class TesterController extends BerricsAppController {
 				"province"=>"CA",
 				"country"=>"US",
 				"postal"=>"93063",
-			"phone"=>"818-888-8888"
+				"phone"=>"818-888-8888"
+			),
+			"Service"=>array(
+				"code"=>"03"
 			)
 		));
 		

@@ -29,7 +29,12 @@ class CanteenConfig {
 				"gateway_account_id"=>1,
 				"tax_regions"=>array(
 					"US-CA"=>9.25
-				)
+				),
+				"shipping_codes"=> array(
+										"03"=>"Ground Shipment",
+										"02"=>"Second Day Air",
+										"01"=>"Next Day Air"
+									)
 				
 			);
 			
