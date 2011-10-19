@@ -1455,6 +1455,51 @@ border-bottom:1px solid #333;
 
 
 
+/*
+	
+	CANTEEN CATEGORY
+	
+*/
+
+#canteen-category {
+
+		
+	
+}
+
+#canteen-category .products {
+
+	float:left;
+	width:780px;
+}
+
+#canteen-category .sorting {
+	
+	float:right;
+	width: 265px;
+	background-color:#343434;
+	border:1px solid #666;
+}
+
+#canteen-category .sorting .inner {
+
+	padding-left:4px;
+	padding-right:4px;	
+	
+}
+#canteen-category .sorting .heading {
+
+	font-size:16px;
+	font-family:'Arial';
+	color:white;
+	background-color:#222;
+	padding:3px;
+	border-bottom:1px solid #666;
+	text-align:center;
+}
+
+
+
 
 
 

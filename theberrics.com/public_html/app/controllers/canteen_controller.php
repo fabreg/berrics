@@ -58,7 +58,8 @@ class CanteenController extends CanteenAppController {
 		$prod_ids = Set::extract("/CanteenProduct/id",$prod_ids);
 		
 		$products = array();
-
+		$brands = array();
+		$metas = array();
 		foreach($prod_ids as $id) {
 			
 			//$products[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$id)),$this->isAdmin(),false,array("no_related"=>true));
@@ -77,7 +78,8 @@ class CanteenController extends CanteenAppController {
 						"contain"=>array(
 							"CanteenProductImage"=>array(),
 							"CanteenProductPrice",
-							"Brand"
+							"Brand",
+							"Meta"
 						)
 					));
 			
@@ -86,10 +88,50 @@ class CanteenController extends CanteenAppController {
 			}
 			
 			$products[] = $p;
+			$brands[$p['Brand']['id']] = $p['Brand'];
+			foreach($p['Meta'] as $m)  $metas[$m['key']][$m['id']] = $m['val'];
+		}
+		
+		//filter the products
+		if(count($this->data)>0) {
+			
+			$brand_filters = $this->extractBrandFilters();
+			
+			$meta_filters = $this->extractMetaFilters();
+			
+			$filter_ids = array();
+			
+			if(strlen($meta_filters)>0) {
+				
+				$meta_products = Set::extract("/Meta[id=/{$meta_filters}/i]",$products);
+				
+				$_tmp = Set::extract("/Meta/CanteenProductsMeta/canteen_product_id",$meta_products);
+				
+				$filter_ids = array_merge($filter_ids,$_tmp);
+				
+			}
+			
+			//check for brand filters
+			if(strlen($brand_filters)>0) {
+				
+				$brand_products = Set::extract("/Brand[id=/{$brand_filters}/i]",$products);
+				
+				
+				
+			}
+			
+			
+			$ids = array_flip($filter_ids);
+			
+			$ids_str = rtrim(implode("|",array_keys($ids)),"|");
+			
+			$products = Set::extract("/CanteenProduct[id=/{$ids_str}/i]",$products);
+			
+			die(print_r($products));
 			
 		}
 		
-		$this->set(compact("products"));
+		$this->set(compact("products","brands","metas"));
 		
 	}
 	
@@ -119,6 +161,7 @@ class CanteenController extends CanteenAppController {
 	public function clear_session() {
 		
 		$this->Session->delete("CanteenOrder");
+		
 		$this->Session->delete("CanteenAdminAddItem");
 		
 		return $this->redirect("/canteen");
@@ -126,6 +169,34 @@ class CanteenController extends CanteenAppController {
 	}
 	
 	
+	//filtering helpers
+	private function extractBrandFilters() {
+		
+		$filters = array();
+		
+		foreach($this->data['Brand'] as $k=>$v) if($v==1) $filters[]=$k;
+
+		$str = implode("|",$filters);
+		
+		$str = rtrim($str,"|");
+		
+		return $str;
+		
+	}
+	
+	private function extractMetaFilters() {
+		
+		$filters = array();
+		
+		foreach($this->data['Meta'] as $k=>$v) if($v==1) $filters[]=$k;
+		
+		$str = implode("|",$filters);
+		
+		$str = rtrim($str,"|");
+		
+		return $str;
+		
+	}
 	
 
 }

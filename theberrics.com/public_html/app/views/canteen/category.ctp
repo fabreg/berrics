@@ -46,6 +46,12 @@ $(document).ready(function() {
 		});
 		
 	});
+
+	$('#filter-form input').change(function() { 
+
+		$("#filter-form").submit();
+
+	});
 		
 });
 </script>
@@ -55,22 +61,52 @@ $(document).ready(function() {
 	<div class='right'></div>
 	<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
 </div>
-<a id='reveal'>Reveal</a>
 <div style='clear:both;'></div>
 </div>
 <div id='canteen-category'>
-<?php 
-foreach($products as $p):
-?>
-<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
-<?php 
-endforeach;
-?>
+	<div class='products'>
+		<?php 
+			foreach($products as $p):
+		?>
+			<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
+		<?php 
+			endforeach;
+		?>
+	</div>
+	<div class='sorting'>
+		<div class='heading'>
+				FILTER PRODUCTS
+			</div>
+		<div class='inner'>
+			<?php echo $this->Form->create("CanteenProduct",array("url"=>$this->here,"id"=>"filter-form")); ?>
+			<div class='filter-menu'>
+				<div class='filter-heading'>Brands</div>
+				<div class='filter-options'>
+					<?php 
+
+						foreach($brands as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>strtoupper($b['name'])));
+ 			
+					?>
+				</div>
+			</div>
+			<?php foreach($metas as $k=>$v): ?>
+			<div class='filter-menu'>
+				<div class='filter-heading'><?php echo $k; ?></div>
+				<div class='filter-options'>
+					<?php 
+						foreach($v as $key=>$val) echo $this->Form->input("Meta.{$key}",array("type"=>"checkbox","label"=>strtoupper($val)));
+					?>
+				</div>
+			</div>
+			<?php endforeach; ?>
+			<?php echo $this->Form->end(); ?>
+		</div>
+	</div>
 	<div style='clear:both;'></div>
 </div>
 
 <?php
 
-print_r($category);
+print_r($metas);
 pr($products);
 ?>
