@@ -93,7 +93,18 @@
 		
 	</li>
 	<li class='nav-button'>
-		<a href='http://berricscanteen.com' target='_blank' title='The Berrics Canteen' ><img src='/img/layout/top-nav/canteen-txt.png' border='0' /></a>
+		<?php 
+		
+		$canteen_link = "http://berricscanteen.com";
+		
+		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
+			
+			$canteen_link = "/canteen";
+			
+		}
+		
+		?>
+		<a href='<?php echo $canteen_link; ?>'  title='The Berrics Canteen' ><img src='/img/layout/top-nav/canteen-txt.png' border='0' /></a>
 	</li>
 	<li class='nav-spacer'>
 		
