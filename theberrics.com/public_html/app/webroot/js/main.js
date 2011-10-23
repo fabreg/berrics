@@ -77,6 +77,7 @@ $(document).ready(function() {
 	}
 	
 	//let's remove the header if mobile
+/*
 	if(navigator.userAgent.toLowerCase().indexOf('mobile')>-1) {
 	
 		//remove fixed postion on top-banner-container
@@ -93,7 +94,7 @@ $(document).ready(function() {
 		});
 		
 	}
-	
+*/	
 	
 });
 
