@@ -2,8 +2,8 @@
 .canteen-product-thumb {
 
 	float:left;
-	margin-left:5px;
-	margin-bottom:5px;
+	margin-left:10px;
+	margin-bottom:10px;
 }
 
 </style>
@@ -75,26 +75,28 @@ $(document).ready(function() {
 	</div>
 	<div class='sorting'>
 		<div class='heading'>
+			<div class='inner'>
 				FILTER PRODUCTS
 			</div>
+		</div>
 		<div class='inner'>
 			<?php echo $this->Form->create("CanteenProduct",array("url"=>$this->here,"id"=>"filter-form")); ?>
 			<div class='filter-menu'>
-				<div class='filter-heading'>Brands</div>
+				<div class='filter-heading'>&nbsp; // BRANDS</div>
 				<div class='filter-options'>
 					<?php 
 
-						foreach($brands as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>strtoupper($b['name'])));
+						foreach($brands as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>$b['name']));
  			
 					?>
 				</div>
 			</div>
 			<?php foreach($metas as $k=>$v): ?>
 			<div class='filter-menu'>
-				<div class='filter-heading'><?php echo $k; ?></div>
+				<div class='filter-heading'><?php echo strtoupper($k); ?></div>
 				<div class='filter-options'>
 					<?php 
-						foreach($v as $key=>$val) echo $this->Form->input("Meta.{$key}",array("type"=>"checkbox","label"=>strtoupper($val)));
+						foreach($v as $key=>$val) echo $this->Form->input("Meta.{$key}",array("type"=>"checkbox","label"=>$val));
 					?>
 				</div>
 			</div>

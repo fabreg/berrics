@@ -1463,41 +1463,60 @@ border-bottom:1px solid #333;
 
 #canteen-category {
 
-		
-	
+	background-image:url(/img/layout/canteen/category/filter-bg.jpg);
+	background-repeat:repeat-y;
+	background-position:right 20px;
+	font-family:'Times New Roman';	
 }
 
 #canteen-category .products {
 
 	float:left;
-	width:780px;
+	width:815px;
 }
 
 #canteen-category .sorting {
 	
 	float:right;
-	width: 265px;
-	background-color:#343434;
-	border:1px solid #666;
+	width: 231px;
+	color:#666;
+	
 }
 
 #canteen-category .sorting .inner {
 
-	padding-left:4px;
-	padding-right:4px;	
+	width:93%;
+	margin:auto;
 	
 }
 #canteen-category .sorting .heading {
 
-	font-size:16px;
-	font-family:'Arial';
-	color:white;
-	background-color:#222;
-	padding:3px;
-	border-bottom:1px solid #666;
+	font-size:18px;
+	background-image:url(/img/layout/canteen/category/filter-heading.jpg);
+	height:40px;
 	text-align:center;
 }
 
+#canteen-category .sorting .heading .inner {
+
+	height:40px;
+	line-height:40px;
+	
+}
+
+#canteen-category .sorting .filter-heading {
+
+	height:30px;
+	line-height:30px;
+	border-bottom:dotted 1px #999;
+	
+}
+
+#canteen-category .sorting .filter-options label {
+
+	color:#f0f0f0;	
+	
+}
 
 
 
