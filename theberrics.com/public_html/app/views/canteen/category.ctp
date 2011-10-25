@@ -55,16 +55,18 @@ $(document).ready(function() {
 		
 });
 </script>
-<div>
-<div id='canteen-crumb'>
-	<div class='left'></div>
-	<div class='right'></div>
-	<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
-</div>
-<div style='clear:both;'></div>
-</div>
+<div style='height:15px;'></div>
 <div id='canteen-category'>
 	<div class='products'>
+		<div>
+		<div id='canteen-crumb'>
+			<div class='left'></div>
+			<div class='right'></div>
+			<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
+		</div>
+		<div style='clear:both;'></div>
+		</div>
+	
 		<?php 
 			foreach($products as $p):
 		?>
@@ -86,14 +88,14 @@ $(document).ready(function() {
 				<div class='filter-options'>
 					<?php 
 
-						foreach($brands as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>$b['name']));
+						foreach($filters['Brand'] as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>$b['name']));
  			
 					?>
 				</div>
 			</div>
-			<?php foreach($metas as $k=>$v): ?>
+			<?php foreach($filters['Meta'] as $k=>$v): ?>
 			<div class='filter-menu'>
-				<div class='filter-heading'><?php echo strtoupper($k); ?></div>
+				<div class='filter-heading'> // <?php echo strtoupper($k); ?></div>
 				<div class='filter-options'>
 					<?php 
 						foreach($v as $key=>$val) echo $this->Form->input("Meta.{$key}",array("type"=>"checkbox","label"=>$val));
@@ -108,7 +110,6 @@ $(document).ready(function() {
 </div>
 
 <?php
-
 print_r($metas);
 pr($products);
 ?>
