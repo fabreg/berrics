@@ -50,8 +50,7 @@
 											"dark"=>true
 										),array("border"=>0)); ?>
 										<?php 
-											$label = (empty($s['DailyopSection']['nav_label'])) ? strtoupper($s['DailyopSection']['name']):strtoupper($s['DailyopSection']['nav_label']);
-											
+											$label = (empty($s['DailyopSection']['nav_label'])) ? strtoupper($s['DailyopSection']['name']):strtoupper($s['DailyopSection']['nav_label']);									
 											
 											if(strlen($label)<=11) {
 												
@@ -95,7 +94,7 @@
 	<li class='nav-button'>
 		<?php 
 		
-		$canteen_link = "http://berricscanteen.com";
+		$canteen_link = "http://theberricscanteen.com";
 		
 		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 			
