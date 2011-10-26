@@ -84,7 +84,7 @@ $(document).ready(function() {
 		<div class='inner'>
 			<?php echo $this->Form->create("CanteenProduct",array("url"=>$this->here,"id"=>"filter-form")); ?>
 			<div class='filter-menu'>
-				<div class='filter-heading'>&nbsp; // BRANDS</div>
+				<div class='filter-heading'> // BRANDS</div>
 				<div class='filter-options'>
 					<?php 
 
