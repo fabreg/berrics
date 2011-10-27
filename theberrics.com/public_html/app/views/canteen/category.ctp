@@ -2,8 +2,8 @@
 .canteen-product-thumb {
 
 	float:left;
-	margin-left:10px;
-	margin-bottom:10px;
+	margin-left:3px;
+	margin-bottom:3px;
 }
 
 </style>
