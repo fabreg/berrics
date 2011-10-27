@@ -1474,6 +1474,20 @@ border-bottom:1px solid #333;
 	width:815px;
 }
 
+#canteen-category .products .container {
+
+	margin-top:547px;	
+	
+}
+
+#canteen-category .products .container-top {
+
+	margin-top:-547px;
+		
+}
+
+
+
 #canteen-category .sorting {
 	
 	float:right;
@@ -1516,6 +1530,7 @@ border-bottom:1px solid #333;
 	color:#f0f0f0;	
 	
 }
+
 
 
 

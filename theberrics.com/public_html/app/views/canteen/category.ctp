@@ -57,23 +57,29 @@ $(document).ready(function() {
 </script>
 <div style='height:15px;'></div>
 <div id='canteen-category'>
-	<div class='products'>
-		<div>
+	<div>
 		<div id='canteen-crumb'>
 			<div class='left'></div>
 			<div class='right'></div>
 			<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
 		</div>
 		<div style='clear:both;'></div>
+	</div>
+	<div class='products'>
+		<div class='container'>
+			<div class='container-top'>
+				<?php 
+					foreach($products as $p):
+				?>
+					<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
+				<?php 
+					endforeach;
+				?>
+			</div>
 		</div>
-	
-		<?php 
-			foreach($products as $p):
-		?>
-			<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
-		<?php 
-			endforeach;
-		?>
+		<div class='bottom'>
+		
+		</div>
 	</div>
 	<div class='sorting'>
 		<div class='heading'>
