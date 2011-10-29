@@ -182,6 +182,13 @@ class DailyopsController extends BerricsAppController {
 			
 		}
 		
+		if(date('d')>=28 && isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER']==1) {
+			
+			$this->theme = "halloween-2011";
+			
+		}
+		
+		
 		$dateIn = $dailyops[0]['Dailyop']['publish_date'];
 		
 		$dateArg = date("Y-m-d",strtotime($dateIn));
