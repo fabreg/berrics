@@ -68,13 +68,16 @@ $(document).ready(function() {
 	<div class='products'>
 		<div class='container'>
 			<div class='container-top'>
-				<?php 
-					foreach($products as $p):
-				?>
-					<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
-				<?php 
-					endforeach;
-				?>
+				<div class='inner'>
+					<?php 
+						foreach($products as $p):
+					?>
+						<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
+					<?php 
+						endforeach;
+					?>
+				<div style='clear:both;'></div>
+				</div>
 			</div>
 		</div>
 		<div class='bottom'>
@@ -114,8 +117,3 @@ $(document).ready(function() {
 	</div>
 	<div style='clear:both;'></div>
 </div>
-
-<?php
-print_r($metas);
-pr($products);
-?>

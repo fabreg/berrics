@@ -133,11 +133,11 @@ body {
 */
 .canteen-product-thumb {
 	
-	width:254px;
-	height:254px;
+	width:252px;
+	height:252px;
 	position:relative;
 	cursor:pointer;
-	
+	border:1px solid #999;
 }	
 
 .canteen-product-thumb a {
@@ -150,7 +150,8 @@ body {
 
 	display:block;
 	border:none;
-	
+	margin-top:6px;
+	margin-left:6px;
 }
 
 .canteen-product-thumb .info {
@@ -169,7 +170,7 @@ body {
 
 .canteen-product-thumb .info .info-spacer {
 
-	height:183px;	
+	height:160px;	
 	
 }
 
@@ -1477,13 +1478,23 @@ border-bottom:1px solid #333;
 #canteen-category .products .container {
 
 	margin-top:547px;	
-	
+	background-image:url(/img/layout/canteen/category/cat-bg-center.jpg);
+	background-repeat:repeat-y
 }
 
 #canteen-category .products .container-top {
 
 	margin-top:-547px;
-		
+	background-image:url(/img/layout/canteen/category/cat-bg-top.jpg);
+	background-repeat:no-repeat;
+	
+	
+}
+
+#canteen-category .products .inner {
+
+	padding:12px;	
+	
 }
 
 
