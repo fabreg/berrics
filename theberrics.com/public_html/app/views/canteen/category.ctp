@@ -57,6 +57,7 @@ $(document).ready(function() {
 </script>
 <div style='height:15px;'></div>
 <div id='canteen-category'>
+	<!-- 
 	<div>
 		<div id='canteen-crumb'>
 			<div class='left'></div>
@@ -65,7 +66,19 @@ $(document).ready(function() {
 		</div>
 		<div style='clear:both;'></div>
 	</div>
+	-->
 	<div class='products'>
+			<div>
+		<div id='canteen-crumb'>
+			<div class='left'></div>
+			<div class='right'></div>
+			<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
+		</div>
+		<div class='total-items'>
+			<?php echo count($products); ?>
+		</div>
+		<div style='clear:both;'></div>
+	</div>
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>
