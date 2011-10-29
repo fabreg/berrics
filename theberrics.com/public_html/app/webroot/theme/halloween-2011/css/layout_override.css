@@ -9,4 +9,11 @@ body {
 	
 }
 
+.d-post-bit .container-top {
+    background-image: url(/theme/halloween-2011/img/post-bit-top.png);
+}
 
+.d-post-bit .bottom {
+    background-image: url(/theme/halloween-2011/img/post-bit-bottom.png);
+    
+}
