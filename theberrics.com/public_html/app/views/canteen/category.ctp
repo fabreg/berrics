@@ -75,7 +75,7 @@ $(document).ready(function() {
 			<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
 		</div>
 		<div class='total-items'>
-			<?php echo count($products); ?>
+			<?php echo count($products); ?> Items
 		</div>
 		<div style='clear:both;'></div>
 	</div>

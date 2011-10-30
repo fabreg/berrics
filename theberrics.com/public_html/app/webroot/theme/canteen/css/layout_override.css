@@ -109,6 +109,8 @@ body {
 	border:1px solid #ccc;
 	border-top:none;
 }
+
+
 #canteen-navbar ul .over {
 
 	
@@ -125,6 +127,12 @@ body {
 	font-size:16px;
 	line-height:22px;
 	font-style:italic;
+	border-bottom:1px dashed #e9e9e9;
+}
+
+#canteen-navbar ul li ul li a {
+
+	color:#999;	
 	
 }
 
@@ -1481,7 +1489,10 @@ border-bottom:1px solid #333;
 	font-size:22px;
 	font-family:'Times New Roman';
 	margin-right:30px;
-	font-style:itlaic;
+	font-style:italic;
+	line-height:30px;
+	height:30px;
+	color:#333;
 }
 
 
