@@ -11,30 +11,40 @@ body {
 	
 }
 
+#page-container {
+	
+margin-top:190px;	
+	
+}
+
 .enter-the-berrics a {
 
 	font-size:28px;
 	color:#000;	
 	font-weight:bold;
 }
+#top-banner-container img {
 
+	display:block;	
+	margin:auto;
+}
 #top-banner-container {
-	height: 138px;
+	height: 153px;
 	background-image: url(/img/layout/newsv2/bg.jpg);
 	-moz-box-shadow: 0px 0px 10px #000000;
 	-webkit-box-shadow: 0px 0px 10px #000000;
 	box-shadow: 0px 0px 10px #000000;
-	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	text-align:center;
 }
 
 #top-banner-container .bottom {
 	text-align: center;
 	background-image: url(/img/layout/newsv2/header-bottom-bg.png);
-	height: 34px;
+	height: 35px;
 
 }
 #top-banner-container .bottom .inner {
-		position:relative;
+	position:relative;
 	width:1000px;
 	margin:auto;
 	
