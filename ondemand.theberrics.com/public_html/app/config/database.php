@@ -1,20 +1,21 @@
 <?php
+
 class DATABASE_CONFIG {
 	
 	public $default = array(
 		'driver' => 'mysqli',
 		'persistent' => true,
-		'host' => '10.181.66.225',
+		'host' => '10.183.200.12',
 		'login' => 'john',
 		'password' => '19Berrics82',
 		'database' => 'theberrics',
 		'prefix' => '',
-	); 
-	
+	);
+
 	public $master = array(
 		'driver' => 'mysqli',
 		'persistent' => true,
-		'host' => '10.181.91.233',
+		'host' => '10.183.200.8',
 		'login' => 'john',
 		'password' => '19Berrics82',
 		'database' => 'theberrics',
@@ -34,7 +35,7 @@ class DATABASE_CONFIG {
 	/*
 	public $default = array(
 		'driver' => 'mysql',
-		'persistent' => true,
+		'persistent' => false,
 		'host' => '10.181.66.238',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -44,7 +45,7 @@ class DATABASE_CONFIG {
 	
 	public $master = array(
 		'driver' => 'mysql',
-		'persistent' => true,
+		'persistent' => false,
 		'host' => '10.181.66.238',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -56,13 +57,13 @@ class DATABASE_CONFIG {
 	public $legacy = array(
 		'driver' => 'mysqli',
 		'persistent' => true,
-		'host' => '10.181.91.233',
+		'host' => '10.183.200.8',
 		'login' => 'john',
 		'password' => '19Berrics82',
 		'database' => 'theberrics_legacy',
 		'prefix' => '',
 	);
-	
+		
 	public function __construct() {
 
 		$uname = php_uname('n');
@@ -79,9 +80,5 @@ class DATABASE_CONFIG {
     { 
         $this->__construct(); 
     } 
-
-
-
 	
-
 }

@@ -221,6 +221,8 @@ class CanteenOrder extends AppModel {
 	
 	public function calculateCartTotal($order = array()) {
 		
+		App::import("Vendor","UpsApi",array("file"=>"UpsApi.php"));
+		
 		//get the cart items
 		
 		$order['CanteenOrderItem'] = $this->getOrderLineItems($order);
@@ -234,12 +236,22 @@ class CanteenOrder extends AppModel {
 			
 			$sub_total += $item['CanteenProductPrice'][0]['price'];
 		
-			
 		}
 		
 		$order['CanteenOrder']['sub_total'] = $sub_total;
 		
-		$shipping = 0;
+		$shipping = false;
+				
+		//calc shipping
+		$shipping_info = $this->extractShippingInfo($order);
+		
+		if(!empty($shipping_info['Shipping']['postal']) && !empty($shipping_info['Shipping']['country'])) {
+			
+			$ups = new UpsApi();
+			
+			//$_price = $ups->esitmateShipping
+			
+		}
 		
 		$order['CanteenOrder']['shipping'] = $order['CanteenOrder']['shipping_total'] = 0;
 		
@@ -647,7 +659,27 @@ class CanteenOrder extends AppModel {
 		$this->save($data);
 		
 	}
-
+	
+	
+	private function extractShippingInfo($CanteenOrder) {
+		
+		$a = array();
+		
+		$a['Shipping'] = array();
+		
+		if(isset($CanteenOrder['CanteenOrder']['postal'])) 			$a['Shipping']['postal'] = $CanteenOrder['CanteenOrder']['postal'];
+		if(isset($CanteenOrder['CanteenOrder']['country'])) 		$a['Shipping']['country'] = $CanteenOrder['CanteenOrder']['country'];
+		if(isset($CanteenOrder['CanteenOrder']['street_address']))  $a['Shipping']['street_address'] = $CanteenOrder['CanteenOrder']['street_address'];
+		if(isset($CanteenOrder['CanteenOrder']['apt'])) 			$a['Shipping']['apt'] = $CanteenOrder['CanteenOrder']['apt'];
+		if(isset($CanteenOrder['CanteenOrder']['city'])) 			$a['Shipping']['city'] = $CanteenOrder['CanteenOrder']['city'];
+		if(isset($CanteenOrder['CanteenOrder']['province'])) 		$a['Shipping']['province'] = $CanteenOrder['CanteenOrder']['province'];
+		if(isset($CanteenOrder['CanteenOrder']['phone'])) 			$a['Shipping']['phone'] = $CanteenOrder['CanteenOrder']['phone'];
+		
+		return $a;
+		
+		
+		
+	}
 
 	
 	

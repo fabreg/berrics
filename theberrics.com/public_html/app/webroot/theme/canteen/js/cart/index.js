@@ -61,6 +61,18 @@ function toggleBilling(check) {
 		
 	});
 
+	//initial loading check
+	$('.form input,.form select').each(function() { 
+		
+		var str = $(this).val();
+		if(str.length>0) {
+		
+			$(this).change();
+			
+		}
+		
+		
+	});
 	
 }
 

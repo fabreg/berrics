@@ -1,5 +1,15 @@
 <?php 
 
+//determine the main link that the articel is using
+$link = '/news/'.$post['Dailyop']['uri'];
+
+if(!empty($post['Dailyop']['url'])) {
+	
+	$link = $post['Dailyop']['url'];
+	
+}
+
+
 $img_top = '';
 
 $img_text = '';
@@ -10,7 +20,7 @@ $img_w = (empty($item['thumb_width'])) ? 300:$item['thumb_width'];
 
 $img_h = $item['thumb_height'];
 
-$img = "<a href='/news/{$post['Dailyop']['uri']}'>".$this->Media->mediaThumb(array(
+$img = "<a href='{$link}'>".$this->Media->mediaThumb(array(
 
 	"MediaFile"=>$item['MediaFile'],
 	"w"=>$img_w,
@@ -63,15 +73,20 @@ if(count($item['MediaFile'])>0) {
 }
 
 
+
+
 ?>
 <div class='news-bit'>
-	<div class='title'><h3><a href='/news/<?php echo $post['Dailyop']['uri']; ?>'><?php echo $post['Dailyop']['name']; ?></a><h3></div>
+	<div class='title'><h3><a href='<?php echo $link; ?>'><?php echo $post['Dailyop']['name']; ?></a><h3></div>
+	<?php if(!empty($post['Dailyop']['sub_title'])): ?>
+	<div><h4><?php echo $post['Dailyop']['sub_title']; ?></h4></div>
+	<?php endif; ?>
 	<div style='text-align:center;'><?php echo $img_top; ?></div>
 	<div class='text-content'>
 		<?php echo $img_text; ?>
 		<?php echo $post['DailyopTextItem'][0]['text_content']; ?>
 	</div>
-	<div class='article-link'><a href='/news/<?php echo $post['Dailyop']['uri']; ?>'>Click here for the full article</a></div>
+	<div class='article-link'><a href='<?php echo $link; ?>'>Click here for the full article</a></div>
 	<div class='icons'>
 		<img src='/img/layout/news/text-icon.jpg' />
 		<?php 

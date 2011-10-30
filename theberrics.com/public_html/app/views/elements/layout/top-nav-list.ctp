@@ -50,8 +50,7 @@
 											"dark"=>true
 										),array("border"=>0)); ?>
 										<?php 
-											$label = (empty($s['DailyopSection']['nav_label'])) ? strtoupper($s['DailyopSection']['name']):strtoupper($s['DailyopSection']['nav_label']);
-											
+											$label = (empty($s['DailyopSection']['nav_label'])) ? strtoupper($s['DailyopSection']['name']):strtoupper($s['DailyopSection']['nav_label']);									
 											
 											if(strlen($label)<=11) {
 												
@@ -93,7 +92,18 @@
 		
 	</li>
 	<li class='nav-button'>
-		<a href='http://berricscanteen.com' target='_blank' title='The Berrics Canteen' ><img src='/img/layout/top-nav/canteen-txt.png' border='0' /></a>
+		<?php 
+		
+		$canteen_link = "http://theberricscanteen.com";
+		
+		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
+			
+			$canteen_link = "/canteen";
+			
+		}
+		
+		?>
+		<a href='<?php echo $canteen_link; ?>'  title='The Berrics Canteen' ><img src='/img/layout/top-nav/canteen-txt.png' border='0' /></a>
 	</li>
 	<li class='nav-spacer'>
 		

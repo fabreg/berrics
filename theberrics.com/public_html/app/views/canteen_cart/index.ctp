@@ -1,6 +1,10 @@
 <?php 
 
-$this->Html->script(array("cart/index"),array("inline"=>false))
+$this->Html->script(array("cart/index"),array("inline"=>false));
+
+$shipping_codes = CanteenConfig::get("shipping_codes");
+
+
 
 ?>
 <?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here)); ?>
@@ -62,6 +66,18 @@ $this->Html->script(array("cart/index"),array("inline"=>false))
 							<td class='price'><?php echo $this->Number->currency($item['price'],$user_currency_id); ?></td>
 						</tr>	
 						<?php endforeach; ?>
+						<tr>
+							<td align='center'>
+								<img alt='' border='0' src='/img/layout/canteen/ups-logo.png' />
+							</td>
+							<td colspan='3'>
+							<div class='brand'>SHIPPING</div>
+							<div>
+							<?php echo $this->Form->input("CanteenOrder.shipping_option",array("type"=>"select","options"=>$shipping_codes)); ?>
+							</div>
+							</td>
+							
+						</tr>
 					</tbody>
 				</table>	
 			</div>

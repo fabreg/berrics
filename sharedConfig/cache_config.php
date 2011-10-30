@@ -2,7 +2,7 @@
 	
 	$memcache_server = array('10.181.65.185:11211');
 	
-	if(preg_match('/WEB2VM.THEBERRICS/',php_uname('-n'))) {
+	if(preg_match('/(WEB2VM.THEBERRICS)|(WEB1)/',php_uname('-n'))) {
 		
 		$memcache_server = array('127.0.0.1:11211');	
 		

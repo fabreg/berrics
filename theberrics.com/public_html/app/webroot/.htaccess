@@ -5,11 +5,15 @@
    	RewriteCond %{HTTP_HOST} ^www.theberrics.com$ [NC]
    	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
 	
-	##FIX BERRA's INDESICIVNESS
+	##FIX TSHIRT  INDESICIVNESS
 	RewriteRule ^(apparel) /t-shirts [R=301,L]
-	
+	#NO TRAILING SLASHES ON DIRECTORY CALLS
 	RewriteRule ^(.+[^/])/$ http://%{HTTP_HOST}/$1 [R=301,L]
-    
+    	
+	#REDIRECT WEBMAIL
+	RewriteRule (webmail)(.*) http://mail.google.com/a/theberrics.com [R,L]
+	
+
     # Battle at the berrics 3
     RewriteRule ^(batb3\.php|batb3) /battle-at-the-berrics-3 [R=301,L]
     # Battle at the berrics 2

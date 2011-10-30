@@ -136,6 +136,13 @@ class CanteenProduct extends AppModel {
 				
 				));
 				
+				if(!$inner_call && empty($prod['CanteenProduct']['id'])) {
+					
+					
+					return false;
+					
+				}
+				
 				if(!$inner_call && !isset($extra['no_related']) && !empty($prod['CanteenProduct']['style_code'])) {
 					
 					$related_styles = array();

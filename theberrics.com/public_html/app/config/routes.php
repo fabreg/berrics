@@ -7,7 +7,25 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
-Router::connect('/',array("controller"=>"splash","action"=>"random"));
+if($_SERVER['SCRIPT_URL'] == "/") {
+	
+	App::import("Lib","SplashRoute",array("file"=>"routes/SplashRoute.php"));
+	
+	Router::connect(
+		"/",
+		array(//the default splash action
+			"controller"=>"splash","action"=>"ross"
+		),
+		array(
+			"routeClass"=>"SplashRoute"
+		)
+	);
+	
+}
+
+
+
+
 
 Router::connect("/t-shirts",array("controller"=>"apparel","action"=>"index"));
 

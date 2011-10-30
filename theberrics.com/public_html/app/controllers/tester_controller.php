@@ -1,6 +1,7 @@
 <?php
 
 App::import("Controller","BerricsApp");
+App::import("Vendor","UpsApi",array("file"=>"UpsApi.php"));
 
 class TesterController extends BerricsAppController {
 	
@@ -19,7 +20,24 @@ class TesterController extends BerricsAppController {
 	
 	public function index() {
 		
+		$ups = new UpsApi();
 		
+		$ups->estimateShipping(array(
+			"Shipping"=>array(
+				"first_name"=>"John",
+				"last_name"=>"Hardy",
+				"street_address"=>"2669 Nutmeg Cir",
+				"apt"=>"",
+				"city"=>"Simi Valley",
+				"province"=>"CA",
+				"country"=>"US",
+				"postal"=>"93063",
+				"phone"=>"818-888-8888"
+			),
+			"Service"=>array(
+				"code"=>"03"
+			)
+		));
 		
 	}
 	

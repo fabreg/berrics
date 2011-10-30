@@ -5,7 +5,7 @@ body {
     background-color:black;
     background-image:url(/img/layout/body-bg.jpg);
     font-family:'Times New Roman';
-
+	
 }
 
 #main-container {
@@ -566,7 +566,7 @@ DAILY OPS
 
 #dailyops #paging-menu .right {
 
-    flot:right; 
+    float:right; 
     
 }
 #dailyops #paging-menu .right a {

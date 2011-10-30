@@ -63,7 +63,7 @@ class DailyopsController extends BerricsAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(date("Y-m-d") == "2011-09-10") { 
+			if(date("Y-m-d") == "2011-10-15") { 
 				
 				$batb_mode = true;
 				
@@ -102,10 +102,13 @@ class DailyopsController extends BerricsAppController {
 		
 		
 		
-		if($home_page && count($dailyops)<2 && !$batb_mode) {
+		if($home_page && count($dailyops)<3 && !$batb_mode) {
 			
 			//let's get yesterdays posts
-			$yesterday = date("Y-m-d",strtotime("-1 Day",strtotime($dateIn)));
+			//$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));
+			
+			//let's get the next post day based on a post that is in scope
+			$dateCond = $this->Dailyop->getNextDate($dateIn,true);
 			
 			$yd = $this->Dailyop->find("all",array(
 				
@@ -117,12 +120,11 @@ class DailyopsController extends BerricsAppController {
 					),
 					"order"=>array("Dailyop.publish_date"=>"DESC"),
 					"conditions"=>array(
-					
-						"DATE(Dailyop.publish_date) = '$yesterday'",
+						"DATE(Dailyop.publish_date) = '{$dateCond}'",
 						"Dailyop.publish_date < NOW()",
 						"Dailyop.active"=>1,
 						"Dailyop.hidden"=>0
-					
+						
 					)
 
 				));
@@ -179,6 +181,13 @@ class DailyopsController extends BerricsAppController {
 			$this->theme = $theme_override;
 			
 		}
+		
+		if(in_array(date("Y-m-d"),array("2011-10-29","2011-10-30","2011-10-31"))) {
+			
+			$this->theme = "halloween-2011";
+			
+		}
+		
 		
 		$dateIn = $dailyops[0]['Dailyop']['publish_date'];
 		
@@ -567,7 +576,8 @@ class DailyopsController extends BerricsAppController {
 				),
 				"conditions"=>array(
 					"Dailyop.publish_date < NOW()",
-					"Dailyop.active"=>1
+					"Dailyop.active"=>1,
+					"Dailyop.hidden"=>0
 				),
 				"group"=>array(
 					"d","m","y"
