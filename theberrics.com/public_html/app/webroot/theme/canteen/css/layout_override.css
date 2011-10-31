@@ -67,6 +67,7 @@ body {
 	margin-top:-65px;
 	margin-left:75px;
 	position:relative;
+	z-index:998;
 }
 
 #canteen-navbar ul {
@@ -128,6 +129,8 @@ body {
 	line-height:22px;
 	font-style:italic;
 	border-bottom:1px dashed #e9e9e9;
+	padding:5px;
+	margin:0px;
 }
 
 #canteen-navbar ul li ul li a {
