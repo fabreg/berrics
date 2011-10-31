@@ -1561,13 +1561,54 @@ border-bottom:1px solid #333;
 	height:30px;
 	line-height:30px;
 	border-bottom:dotted 1px #999;
+	text-indent:10px;
+	color:#ccc;
+	
+}
+
+#canteen-category .sorting .filter-options {
+	
+	margin-bottom:15px;	
 	
 }
 
 #canteen-category .sorting .filter-options label {
 
-	color:#f0f0f0;	
+	color:#666;	
+	margin-left:17px;
+}
+
+#canteen-category .sorting .filter-options .checkbox input {
+
+	display:none;	
 	
 }
+
+#canteen-category .sorting .filter-options .checkbox {
+	
+	height:27px;
+	line-height:27px;
+	background-image:url(/img/layout/canteen/checkbox.jpg);
+	background-repeat:no-repeat;
+	background-position:left center;
+	margin-left:19px;
+	
+}
+
+#canteen-category .sorting .filter-options .checkbox-checked {
+
+	background-image:url(/img/layout/canteen/checkbox-checked.jpg);
+	
+}
+#canteen-category .sorting .filter-options .checkbox-checked label {
+	
+	color:#ccc;	
+	
+	
+}
+
+
+
+
 
 

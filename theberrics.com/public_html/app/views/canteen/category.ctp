@@ -1,3 +1,8 @@
+<?php 
+
+$this->Html->script(array("jquery.form"),array("inline"=>false));
+
+?>
 <style>
 .canteen-product-thumb {
 
@@ -52,8 +57,35 @@ $(document).ready(function() {
 		$("#filter-form").submit();
 
 	});
+
+	$("#filter-form").submit(function() { 
+
+		var q = $(this).formSerialize();
+
+		document.location.href="?"+unescape(q);
 		
+		return false;
+		
+	});
+
+	initCheckboxes();
+	
+	
+	
 });
+
+function initCheckboxes() {
+
+	$("#filter-form input[type=checkbox]:checked").each(function() {
+
+		$(this).parent().addClass("checkbox-checked");
+
+		
+		
+	});
+	
+}
+
 </script>
 <div style='height:15px;'></div>
 <div id='canteen-category'>
