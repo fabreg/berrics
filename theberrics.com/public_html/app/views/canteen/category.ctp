@@ -100,7 +100,8 @@ function initCheckboxes() {
 	</div>
 	-->
 	<div class='products'>
-			<div>
+		<!-- 
+		<div>
 		<div id='canteen-crumb'>
 			<div class='left'></div>
 			<div class='right'></div>
@@ -110,7 +111,9 @@ function initCheckboxes() {
 			<?php echo count($products); ?> Items
 		</div>
 		<div style='clear:both;'></div>
-	</div>
+		</div>
+		-->
+	
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>
