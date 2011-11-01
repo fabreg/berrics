@@ -68,6 +68,19 @@ $(document).ready(function() {
 		
 	});
 
+	$("#filter-form label").hover(
+		function() {
+
+			$(this).css({"text-decoration":"underline"});
+
+		},
+		function() {
+
+			$(this).css({"text-decoration":"none"});
+
+		}
+	);
+
 	initCheckboxes();
 	
 	
@@ -129,7 +142,7 @@ function initCheckboxes() {
 			</div>
 		</div>
 		<div class='bottom'>
-		
+			<img border='0' alt='0' src='/img/layout/canteen/category/cat-bg-bottom.jpg' />
 		</div>
 	</div>
 	<div class='sorting'>

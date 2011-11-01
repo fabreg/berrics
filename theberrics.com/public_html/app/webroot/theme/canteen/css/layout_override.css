@@ -1575,7 +1575,16 @@ border-bottom:1px solid #333;
 #canteen-category .sorting .filter-options label {
 
 	color:#666;	
-	margin-left:17px;
+	/*margin-left:17px;*/
+	height:27px;
+	line-height:27px;
+	background-image:url(/img/layout/canteen/checkbox.jpg);
+	background-repeat:no-repeat;
+	background-position:left center;
+	text-indent:20px;
+	display:block;
+	cursor:pointer;
+	
 }
 
 #canteen-category .sorting .filter-options .checkbox input {
@@ -1586,16 +1595,12 @@ border-bottom:1px solid #333;
 
 #canteen-category .sorting .filter-options .checkbox {
 	
-	height:27px;
-	line-height:27px;
-	background-image:url(/img/layout/canteen/checkbox.jpg);
-	background-repeat:no-repeat;
-	background-position:left center;
+
 	margin-left:19px;
 	
 }
 
-#canteen-category .sorting .filter-options .checkbox-checked {
+#canteen-category .sorting .filter-options .checkbox-checked label {
 
 	background-image:url(/img/layout/canteen/checkbox-checked.jpg);
 	
