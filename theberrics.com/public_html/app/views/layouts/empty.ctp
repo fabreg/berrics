@@ -42,7 +42,7 @@
 </head>
 <body>
 	<?php echo $content_for_layout; ?>
-	<script> initTopNav(); </script>
+	
 	<!-- Start Quantcast tag -->
 	<script type="text/javascript">
 	_qoptions={
@@ -62,9 +62,7 @@
 	</script>
 	<!-- End Google Analytics -->
 		
-	<div style='font-size:9px; text-align:right;'>
-		<?php //echo php_uname("n"); ?>
-	</div>
+
 	<?php echo $this->element('sql_dump'); ?>
 	<!-- 8=D JH :-) 2011-06-20 -->
 </body>
