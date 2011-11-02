@@ -27,14 +27,41 @@ class DashboardController extends AdminAppController {
 		$upcoming_posts = $this->Dailyop->getUpcomingPosts(true);
 		$sections = $this->Dailyop->DailyopSection->returnSelectList();
 		
-		$this->set(compact("upcoming_posts","sections","aberrican_etries","bangyoself","ordersYesterday","approvedTransStats","ordersToday"));	
+		$this->set(compact("upcoming_posts","sections"));	
 		
 	}
 	
 	
 	public function canteen() {
 		
+		App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
 		
+		$this->loadModel("CanteenOrder");
+		
+		$today = date("Y-m-d");
+		
+		//get the todays order status and shipping status
+		$today_order_status = $this->CanteenOrder->groupedStatusCount("order_status",$today,$today);
+		$today_shipping_status = $this->CanteenOrder->groupedStatusCount("shipping_status",$today,$today);
+		
+		//get the past 3 day's order status and shipping status
+		
+		$three_day_start = date("Y-m-d",strtotime("-1 Day"));
+		$three_day_end = date("Y-m-d",strtotime("-3 Days",strtotime($three_day_start)));
+		
+		$three_day_order_status = $this->CanteenOrder->groupedStatusCount("order_status",$three_day_start,$three_day_end);
+		
+		
+		//get todays transactions
+		
+		//get the past 3 days transactions
+		
+		//get the unanswered questions
+		
+		//get the latest answers
+		
+		
+		$this->set(compact("today_order_status","today_shipping_status","three_day_order_status","three_day_start","three_day_end"));
 		
 	}
 	

@@ -680,6 +680,34 @@ class CanteenOrder extends AppModel {
 		
 		
 	}
+	
+	/**
+	 * 
+	 * @param String $column Column that we wish to group and aggregate
+	 * @param Date $date_start Date Start (MySQL Date Format)
+	 * @param Date $date_end Date End (MySql Date Format)
+	 * @return Array
+	 */
+	public function groupedStatusCount($column,$date_start,$date_end) {
+		
+		$status = $this->find("all",array(
+			"fields"=>array(
+				"COUNT(*) AS `total`",
+				"CanteenOrder.{$column}"
+			),
+			"conditions"=>array(
+				"DATE(CanteenOrder.created) BETWEEN '{$date_start}' AND '{$date_end}'"
+			),
+			"contain"=>array(),
+			"group"=>array(),
+			"order"=>array("total"=>"DESC")
+		));
+		
+		return $status;
+		
+	} 
+	
+	
 
 	
 	

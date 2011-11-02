@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("jquery.form"),array("inline"=>false));
+$this->Html->script(array("jquery.form","category"),array("inline"=>false));
 
 ?>
 <style>
@@ -12,94 +12,6 @@ $this->Html->script(array("jquery.form"),array("inline"=>false));
 }
 
 </style>
-<script type='text/javascript'>
-$(document).ready(function() { 
-
-
-	$('.canteen-product-thumb').hover(
-		function() { 
-
-			$(this).find('.info').fadeIn();
-			
-		},
-		function() { 
-
-			$(this).find('.info').hide();
-			
-		}
-	).click(function() { 
-
-		var ref = $(this).find("a").attr("href");
-
-		document.location.href = ref;
-		
-	});
-
-	$('.canteen-product-thumb a').click(function() { 
-
-		return false;
-
-	});
-
-
-	$("#reveal").click(function() { 
-
-		$('.canteen-product-thumb').each(function() { 
-
-			$(this).find('.info').toggle('slow');
-			
-		});
-		
-	});
-
-	$('#filter-form input').change(function() { 
-
-		$("#filter-form").submit();
-
-	});
-
-	$("#filter-form").submit(function() { 
-
-		var q = $(this).formSerialize();
-
-		document.location.href="?"+unescape(q);
-		
-		return false;
-		
-	});
-
-	$("#filter-form label").hover(
-		function() {
-
-			$(this).css({"text-decoration":"underline"});
-
-		},
-		function() {
-
-			$(this).css({"text-decoration":"none"});
-
-		}
-	);
-
-	initCheckboxes();
-	
-	
-	
-});
-
-function initCheckboxes() {
-
-	$("#filter-form input[type=checkbox]:checked").each(function() {
-
-		$(this).parent().addClass("checkbox-checked");
-
-		
-		
-	});
-	
-}
-
-</script>
 <div style='height:15px;'></div>
 <div id='canteen-category'>
 	<!-- 
@@ -142,7 +54,7 @@ function initCheckboxes() {
 			</div>
 		</div>
 		<div class='bottom'>
-			<img border='0' alt='0' src='/img/layout/canteen/category/cat-bg-bottom.jpg' />
+			
 		</div>
 	</div>
 	<div class='sorting'>
@@ -177,4 +89,7 @@ function initCheckboxes() {
 		</div>
 	</div>
 	<div style='clear:both;'></div>
+	<div>
+	
+	</div>
 </div>
