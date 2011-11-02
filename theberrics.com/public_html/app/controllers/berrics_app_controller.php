@@ -20,6 +20,8 @@ class BerricsAppController extends AppController {
 		
 		parent::beforeFilter();
 		
+		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) $this->fixGeoIp();
+		
 		$this->setSections();
 		
 		$this->setCanteenCategories();
@@ -27,6 +29,16 @@ class BerricsAppController extends AppController {
 		$this->setFeaturedPost();
 		
 		$this->getUserCurrency();
+		
+	}
+	
+	private function fixGeoIp() {
+		
+		if(!isset($_SERVER['GEOIP_COUNTRY_CODE'])) $_SERVER['GEOIP_COUNTRY_CODE'] = "US";
+		
+		if(!isset($_SERVER['GEOIP_POSTAL_CODE']))  $_SERVER['GEOIP_POSTAL_CODE'] = 90013;
+		
+		if(!isset($_SERVER['GEOIP_REGION_NAME'])) $_SERVER['GEOIP_REGION_NAME'] = "California";
 		
 	}
 	

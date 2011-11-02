@@ -50,7 +50,7 @@ class DashboardController extends AdminAppController {
 		$three_day_end = date("Y-m-d",strtotime("-3 Days",strtotime($three_day_start)));
 		
 		$three_day_order_status = $this->CanteenOrder->groupedStatusCount("order_status",$three_day_start,$three_day_end);
-		
+		$three_day_shipping_status = $this->CanteenOrder->groupedStatusCount("shipping_status",$three_day_start,$three_day_end);
 		
 		//get todays transactions
 		
@@ -61,7 +61,7 @@ class DashboardController extends AdminAppController {
 		//get the latest answers
 		
 		
-		$this->set(compact("today_order_status","today_shipping_status","three_day_order_status","three_day_start","three_day_end"));
+		$this->set(compact("today_order_status","today_shipping_status","three_day_order_status","three_day_shipping_status","three_day_start","three_day_end"));
 		
 	}
 	

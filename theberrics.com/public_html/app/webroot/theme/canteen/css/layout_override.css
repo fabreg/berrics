@@ -1611,6 +1611,34 @@ border-bottom:1px solid #333;
 	
 	
 }
+#canteen-category .bottom {
+	
+		
+	
+}
+
+#canteen-category .bottom .right {
+
+	float:right;
+	width:231px;
+	background-image:url(/img/layout/canteen/category/filter-bg-bottom.jpg);
+	height:84px;
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	
+}
+#canteen-category .bottom .left {
+	
+	height:84px;
+	background-image:url(/img/layout/canteen/category/cat-bg-bottom.jpg);
+	background-repeat:no-repeat;
+	width:815px;
+	float:left;
+		
+}
+
+
+
 
 
 

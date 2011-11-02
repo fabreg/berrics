@@ -53,9 +53,6 @@ $this->Html->script(array("jquery.form","category"),array("inline"=>false));
 				</div>
 			</div>
 		</div>
-		<div class='bottom'>
-			
-		</div>
 	</div>
 	<div class='sorting'>
 		<div class='heading'>
@@ -89,7 +86,9 @@ $this->Html->script(array("jquery.form","category"),array("inline"=>false));
 		</div>
 	</div>
 	<div style='clear:both;'></div>
-	<div>
-	
+	<div class='bottom'>
+		<div class='left'></div>
+		<div class='right'></div>
+		<div style='clear:both;'></div>
 	</div>
 </div>

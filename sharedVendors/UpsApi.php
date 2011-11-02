@@ -140,9 +140,29 @@ class UpsApi {
 		
 	}
 	
-	public function timeInTransit() {
+	public function timeInTransitCached(/*POLYMORPHIC*/) {
+		
+		$args = func_get_args();
+		
+		$cache_token = "time_in_transit_".md5(serialize($args));
+		
+		if(($data = Cache::read($cache_token,"5min")) === false) {
+				
+			$data = $this->timeInTransit($args[0]);
+			
+			Cache::write($cache_token,"5min");
+			
+		}
+		
+		return $data;
+		
+	}
+	
+	public function timeInTransit(/*POLYMORPHIC*/) {
 
 		$dom = new DOMDocument("1.0");
+		
+		$args = func_get_args();
 		
 		$req = $dom->appendChild(new DOMElement("TimeInTransitRequest"));
 		
@@ -150,15 +170,18 @@ class UpsApi {
 		
 		$this->buildRequest($req,"TimeInTransit");
 
-		
 		$to = $req->appendChild(new DOMElement("TransitTo"));
 		
 		$to_address = $to->appendChild(new DOMElement("AddressArtifactFormat"));
 		
-		$to_address->appendChild(new DOMElement("CountryCode","US"));
+		$to_address->appendChild(new DOMElement("CountryCode",$args[0]['country_code']));
 		
-		$to_address->appendChild(new DOMElement("PostcodePrimaryLow","10003"));
-		
+		if(isset($args[0]['postal_code'])) {
+			
+			$to_address->appendChild(new DOMElement("PostcodePrimaryLow",$args[0]['postal_code']));
+			
+		}
+				
 		//from 
 		
 		$from = $req->appendChild(new DOMElement("TransitFrom"));
@@ -194,13 +217,13 @@ class UpsApi {
 		
 		$sock = new HttpSocket();
 		
-		$res = $sock->post($this->urls->time_in_transit,$xml);
+		$res = $sock->post("https://wwwcie.ups.com/ups.app/xml/TimeInTransit",$xml);
 		
 		$x = new Xml($res);
 		
 		$a = $x->toArray();
 		
-		die(pr($a));
+		return $a;
 		
 		//die($auth.$dom->saveXml());
 		
