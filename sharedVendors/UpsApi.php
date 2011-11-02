@@ -307,7 +307,7 @@ class UpsApi {
 
 		// create the children of the TransactionReference element
 		$transaction_element->appendChild(
-			new DOMElement('XpciVersion', '1.0'));
+			new DOMElement('XpciVersion', '1.0002'));
 
 		// check if we have customer data to include
 		if (!empty($customer_context)) {

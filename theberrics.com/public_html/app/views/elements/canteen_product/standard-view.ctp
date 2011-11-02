@@ -242,7 +242,7 @@ function initOptionClick() {
 		</div>
 		<div class='container-bottom'></div>
 </div>
-<div>
+<div id='product-transit-info'>
 	<?php 
 		
 		$ups = new UpsApi();
@@ -250,10 +250,27 @@ function initOptionClick() {
 		
 		$shipping_estimate = $ups->timeInTransitCached(array(
 			"country_code"=>$_SERVER['GEOIP_COUNTRY_CODE'],
-			"postal_code"=>$_SERVER['GEOIP_POSTAL_CODE']
+			"postal_code"=>$_SERVER['GEOIP_POSTAL_CODE'],
+			"city"=>$_SERVER['GEOIP_REGION_NAME']
 		));
-		echo "<pre>";
-		print_r($shipping_estimate);
-		echo "</pre>";
+		
 	?>
+	<div class='left'>
+		
+	</div>
+	<div class='right'>
+		<div class='currency-selector'>
+			<span class='label'>CURRENCY: <?php echo $user_currency_id; ?></span>
+		</div>
+		<div class='shipping-estimate'>
+			<div>UPS DELIVERY ESTIMATE</div>
+			<ul>
+				<?php foreach($shipping_estimate['TimeInTransitResponse']['TransitResponse']['ServiceSummary'] as $v): ?>
+				<li><?php echo $v['Service']['Description']; ?>: <?php echo $v['EstimatedArrival']['DayOfWeek']; ?> <?php echo $v['EstimatedArrival']['Date']; ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php //print_r($shipping_estimate['TimeInTransitResponse']['TransitResponse']['ServiceSummary']); ?>
+	</div>
+	<div style='clear:both;'></div>
 </div>
