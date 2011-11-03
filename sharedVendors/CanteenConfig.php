@@ -18,13 +18,14 @@ class CanteenConfig {
 				"free_shipping"=>false,
 				"free_shipping_subtotal"=>0, //CALCULATED IN US DOLLARS
 				"free_shipping_countries"=>array("US"), //TWO CHAR ISO COUNTY CODES
-				"currencies"=>array("USD","GBP","EUR","CAD","AUD","BRL"),
+				"currencies"=>array("USD","GBP","EUR","CAD","AUD","BRL","JPY"),
 				"user_currency"=>array(
 					"GBP"=>array("GB","UK"),
 					"EUR"=>array("AD","AT","BE","CY","EE","FI","FR","DE","GR","IE","IT","LU","MT","MC","ME","NL","PT","SM","SK","SI","ES","VA"),
 					"CAD"=>array("CA"),
 					"AUD"=>array("AU"),
-					"BRL"=>array("BR")
+					"BRL"=>array("BR"),
+					"JPY"=>array("JP")
 				),
 				"gateway_account_id"=>1,
 				"tax_regions"=>array(
