@@ -251,8 +251,10 @@ function initOptionClick() {
 		$shipping_estimate = $ups->timeInTransitCached(array(
 			"country_code"=>$_SERVER['GEOIP_COUNTRY_CODE'],
 			"postal_code"=>$_SERVER['GEOIP_POSTAL_CODE'],
-			"city"=>$_SERVER['GEOIP_REGION_NAME']
+			"province"=>$_SERVER['GEOIP_REGION_NAME']
 		));
+		
+		print_r($shipping_estimate);
 		
 	?>
 	<div class='left'>

@@ -17,7 +17,50 @@ $(document).ready(function() {
 
 	});
 	toggleBilling($("#same-as-shipping-check"));
+	
+	
+	$("#CanteenOrderCountry").bind("change",function(e) { 
+		
+		//alert(e);
+		
+		calculateCart();
+		
+		
+	});
+	$("#CanteenOrderPostal").bind("keyup",function(e) {
+	
+	
+		//calculateCart();
+	
+	
+	});
+	
+	
 });
+
+
+function calculateCart() {
+	
+	
+	$("#checkout-form").ajaxSubmit({
+		"url":"/canteen/cart/calc_cart",
+		"dataType":"json",
+		success:function(d) {
+			
+			var str = '';
+			for(var a in d['CanteenOrder']) {
+			
+				str += a+":"+d['CanteenOrder'][a]+"\n\r";
+				
+			}
+			
+			//alert(str);
+			$('body').append(objectToString(d));
+		}
+		
+	});
+	
+}
 
 function toggleBilling(check) {
 
@@ -252,4 +295,42 @@ function Mod10(id) {
 			}
 	
 	}
+}
+function objectToString(o){
+    
+    var parse = function(_o){
+    
+        var a = [], t;
+        
+        for(var p in _o){
+        
+            if(_o.hasOwnProperty(p)){
+            
+                t = _o[p];
+                
+                if(t && typeof t == "object"){
+                
+                    a[a.length]= p + ":{ " + arguments.callee(t).join(", ") + "}";
+                    
+                }
+                else {
+                    
+                    if(typeof t == "string"){
+                    
+                        a[a.length] = [ p+ ": \"" + t.toString() + "\"" ];
+                    }
+                    else{
+                        a[a.length] = [ p+ ": " + t.toString()];
+                    }
+                    
+                }
+            }
+        }
+        
+        return a;
+        
+    }
+    
+    return "{" + parse(o).join(", ") + "}";
+    
 }

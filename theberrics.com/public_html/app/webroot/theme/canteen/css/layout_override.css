@@ -1149,14 +1149,14 @@ PRODUCT EXTRA INFO
 	
 }
 
-#canteen-cart .grand-total, #canteen-cart .grand-total-label {
+#canteen-cart #grand-total-dd, #canteen-cart .grand-total-label {
 
 	border:1px solid #000;
 	font-weight:bold;
 
 }
 
-#canteen-cart .checkout .totals .grand-total {
+#canteen-cart .checkout .totals #grand-total-dd {
 
 	border-left:none;
 	margin-top:-27px;

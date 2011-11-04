@@ -51,7 +51,7 @@ class UpsApi {
 
 		$req = $dom->appendChild($dom->createElement("RatingServiceSelectionRequest"));
 		
-		$this->buildRequest($req,"Rate","Rate");
+		$this->buildRequest($req,"Rate","Shop");
 		
 		$pickup = $req->appendChild($dom->createElement("PickupType"));
 		
@@ -136,7 +136,7 @@ class UpsApi {
 		
 		$data = $xml->toArray();
 
-		die(pr($data));
+		//die(pr($data));
 		
 		return $data;
 		
@@ -178,12 +178,17 @@ class UpsApi {
 		
 		$to_address->appendChild(new DOMElement("CountryCode",$args[0]['country_code']));
 		
-		if(isset($args[0]['postal_code'])) {
+		if(isset($args[0]['postal_code']) && !empty($args[0]['postal_code'])) {
 			
 			$to_address->appendChild(new DOMElement("PostcodePrimaryLow",$args[0]['postal_code']));
 			
 		}
 				
+		if(isset($args[0]['province']) && !empty($args[0]['province'])) {
+			
+			$to_address->appendChild(new DOMElement("StateProvinceCode",$args[0]['province']));
+			
+		}
 		//from 
 		
 		$from = $req->appendChild(new DOMElement("TransitFrom"));

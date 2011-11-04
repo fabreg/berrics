@@ -197,6 +197,15 @@ class CanteenCartController extends CanteenAppController {
 
 	}
 	
+	public function calc_cart() {
+		
+		$this->loadModel("CanteenOrder");
+		
+		$order = $this->CanteenOrder->calculateCartTotal($this->data);
+		
+		die(json_encode($order));
+		
+	}
 	
 	public function remove($id) {
 		

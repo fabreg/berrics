@@ -205,19 +205,17 @@ class CanteenOrder extends AppModel {
 			
 			
 			$order_items[$k] = array_merge($order_items[$k],$p);
-
+			
 			$order_items[$k]['price'] = $p['CanteenProductPrice'][0]['price']*$item['quantity'];
 			$order_items[$k]['sales_tax'] = ($order_items[$k]['price']*$tax_rate);
+			$order_items[$k]['shipping_weight'] = $order_items[$k]['CanteenProduct']['shipping_weight'];
 				
-		
-			
 		}
 		
 		return $order_items;
 		
 	}
 	
-
 	
 	public function calculateCartTotal($order = array()) {
 		
@@ -230,32 +228,37 @@ class CanteenOrder extends AppModel {
 		//let's get the sub total
 		
 		$sub_total = 0;
-
+		$shipping_weight = 0;
 		
 		foreach($order['CanteenOrderItem'] as $item) {
 			
 			$sub_total += $item['CanteenProductPrice'][0]['price'];
-		
+			$shipping_weight += $item['shipping_weight'];
+			
 		}
 		
 		$order['CanteenOrder']['sub_total'] = $sub_total;
 		
-		$shipping = false;
+		$shipping = "N/A";
 				
 		//calc shipping
 		$shipping_info = $this->extractShippingInfo($order);
 		
-		if(!empty($shipping_info['Shipping']['postal']) && !empty($shipping_info['Shipping']['country'])) {
+		if((!empty($shipping_info['Shipping']['postal']) || !empty($shipping_info['Shipping']['city'])) && !empty($shipping_info['Shipping']['country'])) {
 			
 			$ups = new UpsApi();
 			
-			//$_price = $ups->esitmateShipping
+			$shipping_price = $ups->estimateShipping($shipping_info);
+			
+			die(print_r($shipping_price));
 			
 		}
 		
-		$order['CanteenOrder']['shipping'] = $order['CanteenOrder']['shipping_total'] = 0;
+		$order['CanteenOrder']['shipping'] = $order['CanteenOrder']['shipping_total'] = $shipping;
 		
 		$total = $sub_total + $shipping;
+		
+		$order['CanteenOrder']['shipping_weight'] = $shipping_weight;
 		
 		$order['CanteenOrder']['total'] = $order['CanteenOrder']['grand_total'] = $total;
 		
@@ -674,6 +677,12 @@ class CanteenOrder extends AppModel {
 		if(isset($CanteenOrder['CanteenOrder']['city'])) 			$a['Shipping']['city'] = $CanteenOrder['CanteenOrder']['city'];
 		if(isset($CanteenOrder['CanteenOrder']['province'])) 		$a['Shipping']['province'] = $CanteenOrder['CanteenOrder']['province'];
 		if(isset($CanteenOrder['CanteenOrder']['phone'])) 			$a['Shipping']['phone'] = $CanteenOrder['CanteenOrder']['phone'];
+		if(isset($CanteenOrder['CanteenOrder']['first_name']))      $a['Shipping']['first_name'] = $CanteenOrder['CanteenOrder']['first_name'];
+		if(isset($CanteenOrder['CanteenOrder']['last_name']))       $a['Shipping']['last_name'] = $CanteenOrder['CanteenOrder']['last_name'];
+		
+		$a['Currency'] = $CanteenOrder['CanteenOrder']['currency_id'];
+		
+		
 		
 		return $a;
 		

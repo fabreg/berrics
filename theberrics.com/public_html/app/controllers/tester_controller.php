@@ -22,22 +22,25 @@ class TesterController extends BerricsAppController {
 		
 		$ups = new UpsApi();
 		
-		$ups->estimateShipping(array(
+		$data = $ups->estimateShipping(array(
 			"Shipping"=>array(
 				"first_name"=>"John",
 				"last_name"=>"Hardy",
-				"street_address"=>"2669 Nutmeg Cir",
+				"street_address"=>"",
 				"apt"=>"",
-				"city"=>"Simi Valley",
-				"province"=>"CA",
-				"country"=>"US",
-				"postal"=>"93063",
+				"city"=>"LONDON",
+				"province"=>"",
+				"country"=>"GB",
+				"postal"=>"",
 				"phone"=>"818-888-8888"
 			),
 			"Service"=>array(
 				"code"=>"03"
 			)
 		));
+		
+		
+		die(print_r($data));
 		
 	}
 	
