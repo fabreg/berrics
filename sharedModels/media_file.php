@@ -131,7 +131,7 @@ class MediaFile extends AppModel {
 			$m['postroll'] = str_replace("#LABEL#",$m['postroll_label_override'],$urls['postroll']);
 			$postroll = true;
 		}
-		
+		$preroll = false;
 		if(!$preroll) {
 			
 			$m['preroll'] = '';
