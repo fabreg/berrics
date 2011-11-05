@@ -1,13 +1,13 @@
 <?php 
 
-$this->Html->script(array("cart/index"),array("inline"=>false));
+$this->Html->script(array("cart/index","jquery.form"),array("inline"=>false));
 
 $shipping_codes = CanteenConfig::get("shipping_codes");
 
 
 
 ?>
-<?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here)); ?>
+<?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here,"id"=>"checkout-form")); ?>
 <div id='canteen-cart'>
 	<div class='header'>
 		<h1>THE CANTEEN // SHOPPING CART</h1>
@@ -86,11 +86,11 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 				<div class='totals'>
 					<dl class='totals-list'>
 						<dt>Sub-Total..</dt>
-						<dd><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='sub-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt>Shipping...</dt>
-						<dd><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='shipping-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt class='grand-total-label'>Total......</dt>
-						<dd class='grand-total'><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='grand-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 					</dl>
 				</div>
 				<div class='form'>
@@ -135,3 +135,10 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 	echo $this->Form->input("geoip_country_code",array("value"=>env("GEOIP_COUNTRY_CODE"),"type"=>"hidden"));
 	echo $this->Form->input("geoip_city",array("value"=>env("GEOIP_CITY"),"type"=>"hidden"));
 echo $this->Form->end(); ?>
+<?php 
+
+
+pr($this->data);
+
+
+?>

@@ -52,6 +52,8 @@ class CanteenController extends CanteenAppController {
 			);
 		$meta_filters = array();
 		$brand_filters = array();
+	
+		if(isset($_GET['data'])) $this->data = $_GET['data'];
 		
 		if(count($this->data)>0) {
 			

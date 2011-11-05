@@ -33,116 +33,138 @@ class UpsApi {
 		
 	}
 	
+	
+	public function esitmateShippingCached() {
+		
+		
+		
+		
+		
+	}
+	
 	public function estimateShipping(/*POLYMORPHIC*/) {
 		
 		$args = func_get_args();
-		
-		$token = md5(serialize($args));
-		
-		if(($data = Cache::read($token,"1min")) === false) {
+
 			
-				$dom = new DOMDocument("1.0");
+		$dom = new DOMDocument("1.0");
 
-				$req = $dom->appendChild($dom->createElement("RatingServiceSelectionRequest"));
-				
-				$this->buildRequest($req,"Rate","Rate");
-				
-				$pickup = $req->appendChild($dom->createElement("PickupType"));
-				
-				$pickup->appendChild($dom->createElement("Code","01"));
-				$pickup->appendChild($dom->createElement("Description","Daily Pickup"));
-				
-				$shipment = $req->appendChild($dom->createElement("Shipment"));
-				
-				//setup the shipper account for the canteen
-				$shipment = $this->insertShipperAccount($shipment);
-				
-				$shipTo = $shipment->appendChild($dom->createElement("ShipTo"));
-				$shipToAddress = $shipTo->appendChild($dom->createElement("Address"));
-				
-				//shipping address
-				if($args[0]['Shipping']) {
-					
-					if(isset($args[0]['Shipping']['first_name']))  $shipTo->appendChild($dom->createElement("AttentionName","{$args[0]['Shipping']['first_name']} {$args[0]['Shipping']['last_name']}"));
-					
-					if(isset($args[0]['Shipping']['phone'])) $shipTo->appendChild($dom->createElement("PhoneNumber",$args[0]['Shipping']['phone']));
-					
-					//do the address stuff
-					if(isset($args[0]['Shipping']['street_address'])) $shipToAddress->appendChild($dom->createElement("AddressLine1",$args[0]['Shipping']['street_address']));
-					
-					if(isset($args[0]['Shipping']['apt'])) $shipToAddress->appendChild($dom->createElement("AddressLine2",$args[0]['Shipping']['apt']));
-					
-					if(isset($args[0]['Shipping']['city'])) $shipToAddress->appendChild($dom->createElement("City",$args[0]['Shipping']['city']));
-					
-					if(isset($args[0]['Shipping']['country'])) $shipToAddress->appendChild($dom->createElement("CountryCode",$args[0]['Shipping']['country']));
-					
-					if(isset($args[0]['Shipping']['postal'])) $shipToAddress->appendChild($dom->createElement("PostalCode",$args[0]['Shipping']['postal']));
-					
-					if(isset($args[0]['Shipping']['province'])) $shipToAddress->appendChild($dom->createElement("StateProvinceCode",$args[0]['Shipping']['province']));
-					
-					
-				}
-				
-				$shipment = $this->insertShipFrom($shipment);
-				
-				if(isset($args[0]['Service'])) {
-					
-					$service = $shipment->appendChild($dom->createElement("Service"));
-					
-					$service->appendChild($dom->createElement("Code",$args[0]['Service']['code']));
-					
-				}
-				
-				//insert the shipping package information
-				
-				$package = $shipment->appendChild($dom->createElement("Package"));
-				
-				$packageType = $package->appendChild($dom->createElement("PackagingType"));
-				$packageType->appendChild($dom->createElement("Code","02"));
-				
-				$dim = $package->appendChild($dom->createElement("Dimensions"));
-				
-				$unit = $dim->appendChild($dom->createElement("UnitOfMeasurement"));		
-				$unit->appendChild($dom->createElement("Code","IN"));
-				
-				$dim->appendChild($dom->createElement("Length","12"));
-				$dim->appendChild($dom->createElement("Width","8"));
-				$dim->appendChild($dom->createElement("Height","12"));
-				
-				$weight = $package->appendChild($dom->createElement("PackageWeight"));
-				//unit of measurement
-				$unit = $weight->appendChild($dom->createElement("UnitOfMeasurement"));
-				$unit->appendChild($dom->createElement("Code","LBS"));
-				
-				//set the actual weight
-				$weight->appendChild($dom->createElement("Weight","2.0"));
-				
-				//$shipment->appendChild($dom->createElement("ShipmentServiceOptions"));
-				
-				
-				$socket = new HttpSocket();
-				
-				$xml_string = $this->buildAuth().$dom->saveXml();
-				//die($xml_string);
-				$response = $socket->post($this->urls['shipping_rate'],$xml_string);
-				//die($response);
-				$xml = new Xml($response);
-				
-				$data = $xml->toArray();
-				
-				Cache::write($token,$data,"1min");
-				
+		$req = $dom->appendChild($dom->createElement("RatingServiceSelectionRequest"));
+		
+		$this->buildRequest($req,"Rate","Shop");
+		
+		$pickup = $req->appendChild($dom->createElement("PickupType"));
+		
+		$pickup->appendChild($dom->createElement("Code","01"));
+		$pickup->appendChild($dom->createElement("Description","Daily Pickup"));
+		
+		$shipment = $req->appendChild($dom->createElement("Shipment"));
+		
+		//setup the shipper account for the canteen
+		$shipment = $this->insertShipperAccount($shipment);
+		
+		$shipTo = $shipment->appendChild($dom->createElement("ShipTo"));
+		$shipToAddress = $shipTo->appendChild($dom->createElement("Address"));
+		
+		//shipping address
+		if($args[0]['Shipping']) {
+			
+			if(isset($args[0]['Shipping']['first_name']))  $shipTo->appendChild($dom->createElement("AttentionName","{$args[0]['Shipping']['first_name']} {$args[0]['Shipping']['last_name']}"));
+			
+			if(isset($args[0]['Shipping']['phone'])) $shipTo->appendChild($dom->createElement("PhoneNumber",$args[0]['Shipping']['phone']));
+			
+			//do the address stuff
+			if(isset($args[0]['Shipping']['street_address'])) $shipToAddress->appendChild($dom->createElement("AddressLine1",$args[0]['Shipping']['street_address']));
+			
+			if(isset($args[0]['Shipping']['apt'])) $shipToAddress->appendChild($dom->createElement("AddressLine2",$args[0]['Shipping']['apt']));
+			
+			if(isset($args[0]['Shipping']['city'])) $shipToAddress->appendChild($dom->createElement("City",$args[0]['Shipping']['city']));
+			
+			if(isset($args[0]['Shipping']['country'])) $shipToAddress->appendChild($dom->createElement("CountryCode",$args[0]['Shipping']['country']));
+			
+			if(isset($args[0]['Shipping']['postal'])) $shipToAddress->appendChild($dom->createElement("PostalCode",$args[0]['Shipping']['postal']));
+			
+			if(isset($args[0]['Shipping']['province'])) $shipToAddress->appendChild($dom->createElement("StateProvinceCode",$args[0]['Shipping']['province']));
+			
+			
 		}
+		
+		$shipment = $this->insertShipFrom($shipment);
+		
+		if(isset($args[0]['Service'])) {
+			
+			$service = $shipment->appendChild($dom->createElement("Service"));
+			
+			$service->appendChild($dom->createElement("Code",$args[0]['Service']['code']));
+			
+		}
+		
+		//insert the shipping package information
+		
+		$package = $shipment->appendChild($dom->createElement("Package"));
+		
+		$packageType = $package->appendChild($dom->createElement("PackagingType"));
+		$packageType->appendChild($dom->createElement("Code","02"));
+		
+		$dim = $package->appendChild($dom->createElement("Dimensions"));
+		
+		$unit = $dim->appendChild($dom->createElement("UnitOfMeasurement"));		
+		$unit->appendChild($dom->createElement("Code","IN"));
+		
+		$dim->appendChild($dom->createElement("Length","12"));
+		$dim->appendChild($dom->createElement("Width","8"));
+		$dim->appendChild($dom->createElement("Height","12"));
+		
+		$weight = $package->appendChild($dom->createElement("PackageWeight"));
+		//unit of measurement
+		$unit = $weight->appendChild($dom->createElement("UnitOfMeasurement"));
+		$unit->appendChild($dom->createElement("Code","LBS"));
+		
+		//set the actual weight
+		$weight->appendChild($dom->createElement("Weight","2.0"));
+		
+		//$shipment->appendChild($dom->createElement("ShipmentServiceOptions"));
+		
+		
+		$socket = new HttpSocket();
+		
+		$xml_string = $this->buildAuth().$dom->saveXml();
+		//die($xml_string);
+		$response = $socket->post($this->urls['shipping_rate'],$xml_string);
+		//die($response);
+		$xml = new Xml($response);
+		
+		$data = $xml->toArray();
 
-		die(pr($data));
+		//die(pr($data));
 		
 		return $data;
 		
 	}
 	
-	public function timeInTransit() {
+	public function timeInTransitCached(/*POLYMORPHIC*/) {
+		
+		$args = func_get_args();
+		
+		$cache_token = "time_in_transit_".md5(serialize($args));
+		
+		if(($data = Cache::read($cache_token,"5min")) === false) {
+				
+			$data = $this->timeInTransit($args[0]);
+			
+			Cache::write($cache_token,"5min");
+			
+		}
+		
+		return $data;
+		
+	}
+	
+	public function timeInTransit(/*POLYMORPHIC*/) {
 
 		$dom = new DOMDocument("1.0");
+		
+		$args = func_get_args();
 		
 		$req = $dom->appendChild(new DOMElement("TimeInTransitRequest"));
 		
@@ -150,15 +172,23 @@ class UpsApi {
 		
 		$this->buildRequest($req,"TimeInTransit");
 
-		
 		$to = $req->appendChild(new DOMElement("TransitTo"));
 		
 		$to_address = $to->appendChild(new DOMElement("AddressArtifactFormat"));
 		
-		$to_address->appendChild(new DOMElement("CountryCode","US"));
+		$to_address->appendChild(new DOMElement("CountryCode",$args[0]['country_code']));
 		
-		$to_address->appendChild(new DOMElement("PostcodePrimaryLow","10003"));
-		
+		if(isset($args[0]['postal_code']) && !empty($args[0]['postal_code'])) {
+			
+			$to_address->appendChild(new DOMElement("PostcodePrimaryLow",$args[0]['postal_code']));
+			
+		}
+				
+		if(isset($args[0]['province']) && !empty($args[0]['province'])) {
+			
+			$to_address->appendChild(new DOMElement("StateProvinceCode",$args[0]['province']));
+			
+		}
 		//from 
 		
 		$from = $req->appendChild(new DOMElement("TransitFrom"));
@@ -194,13 +224,13 @@ class UpsApi {
 		
 		$sock = new HttpSocket();
 		
-		$res = $sock->post($this->urls->time_in_transit,$xml);
+		$res = $sock->post("https://wwwcie.ups.com/ups.app/xml/TimeInTransit",$xml);
 		
 		$x = new Xml($res);
 		
 		$a = $x->toArray();
 		
-		die(pr($a));
+		return $a;
 		
 		//die($auth.$dom->saveXml());
 		
@@ -284,7 +314,7 @@ class UpsApi {
 
 		// create the children of the TransactionReference element
 		$transaction_element->appendChild(
-			new DOMElement('XpciVersion', '1.0'));
+			new DOMElement('XpciVersion', '1.0002'));
 
 		// check if we have customer data to include
 		if (!empty($customer_context)) {

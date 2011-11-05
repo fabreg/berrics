@@ -390,20 +390,30 @@ MEDIA AJAX WINDOW THING
 
 .round-div {
 	
-	border:1px solid #999;
+	border:1px solid #ccc;
 	-webkit-border-radius: 12px;
 	-moz-border-radius: 12px;
 	border-radius: 12px;
-		-webkit-box-shadow: 2px 5px 5px #616161;
+	-webkit-box-shadow: 2px 5px 5px #616161;
 	-moz-box-shadow: 2px 5px 5px #616161;
 	box-shadow: 2px 5px 5px #616161;
+	padding:4px;
+	margin-bottom:12px;
 }
 
 
 .round-div .header {
 
-		
-	
+	background-color:#5a636e;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	padding:10px;
+	color:white;
+	font-weight:bold;
+	font-size:20px;
+	margin-top:4px;
+	margin-bottom:10px;
 	
 }
 

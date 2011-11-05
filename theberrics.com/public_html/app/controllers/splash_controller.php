@@ -281,6 +281,17 @@ class SplashController extends BerricsAppController {
 		
 	}
 	
+	public function nike() {
+		
+		
+		
+		$this->layout = "empty";
+		
+		
+		
+		
+	}
+	
 	
 	
 }

@@ -1,31 +1,28 @@
 <?php 
 
+App::import("Vendor","UpsApi",array("file"=>"UpsApi.php"));
+
 $this->set("title_for_layout",$product['CanteenProduct']['name']." By:".$product['Brand']['name']);
+
 $this->set("meta_d",$product['CanteenProduct']['description']);
+
 ?>
 <script>
 $(document).ready(function() { 
 
-
-
 	$('.options-div .option .check:eq(0)').addClass('checked');
 
-
 	initStyleClick();
+
 	initOptionClick();
 
 	$("#product-standard-view .product-options .option:eq(0)").click();
 
-
 	initProductThumbs();
-
-	
 	
 });
 
-
 function initStyleClick() {
-
 
 	$("#product-standard-view .style-code-options .option").click(function() { 
 
@@ -35,12 +32,9 @@ function initStyleClick() {
 				
 	});
 	
-	
 }
 
-
 function initProductThumbs() {
-
 
 	$("#product-standard-view .thumbs .img-thumb").click(function() { 
 
@@ -61,21 +55,17 @@ function initProductThumbs() {
 
 	$("#product-standard-view .thumbs .img-thumb");
 
-	
 }
 
 function initOptionClick() {
 
-
 	$("#product-standard-view .product-options .option").click(function() { 
-
 
 		var id = $(this).attr("canteen_product_option_id");
 
 		//pop the field
 
 		$("#CanteenOrderItemCanteenProductOptionId").val(id);
-
 
 		//uncheckk allllllll of them
 
@@ -86,15 +76,12 @@ function initOptionClick() {
 		
 	});
 
-	
 }
-
-
 
 </script>
 <div style='height:30px;'>
 <?php if($this->Session->check("is_admin")): ?>
-<a href='http://dev.admin.theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>' target='_blank'>Edit</a>
+	<a href='http://dev.admin.theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>' target='_blank'>Edit</a>
 <?php endif; ?>
 </div>
 <div id='product-standard-view'>
@@ -220,11 +207,8 @@ function initOptionClick() {
 						<div style='clear:both;'></div>
 						<?php echo $this->Form->end(); ?>
 					</div>
-					
-				
 					<div class='product-img'>
 						<div class='main-image'>
-								
 							<?php 
 								
 								$img = Set::extract('/CanteenProductImage[front_image=1]',$product);
@@ -242,7 +226,6 @@ function initOptionClick() {
 								echo $this->Media->productThumb($img,array("w"=>485),array("img"=>$img['file_name'])); 
 								
 							?>
-						
 						</div>
 						<div class='thumbs'>
 							<?php foreach($product['CanteenProductImage'] as $img): ?>
@@ -259,6 +242,37 @@ function initOptionClick() {
 		</div>
 		<div class='container-bottom'></div>
 </div>
-<?php 
-pr($product);
-?>
+<div id='product-transit-info'>
+	<?php 
+		
+		$ups = new UpsApi();
+		//pr($ups);
+		
+		$shipping_estimate = $ups->timeInTransitCached(array(
+			"country_code"=>$_SERVER['GEOIP_COUNTRY_CODE'],
+			"postal_code"=>$_SERVER['GEOIP_POSTAL_CODE'],
+			"province"=>$_SERVER['GEOIP_REGION_NAME']
+		));
+		
+		print_r($shipping_estimate);
+		
+	?>
+	<div class='left'>
+		
+	</div>
+	<div class='right'>
+		<div class='currency-selector'>
+			<span class='label'>CURRENCY: <?php echo $user_currency_id; ?></span>
+		</div>
+		<div class='shipping-estimate'>
+			<div>UPS DELIVERY ESTIMATE</div>
+			<ul>
+				<?php foreach($shipping_estimate['TimeInTransitResponse']['TransitResponse']['ServiceSummary'] as $v): ?>
+				<li><?php echo $v['Service']['Description']; ?>: <?php echo $v['EstimatedArrival']['DayOfWeek']; ?> <?php echo $v['EstimatedArrival']['Date']; ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php //print_r($shipping_estimate['TimeInTransitResponse']['TransitResponse']['ServiceSummary']); ?>
+	</div>
+	<div style='clear:both;'></div>
+</div>

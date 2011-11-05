@@ -3,7 +3,9 @@
 class StoreHelper extends AppHelper {
 	
 	
-	public $helpers = array("Html");
+	public $helpers = array("Html","Number");
+	
+	
 	
 	public function formatMoney($price = 0.00,$currency = 'USD') {
 		
@@ -32,8 +34,5 @@ class StoreHelper extends AppHelper {
 		return $s;
 		
 	}
-	
-	
-	
 	
 }

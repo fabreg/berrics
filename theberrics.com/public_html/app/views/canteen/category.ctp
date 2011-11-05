@@ -1,3 +1,8 @@
+<?php 
+
+$this->Html->script(array("jquery.form","category"),array("inline"=>false));
+
+?>
 <style>
 .canteen-product-thumb {
 
@@ -7,54 +12,6 @@
 }
 
 </style>
-<script type='text/javascript'>
-$(document).ready(function() { 
-
-
-	$('.canteen-product-thumb').hover(
-		function() { 
-
-			$(this).find('.info').fadeIn();
-			
-		},
-		function() { 
-
-			$(this).find('.info').hide();
-			
-		}
-	).click(function() { 
-
-		var ref = $(this).find("a").attr("href");
-
-		document.location.href = ref;
-		
-	});
-
-	$('.canteen-product-thumb a').click(function() { 
-
-		return false;
-
-	});
-
-
-	$("#reveal").click(function() { 
-
-		$('.canteen-product-thumb').each(function() { 
-
-			$(this).find('.info').toggle('slow');
-			
-		});
-		
-	});
-
-	$('#filter-form input').change(function() { 
-
-		$("#filter-form").submit();
-
-	});
-		
-});
-</script>
 <div style='height:15px;'></div>
 <div id='canteen-category'>
 	<!-- 
@@ -68,7 +25,8 @@ $(document).ready(function() {
 	</div>
 	-->
 	<div class='products'>
-			<div>
+		<!-- 
+		<div>
 		<div id='canteen-crumb'>
 			<div class='left'></div>
 			<div class='right'></div>
@@ -78,7 +36,9 @@ $(document).ready(function() {
 			<?php echo count($products); ?> Items
 		</div>
 		<div style='clear:both;'></div>
-	</div>
+		</div>
+		-->
+	
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>
@@ -92,9 +52,6 @@ $(document).ready(function() {
 				<div style='clear:both;'></div>
 				</div>
 			</div>
-		</div>
-		<div class='bottom'>
-		
 		</div>
 	</div>
 	<div class='sorting'>
@@ -129,4 +86,9 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<div style='clear:both;'></div>
+	<div class='bottom'>
+		<div class='left'></div>
+		<div class='right'></div>
+		<div style='clear:both;'></div>
+	</div>
 </div>

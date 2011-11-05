@@ -67,6 +67,7 @@ body {
 	margin-top:-65px;
 	margin-left:75px;
 	position:relative;
+	z-index:998;
 }
 
 #canteen-navbar ul {
@@ -128,6 +129,8 @@ body {
 	line-height:22px;
 	font-style:italic;
 	border-bottom:1px dashed #e9e9e9;
+	padding:5px;
+	margin:0px;
 }
 
 #canteen-navbar ul li ul li a {
@@ -700,6 +703,34 @@ border-bottom:1px solid #333;
 }
 
 /*
+
+PRODUCT EXTRA INFO
+
+*/
+
+#product-transit-info {
+
+	border:1px solid #666;
+	background-color:#000;	
+	padding:10px;
+	
+}
+
+#product-transit-info .left {
+
+	float:left;
+	width:350px;
+	
+}
+
+#product-transit-info .right {
+	
+	float:right;
+	width:630px;
+	
+}
+
+/*
 	ORDER INVOICE
 	
 */
@@ -1118,14 +1149,14 @@ border-bottom:1px solid #333;
 	
 }
 
-#canteen-cart .grand-total, #canteen-cart .grand-total-label {
+#canteen-cart #grand-total-dd, #canteen-cart .grand-total-label {
 
 	border:1px solid #000;
 	font-weight:bold;
 
 }
 
-#canteen-cart .checkout .totals .grand-total {
+#canteen-cart .checkout .totals #grand-total-dd {
 
 	border-left:none;
 	margin-top:-27px;
@@ -1558,13 +1589,87 @@ border-bottom:1px solid #333;
 	height:30px;
 	line-height:30px;
 	border-bottom:dotted 1px #999;
+	text-indent:10px;
+	color:#ccc;
+	
+}
+
+#canteen-category .sorting .filter-options {
+	
+	margin-bottom:15px;	
 	
 }
 
 #canteen-category .sorting .filter-options label {
 
-	color:#f0f0f0;	
+	color:#666;	
+	/*margin-left:17px;*/
+	height:27px;
+	line-height:27px;
+	background-image:url(/img/layout/canteen/checkbox.jpg);
+	background-repeat:no-repeat;
+	background-position:left center;
+	text-indent:20px;
+	display:block;
+	cursor:pointer;
 	
 }
+
+#canteen-category .sorting .filter-options .checkbox input {
+
+	display:none;	
+	
+}
+
+#canteen-category .sorting .filter-options .checkbox {
+	
+
+	margin-left:19px;
+	
+}
+
+#canteen-category .sorting .filter-options .checkbox-checked label {
+
+	background-image:url(/img/layout/canteen/checkbox-checked.jpg);
+	
+}
+#canteen-category .sorting .filter-options .checkbox-checked label {
+	
+	color:#ccc;	
+	
+	
+}
+#canteen-category .bottom {
+	
+		
+	
+}
+
+#canteen-category .bottom .right {
+
+	float:right;
+	width:231px;
+	background-image:url(/img/layout/canteen/category/filter-bg-bottom.jpg);
+	height:84px;
+	background-position:center bottom;
+	background-repeat:no-repeat;
+	
+}
+#canteen-category .bottom .left {
+	
+	height:84px;
+	background-image:url(/img/layout/canteen/category/cat-bg-bottom.jpg);
+	background-repeat:no-repeat;
+	width:815px;
+	float:left;
+		
+}
+
+
+
+
+
+
+
 
 
