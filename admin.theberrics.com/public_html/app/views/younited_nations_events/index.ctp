@@ -18,7 +18,8 @@
 			<td width='10%' align='center'><?php echo $this->Time->niceShort($e['YounitedNationsEvent']['modified']); ?></td>
 			<td><?php echo $e['YounitedNationsEvent']['name']; ?></td>
 			<td class='actions'>
-				
+				<a href='/younited_nations_events/view/<?php echo $e['YounitedNationsEvent']['id']; ?>'>View Entries</a>
+				<a href='/younited_nations_events/edit/<?php echo $e['YounitedNationsEvent']['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 			</td>
 		</tr>
 		<?php 

@@ -66,7 +66,8 @@ class DailyopSection extends AppModel {
 			"trajectory"=>"Trajectory",
 			"bangyoself"=>"Bang Yoself 3",
 			"news"=>"Aberrican News",
-			"newsv2"=>"Aberrican News V2"
+			"newsv2"=>"Aberrican News V2",
+			"younited_nations"=>"YOUnited Nations"
 			
 		);
 		

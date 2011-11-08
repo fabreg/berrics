@@ -174,7 +174,7 @@
 			</li>
 			<li class='li-sub-nav-header'>YOUnited Nations</li>
 			<li class='li-sub-nav-button'>
-				<a href='/Younited Nations Events'>Manage Events</a>
+				<a href='/younited_nations_events'>Manage Events</a>
 			</li>
 			<li class='li-sub-nav-header'>Wank Yoself</li>
 			<li class='li-sub-nav-button'>
