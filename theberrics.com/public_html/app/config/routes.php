@@ -9,7 +9,7 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 
 if($_SERVER['SCRIPT_URL'] == "/") {
 	
-	$splash_action = "random";
+	$splash_action = "index";
 	
 	if(date("Y-m-d")=="2011-11-05") {
 		

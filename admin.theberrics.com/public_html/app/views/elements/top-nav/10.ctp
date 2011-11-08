@@ -172,6 +172,10 @@
 			<li class='li-sub-nav-button'>
 				<a href='/batb_events/add'>Create new event</a>
 			</li>
+			<li class='li-sub-nav-header'>YOUnited Nations</li>
+			<li class='li-sub-nav-button'>
+				<a href='/Younited Nations Events'>Manage Events</a>
+			</li>
 			<li class='li-sub-nav-header'>Wank Yoself</li>
 			<li class='li-sub-nav-button'>
 				<a href='/bangyoself_events'>Manage Events</a>
