@@ -1,0 +1,94 @@
+@CHARSET "UTF-8";
+
+body {
+
+	background-image:url(/theme/younited-nations-3/img/bg.jpg);
+	
+}
+
+#main-container {
+	
+	background-image:url(/theme/younited-nations-3/img/yn3-main-bg.gif);
+	min-height:1200px;
+	background-position:center 50px;
+	background-repeat:no-repeat;
+	
+}
+
+#younited-nations-entry {
+	
+	margin-top:-40px;
+	
+	
+}
+
+#younited-nations-entry .entry-form-div {
+	
+	width:728px;
+	float:left;
+}
+
+#younited-nations-entry .entry-form-div .container {
+
+	background-image:url(/theme/younited-nations-3/img/yn3-form-bg.png);
+	margin-top:324px;	
+	
+}
+
+#younited-nations-entry .entry-form-div .container-top {
+	
+	background-image:url(/theme/younited-nations-3/img/yn3-form-top.jpg);
+	background-repeat:no-repeat;
+	margin-top:-324px;	
+	
+}
+
+#younited-nations-entry .entry-form-div .form-content {
+
+	min-height:600px;	
+	
+}
+
+#younited-nations-entry .entry-form-div .form-content {
+
+	padding-top:180px;	
+	
+}
+
+#younited-nations-entry .entry-form-div .form-content .rules {
+
+	color:black;
+	
+}
+
+#younited-nations-entry #entry-form {
+
+	margin:auto;
+	width:658px;
+	background-image:url(/theme/younited-nations-3/img/yn3-form-borders.jpg);
+	min-height:400px;
+}
+
+#younited-nations-entry #entry-form .form-header {
+	
+	background-image:url(/theme/younited-nations-3/img/yn3-entry-form-header.jpg);
+	height:47px;
+	
+}
+
+#younited-nations-entry #entry-form  .form-left-col {
+
+	
+}
+
+#younited-nations-entry #entry-form  .form-right-col {
+	
+	
+}
+
+
+#younited-nations-entry .right-col {
+	
+	
+	
+}

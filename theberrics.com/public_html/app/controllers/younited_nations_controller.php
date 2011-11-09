@@ -48,6 +48,21 @@ class YounitedNationsController extends DailyopsController {
 		
 		
 		
+		if(count($this->data)>0) {
+			
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+	public function locatePosse() {
+		
+		
+		
 	}
 	
 	public function index() {
