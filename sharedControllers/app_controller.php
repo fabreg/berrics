@@ -33,7 +33,7 @@ class AppController extends Controller {
 	 * Setup the Auth component and deny all access to controller actions
 	 * @see public_html/cake/libs/controller/Controller#beforeFilter()
 	 */
-	public function beforeFilter() {
+	public function beforeFilter(/*POLYMORPHIC*/) {
 		
         $this->Auth->authorize = 'controller';
         $this->Auth->loginAction = array('controller' => 'login', 'action' => 'index','plugin'=>'identity');
@@ -54,7 +54,7 @@ class AppController extends Controller {
 		}
 		
 		$this->Auth->deny("*");
-		//$this->Auth->allow("*");
+		
 	}
 	/**
 	 * Initialize the Authentication variables
@@ -138,7 +138,7 @@ class AppController extends Controller {
 	 * the we will check the user_id access rights
 	 * @return void
 	 */
-	public function initPermissions() {
+	public function initPermissions($second = false) {
 
 		$this->initAuthVariables();
 		
@@ -147,9 +147,11 @@ class AppController extends Controller {
 		$controller = $this->name;
 		
 		$action = $this->params['action'];
+
 		
 		//load in the group permission actions
 		$group_token ="group_perms_".$this->app_name."_".$this->auth_user_group_id."_".$controller;
+		
 		
 		if(($group_perms = Cache::read($group_token,"1min")) === false) {
 			
@@ -162,16 +164,18 @@ class AppController extends Controller {
 					"UserPermission.controller"=>array("*",$controller)
 			
 				),
-				"order"=>array("UserPermission.action"=>"ASC")
+				"order"=>array("UserPermission.action"=>"ASC"),
+				"contain"=>array()
 			
 			));
+			//die($this->render("/elements/sql_dump"));
 			
 			Cache::write($group_token,$group_perms,"1min");
 			
-		}
+		} 
 		
-		
-		
+
+			
 		foreach($group_perms as $v) {
 			
 			if($v['UserPermission']['allowed']) {
@@ -202,7 +206,8 @@ class AppController extends Controller {
 						"UserPermission.controller"=>array("*",$controller)
 				
 					),
-					"order"=>array("UserPermission.action"=>"ASC")
+					"order"=>array("UserPermission.action"=>"ASC"),
+					"contain"=>array()
 				
 				));
 				
@@ -226,6 +231,7 @@ class AppController extends Controller {
 				
 			}
 		}
+		
 		
 		if($this->Auth->user("id")) {
 			

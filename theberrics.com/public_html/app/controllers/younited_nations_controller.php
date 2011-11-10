@@ -13,11 +13,11 @@ class YounitedNationsController extends DailyopsController {
 		parent::beforeFilter();
 		
 		$this->Auth->allowedActions = array();
-		
-		$this->Auth->deny("*");
-		
+
 		$this->Auth->allow("index","view","section","entry_form");
-		
+
+		$this->initPermissions();
+
 		//set the theme up
 		
 		$this->theme = $this->params['section'];
@@ -46,16 +46,15 @@ class YounitedNationsController extends DailyopsController {
 	
 	public function entry_form() {
 		
-		
-		
-		if(count($this->data)>0) {
+		$posse = false;
+		if($this->Auth->user("id")) {
 			
+			//find the posse
 			
 			
 		}
 		
-		
-		
+		$this->set(compact("posse"));
 		
 	}
 	
@@ -79,6 +78,12 @@ class YounitedNationsController extends DailyopsController {
 	}
 	
 	public function view() {
+		
+		
+		
+	}
+	
+	public function crews() {
 		
 		
 		

@@ -59,33 +59,115 @@ body {
 
 	color:black;
 	
+	width:92%;
+	margin:auto;
 }
+
+#younited-nations-entry .entry-form-div .form-content .rules p {
+
+	font-family:'Courier';	
+	font-size:14px;
+	line-height:17px;
+	text-align:justify;
+	
+}
+
+#younited-nations-entry .entry-form-div .form-content .rules .heading {
+	
+	text-align:center;
+	text-decoration:underline;
+	
+}
+
 
 #younited-nations-entry #entry-form {
 
 	margin:auto;
 	width:658px;
-	background-image:url(/theme/younited-nations-3/img/yn3-form-borders.jpg);
+	background-image:url(/theme/younited-nations-3/img/yn3-form-borders.png);
 	min-height:400px;
+}
+
+#younited-nations-entry #entry-form .inner {
+
+	width:97%;
+	margin:auto;	
+	
 }
 
 #younited-nations-entry #entry-form .form-header {
 	
 	background-image:url(/theme/younited-nations-3/img/yn3-entry-form-header.jpg);
 	height:47px;
+	margin-bottom:10px;
+}
+
+
+
+#younited-nations-entry #entry-form .text {
+	
+	height:40px;
+	position:relative;
+	margin-top:10px;
+}
+
+#younited-nations-entry #entry-form .text input {
+	
+	
+	position:absolute;
+	border:none;
+	background-color:transparent;
+	display:block;
+	left:0px;
+	top:0px;
+	width:96%;
+	height:22px;
+	border-bottom:2px solid #444;
+	font-family:'Courier';
+	font-size:14px;
+}
+
+#younited-nations-entry #entry-form .text label {
+	
+	position:absolute;
+	display:block;
+	left:0px;
+	top:27px;
+	font-family:'Arial';
+	color:black;
+	font-size:11px;
+	font-weight:bold;
 	
 }
 
-#younited-nations-entry #entry-form  .form-left-col {
 
+#younited-nations-entry #entry-form .heading {
+
+	height:18px;
+	text-indent:15px;
+	background-image:url(/theme/younited-nations-3/img/entry-form-heading-bg.jpg);
 	
 }
 
-#younited-nations-entry #entry-form  .form-right-col {
+#younited-nations-entry #entry-form .crew-info-form {
 	
+		
+	
+}
+	
+#younited-nations-entry #entry-form .crew-info-form .info-form {
+
+	width:45%;		
 	
 }
 
+#younited-nations-entry #entry-form .crew-info-form .map {
+
+	float:right;
+	width:54%;	
+	
+	
+}
 
 #younited-nations-entry .right-col {
 	
