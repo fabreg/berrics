@@ -26,6 +26,12 @@ $(document).ready(function() {
 		younitedNationsGeocode();
 		
 	});
+
+	$("#YounitedNationsEntryCityStatePostal").bind('blur',function() { 
+
+		younitedNationsGeocode();
+
+	});
 	
 	
 });
@@ -44,14 +50,10 @@ function younitedNationsGeocode() {
 
 				} 
 
-				
-				
-	       			
-		       		
-		          marker.setMap(map); 
-		          marker.setPosition(results[0].geometry.location);
-				  marker.setDraggable(true);
-		       	  map.setCenter(results[0].geometry.location);
+	          marker.setMap(map); 
+	          marker.setPosition(results[0].geometry.location);
+			  marker.setDraggable(true);
+	       	  map.setCenter(results[0].geometry.location);
 
 				if(other.length>0) {
 
@@ -73,7 +75,9 @@ function younitedNationsGeocode() {
 		        
 		        
 	      } else {
-	        alert("Geocode was not successful for the following reason: " + status);
+		      
+	        	alert("Geocode was not successful for the following reason: " + status);
+	        
 	      }
 	});
 
@@ -104,6 +108,7 @@ function younitedNationsGeocode() {
 								
 									echo $this->element("younited-nations-3/crew-info-form");
 									echo $this->element("younited-nations-3/crew-roster-form");
+									//echo $this->element("");
 										
 								?>
 							</div>
