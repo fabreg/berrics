@@ -5,7 +5,7 @@ $this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true")
 
 ?>
 <script type='text/javascript'>
-var map,geocoder,marker = false;
+var map,geocoder,marker,marker_img = false;
 $(document).ready(function() { 
 
 	var lat = new google.maps.LatLng(34.0522342,-118.2436849);
@@ -32,6 +32,8 @@ $(document).ready(function() {
 		younitedNationsGeocode();
 
 	});
+
+	$("#entry-form label").addClass('red-label-x');
 	
 	
 });
@@ -49,6 +51,14 @@ function younitedNationsGeocode() {
 					marker = new google.maps.Marker();
 
 				} 
+
+				if(!marker_img) {
+
+					marker_img = new google.maps.MarkerImage("/theme/younited-nations-3/img/yn3-pin.png");
+
+					marker.setIcon(marker_img);
+					
+				}
 
 	          marker.setMap(map); 
 	          marker.setPosition(results[0].geometry.location);

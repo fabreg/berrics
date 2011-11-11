@@ -137,7 +137,7 @@ body {
 	color:black;
 	font-size:11px;
 	font-weight:bold;
-	
+	width:97%;
 }
 
 
@@ -174,3 +174,24 @@ body {
 	
 	
 }
+
+
+#younited-nations-entry #entry-form .green-label-check {
+
+	background-image:url(/theme/younited-nations-3/img/yn3-green-check.png);
+	background-repeat:no-repeat;
+	background-position:right center;	
+	
+	
+}
+
+
+#younited-nations-entry #entry-form .red-label-x {
+	
+	background-image:url(/theme/younited-nations-3/img/yn3-red-x.png);
+	background-repeat:no-repeat;
+	background-position:right center;
+	
+}
+
+
