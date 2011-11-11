@@ -8,7 +8,59 @@ $this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true")
 var map,geocoder,marker = false;
 $(document).ready(function() { 
 
+	var lat = new google.maps.LatLng(34.0522342,-118.2436849);
+	
+	var mapop = {
 
+		zoom:14,
+		center:lat,
+		mapTypeId: google.maps.MapTypeId.HYBRID
+			
+	};
+	
+	geocoder = new google.maps.Geocoder();
+	map = new google.maps.Map(document.getElementById("map"),mapop);
+
+	$("#tester").click(function() { 
+
+
+		var country = $("#YounitedNationsEntryCountry").val();
+		var other= $("#YounitedNationsEntryCityStatePostal").val();
+
+		geocoder.geocode( { 'address': other+" "+country}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+
+					if(!marker) {
+
+						marker = new google.maps.Marker();
+
+					} 
+
+					
+					
+		       			
+			       		
+			          marker.setMap(map); 
+			          marker.setPosition(results[0].geometry.location);
+					  marker.setDraggable(true);
+			       	  map.setCenter(results[0].geometry.location);
+			          map.setZoom(12);
+			        $("body").append(results[0].geometry.location.lng()+" : "+results[0].geometry.location.lat());
+
+					$("#YounitedNationsEntryLongitude").val(results[0].geometry.location.lng());
+					$("#YounitedNationsEntryLatitude").val(results[0].geometry.location.lat());
+
+			        
+			        
+		      } else {
+		        alert("Geocode was not successful for the following reason: " + status);
+		      }
+		});
+
+		
+
+	});
+	
 	
 });
 
@@ -31,7 +83,12 @@ $(document).ready(function() {
 								
 							</div>
 							<div class='inner'>
-								<?php echo $this->element("younited-nations-3/crew-info-form"); ?>
+								<?php 
+								
+									echo $this->element("younited-nations-3/crew-info-form");
+									echo $this->element("younited-nations-3/crew-roster-form");
+										
+								?>
 							</div>
 						</div>
 					</div>

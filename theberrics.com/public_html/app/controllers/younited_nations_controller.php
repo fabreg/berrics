@@ -46,6 +46,18 @@ class YounitedNationsController extends DailyopsController {
 	
 	public function entry_form() {
 		
+		if(count($this->data)>0) {
+			
+			
+			
+		} else {
+			
+			
+			$this->data['YounitedNationsEntry']['country'] = $_SERVER['GEOIP_COUNTRY_CODE'];
+			
+		}
+		
+		
 		$posse = false;
 		if($this->Auth->user("id")) {
 			

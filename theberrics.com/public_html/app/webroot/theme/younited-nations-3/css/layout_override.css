@@ -104,14 +104,14 @@ body {
 
 
 
-#younited-nations-entry #entry-form .text {
+#younited-nations-entry #entry-form .text,#younited-nations-entry #entry-form .select {
 	
 	height:40px;
 	position:relative;
 	margin-top:10px;
 }
 
-#younited-nations-entry #entry-form .text input {
+#younited-nations-entry #entry-form .text input, #younited-nations-entry #entry-form .text select {
 	
 	
 	position:absolute;
@@ -127,7 +127,7 @@ body {
 	font-size:14px;
 }
 
-#younited-nations-entry #entry-form .text label {
+#younited-nations-entry #entry-form .text label,#younited-nations-entry #entry-form .select label {
 	
 	position:absolute;
 	display:block;
@@ -158,15 +158,15 @@ body {
 #younited-nations-entry #entry-form .crew-info-form .info-form {
 
 	width:45%;		
-	
+	float:left;
 }
 
 #younited-nations-entry #entry-form .crew-info-form .map {
 
 	float:right;
-	width:54%;	
-	
-	
+	width:52%;	
+	height:250px;
+	margin-top:10px;
 }
 
 #younited-nations-entry .right-col {
