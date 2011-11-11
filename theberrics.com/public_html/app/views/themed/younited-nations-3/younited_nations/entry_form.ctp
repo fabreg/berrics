@@ -21,48 +21,65 @@ $(document).ready(function() {
 	geocoder = new google.maps.Geocoder();
 	map = new google.maps.Map(document.getElementById("map"),mapop);
 
-	$("#tester").click(function() { 
-
-
-		var country = $("#YounitedNationsEntryCountry").val();
-		var other= $("#YounitedNationsEntryCityStatePostal").val();
-
-		geocoder.geocode( { 'address': other+" "+country}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-
-					if(!marker) {
-
-						marker = new google.maps.Marker();
-
-					} 
-
-					
-					
-		       			
-			       		
-			          marker.setMap(map); 
-			          marker.setPosition(results[0].geometry.location);
-					  marker.setDraggable(true);
-			       	  map.setCenter(results[0].geometry.location);
-			          map.setZoom(12);
-			        $("body").append(results[0].geometry.location.lng()+" : "+results[0].geometry.location.lat());
-
-					$("#YounitedNationsEntryLongitude").val(results[0].geometry.location.lng());
-					$("#YounitedNationsEntryLatitude").val(results[0].geometry.location.lat());
-
-			        
-			        
-		      } else {
-		        alert("Geocode was not successful for the following reason: " + status);
-		      }
-		});
-
+	$("#tester").click(function() {
 		
-
+		younitedNationsGeocode();
+		
 	});
 	
 	
 });
+
+function younitedNationsGeocode() {
+
+	var country = $("#YounitedNationsEntryCountry").val();
+	var other = $("#YounitedNationsEntryCityStatePostal").val();
+
+	geocoder.geocode( { 'address': other+" "+country}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+
+				if(!marker) {
+
+					marker = new google.maps.Marker();
+
+				} 
+
+				
+				
+	       			
+		       		
+		          marker.setMap(map); 
+		          marker.setPosition(results[0].geometry.location);
+				  marker.setDraggable(true);
+		       	  map.setCenter(results[0].geometry.location);
+
+				if(other.length>0) {
+
+					 map.setZoom(14);
+					
+				} else {
+
+
+					 map.setZoom(4);
+					
+				}
+		       	  
+		         
+		        $("body").append(results[0].geometry.location.lng()+" : "+results[0].geometry.location.lat());
+
+				$("#YounitedNationsEntryLongitude").val(results[0].geometry.location.lng());
+				$("#YounitedNationsEntryLatitude").val(results[0].geometry.location.lat());
+
+		        
+		        
+	      } else {
+	        alert("Geocode was not successful for the following reason: " + status);
+	      }
+	});
+
+	
+}
+
 
 </script>
 <div id='younited-nations-entry'>
