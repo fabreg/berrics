@@ -42,9 +42,32 @@ class YounitedNationsEventsController extends AdminAppController {
 		
 	}
 	
-	public function view() {
+	public function view($id = false) {
+		
+		if(!$id) {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
+		$event = $this->YounitedNationEvent->find("first",array(
+			"conditions"=>array(
+				"YounitedNationsEvent.id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		$entries = $this->YounitedNationEvent->YounitedNationsEventEntry->find("all",array(
+		
+				"conditions"=>array(
+					
+				),
+				"contain"=>array()
+		
+		));
 		
 		
+		$this->set(compact("event"));
 		
 		
 	}
