@@ -887,8 +887,8 @@ class Arr {
 	public static function adLabelUrls() {
 		
 		return array(
-			"preroll"=>"http://ad.doubleclick.net/N5885/adx/#LABEL#;sz=8x8;cue=pre;#TAGS#ord=".md5(microtime().mt_rand(100,99))."?",
-			"postroll"=>"http://ad.doubleclick.net/N5885/adx/#LABEL#;sz=8x8;cue=post;#TAGS#ord=".md5(microtime().mt_rand(100,99))."?"
+			"preroll"=>"http://ad.doubleclick.net/N5885/adx/#LABEL#;sz=8x8;#TAGS#ord=".md5(microtime().mt_rand(100,99))."?",
+			"postroll"=>"http://ad.doubleclick.net/N5885/adx/#LABEL#;sz=8x8;#TAGS#ord=".md5(microtime().mt_rand(100,99))."?"
 		);
 		
 	}
