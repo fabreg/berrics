@@ -73,7 +73,6 @@
 	<?php endif; ?>
 </head>
 <body>
-
 	<div id='main-container'>
 		<?php echo $this->element("layout/top-banner-container"); ?>
 		<div id='page-wrapper-left'>

@@ -1,28 +1,29 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
+ ## FIX FRONT END URL'S
    	# FUCK WWW
    	RewriteCond %{HTTP_HOST} ^www.theberrics.com$ [NC]
    	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
 	
 	##FIX TSHIRT  INDESICIVNESS
 	RewriteRule ^(apparel) /t-shirts [R=301,L]
+	
 	#NO TRAILING SLASHES ON DIRECTORY CALLS
 	RewriteRule ^(.+[^/])/$ http://%{HTTP_HOST}/$1 [R=301,L]
     	
 	#REDIRECT WEBMAIL
 	RewriteRule (webmail)(.*) http://mail.google.com/a/theberrics.com [R,L]
 	
-
+    # Battle at the berrics 4
+    RewriteRule ^(batb4|batb4\.php) /battle-at-the-berrics-4 [R=301,L]
     # Battle at the berrics 3
     RewriteRule ^(batb3\.php|batb3) /battle-at-the-berrics-3 [R=301,L]
     # Battle at the berrics 2
     RewriteRule ^(batb2\.php|batb2) /battle-at-the-berrics-2 [R=301,L]
     # Battle at the berrics 1
     RewriteRule ^(batb\.php) /battle-at-the-berrics-1 [R=301,L]
-    # Battle at the berrics 4
-    RewriteRule ^(batb4|batb4\.php) /battle-at-the-berrics-4 [R=301,L]
-    
+	# Battle at the Berrics Index
     RewriteRule ^(batb) /battle-at-the-berrics.html [R=301,L]
     
     
@@ -111,10 +112,6 @@
     RewriteRule ^(recruits080208\.php) /recruit/lem-villemin.html [R=301,L]
     ##Craig
     RewriteRule ^(recruits071213\.php) /recruit/eduardo-craig.html [R=301,L]
- 
-   
-  
-    
     
     #UNITED NATIONS
     RewriteRule ^(unitednations\.php) /united-nations [R=301,L]
@@ -231,6 +228,9 @@
     #bangin
     RewriteRule ^(bangin\.php) /bangin [R=301,L]
     
+### END BERRICS URL FIXES
+
+
     ## FILES
     
     RewriteCond %{REQUEST_FILENAME} !-d

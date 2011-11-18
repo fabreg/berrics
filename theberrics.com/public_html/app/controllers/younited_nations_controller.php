@@ -34,13 +34,14 @@ class YounitedNationsController extends DailyopsController {
 				
 				$title_for_layout = "YOUnited Nations 3";
 				
-				$this->event_id = 2;
+				$this->event_id = 3;
 				
 			break;
 			
 		}
 		
 		$this->set(compact("title_for_layout"));
+		$this->set("event_id",$this->event_id);
 		
 	}
 	
@@ -57,12 +58,11 @@ class YounitedNationsController extends DailyopsController {
 			
 		}
 		
-		
 		$posse = false;
+		
 		if($this->Auth->user("id")) {
 			
 			//find the posse
-			
 			
 		}
 		

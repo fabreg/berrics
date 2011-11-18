@@ -50,22 +50,32 @@ class YounitedNationsEventsController extends AdminAppController {
 			
 		}
 		
-		$event = $this->YounitedNationEvent->find("first",array(
+		$this->loadModel("YounitedNationsEventEntry");
+		
+		$event = $this->YounitedNationsEvent->find("first",array(
 			"conditions"=>array(
 				"YounitedNationsEvent.id"=>$id
 			),
 			"contain"=>array()
 		));
 		
-		$entries = $this->YounitedNationEvent->YounitedNationsEventEntry->find("all",array(
 		
-				"conditions"=>array(
-					
-				),
-				"contain"=>array()
+		$this->paginate['YounitedNationsEventEntry'] = array(
+			
+			"conditions"=>array(
+				"YounitedNationsEventEntry.younited_nations_event_id"=>$id
+			),
+			"order"=>array(
+				"YounitedNationsEventEntry.id"=>"DESC"
+			),
+			"limit"=>50,
+			"contain"=>array(
+				"YounitedNationsPosse"
+			)
 		
-		));
+		);
 		
+		$entries = $this->paginate("YounitedNationsEventEntry");
 		
 		$this->set(compact("event"));
 		

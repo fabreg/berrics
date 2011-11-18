@@ -14,6 +14,8 @@ class MediaFileUploadsController extends AdminAppController {
 		
 		$this->initPermissions();
 		
+		$this->set("upload_server","50.57.104.64");
+		
 	}
 	
 	public function index() {
