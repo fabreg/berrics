@@ -21,7 +21,7 @@ class AppController extends Controller {
 	private $is_admin = false;
 	private $auth_user_id = false;
 	private $auth_user_group_id = false;
-	private $skip_page_view = false;
+	public $skip_page_view = false;
 	//public $cacheAction = "1 Minute";
 	###################################
 	

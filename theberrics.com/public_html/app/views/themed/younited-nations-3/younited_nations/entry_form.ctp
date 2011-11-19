@@ -1,6 +1,10 @@
 <?php 
-
-$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","entry_form"),array("inline"=>false));
+$js = array(
+	"https://maps.googleapis.com/maps/api/js?sensor=true",
+	"jquery.form",
+	"entry_form"
+);
+$this->Html->script($js,array("inline"=>false));
 
 
 ?>
@@ -23,16 +27,23 @@ $this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true",
 							<p>
 							A crew must contain at least 3 people, but no more than 10.  Any video that is uploaded to youtube, vimeo, facebook, or any other video hosting site will be disqualified.  All entries must adhere to the video requirements listed below.  Submit entry form and video by March 15, 2012.
 							</p>
+							<div class='heading'>GRAND PRIZE</div>
+							<p>
+							
+							</p>
 						</div>
 						<div id='entry-form'>
 							<div class='form-header'>
 								
 							</div>
 							<div class='inner'>
-								<?php 
 								
+								<?php 
+									echo $this->element("younited-nations-3/facebook-login-large");
 									echo $this->element("younited-nations-3/crew-info-form");
+									
 									echo $this->element("younited-nations-3/crew-roster-form");
+								
 									echo $this->element("younited-nations-3/crew-file-upload");
 										
 								?>

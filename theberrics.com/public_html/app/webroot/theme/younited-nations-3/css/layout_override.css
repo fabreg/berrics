@@ -156,6 +156,13 @@ body {
 	
 }
 
+#younited-nations-entry #entry-form .facebook-login-large {
+
+
+	text-align:center;
+
+}
+
 #younited-nations-entry #entry-form .crew-info-form {
 	
 		
@@ -198,6 +205,15 @@ body {
 	background-image:url(/theme/younited-nations-3/img/yn3-red-x.png);
 	background-repeat:no-repeat;
 	background-position:right center;
+	
+}
+
+#yn3-overlay {
+
+	position:fixed;
+	z-index:1900;
+	background-image:url(/theme/younited-nations-3/img/overlay-bg.png);
+	width:100%;	
 	
 }
 
@@ -278,7 +294,7 @@ body {
 
 	background-color:transparent;
 	border:none;
-	border-bottom:2px solid #000;	
+	border-bottom:2px solid #444;	
 	font-family:'Courier';
 	width:100%;
 	height:16px;

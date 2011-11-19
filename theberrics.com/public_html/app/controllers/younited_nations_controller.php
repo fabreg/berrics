@@ -70,6 +70,8 @@ class YounitedNationsController extends DailyopsController {
 		$this->set(compact("posse"));
 		
 	}
+
+	
 	
 	public function locatePosse() {
 		

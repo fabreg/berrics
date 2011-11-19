@@ -3,7 +3,7 @@
 		<div class='form-body'>
 			<div class='left'>
 				<div class='chk'><?php echo $this->Form->checkbox("YounitedNationsEventEntry.{$i}.active"); ?></div>
-				<div class='number'>#<?php echo $i; ?>.</div>
+				<div class='number'>#<?php echo ($i<10) ? "0":""; echo $i; ?>.</div>
 			</div>
 			<div class='right'>
 				
