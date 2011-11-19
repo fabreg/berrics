@@ -500,6 +500,8 @@ var CartWidget = {
 				CartWidget.handleClose();
 				
 			});
+			
+			$(window).bind('resize',function() { CartWidget.handleResize(); });
 		},
 		docReady:function() { 
 			
@@ -517,13 +519,7 @@ var CartWidget = {
 			
 			var wh = $(window).height();
 			var ww = $(window).width();
-			
-			$('body,html').css({
-				
-				'overflow':'hidden'
-				
-			});
-			
+
 			if(arguments[0] == "intro") {
 				
 				$("#login-overlay-box").hide();
@@ -539,17 +535,21 @@ var CartWidget = {
 				});
 				
 				
-			} else {
-				
-				$('#login-overlay').css({
-					
-					height:wh+'px'
-					
-				});
-				
-			}
+			} 
 			
+			$('#login-overlay').css({
+				
+				height:wh+'px'
+				
+			});
 			
+			var lf = $("#login-overlay-box").height()/2;
+			$("#login-overlay-box").css({
+				
+				"margin-top":((wh/2)-lf)+"px"
+				
+				
+			});
 			
 		},
 		handleClose:function() { 

@@ -41,8 +41,8 @@ $(document).ready(function() {
 		$('#entry-form input').bind('focus',function() { 
 			
 			$(this).blur();
-			screenOverlay(overlay_html.login);
-			
+			//screenOverlay(overlay_html.login);
+			CartWidget.openLoginScreen();
 		});
 		
 		$('#entry-form input').bind('keydown',function() { 
@@ -53,13 +53,9 @@ $(document).ready(function() {
 		
 	} else {
 		
-		var s = "#YounitedNationsEntryName,";
-		s += "#YounitedNationsEntryCityStatePostal,";
-		s += "#YounitedNationsEntryPhoneNumber,";
-		s += "#YounitedNationsEntryEmail,";
-		s += "#YounitedNationsEntryCountry";
+
 		
-		$(s).bind('keyup change',function(e) { 
+		$(".crew-info-form input,.crew-info-form select").bind('keyup change',function(e) { 
 			
 			validateCrewInfo();
 			
@@ -73,22 +69,34 @@ $(document).ready(function() {
 });
 
 function validateCrewInfo() {
-	
-	var s = "#YounitedNationsEntryName,";
-	s += "#YounitedNationsEntryCityStatePostal,";
-	s += "#YounitedNationsEntryPhoneNumber,";
-	s += "#YounitedNationsEntryEmail,";
-	s += "#YounitedNationsEntryCountry";
-	
-	$(s).each(function() { 
+
+	$(".crew-info-form input,.crew-info-form select").each(function() { 
 		
-		var val = $(this).val();
 		
-		if(val.length>=2) {
+		var id = $(this).attr("id");
+		
+		var pass = null;
+		switch(id) {
+		
+			case "YounitedNationsEntryName":
+			case "YounitedNationsEntryCountry":	
+				var val = $(this).val();
+				
+				if(val.length>=2) {
+					pass = true;
+				} else {
+					pass = false;
+				}
+				
+				break;
+		
+		}
+		
+		if(pass == true) {
 		
 			$(this).parent().find("label").removeClass('red-label-x').addClass('green-label-check');
 			
-		} else {
+		} else if(pass == false) {
 		
 			$(this).parent().find("label").addClass('red-label-x').removeClass('green-label-check');
 			

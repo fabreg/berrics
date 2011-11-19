@@ -1999,7 +1999,7 @@ CANTEEN CART WIDGET THING
 #login-overlay {
 	
 	background-image:url(/img/layout/login/login-overlay-bg.png);
-	position:absolute;
+	position:fixed;
 	width:100%;
 	top:0px;
 	left:0px;
