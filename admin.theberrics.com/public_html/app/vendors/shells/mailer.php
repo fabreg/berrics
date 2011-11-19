@@ -41,6 +41,14 @@ class MailerShell extends Shell {
 			$this->email->bcc = $e['bcc'];
 			$this->email->sendAs = $e['send_as'];
 			$this->email->template = $e['template'];
+			$this->email->smtpOptions = array(
+												'port'=>'465',
+												'timeout'=>'30',
+												'host' => 'ssl://smtp.gmail.com',
+												'username'=>'do.not.reply@theberrics.com',
+												'password'=>'19Berrics82',
+			);
+			
 			
 			$this->controller->set(compact("msg"));
 			

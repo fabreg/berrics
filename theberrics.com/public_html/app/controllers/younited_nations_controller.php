@@ -17,7 +17,7 @@ class YounitedNationsController extends DailyopsController {
 		$this->Auth->allow("index","view","section","entry_form");
 
 		$this->initPermissions();
-
+		
 		//set the theme up
 		
 		$this->theme = $this->params['section'];
@@ -34,11 +34,12 @@ class YounitedNationsController extends DailyopsController {
 				
 				$title_for_layout = "YOUnited Nations 3";
 				
-				$this->event_id = 3;
+				$this->event_id = 4;
 				
 			break;
 			
 		}
+		
 		
 		$this->set(compact("title_for_layout"));
 		$this->set("event_id",$this->event_id);

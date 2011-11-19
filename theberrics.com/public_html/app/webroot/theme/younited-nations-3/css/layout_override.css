@@ -8,9 +8,9 @@ body {
 
 #main-container {
 	
-	background-image:url(/theme/younited-nations-3/img/yn3-main-bg.gif);
+	background-image:url(/theme/younited-nations-3/img/yn3-bg.gif);
 	min-height:1200px;
-	background-position:center 50px;
+	background-position:center 20px;
 	background-repeat:no-repeat;
 	
 }
@@ -28,19 +28,20 @@ body {
 	float:left;
 }
 
-#younited-nations-entry .entry-form-div .container {
+#younited-nations-entry .entry-form-div .yn3-container {
 
 	background-image:url(/theme/younited-nations-3/img/yn3-form-bg.png);
-	margin-top:324px;	
+	margin-top:324px;
 	
 }
 
-#younited-nations-entry .entry-form-div .container-top {
+#younited-nations-entry .entry-form-div .yn3-container-top {
 	
-	background-image:url(/theme/younited-nations-3/img/yn3-form-top.jpg);
+	background-image:url(/theme/younited-nations-3/img/v2-bg-top.png);
 	background-repeat:no-repeat;
 	margin-top:-324px;	
-	
+	min-height:600px;
+	float:left;
 }
 
 #younited-nations-entry .entry-form-div .form-content {
@@ -51,7 +52,7 @@ body {
 
 #younited-nations-entry .entry-form-div .form-content {
 
-	padding-top:180px;	
+	padding-top:250px;	
 	
 }
 
@@ -66,17 +67,19 @@ body {
 #younited-nations-entry .entry-form-div .form-content .rules p {
 
 	font-family:'Courier';	
-	font-size:14px;
-	line-height:17px;
+	font-size:12px;
+	line-height:15px;
 	text-align:justify;
-	
+	letter-spacing:.5px;
 }
 
 #younited-nations-entry .entry-form-div .form-content .rules .heading {
 	
-	text-align:center;
-	text-decoration:underline;
-	
+	border-bottom:2px solid #000;
+	padding-bottom:0px;
+	font-size:12px;
+	font-weight:bold;
+	font-family:'Arial';
 }
 
 
