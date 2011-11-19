@@ -76,13 +76,23 @@ function validateCrewInfo() {
 		var id = $(this).attr("id");
 		
 		var pass = null;
+		var min_char = 2;
 		switch(id) {
 		
-			case "YounitedNationsEntryName":
+			case "YounitedNationsEntryContactEmail":
+				var val = $(this).attr("value");
+				if(val.length>3) {
+					pass = true;
+				} else {
+					pass = false;
+				}
+				break;
 			case "YounitedNationsEntryCountry":	
+				min_char = 1;
+			case "YounitedNationsEntryName":
 				var val = $(this).val();
 				
-				if(val.length>=2) {
+				if(val.length>=min_char) {
 					pass = true;
 				} else {
 					pass = false;
