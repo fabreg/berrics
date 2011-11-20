@@ -2017,8 +2017,8 @@ CANTEEN CART WIDGET THING
 
 #login-overlay-box {
 	
-	background-image:url(/img/layout/login/login-box-bg.jpg);
-	height:266px;
+	background-image:url(/img/layout/login/cart-login-bg.jpg);
+	height:180px;
 	width:523px;
 	margin:auto;
 	-moz-box-shadow:1px 1px 6px 1px #000000;

@@ -199,12 +199,50 @@ body {
 	
 }
 
+#younited-nations-entry #entry-form .update-map-span {
 
+		font-size:10px;
+		font-weight:normal;
+		cursor:pointer;
+	
+}
 #younited-nations-entry #entry-form .red-label-x {
 	
 	background-image:url(/theme/younited-nations-3/img/yn3-red-x.png);
 	background-repeat:no-repeat;
 	background-position:right center;
+	
+}
+
+#younited-nations-entry .submit-button {
+
+		text-indent:-30000px;
+		background-image:url(/theme/younited-nations-3/img/yn3-icons.png);
+		height:36px;
+		width:260px;
+		background-position:0px -39px;
+		border:2px solid #444;
+		background-color:transparent;
+		background-repeat:no-repeat;
+	
+}
+#younited-nations-entry .update-button {
+
+		text-indent:-30000px;
+		background-image:url(/theme/younited-nations-3/img/yn3-icons.png);
+		height:36px;
+		width:260px;
+		background-position:0px -78px;
+		border:2px solid #444;
+		background-color:transparent;
+		background-repeat:no-repeat;
+	
+}
+
+#younited-nations-entry .submit-holder {
+
+	padding:5px;
+	text-align:center;	
 	
 }
 
@@ -214,16 +252,36 @@ body {
 	z-index:1900;
 	background-image:url(/theme/younited-nations-3/img/overlay-bg.png);
 	width:100%;	
+	display:none;
+}
+
+#yn3-overlay .box {
+
+	height:150px;
+	width:400px;
+	margin:auto;	
+	background-image:url(/theme/younited-nations-3/img/overlay-bg.png);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px; 
+}
+#yn3-overlay .box .content {
+
+	padding:3px;
+	text-align:center;
+	font-family:'Arial';
+	font-size:16px;
+	line-height:140px;	
 	
 }
 
 .roster-form-bit {
 	
 	width:315px;
-	height:47px;
+	height:60px;
 	background-image:url(/theme/younited-nations-3/img/crew-entry-bg.png);
-	margin-top:3px;
-	margin-bottom:3px;
+	margin-top:5px;
+	margin-bottom:5px;
 	float:left;
 	margin-right:4px;
 	font-family:'Courier';
@@ -241,7 +299,7 @@ body {
 
 .roster-form-bit .roster-inner {
 	
-	padding-top:2px;
+	
 	width:100%;
 	
 }
@@ -249,6 +307,7 @@ body {
 
 .roster-form-bit .form-body {
 	
+	padding-top:3px;
 	
 }
 
@@ -266,7 +325,7 @@ body {
 	width:48%;
 	font-size:12px;
 	
-		
+	font-weight:bold;
 }
 
 .roster-form-bit .form-body .left .chk {
@@ -286,8 +345,10 @@ body {
 .roster-form-bit .form-body .center {
 	
 	margin-left:55px;
-	margin-right:45px;
-	min-height:20px;
+	margin-right:70px;
+	min-height:14px;
+	height:14px;
+	
 }
 
 .roster-form-bit .form-body .center input {
@@ -297,17 +358,73 @@ body {
 	border-bottom:2px solid #444;	
 	font-family:'Courier';
 	width:100%;
-	height:16px;
-	font-size:14px;
+	height:14px;
+	font-size:12px;
+	margin:0px;
+	
+	
+}
+
+.roster-form-bit .form-body  .label {
+
+	font-size:11px;
+	font-family:'Arial';
+	font-weight:bold;	
+	width:auto;
+	float:left;
+	padding-top:2px;
 }
 
 .roster-form-bit .form-body .right {
 	
 	float:right;
-	width:45px;
+	width:65px;
 
-	min-height:20px;
+	
 }
 
+.roster-form-bit .form-body .options {
 
+	clear:both;	
+	
+	padding-right:20px;
+}
+.roster-form-bit .form-body .options .checkbox {
+
+	float:right;
+	margin-right:2px;	
+	
+}
+.roster-form-bit .form-body .options .checkbox label {
+
+	font-size:11px;
+	font-family:'Arial';	
+	text-transform: uppercase;
+	text-indent:10px;
+}
+
+#younited-nations-entry #entry-form .roster-form-bit .right .select,#younited-nations-entry #entry-form .roster-form-bit .right .input {
+
+	margin:0px;	
+	height:20px;
+	
+}
+#younited-nations-entry #entry-form .roster-form-bit .right label {
+
+	height:14px;	
+	
+}
+
+#entry-form .roster-form-bit .select select {
+
+	width:50px;
+	margin:auto;
+	
+}
+
+.roster-form-bit .select label {
+
+		
+	
+}
 

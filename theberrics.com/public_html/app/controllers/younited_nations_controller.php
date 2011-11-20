@@ -14,7 +14,7 @@ class YounitedNationsController extends DailyopsController {
 		
 		$this->Auth->allowedActions = array();
 
-		$this->Auth->allow("index","view","section","entry_form");
+		$this->Auth->allow("index","view","section","entry_form","ajax_update_entry");
 
 		$this->initPermissions();
 		
@@ -48,6 +48,10 @@ class YounitedNationsController extends DailyopsController {
 	
 	public function entry_form() {
 		
+		$this->loadModel("YounitedNationsEventEntry");
+		
+		$this->loadModel("YounitedNationsPosse");
+		
 		if(count($this->data)>0) {
 			
 			
@@ -55,19 +59,49 @@ class YounitedNationsController extends DailyopsController {
 		} else {
 			
 			
-			$this->data['YounitedNationsEntry']['country'] = $_SERVER['GEOIP_COUNTRY_CODE'];
+			$this->data['YounitedNationsPosse']['country'] = $_SERVER['GEOIP_COUNTRY_CODE'];
 			
 		}
 		
-		$posse = false;
+		$entry = false;
 		
 		if($this->Auth->user("id")) {
 			
-			//find the posse
+			$posse = $this->YounitedNationsPosse->find("first",array(
+				"conditions"=>array(
+					"YounitedNationsPosse.user_id"=>$this->Auth->user("id")
+				),
+				"contain"=>array(
+					"YounitedNationsPosseMember",
+					"YounitedNationsEventEntry"
+				),
+				"___joins"=>array(
+					"LEFT JOIN younited_nations_event_entries AS `YounitedNationsEventEntry` ON (YounitedNationsEventEntry.younited_nations_posse_id=YounitedNationsPosse.id)"
+				)
+			));
+			
+			if(!isset($posse['YounitedNationsPosse']['id'])) $posse = false;
+			
+			$entry = $posse;
 			
 		}
 		
-		$this->set(compact("posse"));
+		if($entry) $this->data = $entry;
+	}
+	
+	public function ajax_update_entry() {
+		
+		if(!$this->params['isAjax'] || !$this->Session->check("Auth.User.id")) {
+			
+			return false;
+			
+		}
+		
+		$this->data['YounitedNationsPosse']['user_id'] = $this->Auth->user("id");
+		
+		$this->data = $this->YounitedNationsEvent->YounitedNationsEventEntry->updateEntry($this->data);
+		
+		
 		
 	}
 

@@ -5,14 +5,17 @@
 	<div class='info-form'>
 	<?php 
 	
-		echo $this->Form->input("name",array("label"=>"CREW NAME"));
-		echo $this->Form->input("country",array("label"=>"COUNTRY","options"=>Arr::countries()));
-		echo $this->Form->input("city_state_postal",array("label"=>"CITY, STATE OR POSTAL CODE"));	
-		echo $this->Form->input("contact_email",array("label"=>"CONTACT EMAIL","value"=>$this->Session->read("Auth.User.email"),"disabled"=>true));
-		echo $this->Form->input("phone_number",array("label"=>"PHONE NUMBER"));
+		echo $this->Form->input("YounitedNationsPosse.name",array("label"=>"CREW NAME"));
+		echo $this->Form->input("YounitedNationsPosse.country",array("label"=>"COUNTRY","options"=>Arr::countries()));
+		echo $this->Form->input("YounitedNationsPosse.city_state_postal",array("label"=>"CITY, STATE OR POSTAL CODE <span class='update-map-span'>(Update Map)</span>"));	
+		echo $this->Form->input("YounitedNationsPosse.phone_number",array("label"=>"PHONE NUMBER"));
+		echo $this->Form->input("contact_email",array("label"=>"CONTACT EMAIL","value"=>$this->Session->read("Auth.User.email")));
 		//echo $this->Form->input("facebook_fanpage_url",array("label"=>"FACEBOOK FANPAGE"));
-		echo $this->Form->input("longitude",array("type"=>"hidden"));
-		echo $this->Form->input("latitude",array("type"=>"hidden"));
+		echo $this->Form->input("YounitedNationsPosse.geo_longitude",array("type"=>"hidden"));
+		echo $this->Form->input("YounitedNationsPosse.geo_latitude",array("type"=>"hidden"));
+		echo $this->Form->input("YounitedNationsPosse.geo_city",array("type"=>"hidden"));
+		echo $this->Form->input("YounitedNationsPosse.geo_province",array("type"=>"hidden"));
+		echo $this->Form->input("YounitedNationsPosse.user_id",array("type"=>"hidden"));
 		
 	?>
 	<input type='button' id='tester' value='testing' />
@@ -21,4 +24,7 @@
 		
 	</div>
 	<div style='clear:both;'></div>
+	<div class='submit-holder'>
+		
+	</div>
 </div>

@@ -492,6 +492,12 @@ function html5Video() {
 var CartWidget = {
 		
 		openLoginScreen:function() { 
+			
+			if($("#login-overlay").length>0) {
+				
+				return false;
+				
+			}
 	
 			$('body').append("<div id='login-overlay'><div id='login-overlay-wrapper'><div id='login-overlay-box'><h1>- LOGIN TO THE BERRICS -</h1><div class='facebook'><a href='/identity/login/send_to_facebook'><img border='0' src='/img/login/facebook.png' /></a></div></div></div></div>");
 			this.handleResize("intro");
@@ -555,11 +561,7 @@ var CartWidget = {
 		handleClose:function() { 
 			
 			
-			$('body,html').css({
-				
-				'overflow':'auto'
-				
-			});
+			$(window).unbind('resize');
 			$("#login-overlay").remove();
 		}
 

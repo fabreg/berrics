@@ -13,7 +13,7 @@ $this->Html->script($js,array("inline"=>false));
 		<div class='inner'>
 			<div class='yn3-container'>
 				<div class='yn3-container-top'>
-					<?php echo $this->Form->create("YounitedNationsEntry",array("url"=>$this->here));?>
+					<?php echo $this->Form->create("YounitedNationsEventEntry",array("url"=>$this->here,"id"=>"YounitedNationsEventEntryForm"));?>
 					<div class='form-content'>
 						<div class='rules'>
 							<div class='heading'>DETAILS</div>
@@ -41,16 +41,18 @@ $this->Html->script($js,array("inline"=>false));
 								<?php 
 									echo $this->element("younited-nations-3/facebook-login-large");
 									echo $this->element("younited-nations-3/crew-info-form");
-									
 									echo $this->element("younited-nations-3/crew-roster-form");
-								
-									echo $this->element("younited-nations-3/crew-file-upload");
-										
+									echo $this->element("younited-nations-3/crew-file-upload");				
 								?>
 							</div>
 						</div>
 					</div>
-					<?php echo $this->Form->end(); ?>
+					<?php 	
+							echo $this->Form->input("YounitedNationsEvent.id",array("type"=>"hidden","value"=>$event_id));
+							if(isset($this->data['YounitedNationsEventEntry']['id'])) echo $this->Form->input("YounitedNationsEventEntry.id");
+							if(isset($this->data['YounitedNationsPosse']['id'])) echo $this->Form->input("YounitedNationsPosse.id");
+							echo $this->Form->end(); 
+					?>
 					
 				</div>
 				<div style='clear:both;'></div>
@@ -60,3 +62,5 @@ $this->Html->script($js,array("inline"=>false));
 	<div></div>
 	<div style='clear:both;'></div>
 </div>
+<input type='hidden' id='hidden_input_clone' />
+<?php pr($this->data); ?>
