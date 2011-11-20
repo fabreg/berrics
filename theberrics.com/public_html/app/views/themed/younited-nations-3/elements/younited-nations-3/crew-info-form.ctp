@@ -2,6 +2,9 @@
 	<div class='heading'>
 		<img alt='' border='0' src='/theme/younited-nations-3/img/crew-info-heading.jpg' />
 	</div>
+	<div class='form-help'>
+		* Your Crew's Basic Info. <br />* You may update this info anytime during the contest.<br />* Fix all fields marked with a red "x"
+	</div>
 	<div class='info-form'>
 	<?php 
 	

@@ -106,7 +106,48 @@ class YounitedNationsController extends DailyopsController {
 	}
 
 	
-	
+public function handle_upload() {
+		
+		$file = $_FILES['Filedata'];
+		
+		if(is_uploaded_file($file['tmp_name'])) {
+			
+			
+			$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+			
+			$fileName = md5(time()).mt_rand(100,999).".".$ext;
+			
+			move_uploaded_file($file['tmp_name'],TMP.$fileName);
+			
+			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+			
+			ImgServer::instance()->upload_bangyoself_entry($fileName,TMP.$fileName);
+			
+			unlink(TMP.$fileName);
+			
+			//insert the entry
+			
+			$this->BangyoselfEntry->create();
+			
+			$this->BangyoselfEntry->save(array(
+			
+			
+				"user_id"=>$this->user_id_scope,
+				"file_name"=>$fileName,
+				"bangyoself_event_id"=>$this->event_id
+			
+			
+			));
+			
+			die("1");
+			
+		} else {
+			
+			die("0");
+			
+		} 
+		
+	}
 	public function locatePosse() {
 		
 		

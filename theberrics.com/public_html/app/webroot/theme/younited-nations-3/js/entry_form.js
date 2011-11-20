@@ -279,11 +279,6 @@ function screenOverlay() {
 	
 	$(window).bind('resize',function() { handleOverlayResize(); });
 	
-	$("#yn3-overlay").click(function() { 
-		
-		handleOverlayClose();
-		
-	});
 	
 }
 
@@ -503,6 +498,12 @@ function younitedNationsGeocode() {
 	        
 	      }
 	});
+
+	
+}
+
+function initFileUploads() {
+	
 
 	
 }

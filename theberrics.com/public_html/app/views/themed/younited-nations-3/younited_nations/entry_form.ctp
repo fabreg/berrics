@@ -29,7 +29,13 @@ $this->Html->script($js,array("inline"=>false));
 							</p>
 							<div class='heading'>GRAND PRIZE</div>
 							<p>
-							
+							• An all expenses paid trip to The Berrics to film a United Nations.<br />
+							• International notoriety and acclaim.<br />
+							• Lifetime bragging rights.
+							</p>
+							<div class='heading'>SPECIAL AWARDS PRIZE</div>
+							<p>
+								• A year’s supply of Vans shoes for the entire crew.
 							</p>
 						</div>
 						<div id='entry-form'>

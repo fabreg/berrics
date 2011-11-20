@@ -100,9 +100,11 @@ body {
 
 #younited-nations-entry #entry-form .form-header {
 	
-	background-image:url(/theme/younited-nations-3/img/yn3-entry-form-header.jpg);
+	background-image:url(/theme/younited-nations-3/img/yn3-entry-header.jpg);
 	height:47px;
 	margin-bottom:10px;
+	background-repeat:no-repeat;
+	background-position:3px 0px;
 }
 
 
@@ -206,6 +208,15 @@ body {
 		cursor:pointer;
 	
 }
+#younited-nations-entry #entry-form .form-help {
+
+	font-size:13px;
+	color:#000;
+	padding:3px;
+	font-style:italic;
+	
+}
+
 #younited-nations-entry #entry-form .red-label-x {
 	
 	background-image:url(/theme/younited-nations-3/img/yn3-red-x.png);
@@ -331,16 +342,16 @@ body {
 .roster-form-bit .form-body .left .number {
 
 	float:right;
-	width:48%;
-	font-size:12px;
+	width:59%;
+	font-size:14px;
+	line-height:20px;
 	
-	font-weight:bold;
 }
 
 .roster-form-bit .form-body .left .chk {
 
 	float:left;
-	width:48%;	
+	width:40%;	
 	
 }
 
@@ -435,6 +446,50 @@ body {
 .roster-form-bit .select label {
 
 		
+	
+}
+
+#younited-nations-entry #video-upload-form {
+	
+	
+}
+
+#younited-nations-entry #video-upload-form .left {
+	width:50%;
+	float:left;
+}
+
+#younited-nations-entry #video-upload-form .right {
+	
+	float:right;
+	width:47%;
+	
+}
+
+#younited-nations-entry #video-upload-form .rules-heading {
+
+	font-weight:bold;
+	font-family:'Arial';
+	font-size:15px;
+	color:#444	
+	
+}
+
+#younited-nations-entry #video-upload-form .upload-rules-list {
+	
+	margin:0px;
+	padding:0px;
+	font-size:11px;
+	font-family:'Arial';
+	color:#000;
+}
+
+#younited-nations-entry #video-upload-form .upload-rules-list li {
+
+	margin:0px;
+	margin-left:15px;
+	padding:2px;
+	
 	
 }
 
