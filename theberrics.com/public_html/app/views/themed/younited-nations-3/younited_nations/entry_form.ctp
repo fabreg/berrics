@@ -2,6 +2,7 @@
 $js = array(
 	"https://maps.googleapis.com/maps/api/js?sensor=true",
 	"jquery.form",
+	"swfupload",
 	"entry_form"
 );
 $this->Html->script($js,array("inline"=>false));
