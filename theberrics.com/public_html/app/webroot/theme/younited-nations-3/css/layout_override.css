@@ -246,6 +246,15 @@ body {
 	
 }
 
+#younited-nations-entry .form-msg {
+
+	font-family:'Courier';
+	font-size:15px;
+	color:#000;
+	padding:3px;
+	color:green;
+}
+
 #yn3-overlay {
 
 	position:fixed;
@@ -400,7 +409,8 @@ body {
 	font-size:11px;
 	font-family:'Arial';	
 	text-transform: uppercase;
-	text-indent:10px;
+	padding-left:5px;
+	padding-right:10px;
 }
 
 #younited-nations-entry #entry-form .roster-form-bit .right .select,#younited-nations-entry #entry-form .roster-form-bit .right .input {

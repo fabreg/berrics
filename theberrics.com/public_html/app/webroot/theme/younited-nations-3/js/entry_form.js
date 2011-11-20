@@ -144,13 +144,16 @@ $(document).ready(function() {
 					}
 					
 					$("#crew-roster-bits").html(d['roster_html']);
-					
+					initRosterForms();
 					popOverlay("Your Entry Has Been Updated Successfully");
 					
 					setTimeout(function() { handleOverlayClose('fadeout'); },2000);
 					
 					addSubmits();
 					
+					$(window).scrollTo('.rules');
+					
+					showUpdateMsg("Entry Updated: "+d['YounitedNationsEventEntry']['modified']+" (PST)");
 				
 				}
 				
@@ -176,6 +179,7 @@ $(document).ready(function() {
 	//do an initial validate
 	validateCrewInfo();
 	addSubmits();
+	initRosterForms();
 	//do an initial geo code if there is text present
 	if($("#YounitedNationsPosseCityStatePostal").val().length>4) {
 		
@@ -358,7 +362,29 @@ function validateTextField(id,required) {
 
 function initRosterForms() {
 	
+	$('.roster-form-bit .active-check').bind('change',function() { 
+		var num = $(this).parent().attr("roster_num");
+		toggleRosterForm($("#roster-form-"+num));
+		
+	});
 	
+	$('.roster-form-bit').each(function() { 
+		
+		$(this).find('.center input,.options input').bind('focus change',function() { 
+			
+			$(this).parent().parent().parent().parent().find('.active-check').attr("checked",true).change();
+			
+		});
+		
+		$(this).find('.right select').bind('click focus change',function() { 
+			
+			$(this).parent().parent().parent().parent().parent().find('.active-check').attr("checked",true).change();
+			
+		});
+		
+		toggleRosterForm(this,$(this).find(".active-check").is(":checked"));
+		
+	});
 	
 }
 
@@ -366,10 +392,44 @@ function toggleRosterForm() {
 	
 	var ele = $(arguments[0]);
 	var directive = arguments[1] || null;
+	var show = false;
 	
 	if(directive == null) {
 		
+		if($(ele).find('.active-check').is(":checked")) {
+			
+			show = true;
+			
+		} else {
+			
+			show = false;
+			
+		}
+		
+	} else {
+		
+		show = directive;
+		
 	}
+	
+	if(show) {
+	
+		$(ele).css({
+			
+			opacity:1
+			
+		});
+		
+	} else {
+		
+		$(ele).css({
+			
+			opacity:.5
+			
+		});
+	}
+	
+	//alert($(ele).attr("id"));
 	
 }
 
@@ -377,6 +437,9 @@ function toggleRosterForm() {
 
 function showUpdateMsg() {
 	
+	var msg = arguments[0] || "Entry Updated Successfully";
+	
+	$(".form-msg").html(msg);
 	
 }
 

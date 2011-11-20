@@ -69,6 +69,8 @@ class YounitedNationsEventEntry extends AppModel {
 			));
 			
 		}
+		$e = $this->read();
+		$data['YounitedNationsEventEntry'] = $e['YounitedNationsEventEntry'];
 		
 		return $data;
 		

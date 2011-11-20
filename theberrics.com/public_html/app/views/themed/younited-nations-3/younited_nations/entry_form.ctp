@@ -37,7 +37,9 @@ $this->Html->script($js,array("inline"=>false));
 								
 							</div>
 							<div class='inner'>
+								<div class='form-msg'>
 								
+								</div>
 								<?php 
 									echo $this->element("younited-nations-3/facebook-login-large");
 									echo $this->element("younited-nations-3/crew-info-form");
