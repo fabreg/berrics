@@ -25,26 +25,61 @@ $this->Html->script($js,array("inline"=>false));
 					<div class='form-content'>
 						<div class='rules'>
 							<div class='heading'>DETAILS</div>
-							<p>	
-								You've been stacking clips for months…  You've mastered your video editing software...  You have the tightest crew around...  Well, now's your chance to show everyone just how bad ass your crew really is.  YOUnited Nations is a contest that gives you the platform to showcase the talents and personality of your crew to the entire planet.  All you need to do is submit a video of what you and your friends do naturally; skate, be creative, and have fun.  The winner will be decided by the number of Facebook and Twitter votes in conjunction with a panel of Berrics staff and Vans riders.
-							</p>
 							<p>
-							In addition to the grand winner, this time around we've added some 'Special Awards'.  We are looking to hook up the heshest crew, the freshest crew, the youngest crew, the oldest crew, the funniest crew, as well as a skatepark crew, a transition crew, an all Vans-wearing crew, the most remote crew, and an all-girl crew.
+							Show us your crew
 							</p>
-							<div class='heading'>RULES</div>
+							<div class='super-list'>	
+								<ul>
+									<li> Best Crew</li>
+									<li> Heshest Crew</li>
+									<li> Freshest Crew</li>
+									<li> Youngest Crew</li>
+									<li> Oldest Crew</li>
+									<li> Funniest Crew</li>
+									<li> Skatepark Crew</li>
+									<li> Tranny Crew</li>
+									<li> All-girl crew</li>
+									<li> Tom Crews</li>
+									<li> I live in BFE and ain't got shit to skate Crew</li>
+									<li> I wear nothing but Vans crew</li>
+									<li> I ain't afraid to take a slam Crew</li>
+									<li> razor scooter hero Crew</li>
+									
+								</ul>
+								<div style='clear:both;'></div>
+							</div>
 							<p>
-							A crew must contain at least 3 people, but no more than 10.  Any video that is uploaded to youtube, vimeo, facebook, or any other video hosting site will be disqualified.  All entries must adhere to the video requirements listed below.  Submit entry form and video by March 15, 2012.
+								All crew winners, besides Best Crew, will be chosen by The Berrics.
+								All winning crew members of the above crew categories will win a year's supply of Vans shoes and limited edition Berrics products. 
+								Best Crew will be determined by number of Facebook and Twitter votes received in conjunction with The Berrics upper echelon and Vans team riders. 
+								Winner of the Best Crew receives the Younited Nations Grand Prize.
 							</p>
 							<div class='heading'>GRAND PRIZE</div>
-							<p>
-							• An all expenses paid trip to The Berrics to film a United Nations.<br />
-							• International notoriety and acclaim.<br />
-							• Lifetime bragging rights.
+							<div>
+								<ul>
+									<li> All expense paid trip to The Berrics to film your own United Nations</li>
+									<li> Vans for everyone in your crew for a year.</li>
+									<li> A Shoot All Skaters profile for the winning filmer.</li>
+									<li> A crown with your Crew's name engraved on it. Kind of like the Stanley Cup, but better because that's hockey.</li>
+									<li> A party with Vans to celebrate your win.</li>
+									<li> Fame. Cuz you know winning isn't worth it unless everyone knows about it.</li>
+									<li> Baby Koston's dirty diapers, one for each of you, possibly bronzed.</li>
+								</ul>
+							</div>
+							<div style='clear:both;'></div>
+							<p style='font-size:10px; font-style:italic;'>
+								Please note: Winning any one of the other crew categories does not mean you can't win the Best Crew category, however, winning the Best Crew category doesn't insure that you will win any of the other categories, but that shouldn't really matter because you won the grand prize and that's more awesome. 
 							</p>
-							<div class='heading'>SPECIAL AWARDS PRIZE</div>
-							<p>
-							• A year’s supply of Vans shoes for the entire crew.
-							</p>
+							<div class='heading'>RULES</div>
+							<div>
+								<ul>	
+									<li> Crew must be at least 3 people, but no more than 10.</li>
+									<li> Any video uploaded to Youtube, Vimeo, facebook or any other video hosting site will be disqualified.</li>
+									<li> All entries must be submitted by March 15, 2012.</li>
+									<li> All entries must follow the rules listed below.</li>
+								</ul>
+							</div>
+							<div style='clear:both;'></div>
 						</div>
 						<div id='entry-form'>
 							<div class='form-header'>

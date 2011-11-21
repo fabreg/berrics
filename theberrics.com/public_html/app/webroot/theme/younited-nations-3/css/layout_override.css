@@ -73,6 +73,34 @@ body {
 	letter-spacing:.5px;
 }
 
+#younited-nations-entry .entry-form-div .form-content .rules ul {
+
+	margin:0px;
+	padding:0px;	
+	list-style:none;
+}
+#younited-nations-entry .entry-form-div .form-content .rules ul li {
+	
+	float:left;
+	margin-right:15px;
+	margin-left:15px;
+	padding:2px;	
+	font-size:12px;
+	font-family:'Courier';
+	background-image:url(/theme/younited-nations-3/img/yn3-bullet.png);
+	background-repeat:no-repeat;
+	text-indent:10px;
+	background-position:left 3px;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+#younited-nations-entry .entry-form-div .form-content .rules .super-list ul li {
+
+	float:left;
+		
+}
+
+
 #younited-nations-entry .entry-form-div .form-content .rules .heading {
 	
 	border-bottom:2px solid #000;
