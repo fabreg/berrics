@@ -15,7 +15,11 @@
 			<li>Your Video/Trailer/Update MUST BE EXCLUSIVE. ANY VIDEO UPLOADED TO YOUTUBE OR ANY OTHER VIDEO WEBSITE WILL RESULT IN DIS-QUALIFICATION</li>
 		</ul>
 		</div>
-		<div class='right'></div>
+		<div class='right'>
+			<div class='upload-not-available'>Please Submit Your Entry First</div>
+			<span id='update-video-span'></span>
+			<span id='final-video-span'></span>
+		</div>
 		<div style='clear:both;'></div>
 	</div>
 </div>

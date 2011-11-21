@@ -9,12 +9,18 @@ class YounitedNationsController extends DailyopsController {
 	public $event_id = false;
 	
 	public function beforeFilter() {
+
+		if($this->params['action'] == "handle_upload") {
+			
+			$this->Session->id($this->params['pass'][0]);
+			$this->Session->start();
+		}
 		
 		parent::beforeFilter();
-		
+	
 		$this->Auth->allowedActions = array();
 
-		$this->Auth->allow("index","view","section","entry_form","ajax_update_entry");
+		$this->Auth->allow("index","view","section","entry_form","ajax_update_entry","handle_upload");
 
 		$this->initPermissions();
 		
@@ -106,36 +112,33 @@ class YounitedNationsController extends DailyopsController {
 	}
 
 	
-public function handle_upload() {
+	public function handle_upload() {
 		
 		$file = $_FILES['Filedata'];
 		
-		if(is_uploaded_file($file['tmp_name'])) {
+		App::import("Vendor","UploadServer",array("file"=>"UploadServer.php"));
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$u = new UploadServer();
+		
+		$tmp_file = $u->moveUpload($file);
+		
+		$file_name = String::uuid().".".$ext;
+		
+		if($u->pushUpload($tmp_file,$file_name)) {
 			
+			$this->loadModel("MediaFileUpload");
 			
-			$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+			$this->MediaFileUpload->create();
 			
-			$fileName = md5(time()).mt_rand(100,999).".".$ext;
+			$this->MediaFileUpload->save(array(
 			
-			move_uploaded_file($file['tmp_name'],TMP.$fileName);
-			
-			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
-			
-			ImgServer::instance()->upload_bangyoself_entry($fileName,TMP.$fileName);
-			
-			unlink(TMP.$fileName);
-			
-			//insert the entry
-			
-			$this->BangyoselfEntry->create();
-			
-			$this->BangyoselfEntry->save(array(
-			
-			
-				"user_id"=>$this->user_id_scope,
-				"file_name"=>$fileName,
-				"bangyoself_event_id"=>$this->event_id
-			
+				"file_name"=>$file_name,
+				"name"=>$this->params['pass'][1],
+				"model"=>"YounitedNationsEventEntry",
+				"foreign_key"=>$this->params['pass'][2],
+				"user_id"=>$this->user_id_scope
 			
 			));
 			
@@ -144,8 +147,9 @@ public function handle_upload() {
 		} else {
 			
 			die("0");
-			
-		} 
+		}
+		
+		
 		
 	}
 	public function locatePosse() {

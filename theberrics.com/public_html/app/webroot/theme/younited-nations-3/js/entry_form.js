@@ -5,12 +5,15 @@ var map,geocoder,marker,marker_img = false;
 var overlay_html = {
 		
 		"login":"<div><a href='/identity/login/send_to_facebook/"+Base64.encode(document.location.href)+"'>Login With Facebook</a></div>",
-		"processing":"<div><img src='/theme/younited-nations-3/img/ajax-loader.gif' alt='' valign='absmiddle' />Updating Your Entry</div>"
+		"processing":"<div style='line-height:140px;'><img src='/theme/younited-nations-3/img/ajax-loader.gif' alt='' valign='absmiddle' />Updating Your Entry</div>"
 		
 };
 //submit buttons for the entry form
 var update_button = "<input class='update-button' type='submit' value='UPDATE' />";
 var submit_button = "<input class='submit-button' type='submit' value='SUBMIT' />";
+
+//multi-dimensional upload holder object shit
+var uploads = {};
 
 //shit's about to go down
 $(document).ready(function() { 
@@ -144,17 +147,20 @@ $(document).ready(function() {
 					}
 					
 					$("#crew-roster-bits").html(d['roster_html']);
+					
 					initRosterForms();
-					popOverlay("Your Entry Has Been Updated Successfully");
+					
+					popOverlay("<div style='line-height:140px;'>Your Entry Has Been Updated Successfully</div>");
 					
 					setTimeout(function() { handleOverlayClose('fadeout'); },2000);
 					
 					addSubmits();
 					
-					$(window).scrollTo('.rules');
+					$(window).scrollTo('.rules','slow');
 					
 					showUpdateMsg("Entry Updated: "+d['YounitedNationsEventEntry']['modified']+" (PST)");
-				
+					
+					initFileUploads();
 				}
 				
 			};
@@ -180,6 +186,7 @@ $(document).ready(function() {
 	validateCrewInfo();
 	addSubmits();
 	initRosterForms();
+	initFileUploads();
 	//do an initial geo code if there is text present
 	if($("#YounitedNationsPosseCityStatePostal").val().length>4) {
 		
@@ -485,11 +492,14 @@ function younitedNationsGeocode() {
 				}
 		       	  
 		         
-		        $("body").append(results[0].geometry.location.lng()+" : "+results[0].geometry.location.lat());
+		       // $("body").append(results[0].geometry.location.lng()+" : "+results[0].geometry.location.lat());
+		      //  $('body').append(results[0].formatted_address);
 
 				$("#YounitedNationsPosseGeoLongitude").val(results[0].geometry.location.lng());
 				$("#YounitedNationsPosseGeoLatitude").val(results[0].geometry.location.lat());
+				$("#YounitedNationsPosseGeoFormatted").val(results[0].formatted_address);
 				$("#YounitedNationsPosseCityStatePostal").parent().find('label').addClass('green-label-check').removeClass("red-label-x");
+				$("#younited-nations-entry .map-holder .map-result").html(results[0].formatted_address);
 		        
 	      } else {
 		      
@@ -503,6 +513,98 @@ function younitedNationsGeocode() {
 }
 
 function initFileUploads() {
+	
+	if($("#YounitedNationsEventEntryId").length<=0) {
+		
+		
+		
+	} else if(uploads.update == undefined){
+		$('.upload-not-available').hide();
+		var opt = {
+				
+				flash_url:"/swf/swfupload.swf",
+				button_placeholder_id:"update-video-span",
+				button_image_url:"/theme/younited-nations-3/img/update-swf-button.png",
+				button_height:34,
+				button_width:267,
+				button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT,
+				upload_url:upload_uri+"update/"+$("#YounitedNationsEventEntryId").val(),
+				file_types:"*.mp4;*.mov;*.mpg;*.mpeg",
+				file_types_description: "Update us with a video",
+				file_queue_limit:1,
+				file_queued_handler:function(f) {
+				
+					this.startUpload();
+				
+				},
+				file_queue_error_handler:function(f,e,m) {
+					
+					//alert(m);
+					
+				},
+				upload_start_handler:function(f) {
+					
+					screenOverlay();
+					
+				},
+				upload_progress_handler:function(f,bl,bt) {
+					
+					//get the percentage
+					var percent = Math.round((bl/bt)*100);
+					
+					
+					if(percent<100) {
+						
+						var htm = "<div style='line-height:25px;'>Uploading Video To The Berrics...</div>";
+						
+						htm += "<div style='line-height:25px; text-align:center;'>"+percent+"%</div>";
+						
+						htm += "<div style='height:20px; border:2px solid #999; width:80%; margin:auto; position:relative;'><div style='postion:absolute; background-color:#333; overflow:visible; height:20px; left:0px; top:0px; width:"+percent+"%;'></div></div>";
+		
+					} else {
+						
+						var htm = "<div style='line-height:140px;'>Processing Video... Uno momento..</div>";
+						
+					}
+					
+					popOverlay(htm);
+					
+				},
+				upload_complete_handler:function() {
+				
+					//handleOverlayClose();
+					var htm = "<div style='line-height:50px;'>Video Uploaded Successfully</div>";
+					
+					popOverlay(htm);
+					
+					showUpdateMsg("Video Uploaded Successfully :-)");
+					
+					$(window).scrollTo('.rules','slow');
+					
+					setTimeout(function() { handleOverlayClose();  },2000);
+					
+				},
+				upload_success_handler:function(f,d,r) {
+					
+					
+					
+				},
+				debug:false
+				
+			};
+		
+		uploads.update = new SWFUpload(opt);
+		
+		var fopt = $.extend(true,{},opt);
+		
+		fopt.upload_url = upload_uri+"final/"+$("#YounitedNationsEventEntryId").val();
+		fopt['button_placeholder_id'] = "final-video-span";
+		fopt.button_image_url = "/theme/younited-nations-3/img/final-swf-button.png";
+		
+		uploads.final = new SWFUpload(fopt);	
+		
+	}
+	
 	
 
 	

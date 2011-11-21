@@ -1,4 +1,11 @@
 <?php 
+
+$this->Html->scriptStart(array("inline"=>false));
+?>
+var upload_uri = "/younited-nations-3/handle_upload/<?php echo $this->Session->id(); ?>/";
+<?php
+$this->Html->scriptEnd();
+
 $js = array(
 	"https://maps.googleapis.com/maps/api/js?sensor=true",
 	"jquery.form",
@@ -36,7 +43,7 @@ $this->Html->script($js,array("inline"=>false));
 							</p>
 							<div class='heading'>SPECIAL AWARDS PRIZE</div>
 							<p>
-								• A year’s supply of Vans shoes for the entire crew.
+							• A year’s supply of Vans shoes for the entire crew.
 							</p>
 						</div>
 						<div id='entry-form'>
@@ -53,9 +60,12 @@ $this->Html->script($js,array("inline"=>false));
 									echo $this->element("younited-nations-3/crew-roster-form");
 									echo $this->element("younited-nations-3/crew-file-upload");				
 								?>
+								<div style='height:80px;'></div>
 							</div>
+							
 						</div>
 					</div>
+					
 					<?php 	
 							echo $this->Form->input("YounitedNationsEvent.id",array("type"=>"hidden","value"=>$event_id));
 							if(isset($this->data['YounitedNationsEventEntry']['id'])) echo $this->Form->input("YounitedNationsEventEntry.id");
@@ -64,8 +74,10 @@ $this->Html->script($js,array("inline"=>false));
 					?>
 					
 				</div>
+				
 				<div style='clear:both;'></div>
 			</div>
+			<img src='/theme/younited-nations-3/img/form-bottom.png' alt='' border='0' />
 		</div>
 	</div>
 	<div></div>

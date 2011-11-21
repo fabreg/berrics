@@ -11,7 +11,7 @@ var video_still = false;
 $(document).ready(function() { 
 
 	//setup the video file
-
+	
 	 $('#video-file').swfupload({
 	        // Backend Settings
 	        upload_url: "/media_files/handle_video_file_upload/<?php echo $this->Session->id(); ?>", 

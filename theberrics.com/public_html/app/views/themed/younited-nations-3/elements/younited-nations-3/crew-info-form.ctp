@@ -18,13 +18,19 @@
 		echo $this->Form->input("YounitedNationsPosse.geo_latitude",array("type"=>"hidden"));
 		echo $this->Form->input("YounitedNationsPosse.geo_city",array("type"=>"hidden"));
 		echo $this->Form->input("YounitedNationsPosse.geo_province",array("type"=>"hidden"));
+		echo $this->Form->input("YounitedNationsPosse.geo_formatted",array("type"=>"hidden"));
 		echo $this->Form->input("YounitedNationsPosse.user_id",array("type"=>"hidden"));
 		
 	?>
-	<input type='button' id='tester' value='testing' />
+	<!-- <input type='button' id='tester' value='testing' /> -->
 	</div>
-	<div id='map' class='map'>
+	<div class='map-holder'>
+		<div id='map' class='map'>
+			
+		</div>
+		<div class='map-result'>
 		
+		</div>
 	</div>
 	<div style='clear:both;'></div>
 	<div class='submit-holder'>
