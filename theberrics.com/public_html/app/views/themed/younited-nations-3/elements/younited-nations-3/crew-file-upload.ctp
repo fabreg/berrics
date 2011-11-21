@@ -9,10 +9,10 @@
 		<div class='left'>
 		<div class='rules-heading'>VIDEO UPLOAD REQUIREMENTS</div>
 		<ul class='upload-rules-list'>
-			<li>Your Video/Trailer/Update must me in MOV, MP4 or MPEG format</li>
+			<li>Your Video/Trailer/Update must be in MOV, MP4 or MPEG format</li>
 			<li>Your Video/Trailer/Update must not exceed 100MB in file size</li>
 			<li>Your Video/Trailer/Update must not exceed 3 minutes</li>
-			<li>Your Video/Trailer/Update MUST BE EXCLUSIVE. ANY VIDEO UPLOADED TO YOUTUBE OR ANY OTHER VIDEO WEBSITE WILL RESULT IN DIS-QUALIFICATION</li>
+			<li>Your Video/Trailer/Update MUST BE EXCLUSIVE. ANY VIDEO UPLOADED TO YOUTUBE OR ANY OTHER VIDEO WEBSITE WILL RESULT IN DISQUALIFICATION</li>
 		</ul>
 		</div>
 		<div class='right'>
