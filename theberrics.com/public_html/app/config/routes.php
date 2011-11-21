@@ -11,7 +11,7 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	
 	$splash_action = "random";
 	
-	if(date("Y-m-d")=="2011-11-10") {
+	if(in_array(date("Y-m-d"),Array("2011-11-21","2011-11-22"))) {
 		
 		$splash_action = "nike";
 		
