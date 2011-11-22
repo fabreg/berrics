@@ -16,6 +16,7 @@ class YounitedNationsEventsController extends AdminAppController {
 	
 	public function index() {
 		
+		$this->paginate['YounitedNationsEvent']['contain'] = array();		
 		$events = $this->paginate("YounitedNationsEvent");
 		
 		$this->set(compact("events"));
@@ -77,7 +78,7 @@ class YounitedNationsEventsController extends AdminAppController {
 		
 		$entries = $this->paginate("YounitedNationsEventEntry");
 		
-		$this->set(compact("event"));
+		$this->set(compact("event","entries"));
 		
 		
 	}
