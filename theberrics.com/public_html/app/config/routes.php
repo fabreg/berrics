@@ -9,9 +9,9 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 
 if($_SERVER['SCRIPT_URL'] == "/") {
 	
-	$splash_action = "random";
+	$splash_action = "index";
 	
-	if(in_array(date("Y-m-d"),Array("2011-11-21","2011-11-22"))) {
+	if(in_array(date("Y-m-d"),Array("2011-11-21"))) {
 		
 		$splash_action = "nike";
 		
