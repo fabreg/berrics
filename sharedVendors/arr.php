@@ -940,7 +940,8 @@ class Arr {
 			"PRE001"=>"PRE001",
 			"LEVIS"=>"LEVIS",
 			"POST001"=>"POST001",
-			"BYS3"=>"BYS3"
+			"BYS3"=>"BYS3",
+			"YN3PRE"=>"YN3PRE"
 			
 		);
 		

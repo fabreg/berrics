@@ -24,35 +24,31 @@ $this->Html->script($js,array("inline"=>false));
 					<?php echo $this->Form->create("YounitedNationsEventEntry",array("url"=>$this->here,"id"=>"YounitedNationsEventEntryForm"));?>
 					<div class='form-content'>
 						<div class='rules'>
-							<div class='heading'>DETAILS</div>
-							<p>
-							Show us your crew
-							</p>
-							<div class='super-list'>	
+						<div style='text-align:center;'>
+							<img src='/theme/younited-nations-3/img/show-us-your-crew.png' alt='' border='0' />
+						</div>
+						<hr />
+						<div class='super-list'>	
 								<ul>
-									<li> Best Crew</li>
+									<li> <strong>Best Crew</strong></li>
 									<li> Heshest Crew</li>
 									<li> Freshest Crew</li>
 									<li> Youngest Crew</li>
 									<li> Oldest Crew</li>
-									<li> Funniest Crew</li>
 									<li> Skatepark Crew</li>
 									<li> Tranny Crew</li>
 									<li> All-girl crew</li>
-									<li> Tom Crews</li>
-									<li> I live in BFE and ain't got shit to skate Crew</li>
-									<li> I wear nothing but Vans crew</li>
-									<li> I ain't afraid to take a slam Crew</li>
-									<li> razor scooter hero Crew</li>
-									
 								</ul>
 								<div style='clear:both;'></div>
 							</div>
+						
+						<hr />
+							
 							<p>
-								All crew winners, besides Best Crew, will be chosen by The Berrics.
-								All winning crew members of the above crew categories will win a year's supply of Vans shoes and limited edition Berrics products. 
-								Best Crew will be determined by number of Facebook and Twitter votes received in conjunction with The Berrics upper echelon and Vans team riders. 
-								Winner of the Best Crew receives the Younited Nations Grand Prize.
+								All crew winners, besides Best Crew, will be chosen by The Berrics. All Winning crew members will win Vans shoes and Berrics products.
+							</p>
+							<p>
+							Best Crew will be determined by number of Facebook and Twitter votes received in conjunction with a Berrics and Vans team rider panel. Winner of the Best Crew receives the Younited Nations Grand Prize.
 							</p>
 							<div class='heading'>GRAND PRIZE</div>
 							<div>
@@ -60,26 +56,24 @@ $this->Html->script($js,array("inline"=>false));
 									<li> All expense paid trip to The Berrics to film your own United Nations</li>
 									<li> Vans for everyone in your crew for a year.</li>
 									<li> A Shoot All Skaters profile for the winning filmer.</li>
-									<li> A crown with your Crew's name engraved on it. Kind of like the Stanley Cup, but better because that's hockey.</li>
+									<li> A crown with your Crew's name engraved on it.</li>
 									<li> A party with Vans to celebrate your win.</li>
-									<li> Fame. Cuz you know winning isn't worth it unless everyone knows about it.</li>
-									<li> Baby Koston's dirty diapers, one for each of you, possibly bronzed.</li>
+									<li> Fame.</li>
+									
 								</ul>
 							</div>
 							<div style='clear:both;'></div>
-							<p style='font-size:10px; font-style:italic;'>
-								Please note: Winning any one of the other crew categories does not mean you can't win the Best Crew category, however, winning the Best Crew category doesn't insure that you will win any of the other categories, but that shouldn't really matter because you won the grand prize and that's more awesome. 
-							</p>
 							<div class='heading'>RULES</div>
 							<div>
 								<ul>	
 									<li> Crew must be at least 3 people, but no more than 10.</li>
-									<li> Any video uploaded to Youtube, Vimeo, facebook or any other video hosting site will be disqualified.</li>
+									<li> Any video or footage already uploaded to the internet will not be eligible for Grand Prize.</li>
 									<li> All entries must be submitted by March 15, 2012.</li>
-									<li> All entries must follow the rules listed below.</li>
+									<li> Sign up today and enter to win Vans shoes for your whole crew (video not required to enter).</li>
 								</ul>
 							</div>
 							<div style='clear:both;'></div>
+							<div class='signup-now'>SIGN UP NOW FOR YOUR CHANCE TO WIN SOME FREE SHOES FROM VANS!</div>
 						</div>
 						<div id='entry-form'>
 							<div class='form-header'>

@@ -579,7 +579,7 @@ function initFileUploads() {
 					
 					showUpdateMsg("Video Uploaded Successfully :-)");
 					
-					$(window).scrollTo('.rules','slow');
+					$(window).scrollTo('.form-header','slow');
 					
 					setTimeout(function() { handleOverlayClose();  },2000);
 					

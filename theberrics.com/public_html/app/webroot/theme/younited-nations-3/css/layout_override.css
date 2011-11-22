@@ -22,6 +22,15 @@ body {
 	
 }
 
+#younited-nations-entry hr {
+
+	border:none;
+	height:2px;
+	background-color:#8a3e2e;
+	color:#8a3e2e;	
+	
+}
+
 #younited-nations-entry .entry-form-div {
 	
 	width:728px;
@@ -48,6 +57,16 @@ body {
 
 	min-height:600px;	
 	
+}
+
+#younited-nations-entry .signup-now {
+
+	font-size:17px;
+	font-weight:bold;	
+	color:#8a3e2e;
+	text-align:center;
+	padding-top:5px;
+	padding-bottom:5px;
 }
 
 #younited-nations-entry .entry-form-div .form-content {
@@ -81,33 +100,38 @@ body {
 }
 #younited-nations-entry .entry-form-div .form-content .rules ul li {
 	
-	float:left;
-	margin-right:15px;
-	margin-left:15px;
+	margin-right:3px;
+	margin-left:3px;
 	padding:2px;	
 	font-size:12px;
 	font-family:'Courier';
 	background-image:url(/theme/younited-nations-3/img/yn3-bullet.png);
 	background-repeat:no-repeat;
 	text-indent:10px;
-	background-position:left 3px;
-	font-weight:bold;
+	background-position:left 4px;
 	text-transform:uppercase;
 }
 #younited-nations-entry .entry-form-div .form-content .rules .super-list ul li {
 
 	float:left;
-		
+	font-size:18px;
+	font-family:'Arial';
+	margin-right:3px;
+	margin-left:3px;
+	font-weight:normal;
+	background-position:left 6px;
 }
 
 
 #younited-nations-entry .entry-form-div .form-content .rules .heading {
 	
-	border-bottom:2px solid #000;
+	border-bottom:2px solid #8a3e2e;
+	color:#8a3e2e;
 	padding-bottom:0px;
-	font-size:12px;
+	font-size:14px;
 	font-weight:bold;
 	font-family:'Arial';
+	margin-top:5px;
 }
 
 

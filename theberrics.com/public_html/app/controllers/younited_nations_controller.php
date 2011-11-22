@@ -135,7 +135,8 @@ class YounitedNationsController extends DailyopsController {
 			$this->MediaFileUpload->save(array(
 			
 				"file_name"=>$file_name,
-				"name"=>$this->params['pass'][1],
+				"name"=>$file['name'],
+				"notes"=>$this->params['pass'][1],
 				"model"=>"YounitedNationsEventEntry",
 				"foreign_key"=>$this->params['pass'][2],
 				"user_id"=>$this->user_id_scope
