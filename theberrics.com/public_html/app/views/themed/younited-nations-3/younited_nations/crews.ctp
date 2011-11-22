@@ -35,27 +35,45 @@ $(document).ready(function() {
 </script>
 <style>
 
+#yn3-left-col {
+
+	width:100%;
+
+}
 #map {
 
 	height:450px;
 	width:100%;
 }
 
+
+#yn3-right-col {
+
+	display:none;
+
+}
+
+
+
 </style>
-<div>
-<?php 
+<div class='yn3-crews'>
+	<div style='height:150px;'>
 
-	echo $this->Form->input("address");
+	</div>
+	<div id='map'>
 	
-
-?>
-<input type='button' value='test' id='test-button' />
+	</div>
+	<div>
+	<div class='profile-div'>
+	
+	</div>
+	<div class='crew-list'>
+		<ul>
+			<?php foreach($entries['YounitedNationsEventEntry'] as $e): ?>
+			
+			<?php endforeach; ?>
+		</ul>
+	</div>
+	<div style='clear:both;'></div>
+	</div>
 </div>
-<div id='map'>
-
-</div>
-<?php 
-
-pr($entries);
-
-?>
