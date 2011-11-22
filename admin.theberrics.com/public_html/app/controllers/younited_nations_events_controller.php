@@ -121,6 +121,12 @@ class YounitedNationsEventsController extends AdminAppController {
 		
 	}
 	
+	public function confirm_delete() {
+		
+		
+		
+	}
+	
 	
 	
 	

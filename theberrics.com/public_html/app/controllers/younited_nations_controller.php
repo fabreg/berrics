@@ -20,7 +20,7 @@ class YounitedNationsController extends DailyopsController {
 	
 		$this->Auth->allowedActions = array();
 
-		$this->Auth->allow("index","view","section","entry_form","ajax_update_entry","handle_upload");
+		$this->Auth->allow("*");
 
 		$this->initPermissions();
 		
@@ -180,7 +180,21 @@ class YounitedNationsController extends DailyopsController {
 	
 	public function crews() {
 		
+		//get all the entries and the posses
+		$this->loadModel("YounitedNationsEventEntry");
 		
+		$entries = $this->YounitedNationsEvent->find("first",array(
+		
+			"conditions"=>array(
+				"YounitedNationsEvent.id"=>$this->event_id
+			),
+			"contain"=>array(
+				"YounitedNationsEventEntry"=>array("YounitedNationsPosse")
+			)
+		
+		));
+		
+		$this->set(compact("entries"));
 		
 	}
 	

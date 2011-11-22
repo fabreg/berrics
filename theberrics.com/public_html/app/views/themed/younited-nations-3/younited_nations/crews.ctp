@@ -4,48 +4,31 @@ $this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true")
 
 ?>
 <script>
-var map,geocoder;
+var map,geocoder,marker_img;
+var markers = [];
 $(document).ready(function() { 
 	geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var lat = new google.maps.LatLng(34.0522342,-118.2436849);
 	var myOptions = {
-		      zoom: 4,
+		      zoom:2,
 		      center: latlng,
-		      mapTypeId: google.maps.MapTypeId.HYBRID
+		      mapTypeId: google.maps.MapTypeId.HYBRID,
+		      center:lat
 	};
-	var marker = false;
 	map = new google.maps.Map(document.getElementById("map"),myOptions);
-	
-	
+	marker_img = new google.maps.MarkerImage("/theme/younited-nations-3/img/vans_pin.png");
+	<?php foreach($entries['YounitedNationsEventEntry'] as $k=>$e): ?>
 
-	$("#test-button").click(function() { 
+	markers[<?php echo $k; ?>] = new google.maps.Marker({
 
+			
+			position:new google.maps.LatLng(<?php echo $e['YounitedNationsPosse']['geo_latitude']; ?>,<?php echo $e['YounitedNationsPosse']['geo_longitude']; ?>)
 
-		geocoder.geocode( { 'address': $("#address").val()}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-
-					if(!marker) {
-
-						marker = new google.maps.Marker();
-
-					} 
-
-					
-					
-		       			
-			       		
-			          marker.setMap(map); 
-			          marker.setPosition(results[0].geometry.location);
-					  marker.setDraggable(true);
-			       	  map.setCenter(results[0].geometry.location);
-			          map.setZoom(12);
-			        $("body").append(results[0].geometry.location.lng()+" : "+results[0].geometry.location.lat());
-			        
-		      } else {
-		        alert("Geocode was not successful for the following reason: " + status);
-		      }
 		});
-	});
+	markers[<?php echo $k; ?>].setMap(map);
+	markers[<?php echo $k; ?>].setIcon(marker_img);
+	<?php endforeach;?>
 	
 });
 
@@ -54,8 +37,8 @@ $(document).ready(function() {
 
 #map {
 
-	height:300px;
-	width:300px;
+	height:450px;
+	width:100%;
 }
 
 </style>
@@ -71,3 +54,8 @@ $(document).ready(function() {
 <div id='map'>
 
 </div>
+<?php 
+
+pr($entries);
+
+?>
