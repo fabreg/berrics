@@ -83,4 +83,48 @@ class YounitedNationsEventsController extends AdminAppController {
 		
 	}
 	
+	
+	public function view_entry($id = false) {
+		$this->loadModel("YounitedNationsEventEntry");
+		//get the entry and all the other stuff
+		$entry = $this->YounitedNationsEventEntry->find("first",array(
+			
+			"conditions"=>array(
+				"YounitedNationsEventEntry.id"=>$id
+			),
+			"contain"=>array(
+				"YounitedNationsPosse"=>array(
+					"YounitedNationsPosseMember",
+					"User"
+				)
+			),
+			
+		
+		));
+		
+		//get the media file uploads
+		$this->loadModel("MediaFileUpload");
+		
+		$files = $this->MediaFileUpload->find("all",array(
+		
+			"conditions"=>array(
+				"MediaFileUpload.model"=>"YounitedNationsEventEntry",
+				"MediaFileUpload.foreign_key"=>$entry['YounitedNationsEventEntry']['id']
+			),
+			"contain"=>array()	
+		
+		));
+		
+		
+		$this->set(compact("entry","files"));
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }

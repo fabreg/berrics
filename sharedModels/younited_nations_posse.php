@@ -13,7 +13,7 @@ class YounitedNationsPosse extends AppModel {
 	public $hasOne = array(			"YounitedNationsEventEntry"=>array(
 				"foreignKey"=>"younited_nations_posse_id"
 			));
-	
+	public $belongsTo = array("User");
 	
 	
 }

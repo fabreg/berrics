@@ -37,7 +37,7 @@ $c = Arr::countries();
 			<td><?php echo $c[$e['YounitedNationsPosse']['country']];  ?></td>
 			<td><?php echo $e['YounitedNationsPosse']['geo_formatted']; ?></td>
 			<td class='actions'>
-				<a href='/younited_nations_events/view_posse/<?php echo $e['YounitedNationsPosse']['id']; ?>/<?php echo base64_encode($this->here); ?>'>View</a>
+				<a href='/younited_nations_events/view_entry/<?php echo $e['YounitedNationsEventEntry']['id']; ?>/<?php echo base64_encode($this->here); ?>'>View</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>
