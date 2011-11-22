@@ -1,7 +1,7 @@
 <?php 
 
 $this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true"),array("inline"=>false));
-
+$c = Arr::countries();
 ?>
 <script>
 var map,geocoder,marker_img;
@@ -69,11 +69,26 @@ $(document).ready(function() {
 	</div>
 	<div class='crew-list'>
 		<ul>
-			<?php foreach($entries['YounitedNationsEventEntry'] as $e): ?>
-			
+			<?php foreach($countries as $k=>$v): ?>
+				<li>
+					<div style="font-weight:bold; font-size:24px; font-family:'Arial'"><?php echo $c[$k]; ?></div>
+						<ul>
+					<?php foreach($v as $e): ?>
+							<li>
+								<?php echo strtoupper($e['YounitedNationsPosse']['name']); ?>
+								<div style='font-size:12px; color:#999; font-style:italic;'><?php echo $e['YounitedNationsPosse']['geo_formatted']; ?></div>
+							</li>
+					<?php endforeach; ?>
+						</ul>
+				</li>
 			<?php endforeach; ?>
 		</ul>
 	</div>
 	<div style='clear:both;'></div>
 	</div>
 </div>
+<?php 
+
+print_r($countries);
+
+?>

@@ -194,7 +194,13 @@ class YounitedNationsController extends DailyopsController {
 		
 		));
 		
-		$this->set(compact("entries"));
+		//make an array of entrys grouped by country
+		$countries = array();
+		
+		foreach($entries['YounitedNationsEventEntry'] as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
+		
+		
+		$this->set(compact("entries","countries"));
 		
 	}
 	
