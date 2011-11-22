@@ -12,6 +12,11 @@
 	font-weight:bold;
 	width:200px;
 }
+.members {
+	
+	margin-top:10px;
+
+}
 .uploads {
 
 	width:98%;
@@ -60,10 +65,38 @@
 					</tr>
 				</table>
 			</div>
+			<div class='members'>
+				<table cellspacing='0'>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Affiliation</th>
+					</tr>
+					<?php foreach($entry['YounitedNationsPosse']['YounitedNationsPosseMember'] as $m): ?>
+					<tr>
+						<td>
+							<?php echo $m['name']; ?>
+						</td>
+						<td align='center'>
+							<?php echo $m['age']; ?>
+						</td>
+						<td>
+							<?php 
+							
+								echo ($m['skater']) ? "[Skater]":"";
+								echo ($m['filmer']) ? "[Filmer]":"";
+								echo ($m['editor']) ? "[Editor]":"";
+								
+							?>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</table>
+			</div>
 		</div>
 		
-		<div class='members'></div>
+		
 		<div class='uploads'></div>
 	</div>
-
+	<div style='clear:both;'></div>
 </div>

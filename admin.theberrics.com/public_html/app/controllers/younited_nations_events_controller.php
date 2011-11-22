@@ -69,7 +69,7 @@ class YounitedNationsEventsController extends AdminAppController {
 			"order"=>array(
 				"YounitedNationsEventEntry.id"=>"DESC"
 			),
-			"limit"=>50,
+			"limit"=>100,
 			"contain"=>array(
 				"YounitedNationsPosse"
 			)
