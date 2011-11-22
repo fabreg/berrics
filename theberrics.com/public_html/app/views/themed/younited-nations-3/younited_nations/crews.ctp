@@ -53,6 +53,12 @@ $(document).ready(function() {
 
 }
 
+#yn3-crews .crew-list {
+
+	background-color:#000;
+
+}
+
 
 
 </style>
@@ -68,6 +74,7 @@ $(document).ready(function() {
 	
 	</div>
 	<div class='crew-list'>
+		<div style='width:95%; margin:auto; padding:5px;'>
 		<ul>
 			<?php foreach($countries as $k=>$v): ?>
 				<li>
@@ -83,6 +90,7 @@ $(document).ready(function() {
 				</li>
 			<?php endforeach; ?>
 		</ul>
+		</div>
 	</div>
 	<div style='clear:both;'></div>
 	</div>
