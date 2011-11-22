@@ -63,7 +63,7 @@ class DailyopsController extends BerricsAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(date("Y-m-d") == "2011-10-15") { 
+			if(date("Y-m-d") == "2011-11-22") { 
 				
 				$batb_mode = true;
 				
