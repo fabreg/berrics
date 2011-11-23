@@ -18,7 +18,7 @@ body {
     
     width:1050px;
     margin:auto;    
-    margin-top:170px;
+    padding-top:170px;
 }
 
 
@@ -79,8 +79,7 @@ HEADER NAVIATION BAR
 */
 
 #header-container {
-    
-    margin-top:40px; 
+
     margin-bottom:40px; 
     
 }

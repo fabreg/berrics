@@ -78,8 +78,8 @@ $(document).ready(function() {
 		<ul>
 			<?php foreach($countries as $k=>$v): ?>
 				<li>
-					<div style="font-weight:bold; font-size:24px; font-family:'Arial'"><?php echo $c[$k]; ?></div>
-						<ul>
+					<div style="font-weight:bold; font-size:24px; font-family:'Arial'"><?php echo $c[$k]; ?> (<?php echo count($v); ?>)</div>
+						<ul style='display:none;'>
 					<?php foreach($v as $e): ?>
 							<li>
 								<?php echo strtoupper($e['YounitedNationsPosse']['name']); ?>
