@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 		$("#post,#enter").fadeIn("slow");
 
-	},2000);
+	},2200);
 
 	
 });
