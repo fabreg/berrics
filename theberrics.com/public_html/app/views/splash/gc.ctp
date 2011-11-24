@@ -49,9 +49,10 @@ body {
 
 	width:728px;
 	margin:auto;
-	margin-top:200px;
+	margin-top:180px;
 	background-image:url(/img/splash/girl/gc-px.png);
 	display:none;
+	padding-top:2px;
 }
 #enter {
 
@@ -71,6 +72,12 @@ body {
 
 	background-image:none;
 	background-repeat:repeat;
+
+}
+
+.d-post-bit .container-top .display-media {
+
+	margin:auto;
 
 }
 
