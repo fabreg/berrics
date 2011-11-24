@@ -49,7 +49,7 @@ body {
 
 	width:728px;
 	margin:auto;
-	margin-top:180px;
+	margin-top:150px;
 	background-image:url(/img/splash/girl/gc-px.png);
 	display:none;
 	padding-top:2px;
