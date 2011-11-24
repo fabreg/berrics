@@ -11,9 +11,9 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	
 	$splash_action = "index";
 	
-	if(in_array(date("Y-m-d"),Array("2011-11-21"))) {
+	if(in_array(date("Y-m-d"),Array("2011-11-25","2011-11-26"))) {
 		
-		$splash_action = "nike";
+		$splash_action = "gc";
 		
 	}
 	
