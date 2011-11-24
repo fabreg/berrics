@@ -210,6 +210,20 @@ class SplashController extends BerricsAppController {
 		
 	}
 	
+	public function gc() {
+		
+		$this->layout = "empty";
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4124
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	public function wild() {
 		
 		$this->layout = "empty";
