@@ -24,6 +24,18 @@
 
 var swfPlayer = "/swf/BerricsPlayer.swf";
 
+$(document).ready(function() { 
+
+
+	setTimeout(function() { 
+
+		$("#post").fadeIn("slow");
+
+	},2000);
+
+	
+});
+
 </script>
 <style>
 body {
@@ -37,14 +49,21 @@ body {
 
 	width:728px;
 	margin:auto;
-	margin-top:230px;
+	margin-top:200px;
 	background-image:url(/img/splash/girl/gc-px.png);
+	display:none;
 }
 
 .d-post-bit .container,.d-post-bit .container-top,.d-post-bit .bottom  {
 
 	background-image:none;
 	background-repeat:repeat;
+
+}
+
+.d-post-bit .container-top .title h2 {
+
+	display:none;
 
 }
 </style>
