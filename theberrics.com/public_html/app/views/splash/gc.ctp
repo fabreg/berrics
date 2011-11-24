@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 	setTimeout(function() { 
 
-		$("#post").fadeIn("slow");
+		$("#post,#enter").fadeIn("slow");
 
 	},2000);
 
@@ -53,6 +53,19 @@ body {
 	background-image:url(/img/splash/girl/gc-px.png);
 	display:none;
 }
+#enter {
+
+	text-align:center;
+	display:none;
+
+}
+
+#enter a {
+
+	color:#f0f0f0;
+	font-size:22px;
+	font-family:'Times New Roman';
+}
 
 .d-post-bit .container,.d-post-bit .container-top,.d-post-bit .bottom  {
 
@@ -70,9 +83,12 @@ body {
 
 
 <div id='gc-trailer'>
-	<div></div>
+	
 	<div id='post'>
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
-	<div style='clear:both;'></div>
+	<div style='clear:both; height:10px;'></div>
+	<div id='enter'>
+		<a href='/dailyops' title='The DailyOps'>- ENTER THE BERRICS -</a>
+	</div>
 </div>
