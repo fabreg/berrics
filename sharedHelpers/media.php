@@ -6,7 +6,7 @@ class MediaHelper extends AppHelper {
 	public $helpers = array("Html");
 	
 	
-	public function mediaThumb($opt = array()) {
+	public function mediaThumb($opt = array(),$attr = array()) {
 		
 		
 		//check some stuff
@@ -78,8 +78,10 @@ class MediaHelper extends AppHelper {
 			
 		}
 		
+		$attr['border'] = 0;
+		
 		//return the thumbnail
-		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,array("border"=>0));
+		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
 			
 	}
 	

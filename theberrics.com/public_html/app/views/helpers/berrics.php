@@ -28,6 +28,10 @@ class BerricsHelper extends AppHelper {
 		 			"h"=>400,
 		 			"zc"=>0
 		 		
+		 		),array(
+		 		
+		 			"display_weight"=>$d['DailyopMediaItem'][0]['display_weight']
+		 		
 		 		));
 
 		 	break;
@@ -188,6 +192,7 @@ class BerricsHelper extends AppHelper {
 		$options['media_file'] = json_encode($opt);
 		$options['media_type'] = $m['media_type'];
 		$options['media_file_id'] = $m['id'];
+		$options['slide_show'] = $dataSet['Dailyop']['slide_show'];
 		
 		return $this->Html->div("dailyop_media_item",$content,$options);
 		

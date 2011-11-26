@@ -68,7 +68,8 @@ class TesterController extends BerricsAppController {
 		
 		$fb = FacebookApi::instance();
 		
-		$sql = 'SELECT name, hometown_location, locale, current_location FROM user WHERE uid="94806328"';
+		$sql = "SELECT url, normalized_url, share_count, like_count, comment_count, total_count,
+				commentsbox_count, comments_fbid, click_count FROM link_stat WHERE url='http://theberrics.com/gen-ops/girl-chocolate-trailer.html'";
 		
 		$q = $fb->facebook->api(array(
 			
@@ -78,7 +79,9 @@ class TesterController extends BerricsAppController {
 		
 		));
 		
-		die(pr($q));
+		$count = $q[0]['total_count'];
+		
+		die($count);
 		
 	}
 	

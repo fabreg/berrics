@@ -76,25 +76,7 @@ $(document).ready(function() {
 		
 	}
 	
-	//let's remove the header if mobile
-/*
-	if(navigator.userAgent.toLowerCase().indexOf('mobile')>-1) {
-	
-		//remove fixed postion on top-banner-container
-		$("#top-banner-container").css({
-			
-			'position':'static'
-			
-		});
-		
-		$("#header-container").css({
-			
-			"margin-top":"0px"
-			
-		});
-		
-	}
-*/	
+	DailyopsSlideShow.init();
 	
 });
 
@@ -438,6 +420,15 @@ function initMediaFileDiv() {
 	});
 	
 	
+	
+	//init the slide shows
+	$(".dailyop_media_item[slide_show=1]").each(function() { 
+		
+		
+		
+	});
+	
+	//fade out the logos
 	$('.d-post-bit .icon img').css({'opacity':.4});
 	
 }
@@ -481,6 +472,32 @@ function html5Video() {
 	
 	
 }
+
+
+
+/*
+ * 
+ * DAILYOPS SLIDE SHOW
+ * 
+ */
+var DailyopsSlideShow = {
+			
+		init:function() {
+	
+			$(".dailyop_media_item[slide_show=1]").click(function() { 
+				
+				DailyopsSlideShow.loadNext();
+				
+			});
+	
+		},
+		loadNext:function() {
+			alert("next");
+		},
+		loadPrev:function() { }
+	
+		
+};
 
 
 /****
