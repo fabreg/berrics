@@ -18,7 +18,7 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 	
 } else if($post['Dailyop']['uri'] == "girl-and-chocolate-trailer.html") {
 	
-	$url = 'girl-chocolate-trailer.html';
+	$url = '/gen-ops/girl-chocolate-trailer.html';
 	
 }
 
