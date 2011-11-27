@@ -16,6 +16,10 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 	
 	$url = '/united-nations/powell-peralta.html';
 	
+} else if($post['Dailyop']['uri'] == "girl-and-chocolate-trailer.html") {
+	
+	$url = 'girl-chocolate-trailer.html';
+	
 }
 
 $this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
