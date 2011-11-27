@@ -3,12 +3,13 @@
 $header_img = '/img/layout/newsv2/header.jpg';
 $bottom_img = '/img/layout/newsv2/header-bottom.png';
 
-if($this->params['date_in'] == "2011-10-30") {
+if($this->params['date_in'] == "2011-11-27") {
 
 	
-	$header_img = '/img/layout/newsv2/header-halloween.jpg';
-	$bottom_img = '/img/layout/newsv2/header-bottom-halloween.png';
-	echo "<style>#top-banner-container { background-image:url(/img/layout/newsv2/header-bg-halloween.png);}</style>";
+	$header_img = '/img/layout/newsv2/tg-header.png';
+	$bottom_img = '/img/layout/newsv2/tg-bottom.png';
+	echo "<style>#top-banner-container {background-image:url(/img/layout/newsv2/tg-bg.png);} #top-banner-container .bottom {background-image:url(/img/layout/newsv2/tg-bottom-bg.png); background-repeat:repeat-x;}</style>";
+	
 }
 ?>
 <div id='top-banner-container'>
