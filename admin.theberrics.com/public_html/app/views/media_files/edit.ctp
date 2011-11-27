@@ -22,7 +22,7 @@ $types = MediaFile::mediaFileTypes();
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('media_type',array("options"=>$types));
-		echo $this->Form->input("legacy_link");
+		echo $this->Form->input("url",array("label"=>"Url ( USE HTTP:// )"));
 		echo $this->Form->input('tags',array("type"=>"text","label"=>"Tags ( Comma seperated )","value"=>$tag_str));
 		echo $this->Form->input("caption");
 

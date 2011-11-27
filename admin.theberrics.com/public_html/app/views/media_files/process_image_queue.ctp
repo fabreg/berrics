@@ -120,6 +120,7 @@ $(document).ready(function() {
 						echo $this->Form->input("name");
 						echo $this->Form->input("caption");
 						echo $this->Form->input("tags",array("label"=>"Tags (Multiple tags should be comma seperated)",'class'=>'super-tag'));
+						echo $this->Form->input("url",array("label"=>"Url ( USE HTTP:// )"));
 						echo $this->Form->input("user_id",array("type"=>"hidden","value"=>$this->Session->read("Auth.User.id")));
 						echo $this->Form->input("website_id");
 						echo $this->Form->input("file",array("type"=>"hidden","value"=>$file['fileName']));

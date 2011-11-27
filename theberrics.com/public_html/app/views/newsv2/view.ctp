@@ -16,6 +16,10 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 	
 	$url = '/united-nations/powell-peralta.html';
 	
+} else if($post['Dailyop']['uri'] == "girl-and-chocolate-trailer.html") {
+	
+	$url = '/gen-ops/girl-chocolate-trailer.html';
+	
 }
 
 $this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
@@ -88,6 +92,8 @@ $this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
 								"w"=>$imgw,
 								"h"=>$imgh
 							));
+					//check to see if there is a link in the image
+					if(strlen($t['MediaFile']['url'])>0) $mediaItem = "<a href='{$t['MediaFile']['url']}'>{$mediaItem}</a>";
 					$img_file = "<div class='media-item' style='{$style}'>{$mediaItem}</div>";
 							
 				}
