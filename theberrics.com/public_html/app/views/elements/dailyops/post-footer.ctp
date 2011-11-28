@@ -55,7 +55,12 @@
 					<div class='twitter'>
 						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://".$_SERVER['SERVER_NAME'].$url; ?>" data-text='<?php echo addslashes($d['name']." ".$d['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
 					</div> 
+					<?php if($d['contest_post'] == 1): ?>
+						<a href='#'>FAKEBOOK</a>
+					<?php else: ?>
 					<fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like>
+					<?php endif; ?>
+					
 				</div>	
 				
 				<div class='date-info'>

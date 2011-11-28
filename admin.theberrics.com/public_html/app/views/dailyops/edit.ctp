@@ -301,7 +301,6 @@ function dupe_uri_check() {
 		echo $this->Form->input("news_post");
 		echo $this->Form->input("fix_later");
 		echo $this->Form->input("featured_archive");
-		echo $this->Form->input("contest_post");
 		echo $this->Form->input("display_weight",array("options"=>$sort));
 		?>
 		<div>
@@ -320,6 +319,7 @@ function dupe_uri_check() {
 		echo $this->Form->input('text_content');
 		echo $this->Form->input('html_content');
 		echo $this->Form->input("slide_show");
+		echo $this->Form->input("contest_post");
 		echo $this->Form->input('dailyop_section_id');
 		echo $this->Form->input("unified_store_id",array("empty"=>true));
 		echo "<div style='padding:10px;'>";

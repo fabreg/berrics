@@ -484,12 +484,17 @@ var DailyopsSlideShow = {
 			
 		init:function() {
 	
-			$(".dailyop_media_item[slide_show=1]").click(function() { 
+			$(".dailyop_media_item[slide_show=1]").bind('click.DailyopsSlideShow',function() { 
 				
 				DailyopsSlideShow.loadNext(this);
 				
 			});
 	
+		},
+		destroy:function() { 
+			
+			$('.dailyop_media_item[slide_show=1]').unbind('.DailyopsSlideShow');
+			
 		},
 		loadNext:function() {
 			
@@ -505,10 +510,11 @@ var DailyopsSlideShow = {
 			
 			
 		},
-		showLoadingMsg:function() { // 1.Element 2.Message
+		showLoadingMsg:function() { // 1.Element 2.Message 3. Direction ( prev || next )
 			
 			var ele = arguments[0];
-			var msg = arguments[1];
+			var msg = arguments[1] || "Loading Next Item";
+			var direction = arguments[2] || "next";
 			var img = $(ele).find("img");
 			var height = $(ele).height();
 			
@@ -520,37 +526,44 @@ var DailyopsSlideShow = {
 			
 			//inject div
 			if($(ele).find('.dailyops-slide-show-msg').lendth<=0) $(ele).append("<div class='dailyops-slide-show-msg'></div>");
+			//alert((($(ele).height()/2)-$(".dailyop-slide-show-msg").height())+"px");
+			$(".dailyops-slide-show-msg").html(msg).css({
+				
+				"top":(($(ele).height()/2)-$(".dailyop-slide-show-msg").height())+"px"
+				
+			});
 			
 			//unbind this div from being clicked
-			$(ele).unbind('click');
+			DailyopsSlideShow.destroy();
 			
 			//send a request for a new image based on the post id and the display weight of the current image
 			$.ajax({
 				
-				url:"/dailyops/ajax_slideshow/"+$(ele).attr("dailyop_id")+"/"+$(img).attr("display_weight"),
+				url:"/dailyops/ajax_slideshow/"+$(ele).attr("dailyop_id")+"/"+$(img).attr("display_weight")+"/"+direction,
 				dataType:"json",
 				success:function(d) {
-				
-					
-					//rebind the click
-					var s = '';
-					for(var a in d) {
-					
-						s += a+":"+d[a]+"\r";
+		
+					if(d != 0) {
+						
+						var w = d['DailyopMediaItem']['display_weight'];
+						var f = d['MediaFile']['file_html'];
+						var did = d['DailyopMediaItem']['dailyop_id'];
+						//inject the new file
+						$(".dailyop_media_item[dailyop_id="+did+"]").html(f)
 						
 					}
+					DailyopsSlideShow.closeLoadingMsg();
+					//rebind all the clicks
+					DailyopsSlideShow.init();
 					
-					alert(d['pass'][1]);
-				
 				}
 				
 			});
 			
-			
-			
-			
 		},
 		closeLoadingMsg:function() { 
+			
+			$('.dailyops-slide-show-msg').remove();
 			
 		}
 	

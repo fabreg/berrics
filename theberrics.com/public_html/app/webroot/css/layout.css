@@ -892,6 +892,31 @@ DAILY OPS
     
 }
 
+.d-post-bit .dailyop_media_item {
+
+	position:relative;	
+	
+	
+}
+
+.d-post-bit .dailyop_media_item .dailyops-slide-show-msg {
+
+	position:absolute;
+	width:60%;
+	height:35px;
+	padding:5px;
+	background-color:red;
+	text-align:center;
+	color:white;	
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	z-index:2000;
+	
+}
+
+
+
 /*
     
     POST THUMBS
@@ -2044,5 +2069,3 @@ CANTEEN CART WIDGET THING
 	padding-top:20px;	
 	
 }
-	
-	

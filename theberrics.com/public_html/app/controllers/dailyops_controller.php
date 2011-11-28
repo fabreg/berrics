@@ -645,14 +645,44 @@ class DailyopsController extends BerricsAppController {
 	}
 	
 	//slide show methods
-	function ajax_slideshow($dailyop_id = false,$img_weight = false) {
+	function ajax_slideshow($dailyop_id = false,$img_weight = false,$direction = "next") {
 		
 		//do we have the correct data coming in?
-		if(!$dailyop_id || !$img_wieght) {
+		if(!$dailyop_id || !$img_weight) {
 			
 			die('0');
 			
 		}
+		
+		$this->loadModel("DailyopMediaItem");
+		
+		$cache_token = "dailyop_slide_show_".$daiyop_id."_".$img_weight;
+		
+		
+		if(($items = Cache::read($cache_token,"1min")) === false) {
+			
+				$items = $this->DailyopMediaItem->find("neighbors",array(
+					"field"=>"DailyopMediaItem.display_weight",
+					"value"=>$img_weight,
+					"order"=>array(
+						"DailyopMediaItem.display_weight"=>"ASC"
+					),
+					"conditions"=>array(
+						"DailyopMediaItem.dailyop_id"=>$dailyop_id
+					),
+					"contain"=>array("MediaFile")
+					
+				));
+				
+				Cache::write($cache_token,$items,"1min");
+					
+		}
+		
+		//check to see if we have an available item
+		if($items[$direction] == null) die('0');
+		
+		$data = $items[$direction];
+		
 		
 		//$data = $this->params;
 		
