@@ -49,8 +49,7 @@ foreach($dailyops as $k=>$dop):
 	} 
 		
 	echo "<div style='height:35px;'></div>";	
-	
-	
+		
 ?>
 
 <?php 

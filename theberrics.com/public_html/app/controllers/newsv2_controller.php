@@ -45,6 +45,12 @@ class Newsv2Controller extends DailyopsController {
 		
 		$this->params['date_in'] = $date_in;
 		
+		if((strtotime($this->params['date_in'])>time()) && !$this->isAdmin()) {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
 		//lets gather all the news posts
 		$token = "news_general_home_".$this->params['date_in'];
 		
