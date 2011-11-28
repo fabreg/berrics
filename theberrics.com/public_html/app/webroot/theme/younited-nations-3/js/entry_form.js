@@ -550,7 +550,7 @@ function initFileUploads() {
 				upload_progress_handler:function(f,bl,bt) {
 					
 					//get the percentage
-					var percent = Math.round((bl/bt)*100);
+					var percent = roundNumber((bl/bt)*100,2);
 					
 					
 					if(percent<100) {
@@ -608,4 +608,9 @@ function initFileUploads() {
 	
 
 	
+}
+
+function roundNumber(num, dec) {
+	var result = Math.round(num*Math.pow(10,dec))/Math.pow(10,dec);
+	return result;
 }

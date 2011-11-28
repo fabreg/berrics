@@ -475,7 +475,7 @@ function html5Video() {
 
 
 
-/*
+/****
  * 
  * DAILYOPS SLIDE SHOW
  * 
@@ -486,15 +486,50 @@ var DailyopsSlideShow = {
 	
 			$(".dailyop_media_item[slide_show=1]").click(function() { 
 				
-				DailyopsSlideShow.loadNext();
+				DailyopsSlideShow.loadNext(this);
 				
 			});
 	
 		},
 		loadNext:function() {
-			alert("next");
+			
+			var ele = arguments[0];
+			
+			var dailyop_id = $(ele).attr("dailyop_id");
+			
+			DailyopsSlideShow.showLoadingMsg(ele,"Loading...");
+			
 		},
-		loadPrev:function() { }
+		loadPrev:function() { 
+			
+			
+			
+		},
+		showLoadingMsg:function() { // 1.Element 2.Message
+			
+			var ele = arguments[0];
+			var msg = arguments[1];
+			var height = $(ele).height();
+			
+			$(ele).css({
+				
+				"position":"relative"
+				
+			});
+			
+			//inject div
+			if($(ele).find('.dailyops-slide-show-msg').lendth<=0) $(ele).append("<div class='dailyops-slide-show-msg'></div>");
+			
+			//unbind this div from being clicked
+			$(ele).unbind('click');
+			
+			//get the display wieght of the image inside of the element
+			
+			
+		},
+		closeLoadingMsg:function() { 
+			
+		}
 	
 		
 };
