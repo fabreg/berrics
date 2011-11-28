@@ -509,6 +509,7 @@ var DailyopsSlideShow = {
 			
 			var ele = arguments[0];
 			var msg = arguments[1];
+			var img = $(ele).find("img");
 			var height = $(ele).height();
 			
 			$(ele).css({
@@ -523,7 +524,29 @@ var DailyopsSlideShow = {
 			//unbind this div from being clicked
 			$(ele).unbind('click');
 			
-			//get the display wieght of the image inside of the element
+			//send a request for a new image based on the post id and the display weight of the current image
+			$.ajax({
+				
+				url:"/dailyops/ajax_slideshow/"+$(ele).attr("dailyop_id")+"/"+$(img).attr("display_weight"),
+				dataType:"json",
+				success:function(d) {
+				
+					
+					//rebind the click
+					var s = '';
+					for(var a in d) {
+					
+						s += a+":"+d[a]+"\r";
+						
+					}
+					
+					alert(d['pass'][1]);
+				
+				}
+				
+			});
+			
+			
 			
 			
 		},

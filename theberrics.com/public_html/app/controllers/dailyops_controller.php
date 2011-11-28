@@ -644,6 +644,22 @@ class DailyopsController extends BerricsAppController {
 		
 	}
 	
+	//slide show methods
+	function ajax_slideshow($dailyop_id = false,$img_weight = false) {
+		
+		//do we have the correct data coming in?
+		if(!$dailyop_id || !$img_wieght) {
+			
+			die('0');
+			
+		}
+		
+		//$data = $this->params;
+		
+		$this->set(compact("data"));
+		
+	}
+	
 	
 	
 }
