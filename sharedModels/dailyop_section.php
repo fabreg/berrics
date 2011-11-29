@@ -67,7 +67,8 @@ class DailyopSection extends AppModel {
 			"bangyoself"=>"Bang Yoself 3",
 			"news"=>"Aberrican News",
 			"newsv2"=>"Aberrican News V2",
-			"younited_nations"=>"YOUnited Nations"
+			"younited_nations"=>"YOUnited Nations",
+			"theotis"=>"31 Days Of Theotis"
 			
 		);
 		
@@ -85,10 +86,8 @@ class DailyopSection extends AppModel {
 			if(isset($_SERVER['DEVSERVER'])) {
 				$cond = array();
 				$cond['OR'] = array(
-				
-					"DailyopSection.id"=>array(66),
+					"DailyopSection.id"=>array(67),
 					"DailyopSection.active"=>1
-				
 				);
 				
 			}

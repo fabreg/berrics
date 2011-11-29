@@ -53,7 +53,7 @@
 			<div class='buttons'>
 				<div class='socialize'>
 					<div class='twitter'>
-						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://".$_SERVER['SERVER_NAME'].$url; ?>" data-text='<?php echo addslashes($d['name']." ".$d['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
+						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://theberrics.com".$url; ?>" data-text='<?php echo addslashes($d['name']." ".$d['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
 					</div> 
 					<?php if($d['contest_post'] == 1): ?>
 						<a href='#'>FAKEBOOK</a>

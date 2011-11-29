@@ -70,6 +70,7 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 					echo $this->Form->input("sub_title");
 					echo $this->Form->input("DailyopSection",array("empty"=>"All *"));
 					echo $this->Form->end("Run Search");
+					
 				?>
 			</div>
 		</fieldset>
@@ -96,6 +97,7 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 			<th><?php echo $this->Paginator->sort("fix_later"); ?></th>
 			<th><?php echo $this->Paginator->sort("title_episode"); ?></th>
 			<th><?php echo $this->Paginator->sort("Featured","featured_archive"); ?></th>
+			<th><?php echo $this->Paginator->sort("contest_post"); ?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort("publish_date"); ?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
@@ -173,6 +175,20 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 		<td><?php 
 				
 			switch($dailyop['Dailyop']['featured_archive']) {
+				
+				case 1:
+					echo "Yes";
+				break;
+				default:
+					echo "No";
+				break;
+				
+			}
+		
+		?></td>
+		<td><?php 
+				
+			switch($dailyop['Dailyop']['contest_post']) {
 				
 				case 1:
 					echo "Yes";
