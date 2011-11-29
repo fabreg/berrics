@@ -23,6 +23,10 @@ class TheotisController extends BerricsAppController {
 			
 		}
 		
+		$this->theme = $this->params['section'];
+		
+		$this->set("title_for_layout","Skull Candy Presents: 31 Days of Theotis");
+		
 	}
 	
 	public function section() {
