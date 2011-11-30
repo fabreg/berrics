@@ -35,9 +35,7 @@
 				</thead>
 				<tbody>
 					<?php 
-						
-						
-						
+
 						$dseed = $dstamp = strtotime("2011-12-01");
 												
 						while($dseed<strtotime("+1 Month",$dstamp)) {
@@ -45,19 +43,21 @@
 							foreach($days as $d) {
 							
 								$cell_content = "&nbsp;";
+								$clue_day = "";
 								
 								$dtoken = strtoupper(date("D",$dseed));
 							
 								if($dtoken == $d) {
 									
 									$cell_content = date("d",$dseed);
+									$clue_day = date("d",$dseed);
 									$dseed = strtotime("+1 Day",$dseed);
 									
 								}
 
 								if($d == "SUN") echo "<tr>";
 	
-								echo "<td valign='top' align='left'>{$cell_content}</td>";
+								echo "<td valign='top' align='left' day='{$dseed}'>{$cell_content}</td>";
 								
 								if($d == "SAT") echo "</tr>";
 							
