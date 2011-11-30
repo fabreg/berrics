@@ -12,22 +12,9 @@
 	</div>
 	<div class='t-cal'>
 		<div class='inner'>
-			<table class='t-cal-table' cellspacing='0'>
-				<thead>
-					<tr>
-						<th>S</th>
-						<th>M</th>
-						<th>T</th>
-						<th>W</th>
-						<th>T</th>
-						<th>F</th>
-						<th>S</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-						
-						$days = array(
+			<?php 
+			
+				$days = array(
 	
 							"SUN",
 							"MON",
@@ -38,10 +25,22 @@
 							"SAT"
 						
 						);
+			
+			?>
+			<table class='t-cal-table' cellspacing='0'>
+				<thead>
+					<tr>
+						<?php foreach($days as $d) echo "<th>{$d[0]}</th>"; ?>
+					</tr>
+				</thead>
+				<tbody>
+					<?php 
+						
+						
 						
 						$dseed = $dstamp = strtotime("2011-12-01");
 												
-						while($dseed<strtotime("+1 Month",$dstamp)):
+						while($dseed<strtotime("+1 Month",$dstamp)) {
 	
 							foreach($days as $d) {
 							
@@ -53,10 +52,9 @@
 									
 									$cell_content = date("d",$dseed);
 									$dseed = strtotime("+1 Day",$dseed);
+									
 								}
-							
-								
-								
+
 								if($d == "SUN") echo "<tr>";
 	
 								echo "<td valign='top' align='left'>{$cell_content}</td>";
@@ -66,7 +64,7 @@
 							}
 					
 						
-						endwhile;
+						}
 					
 					?>
 				</tbody>
