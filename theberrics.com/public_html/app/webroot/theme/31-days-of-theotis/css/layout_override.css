@@ -30,16 +30,27 @@
 }
 
 
+
+#theotis-section .t-cal .inner {
+
+	width:704px;
+	margin-left:12px;
+	margin-bottom:-20px;
+	margin-top:-5px;
+	float:left;
+}
+
 #theotis-section .t-cal .cal-table {
 
 	width:100%;
-
+	
 }
 #theotis-section .t-cal .t-cal-table thead th {
 
 	border:3px solid #000;
 	border-right:none;
 	border-left:none;
+	border-top:none;
 	width:14.25%;
 	text-align:center;
 	color:#000;
@@ -67,7 +78,7 @@
 
 #theotis-section .t-cal .t-cal-table tbody tr:last-child td {
 	
-	border-bottom-color:#004e25;	
+	border-bottom:none;	
 	
 }
 
@@ -85,12 +96,6 @@
 	
 }
 
-#theotis-section .t-cal .inner {
-
-	width:701px;
-	margin:auto;
-
-}
 
 #theotis-section .t-cal-table {
 
