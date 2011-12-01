@@ -51,7 +51,7 @@
 			<td><?php echo $c['UserContest']['name']; ?></td>
 			<td class='actions'>
 				<a href='/user_contests/edit/<?php echo $c['UserContest']['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
-				<a href='/users_contests/view_entries/<?php echo $c['UserContest']['id']; ?>'>View Entries</a>
+				<a href='/user_contests/view_entries/<?php echo $c['UserContest']['id']; ?>'>View Entries</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>

@@ -272,6 +272,10 @@ class TheotisController extends BerricsAppController {
 					
 					$posts[$k]['Dailyop']['found'] = true;
 					
+				} else {
+					
+					$posts[$k]['Dailyop']['found'] = false;
+					
 				}
 				
 				$posts[$k]['Dailyop']['check_date'] = date("Y-m-d",strtotime($v['Dailyop']['publish_date']));
