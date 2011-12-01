@@ -24,6 +24,7 @@ endif;
 		
 	</div>
 	<div class='t-cal'>
+		<div class='promo'></div>
 		<div class='inner'>
 			<?php 
 			

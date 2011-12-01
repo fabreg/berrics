@@ -92,9 +92,17 @@
 #theotis-section .t-cal {
 	
 	background-image:url(/theme/31-days-of-theotis/img/body-bg.jpg);
-	
+	position:relative;
 }
-
+#theotis-section .t-cal .promo {
+	
+	width:400px;
+	height:98px;
+	position:absolute;	
+	top:19px;
+	left:12px;
+	background-image:url(/theme/31-days-of-theotis/img/promo.jpg);
+}
 
 #theotis-section .t-cal-table {
 
