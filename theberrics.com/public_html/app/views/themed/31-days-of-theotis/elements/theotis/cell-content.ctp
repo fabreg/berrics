@@ -10,7 +10,7 @@
 		
 	</div>
 	<?php else: //die(print_r($p)); ?>
-		<?php if(isset($p['Dailyop']['found']) && $p['Dailyop']['found'] == 1): ?>
+		<?php if(strtotime("2011-12-{$day} 23:59:59")<time()): ?>
 			
 			<div class='found'>
 				<a href='/31-days-of-theotis/<?php echo $p['Dailyop']['uri']; ?>'>
