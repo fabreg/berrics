@@ -11,7 +11,7 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	
 	$splash_action = "index";
 	
-	if(in_array(date("Y-m-d"),Array("2011-11-30"))) {
+	if(in_array(date("Y-m-d"),Array("2011-12-01","2011-11-30"))) {
 		
 		$splash_action = array(//the default splash action
 			"controller"=>"theotis","action"=>"section"
