@@ -37,6 +37,10 @@ class DailyopsRoute extends CakeRoute {
 			
 				$slug = md5($_SERVER['REQUEST_URI']);
 				
+				 //hack it so the router thinks we are admin on dev server; 
+				 //this will allow the router to pass in unpublished posts;
+				 //auth control will be handled by the controller
+				 
 				$post = $dop->returnPost(array(
 					
 					"Dailyop.uri"=>$params['uri'],
@@ -57,9 +61,6 @@ class DailyopsRoute extends CakeRoute {
 				
 			} 
 			
-			
-			
-							
 			//check the directive
 			if(!empty($token[0]['DailyopSection']['directive'])) {
 				
@@ -68,7 +69,7 @@ class DailyopsRoute extends CakeRoute {
 				
 			} else{
 				
-				$paras['controller'] = "dailyops";
+				$params['controller'] = "dailyops";
 				
 			}
 			

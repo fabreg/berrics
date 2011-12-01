@@ -2069,3 +2069,34 @@ CANTEEN CART WIDGET THING
 	padding-top:20px;	
 	
 }
+
+.fb-form-button {
+	
+	position:relative;	
+	
+}
+
+.fb-form-button img {
+	
+	cursor:pointer;	
+	
+}
+
+.fb-form-button .flag {
+	
+	position:absolute;
+	top:1px;
+	right:-34px;
+	width:28px;
+	background-image:url(/theme/31-days-of-theotis/img/fb-tail.png);
+	text-indent:9px;
+	font-size:11px;
+	color:#333;
+	font-family:'lucida grande', sans-serif;
+	height:18px;
+	line-height:18px;
+	border-right:1px solid #d7d7d7;
+}
+
+
+

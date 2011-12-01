@@ -1,10 +1,23 @@
+<?php 
+
+if($_SERVER['REQUEST_URI']=="/"):
+
+	$this->Html->css(array("theotis-splash"),"stylesheet",array("inline"=>false));
+
+endif;
+
+?>
 <div id='theotis-section'>
 	<div class='top-img'>
 		<img alt='Skull Candy Presents: 31 Days Of Theotis' border='0' src='/theme/31-days-of-theotis/img/top.jpg' />
 	</div>
 	<div class='top-content'>
 		<div class='inner'>
+		<?php 
+			if(isset($viewing['Dailyop']['id'])) echo $this->element("dailyops/post-bit",array("dop"=>$viewing));
+			
 		
+		?>
 		</div>
 	</div>
 	<div class='green-top'>
@@ -49,7 +62,14 @@
 							
 								if($dtoken == $d) {
 									
-									$cell_content = date("d",$dseed);
+									$p = array();
+									$dchk = date("Y-m-d",$dseed);
+									$chk = Set::extract("/Dailyop[check_date={$dchk}]",$posts);
+									if(count($chk)>0) $p = $chk[0];	
+									
+									
+									
+									$cell_content = $this->element("theotis/cell-content",array("p"=>$p,"day"=>date("d",$dseed)));
 									$clue_day = date("d",$dseed);
 									$dseed = strtotime("+1 Day",$dseed);
 									
@@ -74,3 +94,8 @@
 	</div>
 	<div class='t-bottom'></div>
 </div>
+<?php if($_SERVER['REQUEST_URI'] == "/"): ?>
+<div class='enter-the-berrics'>
+	<a href='/dailyops'>ENTER THE BERRICS</a>
+</div>
+<?php endif; ?>

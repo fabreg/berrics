@@ -108,6 +108,13 @@
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("View User Permissions",array("controller"=>"user_permissions","action"=>"index")); ?>
 			</li>
+			<li class='li-sub-nav-header'>User Contests</li>
+			<li class='li-sub-nav-button'>
+				<?php echo $this->Html->link("Manage Contests",array("controller"=>"user_contests","action"=>"index")); ?>
+			</li>
+			<li class='li-sub-nav-button'>
+				<?php echo $this->Html->link("Add Contests",array("controller"=>"user_contests","action"=>"add")); ?>
+			</li>
 		</ul>
 	</li>
 

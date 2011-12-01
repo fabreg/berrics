@@ -56,7 +56,22 @@
 						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://theberrics.com".$url; ?>" data-text='<?php echo addslashes($d['name']." ".$d['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
 					</div> 
 					<?php if($d['contest_post'] == 1): ?>
-						<a href='#'>FAKEBOOK</a>
+						<?php 
+						
+							echo $this->Form->create("UserContest",array("style"=>"float:left;","url"=>"/31-days-of-theotis/found"));
+						?>
+						<div class='fb-form-button'><img alt='' border='0' src='/theme/31-days-of-theotis/img/fakebook.png' onclick='$(this).parent().parent().submit(); return true;' />
+						<div class='flag'>
+						68
+						</div>
+						</div>
+						<?php
+						//make the cipher
+							echo $this->Form->input($this->Session->id(),array("type"=>"hidden","value"=>base64_encode(serialize(Array("session_id"=>$this->Session->id(),"dailyop_id"=>$d['id'])))));
+							echo $this->Form->end();
+						
+						?>
+						
 					<?php else: ?>
 					<fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like>
 					<?php endif; ?>

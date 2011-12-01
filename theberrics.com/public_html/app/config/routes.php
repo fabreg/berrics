@@ -13,7 +13,15 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	
 	if(in_array(date("Y-m-d"),Array("2011-11-30"))) {
 		
-		$splash_action = "nike";
+		$splash_action = array(//the default splash action
+			"controller"=>"theotis","action"=>"section"
+		);
+		
+	} else {
+		
+		array(//the default splash action
+			"controller"=>"splash","action"=>"index"
+		);
 		
 	}
 	
@@ -21,9 +29,7 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	
 	Router::connect(
 		"/",
-		array(//the default splash action
-			"controller"=>"splash","action"=>"$splash_action"
-		),
+		$splash_action,
 		array(
 			"routeClass"=>"SplashRoute"
 		)
