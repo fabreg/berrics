@@ -26,7 +26,7 @@ class TheotisController extends BerricsAppController {
 		
 		$this->theme = "31-days-of-theotis";
 		
-		$this->set("title_for_layout","Skull Candy Presents: 31 Days of Theotis");
+		$this->set("title_for_layout","Skullcandy Presents: 31 Days of Theotis");
 		
 	}
 	
