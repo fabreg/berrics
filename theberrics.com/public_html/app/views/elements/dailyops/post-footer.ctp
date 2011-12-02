@@ -62,7 +62,7 @@
 						?>
 						<div class='fb-form-button'><img alt='' border='0' src='/theme/31-days-of-theotis/img/fakebook.png' onclick='$(this).parent().parent().submit(); return true;' />
 						<div class='flag'>
-						68
+						<?php echo mt_rand(10,99); ?>
 						</div>
 						</div>
 						<?php
