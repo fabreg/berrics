@@ -137,6 +137,25 @@ class UserContestsController extends AdminAppController {
 		
 		);
 		
+		if(count($this->data)>0) {
+			
+			$this->paginate['UserContestEntry']['conditions']['UserContestEntry.foreign_key'] = $this->data['UserContestEntry']['foreign_key'];
+			
+		}
+		
+		//make a menu of contest posts to filter thru
+		$this->loadModel("Dailyop");
+		$postFilter = $this->Dailyop->find("list",array(
+			
+			"conditions"=>array(
+				"Dailyop.contest_post"=>1
+			),
+			"contain"=>array()
+		
+		));
+		
+		$this->set(compact("postFilter"));
+		
 		$data = $this->paginate("UserContestEntry");
 		
 		$this->set(compact("data"));

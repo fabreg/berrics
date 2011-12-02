@@ -1,4 +1,13 @@
 <div class='index'>
+	<div class='form'>
+		<?php 
+		
+			echo $this->Form->create("UserContestEntry",array("url"=>$this->here));
+			echo $this->Form->input("foreign_key",array("options"=>$postFilter,"label"=>"Filter by post","empty"=>true));
+			echo $this->Form->end("Filter");
+			
+		?>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
@@ -25,7 +34,7 @@
 		</tr>	
 		<?php foreach($data as $d): ?>
 		<tr>
-			<td>ID</td>
+			<td><?php echo $d['UserContestEntry']['id']; ?></td>
 			
 			<td><?php echo $this->Time->niceShort($d['UserContestEntry']['created']); ?></td>
 			<td><?php echo $this->Time->niceShort($d['UserContestEntry']['modified']); ?></td>
