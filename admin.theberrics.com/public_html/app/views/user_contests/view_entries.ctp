@@ -29,7 +29,10 @@
 			
 			<td><?php echo $this->Time->niceShort($d['UserContestEntry']['created']); ?></td>
 			<td><?php echo $this->Time->niceShort($d['UserContestEntry']['modified']); ?></td>
-			<td><a href='/users/edit/<?php echo $d['User']['id']; ?>' target='_blank'><?php echo $d['User']['first_name']; ?> <?php echo $d['User']['last_name']; ?></a></td>
+			<td><a href='/users/edit/<?php echo $d['User']['id']; ?>' target='_blank'><?php echo $d['User']['first_name']; ?> <?php echo $d['User']['last_name']; ?></a>
+				<a href='http://facebook.com/profile.php?id=<?php echo $d['User']['facebook_account_num']; ?>' target='_blank'>(FACEBOOK)</a>
+
+			</td>
 			<td>
 				<?php 
 				
