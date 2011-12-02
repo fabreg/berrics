@@ -200,6 +200,15 @@ class DailyopsController extends BerricsAppController {
 		$this->set(compact("dailyops","dateIn","meta_k","date_nav_array","newer_date","older_date"));
 		
 		$this->setRssFeed();
+		
+		
+		//nike skin yo
+		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
+			
+			$this->theme = "nikevid-2011";
+			
+		}
+		
 
 	}
 	
