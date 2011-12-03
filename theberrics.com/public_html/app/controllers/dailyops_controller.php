@@ -203,7 +203,7 @@ class DailyopsController extends BerricsAppController {
 		
 		
 		//nike skin yo
-		if(date("Y-m-d") == "2011-12-03" && (date("H")>18)) {
+		if(date("Y-m-d") == "2011-12-03") {
 			
 			$this->theme = "nikevid-2011";
 			
