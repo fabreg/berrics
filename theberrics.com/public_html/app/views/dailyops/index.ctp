@@ -37,7 +37,7 @@ foreach($dailyops as $k=>$dop):
 		
 		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style='color:#691400;'>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
 		if(date("Y-m-d") == "2011-12-02") {
-			echo "<div style='text-align:center; padding:0px; padding-bottom:5px;'><a href='/gen-ops/the-dude-abides.html' title='Skullcandy Presents: 31 Days Of Theotis'><img style='display:block; padding:0px; margin:auto;' src='/theme/31-days-of-theotis/img/31DOT_win1.jpeg' border='0' alt='Skullcandy Presents: 31 Days Of Theotis' /></a></div>";
+			echo "<div style='text-align:center; padding:0px; padding-bottom:5px;'><a href='/gen-ops/eric-koston-vs-donovan-strain---the-rematch.html' title='Skullcandy Presents: 31 Days Of Theotis'><img style='display:block; padding:0px; margin:auto;' src='/theme/31-days-of-theotis/img/31DOT_toppost-2.jpg' border='0' alt='Skullcandy Presents: 31 Days Of Theotis' /></a></div>";
 		}
 	}
 
