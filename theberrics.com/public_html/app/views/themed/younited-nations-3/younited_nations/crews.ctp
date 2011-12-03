@@ -21,13 +21,18 @@ $(document).ready(function() {
 	<?php foreach($entries['YounitedNationsEventEntry'] as $k=>$e): ?>
 
 	markers[<?php echo $k; ?>] = new google.maps.Marker({
+			position:new google.maps.LatLng(<?php echo $e['YounitedNationsPosse']['geo_latitude']; ?>,<?php echo $e['YounitedNationsPosse']['geo_longitude']; ?>),
+			'map':map,
+			icon:marker_img,
+			clickable:true
 
-			
-			position:new google.maps.LatLng(<?php echo $e['YounitedNationsPosse']['geo_latitude']; ?>,<?php echo $e['YounitedNationsPosse']['geo_longitude']; ?>)
+	});
 
-		});
-	markers[<?php echo $k; ?>].setMap(map);
-	markers[<?php echo $k; ?>].setIcon(marker_img);
+	google.maps.event.addListener(markers[<?php echo $k; ?>],'click',function(e) {
+
+		alert('testing');
+
+	 });
 	<?php endforeach;?>
 	
 });
