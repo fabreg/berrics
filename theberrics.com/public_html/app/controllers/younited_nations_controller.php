@@ -183,6 +183,12 @@ class YounitedNationsController extends DailyopsController {
 		//get all the entries and the posses
 		$this->loadModel("YounitedNationsEventEntry");
 		
+		
+		
+	}
+	
+	public function ajax_get_crews() {
+		
 		$entries = $this->YounitedNationsEvent->find("first",array(
 		
 			"conditions"=>array(
@@ -198,10 +204,8 @@ class YounitedNationsController extends DailyopsController {
 		$countries = array();
 		
 		foreach($entries['YounitedNationsEventEntry'] as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
-		
-		
+			
 		$this->set(compact("entries","countries"));
-		
 	}
 	
 	public function setEvent() {

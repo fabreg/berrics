@@ -202,12 +202,7 @@ class DailyopsController extends BerricsAppController {
 		$this->setRssFeed();
 		
 		
-		//nike skin yo
-		if(date("Y-m-d") == "2011-12-03") {
-			
-			$this->theme = "nikevid-2011";
-			
-		}
+
 		
 		//do a get theme override
 		if($home_page && isset($_GET['wheelbite']) && is_dir(WWW_ROOT."theme/".$_GET['wheelbite'])) {
