@@ -9,6 +9,14 @@ $(document).ready(function() {
 	yn3.init();
 	yn3.dropPins();
 
+	$('#check-map').click(function() { 
+
+		var s = 'Zoom:'+yn3.map.getZoom();
+
+		$('.profile-div').html(s);
+
+	});
+	
 });
 
 
@@ -20,12 +28,13 @@ $(document).ready(function() {
 	width:100%;
 
 }
+
 #map {
 
 	height:450px;
 	width:100%;
+	
 }
-
 
 #yn3-right-col {
 
@@ -38,8 +47,6 @@ $(document).ready(function() {
 	background-color:#000;
 
 }
-
-
 
 </style>
 <div id='yn3-crews'>
@@ -55,21 +62,7 @@ $(document).ready(function() {
 	</div>
 	<div class='crew-list'>
 		<div style='width:95%; margin:auto; padding:5px;'>
-		<ul>
-			<?php foreach($countries as $k=>$v): ?>
-				<li>
-					<div style="font-weight:bold; font-size:24px; font-family:'Arial'"><?php echo $c[$k]; ?> (<?php echo count($v); ?>)</div>
-						<ul style='display:none;'>
-					<?php foreach($v as $e): ?>
-							<li>
-								<?php echo strtoupper($e['YounitedNationsPosse']['name']); ?>
-								<div style='font-size:12px; color:#999; font-style:italic;'><?php echo $e['YounitedNationsPosse']['geo_formatted']; ?></div>
-							</li>
-					<?php endforeach; ?>
-						</ul>
-				</li>
-			<?php endforeach; ?>
-		</ul>
+		<input type='button' value='Check Map Props' id='check-map'/>
 		</div>
 	</div>
 	<div style='clear:both;'></div>

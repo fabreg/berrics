@@ -187,31 +187,44 @@ class YounitedNationsController extends DailyopsController {
 		
 	}
 	
-	public function ajax_get_crews() {
+	private function setEvent() {
 		
-		$entries = $this->YounitedNationsEvent->find("first",array(
+		$token = $this->theme."-event-entries";
 		
-			"conditions"=>array(
-				"YounitedNationsEvent.id"=>$this->event_id
-			),
-			"contain"=>array(
-				"YounitedNationsEventEntry"=>array("YounitedNationsPosse")
-			)
+		if(($entries = Cache::read($token,"1min")) === false) {
+			
+			$entries = $this->YounitedNationsEvent->find("first",array(
+			
+				"conditions"=>array(
+					"YounitedNationsEvent.id"=>$this->event_id
+				),
+				"contain"=>array(
+					"YounitedNationsEventEntry"=>array("YounitedNationsPosse")
+				)
+			
+			));
+			
+			//make an array of entrys grouped by country
+			$countries = array();
+			
+			foreach($entries['YounitedNationsEventEntry'] as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
+			
+			Cache::write($token,$entries,"1min");
+			
+		}
 		
-		));
 		
-		//make an array of entrys grouped by country
-		$countries = array();
-		
-		foreach($entries['YounitedNationsEventEntry'] as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
 			
 		$this->set(compact("entries","countries"));
+		
 	}
 	
-	public function setEvent() {
+	public function ajax_get_crews() {
 		
 		
+		$this->setEvent();
 		
 	}
+
 	
 }

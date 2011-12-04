@@ -43,6 +43,7 @@ var yn3 = {
 						map:yn3.map,
 						icon:yn3.marker_img,
 						position:new google.maps.LatLng(p.geo_latitude,p.geo_longitude),
+						title:p.name
 						
 						
 					});
@@ -63,10 +64,22 @@ var yn3 = {
 			
 			var z = yn3.map.getZoom();
 			
+			if(z>=5) {
+				
+				alert("Show Info Window!");
+				
+			}
+			
+			
+		});
+		
+		google.maps.event.addListener(pin,'dblclick',function(e) { 
+			
+			var z = yn3.map.getZoom();
+			
 			yn3.map.panTo(e.latLng);
 			//yn3.map.setCenter(e.latLng);
 			yn3.map.setZoom(z+1);
-			
 			
 		});
 		
