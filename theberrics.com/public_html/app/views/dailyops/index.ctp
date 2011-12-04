@@ -36,9 +36,9 @@ foreach($dailyops as $k=>$dop):
 	if($k == 0) {
 		
 		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style='color:#691400;'>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
-		if(date("Y-m-d") == "2011-12-03") {
+		
 			echo "<div style='text-align:center; padding:0px; padding-bottom:5px;'><a href='/aberrican-me/ross-capicchioni-part-2.html' title='Skullcandy Presents: 31 Days Of Theotis'><img style='display:block; padding:0px; margin:auto;' src='/theme/31-days-of-theotis/img/31DOT_toppost-3.jpg' border='0' alt='Skullcandy Presents: 31 Days Of Theotis' /></a></div>";
-		}
+		
 	}
 
 	echo $this->element("dailyops/post-bit",array("dop"=>$dop));
