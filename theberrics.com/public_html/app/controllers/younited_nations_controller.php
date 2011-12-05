@@ -183,11 +183,13 @@ class YounitedNationsController extends DailyopsController {
 		//get all the entries and the posses
 		$this->loadModel("YounitedNationsEventEntry");
 		
-		
+		$this->setEvent();
 		
 	}
 	
 	private function setEvent() {
+		
+		if($this->params['isAjax']) $this->skip_page_view = true;
 		
 		$token = $this->theme."-event-entries";
 		
@@ -209,13 +211,15 @@ class YounitedNationsController extends DailyopsController {
 			
 			foreach($entries['YounitedNationsEventEntry'] as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
 			
+			$entries['countries'] = $countries;
+			
 			Cache::write($token,$entries,"1min");
 			
 		}
 		
 		
 			
-		$this->set(compact("entries","countries"));
+		$this->set(compact("entries"));
 		
 	}
 	

@@ -1,23 +1,10 @@
 <?php 
 
-$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","prettyprint","crews"),array("inline"=>false));
+$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","markerclusterer","prettyprint","crews"),array("inline"=>false));
 $c = Arr::countries();
 ?>
 <script>
-$(document).ready(function() { 
 
-	yn3.init();
-	yn3.dropPins();
-
-	$('#check-map').click(function() { 
-
-		var s = 'Zoom:'+yn3.map.getZoom();
-
-		$('.profile-div').html(s);
-
-	});
-	
-});
 
 
 </script>
@@ -31,7 +18,7 @@ $(document).ready(function() {
 
 #map {
 
-	height:450px;
+	height:325px;
 	width:100%;
 	
 }
@@ -48,28 +35,45 @@ $(document).ready(function() {
 
 }
 
+#yn3-crews .col-right {
+
+	float:right;
+	width:77%;
+	clear:none;
+}
+
+#yn3-crews .col-right .inner {
+
+	padding:10px;
+	
+}
+
+#yn3-crews .col-left {
+
+	float:left;
+	width:20%;
+	clear:none;
+}
+
 </style>
 <div id='yn3-crews'>
-	<div style='height:150px;'>
-
+	<div class='col-left'>
+		<div class='country-menu'>
+			
+				<?php foreach($entries['countries'] as $p=>$v): ?>
+				
+						<?php echo $p; ?>
+					
+				<?php endforeach; ?>
+			
+		</div>
 	</div>
-	<div id='map'>
-	
-	</div>
-	<div>
-	<div class='profile-div'>
-	
-	</div>
-	<div class='crew-list'>
-		<div style='width:95%; margin:auto; padding:5px;'>
-		<input type='button' value='Check Map Props' id='check-map'/>
+	<div class='col-right'>
+		<div class='inner'>
+			<div id='map'>
+		
+			</div>
 		</div>
 	</div>
 	<div style='clear:both;'></div>
-	</div>
 </div>
-<?php 
-
-print_r($countries);
-
-?>

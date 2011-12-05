@@ -200,10 +200,7 @@ class DailyopsController extends BerricsAppController {
 		$this->set(compact("dailyops","dateIn","meta_k","date_nav_array","newer_date","older_date"));
 		
 		$this->setRssFeed();
-		
-		
 
-		
 		//do a get theme override
 		if($home_page && isset($_GET['wheelbite']) && is_dir(WWW_ROOT."theme/".$_GET['wheelbite'])) {
 			

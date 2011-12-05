@@ -1,29 +1,50 @@
+$(document).ready(function() { 
 
+	yn3.init();
+	yn3.getPins();
+
+	$('#check-map').click(function() { 
+
+		var s = 'Zoom:'+yn3.map.getZoom();
+
+		$('.profile-div').html(s);
+
+	});
+	
+});
 var yn3 = {
 
 
 	map:null,
 	geocoder:null,
 	marker_img:null,
-	markers:[],
+	crewMarkers:[],
+	countryMarkers:[],
+	crewMarkerCluster:null,
+	jsonData:null,
+	infoWindow:null,
 	init:function() { 
 		
 		yn3.geocoder = new google.maps.Geocoder();
 	    var latlng = new google.maps.LatLng(-34.397, 150.644);
 	    var lat = new google.maps.LatLng(34.0522342,-118.2436849);
 		var myOptions = {
-			      zoom:2,
-			      center: latlng,
+			      zoom:3,
 			      mapTypeId: google.maps.MapTypeId.HYBRID,
 			      center:lat
 		};
 		yn3.map = new google.maps.Map(document.getElementById("map"),myOptions);
 		yn3.marker_img = new google.maps.MarkerImage("/theme/younited-nations-3/img/vans_pin.png");
+		yn3.infoWindow = new google.maps.InfoWindow();
 
 	},
-	dropPins:function() {
+	setJson:function(d) {
 		
-		
+	},
+	getJson:function() {
+	},
+	getPins:function() {
+
 		$.ajax({
 			
 			dataType:'json',
@@ -34,54 +55,90 @@ var yn3 = {
 				
 				//$('body').append(t);
 				
-				for(var a in d.YounitedNationsEventEntry) {
-				
-					var p = d.YounitedNationsEventEntry[a].YounitedNationsPosse;
-					
-					yn3.markers[a] = new google.maps.Marker({
-						
-						map:yn3.map,
-						icon:yn3.marker_img,
-						position:new google.maps.LatLng(p.geo_latitude,p.geo_longitude),
-						title:p.name
-						
-						
-					});
-					
-					yn3.configPin(yn3.markers[a]);
-				}
-			
-				
+				yn3.jsonData = d;
+				yn3.configMap();
+				yn3.configCrewPins();
+				yn3.placeCrewPins();
 				
 			}
 			
 		});
 		
 	},
-	configPin:function(pin) {
-	
-		google.maps.event.addListener(pin,'click',function(e) { 
+	configMap:function() {
+		
+		google.maps.event.addListener(yn3.map,'zoom_changed',function(e) {
 			
 			var z = yn3.map.getZoom();
 			
-			if(z>=5) {
-				
-				alert("Show Info Window!");
-				
-			}
-			
+			$('body').append("NewZoom: "+yn3.map.getZoom()+"<br />");
 			
 		});
 		
-		google.maps.event.addListener(pin,'dblclick',function(e) { 
+	},
+	configCrewPins:function() {
+		
+		var d = arguments[0] || yn3.jsonData;
+		
+		for(var a in d.YounitedNationsEventEntry) {
+
+			var p = d.YounitedNationsEventEntry[a].YounitedNationsPosse;
 			
-			var z = yn3.map.getZoom();
+			var m = new google.maps.Marker({
+				
+				map:null,
+				icon:yn3.marker_img,
+				position:new google.maps.LatLng(p.geo_latitude,p.geo_longitude),
+				title:p.name
+				
+			});
+	
+			//alert(marker.getId());
 			
-			yn3.map.panTo(e.latLng);
-			//yn3.map.setCenter(e.latLng);
-			yn3.map.setZoom(z+1);
+			google.maps.event.addListener(m,'click',(function(m,p) { 
+
+				return function() {
+					
+					yn3.infoWindow.setContent("<div style='color:#000;'>"+p.name+"</div>");
+					yn3.infoWindow.open(yn3.map,m);
+					
+					if(yn3.map.getZoom()<7) {
+						
+						yn3.map.setZoom(7);
+						yn3.map.setCenter(m.getPosition());
+						
+						
+					}
+					
+				}
+				
+			})(m,p));
+			
+			yn3.crewMarkers.push(m);
+
+		}
+		
+		
+	},
+	placeCrewPins:function() {
+
+		yn3.crewMarkerCluster = new MarkerClusterer(yn3.map,yn3.crewMarkers,{
+			
+			gridSize:20,
+			maxZoom:null,
+			minimumClusterSize:8
 			
 		});
+		//yn3.crewMarkerCluster.fitMapToMarkers();
+		yn3.crewMarkerCluster.repaint();
+	},
+	removeCrewPins:function() {
+		
+		for(var i =0;i<yn3.crewMarkers.length;i++) {
+		
+			yn3.crewMarkers[i].setMap(null);
+			
+		}
 		
 	}
 
