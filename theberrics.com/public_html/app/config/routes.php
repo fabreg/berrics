@@ -20,7 +20,7 @@ if($_SERVER['SCRIPT_URL'] == "/") {
 	} else {
 		
 		$splash_action = array(//the default splash action
-			"controller"=>"theotis","action"=>"section"
+			"controller"=>"splash","action"=>"index"
 		);
 		
 	}
