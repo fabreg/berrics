@@ -169,7 +169,6 @@ class YounitedNationsController extends DailyopsController {
 		
 		
 		
-		
 	}
 	
 	public function view() {

@@ -17,8 +17,8 @@ $c = Arr::countries();
 }
 
 #map {
-
-	height:325px;
+	margin-top:35px;
+	height:400px;
 	width:100%;
 	
 }
@@ -74,6 +74,7 @@ $c = Arr::countries();
 		
 			</div>
 		</div>
+		<div style='height:800px;'></div>
 	</div>
 	<div style='clear:both;'></div>
 </div>

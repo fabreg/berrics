@@ -34,13 +34,8 @@ class TheotisController extends BerricsAppController {
 
 		//get all the theostis posts
 		$this->getPosts();
-		
-		if(isset($this->params['uri']) && !empty($this->params['uri'])) {
 			
-			$this->setViewPost();
-			
-		}
-		
+		$this->setViewPost();
 		
 	}
 	
@@ -215,14 +210,27 @@ class TheotisController extends BerricsAppController {
 	
 	private function setViewPost() {
 		
-		$viewing = $this->Dailyop->returnPost(array(
-			"Dailyop.uri"=>$this->params['uri'],
-			"DailyopSection.uri"=>$this->params['section']
-		),$this->isAdmin());
+		if(isset($this->params['uri']) && !empty($this->params['uri'])) {
+			
+			$viewing = $this->Dailyop->returnPost(array(
+				"Dailyop.uri"=>$this->params['uri'],
+				"DailyopSection.uri"=>$this->params['section']
+			),$this->isAdmin());
+			
+		} else {
+			
+			$viewing = $this->Dailyop->returnPost(array(
+				"Dailyop.id"=>4156
+			),$this->isAdmin());
+			
+		}
+		
+		
 		
 		$this->set(compact("viewing"));
 		
 	}
+
 	
 	private function getPosts() {
 
