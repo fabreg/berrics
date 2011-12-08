@@ -63,7 +63,6 @@
 			"layout",
 			"layout_override",
 			"vader/jquery-ui-1.8.11.custom"
-		
 		),"stylesheet");
 		
 		echo $scripts_for_layout;

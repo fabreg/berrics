@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+#yn3-left-col {
+
+	width:100%;
+
+}
+
+#main-container {
+
+	background-image:none;	
+	
+}
+
+#map {
+
+	margin-top:35px;
+	height:400px;
+	width:100%;
+	
+}
+
+#yn3-right-col {
+
+	display:none;
+
+}
+
+#yn3-crews .crew-list {
+
+	background-color:#000;
+
+}
+
+#yn3-crews .col-right {
+
+	float:right;
+	width:77%;
+	clear:none;
+}
+
+#yn3-crews .col-right .inner {
+
+	padding:10px;
+	
+}
+
+#yn3-crews .col-left {
+
+	float:left;
+	width:20%;
+	clear:none;
+}
+
+.map-bg {
+	
+	
+}
+
+.map-bg .map-bg-container {
+	
+	background-image:url(/theme/younited-nations-3/img/map/map-bg.jpg);
+	margin-top:604px;
+	
+}
+
+.map-bg .map-bg-container-top {
+	
+	background-image:url(/theme/younited-nations-3/img/map/map-bg-top.jpg);
+	margin-top:-604px;
+	float:left;
+	width:100%;
+	background-repeat:no-repeat;
+}
+
+.map-bg .map-bg-bottom {
+	
+	background-image:url(/theme/younited-nations-3/img/map/map-bg-bottom.jpg);
+	height:111px;
+}
