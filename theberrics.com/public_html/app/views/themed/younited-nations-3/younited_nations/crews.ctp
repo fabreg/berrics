@@ -16,9 +16,29 @@ $c = Arr::countries();
 							<div style='height:78px;'></div>
 							<div class='country-list'>
 								<ul>
-								<?php foreach($entries['countries'] as $p=>$v): ?>
-									<li><span class='country-name'><?php echo strtoupper($c[$p]); ?></span><span class='country-count'><?php echo count($v); ?></span></li>
-								<?php endforeach; ?>
+								<?php 
+									$i = 0;
+									foreach($entries['countries'] as $p=>$v): 
+									
+									if($i>0 && $p=="US") continue;
+									
+									if($i==0) {
+										
+										$country = $c['US'];
+										$count = count($entries['countries']['US']);
+										
+									}  else {
+										
+										$country = $c[$p];
+										$count = count($v);
+										
+									}
+									
+									$country = strtoupper($country);
+									
+								?>
+									<li><span class='country-name'><?php echo $country; ?></span><span class='country-count'><?php echo $count; ?></span></li>
+								<?php $i++; endforeach; ?>
 								</ul>
 							</div>
 							

@@ -214,6 +214,10 @@ class YounitedNationsController extends DailyopsController {
 			
 			$entries['countries'] = $countries;
 			
+			ksort($entries['countries']);
+			
+			
+			
 			Cache::write($token,$entries,"1min");
 			
 		}
