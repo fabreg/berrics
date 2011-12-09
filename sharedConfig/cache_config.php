@@ -49,6 +49,16 @@
   	 	'duration'=> '1 Day', //[optional]
  	 	"servers"=>$memcache_server
  	));
+ 	
+ 	Cache::config('max', array(
+ 		'engine' => 'Memcache', //[required]
+  		'path' => CACHE, //[optional] use system tmp directory - remember to use absolute path
+  		'prefix' => 'cake_', //[optional]  prefix every cache file with this string
+  		'lock' => false, //[optional]  use file locking
+  		'serialize' => true, //[optional],
+  	 	'duration'=> '29 Days', //[optional]
+ 	 	"servers"=>$memcache_server
+ 	));
 
  	Cache::config('_cake_core_', array(
  			   'engine' => 'Memcache',

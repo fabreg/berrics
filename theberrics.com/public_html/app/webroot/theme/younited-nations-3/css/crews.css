@@ -16,8 +16,10 @@
 
 	margin-top:35px;
 	height:400px;
-	width:100%;
-	
+	width:700px;
+	position:absolute;
+	top:40px;
+	left:25px;
 }
 
 #yn3-right-col {
@@ -32,25 +34,6 @@
 
 }
 
-#yn3-crews .col-right {
-
-	float:right;
-	width:77%;
-	clear:none;
-}
-
-#yn3-crews .col-right .inner {
-
-	padding:10px;
-	
-}
-
-#yn3-crews .col-left {
-
-	float:left;
-	width:20%;
-	clear:none;
-}
 
 .map-bg {
 	
@@ -60,17 +43,18 @@
 .map-bg .map-bg-container {
 	
 	background-image:url(/theme/younited-nations-3/img/map/map-bg.jpg);
-	margin-top:604px;
+	margin-top:377px;
 	
 }
 
 .map-bg .map-bg-container-top {
 	
 	background-image:url(/theme/younited-nations-3/img/map/map-bg-top.jpg);
-	margin-top:-604px;
+	margin-top:-377px;
 	float:left;
 	width:100%;
 	background-repeat:no-repeat;
+	padding-top:15px;
 }
 
 .map-bg .map-bg-bottom {
@@ -78,3 +62,97 @@
 	background-image:url(/theme/younited-nations-3/img/map/map-bg-bottom.jpg);
 	height:111px;
 }
+
+#yn3-crews .col-right {
+
+	float:right;
+	width:755px;
+	clear:none;
+	
+}
+
+#yn3-crews .col-right .map-container {
+
+	background-image:url(/theme/younited-nations-3/img/map/gmaps-bg.jpg);
+	height:554px;
+	width:752px;
+	position:relative;
+	margin-right:3px;
+
+}
+
+#yn3-crews .col-left {
+
+	float:left;
+	width:294px;
+	clear:none;
+}
+
+#yn3-crews .col-left .container {
+
+	background-image:url(/theme/younited-nations-3/img/map/left-col-bg.png);
+	margin-top:309px;		
+	 
+}
+
+#yn3-crews .col-left .container-top {
+	
+	float:left;
+	background-image:url(/theme/younited-nations-3/img/map/left-col-top.png);
+	background-repeat:no-repeat;
+	margin-top:-309px;
+	width:100%;
+}
+
+#yn3-crews .col-left .bottom {
+
+	background-image:url(/theme/younited-nations-3/img/map/left-col-bottom.png);
+	height:123px;
+	
+}
+
+#yn3-crews .country-list {
+	
+	width:245px;
+	margin:auto;
+	
+}
+#yn3-crews .country-list ul {
+
+	margin:0px;
+	padding:0px;
+	list-style:none;	
+	font-family:'Courier';
+	font-size:18px;
+	color:black;
+}
+
+#yn3-crews .country-list ul li {
+	
+	margin-top:5px;
+	
+	
+	
+}
+#yn3-crews .country-list ul li .country-name {
+
+	
+	line-height:30px;
+	border-bottom:2px solid #8c4232;
+	display:block;
+	width:81%;
+	float:left;
+}
+
+#yn3-crews .country-list ul li .country-count {
+	
+	text-align:center;
+	line-height:30px;
+	border-bottom:2px solid #8c4232;
+	display:block;
+	width:16%;	
+	float:right;	
+	
+}
+
+

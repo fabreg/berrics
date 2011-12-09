@@ -8,6 +8,8 @@ class YounitedNationsController extends DailyopsController {
 	
 	public $event_id = false;
 	
+	private $cache_token = "yn3-geo-cache";
+	
 	public function beforeFilter() {
 
 		if($this->params['action'] == "handle_upload") {
@@ -222,8 +224,52 @@ class YounitedNationsController extends DailyopsController {
 		
 	}
 	
-	public function ajax_get_crews() {
+	public function get_geo_cache() {
 		
+		$key = $this->data['cache_key'];
+		
+		if(!$this->params['isAjax'] || empty($key)) {
+			
+			return $this->cakeError("error404");
+			
+		} else {
+			
+			
+			$key = md5($key);
+			
+		}
+		
+		//get the cache
+		$cache = Cache::read($this->cache_token,"max");
+		
+		//check to see if we have the key
+		if(array_key_exists($key,$cache)) return die(json_encode($cache[$key]));
+		
+		die(json_encode(array()));
+		
+	}
+	
+	public function set_geo_cache() {
+		
+		if(!$this->params['isAjax']) {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
+		$key = $this->data['key'];
+		
+		$val = $this->data['val'];
+		
+		$cache = Cache::read($this->cache_token,"max");
+		
+		$cache[$key] = $val;
+		
+		Cache::write($this->cache_token,$cache,"max");
+		
+	}
+	
+	public function ajax_get_crews() {
 		
 		$this->setEvent();
 		

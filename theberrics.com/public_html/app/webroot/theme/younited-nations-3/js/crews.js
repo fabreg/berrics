@@ -2,7 +2,9 @@ $(document).ready(function() {
 
 	yn3.init();
 	yn3.getPins();
-
+	
+	yn3.tester();
+	
 	$('#check-map').click(function() { 
 
 		var s = 'Zoom:'+yn3.map.getZoom();
@@ -140,7 +142,41 @@ var yn3 = {
 			
 		}
 		
-	}
-
+	},
+	getGeoData:function(str,callback) {
 	
-}
+		var ops = {
+				
+			data:{
+			
+				"data":{
+			
+					
+			
+				}
+			
+			},
+			url:"/younited-nations-3/get_geo_data",
+			success:function(d) {
+				
+			}
+				
+		};
+		
+		
+	},
+	handleCountryClickGeoData:function(data) {
+		
+		var msg = ["testing"];
+		
+		yn3.getGeoData.call(this,msg);
+		
+	},
+	handleCountryClick:function() {
+		
+	}
+	
+	
+	
+	
+};

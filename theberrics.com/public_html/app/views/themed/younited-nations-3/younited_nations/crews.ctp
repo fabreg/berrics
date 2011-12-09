@@ -10,22 +10,35 @@ $c = Arr::countries();
 		<div class='map-bg-container'>
 			<div class='map-bg-container-top'>
 				<!-- Start Younited nations map -->
-				<div class='col-left'>
-					<div class='country-menu'>
-						<ul>
-						<?php foreach($entries['countries'] as $p=>$v): ?>
-							<li><?php echo $c[$p]; ?></li>
-						<?php endforeach; ?>
-						</ul>
+				<div class='col-left'>			
+					<div class='container'>
+						<div class='container-top'>
+							<div style='height:78px;'></div>
+							<div class='country-list'>
+								<ul>
+								<?php foreach($entries['countries'] as $p=>$v): ?>
+									<li><span class='country-name'><?php echo strtoupper($c[$p]); ?></span><span class='country-count'><?php echo count($v); ?></span></li>
+								<?php endforeach; ?>
+								</ul>
+							</div>
+							
+						</div>
+						
+						<div style='clear:both;'></div>
+					</div>
+					<div class='bottom'>
+						
 					</div>
 				</div>
 				<div class='col-right'>
-					<div class='inner'>
+					<div class='map-container'>
 						<div id='map'>
 							
 						</div>
 					</div>
-					<div style='height:800px;'></div>
+					<div style='height:800px;'>
+					
+					</div>
 				</div>
 				<div style='clear:both;'></div>
 				<!-- End Younited Nations Map -->
