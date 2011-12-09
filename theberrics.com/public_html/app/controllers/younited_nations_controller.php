@@ -230,7 +230,7 @@ class YounitedNationsController extends DailyopsController {
 	
 	public function get_geo_cache() {
 		
-		$key = $this->data['cache_key'];
+		$key = $this->data['key'];
 		
 		if(!$this->params['isAjax'] || empty($key)) {
 			
@@ -261,7 +261,7 @@ class YounitedNationsController extends DailyopsController {
 			
 		}
 		
-		$key = $this->data['key'];
+		$key = md5($this->data['key']);
 		
 		$val = $this->data['val'];
 		
@@ -270,6 +270,8 @@ class YounitedNationsController extends DailyopsController {
 		$cache[$key] = $val;
 		
 		Cache::write($this->cache_token,$cache,"max");
+		
+		die(print_r($val));
 		
 	}
 	

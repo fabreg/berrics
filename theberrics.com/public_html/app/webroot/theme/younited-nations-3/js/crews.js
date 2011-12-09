@@ -1,15 +1,7 @@
 $(document).ready(function() { 
 
 	yn3.init();
-	yn3.getPins();
-	
-	$('#check-map').click(function() { 
 
-		var s = 'Zoom:'+yn3.map.getZoom();
-
-		$('.profile-div').html(s);
-
-	});
 	
 });
 var yn3 = {
@@ -36,7 +28,38 @@ var yn3 = {
 		yn3.map = new google.maps.Map(document.getElementById("map"),myOptions);
 		yn3.marker_img = new google.maps.MarkerImage("/theme/younited-nations-3/img/vans_pin.png");
 		yn3.infoWindow = new google.maps.InfoWindow();
+		
+		yn3.getPins();
+		
+		$('#check-map').click(function() { 
 
+			var s = 'Zoom:'+yn3.map.getZoom();
+
+			$('.profile-div').html(s);
+
+		});
+		
+		$(".country-list li").click(function() { 
+			
+			
+			yn3.handleCountryClick(this);
+			
+			
+		}).hover(
+				function() { 
+					
+					$(this).css({
+						
+						"background-color":"#fff"
+						
+					});
+					
+				},
+				function() { }
+		);
+		
+		//setup country menu hovers
+		
 	},
 	setJson:function(d) {
 		
@@ -110,7 +133,7 @@ var yn3 = {
 						
 					}
 					
-				}
+				};
 				
 			})(m,p));
 			
@@ -149,29 +172,92 @@ var yn3 = {
 			
 				"data":{
 			
-					
+					"key":str
 			
 				}
 			
 			},
-			url:"/younited-nations-3/get_geo_data",
+			url:"/younited-nations-3/get_geo_cache",
 			success:function(d) {
 				
-			}
+				if(d.data == undefined) {
+					
+					yn3.googleGeoCoder(str,callback);
+					
+				} else {
+					
+					callback.apply(this,[d]);
+					
+				}
+				
+			},
+			type:"post",
+			dataType:"json"
 				
 		};
+		
+		$.ajax(ops);
 		
 		
 	},
 	handleCountryClickGeoData:function(data) {
 		
-		var msg = ["testing"];
+		$('body').append("Latitude: "+data.lat);
+		$('body').append(" Longitude: "+data.lng+"<br />");
 		
-		yn3.getGeoData.call(this,msg);
+		yn3.map.setCenter(new google.maps.LatLng(Number(data.lat),Number(data.lng),true));
+		$(window).scrollTo(180,"normal");
 		
 	},
-	handleCountryClick:function() {
+	handleCountryClick:function(scope) {
 		
+		var str = $(scope).find('span:eq(0)').text();
+		
+		yn3.getGeoData(str, yn3.handleCountryClickGeoData);
+		
+	},
+	googleGeoCoder:function(str,callback) {
+		
+		
+		yn3.geocoder.geocode( { 'address': str}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				
+					//results[0].geometry.location
+				
+					var data = {'lat':results[0].geometry.location.lat(),'lng':results[0].geometry.location.lng()};
+				
+					//fire the callback method
+				
+					callback.apply(this,[data]);
+				
+					//send the results to the server to be cached
+					
+					var ops = {
+							
+							"url":"/younited-nations-3/set_geo_cache",
+							type:"post",
+							"data":{
+							
+								"data":{
+						
+									"key":str,
+									"val":data
+							
+								}
+							
+							}
+							
+					};
+					
+					$.ajax(ops);
+				
+		      } else {
+			      
+		        	alert("Geocode was not successful for the following reason: " + status);
+		        	//$("#YounitedNationsPosseCityStatePostal").parent().find('label').removeClass('green-label-check').addClass("red-label-x");
+		        
+		      }
+		});
 	}
 	
 	

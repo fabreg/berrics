@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","markerclusterer","prettyprint","crews"),array("inline"=>false));
+$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","markerclusterer","jquery.scrollTo","jquery.form","prettyprint","crews"),array("inline"=>false));
 $this->Html->css(array("crews"),"stylesheet",array("inline"=>false));
 $c = Arr::countries();
 
