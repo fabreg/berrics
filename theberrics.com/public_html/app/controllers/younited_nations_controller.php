@@ -190,6 +190,8 @@ class YounitedNationsController extends DailyopsController {
 	
 	private function setEvent() {
 		
+		$c = Arr::countries();
+		
 		if($this->params['isAjax']) $this->skip_page_view = true;
 		
 		$token = $this->theme."-event-entries";
@@ -210,13 +212,11 @@ class YounitedNationsController extends DailyopsController {
 			//make an array of entrys grouped by country
 			$countries = array();
 			
-			foreach($entries['YounitedNationsEventEntry'] as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
+			foreach($entries['YounitedNationsEventEntry'] as $e) $countries[strtoupper($c[$e['YounitedNationsPosse']['country']])][] = $e;
 			
 			$entries['countries'] = $countries;
 			
 			ksort($entries['countries']);
-			
-			
 			
 			Cache::write($token,$entries,"1min");
 			

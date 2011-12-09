@@ -20,16 +20,16 @@ $c = Arr::countries();
 									$i = 0;
 									foreach($entries['countries'] as $p=>$v): 
 									
-									if($i>0 && $p=="US") continue;
+									if($i>0 && $p=="UNITED STATES") continue;
 									
 									if($i==0) {
 										
-										$country = $c['US'];
-										$count = count($entries['countries']['US']);
+										$country = "UNITED STATES";
+										$count = count($entries['countries']['UNITED STATES']);
 										
 									}  else {
 										
-										$country = $c[$p];
+										$country = $p;
 										$count = count($v);
 										
 									}

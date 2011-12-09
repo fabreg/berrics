@@ -3,8 +3,6 @@ $(document).ready(function() {
 	yn3.init();
 	yn3.getPins();
 	
-	yn3.tester();
-	
 	$('#check-map').click(function() { 
 
 		var s = 'Zoom:'+yn3.map.getZoom();
