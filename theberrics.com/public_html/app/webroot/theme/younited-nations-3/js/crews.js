@@ -202,27 +202,28 @@ var yn3 = {
 	},
 	handleCountryClickGeoData:function(data,str) {
 		
+		
+		
 		$('body').append("Latitude: "+data.lat);
 		$('body').append(" Longitude: "+data.lng+"<br />");
 		
 		$(window).scrollTo(180,"normal");
+	
+		//yn3.map.panToBounds(new google.maps.LatLngBounds(new google.maps.LatLng(data.viewport.southwest.lat,data.viewport.southwest.lng),new google.maps.LatLng(data.viewport.northeast.lat,data.viewport.northeast.lng)));
+			
+		yn3.map.setCenter(new google.maps.LatLng(data.lat,data.lng));
 		
-		yn3.map.setCenter(new google.maps.LatLng(Number(data.lat),Number(data.lng),true));
-		
-		if(data.viewport.southwest.lat) {
-			
-			yn3.map.panToBounds(new google.maps.LatLngBound(new google.maps.LatLng(data.viewport.southwest.lat,data.viewport.southwest.lng),new google.maps.LatLng(data.viewport.northeast.lat,data.viewport.northeast.lat)));
-			
-			
-		} else if(str == "UNITED STATES") {
-			
-			yn3.map.setZoom(3);
-			
-		} else if(yn3.map.getZoom()<4) {
-			
-			yn3.map.setZoom(4);
-			
+		var GLOBE_WIDTH = 256; // a constant in Google's map projection
+		var west = data.viewport.southwest.lng;
+		var east = data.viewport.northeast.lng;
+		var angle = east - west;
+		if (angle < 0) {
+		  angle += 360;
 		}
+		var zoom = Math.round(Math.log($('#map').width() * 360 / angle / GLOBE_WIDTH) / Math.LN2);
+		
+		yn3.map.setZoom(zoom);
+		
 		
 	},
 	handleCountryClick:function(scope) {
@@ -252,6 +253,18 @@ var yn3 = {
 								'northeast':{
 									'lat':results[0].geometry.viewport.getNorthEast().lat(),
 									'lng':results[0].geometry.viewport.getNorthEast().lng()
+								}
+								
+							},
+							'bounds':{
+								
+								'southwest':{
+									'lat':results[0].geometry.bounds.getSouthWest().lat(),
+									'lng':results[0].geometry.bounds.getSouthWest().lng()
+								},
+								'northeast':{
+									'lat':results[0].geometry.bounds.getNorthEast().lat(),
+									'lng':results[0].geometry.bounds.getNorthEast().lng()
 								}
 								
 							}
