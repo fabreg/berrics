@@ -48,14 +48,14 @@ var yn3 = {
 		}).hover(
 				function() { 
 					
-					$(this).css({
-						
-						"background-color":"#fff"
-						
-					});
+					$(this).addClass('over');
 					
 				},
-				function() { }
+				function() {
+					
+					$(this).removeClass('over');
+					
+				}
 		);
 		
 		//setup country menu hovers
@@ -180,7 +180,7 @@ var yn3 = {
 			url:"/younited-nations-3/get_geo_cache",
 			success:function(d) {
 				
-				if(d.data == undefined) {
+				if(d.lat == undefined || d.lng == undefined) {
 					
 					yn3.googleGeoCoder(str,callback);
 					

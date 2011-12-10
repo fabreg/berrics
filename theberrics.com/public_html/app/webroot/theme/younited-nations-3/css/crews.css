@@ -130,7 +130,7 @@
 #yn3-crews .country-list ul li {
 	
 	margin-top:5px;
-	
+	height:30px;
 	
 	
 }
@@ -152,6 +152,12 @@
 	display:block;
 	width:16%;	
 	float:right;	
+	
+}
+#yn3-crews .country-list ul .over {
+
+	background-color:#b1a577;	
+	cursor:pointer;
 	
 }
 
