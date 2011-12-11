@@ -33,6 +33,87 @@ class TrickipediaController extends BerricsAppController {
 	
 	public function section() {
 		
+		//load models
+		$this->loadModel("Dailyop");
+		
+		//get all the active tickipedia post ids
+		$trick_id_token = "trickipedia_post_ids";
+		
+		if(($trick_ids = Cache::read($trick_id_token,"1min")) === false) {
+			
+			$trick_ids = $this->Dailyop->find('all',array(
+			
+				"conditions"=>array(
+					"Dailyop.active"=>1,
+					"Dailyop.publish_date<NOW()",
+					"Dailyop.dailyop_section_id"=>4
+				),
+				"contain"=>array(),
+				"fields"=>array(
+					"Dailyop.id"
+				)
+			
+			));
+			
+			Cache::write($trick_id_token,$trick_ids,"1min");
+			
+		}
+		
+		$posts_token = "trickpedia_posts_cache";
+		if(($posts = Cache::read($posts_token,"1min")) === false) {
+			
+			$posts = array();
+			
+			foreach($trick_ids as $id) {
+				
+				$post_id = $id['Dailyop']['id'];
+				
+				$posts[] = $this->Dailyop->returnPost(array(
+					"Dailyop.id"=>$post_id
+				),$this->isAdmin(),false,
+				array(
+			
+					"DailyopMediaItem"=>array(
+						"MediaFile"=>array("User"),
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
+					),
+					"DailyopSection",
+					"Tag",
+					"Meta",
+					
+			
+				)
+				);
+				
+			}
+			
+			//sort the posts
+			
+			$posts = Set::sort($posts,'{n}.Dailyop.publish_date','desc');
+			
+			Cache::write($posts_token,$posts,"1min");
+			
+		}
+		
+		if(isset($this->params['uri']) && !empty($this->params['uri'])) {
+			
+			$uri = $this->params['uri'];
+			
+		} else {
+			
+			$uri = $posts[0]['Dailyop']['uri'];
+			
+		}
+		
+		$video = $this->Dailyop->returnPost(array("Dailyop.uri"=>$uri,'Dailyop.dailyop_section_id'=>4),$this->isAdmin());
+		
+		
+		$this->set(compact("posts","video"));
+	}
+	
+	
+	public function ____section() {
+		
 		$this->loadModel("Dailyop");
 		$this->loadModel("DailyopMediaItem");
 		$this->loadModel("User");

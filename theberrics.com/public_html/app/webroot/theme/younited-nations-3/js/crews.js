@@ -207,20 +207,20 @@ var yn3 = {
 		$('body').append("Latitude: "+data.lat);
 		$('body').append(" Longitude: "+data.lng+"<br />");
 		
-		$(window).scrollTo(180,"normal");
+		$(window).scrollTo(215,"normal");
 	
 		//yn3.map.panToBounds(new google.maps.LatLngBounds(new google.maps.LatLng(data.viewport.southwest.lat,data.viewport.southwest.lng),new google.maps.LatLng(data.viewport.northeast.lat,data.viewport.northeast.lng)));
 			
 		yn3.map.setCenter(new google.maps.LatLng(data.lat,data.lng));
 		
 		var GLOBE_WIDTH = 256; // a constant in Google's map projection
-		var west = data.viewport.southwest.lng;
-		var east = data.viewport.northeast.lng;
+		var west = data.bounds.southwest.lng;
+		var east = data.bounds.northeast.lng;
 		var angle = east - west;
 		if (angle < 0) {
 		  angle += 360;
 		}
-		var zoom = Math.round(Math.log($('#map').width() * 360 / angle / GLOBE_WIDTH) / Math.LN2);
+		var zoom = Math.round(Math.log(700 * 360 / angle / GLOBE_WIDTH) / Math.LN2);
 		
 		yn3.map.setZoom(zoom);
 		
@@ -242,8 +242,8 @@ var yn3 = {
 					//results[0].geometry.location
 				
 					var data = {
-							'lat':results[0].geometry.location.lat(),
-							'lng':results[0].geometry.location.lng(),
+							'lat':results[0].geometry.viewport.getCenter().lat(),
+							'lng':results[0].geometry.viewport.getCenter().lng(),
 							'viewport':{
 								
 								'southwest':{

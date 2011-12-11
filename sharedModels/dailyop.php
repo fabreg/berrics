@@ -57,7 +57,7 @@ class Dailyop extends AppModel {
 	//berrics news category
 	private $news_id = 65;
 	
-	public function returnPost($cond = array(),$admin = false,$no_cache = false) {
+	public function returnPost($cond = array(),$admin = false,$no_cache = false,$contain = false) {
 		
 		if(!$admin) {
 			
@@ -84,6 +84,12 @@ class Dailyop extends AppModel {
 			
 				);
 			
+
+		if($contain) {
+			
+			$_contain = $contain;
+			
+		}
 				
 		$token = "post_".md5(serialize($cond+$_contain))."-".$admin;
 		
