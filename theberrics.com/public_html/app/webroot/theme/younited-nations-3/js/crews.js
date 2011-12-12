@@ -267,7 +267,7 @@ var yn3 = {
 			
 		yn3.map.setCenter(new google.maps.LatLng(data.lat,data.lng));
 		
-		var GLOBE_WIDTH = 256; 
+		var GLOBE_WIDTH = 420; 
 		var west = data.bounds.southwest.lng;
 		var east = data.bounds.northeast.lng;
 		var angle = east - west;
