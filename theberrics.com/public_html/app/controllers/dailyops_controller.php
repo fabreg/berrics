@@ -664,12 +664,8 @@ class DailyopsController extends BerricsAppController {
 		
 		$this->loadModel("DailyopMediaItem");
 		
-		$cache_token = "dailyop_slide_show_".$daiyop_id."_".$img_weight;
-		
-		
-		if(($items = Cache::read($cache_token,"1min")) === false) {
-			
-				$items = $this->DailyopMediaItem->find("neighbors",array(
+
+		$items = $this->DailyopMediaItem->find("neighbors",array(
 					"field"=>"DailyopMediaItem.display_weight",
 					"value"=>$img_weight,
 					"order"=>array(
@@ -680,12 +676,7 @@ class DailyopsController extends BerricsAppController {
 					),
 					"contain"=>array("MediaFile")
 					
-				));
-				
-				Cache::write($cache_token,$items,"1min");
-					
-		}
-		
+		));
 		//check to see if we have an available item
 		if($items[$direction] == null) die('0');
 		

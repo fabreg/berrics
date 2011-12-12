@@ -490,9 +490,9 @@ var DailyopsSlideShow = {
 			$('.dailyop_media_item[slide_show=1]').unbind('.DailyopsSlideShow');
 			
 		},
-		loadNext:function() {
+		loadNext:function(ele) {
 			
-			var ele = arguments[0];
+			//var ele = arguments[0];
 			
 			var dailyop_id = $(ele).attr("dailyop_id");
 			
@@ -518,17 +518,7 @@ var DailyopsSlideShow = {
 				
 			});
 			
-			//inject div
-			if($(ele).find('.dailyops-slide-show-msg').lendth<=0) $(ele).append("<div class='dailyops-slide-show-msg'></div>");
-			//alert((($(ele).height()/2)-$(".dailyop-slide-show-msg").height())+"px");
-			$(".dailyops-slide-show-msg").html(msg).css({
-				
-				"top":(($(ele).height()/2)-$(".dailyop-slide-show-msg").height())+"px"
-				
-			});
-			
-			//unbind this div from being clicked
-			DailyopsSlideShow.destroy();
+
 			
 			//send a request for a new image based on the post id and the display weight of the current image
 			$.ajax({
@@ -546,9 +536,7 @@ var DailyopsSlideShow = {
 						$(".dailyop_media_item[dailyop_id="+did+"]").html(f)
 						
 					}
-					DailyopsSlideShow.closeLoadingMsg();
-					//rebind all the clicks
-					DailyopsSlideShow.init();
+
 					
 				}
 				
