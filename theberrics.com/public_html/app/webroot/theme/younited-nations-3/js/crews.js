@@ -27,7 +27,25 @@ var yn3 = {
 		};
 		yn3.map = new google.maps.Map(document.getElementById("map"),myOptions);
 		yn3.marker_img = new google.maps.MarkerImage("/theme/younited-nations-3/img/vans_pin.png");
-		yn3.infoWindow = new google.maps.InfoWindow();
+		
+		var infoOps = {
+				boxClass:'yn3-info-window',
+               disableAutoPan: false
+               ,maxWidth: 0
+               ,pixelOffset: new google.maps.Size(-140, 0)
+               ,zIndex: null
+               ,boxStyle: { 
+                 opacity: 0.75
+                }
+               ,closeBoxMargin: "10px 2px 2px 2px"
+               ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+               ,infoBoxClearance: new google.maps.Size(1, 1)
+               ,isHidden: false
+               ,pane: "floatPane"
+               ,enableEventPropagation: true
+       };
+		
+		yn3.infoWindow = new InfoBox(infoOps);
 		
 		yn3.getPins();
 		
@@ -42,8 +60,10 @@ var yn3 = {
 		$(".country-list li").click(function() { 
 			
 			
-			yn3.handleCountryClick(this);
-			
+			//yn3.handleCountryClick(this);
+			var hash = $(this).find('a').attr("href");
+			//yn3.loadCountry(hash);
+			location.hash = hash;
 			
 		}).hover(
 				function() { 
@@ -56,15 +76,49 @@ var yn3 = {
 					$(this).removeClass('over');
 					
 				}
-		);
+		).find('a').click(function() { 
+			
+			//yn3.handleCountryClick(this);
+			var hash = $(this).attr("href");
+			//yn3.loadCountry(hash);
+			location.hash = hash;
+			
+			return false;
+			
+		});
 		
 		//setup country menu hovers
 		
-	},
-	setJson:function(d) {
+		//boot strap it biatch
+		$(window).hashchange(function() { 
+			
+			yn3.handleHash();
+			
+		});
+		
+		yn3.handleHash();
 		
 	},
-	getJson:function() {
+	handleHash:function() { 
+		
+		var h = location.hash;
+		
+		switch(true) {
+		
+			case /^#country/.test(h):
+				
+				var sp = h.split(":",2);
+				yn3.loadCountry(sp[1]);
+			
+			break;
+			case /^#crew/.test(h):
+				
+				var sp = h.split(":",2);
+				yn3.viewCrew(sp[1]);
+				
+			break;
+		}
+		
 	},
 	getPins:function() {
 
@@ -118,11 +172,13 @@ var yn3 = {
 	
 			//alert(marker.getId());
 			
+			m.set("posse_id",p.id);
+			
 			google.maps.event.addListener(m,'click',(function(m,p) { 
 
 				return function() {
 					
-					yn3.infoWindow.setContent("<div style='color:#000;'>"+p.name+"</div>");
+					yn3.infoWindow.setContent("<div class='inner'>"+p.name+"</div>");
 					yn3.infoWindow.open(yn3.map,m);
 					
 					if(yn3.map.getZoom()<7) {
@@ -133,12 +189,19 @@ var yn3 = {
 						
 					}
 					
+					location.hash = "crew:"+Base64.encode(p.id);
+					
+					
 				};
 				
 			})(m,p));
 			
+			
+			
 			yn3.crewMarkers.push(m);
-
+			
+			
+			
 		}
 		
 		
@@ -230,7 +293,14 @@ var yn3 = {
 		
 		var str = $(scope).find('span:eq(0)').text();
 		
+		yn3.loadCountry(srt);
+		
+	},
+	loadCountry:function(str) {
+		
 		yn3.getGeoData(str, yn3.handleCountryClickGeoData);
+		
+		//get the crews in that country
 		
 	},
 	googleGeoCoder:function(str,callback) {
@@ -303,6 +373,26 @@ var yn3 = {
 		        
 		      }
 		});
+	},
+	viewCrew:function(posse_id) { 
+		
+		var id = Base64.decode(posse_id);
+		
+		yn3.moveToPin(id);
+		
+		//load the crew info
+		var op = {
+				
+			
+				
+		};
+		$.ajax(op);
+		
+	},
+	moveToPin:function(id) {
+	
+		
+		
 	}
 	
 	

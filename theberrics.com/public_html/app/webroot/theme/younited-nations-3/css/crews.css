@@ -28,12 +28,6 @@
 
 }
 
-#yn3-crews .crew-list {
-
-	background-color:#000;
-
-}
-
 
 .map-bg {
 	
@@ -134,6 +128,14 @@
 	
 	
 }
+
+#yn3-crews .country-list ul li a {
+
+	display:inline;
+	text-decoration:none;
+	color:inherit;	
+	
+}
 #yn3-crews .country-list ul li .country-name {
 
 	
@@ -161,4 +163,82 @@
 	
 }
 
+#yn3-crews .crew-info {
+	
+	width:742px;
+	float:right;
+	margin-right:5px;
+	
+}
 
+#yn3-crews .crew-info .crew-info-top {
+	
+	height:91px;
+	background-image:url(/theme/younited-nations-3/img/map/crew-info-top.png);
+	
+}
+
+#yn3-crews .crew-info .crew-info-bg {
+	
+	background-image:url(/theme/younited-nations-3/img/map/crew-info-bg.png);
+	
+}
+
+#yn3-crews .crew-info .crew-info-bg .crew-content {
+
+	width:96%;
+	margin:auto;	
+	color:#000;
+}
+
+#yn3-crews .crew-info .crew-info-bottom {
+	
+	height:34px;
+	background-image:url(/theme/younited-nations-3/img/map/crew-info-bottom.png);
+	
+}
+
+
+#yn3-crews .crew-list {
+
+	margin:0px;
+	padding:0px;
+	list-style:none;
+
+}
+#yn3-crews .crew-list li {
+
+	font-family:'Times New Roman';
+	color:#000;
+	font-size:16px;
+	float:left;
+	width:48%;
+	margin-right:1%;
+	border-bottom:2px solid #8c4232;
+	height:40px;
+	margin-bottom:2px;
+	background-image:url(/theme/younited-nations-3/img/map/vans_bullet.png);
+	background-repeat:no-repeat;
+	background-position: left 5px;
+	
+}
+
+#yn3-crews .crew-list li .info {
+
+	margin-left:36px;	
+	
+}
+#yn3-crews .crew-list li .info .entry-date {
+
+	font-size:12px;
+	font-family:'Arial';	
+	
+}
+
+
+.yn3-info-window {
+
+	background-color:#999;	
+	width:280px;
+	
+}

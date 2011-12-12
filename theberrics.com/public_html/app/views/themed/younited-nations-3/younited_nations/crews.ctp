@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","markerclusterer","jquery.scrollTo","jquery.form","prettyprint","crews"),array("inline"=>false));
+$this->Html->script(array("https://maps.googleapis.com/maps/api/js?sensor=true","markerclusterer","infobox","jquery.hashchange","jquery.scrollTo","jquery.form","prettyprint","crews"),array("inline"=>false));
 $this->Html->css(array("crews"),"stylesheet",array("inline"=>false));
 $c = Arr::countries();
 
@@ -37,7 +37,7 @@ $c = Arr::countries();
 									$country = strtoupper($country);
 									
 								?>
-									<li><span class='country-name'><?php echo $country; ?></span><span class='country-count'><?php echo $count; ?></span></li>
+									<li><span class='country-name'><a href='#country:<?php echo $country; ?>'><?php echo $country; ?></span></a><span class='country-count'><?php echo $count; ?></span></li>
 								<?php $i++; endforeach; ?>
 								</ul>
 							</div>
@@ -56,9 +56,16 @@ $c = Arr::countries();
 							
 						</div>
 					</div>
-					<div style='height:800px;'>
-					
+					<div class='crew-info'>
+						<div class='crew-info-top'></div>
+						<div class='crew-info-bg'>
+							<div class='crew-content'>
+								<?php echo $this->element("younited-nations-3/crew-li"); ?>
+							</div>
+						</div>
+						<div class='crew-info-bottom'></div>
 					</div>
+					<div style='clear:both;'></div>
 				</div>
 				<div style='clear:both;'></div>
 				<!-- End Younited Nations Map -->
