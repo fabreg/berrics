@@ -198,46 +198,32 @@ class YounitedNationsController extends DailyopsController {
 		
 		if(($entries = Cache::read($token,"1min")) === false) {
 			
-			$event = $this->YounitedNationsEvent->find("first",array(
+			
+			$this->loadModel("YounitedNationsEventEntry");
+			
+			$entries = $this->YounitedNationsEventEntry->find("all",array(
 			
 				"conditions"=>array(
-					"YounitedNationsEvent.id"=>$this->event_id
-				),
-				"contain"=>array(),
-			));
-			
-			$entry= $this->YounitedNationsEvent->YounitedNationsEventEntry->find("all",array(
-				"conditions"=>array(
-					"YounitedNationsEventEntry.younited_nations_event_id"=>$event['YounitedNationsEvent']['id']
+					"YounitedNationsEventEntry.younited_nations_event_id"=>$this->event_id
 				),
 				"contain"=>array(
 					"YounitedNationsPosse"
-				),
-				"order"=>array(
-					"YounitedNationsPosse.name"=>"ASC"
 				)
+			
 			));
 			
-			$e = array();
-			
-			foreach($entry as $k=>$val) {
-				
-				$e['YounitedNationsEventEntry'][$k] = $val['YounitedNationsEventEntry'];
-				$e['YounitedNationsEventEntry'][$k]['YounitedNationsPosse'] = $val['YounitedNationsPosse'];
-				
-			}
-			
-			$entries = array_merge($event,$e);
-			
-			//$entries["YounitedNationsEventEntry"] = Set::sort($entries["YounitedNationsEventEntry"],'{n}.YounitedNationsPosse.name','asc');
-			//make an array of entrys grouped by country
 			$countries = array();
 			
-			foreach($entries['YounitedNationsEventEntry'] as $e) $countries[strtoupper($c[$e['YounitedNationsPosse']['country']])][] = $e;
+			foreach($entries as $e) $countries[$e['YounitedNationsPosse']['country']][] = $e;
 			
-			$entries['countries'] = $countries;
+			foreach($countries as $k=>$v) $countries[$k] = count($v);
 			
-			ksort($entries['countries']);
+			arsort($countries);
+			
+			$entries = array(
+				"entries"=>$entries,
+				"countries"=>$countries
+			);
 			
 			Cache::write($token,$entries,"1min");
 			

@@ -347,15 +347,7 @@ function ps3VideoPostBit(id,mid) {
 
 function initMediaFileDiv() {
 	
-	$('div[media_file]').each(function() { 
-		
-			
-		
-		
-		
-		
-	});
-	
+
 	
 	$('div[media_file][media_type="bcove"]').each(function() {
 		
@@ -422,12 +414,7 @@ function initMediaFileDiv() {
 	
 	
 	//init the slide shows
-	$(".dailyop_media_item[slide_show=1]").each(function() { 
-		
-		
-		
-	});
-	
+
 	//fade out the logos
 	$('.d-post-bit .icon img').css({'opacity':.4});
 	
@@ -483,12 +470,19 @@ function html5Video() {
 var DailyopsSlideShow = {
 			
 		init:function() {
-	
+			/*
 			$(".dailyop_media_item[slide_show=1]").bind('click.DailyopsSlideShow',function() { 
 				
 				DailyopsSlideShow.loadNext(this);
 				
 			});
+			*/
+	
+		$(".dailyop_media_item[slide_show=1]").each(function() { 
+			
+			$(this).click(function() { DailyopsSlideShow.loadNext(this); });
+			
+		});
 	
 		},
 		destroy:function() { 

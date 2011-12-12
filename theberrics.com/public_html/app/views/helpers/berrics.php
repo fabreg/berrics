@@ -194,6 +194,8 @@ class BerricsHelper extends AppHelper {
 		$options['media_file_id'] = $m['id'];
 		$options['slide_show'] = $dataSet['Dailyop']['slide_show'];
 		
+
+		
 		return $this->Html->div("dailyop_media_item",$content,$options);
 		
 	}
