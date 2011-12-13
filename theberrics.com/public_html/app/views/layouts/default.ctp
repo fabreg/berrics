@@ -34,6 +34,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
 	<META name="description" content="<?php echo $meta_d?>"> 
 	<META name="keywords" content="<?php echo $meta_k?>"> 
+	<meta property="fb:app_id" content="128870297181216">
 	<script type='text/javascript'>
 		var swfPlayer = "/swf/BerricsPlayer.swf";
 	</script>
