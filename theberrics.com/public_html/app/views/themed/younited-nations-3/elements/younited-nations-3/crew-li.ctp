@@ -4,7 +4,7 @@
 		if(strlen($e['YounitedNationsPosse']['name'])<=0) continue;
 	
 	?>
-	<li country='<?php echo $e['YounitedNationsPosse']['country']; ?>' posse_id='<?php echo base64_encode($e['YounitedNationsPosse']['id']); ?>'>
+	<li country='<?php echo $e['YounitedNationsPosse']['country']; ?>' posse_id='<?php echo $e['YounitedNationsPosse']['id']; ?>'>
 		<div class='info'>
 			<?php echo $this->Text->truncate(strtoupper($e['YounitedNationsPosse']['name']),29); ?>
 			<div class='entry-date'>Entry Date: <?php echo $this->Time->niceShort($e['YounitedNationsPosse']['created']); ?></div>

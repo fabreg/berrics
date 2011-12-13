@@ -287,6 +287,40 @@ class YounitedNationsController extends DailyopsController {
 		$this->setEvent();
 		
 	}
+	
+	public function ajax_get_crew($id = false) {
+		
+		$this->loadModel("YounitedNationsPosse");
+		
+		$token = 'yn3-posse-'.$id;
+		
+		if(!$id) return $this->cakeError("error404");
+		
+		if(($posse = Cache::read($token,"1min")) === false) {
+			
+			$posse = $this->YounitedNationsPosse->find("first",array(
+			
+				"conditions"=>array(
+					"YounitedNationsPosse.id"=>$id
+				),
+				"contain"=>array(
+					"YounitedNationsPosseMember"=>array(
+						"limit"=>10,
+						"order"=>array(
+							"YounitedNationsPosseMember.id"=>"ASC"
+						)
+					)
+				)
+			
+			));
+			
+			Cache::write($token,$posse,"1min");
+			
+		}
+		
+		$this->set(compact("posse"));
+		
+	}
 
 	
 }

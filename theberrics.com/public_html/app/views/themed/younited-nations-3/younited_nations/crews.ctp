@@ -19,10 +19,8 @@ $c = Arr::countries();
 								<?php 
 									$i = 0;
 									foreach($entries['countries'] as $p=>$v): 
-									
-									
 								?>
-									<li country='<?php echo $p; ?>'><span class='country-name'><a href='#country:<?php echo urlencode(strtoupper($c[$p])); ?>'><?php echo strtoupper($c[$p]); ?></span></a><span class='country-count'><?php echo $v; ?></span></li>
+									<li country='<?php echo $p; ?>'><span class='country-name'><?php echo strtoupper($c[$p]); ?></span><span class='country-count'><?php echo $v; ?></span></li>
 								<?php $i++; endforeach; ?>
 								</ul>
 							</div>
@@ -48,6 +46,9 @@ $c = Arr::countries();
 							
 							</div>
 							<div class='crew-menu'>
+								<div class='view-all-button'>
+									VIEW ALL CREWS
+								</div>
 								<?php echo $this->element("younited-nations-3/crew-li"); ?>
 							</div>
 						</div>

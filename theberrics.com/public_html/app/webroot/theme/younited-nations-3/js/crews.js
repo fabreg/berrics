@@ -15,6 +15,7 @@ var yn3 = {
 	crewMarkerCluster:null,
 	jsonData:null,
 	infoWindow:null,
+	scrollTop:230,
 	init:function() { 
 		
 		yn3.configMap();
@@ -39,8 +40,6 @@ var yn3 = {
 				}
 		).find('a').click(function() { 
 			
-			yn3.handleCountryClick($(this).parent());
-			
 			
 			return false;
 			
@@ -52,7 +51,35 @@ var yn3 = {
 			
 			yn3.handleCrewClick(this);
 			
-		});
+		}).hover(
+			function() { 
+				
+				$(this).addClass("over");
+				
+			},
+			function() { 
+				
+				$(this).removeClass("over");
+				
+			}
+		);
+		
+		$('.view-all-button').hover(
+			function() {
+				
+				$(this).addClass('view-all-button-over');
+				
+			},
+			function() {
+				
+				$(this).removeClass('view-all-button-over');
+				
+			}
+		).click(function() {
+			
+			yn3.showAllCrews();
+			
+		}).hide();
 		
 		
 		//boot strap it biatch
@@ -62,12 +89,18 @@ var yn3 = {
 			
 		});
 		
-		
+		setTimeout(function() {
+			
+			yn3.handleHash(true);
+			
+		},250);
 		
 	},
 	handleHash:function() { 
 		
 		var h = location.hash;
+		
+		var docReady = arguments[0] || false;
 		
 		switch(true) {
 		
@@ -79,8 +112,10 @@ var yn3 = {
 			break;
 			case /^#crew/.test(h):
 				
+				if(docReady) {
 				var sp = h.split(":",2);
-				yn3.viewCrew(sp[1]);
+					yn3.viewCrew(Base64.decode(sp[1]));
+				}
 				
 			break;
 		}
@@ -128,10 +163,10 @@ var yn3 = {
 				boxClass:'yn3-info-window',
                disableAutoPan: false
                ,maxWidth: 0
-               ,pixelOffset: new google.maps.Size(-140, 0)
+               ,pixelOffset: new google.maps.Size(-182.5, 0)
                ,zIndex: null
                ,boxStyle: { 
-                 opacity: 0.75
+                 
                 }
                ,closeBoxMargin: "10px 2px 2px 2px"
                ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
@@ -169,29 +204,23 @@ var yn3 = {
 
 				return function() {
 					
-					yn3.infoWindow.setContent("<div class='inner'>"+p.name+"</div>");
+					yn3.infoWindow.setContent("<div class='inner'>"+p.name.toUpperCase()+"</div>");
 					yn3.infoWindow.open(yn3.map,m);
 					
-					if(yn3.map.getZoom()<7) {
+					if(yn3.map.getZoom()<12) {
 						
-						yn3.map.setZoom(7);
+						yn3.map.setZoom(12);
 						yn3.map.setCenter(m.getPosition());
-						
 						
 					}
 					
-					//location.hash = "crew:"+Base64.encode(p.id);
 					yn3.viewCrew(p.id);
 					
 				};
 				
 			})(m,p));
 			
-			
-			
 			yn3.crewMarkers.push(m);
-			
-			
 			
 		}
 		
@@ -261,7 +290,7 @@ var yn3 = {
 		$('body').append("Latitude: "+data.lat);
 		$('body').append(" Longitude: "+data.lng+"<br />");
 		
-		$(window).scrollTo(215,"normal");
+		$(window).scrollTo(yn3.scrollTop,"normal");
 	
 		//yn3.map.panToBounds(new google.maps.LatLngBounds(new google.maps.LatLng(data.viewport.southwest.lat,data.viewport.southwest.lng),new google.maps.LatLng(data.viewport.northeast.lat,data.viewport.northeast.lng)));
 			
@@ -278,6 +307,7 @@ var yn3 = {
 		
 		yn3.map.setZoom(zoom);
 		
+		yn3.infoWindow.close();
 		
 	},
 	handleCountryClick:function(scope) {
@@ -286,7 +316,7 @@ var yn3 = {
 		
 		var c = $(scope).attr("country");
 		
-		location.hash = hash;
+		location.hash = "country:"+$(scope).find('span:eq(0)').text();
 		
 		if(c) {
 		
@@ -374,11 +404,23 @@ var yn3 = {
 		});
 	},
 	viewCrew:function(posse_id) { 
-		
-	
-		
+
 		//load the crew info
 		$('.crew-content').html("<div class='loading-msg'>Loading....</div>");
+
+		$.ajax({
+			
+			url:'/younited-nations-3/ajax_get_crew/'+posse_id,
+			dataType:'html',
+			success:function(d) {
+				
+				$('.crew-content').html(d);
+				$(window).scrollTo(yn3.scrollTop,'normal');
+				
+			}
+			
+		});
+		
 		
 	},
 	returnPinByPosseId:function(id) {
@@ -406,30 +448,32 @@ var yn3 = {
 		
 		$(".crew-list li[country="+country+"]").show();
 		
+		$('.view-all-button').show();
+		
 	},
 	showAllCrews:function() {
 		
 		$('.crew-list li').show();
 		
+		$('.view-all-button').hide();
+		
 	},
 	handleCrewClick:function(scope) {
 	
-		location.hash = $(scope).attr('posse_id');
+		location.hash = "crew:"+Base64.encode($(scope).attr('posse_id'));
+		
+		var id = $(scope).attr("posse_id");
+		
+		yn3.viewCrew(id);
+		
+		var pin = yn3.returnPinByPosseId(id);
+		
+		google.maps.event.trigger(pin,'click');
 		
 	}
 	,handleCrewHash:function(posse_id) {
 		
-		var pin = yn3.returnPinByPosseId(posse_id);
 		
-		if(!pin.getPosition().equals(yn3.map.getCenter())) {
-			
-			return;
-			
-		} else {
-		
-			google.maps.event.trigger(pin,'click');
-			
-		}
 		
 	}
 	
