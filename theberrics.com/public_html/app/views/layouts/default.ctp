@@ -47,7 +47,6 @@
 		echo $this->Html->script(array(
 		
 			" https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
-			"https://connect.facebook.net/en_US/all.js#xfbml=1",
 			"http://platform.twitter.com/widgets.js",
 			"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
 			"/js/jquery.scrollTo",
@@ -72,6 +71,14 @@
 	<?php endif; ?>
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<div id='main-container'>
 		<?php echo $this->element("layout/top-banner-container"); ?>
 		<div id='page-wrapper-left'>

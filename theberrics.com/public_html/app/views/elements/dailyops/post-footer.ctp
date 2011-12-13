@@ -17,8 +17,7 @@
 	
 ?>
 <div class='footer'>
-		
-			<div class='tags'>
+		<div class='tags'>
 				<?php
 					if(!empty($s['icon_light_file'])):
 				?>
@@ -73,7 +72,8 @@
 						?>
 						
 					<?php else: ?>
-					<fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like>
+					<div class="fb-like" data-href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+					<?php  /* <fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like> */ ?>
 					<?php endif; ?>
 					
 				</div>	
@@ -93,9 +93,7 @@
 				<div style='clear:both;'></div>
 			</div>
 			<?php 
-			
 				if($this->Session->read("is_admin") == 1):
-			
 			?>
 			<div>
 				<a href='http://admin.theberrics.com/dailyops/edit/<?php echo $d['id']; ?>' target='_blank'>Admin Edit</a> <a href='http://admin.theberrics.com/media_files/update_video_still/<?php echo $f['id']; ?>' target='_blank'>Update Video Still</a>
