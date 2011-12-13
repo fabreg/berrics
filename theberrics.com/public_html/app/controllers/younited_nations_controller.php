@@ -321,6 +321,29 @@ class YounitedNationsController extends DailyopsController {
 		$this->set(compact("posse"));
 		
 	}
+	
+	public function ajax_top_banner() {
+		
+		$this->loadModel("YounitedNationsEventEntry");
+		
+		$token = "yn3-crew-total";
+		
+		if(($data = Cache::read($token,"1min")) === false) {
+			
+			$data = $this->YounitedNationsEventEntry->find("count",array(
+			
+				"conditions"=>array(
+					"YounitedNationsEventEntry.younited_nations_event_id"=>$this->event_id
+				),
+				"contain"=>array()
+			
+			));
+			
+		}
+		
+		$this->set(compact("data"));
+		
+	}
 
 	
 }

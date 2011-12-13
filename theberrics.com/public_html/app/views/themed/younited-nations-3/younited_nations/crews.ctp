@@ -5,6 +5,7 @@ $this->Html->css(array("crews"),"stylesheet",array("inline"=>false));
 $c = Arr::countries();
 
 ?>
+<?php echo $this->element("younited-nations-3/top-banner"); ?>
 <div id='yn3-crews'>
 	<div class='map-bg'>
 		<div class='map-bg-container'>
