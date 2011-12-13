@@ -72,7 +72,7 @@
 						?>
 						
 					<?php else: ?>
-					<div class="fb-like" data-href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+					<div class="fb-like" data-href="<?php echo urlencode("http://theberrics.com".$url); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style='float:left;'></div>
 					<?php  /* <fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like> */ ?>
 					<?php endif; ?>
 					
