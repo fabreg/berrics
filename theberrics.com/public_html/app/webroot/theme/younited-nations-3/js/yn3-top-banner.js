@@ -13,22 +13,23 @@ $(document).ready(function() {
 			}).css({
 				
 				"background-image":"url(/theme/younited-nations-3/img/YN3_TopBanner.jpg)",
-				"height":"300px",
+				"height":"201px",
 				"position":"relative",
 				"width":"1000px",
 				"margin":"auto",
-				'margin-bottom':'15px'
+				"background-repeat":"no-repeat",
+				"padding-top":"15px"
 					
 			}).find('.total').css({
 				
 				'position':'absolute',
 				'height':'55px',
-				'left':'20px',
-				'top':'117px',
-				'font-size':'90px',
+				'left':'10px',
+				'top':'115px',
+				'font-size':'56px',
 				'font-family':'Arial',
 				'font-weight':'bold',
-				'width':'250px',
+				'width':'145px',
 				'text-align':'right',
 				'color':'#812b00'
 				

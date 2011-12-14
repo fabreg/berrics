@@ -34,6 +34,12 @@
 	margin:auto;
 }
 
+#right-col {
+
+padding-top:230px;
+
+}
+
 </style>
 <script>
 $(document).ready(function() { 
@@ -65,6 +71,7 @@ $(document).ready(function() {
 	
 });
 </script>
+<?php echo $this->element("younited-nations-3/top-banner"); ?>
 <ul id='batb-list'>
 	<li>
 		<div class='inner'><a href='/younited-nations-2' title='YOUnited Nations 2'><span>YOUnited Nations 2</span><img src='/img/layout/younited-nations/younited-nations2.jpg'  border='0' /></a></div>
