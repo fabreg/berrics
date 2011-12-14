@@ -36,7 +36,7 @@
 
 #right-col {
 
-padding-top:230px;
+	padding-top:230px;
 
 }
 
@@ -67,7 +67,7 @@ $(document).ready(function() {
 		
 	}).find("img").css({"padding-top":"60px"});
 
-	$("#batb-list li img:eq(1)").css({"padding-top":"30px"})
+	$("#batb-list li img:eq(1)").css({"padding-top":"30px"});
 	
 });
 </script>

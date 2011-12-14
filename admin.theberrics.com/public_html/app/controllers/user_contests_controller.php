@@ -143,20 +143,40 @@ class UserContestsController extends AdminAppController {
 			
 		}
 		
+		//get all the post id's
+		
+	
+		
 		//make a menu of contest posts to filter thru
-		$this->loadModel("Dailyop");
-		$postFilter = $this->Dailyop->find("list",array(
+		$dist_posts = $this->UserContestEntry->find("all",array(
 			
-			"conditions"=>array(
-				"Dailyop.contest_post"=>1
+			"fields"=>array(
+				"DISTINCT(UserContestEntry.foreign_key)"
 			),
+			"conditions"=>array(),
 			"contain"=>array()
 		
 		));
 		
-		$this->set(compact("postFilter"));
+		$post_ids = Set::extract("/UserContestEntry/foreign_key",$dist_posts);
+		
+		$this->loadModel("Dailyop");
+		$posts = $this->Dailyop->find("all",array(
+			
+					"conditions"=>array(
+						"Dailyop.id"=>$post_ids
+					),
+					"contain"=>array()
+				
+		));
+		
+		$postFilter = array();
+		
+		foreach($posts as $p) $postFilter[$p['Dailyop']['id']] = $p['Dailyop']['name']." - ".$p['Dailyop']['sub_title'];
 		
 		$data = $this->paginate("UserContestEntry");
+				
+		$this->set(compact("postFilter"));
 		
 		$this->set(compact("data"));
 		
