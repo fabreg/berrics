@@ -303,4 +303,37 @@ class TheotisController extends BerricsAppController {
 		
 	}
 	
+	public function ajax_winner_banner() {
+		
+		$this->skip_page_view = true;
+		
+		//let's get the latest winner
+		$cache_token = "31-dot-winner";
+		
+		if(($winner = Cache::read($cache_token,"1min")) === false) {
+			
+			$this->loadModel("UserContestEntry");
+			
+			$winner = $this->UserContestEntry->find("first",array(
+			
+				"conditions"=>array(
+					"UserContestEntry.winner"=>1
+				),
+				"contain"=>array(
+					"User"
+				),
+				"order"=>array(
+					"UserContestEntry.id"=>"DESC"
+				)
+			
+			));
+			
+			Cache::write($cache_token,$winner,"1min");
+		
+		}
+		
+		$this->set(compact("winner"));
+		
+	}
+	
 }

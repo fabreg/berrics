@@ -1147,6 +1147,7 @@ DAILY OPS
     font-size:12px;
     color:#666;
     text-align:right;
+    
 }
 
 
@@ -2098,5 +2099,57 @@ CANTEEN CART WIDGET THING
 	border-right:1px solid #d7d7d7;
 }
 
+/*
+	31 dot winner banner	
+*/
+	
+#theotis-winner-banner {
+	
+	height:100px;
+	background-image:url(/theme/31-days-of-theotis/img/winner-banner-bg.jpg);
+	position:relative;
+	width:700px;
+	margin:auto;
+	font-family:'Arial';
+	padding-bottom:20px;
+	background-repeat:no-repeat;
+}
 
+#theotis-winner-banner a {
 
+	text-decoration:none;
+	color:inherit;	
+	
+}
+
+#theotis-winner-banner .day {
+	
+	position:absolute;
+	top:20px;
+	color:#b90000;
+	font-size:22px;
+	left:5px;
+}
+
+#theotis-winner-banner .facebook-img {
+
+	position:absolute;
+	width:50px;
+	height:50px;
+	border:2px solid #e9e9e9;
+	top:50px;
+	
+}
+
+#theotis-winner-banner .name {
+	
+	position:absolute;
+	width:600px;
+	font-size:48px;
+	font-weight:bold;
+	font-family:'Arial';	
+	color:white;
+	top:46px;
+	left:5px;
+	
+}
