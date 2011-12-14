@@ -182,6 +182,46 @@ class UserContestsController extends AdminAppController {
 		
 	}
 	
+	public function edit_entry($id = false) {
+		
+		$this->loadModel("UserContestEntry");
+		
+		if(count($this->data)>0) {
+			
+			$this->UserContestEntry->id = $this->data['UserContestEntry']['id']; 
+			
+			if($this->UserContestEntry->save($this->data)) {
+				
+				$this->Session->setFlash("Entry Updated!");
+				
+				$data = $this->UserContestEntry->read();
+				
+				$url = "/user_contests/view_entries/".$data['UserContestEntry']['user_contest_id'];
+				
+				return $this->redirect($url);
+				
+			} else {
+				
+				$this->Session->setFlash("There was an error while updating the entry");
+				
+			}
+			
+		} else {
+			
+			$entry = $this->UserContestEntry->find("first",array(
+				
+				"conditions"=>array(
+					"UserContestEntry.id"=>$id
+				)
+			
+			));
+			
+			$this->data = $entry;
+			
+		}
+		
+	}
+	
 	public function view_entry($id = false) {
 		
 		

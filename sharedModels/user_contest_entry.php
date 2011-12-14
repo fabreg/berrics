@@ -2,6 +2,6 @@
 
 class UserContestEntry extends AppModel {
 		
-	public $belongsTo = array("UserContest");
+	public $belongsTo = array("UserContest","User");
 	
 }

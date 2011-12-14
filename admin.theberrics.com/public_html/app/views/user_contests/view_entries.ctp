@@ -69,7 +69,7 @@
 				<?php else: ?>
 					<a href='/user_contests/mark_entry/type:winner/user_contest_entry_id:<?php echo $d['UserContestEntry']['id']; ?>/user_contest_id:<?php echo $d['UserContestEntry']['user_contest_id']; ?>'>Mark As WINNER!</a>
 				<?php endif; ?>
-				<a></a>
+				<a href='/user_contests/edit_entry/<?php echo $d['UserContestEntry']['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 			</td>
 		</tr>	
 		<?php endforeach;?>
