@@ -197,7 +197,7 @@ class DailyopsController extends BerricsAppController {
 		
 		$newer_date = $this->Dailyop->getNextDate($dateArg,false);
 		
-		$this->set(compact("dailyops","dateIn","meta_k","date_nav_array","newer_date","older_date"));
+		$this->set(compact("dailyops","dateIn","meta_k","newer_date","older_date"));
 		
 		$this->setRssFeed();
 
@@ -605,6 +605,8 @@ class DailyopsController extends BerricsAppController {
 			
 			
 		}
+		
+		$this->set("date_nav_array",$date);
 		
 		return $date;
 		

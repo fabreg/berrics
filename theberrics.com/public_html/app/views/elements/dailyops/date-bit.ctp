@@ -4,6 +4,7 @@
 $currMonth = date("n",strtotime($dateIn));
 $currYear = date("Y",strtotime($dateIn));
 $currDay = date("d",strtotime($dateIn));
+$this->Html->scriptBlock("var date_nav_json=".json_encode($date_nav_array).";",array("inline"=>false));
 
 ?>
 <?php 

@@ -144,6 +144,8 @@
 	display:block;
 	width:81%;
 	float:left;
+	overflow:hidden;
+	white-space:nowrap;
 }
 
 #yn3-crews .country-list ul li .country-count {
@@ -328,6 +330,12 @@
 	
 	width:20px;
 	text-align:center;	
+	
+}
+#yn3-crews .crew-bit .skater,#yn3-crews .crew-bit .filmer, #yn3-crews .crew-bit .editor {
+	
+	width:18px;
+	text-align:center;
 	
 }
 

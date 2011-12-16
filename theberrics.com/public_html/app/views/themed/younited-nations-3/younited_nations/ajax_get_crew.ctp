@@ -1,3 +1,11 @@
+<?php 
+
+$posse_check = false;
+
+foreach($posse['YounitedNationsPosseMember'] as $p) if(!empty($p['name'])) $posse_check = true;
+
+
+?>
 <div class='crew-details'>
 	<dl>
 		<dt>Crew Name:</dt>
@@ -5,8 +13,11 @@
 		<dt>Entry Date:</dt>
 		<dd><?php echo strtoupper($this->Time->niceShort($posse['YounitedNationsPosse']['created'])); ?></dd>
 		<dt>Location:</dt>
-		<dd><?php echo strtoupper($posse['YounitedNationsPosse']['geo_formatted']); ?></dd>
+		<dd><?php echo $this->Text->truncate(strtoupper($posse['YounitedNationsPosse']['geo_formatted']),40); ?></dd>
 	</dl>
+	<?php if(!$posse_check): ?>
+	<div style='padding:10px; text-align:center;'>NO CREW MEMBERS ADDED!!!</div>
+	<?php else: ?>
 	<div class='crew-members-heading'>
 		CREW:
 	</div>
@@ -30,16 +41,56 @@
 				SKATER:
 			</span>
 			<span class='skater'>
+			<?php 
+			
+				if($p['skater']) {
+					
+					echo "X";
+					
+				} else {
+					
+					echo "&nbsp;";
+					
+				}
+			
+			?>
 			</span>
 			<span class='label filmer-label'>
 				FILMER:
 			</span>
 			<span class='filmer'>
+			<?php 
+			
+				if($p['filmer']) {
+					
+					echo "X";
+					
+				} else {
+					
+					echo "&nbsp;";
+					
+				}
+			
+			?>
 			</span>
 			<span class='label editor-label'>
 				EDITOR:
 			</span>
-			<span class='editor'></span>
+			<span class='editor'>
+			<?php 
+			
+				if($p['editor']) {
+					
+					echo "X";
+					
+				} else {
+					
+					echo "&nbsp;";
+					
+				}
+			
+			?>
+			</span>
 			<div style='clear:both;'></div>
 		</div>
 		<?php 
@@ -48,6 +99,8 @@
 		
 		?>
 	</div>
+	<?php endif; ?>
+	
 </div>
 <pre>
 <?php 

@@ -55,7 +55,8 @@ class YounitedNationsEventEntry extends AppModel {
 			$this->create();
 			$this->save(array(
 				"younited_nations_posse_id"=>$data['YounitedNationsPosse']['id'],
-				"younited_nations_event_id"=>$data['YounitedNationsEvent']['id']
+				"younited_nations_event_id"=>$data['YounitedNationsEvent']['id'],
+				"active"=>1
 			));
 			
 			$data['YounitedNationsEventEntry']['id'] = $this->id;

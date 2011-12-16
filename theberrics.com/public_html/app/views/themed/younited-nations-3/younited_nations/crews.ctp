@@ -67,3 +67,6 @@ $c = Arr::countries();
 		</div>
 	</div>
 </div>
+<div style='width:728px; margin:auto;'>
+	<?php echo $this->element("dailyops/date-bit"); ?>
+</div>

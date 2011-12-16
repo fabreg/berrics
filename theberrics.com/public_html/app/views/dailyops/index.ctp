@@ -1,7 +1,6 @@
 <?php 
 
 $this->Html->script(array("dailyops/post-bit"),array("inline"=>false));
-$this->Html->scriptBlock("var date_nav_json=".json_encode($date_nav_array).";",array("inline"=>false));
 
 switch($this->theme) {
 

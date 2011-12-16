@@ -12,58 +12,10 @@ class HomeRoute extends CakeRoute {
 			
 		}
 		
-		$news = false;
-		
-		$ts_in = strtotime($params['year']."-".$params['month']."-".$params['day']);
-		
-		if($ts_in > 1) {
+		if(date("Y-m-d")=="2011-12-19") {
 			
-			if(date("N",$ts_in) == 7 && ($ts_in >= strtotime("2011-08-14"))) {
-				
-				$news = true;
-				
-			}
-			
-		} else {
-			
-			if(time()>=(strtotime("2011-08-14")) && (date("N") == 7)) {
-				
-				$news = true;
-				
-			}
-			
-		}
-		
-		
-		$news=false;
-		
-		
-		if($news) {
-			
-			$params['controller'] = "news";
-			$params['action'] = "section";
-			
-			$params['pass'][0] = $params['year'];
-			$params['pass'][1] = $params['month'];
-			$params['pass'][2] = $params['day'];
-		}
-		
-		
-		/*
-		 * WOW, GOOD LUCK REMEMBERING WTF THIS IS ALL ABOUT
-		 * 
-		 * 
-		 * FIX BANG YOSELF INDESICIVNESS
-		 */
-		if(
-			$params['year'] == '2011' && 
-			$params['month'] == '09' && 
-			$params['day'] == '17'
-		
-		) {
-			
-			$params['controller'] = "bangyoself";
-			$params['action'] = "voting";
+			$params['controller'] = "younited_nations";
+			$params['action'] = "crews";
 			
 		}
 		

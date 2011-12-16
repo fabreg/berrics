@@ -85,6 +85,7 @@ class YounitedNationsEventsController extends AdminAppController {
 	
 	
 	public function view_entry($id = false) {
+		
 		$this->loadModel("YounitedNationsEventEntry");
 		//get the entry and all the other stuff
 		$entry = $this->YounitedNationsEventEntry->find("first",array(
@@ -127,7 +128,70 @@ class YounitedNationsEventsController extends AdminAppController {
 		
 	}
 	
+	public function check_dupes() {
+		
+		//get all the whole shebang
+		$this->loadModel("YounitedNationsEventEntry");
+		$this->loadModel("YounitedNationsPosse");
+		$this->loadModel("YounitedNationsPosseMember");
+		
+		$data = $this->YounitedNationsEventEntry->find("all",array(
+		
+			"conditions"=>array(),
+			"contain"=>array(
+				"YounitedNationsPosse"=>array(
+					"YounitedNationsPosseMember"
+				)
+			)
+		
+		));
+		
+		$i = 0;
+		
+		$ids = array();
+		
+		foreach($data as $v) {
+			
+			if(count($v['YounitedNationsPosse']['YounitedNationsPosseMember'])>10) {
+				
+				$ids[] = $v['YounitedNationsPosse']['id'];
+				
+			} 
+			
+		}
+		
+		//let's query each one of these bastards
+		foreach($ids as $id) {
+			
+			$data = $this->YounitedNationsPosseMember->find("all",array(
+			
+				"conditions"=>array(
+					"YounitedNationsPosseMember.younited_nations_posse_id"=>$id
+				),
+				"contain"=>array(),
+				"order"=>array("YounitedNationsPosseMember.id"=>"DESC"),
+				"limit"=>"10"
+			
+			));
+			
+			foreach($data as $v) {
+				
+				$d = "delete from younited_nations_posse_members where id = '{$v['YounitedNationsPosseMember']['id']}'";
+				$this->YounitedNationsPosse->query($d);
+				pr($d);
+			}
+			
+			//pr($data);
+			
+		}
+		
+		die();
+	}
 	
+	public function disable_entry() {
+		
+		
+	}
 	
 	
 	

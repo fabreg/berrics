@@ -28,7 +28,7 @@ class YounitedNationsController extends DailyopsController {
 		
 		//set the theme up
 		
-		$this->theme = $this->params['section'];
+		$this->theme = "younited-nations-3";
 		
 		switch($this->theme) {
 			
@@ -186,6 +186,12 @@ class YounitedNationsController extends DailyopsController {
 		
 		$this->setEvent();
 		
+		if($_SERVER['REQUEST_URI'] == "/dailyops") {
+			
+			$this->get_full_date_nav();
+			
+		}
+		
 	}
 	
 	private function setEvent() {
@@ -204,7 +210,8 @@ class YounitedNationsController extends DailyopsController {
 			$entries = $this->YounitedNationsEventEntry->find("all",array(
 			
 				"conditions"=>array(
-					"YounitedNationsEventEntry.younited_nations_event_id"=>$this->event_id
+					"YounitedNationsEventEntry.younited_nations_event_id"=>$this->event_id,
+					"YounitedNationsEventEntry.active"=>1
 				),
 				"contain"=>array(
 					"YounitedNationsPosse"

@@ -15,7 +15,7 @@ var yn3 = {
 	crewMarkerCluster:null,
 	jsonData:null,
 	infoWindow:null,
-	scrollTop:230,
+	scrollTop:405,
 	init:function() { 
 		
 		yn3.configMap();
@@ -39,7 +39,6 @@ var yn3 = {
 					
 				}
 		).find('a').click(function() { 
-			
 			
 			return false;
 			
@@ -148,9 +147,9 @@ var yn3 = {
 
 		yn3.geocoder = new google.maps.Geocoder();
 	    var latlng = new google.maps.LatLng(-34.397, 150.644);
-	    var lat = new google.maps.LatLng(34.0522342,-118.2436849);
+	    var lat = new google.maps.LatLng(34.0522342,-102.2436849);
 		var myOptions = {
-			      zoom:3,
+			      zoom:2,
 			      mapTypeId: google.maps.MapTypeId.HYBRID,
 			      center:lat
 		};
