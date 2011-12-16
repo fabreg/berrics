@@ -284,10 +284,7 @@ var yn3 = {
 	},
 	handleCountryClickGeoData:function(data,str) {
 		
-		
-		
-		$('body').append("Latitude: "+data.lat);
-		$('body').append(" Longitude: "+data.lng+"<br />");
+	
 		
 		$(window).scrollTo(yn3.scrollTop,"normal");
 	
