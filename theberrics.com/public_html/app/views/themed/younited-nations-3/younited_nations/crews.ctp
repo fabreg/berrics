@@ -74,7 +74,7 @@ $c = Arr::countries();
 
 		if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])) {
 	?>
-
+	<div style='padding:10px; font-weight:bold; font-size:20px; text-align:center;'><a href='/2011/12/18'>View Yesterday</a></div>
 	<?php 
 				echo $this->element("dailyops/date-bit"); 
 		}	
