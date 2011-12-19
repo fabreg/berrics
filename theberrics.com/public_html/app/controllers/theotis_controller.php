@@ -219,9 +219,14 @@ class TheotisController extends BerricsAppController {
 			
 		} else {
 			
+			$view_id = 4156;
+			
+			
+			if($_SERVER['REQUEST_URI']=="/") $view_id = 4242;
+			
 			$viewing = $this->Dailyop->returnPost(array(
-				"Dailyop.id"=>4156
-			),$this->isAdmin());
+				"Dailyop.id"=>$view_id
+			),1);
 			
 		}
 		

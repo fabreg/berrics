@@ -68,12 +68,15 @@ $c = Arr::countries();
 	</div>
 </div>
 <div style='width:728px; margin:auto;'>
+
+
 	<?php 
 
 		if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])) {
-			
-			echo $this->element("dailyops/date-bit"); 
-			
+	?>
+
+	<?php 
+				echo $this->element("dailyops/date-bit"); 
 		}	
 	
 		

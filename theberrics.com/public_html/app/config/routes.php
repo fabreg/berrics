@@ -8,28 +8,12 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 }
 
 if($_SERVER['SCRIPT_URL'] == "/") {
-	
-	$splash_action = "index";
-	
-	if(in_array(date("Y-m-d"),Array("2011-12-12","2011-12-13"))) {
-		
-		$splash_action = array(//the default splash action
-			"controller"=>"splash","action"=>"nike"
-		);
-	
-	} else {
-		
-		$splash_action = array(//the default splash action
-			"controller"=>"splash","action"=>"index"
-		);
-		
-	}
-	
+
 	App::import("Lib","SplashRoute",array("file"=>"routes/SplashRoute.php"));
 	
 	Router::connect(
 		"/",
-		$splash_action,
+		array("controller"=>"splash","action"=>"index"),
 		array(
 			"routeClass"=>"SplashRoute"
 		)
