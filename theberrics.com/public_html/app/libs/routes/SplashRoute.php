@@ -24,7 +24,7 @@ class SplashRoute extends CakeRoute {
 		
 		
 		$params['controller'] = "splash";
-		$params['controller'] = "index";
+		$params['action'] = "index";
 		
 		if($news) {
 			
@@ -33,10 +33,10 @@ class SplashRoute extends CakeRoute {
 
 		}
 		
-		if(date('Y-m-d')=='2011-12-19') {
+		if(date('Y-m-d')=='2011-12-20') {
 			
-			$params['controller'] = "theotis";
-			$params['action'] = "section";
+			$params['controller'] = "splash";
+			$params['action'] = "dc_rediscover";
 			
 		}
 		
