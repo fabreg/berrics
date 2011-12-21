@@ -23,6 +23,28 @@ class TesterController extends AdminAppController {
 		
 	}
 	
+	public function check_session($cookie = false) {
+		
+
+		die(json_encode($this->Auth->user()));
+		
+	}
+	
+	public function flex() {
+		
+		$this->loadModel("User");
+		
+		$data = $this->User->find("all",array(
+		
+			"contain"=>array(),
+			"limit"=>100
+		
+		));
+				
+		die(json_encode($data));
+	
+	}
+	
 	
 	public function email() {
 		

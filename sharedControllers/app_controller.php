@@ -338,4 +338,12 @@ class AppController extends Controller {
 		
 	}
 	
+	public function flex_session_ping($session_id = false) {
+		
+		if($session_id) $this->Session->start($session_id);
+		
+		die(json_encode($this->Auth->user()));
+		
+	}
+	
 }
