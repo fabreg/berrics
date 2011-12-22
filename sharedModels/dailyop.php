@@ -238,7 +238,8 @@ class Dailyop extends AppModel {
 							"DISTINCT(YEAR(Dailyop.publish_date)) AS `year`"
 						),
 						"conditions"=>array(
-							"Dailyop.dailyop_section_id"=>$section_id
+							"Dailyop.dailyop_section_id"=>$section_id,
+							"DATE(Dailyop.publish_date)<NOW()"
 						),
 						"contain"=>array(),
 						"order"=>array("year"=>"DESC")
@@ -264,6 +265,9 @@ class Dailyop extends AppModel {
 			$cond['Dailyop.dailyop_section_id'] = $section_id;
 			
 		}
+		
+		$cond[] = "DATE(Dailyop.publish_date)<NOW()";
+		$cond['Dailyop.active'] = 1;
 		
 		$year = $this->find("all",array(
 			
