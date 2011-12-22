@@ -14,9 +14,19 @@ class BerricsFlexController extends AppController {
 			$this->Session->start();
 			
 		}
+		
+		//check for json being posts
+		if(isset($_POST['json'])) {
+			
+			$this->data = $_json = json_decode($_POST['json'],true);
+			
+			//Sanitize::clean($_json);
+			
+		}
+		
 		parent::beforeFilter();
 		
-		$this->Auth->allow("flex_session_ping");
+		$this->Auth->allow("*");
 		
 	}
 	
@@ -30,7 +40,7 @@ class BerricsFlexController extends AppController {
 		
 		$this->initReports();
 
-		die(json_encode($_POST));
+		die(json_encode($this->data));
 		
 	}
 	

@@ -71,6 +71,9 @@ class DATABASE_CONFIG {
 		if($uname == 'WEB2VM.THEBERRICS') {
 			
 			$this->default['host'] = $this->master['host'] = '127.0.0.1';
+			
+			$this->traffic['host'] = '50.56.68.47';
+			
 		}	
 
 	}
