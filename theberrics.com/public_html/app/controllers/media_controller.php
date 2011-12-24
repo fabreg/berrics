@@ -175,6 +175,86 @@ class MediaController extends BerricsAppController {
 		
 	}
 	
+	public function json_video_service() {
+		
+		$this->skip_page_view = true;
+		$this->layout = "ajax";
+		
+		//catch json post
+		if(isset($this->data['json'])) $this->params['named'] = json_decode($this->data['json'],true);
+		
+		
+		$data = array();
+		
+		//media file
+		if(isset($this->params['named']['media_file_id'])) {
+			
+			$this->loadModel("MediaFile");
+			
+			$video = $this->MediaFile->find("first",array(
+			
+				"conditions"=>array(
+				
+					"MediaFile.id"=>$this->params['named']['media_file_id']
+			
+				),
+				"contain"=>array()
+			
+			));
+			
+			
+			$data += $video;
+			
+			$this->insertMediaHit($video['MediaFile']['id']);
+			
+		}
+		
+		
+		
+		//dailyops post
+		if(isset($this->params['named']['dailyop_id'])) {
+			
+			$this->loadModel("Dailyop");
+			
+			$d = $this->Dailyop->find("first",array(
+			
+				"conditions"=>array(
+					"Dailyop.id"=>$this->params['named']['dailyop_id']
+				),
+				"contain"=>array(
+					"DailyopSection"
+				)
+			
+			));
+			
+			$data += $d;
+			
+		}
+		
+		//user record
+		if(isset($this->params['named']['user_id'])) {
+			
+			$this->loadModel("User");
+			
+			$u = $this->User->find("first",array(
+			
+				"conditions"=>array(
+					"User.id"=>$this->params['named']['user_id']
+				),
+				"contain"=>array(
+					"UserGroup"
+				)
+			
+			));
+			
+			$data += $u;
+			
+		}
+		
+		$this->set(compact("data"));
+		
+	}
+	
 	private function insertMediaHit($id) {
 		
 		
