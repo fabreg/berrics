@@ -44,6 +44,44 @@ class BerricsFlexController extends AppController {
 		
 	}
 	
+	public function realtime() {
+		
+		$this->loadModel("MediaFileView");
+		
+		$data = $this->MediaFileView->find("all",array(
+			
+			"fields"=>array(
+				"MediaFile.name",
+				"MediaFileView.geo_country",
+				"MediaFileView.geo_region_name"
+			),
+			"conditions"=>Array(),
+			"contain"=>array(),
+			"joins"=>array(
+				"LEFT JOIN media_files AS `MediaFile` ON MediaFile.id = MediaFileView.media_file_id"
+			),
+			"limit"=>1000,
+			"order"=>array("MediaFileView.id"=>"DESC")
+		
+		));
+		
+		$d = array();
+		
+		foreach($data as $v) {
+			
+			$d[] = array(
+				"Video"=>$v['MediaFile']['name'],
+				"Country"=>$v['MediaFileView']['geo_country'],
+				"Region"=>$v['MediaFileView']['geo_region_name']
+			);
+			
+		}
+		
+		die(json_encode($d));
+		
+		
+	}
+	
 	
 	private function initReports() {
 
