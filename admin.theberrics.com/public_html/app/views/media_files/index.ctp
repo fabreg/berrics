@@ -31,9 +31,7 @@ $(document).ready(function() {
 			var media_file_id = $(this).attr("media_file_id");
 			var img = "<div class='img'><img src='http://img.theberrics.com/i.php?src=/images/"+$(this).attr("media_file")+"&h=450&w=450' /></div>";
 			$(".img-preview-wrapper[media_file_id="+media_file_id+"]").html(img);
-			
-			
-				
+	
 		},
 		function() { 
 
@@ -112,10 +110,8 @@ function imageHover() {
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th>Thumbnail</th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort("Website.name"); ?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('media_type');?></th>
-			<th><?php echo $this->Paginator->sort('legacy_id');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -153,7 +149,6 @@ function imageHover() {
 			?>
 		</td>
 		<td><?php echo $mediaFile['MediaFile']['modified']; ?>&nbsp;</td>
-		<td><?php echo $mediaFile['Website']['name']; ?></td>
 		<td><?php echo $mediaFile['MediaFile']['name']; ?>&nbsp;</td>
  
 		<td><?php echo $mediaTypes[$mediaFile['MediaFile']['media_type']]; ?>&nbsp;
@@ -161,9 +156,7 @@ function imageHover() {
 		<div style='font-weight:bold; color:Red;'>*SECURED</div>
 		<?php endif; ?>
 		</td>
-		<td><?php echo $mediaFile['MediaFile']['legacy_id']; ?>&nbsp;</td>
-		<td class="actions">
-			
+		<td class="actions">			
 			<?php if($this->params['isAjax']): ?>
 				<?php echo $this->Html->link("Attach",array(),array("rel"=>"no-ajax","media_file_id"=>$mediaFile['MediaFile']['id'],"class"=>"attach_media")); ?>
 			<?php else: ?>
