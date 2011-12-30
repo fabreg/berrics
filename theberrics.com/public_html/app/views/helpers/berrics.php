@@ -2,7 +2,7 @@
 
 class BerricsHelper extends AppHelper {
 	
-	public $helpers = array("Html","Media");
+	public $helpers = array("Html","Media","Session");
 	
 	
 	public function displayDailyopMedia($d) {
@@ -172,29 +172,22 @@ class BerricsHelper extends AppHelper {
 			}
 			
 		}
-		
-		/*
-		if(array_key_exists($opt['MediaFile']['preroll'],$ads)) {
-			
-			$opt['MediaFile']['preroll'] = $ads[$opt['MediaFile']['preroll']];
-			
-		}
-		
-		if(array_key_exists($opt['MediaFile']['postroll'],$ads)) {
-			
-			$opt['MediaFile']['postroll'] = $ads[$opt['MediaFile']['postroll']];
-			
-		}
-		*/
-		
-		
-		
+
 		$options['media_file'] = json_encode($opt);
 		$options['media_type'] = $m['media_type'];
 		$options['media_file_id'] = $m['id'];
 		$options['slide_show'] = $dataSet['Dailyop']['slide_show'];
 		
+		
+		//new parameters
+		
+		//dailyops id
+		(isset($dataSet['Dailyop']['id'])) ? 
+						$options['dailyop_id'] = $dataSet['Dailyop']['id']:'';
 
+		//pass in the session
+		$options['xid'] = $this->Session->id();
+						
 		
 		return $this->Html->div("dailyop_media_item",$content,$options);
 		

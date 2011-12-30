@@ -13,6 +13,14 @@ class MediaController extends BerricsAppController {
 	
 	public function beforeFilter() {
 		
+		//check to see if there is an incoming xid and boot up the session
+		if(isset($this->params['named']['xid'])) {
+
+			$this->Session->id($this->params['named']['xid']);
+			$this->Session->start();
+			
+		}
+		
 		parent::beforeFilter();
 		$this->initPermissions();
 		$this->Auth->allow("*");
@@ -232,14 +240,14 @@ class MediaController extends BerricsAppController {
 		}
 		
 		//user record
-		if(isset($this->params['named']['user_id'])) {
+		if($this->Auth->User("id")) {
 			
 			$this->loadModel("User");
 			
 			$u = $this->User->find("first",array(
 			
 				"conditions"=>array(
-					"User.id"=>$this->params['named']['user_id']
+					"User.id"=>$this->Auth->User("id")
 				),
 				"contain"=>array(
 					"UserGroup"
@@ -250,7 +258,7 @@ class MediaController extends BerricsAppController {
 			$data += $u;
 			
 		}
-		
+
 		$this->set(compact("data"));
 		
 	}

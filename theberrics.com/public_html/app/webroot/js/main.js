@@ -348,7 +348,6 @@ function ps3VideoPostBit(id,mid) {
 function initMediaFileDiv() {
 	
 
-	
 	$('div[media_file][media_type="bcove"]').each(function() {
 		
 
@@ -372,8 +371,6 @@ function initMediaFileDiv() {
 					
 				break;
 			}
-			
-    		
     		
     		
     		if(navigator.userAgent.toLowerCase().indexOf('mobile')>-1) {
@@ -424,13 +421,15 @@ function flashVideoWeb(ele,data) {
 	
 	var m = data['MediaFile'];
 	
-	
 	var swfVars = {
 		'media_file_id':m['id'],
 		videoAspectRatio:1,
 		"dailyop_id":data['dailyop_id'],
 		pre_roll:m['preroll'],
-		post_roll:m['postroll']
+		post_roll:m['postroll'],
+		//new properties
+		preroll_server:"LEGACY",
+		postroll_server:"LEGACY"
 	};
 	
 	$(ele).flash({
@@ -447,6 +446,22 @@ function flashVideoWeb(ele,data) {
 	});
 	
 	$(ele).unbind("click");
+}
+
+function berricsPlayer(ele) {
+	
+	var e = $(ele);
+	
+	var params = {
+			
+		media_file_id: e.attr("media_file_id"),
+		dailyop_id:e.attr("dailyop_id"),
+		xid:e.attr("xid")
+			
+	};
+
+	
+	
 }
 
 function flashVideoPs3() {
