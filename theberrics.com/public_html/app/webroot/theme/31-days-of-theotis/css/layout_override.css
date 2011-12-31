@@ -246,4 +246,40 @@
 	
 }
 
+/*
+	WINNERS
+*/
+
+.winning-accounts {
+	
+	padding:15px;
+	background-color:#000;	
+	padding-top:5px;
+}
+.winning-accounts .winner {
+
+	float:left;
+	width:49.5%;	
+	font-size:20px;
+	font-weight:bold;
+	font-family:'Arial';
+	
+	
+}
+
+.winning-accounts .winner .day {
+
+	float:left;
+	width:9%;	
+	padding:8px;
+}
+
+.winning-accounts .winner .name {
+
+	float:right;
+	width:82%;	
+	padding:8px;
+}
+
+
 

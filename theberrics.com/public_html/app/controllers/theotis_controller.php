@@ -37,11 +37,39 @@ class TheotisController extends BerricsAppController {
 			
 		$this->setViewPost();
 		
+		$this->setWinners();
+		
 	}
 	
 	public function view() {
 		
 		
+		
+	}
+	
+	
+	public function setWinners() {
+		
+		$this->loadModel("UserContestEntry");
+		
+		$winners = $this->UserContestEntry->find("all",array(
+			"conditions"=>array(
+				"UserContestEntry.user_contest_id"=>$this->user_contest_id,
+				"UserContestEntry.winning_rank !="=>null
+			),
+			"contain"=>array("User"),
+			"order"=>array("UserContestEntry.winning_rank +0 ASC")
+		));
+		
+		//$winners = array();
+		
+		//foreach($w as $k=>$v) $winners[$v['UserContestEntry']['winning_rank']] = $v;
+		
+		//ksort($winners,SORT_NUMERIC);
+		
+		$this->set(compact("winners"));
+		
+		return $winners;
 		
 	}
 	
