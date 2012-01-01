@@ -43,6 +43,7 @@ $(document).ready(function() {
 	}).find(".overlay,.play-button").remove();
 
 
+	$("div[media_file_id] img").attr({"src":"/img/splash/dc/dc-2012-lg.jpg"});
 	
 	setTimeout(function() { 
 

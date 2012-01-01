@@ -44,9 +44,7 @@ class SplashRoute extends CakeRoute {
 			$params['action'] = "dc_rediscover";
 			
 		}
-	
 
-			
 			
 	
 		return $params;
