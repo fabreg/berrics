@@ -420,10 +420,12 @@ function initMediaFileDiv() {
 	
 }
 
-function flashVideoWeb(ele,data) {
+function flashVideoWeb(ele,data,width,height) {
 	
 	var m = data['MediaFile'];
 	
+	var swf_width = arguments[2] || 700;
+	var swf_height = arguments[3] || 400;
 	
 	var swfVars = {
 		'media_file_id':m['id'],
@@ -436,8 +438,8 @@ function flashVideoWeb(ele,data) {
 	$(ele).flash({
 		swf:swfPlayer+"?time="+Math.random(),
 		flashVars:swfVars,
-		height:400,
-		width:700,
+		height:swf_height,
+		width:swf_width,
 		wmode:"opaque",
 		bgcolor:"#000000",
 		allowfullscreen:"true",
