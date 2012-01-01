@@ -47,16 +47,17 @@
 		
 		echo $this->Html->script(array(
 		
-			" https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
+			"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
 			"http://platform.twitter.com/widgets.js",
 			"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
+			"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
 			"/js/jquery.scrollTo",
 			"jquery.swfobject",
-			"jquery.client"
+			"jquery.client",
+			"main"
 		
 		));
 	?>
-	<script type='text/javascript' src='/js/main.js?2011-07-15'></script>
 	<?php 
 		echo $this->Html->css(array(
 			"main",
