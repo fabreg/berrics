@@ -92,8 +92,25 @@ endif;
 			</table>
 		</div>
 		<div style='clear:both;'></div>
+		
 	</div>
 	<div class='t-bottom'></div>
+	<div class='winning-accounts'>
+				<div style='text-align:center;'>
+					<img src='/theme/31-days-of-theotis/img/winner-header.jpg' />
+				</div>
+				<?php foreach($winners as $w): ?>
+				<div class='winner'>
+						<div class='day'><?php echo $w['UserContestEntry']['winning_rank']; ?>.</div>
+						<div class='name'>
+						<a href='http://facebook.com/profile.php?id=<?php echo $w['User']['facebook_account_num']; ?>' target='_blank'>
+							<?php echo strtoupper($w['User']['first_name']); ?> <?php echo strtoupper($w['User']['last_name']); ?>
+						</a>
+						</div>
+				</div>
+				<?php endforeach; ?>
+				<div style='clear:both;'></div>
+		</div>
 </div>
 <?php if($_SERVER['REQUEST_URI'] == "/"): ?>
 <div class='enter-the-berrics'>

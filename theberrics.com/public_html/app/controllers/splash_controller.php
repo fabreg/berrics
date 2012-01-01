@@ -303,6 +303,22 @@ class SplashController extends BerricsAppController {
 		
 	}
 	
+	public function dc_2012() {
+		
+		$this->layout = "empty";
+		
+		
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4343
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	public function ross() {
 		
 		$this->layout = "empty";
@@ -330,7 +346,19 @@ class SplashController extends BerricsAppController {
 	}
 	
 	
-	
+	public function ishod() {
+		
+		$this->layout = "empty";
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4344
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
 	
 }
 
