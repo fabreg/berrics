@@ -47,6 +47,8 @@ class SplashRoute extends CakeRoute {
 	
 
 			
+			$params['controller'] = "splash";
+			$params['action'] = "ishod";
 			
 	
 		return $params;
