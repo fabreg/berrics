@@ -273,7 +273,7 @@ function initThumbHovers() {
 
 function berricsRelatedVideoScreen(media_file_id, dailyop_id) {
 	
-	alert(dailyop_id);
+	
 	$.ajax({
 		
 		"url":"/dailyops/related/"+dailyop_id,
