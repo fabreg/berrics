@@ -41,7 +41,7 @@ class SplashRoute extends CakeRoute {
 		} else {
 			
 			$params['controller'] = "splash";
-			$params['action'] = "dc_rediscover";
+			$params['action'] = "dc_2012";
 			
 		}
 
