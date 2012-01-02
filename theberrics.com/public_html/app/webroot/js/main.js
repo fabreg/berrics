@@ -273,7 +273,7 @@ function initThumbHovers() {
 
 function berricsRelatedVideoScreen(media_file_id, dailyop_id) {
 	
-	
+	alert(dailyop_id);
 	$.ajax({
 		
 		"url":"/dailyops/related/"+dailyop_id,
@@ -364,7 +364,14 @@ function initMediaFileDiv() {
 			
 				case "bcove":
 						
-						$(this).click(function() { flashVideoWeb(this,m); });
+						//$(this).click(function() { flashVideoWeb(this,m); });
+						var eleid = "berricsVideo"+media_file_id;	
+					
+						$(this).click(function() { 
+							
+							berricsPlayer(eleid,m);
+							
+						}).html("<div id='"+eleid+"'>"+$(this).html()+"</div>");
 					
 					break;
 				default:
@@ -450,19 +457,58 @@ function flashVideoWeb(ele,data,width,height) {
 	$(ele).unbind("click");
 }
 
-function berricsPlayer(ele) {
+function berricsPlayer(id,data,width,height) {
 	
-	var e = $(ele);
+	var e = $(document.getElementById(id));
+	$(e).unbind("click");
 	
-	var params = {
+	var swf_width = arguments[2] || 700;
+	var swf_height = arguments[3] || 400;
+	
+	var fparams = {
 			
-		media_file_id: e.attr("media_file_id"),
-		dailyop_id:e.attr("dailyop_id"),
-		xid:e.attr("xid")
+		media_file_id: data["MediaFile"]["id"],
+		dailyop_id:data["dailyop_id"],
+		xid:e.attr("xid"),
+		legacy_preroll:data["MediaFile"]["preroll"],
+		legacy_postroll:data["MediaFile"]["postroll"],
+		server:window.location.hostname,
+		preroll_server:'LEGACY',
+		postroll_server:'LEGACY',
+		loader:'/swf/player/BerricsPlayer.swf?rev=John1.7'
 			
 	};
-
 	
+	for(var a in fparams) {
+	
+		
+		
+	}
+	
+	var xiSwfUrlStr = "/swf/expressInstall.swf";
+	var swfVersionStr = "10.2";
+	var params = {};
+	params.quality = "high";
+	params.bgcolor = "#000000";
+	params.play = "true";
+	params.loop = "true";
+	params.wmode = "gpu";
+	params.scale = "noscale";
+	params.menu = "true";
+	params.devicefont = "false";
+	params.salign = "";
+	params.allowscriptaccess = "always";
+	params.allowFullScreen = "true";
+	var attributes = {};
+	attributes.id = "BerricsPlayerLoader";
+	attributes.name = "BerricsPlayerLoader";
+	attributes.align = "left";
+	
+	swfobject.embedSWF(
+			"/swf/player/BerricsPlayerLoader.swf?testing", id,
+			swf_width, swf_height,
+			swfVersionStr, xiSwfUrlStr,
+			fparams, params, attributes);
 	
 }
 

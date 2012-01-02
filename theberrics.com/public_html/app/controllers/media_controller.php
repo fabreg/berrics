@@ -13,6 +13,9 @@ class MediaController extends BerricsAppController {
 	
 	public function beforeFilter() {
 		
+		//catch json post
+		if(isset($this->data['json'])) $this->params['named'] = json_decode($this->data['json'],true);
+		
 		//check to see if there is an incoming xid and boot up the session
 		if(isset($this->params['named']['xid'])) {
 
@@ -187,11 +190,7 @@ class MediaController extends BerricsAppController {
 		
 		$this->skip_page_view = true;
 		$this->layout = "ajax";
-		
-		//catch json post
-		if(isset($this->data['json'])) $this->params['named'] = json_decode($this->data['json'],true);
-		
-		
+
 		$data = array();
 		
 		//media file
