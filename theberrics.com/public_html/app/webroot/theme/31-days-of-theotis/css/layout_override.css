@@ -276,8 +276,7 @@
 
 .winning-accounts .winner .name {
 
-	float:right;
-	width:82%;	
+	float:left;
 	padding:8px;
 }
 
