@@ -134,7 +134,7 @@
  * the cake shell command: cake schema create Sessions
  *
  */
-	Configure::write('Session.save', 'berrics_session');
+	Configure::write('Session.save', 'database');
 
 /**
  * The model name to be used for the session model.
