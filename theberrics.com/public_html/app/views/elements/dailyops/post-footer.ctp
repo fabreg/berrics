@@ -92,5 +92,22 @@
 				</div>
 				<div style='clear:both;'></div>
 			</div>
+			<?php 
+				if($this->Session->read("is_admin") == 1):
+			?>
+			<div>
+				<a href='http://admin.theberrics.com/dailyops/edit/<?php echo $d['id']; ?>' target='_blank'>Admin Edit</a> <a href='http://admin.theberrics.com/media_files/update_video_still/<?php echo $f['id']; ?>' target='_blank'>Update Video Still</a>
+				<a href='http://admin.theberrics.com/traffic_reports/media_file_details/media_file_id:<?php echo $f['id']; ?>/date_start:2011-06-20/date_end:<?php echo date("Y-m-d"); ?>' target='_blank'>Media File Report</a> 
+				
+				<?php if(!in_array($f['id'],$report_queue)): ?>
+				<a href='http://dev.admin.theberrics.com/media_files/queue_video_for_report/<?php echo $f['id']; ?>/<?php echo base64_encode("http://".$_SERVER['SERVER_NAME'].$this->here)?>'>Queue for report</a>
+				<?php 
+					endif;
+				?>
+			</div>
+			<?php 
 			
+				endif;
+			
+			?>
 </div>

@@ -55,7 +55,7 @@ class YounitedNationsController extends DailyopsController {
 	}
 	
 	public function entry_form() {
-		
+		/*
 		$this->loadModel("YounitedNationsEventEntry");
 		
 		$this->loadModel("YounitedNationsPosse");
@@ -95,6 +95,7 @@ class YounitedNationsController extends DailyopsController {
 		}
 		
 		if($entry) $this->data = $entry;
+		*/
 	}
 	
 	public function ajax_update_entry() {
