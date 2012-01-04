@@ -5,7 +5,3 @@
     RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 </IfModule>
 
-AuthType Basic
-AuthName "Rape ME"
-AuthUserFile /.htpasswd
-Require valid-user
