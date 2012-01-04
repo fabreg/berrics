@@ -769,16 +769,21 @@ DAILY OPS
 
 .d-post-bit .bottom {
 
-    background-image:url(/img/layout/dops/post-bit-bottom.png); 
-    width:728px;
-    height:92px;
+   /*background-image:url(/img/layout/dops/post-bit-bottom.png);*/
+   background-image:url(/img/layout/dops/d-post-bit-bottom-fix.png);
+   width:728px;
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  min-height:92px;
+  
+  
 }
 
 .d-post-bit .bottom .footer {
 
     width:680px;
     margin:auto;    
-    
+    padding-bottom:10px;
 }
 
 
