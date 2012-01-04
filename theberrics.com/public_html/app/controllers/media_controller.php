@@ -19,8 +19,8 @@ class MediaController extends BerricsAppController {
 		//check to see if there is an incoming xid and boot up the session
 		if(isset($this->params['named']['xid'])) {
 
-			$this->Session->id($this->params['named']['xid']);
-			$this->Session->start();
+			//$this->Session->id($this->params['named']['xid']);
+			//$this->Session->start();
 			
 		}
 		
