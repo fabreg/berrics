@@ -16,14 +16,7 @@ class MediaController extends BerricsAppController {
 		//catch json post
 		if(isset($this->data['json'])) $this->params['named'] = json_decode($this->data['json'],true);
 		
-		//check to see if there is an incoming xid and boot up the session
-		if(isset($this->params['named']['xid'])) {
 
-			//$this->Session->id($this->params['named']['xid']);
-			//$this->Session->start();
-			
-		}
-		
 		parent::beforeFilter();
 		$this->initPermissions();
 		$this->Auth->allow("*");
@@ -238,25 +231,6 @@ class MediaController extends BerricsAppController {
 			
 		}
 		
-		//user record
-		if($this->Auth->User("id")) {
-			
-			$this->loadModel("User");
-			
-			$u = $this->User->find("first",array(
-			
-				"conditions"=>array(
-					"User.id"=>$this->Auth->User("id")
-				),
-				"contain"=>array(
-					"UserGroup"
-				)
-			
-			));
-			
-			$data += $u;
-			
-		}
 
 		$this->set(compact("data"));
 		
