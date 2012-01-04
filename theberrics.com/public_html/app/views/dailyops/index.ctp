@@ -38,7 +38,7 @@ foreach($dailyops as $k=>$dop):
 		
 		//echo "<div style='text-align:center; padding:0px; padding-bottom:5px;'><a href='/chris-coles-battle-royale/eric-koston-vs-joey-brezinski.html' title='Skullcandy Presents: 31 Days Of Theotis'><img style='display:block; padding:0px; margin:auto;' src='/theme/31-days-of-theotis/img/31DOT_toppost-12.jpg' border='0' alt='Skullcandy Presents: 31 Days Of Theotis' /></a></div>";
 		
-		echo $this->element("31-days-of-theotis/winner-banner");
+		//echo $this->element("31-days-of-theotis/winner-banner");
 		
 	}
 
