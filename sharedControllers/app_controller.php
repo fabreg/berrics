@@ -55,6 +55,8 @@ class AppController extends Controller {
 		
 		$this->Auth->deny("*");
 		
+		if($this->Session->id()=='undefined') $this->Session->destroy();
+		
 	}
 	/**
 	 * Initialize the Authentication variables
