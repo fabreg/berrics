@@ -14,6 +14,8 @@ class AdminAppController extends AppController {
 		
 		parent::beforeFilter();
 		
+		$this->Auth->deny("*");
+		
 	}
 	
 	

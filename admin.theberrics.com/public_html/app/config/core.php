@@ -33,7 +33,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	if(isset($_SERVER['DEVSERVER']) || $_GET['t'] == 1) {
+	if(isset($_GET['t']) && $_GET['t'] == 1) {
 		
 		Configure::write('debug', 2);
 		
@@ -42,9 +42,10 @@
 		Configure::write('debug', 0);
 		
 	}
+	
 	ini_set("session.cookie_domain",".theberrics.com");
 	
-
+	
 /**
  * CakePHP Log Level:
  *
@@ -112,7 +113,7 @@
  * or in each action using $this->cacheAction = true.
  *
  */
-	//Configure::write('Cache.check', true);
+	Configure::write('Cache.check', true);
 
 /**
  * Defines the default error type when using the log() function. Used for
@@ -206,7 +207,7 @@
  * CakePHP session IDs are also regenerated between requests if
  * 'Security.level' is set to 'high'.
  */
-	Configure::write('Security.level', 'medium');
+	Configure::write('Security.level', 'low');
 
 /**
  * A random string used in security hashing methods.
@@ -226,7 +227,7 @@
  * Set to `true` to apply timestamps, when debug = 0, or set to 'force' to always enable
  * timestamping.
  */
-	//Configure::write('Asset.timestamp', true);
+	Configure::write('Asset.timestamp', 'force');
 /**
  * Compress CSS output by removing comments, whitespace, repeating tags, etc.
  * This requires a/var/cache directory to be writable by the web server for caching.
@@ -248,8 +249,8 @@
  * The classname and database used in CakePHP's
  * access control lists.
  */
-	Configure::write('Acl.classname', 'DbAcl');
-	Configure::write('Acl.database', 'default');
+	//Configure::write('Acl.classname', 'DbAcl');
+	//Configure::write('Acl.database', 'default');
 
 /**
  * If you are on PHP 5.3 uncomment this line and correct your server timezone
@@ -310,6 +311,7 @@
  *	));
  *
  */
+
 
 	
 	

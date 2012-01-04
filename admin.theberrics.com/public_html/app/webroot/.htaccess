@@ -4,3 +4,8 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 </IfModule>
+
+AuthType Basic
+AuthName "Rape ME"
+AuthUserFile /etc/httpd/.htpasswd
+Require valid-user

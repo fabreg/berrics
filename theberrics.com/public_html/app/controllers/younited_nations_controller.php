@@ -73,19 +73,17 @@ class YounitedNationsController extends DailyopsController {
 		
 		$entry = false;
 		
-		if($this->Auth->user("id")) {
+		if($this->Session->check("Auth.User.id")) {
 			
 			$posse = $this->YounitedNationsPosse->find("first",array(
 				"conditions"=>array(
-					"YounitedNationsPosse.user_id"=>$this->Auth->user("id")
+					"YounitedNationsPosse.user_id"=>$this->Session->read("Auth.User.id")
 				),
 				"contain"=>array(
 					"YounitedNationsPosseMember",
 					"YounitedNationsEventEntry"
 				),
-				"___joins"=>array(
-					"LEFT JOIN younited_nations_event_entries AS `YounitedNationsEventEntry` ON (YounitedNationsEventEntry.younited_nations_posse_id=YounitedNationsPosse.id)"
-				)
+				
 			));
 			
 			if(!isset($posse['YounitedNationsPosse']['id'])) $posse = false;
