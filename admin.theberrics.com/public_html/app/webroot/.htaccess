@@ -7,5 +7,5 @@
 
 AuthType Basic
 AuthName "Rape ME"
-AuthUserFile /etc/httpd/.htpasswd
+AuthUserFile .htpasswd
 Require valid-user
