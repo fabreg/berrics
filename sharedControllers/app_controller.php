@@ -55,7 +55,7 @@ class AppController extends Controller {
 		
 		$this->Auth->deny("*");
 		
-		if($this->Session->id()=='undefined') $this->Session->destroy();
+		if(!preg_match('/^[0-9a-f]{40}$/i',$this->Session->id())) $this->Session->destroy();
 		
 	}
 	/**

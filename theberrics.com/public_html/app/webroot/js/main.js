@@ -486,7 +486,7 @@ function berricsPlayer(id,data,width,height) {
 	}
 	
 	var xiSwfUrlStr = "/swf/expressInstall.swf";
-	var swfVersionStr = "10.2";
+	var swfVersionStr = "0.0.0";
 	var params = {};
 	params.quality = "high";
 	params.bgcolor = "#000000";
