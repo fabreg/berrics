@@ -33,7 +33,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	if(isset($_GET['t']) && $_GET['t'] == 1) {
+	if(isset($_GET['t']) && $_GET['t'] == 1 || $_SERVER['DEVSERVER'] == 1) {
 		
 		Configure::write('debug', 2);
 		
@@ -181,7 +181,7 @@
  * Session time out time (in seconds).
  * Actual value depends on 'Security.level' setting.
  */
-	Configure::write('Session.timeout', '15');
+	Configure::write('Session.timeout', '180');
 
 /**
  * If set to false, sessions are not automatically started.
