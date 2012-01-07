@@ -51,6 +51,32 @@ class Newsv2Controller extends DailyopsController {
 			
 		}
 		
+		
+		//conditions & sort
+		$cond = array(
+					"Dailyop.dailyop_section_id"=>65,
+					"Dailyop.active"=>1,
+					"Dailyop.misc_category"=>"news-general",
+					"DATE(Dailyop.publish_date) = '{$this->params['date_in']}'"
+				);
+				
+		$sort = array("Dailyop.display_weight"=>"ASC");
+		
+		
+		
+		if($this->params['date_in'] == '2012-01-08') {
+
+			$cond = array(
+					"Dailyop.dailyop_section_id"=>65,
+					"Dailyop.active"=>1,
+					"Dailyop.misc_category"=>"news-general",
+					"Dailyop.best_of"=>1
+				);
+			
+			$sort = array("Dailyop.best_of_weight"=>"ASC");
+			
+		}
+		
 		//lets gather all the news posts
 		$token = "news_general_home_".$this->params['date_in'];
 		
@@ -58,18 +84,13 @@ class Newsv2Controller extends DailyopsController {
 			
 			$posts = $this->Dailyop->find('all',array(
 				
-				"conditions"=>array(
-					"Dailyop.dailyop_section_id"=>65,
-					"Dailyop.active"=>1,
-					"Dailyop.misc_category"=>"news-general",
-					"DATE(Dailyop.publish_date) = '{$this->params['date_in']}'"
-				),
+				"conditions"=>$cond,
 				"contain"=>array(
 					"DailyopTextItem"=>array(
 						"MediaFile"
 					)
 				),
-				"order"=>array("Dailyop.display_weight"=>"ASC")
+				"order"=>$sort
 			
 			));
 			
