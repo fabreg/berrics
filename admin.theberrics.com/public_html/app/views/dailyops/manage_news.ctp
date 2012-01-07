@@ -66,6 +66,7 @@ $(document).ready(function() {
 			<th><?php echo $this->Paginator->sort("User"); ?></th>
 			<th><?php echo $this->Paginator->sort("misc_category"); ?></th>
 			<th><?php echo $this->Paginator->sort("display_weight"); ?></th>
+			<th><?php echo $this->Paginator->sort("best_of"); ?></th>
 			<th>-</th>
 		</tr>
 		<?php 
@@ -104,6 +105,21 @@ $(document).ready(function() {
 				echo $this->Form->end();
 			
 			?></td>
+
+			<td>
+				<?php 
+				
+					echo $this->Form->create("Dailyop",array("url"=>array("action"=>"updateBestOfWeight"),"id"=>"form".$key));
+					echo $this->Form->input("best_of",array("type"=>"checkbox","checked"=>$p['Dailyop']['best_of'],"label"=>false,"div"=>false));
+					echo $this->Form->input("best_of_weight",array("options"=>$weight,"label"=>false,"div"=>false,"value"=>$p['Dailyop']['best_of_weight']));
+					
+					echo $this->Form->input("id",array("value"=>$p['Dailyop']['id']));
+					echo $this->Form->input("postback",array("value"=>base64_encode($this->here),"type"=>"hidden"));
+					echo $this->Form->submit("GO",array("div"=>false));
+					echo $this->Form->end();
+				
+				?>
+			</td>
 			<td class='actions'>
 				<a href='/dailyops/edit/<?php echo $p['Dailyop']['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 				<a href='http://dev.theberrics.com/news/<?php echo $p['Dailyop']['uri']; ?>' target='_blank'>Preview</a>

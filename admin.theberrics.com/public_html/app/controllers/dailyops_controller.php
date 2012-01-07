@@ -619,7 +619,19 @@ class DailyopsController extends AdminAppController {
 		
 		
 	}
-	
+	public function updateBestOfWeight() {
+		//die(pr($this->data));	
+		$this->Dailyop->id = $this->data['Dailyop']['id'];
+		
+		$this->Dailyop->save(array(
+			"best_of_weight"=>$this->data['Dailyop']['best_of_weight'],
+			"best_of"=>$this->data['Dailyop']['best_of']
+		));
+		
+		return $this->redirect(base64_decode($this->data['Dailyop']['postback']));
+
+	}
+
 	
 	
 	
