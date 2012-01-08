@@ -743,6 +743,8 @@ class Dailyop extends AppModel {
 	
 	public function getLastNewsDay() {
 		
+		return "2012-01-08";
+		
 		$token = "last_news_day";
 		
 		if(($check = Cache::read($token,"1min")) === false) {
