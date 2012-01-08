@@ -468,7 +468,6 @@ function berricsPlayer(id,data,width,height) {
 	var fparams = {
 			
 		media_file_id: data["MediaFile"]["id"],
-		dailyop_id:data["dailyop_id"],
 		xid:e.attr("xid"),
 		legacy_preroll:data["MediaFile"]["preroll"],
 		legacy_postroll:data["MediaFile"]["postroll"],
@@ -479,11 +478,12 @@ function berricsPlayer(id,data,width,height) {
 			
 	};
 	
-	for(var a in fparams) {
+	if(data["dailyop_id"]) {
+		
+		fparams.dailyop_id = data["dailyop_id"];	
 	
-		
-		
 	}
+	
 	
 	var xiSwfUrlStr = "/swf/expressInstall.swf";
 	var swfVersionStr = "0.0.0";
