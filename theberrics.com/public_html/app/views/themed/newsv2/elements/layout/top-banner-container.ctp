@@ -18,7 +18,7 @@ if($this->params['date_in'] == "2011-12-25") {
 ?>
 <div id='top-banner-container'>
 	<div style='text-align:center; height:131px;'>
-		<a href='/news/<?php echo str_replace("-","/",$this->params['date_in']); ?>'>
+		<a href='/news/2012/01/08'>
 			<img alt='Aberrican Times' border='0' src='<?php echo $header_img; ?>' />
 		</a>
 	</div>
