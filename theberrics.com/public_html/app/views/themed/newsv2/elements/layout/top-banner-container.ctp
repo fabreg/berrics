@@ -10,6 +10,10 @@ if($this->params['date_in'] == "2011-12-25") {
 	//$bottom_img = '/img/layout/newsv2/tg-bottom.png';
 	//echo "<style>#top-banner-container {background-image:url(/img/layout/newsv2/xmas-header.jpg);} </style>";
 	
+} else if($this->params['date_in'] == "2012-01-08") {
+	
+	$header_img = '/img/layout/newsv2/best-of-header.jpg';
+	
 }
 ?>
 <div id='top-banner-container'>
