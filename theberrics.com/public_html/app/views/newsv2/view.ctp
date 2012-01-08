@@ -24,6 +24,13 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 
 $this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
 
+$back_to_link = "/news/".date("Y",strtotime($this->params['date_in']))."/".date("m",strtotime($this->params['date_in']))."/".date("d",strtotime($this->params['date_in']));
+
+if($post['Dailyop']['best_of']) {
+	
+	$back_to_link = "/news/2012/01/08";
+	
+}
 
 ?>
 <div id='news-article'>
@@ -31,7 +38,7 @@ $this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
 		<h1><?php echo $post['Dailyop']['name']; ?></h1>
 		<div class='publish-date'><?php echo $misc[$post['Dailyop']['misc_category']]; ?> | <?php echo date("M d, Y",strtotime($post['Dailyop']['publish_date'])); ?></div>
 		<div>
-			<a href='/news/<?php echo date("Y",strtotime($this->params['date_in'])); ?>/<?php echo date("m",strtotime($this->params['date_in'])); ?>/<?php echo date("d",strtotime($this->params['date_in'])); ?>'>
+			<a href='<?php echo $back_to_link; ?>'>
 				<img src='/img/layout/news/back-home.jpg' border='0'/>
 			</a>
 			<div style='float:right'>
@@ -135,7 +142,7 @@ $this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
 		?>
 	</div>
 	<div>
-			<a href='/news/<?php echo date("Y",strtotime($this->params['date_in'])); ?>/<?php echo date("m",strtotime($this->params['date_in'])); ?>/<?php echo date("d",strtotime($this->params['date_in'])); ?>'>
+			<a href='<?php echo $back_to_link; ?>'>
 				<img src='/img/layout/news/back-home.jpg' border='0'/>
 			</a>
 		</div>
