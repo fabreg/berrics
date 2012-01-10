@@ -89,7 +89,7 @@ class PizzaPartyController extends BerricsAppController {
 		//update the users profile location
 		
 		$this->User->UserProfile->create();
-		$this->User->UserProfile->id = $this->Auth->user("id");
+		$this->User->UserProfile->id = $profile['UserProfile']['id'];
 		
 		$update = array();
 		
