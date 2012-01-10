@@ -19,7 +19,7 @@ if($user):
 
 ?>
 CONGRATULATIONS<br /><br />
-YOU HAVE BEEN ENTERED IN THR DRAWING <br />
+YOU HAVE BEEN ENTERED IN THE DRAWING <br />
 If you are selected. We will send an email to the address listed below on January 11th 2012 with further details<br /><br />
 <?php echo $user['User']['email']; ?> <br /><br />
 <a href='/dailyops'>Back to the Daily Ops</a>
