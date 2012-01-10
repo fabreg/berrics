@@ -55,11 +55,7 @@ class FacebookApi {
 	}
 	
 	public function link_stats($link = false) {
-		
-		
-		
-		
-		
+	
 		
 	}
 	

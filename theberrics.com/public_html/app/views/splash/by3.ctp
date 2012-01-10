@@ -6,6 +6,7 @@
 			"http://platform.twitter.com/widgets.js",
 			"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
 			"/js/jquery.scrollTo",
+		"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
 			"jquery.swfobject",
 			"jquery.client",
 			"/js/main.js"

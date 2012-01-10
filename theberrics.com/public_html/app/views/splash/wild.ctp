@@ -5,6 +5,7 @@
 			"http://connect.facebook.net/en_US/all.js#xfbml=1",
 			"http://platform.twitter.com/widgets.js",
 			"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
+		"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
 			"/js/jquery.scrollTo",
 			"jquery.swfobject",
 			"jquery.client",

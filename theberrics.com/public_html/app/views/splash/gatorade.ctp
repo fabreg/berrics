@@ -7,6 +7,7 @@
 			"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
 			"/js/jquery.scrollTo",
 			"jquery.swfobject",
+		"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
 			"jquery.client",
 			"/js/main.js"
 		

@@ -41,7 +41,9 @@ foreach($dailyops as $k=>$dop):
 		//echo $this->element("31-days-of-theotis/winner-banner");
 		
 	}
-
+	?>
+	<a ref='/identity/login/send_to_facebook/<?php echo base64_encode("http://".$_SERVER['HTTP_HOST']."/pizza_party"); ?>' onclick='document.location.href=$(this).attr("ref");' style='cursor:pointer;'><img border='0' src='/img/layout/pizza_nyjah2.jpg' /></a>
+	<?php 
 	echo $this->element("dailyops/post-bit",array("dop"=>$dop));
 	
 	if($k == 0) {

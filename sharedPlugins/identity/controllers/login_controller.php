@@ -88,7 +88,6 @@ class LoginController extends IdentityAppController {
 			
 		}
 		
-		
 		if($this->Session->check("here") && !$callback) {
 			
 			$callback = $this->Session->read("here");
