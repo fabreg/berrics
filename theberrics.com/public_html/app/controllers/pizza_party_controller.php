@@ -13,7 +13,7 @@ class PizzaPartyController extends BerricsAppController {
 		
 		$this->initPermissions();
 
-		//$this->Auth->allow("*");
+		$this->Auth->allow("*");
 		
 	}
 	
