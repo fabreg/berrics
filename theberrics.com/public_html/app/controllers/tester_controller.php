@@ -115,6 +115,31 @@ class TesterController extends BerricsAppController {
 		
 	}
 	
+	public function pizza_emails() {
+		
+		$this->loadModel("User");
+		
+		$q = $this->User->query(
+			"select u.email,p.geo_region_name,p.geo_city_name from users u
+			left join user_profiles p ON (p.user_id = u.id)
+			where p.geo_region_name like 'calif%' and p.geo_city_name != 'san francisco'
+			and email != 'john@theberrics.com' and email != 'john.hardy@me.com'
+			limit 75
+			"
+		);
+		
+		foreach($q as $v) {
+			
+			echo $v['u']['email'].",";
+			
+		}
+		die();
+		die(print_r($q));
+		
+		
+	}
+	
+	
 	
 }
 
