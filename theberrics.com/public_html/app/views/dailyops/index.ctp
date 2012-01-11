@@ -42,9 +42,8 @@ foreach($dailyops as $k=>$dop):
 		
 	}
 	?>
-	<?php if(date('Y-m-d')=='2012-01-10'):?>
-	<a ref='/identity/login/send_to_facebook/<?php echo base64_encode("http://".$_SERVER['HTTP_HOST']."/pizza_party"); ?>' onclick='document.location.href=$(this).attr("ref");' style='cursor:pointer;'><img border='0' src='/img/layout/pizza_nyjah2.jpg' /></a>
-	<?php endif;?>
+
+	
 	<?php 
 	echo $this->element("dailyops/post-bit",array("dop"=>$dop));
 	
