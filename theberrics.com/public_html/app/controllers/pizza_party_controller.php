@@ -99,6 +99,12 @@ class PizzaPartyController extends BerricsAppController {
 		
 		return $this->User->UserProfile->save($update);
 		
+	}
+	
+	public function signup() {
+		
+		
+		return $this->redirect("/identity/login/send_to_facebook/".base64_encode("/pizza_party"));
 		
 		
 	}
