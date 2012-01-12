@@ -4,14 +4,14 @@
 
 ?>
 <item> 
-      <title><?php echo $post['Dailyop']['name']; ?></title> 
+      <title><![CDATA[<?php echo $post['Dailyop']['name']; ?>]]></title> 
       <link>http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $this->Berrics->dailyopPostUrl($post); ?></link> 
       <description>
-      	<![CDATA[<?php echo $post['text_content']; ?>]]>
+      	<![CDATA[<?php echo $post['Dailyop']['name']." ".strip_tags($post['text_content']); ?>]]>
       </description> 
       <?php echo $this->Time->nice($post['Dailyop']['publish_date']) . ' GMT'; ?> 
        <pubDate><?php echo $this->Time->nice($this->Time->gmt($post['Dailyop']['publish_date'])) . ' GMT'; ?></pubDate> 
-      <guid>http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $this->Berrics->dailyopPostUrl($post); ?></guid> 
+      <guid><![CDATA[http://<?php echo $_SERVER['SERVER_NAME']; ?>/<?php echo $post['DailyopSection']['uri']; ?>/<?php echo $post['Dailyop']['uri']; ?>]]></guid> 
      
 </item> 
 <?php 

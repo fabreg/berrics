@@ -467,12 +467,13 @@ class DailyopsController extends BerricsAppController {
 		
 		));
 		
+		
 		$title_for_feed = "The DailyOps - The Berrics";
 		$link_for_feed = "http://".$_SERVER['SERVER_NAME']."/dailyops";
 		
 		$this->layout = "rss/rss";
 		
-		$this->set(compact("posts","title_for_feed"));
+		$this->set(compact("posts","title_for_feed","link_for_feed"));
 		
 		
 	}

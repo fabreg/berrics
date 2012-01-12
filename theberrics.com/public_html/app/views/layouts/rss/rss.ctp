@@ -24,7 +24,7 @@
 ?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"> 
   <channel> 
-    <title><?php echo $title_for_feed; ?></title> 
+    <title>The Berrics Dailyops</title> 
     <link><?php echo $link_for_feed; ?></link> 
     <description><?php echo $description_for_feed; ?></description> 
     <language>en-us</language> 
