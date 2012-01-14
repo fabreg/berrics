@@ -179,7 +179,7 @@ class SplashController extends BerricsAppController {
 	
 	public function random() {
 		
-		$seed = mt_rand(1,5);
+		$seed = mt_rand(1,6);
 		
 		
 		switch($seed) {
@@ -201,9 +201,13 @@ class SplashController extends BerricsAppController {
 				return $this->render("by3");
 			break;
 			case 5:
-			default:
 				$this->ross();
 				return $this->render("ross");
+			case 6:
+			default:
+				$this->diy();
+				return $this->render("diy");
+				break;
 			break;
 		}
 		
@@ -264,6 +268,19 @@ class SplashController extends BerricsAppController {
 		
 		$this->set(compact("post"));
 	}
+	
+	public function diy() {
+		
+		$this->layout = "empty";
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4368
+		
+		));
+		
+		$this->set(compact("post"));
+	}	
 	
 	public function by3($dude = 'derek') {
 		
