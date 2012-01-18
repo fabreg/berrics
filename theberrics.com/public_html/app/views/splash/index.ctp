@@ -17,9 +17,14 @@ echo $p['body_content'];
 <div class='comments' style='width:720px; margin:auto; padding:1px; padding-top:40px;'>
 	<div class='facebook'>
 		<div>
-			<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
-				<fb:comments css="http://theberrics.com/css/fbc.css" href='theberrics.com'></fb:comments>
-			<script type="text/javascript">FB.init("4bf16033df99101e2722c24a2d165e82", "http://theberrics.com/xd-receiver.html");</script>
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
 		</div>		
 	</div>
 	<div style='clear:both;'></div>
