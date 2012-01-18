@@ -33,6 +33,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
 		<META name="description" content="<?php echo $meta_d?>"> 
 		<META name="keywords" content="<?php echo $meta_k?>"> 
+		<meta property="fb:app_id" content="128870297181216"/>
+		
 		<?php 
 		
 			echo $this->Html->script(array(
