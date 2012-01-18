@@ -21,13 +21,3 @@ $this->set(array(
 echo $p['body_content'];
 
 ?>
-
-<div class='comments' style='width:720px; margin:auto; padding:1px; padding-top:40px;'>
-	<div class='facebook'>
-		<div>
-			
-			<div class="fb-comments" data-href="http://theberrics.com" data-num-posts="10" data-width="470"></div>
-		</div>		
-	</div>
-	<div style='clear:both;'></div>
-</div>
