@@ -35,6 +35,9 @@
 	<META name="description" content="<?php echo $meta_d?>"> 
 	<META name="keywords" content="<?php echo $meta_k?>"> 
 	<meta property="fb:app_id" content="128870297181216">
+	<?php if($this->params['action'] == "view"): ?>
+	<meta property="og:url" content="http://theberrics.com<?php echo $_SERVER['REQUEST_URI']; ?>">
+	<?php endif; ?>
 	<script type='text/javascript'>
 		var swfPlayer = "/swf/BerricsPlayer.swf";
 	</script>
