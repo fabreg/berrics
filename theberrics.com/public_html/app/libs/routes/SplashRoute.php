@@ -24,7 +24,7 @@ class SplashRoute extends CakeRoute {
 		
 		
 		$params['controller'] = "splash";
-		$params['action'] = "index";
+		$params['action'] = "random";
 		
 		if($news) {
 			
