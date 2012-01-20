@@ -16,7 +16,8 @@
 			"jquery.form",
 			"jquery.ui.timepicker-0.0.8.js",
 			"top-nav",
-			"/jw/jwplayer.js"
+			"/jw/jwplayer.js",
+			"admin"
 		));
 		echo $scripts_for_layout;
 	?>

@@ -69,7 +69,12 @@ class UsersController extends AdminAppController {
 				
 			}
 			
-
+			if(isset($this->params['named']['User.UserGroup'])) {
+				
+				$cond['User.user_group_id'] = $this->params['named']['User.UserGroup'];
+				$this->data['User']['UserGroup'] = $this->params['named']['User.UserGroup'];
+				
+			}
 
 		}
 		
@@ -284,6 +289,41 @@ class UsersController extends AdminAppController {
 		$this->data = $user;
 		
 		
+		
+	}
+	
+	public function users_modal_search() {
+		
+		
+		
+	}
+	
+	public function users_modal_search_results() {
+		
+		$cond = array();
+		
+		if(isset($this->data['User']['first_name']) && !empty($this->data['User']['first_name'])) {
+			
+			$cond['User.first_name LIKE'] = "%".str_replace(" ","%",$this->data['User']['first_name'])."%";
+			
+		}
+		
+		if(isset($this->data['User']['last_name']) && !empty($this->data['User']['last_name'])) {
+			
+			$cond['User.last_name LIKE'] = "%".str_replace(" ","%",$this->data['User']['last_name'])."%";
+			
+		}
+		
+		$results = $this->User->find("all",array(
+			
+			"conditions"=>$cond,
+			"contain"=>array(
+				"UserGroup"
+			)
+		
+		));
+		
+		$this->set("results",$results);
 		
 	}
 

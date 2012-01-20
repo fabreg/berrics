@@ -15,6 +15,7 @@ body {
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
 	margin: 0;
+	height:100%;
 }
 
 a {
@@ -399,6 +400,7 @@ MEDIA AJAX WINDOW THING
 	box-shadow: 2px 5px 5px #616161;
 	padding:4px;
 	margin-bottom:12px;
+	
 }
 
 
