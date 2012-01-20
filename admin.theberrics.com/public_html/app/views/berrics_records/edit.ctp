@@ -1,6 +1,15 @@
 <script>
 $(document).ready(function() { 
 
+
+	$( "#BerricsRecordPubDate").datepicker({
+		"dateFormat":"yy-mm-dd"
+	});
+
+	$("#BerricsRecordPubTime").timepicker({
+	    showPeriod: false,
+	    showLeadingZero: false
+	});
 	
 });
 
@@ -12,6 +21,15 @@ function userSelected(user) {
 }
 
 </script>
+<style>
+
+#BerricsRecordPubDate,#BerricsRecordPubTime {
+
+	width:200px;
+
+}
+
+</style>
 <div class='form'>
 	<h2>Edit Berrics Record</h2>
 	
@@ -21,6 +39,8 @@ function userSelected(user) {
 		<?php 
 			echo $this->Form->input("id",array("type"=>"hidden"));
 			echo $this->Form->input("active");
+			echo $this->Form->input("pub_date",array("type"=>"text","label"=>"Publish Date"));
+			echo $this->Form->input("pub_time",array("type"=>"text","label"=>"Publish Time"));
 			echo $this->Form->input("record_name");
 		?>
 		<?php echo $this->Form->end("Update Record"); ?>

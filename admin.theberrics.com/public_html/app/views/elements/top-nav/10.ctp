@@ -175,6 +175,17 @@
 			<li class='li-sub-nav-button'>
 				<a href='/dailyop_sections/manage_menu'>Manage Menu</a>
 			</li>
+		</ul>
+	</li>
+	<li class='li-button'><a href="#">Berrics.Contests</a>
+		<ul class='sub-nav-list'>
+			<li class='li-sub-nav-header'>For The Record</li>
+			<li class='li-sub-nav-button'>
+				<a href='/berrics_records'>Manage Records</a>
+			</li>
+			<li class='li-sub-nav-button'>
+				<a href='/berrics_records/add'>Add New Record</a>
+			</li>
 			<li class='li-sub-nav-header'>Battle At The Berrics</li>
 			<li class='li-sub-nav-button'>
 				<a href='/batb_events'>Manage Events</a>

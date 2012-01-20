@@ -28,6 +28,8 @@ class BerricsRecordsController extends AdminAppController {
 		if(count($this->data)>0) {
 			
 			$this->BerricsRecord->create();
+			
+			$this->data['BerricsRecord']['publish_date']  = date("Y-m-d G:i:s",strtotime("+30 Days"));
 
 			$this->BerricsRecord->save($this->data);
 			
@@ -49,6 +51,10 @@ class BerricsRecordsController extends AdminAppController {
 			
 			$this->BerricsRecord->id = $this->data['BerricsRecord']['id'];
 			
+			//format the publish date and time
+			
+			$this->data['BerricsRecord']['publish_date'] = $this->data['BerricsRecord']['pub_date']." ".$this->data['BerricsRecord']['pub_time'].":00";
+			
 			$this->BerricsRecord->save($this->data);
 			
 			return $this->flash("Record Udpated","/berrics_records/edit/".$this->data['BerricsRecord']['id']);
@@ -67,6 +73,12 @@ class BerricsRecordsController extends AdminAppController {
 					)
 				)
 			));
+			
+			//format the pub_date and pub_time
+			
+			$this->data['BerricsRecord']['pub_date'] = date("Y-m-d",strtotime($this->data['BerricsRecord']['publish_date']));
+			
+			$this->data['BerricsRecord']['pub_time'] = date("G:i",strtotime($this->data['BerricsRecord']['publish_date']));
 			
 		}
 		
