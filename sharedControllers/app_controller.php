@@ -176,6 +176,7 @@ class AppController extends Controller {
 			
 		} 
 		
+		//die(print_r($this->auth_user_group_id));
 
 			
 		foreach($group_perms as $v) {
