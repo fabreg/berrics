@@ -9,8 +9,8 @@ $(document).ready(function() {
 		$(this).find('.overlay').css({
 
 			"position":"absolute",
-			"height":$(this).parent().height()+"px",
-			"width":$(this).parent().width()+"px",
+			"height":"124px",
+			"width":"312px",
 			"cursor":"pointer"
 			
 		}).click(function() { 
