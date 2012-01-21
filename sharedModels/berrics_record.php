@@ -21,7 +21,7 @@ class BerricsRecord extends AppModel {
 				"contain"=>array(
 					"BerricsRecordsItem"=>array(
 						"order"=>array(
-							"BerricsRecordsItem.current_record"=>"ASC"
+							"BerricsRecordsItem.current_record"=>"DESC"
 						)
 					)
 				),
