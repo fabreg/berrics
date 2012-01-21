@@ -51,7 +51,7 @@ $(document).ready(function() {
 					<div class='inner'><?php echo strtoupper($record['BerricsRecord']['record_name']); ?></div>
 					<div class='challenge-link'>
 						
-						<a href='/identity/login/send_to_facebook/<?php echo base64_encode("/for-the-record/challenge/".base64_encode($record['BerricsRecord']['id'])); ?>'>CLICK HERE TO CHALLENGE THE RECORD</a>
+						<a href='/identity/login/send_to_facebook/<?php echo base64_encode("/for-the-record/challenge/".base64_encode($record['BerricsRecord']['id'])); ?>'>&gt;&gt; CLICK HERE TO CHALLENGE THE RECORD &lt;&lt;</a>
 						
 					</div>
 		</div>
