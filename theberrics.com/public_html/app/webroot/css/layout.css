@@ -665,6 +665,19 @@ DAILY OPS
     
 */
 
+.section-date-heading {
+	
+	background-image:url(/img/layout/date-heading-bg.png);
+	width:250px;
+	height:41px;
+	line-height:46px;
+	text-indent:15px;
+	color:#666;
+	font-size:20px;
+	letter-spacing:3px;
+	
+}
+
 .d-post-bit {
     
     margin-bottom:25px;

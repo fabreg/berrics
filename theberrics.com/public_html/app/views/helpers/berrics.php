@@ -280,12 +280,24 @@ class BerricsHelper extends AppHelper {
 	public function monthYearHeader($date_time = false,$options = array()) {
 		
 		
-		$month = strtolower(date("M",strtotime($date_time)));
+		/*$month = strtolower(date("M",strtotime($date_time)));
 		$year = date("y",strtotime($date_time));
 		
 		$src = "http://img.theberrics.com/i.php?src=/date-img/{$month}{$year}.png&h={$h}";
 		
-		return $this->Html->image($src,$options);
+		return $this->Html->image($src,$options);*/
+		
+		$year = date("Y",strtotime($date_time));
+		
+		$month = date("F",strtotime($date_time));
+		
+		$div = "<div class='section-date-heading'>";
+		
+		$div .= strtoupper($month)." ".$year;
+		
+		$div .= "</div>";
+		
+		return $div;
 		
 		
 	}
