@@ -655,6 +655,24 @@ class DailyopsController extends BerricsAppController {
 		
 	}
 	
+	public function ajax_emotw_paginator($dailyop_id = false) {
+		
+		$this->loadModel("DailyopTextItem");
+		
+		$this->paginate['DailyopTextItem'] = array(
+		
+			"conditions"=>array(
+				"DailyopTextItem.dailyop_id"=>$dailyop_id
+			),
+			"order"=>array("DailyopTextItem.display_weight"=>"ASC")
+		
+		);
+		
+		$items = $this->paginate();
+		
+		
+	}
+	
 	//slide show methods
 	function ajax_slideshow($dailyop_id = false,$img_weight = false,$direction = "next") {
 		

@@ -7,8 +7,6 @@ class BerricsHelper extends AppHelper {
 	
 	public function displayDailyopMedia($d) {
 		
-		
-		
 		//make some sort cuts to the ORM
 		$m = $d['DailyopMediaItem'][0]['MediaFile'];
 		$dop = $d['Dailyop'];
@@ -173,10 +171,12 @@ class BerricsHelper extends AppHelper {
 			
 		}
 
-		$options['media_file'] = json_encode($opt);
-		$options['media_type'] = $m['media_type'];
-		$options['media_file_id'] = $m['id'];
-		$options['slide_show'] = $dataSet['Dailyop']['slide_show'];
+		$options['media_file'] 			= json_encode($opt);
+		$options['media_type'] 			= $m['media_type'];
+		$options['media_file_id'] 		= $m['id'];
+		$options['slide_show'] 			= $dataSet['Dailyop']['slide_show'];
+		$options['dailyop_section_id'] 	= $dataSet['Dailyop']['dailyop_section_id'];
+		$options['publish_date'] 		= $dataSet['Dailyop']['publish_date'];
 		
 		
 		//new parameters

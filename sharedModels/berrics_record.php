@@ -26,7 +26,7 @@ class BerricsRecord extends AppModel {
 					)
 				),
 				"order"=>array(
-					"BerricsRecord.publish_date"=>"ASC"
+					"BerricsRecord.publish_date"=>"DESC"
 				)
 			));
 			
