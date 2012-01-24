@@ -22,7 +22,10 @@ class MediaFileUploadsController extends AdminAppController {
 		
 		$this->paginate['MediaFileUpload'] = array(
 			"limit"=>100,
-			"order"=>array("MediaFileUpload.id"=>"DESC")
+			"order"=>array("MediaFileUpload.id"=>"DESC"),
+			"contain"=>array(
+				"User"
+			)
 		);
 		
 		$data = $this->paginate("MediaFileUpload");
