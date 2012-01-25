@@ -444,6 +444,93 @@ function initMediaFileDiv() {
 	
 }
 
+
+var EMOTW = {
+		
+		loadingHtml:"<div class='emotw-loading-screen'>Loading</div>",
+		bootstrapPost:function(div) {
+			
+			$(div).parent().unbind('click').css({
+				
+				"min-height":"396px"
+					
+			});
+	
+			$(div).click(function() { 
+				
+				$(this).html("");
+				
+				$(this).css({
+					
+					"position":"relative",
+					"overflow":"hidden",
+					
+				});
+				
+				var dailyop_id = $(this).attr("dailyop_id");
+				
+				EMOTW.loadEmail(dailyop_id,1);
+				$(div).unbind('click');
+				
+			});
+			
+			
+	
+		},
+		loadEmail:function(dailyop_id,page) {
+			
+			var div = $(".dailyop_media_item[dailyop_id="+dailyop_id+"]");
+			
+			//overlay the loading screen
+			$(div).prepend(EMOTW.loadingHtml).find('.emotw-loading-screen').css({
+				
+				"height":$(div).height()+"px"
+				
+			}).fadeIn('normal',function() { 
+				
+				$.post("/dailyops/ajax_emotw_paginator/"+dailyop_id+"/page:"+page,function(email_content) { 
+					
+					$(div).find(".emotw-loading-screen").fadeOut("normal",function() { 
+						
+						$(this).remove();
+						$(div).html(email_content);
+						
+					})
+					
+				});
+				
+			});
+			
+			
+			
+			
+		},
+		showContent:function() { 
+			
+			
+			
+		},
+		showLoading:function(dailyop_id,page) {
+			
+			
+			
+		},
+		loadNext:function(dailyop_id,page) {
+			
+			
+			
+		},
+		loadPrevious:function(dailyop_id,page) {
+			
+			
+			
+		}
+		
+		
+};
+
+
+
 function flashVideoWeb(ele,data,width,height) {
 	
 	var m = data['MediaFile'];
@@ -720,68 +807,6 @@ var CartWidget = {
 
 		
 };
-
-var EMOTW = {
-		
-		
-		bootstrapPost:function(div) {
-			
-			$(div).parent().unbind('click').css({
-				
-				"min-height":"396px"
-				
-			});
-	
-			$(div).click(function() { 
-				
-				$(this).html("");
-				
-				$(this).css({
-					
-					"position":"relative"
-					
-				});
-				
-				var dailyop_id = $(this).attr("dailyop_id");
-				
-				EMOTW.loadEmail(dailyop_id,1);
-				
-			});
-			
-			
-	
-		},
-		loadEmail:function(dailyop_id,page) {
-			
-			var div = $(".dailyop_media_item[dailyop_id="+dailyop_id+"]");
-			
-			
-			
-		},
-		showContent:function() { 
-			
-			
-			
-		},
-		showLoading:function(dailyop_id,page) {
-			
-			
-			
-		},
-		loadNext:function(dailyop_id,page) {
-			
-			
-			
-		},
-		loadPrevious:function(dailyop_id,page) {
-			
-			
-			
-		}
-		
-		
-};
-
 
 
 /*

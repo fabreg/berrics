@@ -664,11 +664,17 @@ class DailyopsController extends BerricsAppController {
 			"conditions"=>array(
 				"DailyopTextItem.dailyop_id"=>$dailyop_id
 			),
-			"order"=>array("DailyopTextItem.display_weight"=>"ASC")
+			"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+			"limit"=>1,
+			"contain"=>array(
+				"MediaFile"
+			)
 		
 		);
 		
-		$items = $this->paginate();
+		$item = $this->paginate("DailyopTextItem");
+		
+		$this->set(compact("item"));
 		
 		
 	}

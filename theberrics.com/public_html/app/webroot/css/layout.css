@@ -2171,3 +2171,19 @@ CANTEEN CART WIDGET THING
 	left:5px;
 	
 }
+
+/*
+emails of the weeks
+*/
+
+.emotw-loading-screen {
+	
+	display:none;
+	background-color:red;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	
+}
+
