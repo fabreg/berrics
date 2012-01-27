@@ -35,7 +35,7 @@
  */
 	if(isset($_GET['t']) && $_GET['t'] == 1) {
 		
-		Configure::write('debug', 2);
+		Configure::write('debug', 0);
 		
 	} else {
 		
