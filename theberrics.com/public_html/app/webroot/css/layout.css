@@ -2179,11 +2179,142 @@ emails of the weeks
 .emotw-loading-screen {
 	
 	display:none;
-	background-color:red;
+	background-color:#000;
 	width:100%;
 	position:absolute;
 	top:0px;
 	left:0px;
+	text-align:center;
+}
+
+.emotw-div {
+	
+	width:687px;
+	margin:auto;
+	
+	
+}
+
+.emotw-div h1 {
+
+	text-align:left;
+	text-indent:5px;
+	font-weight:bold;
+	font-size:24px;
+	font-family:'Arial';
+	padding:5px;
+	border-bottom:2px solid #666;
+	
+}
+
+.emotw-div h2 {
+
+	text-align:left;
+	text-indent:5px;
+	font-weight:bold;
+	font-size:16px;
+	font-family:'Arial';
+	padding:5px;
+	margin-bottom:4px;
+	font-style:italic;
+	
+}
+
+
+.emotw-div .emotw-container {
+	
+	background-image:url(/img/layout/dops/post-text-bg.png);
+	
+	margin-top:68px;
+	
+}
+
+.emotw-div .emotw-container-top {
+	
+	background-image:url(/img/layout/dops/post-text-top.png);
+	background-repeat:no-repeat;
+	margin-top:-68px;	
+	float:left;
+	padding-top:10px;
+	width:100%;
+	
+}
+
+.emotw-content {
+	
+	width:95%;
+	margin:auto;
+	
+}
+
+
+.emotw-content .p-content {
+	
+	text-align:left;
+	font-size:14px;
+	font-family:'Courier';
+	color:#333;	
+	
+}
+
+.emotw-content .p-content img {
+
+	margin:6px;	
+	
+}
+
+.emotw-content .p-content hr {
+
+	width:100%;
+	margin:0px;
+	margin-top:5px;
+	margin-bottom:5px;	
+	
+}
+
+.emotw-div .emotw-bottom {
+
+	background-image:url(/img/layout/dops/post-text-bottom.png);
+	background-repeat:no-repeat;
+	height:41px;	
+	
+}
+
+.emotw-div .paging-links {
+
+	text-align:center;	
+	
+}
+
+.emotw-div .paging-links .paging-link {
+
+	display:block;
+	width:143px;
+	height:44px;
+	line-height:44px;	
+	text-align:center;
+	color:#666;
+}
+
+.emotw-div .paging-links .next-link {
+
+	float:right;	
+	background-image:url(/img/layout/right-tab-button-bg.png);
+}
+
+.emotw-div .paging-links .prev-link {
+
+	float:left;	
+	background-image:url(/img/layout/left-tab-button-bg.png);
+}
+
+.emotw-div .paging-links .paging-info {
+
+	text-align:center;	
+	margin-left:150px;
+	margin-right:150px;
+	line-height:35px;
+	height:35px;
 	
 }
 

@@ -28,7 +28,9 @@ $img_dir = array(
 			<td valign='top'>
 				<?php 
 					echo $this->Form->input("DailyopTextItem.{$key}.heading");
+					echo $this->Form->input("DailyopTextItem.{$key}.from",array("class"=>"emotw-field"));
 					echo $this->Form->input("DailyopTextItem.{$key}.text_content"); 
+					echo $this->Form->input("DailyopTextItem.{$key}.reply",array("class"=>"emotw-field")); 
 				?>
 			</td>
 			<td valign='top' width='40%'>

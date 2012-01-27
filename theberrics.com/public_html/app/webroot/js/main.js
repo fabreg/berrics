@@ -447,7 +447,7 @@ function initMediaFileDiv() {
 
 var EMOTW = {
 		
-		loadingHtml:"<div class='emotw-loading-screen'>Loading</div>",
+		loadingHtml:"<div class='emotw-loading-screen'>LOADING EMAIL <br /><br /><img src='/img/layout/ajax-loader.gif' border='0'/></div>",
 		bootstrapPost:function(div) {
 			
 			$(div).parent().unbind('click').css({
@@ -488,12 +488,23 @@ var EMOTW = {
 				
 			}).fadeIn('normal',function() { 
 				
+				$(div).find(".emotw-div").remove();
+				
 				$.post("/dailyops/ajax_emotw_paginator/"+dailyop_id+"/page:"+page,function(email_content) { 
 					
 					$(div).find(".emotw-loading-screen").fadeOut("normal",function() { 
 						
 						$(this).remove();
-						$(div).html(email_content);
+						$(div).html(email_content).find(".paging-link").each(function() {
+							
+							 $(this).click(function() { 
+								 
+								 EMOTW.loadEmail($(this).attr("dailyop_id"),$(this).attr("page"));
+								 
+								 
+							 });
+							
+						});
 						
 					})
 					

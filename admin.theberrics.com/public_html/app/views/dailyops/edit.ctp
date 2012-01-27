@@ -70,8 +70,34 @@ $(document).ready(function() {
 		dupe_uri_check();
 
 	});
+
+	initEmailTextBlocks();
+
+	$("#DailyopDailyopSectionId").change(function() { 
+
+
+		initEmailTextBlocks();
+
+	});
+	
 	
 });
+
+function initEmailTextBlocks() {
+
+	if($("#DailyopDailyopSectionId").val() == 15) {
+
+		$(".emotw-field").show();
+		
+
+	} else {
+
+		$(".emotw-field").hide();
+		
+	}
+
+	
+}
 
 function loadMetas() {
 
