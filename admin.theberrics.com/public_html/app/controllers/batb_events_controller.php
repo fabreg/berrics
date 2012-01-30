@@ -230,7 +230,7 @@ class BatbEventsController extends AdminAppController {
 		
 		return $this->flash("Updated Winners Successfully",array("action"=>"view",$this->data['BatbMatch']['batb_event_id']),3);
 		
-		die(pr($this->data));
+		//die(pr($this->data));
 		
 		
 	}
