@@ -118,7 +118,7 @@ class PizzaPartyController extends BerricsAppController {
 		
 		//id for the nyjah pizza party
 		
-		$id = 2;
+		$id = 3;
 		
 		///check to see if the person has already entered and if they didn't let's insert a new contest entry row
 		
