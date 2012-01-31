@@ -127,6 +127,8 @@ class BatbEventsController extends AdminAppController {
 		
 		$this->BatbMatch->id = $this->data['BatbMatch']['id'];
 		
+		//die(pr($this->data));
+		
 		if($this->BatbMatch->save($this->data)) {
 			
 			$this->Session->setFlash("Players have been updated successfully!");

@@ -10,10 +10,23 @@ $(document).ready(function()  {
 var UserSearch = {
 		
 	selectedCallBack:null,
+	selectedCallBackArgs:new Array(),
 	openSearch:function() { 
 		
 		this.selectedCallBack = arguments[0] || null;
 	
+		if(arguments.length>1) {
+			
+			Array.prototype.shift.call(arguments);
+			
+			this.selectedCallBackArgs = arguments;
+			
+		} else {
+		
+			this.selectedCallBackArgs = new Array();
+			
+		}
+		
 		$('body').prepend("<div id='user-modal'><div id='user-modal-content'></div></div>");
 		
 		$.get("/users/users_modal_search",function(d) {  $("#user-modal-content").html(d);   });
@@ -50,9 +63,12 @@ var UserSearch = {
 	
 		var fn = window[this.selectedCallBack];
 		
+		Array.prototype.unshift.call(this.selectedCallBackArgs, user);
+		
+		
 		if(typeof fn === 'function') {
 			
-			fn.call(this,user);
+			fn.apply(this,this.selectedCallBackArgs);
 			
 		} else {
 		

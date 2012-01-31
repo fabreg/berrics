@@ -30,21 +30,9 @@ $(document).ready(function() {
 
 	$("#BatbMatchPlayerUpdateViewForm").submit(function() { 
 
-		var player1 = $(this).find("#BatbMatchPlayer1UserId option:selected").text();
-		var player2 = $(this).find("#BatbMatchPlayer2UserId option:selected").text();
 
-		if(player1.length <= 0 || player2.length <= 0) {
-
-			alert("It works better when you actually select 2 guys to play DUHUHUHU!");
-			return false;
-			
-		} else {
-
-			
-			return confirm("Are you sure you want to select \n================\n"+player1+" \nVS. \n"+player2+" ?");
-			
-			
-		}
+		return confirm("Are you sure you want to select \n================\n"+player1+" \nVS. \n"+player2+" ?");
+		
 		
 		return false;
 		
@@ -84,6 +72,17 @@ $(document).ready(function() {
 	
 });
 
+
+function userSelected(user,field) {
+
+	var ele = $("#"+field);
+
+	$(ele).val(user.User.id);
+
+	$(ele).parent().find("."+field).html(user.User.first_name+" "+user.User.last_name);
+
+	UserSearch.closeModal();
+}
 
 
 
@@ -168,10 +167,28 @@ $(document).ready(function() {
 				//are we in the top bracket? If so the let's check to see if there has been a player selected
 					if($top_bracket) {
 						
-						//check to see if player 1 have been selected
-						$player1_html = "<div>".$this->Form->select("BatbMatch.player1_user_id",$userSelect,$match['BatbMatch']['player1_user_id'],array("empty"=>true,"style"=>"width:40%;"))."</div>";
-						$player2_html = "<div>".$this->Form->select("BatbMatch.player2_user_id",$userSelect,$match['BatbMatch']['player2_user_id'],array("empty"=>true,"style"=>"width:40%;"))."</div>";
+						//name tokens
+						$player1_name = $player2_name = "";
+						if(isset($match['Player1User']['id'])) {
+							
+							
+							$player1_name = $match['Player1User']['first_name']." ".$match['Player1User']['last_name'];
+							
+						}
 						
+						
+						if(isset($match['Player2User']['id'])) {
+							
+							$player2_name = $match['Player2User']['first_name']." ".$match['Player2User']['last_name'];
+							
+							
+						}
+						
+						//check to see if player 1 have been selected
+						//$player1_html = "<div>".$this->Form->select("BatbMatch.player1_user_id",$userSelect,$match['BatbMatch']['player1_user_id'],array("empty"=>true,"style"=>"width:40%;"))."</div>";
+						//$player2_html = "<div>".$this->Form->select("BatbMatch.player2_user_id",$userSelect,$match['BatbMatch']['player2_user_id'],array("empty"=>true,"style"=>"width:40%;"))."</div>";
+						$player1_html = "<div><div class='Player1UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."'>{$player1_name}</div><a href=\"javascript:UserSearch.openSearch('userSelected','Player1UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."')\">Click Here to Select Player 1</a>".$this->Form->input("BatbMatch.player1_user_id",array("type"=>"hidden","id"=>"Player1UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']))."</div>";
+						$player2_html = "<div><div class='Player2UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."'>{$player2_name}</div><a href=\"javascript:UserSearch.openSearch('userSelected','Player2UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."')\">Click Here to Select Player 2</a>".$this->Form->input("BatbMatch.player2_user_id",array("type"=>"hidden","id"=>"Player2UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']))."</div>";
 						//have we already completed the top brackets games?
 						//if so then we can no longer update the players in the match
 						if(!empty($match['BatbMatch']['match_winner_user_id'])) {
@@ -183,6 +200,8 @@ $(document).ready(function() {
 							$player_submit = $this->Form->submit("Update");
 							
 						}
+						
+						
 						
 						
 					} else {
@@ -237,8 +256,12 @@ $(document).ready(function() {
 						
 						//first we gotta create an array for a select list of the player in the current match
 						$winner_list = array();
-						$winner_list[$match['BatbMatch']['player1_user_id']] = $userSelect[$match['BatbMatch']['player1_user_id']];
-						$winner_list[$match['BatbMatch']['player2_user_id']] = $userSelect[$match['BatbMatch']['player2_user_id']];
+						//$winner_list[$match['BatbMatch']['player1_user_id']] = $userSelect[$match['BatbMatch']['player1_user_id']];
+						//$winner_list[$match['BatbMatch']['player2_user_id']] = $userSelect[$match['BatbMatch']['player2_user_id']];
+						
+						$winner_list[$match['Player1User']['id']] = $match['Player1User']['first_name']." ".$match['Player1User']['last_name'];
+						$winner_list[$match['Player2User']['id']] = $match['Player2User']['first_name']." ".$match['Player2User']['last_name'];
+						
 						
 						$winning_col  = "<div><strong>RPS Winner:</strong> ".$this->Form->select("BatbMatch.rps_winner_user_id",$winner_list,NULL,array("empty"=>true))."</div>";
 						$winning_col .= "<div><strong>Winning Skater:</strong> ".$this->Form->select("BatbMatch.match_winner_user_id",$winner_list,NULL,array("empty"=>true))."</div>";

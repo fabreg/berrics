@@ -23,29 +23,22 @@ class InstagramApi {
      public  $instagram = false;
      
      private function __construct() {
-     	
-     	
+     	     	
      	//self::$conf['redirect_uri'] = urlencode(self::$conf['redirect_uri']);
-     	
-     	
+
      	$this->instagram = new Instagram(self::$conf);
      	
      }
-     
-     
      
      public static function instance() {
      	
      	if(!self::$instance) {
      		
-     		
      		self::$instance = new self();
-     		
-     		
+     	
      	}
      	
      	return self::$instance;
-     	
      	
      }
      

@@ -60,17 +60,17 @@ class BatbEvent extends AppModel {
 			
 			$brackets = array();
 			
-			$contain = array();
+			$contain = array(
+				"Player1User",
+				"Player2User"
+			);
 			
 			if($videos) {
 				
-				$contain = array(
+					$contain[]="PreGameVideo";
+					$contain[]="BattleVideo";
+					$contain[]="PostGameVideo";
 				
-					"PreGameVideo",
-					"BattleVideo",
-					"PostGameVideo"
-				
-				);
 			} else if($posts) {
 				
 				$contain = array(
