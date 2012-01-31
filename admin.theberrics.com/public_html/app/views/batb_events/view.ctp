@@ -184,11 +184,13 @@ function userSelected(user,field) {
 							
 						}
 						
+						//die(pr($event));
+						
 						//check to see if player 1 have been selected
 						//$player1_html = "<div>".$this->Form->select("BatbMatch.player1_user_id",$userSelect,$match['BatbMatch']['player1_user_id'],array("empty"=>true,"style"=>"width:40%;"))."</div>";
 						//$player2_html = "<div>".$this->Form->select("BatbMatch.player2_user_id",$userSelect,$match['BatbMatch']['player2_user_id'],array("empty"=>true,"style"=>"width:40%;"))."</div>";
-						$player1_html = "<div><div class='Player1UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."'>{$player1_name}</div><a href=\"javascript:UserSearch.openSearch('userSelected','Player1UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."')\">Click Here to Select Player 1</a>".$this->Form->input("BatbMatch.player1_user_id",array("type"=>"hidden","id"=>"Player1UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']))."</div>";
-						$player2_html = "<div><div class='Player2UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."'>{$player2_name}</div><a href=\"javascript:UserSearch.openSearch('userSelected','Player2UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']."')\">Click Here to Select Player 2</a>".$this->Form->input("BatbMatch.player2_user_id",array("type"=>"hidden","id"=>"Player2UserId".$match['BatbMatch']['bracket_num'].$match['BatbMatch']['match_num']))."</div>";
+						$player1_html = "<div><div class='Player1UserId".$match['BatbMatch']['id']."'>{$player1_name}</div><a href=\"javascript:UserSearch.openSearch('userSelected','Player1UserId".$match['BatbMatch']['id']."')\">Click Here to Select Player 1</a>".$this->Form->input("BatbMatch.player1_user_id",array("type"=>"hidden","id"=>"Player1UserId".$match['BatbMatch']['id']))."</div>";
+						$player2_html = "<div><div class='Player2UserId".$match['BatbMatch']['id']."'>{$player2_name}</div><a href=\"javascript:UserSearch.openSearch('userSelected','Player2UserId".$match['BatbMatch']['id']."')\">Click Here to Select Player 2</a>".$this->Form->input("BatbMatch.player2_user_id",array("type"=>"hidden","id"=>"Player2UserId".$match['BatbMatch']['id']))."</div>";
 						//have we already completed the top brackets games?
 						//if so then we can no longer update the players in the match
 						if(!empty($match['BatbMatch']['match_winner_user_id'])) {
