@@ -41,7 +41,7 @@ class BatbEvent extends AppModel {
 		
 		$token = "batb_".$id."_".$videos."_".$posts;
 		
-		if(($event = Cache::read($token,"1min")) === false) {
+		if(($event = Cache::read($token,"1min")) === false || isset($_SERVER['DEVSERVER'])) {
 			
 			//lets get the general event deatils
 			$event = $this->find("first",array(
