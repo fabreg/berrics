@@ -33,9 +33,9 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	if(isset($_GET['t']) && $_GET['t'] == 1) {
+	if(isset($_GET['t']) && $_GET['t'] == 1 && isset($_SERVER['DEVSERVER'])) {
 		
-		Configure::write('debug', 0);
+		Configure::write('debug', 2);
 		
 	} else {
 		
