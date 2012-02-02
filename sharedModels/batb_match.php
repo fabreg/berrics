@@ -178,8 +178,6 @@ class BatbMatch extends AppModel {
 				//FINALS!!!!
 				$this->handleFinalMatch($match);
 			break;
-
-			break;
 			
 			case 0:
 				//just completed the thrid place match	

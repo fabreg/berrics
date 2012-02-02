@@ -1,0 +1,379 @@
+@CHARSET "UTF-8";
+
+#right_col {
+
+	display:none;
+
+}
+
+#left-col {
+
+	width:100%;
+
+}
+
+#batb5-bracket {
+	
+	width:1000px;	
+	margin:auto;
+	background-color:#e9e9e9;
+}
+
+#bracket {
+	
+	position:relative;	
+	height:500px;
+	background-image:url(/theme/battle-at-the-berrics-5/img/bracket-bg.png);
+	background-repeat:no-repeat;
+	
+}
+
+
+/*
+	Matches	
+*/
+.battle {
+
+	position:absolute;	
+	font-size:11px;
+	font-family:'Arial';
+	color:black;
+	width:115px;
+}
+
+.battle .spacer {
+
+	height:12px;	
+	
+}
+
+/* MikeMo Capaldi VS Lem Villemin */
+.match_5_1 {
+
+	top:3px;
+	left:0px;
+	text-align:right;
+}
+/* Jimmy Carlin VS Felipe Gustavo */
+.match_5_2 {
+
+	top:54px;
+	left:0px;
+	text-align:right;
+}
+/* Dennis Busenitz VS Wade Desarmo */
+.match_5_3 {
+
+	top:102px;
+	left:0px;
+	text-align:right;
+	
+	
+}
+/* Eric Koston VS Mark Appleyard */
+.match_5_4 {
+
+	top:153px;
+	left:0px;
+	text-align:right;
+	
+}
+/* Paul Rodriguez VS Danilo Cerezini */
+.match_5_5 {
+
+	top:214px;
+	left:0px;
+	text-align:right;
+	
+}
+/* Peter Ramondetta VS Rodrigo TX */
+.match_5_6 {
+
+	top:266px;
+	left:0px;
+	text-align:right;
+	
+}
+
+
+/* Tommy Sandoval VS Morgan Smith */
+.match_5_7 {
+
+	top:313px;
+	left:0px;
+	text-align:right;
+	
+}
+/* Tom Asta VS Alex Mizurov */
+.match_5_8 {
+
+	top:365px;
+	left:0px;
+	text-align:right;
+}
+/* Ishod Wair VS Shane O'neill */
+.match_5_9 {
+
+	top:3px;
+	right:0px;
+	
+}
+/* Davis Torgerson VS Sewa Kroetkov */
+.match_5_10 {
+
+	top:54px;
+	right:0px;
+	
+}
+/* Ronnie Creager VS Enrique Lorenzo */
+.match_5_11 {
+
+	top:102px;
+	right:0px;
+	
+}
+/* Cory Kennedy VS David Gonzalez */
+.match_5_12 {
+
+	top:153px;
+	right:0px;
+	
+}
+/* Chris Cole VS  Willow */
+.match_5_13 {
+
+	top:214px;
+	right:0px;
+	
+}
+/* Billy Marks VS Benny Fairfax */
+.match_5_14 {
+
+	top:266px;
+	right:0px;
+	
+}
+/* PJ Ladd VS Albert Nyberg */
+.match_5_15 {
+
+	top:313px;
+	right:0px;
+	
+}
+/* Torey Pudwill VS Luan Oliveira */
+.match_5_16 {
+
+	top:365px;
+	right:0px;
+	
+}
+/* MikeMo Capaldi VS Jimmy Carlin */
+.match_4_1 {
+
+	top:15px;
+	left:120px;
+	text-align:right;
+}
+.match_4_1 .spacer {
+
+	height:39px;	
+	
+}
+
+
+/* Dennis Busenitz VS Eric Koston */
+.match_4_2 {
+
+	top:114px;
+	left:120px;
+	text-align:right;
+	
+}
+
+.match_4_2 .spacer {
+
+	height:39px;
+		
+}
+
+/* Paul Rodriguez VS Rodrigo TX */
+.match_4_3 {
+
+	top:227px;
+	left:120px;
+	text-align:right;
+	
+}
+
+.match_4_3 .spacer {
+	
+	height:39px;
+	
+}
+/* Morgan Smith VS Alex Mizurov */
+.match_4_4 {
+
+	top:325px;
+	left:120px;
+	text-align:right;
+	
+}
+.match_4_4 .spacer {
+	
+	height:39px;	
+	
+}
+
+/* Shane O'neill VS Davis Torgerson */
+.match_4_5 {
+
+	top:15px;
+	right:120px;
+	
+}
+.match_4_5  .spacer {
+
+	height:39px;	
+	
+}
+
+/* Ronnie Creager VS Cory Kennedy */
+.match_4_6 {
+
+	top:114px;
+	right:120px;
+	
+}
+.match_4_6 .spacer {
+
+	height:39px;	
+	
+}
+
+/* Chris Cole VS Benny Fairfax */
+.match_4_7 {
+
+
+	top:227px;
+	right:120px;
+	
+}
+
+.match_4_7 .spacer {
+
+	height:39px;	
+	
+}
+
+/* PJ Ladd VS Luan Oliveira */
+.match_4_8 {
+
+	top:325px;
+	right:120px;
+	
+}
+.match_4_8 .spacer {
+
+	height:39px;	
+	
+}
+
+/* MikeMo Capaldi VS Eric Koston */
+.match_3_1 {
+
+	top:40px;
+	left:223px;
+	text-align:right;
+}
+.match_3_1 .spacer {
+
+	height:87px;	
+	
+}
+
+/* Rodrigo TX VS Morgan Smith */
+.match_3_2 {
+
+	top:252px;
+	left:223px;
+	text-align:right;
+	
+}
+.match_3_2 .spacer {
+
+	height:87px;	
+	
+}
+
+/* Davis Torgerson VS Ronnie Creager */
+.match_3_3 {
+
+	top:40px;
+	right:223px;
+	
+}
+.match_3_3 .spacer {
+
+	height:87px;	
+	
+}
+/* Chris Cole VS PJ Ladd */
+.match_3_4 {
+
+	top:252px;
+	right:223px;
+	
+}
+
+.match_3_4 .spacer {
+
+	height:87px;
+	
+}
+
+/* MikeMo Capaldi VS Morgan Smith */
+.match_2_1 {
+
+	top:90px;
+	left:330px;
+	text-align:right;
+	
+}
+.match_2_1 .spacer {
+
+	height:198px;	
+	
+}
+
+/* Davis Torgerson VS PJ Ladd */
+.match_2_2 {
+
+	top:90px;
+	right:330px;
+	
+}
+.match_2_2 .spacer {
+
+	height:198px;	
+	
+}
+/* Morgan Smith VS PJ Ladd */
+.match_1_1 {
+
+	top:162px;
+	left:400px;
+	text-align:center;
+	width:200px;
+}
+.match_1_1 .spacer {
+
+	height:52px;	
+	
+}
+/* MikeMo Capaldi VS Davis Torgerson */
+.match_0_1 {
+	display:none;
+	top:0px;
+	left:300px;
+	
+}
