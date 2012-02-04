@@ -17,6 +17,9 @@
 	width:1000px;	
 	margin:auto;
 	background-color:#e9e9e9;
+	color:#333;
+	font-family:'Arial';
+	
 }
 
 #bracket {
@@ -26,6 +29,155 @@
 	background-image:url(/theme/battle-at-the-berrics-5/img/bracket-bg.png);
 	background-repeat:no-repeat;
 	
+}
+
+#batb5-voting {
+
+	padding:5px;	
+	
+}
+
+#batb5-voting a {
+
+	color:black;	
+	
+}
+
+#batb5-voting .fb-button-div {
+	
+		text-align:center;
+	
+}
+
+#batb5-voting .voting-box {
+
+	float:right;	
+	width:49%;
+	border:1px solid #999;
+	
+}
+
+#batb5-voting .voting-box .heading {
+
+	text-align:center;
+	border-bottom:1px solid #999;
+	padding:4px;	
+	font-weight:bold;
+	
+}
+
+#batb5-voting .voting-box:first-child {
+	
+	float:left;	
+
+}
+
+#batb5-voting .voting-box .inner {
+
+	padding:5px;	
+	
+}
+
+#batb5-voting .voting-box .name {
+
+	width:40%;
+	float:right;	
+	text-align:center;
+	font-size:22px;
+	
+}
+#batb5-voting .voting-box .name:first-child {
+	
+	float:left;	
+	
+}
+
+#batb5-voting .voting-box .vs {
+
+	margin-left:41%;
+	margin-right:41%;
+	text-align:center;
+	line-height:42px;
+	
+}
+
+#batb5-voting .voting-box .voting-form {
+
+		
+	
+}
+
+#batb5-voting .voting-box .voting-form .submit {
+	
+	padding:4px;
+	text-align:center;	
+	
+}
+
+#batb5-voting .voting-box .voting-form .vote-heading {
+
+	border:1px solid #999;
+	border-left: none;
+	border-right: none;
+	text-align:center;	
+	padding:4px;
+	font-weight:bold;
+}
+
+#batb5-voting .voting-box .voting-form label {
+	
+	width:40%;
+	float:left;
+	display:block;
+	font-weight:bold;
+	font-size:14px;
+	text-indent:4px;
+	
+}
+#batb5-voting .voting-box .voting-form .select {
+	
+	border-bottom:1px solid #999;	
+	padding:3px;
+}
+
+#batb5-voting .voting-box .voting-form .select:last-child {
+	
+	border:none;	
+	
+}
+
+#batb5-voting .voting-box .voting-form .select select {
+
+	width:200px;	
+	
+}
+
+#batb5-voting .voting-box .voting-form .result-heading {
+	
+	text-align:center;	
+	
+	border-bottom:1px solid #999;
+	padding:4px;
+	
+}
+
+#batb5-voting .voting-box .voting-form .result {
+
+	line-height:22px;
+		
+	
+}
+
+#stats-summary {
+
+		
+	
+}
+
+#stats-summary .inner {
+	
+	padding:5px;	
+		
 }
 
 

@@ -24,17 +24,25 @@ $this->Html->css(array("section"),"stylesheet",array("inline"=>false))
 		Rules
 	</div>
 	<div id='batb5-voting'>
-		<div>
-			Voting Box 1
-		</div>
-		<div>
-			Voting Box 2
-		</div>
+		<?php 
+			echo $this->element("voting-box",array("match"=>$featured[0],"battle_number"=>1));
+			echo $this->element("voting-box",array("match"=>$featured[1],"battle_number"=>2));
+		?>
+		<div style='clear:both;'></div>
+	</div>
+	<?php if(empty($profile['UserProfile']['shoe_size']) || empty($profile['UserProfile']['shirt_size'])): ?>
+	<div id='batbox-form'>
+		BATBOX GIVEAWAY
+	</div>
+	<?php endif; ?>
+	<div id='stats-summary'>
+	
+	
 	</div>
 	<pre>
 	<?php	
 	
-		print_r($event);
+		print_r($featured);
 	
 	?>
 	</pre>

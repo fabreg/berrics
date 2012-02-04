@@ -120,17 +120,23 @@ class TesterController extends BerricsAppController {
 		$this->loadModel("User");
 		
 		$q = $this->User->query(
-			"select u.email,p.geo_region_name,p.geo_city_name from users u
-			left join user_profiles p ON (p.user_id = u.id)
-			where p.geo_region_name like 'calif%' and p.geo_city_name != 'san francisco'
-			and email != 'john@theberrics.com' and email != 'john.hardy@me.com'
-			limit 75
+			"SELECT * FROM 
+			users `User`
+			LEFT JOIN user_profiles `UserProfile` ON UserProfile.user_id = User.id
+			WHERE User.id IN (
+			SELECT user_id FROM user_contest_entries where user_contest_id = 3
+			) AND UserProfile.geo_region_name = 'California'
+			AND User.email NOT IN (
+			'
+skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc007@yahoo.com,greenjay84@yahoo.com,samuelreguerra@yahoo.com,stoneskull11@yahoo.com,christiangurule@yahoo.com,joseescobedo57@yahoo.com,kruxskater55@aol.com,autocadesigns@yahoo.com,penguinsact@yahoo.com,bryant24chang@yahoo.com,dboysk8metal@gmail.com,sk8erjy@cox.net,steveberra@theberrics.com,wolfman4991@att.net,zeroactive05@gmail.com,randomidity7@yahoo.com,guesswho@thekayostore.com,bustacap29@yahoo.com,kjcraig77@yahoo.com,ivalle1991@yahoo.com,wassupskater@aol.com,al.eaton@comcast.net,corbinwaltz@aol.com,giuseppestephens@yahoo.com,chrisiskoala@aim.com,wasadee@aim.com,themightygrant@gmail.com,jackson_deloach@yahoo.com,robertkoston@yahoo.com,dillpill879@hotmail.com,maryhite@hotmail.com,spitfire4lyfe@hotmail.com,mothepro2009@live.com,carlosgarcia911@yahoo.com,joshee5919@aol.com,juliusayala@gmail.com,jcflores@linkline.com,kylesweett@yahoo.com,danhalen96@gmail.com,santamonica36@aol.com,piratesteez@gmail.com,cheder04@yahoo.com,connord3@hotmail.com,etserrano@hotmail.com,Brokenspindles@earthlink.net,erikgllgs@yahoo.com,itunes41@aim.com,facebook@shaolinux.org,pgarc2@yahoo.com,gonzalez.frank@yahoo.com,delcid.eric@yahoo.com,justinahorvath@yahoo.com,bmessinger@ymail.com,power_Of_da_w4zn@yahoo.com,ianlittleworth@gmail.com,hardcore72492@yahoo.com,hankster98@mac.com,cheesybeaner@gmail.com,geannpark@yahoo.com,Pjaeyi@gmail.com,topeteu05@yahoo.com,ceasarsonic@hotmail.com,mra123@gmail.com,luckyshot919@aol.com,tony2yankee@yahoo.com,stevenswanson@live.com,Benmaldonadoii@gmail.com,Petersvn@gmail.com,shawnsandfer@gmail.com,tomgammage@hotmail.com,erik7833@yahoo.com,josetarro14@yahoo.com'
+			) LIMIT 75;
 			"
 		);
 		
+		
 		foreach($q as $v) {
 			
-			echo $v['u']['email'].",";
+			echo $v['User']['email'].",";
 			
 		}
 		die();
