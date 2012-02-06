@@ -73,7 +73,7 @@ body {
 #gc-trailer {
 	background-repeat:no-repeat;
 	background-position:top center;
-background-image:url(/img/splash/dc/cole-s-bg.jpg);
+	background-image:url(/img/splash/dc/cole-s-bg.jpg);
 }
 
 #enter {
@@ -139,6 +139,6 @@ background-image:url(/img/splash/dc/cole-s-bg.jpg);
 	<div style='clear:both; height:10px;'></div>
 
 <div style='text-align:center;' id="enter">
-<div><a href='/dailyops' style='color:black; font-size:22px;'>ENTER THE BERRICS</a></div>
+<div><a href='/dailyops' style='font-size:28px;'>ENTER THE BERRICS</a></div>
 </div>
 </div>
