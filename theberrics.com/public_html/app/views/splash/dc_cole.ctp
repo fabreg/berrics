@@ -44,13 +44,8 @@ $(document).ready(function() {
 	}).find(".overlay,.play-button").remove();
 
 
-	$("div[media_file_id] img").attr({"src":"/img/splash/dc/cole-s-post-large.jpg"});
-	
-	setTimeout(function() { 
+	$("div[media_file_id] img").attr({"src":"/img/splash/dc/cole-s-post-large.jpg"}).css({ "padding-left":"1px" });
 
-		$("#post,#enter").fadeIn("slow");
-
-	},1500);
 
 	
 });
@@ -60,10 +55,9 @@ $(document).ready(function() {
 body {
 
 	background-image:none;
-	background-repeat:no-repeat;
-	background-position:top center;
+
 	background-color:black;
-	background-image:url(/img/splash/dc/cole-s-bg.jpg);
+	background-image:url(/img/splash/dc/cole-s-bg-repeat.jpg);
 	
 }
 #post {
@@ -75,11 +69,18 @@ body {
 	padding-top:15px;
 	text-align:center;
 }
+
+#gc-trailer {
+	background-repeat:no-repeat;
+	background-position:top center;
+background-image:url(/img/splash/dc/cole-s-bg.jpg);
+}
+
 #enter {
 
 	text-align:center;
-	display:none;
-
+	color:#fff;
+	
 }
 
 #enter a {
