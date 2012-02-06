@@ -14,7 +14,7 @@ class SplashRoute extends CakeRoute {
 		
 		$news = false;
 
-		if(time()>=(strtotime("2011-08-14")) && in_array(strtoupper(date("D")),array("SUN","MON"))) {
+		if(time()>=(strtotime("2011-08-14")) && in_array(strtoupper(date("D")),array("SUN"))) {
 			
 			$news = true;
 			
