@@ -340,6 +340,22 @@ class SplashController extends BerricsAppController {
 		
 	}
 	
+	public function dc_cole() {
+		
+		$this->layout = "empty";
+		
+		
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4529
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	public function ross() {
 		
 		$this->layout = "empty";
