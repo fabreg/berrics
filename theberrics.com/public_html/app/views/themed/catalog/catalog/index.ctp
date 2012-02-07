@@ -78,7 +78,7 @@ function setImage(display_weight) {
 
 	document.location.hash = display_weight;
 
-	$(document).scrollTop(1352);
+	//$(document).scrollTop(110);
 
 }
 
@@ -114,6 +114,37 @@ function initHovers() {
 		}
 			
 	);
+
+	$('.left-arrow').hover(
+
+			function() { 
+
+				if($(this).hasClass('disabled')) {
+
+				} else {
+
+					$(this).addClass('left-arrow-over');
+
+				}
+				
+				
+				
+			},
+			function() { 
+
+				if($(this).hasClass('disabled')) {
+
+				} else {
+
+
+					$(this).removeClass('left-arrow-over');
+			
+					
+				}
+				
+			}
+				
+		);
 	
 }
 </script>
