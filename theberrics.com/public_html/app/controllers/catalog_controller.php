@@ -18,6 +18,27 @@ class CatalogController extends BerricsAppController {
 	
 	public function index() {
 		
+		$this->loadModel("Dailyop");
+		
+		//get the post
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4533
+		
+		));
+		
+		$this->set(compact("post"));
+		
+	}
+	
+	private function getNextImage() {
+		
+		
+		
+	}
+	
+	private function buildThumbGrid() {
+		
 		
 		
 	}
