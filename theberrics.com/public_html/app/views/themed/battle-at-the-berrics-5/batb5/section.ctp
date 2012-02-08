@@ -30,7 +30,7 @@ $this->Html->css(array("section"),"stylesheet",array("inline"=>false))
 			<div class='rules'>
 				Place your prediction on the upcoming battles listed below.<br />
 				Your prediction will be saved and your score will be calculated at the end of each battle.<br />
-							- Scoring is as follows...
+				- Scoring is as follows...
 				- RO-SHAM-BO WINNER = 1 Point
 				- BATTLE WINNER = 10 Points
 				- WINNER'S FINAL LETTERS = 15 Points
