@@ -152,7 +152,9 @@ function initHovers() {
 <div id='catalog'>
 	<div id='catalog-heading'>
 		<img src='/theme/catalog/img/catalog-heading.jpg' border='0'/>
-		</div>
+		<br />
+		Contact <a href="mailto:apparel@theberrics.com">apparel@theberrics.com</a> for more info
+	</div>
 	<div id='tile-view-wrapper'>
 		
 		<div id='tile-view'>
