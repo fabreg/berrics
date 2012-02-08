@@ -388,18 +388,18 @@ class SplashController extends BerricsAppController {
 		switch(date("Y-m-d")) {
 			
 
-			case "2011-02-08":
-
-				die("fuck");
+			case "2012-02-08":
+				$post_id = 4537;
+				$part = "PART 2";
+				
 				break;
-			case "2011-02-09":
+			case "2012-02-09":
 				$post_id = 4538;
 				$part = "PART 3";
 				break;
 
 		}
-						$post_id = 4537;
-				$part = "PART 2";
+						
 		$post = $this->Dailyop->returnPost(array(
 		
 			"Dailyop.id"=>$post_id
