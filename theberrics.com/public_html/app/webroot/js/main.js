@@ -78,6 +78,19 @@ $(document).ready(function() {
 	
 	DailyopsSlideShow.init();
 	
+	//yn3 date math
+	var date = new Date("March 15, 2012");
+	var now = new Date();
+	var diff = date.getTime() - now.getTime();
+	var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+	
+	//younited nations 3 top banner
+	$("#yn3-top-banner").click(function() { 
+		
+		document.location.href = "/younited-nations-3"
+		
+	}).append("<div class='days'>"+days+"</div>");
+	
 });
 
 function initTopNav() {

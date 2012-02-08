@@ -73,6 +73,27 @@ TOP BANNER
 	top:5px;
 	
 }
+#yn3-top-banner {
+
+	height:90px;	
+	background-image:url(/theme/younited-nations-3/img/yn3-top-banner.jpg);
+	position:relative;
+	background-position:center center;
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+#yn3-top-banner .days {
+
+	position:absolute;
+	top:59px;
+	left:20px;
+	color:black;
+	font-family:'Arial';
+	font-weight:bold;
+	font-size:24px;	
+	
+	
+}
 
 /**
 HEADER NAVIATION BAR

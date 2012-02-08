@@ -382,13 +382,34 @@ class SplashController extends BerricsAppController {
 		
 		$this->loadModel("Dailyop");
 		
+		$post_id = 4536;
+		$part = "PART 1";
+		
+		switch(date("Y-m-d")) {
+			
+
+			case "2011-02-08":
+				$post_id = 4537;
+				$part = "PART 2";
+			case "2011-02-09":
+				$post_id = 4538;
+				$part = "PART 3";
+				break;
+			
+			case "2011-02-07":
+			default:
+				$post_id = 4536;
+				$part = "PART 1";
+				break;
+		}
+		
 		$post = $this->Dailyop->returnPost(array(
 		
-			"Dailyop.id"=>4536
+			"Dailyop.id"=>$post_id
 		
 		),1);
 		
-		$this->set(compact("post"));
+		$this->set(compact("post","part"));
 		
 	}
 	

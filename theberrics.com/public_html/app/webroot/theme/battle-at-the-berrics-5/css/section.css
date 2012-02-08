@@ -12,28 +12,89 @@
 
 }
 
+#body-container {
+
+	margin-top:-50px;	
+	
+}
+
 #batb5-bracket {
 	
 	width:1000px;	
 	margin:auto;
-	background-color:#e9e9e9;
+	background-color:#ccc;
+	background-image:url(/theme/battle-at-the-berrics-5/img/bracket-bg.jpg);
 	color:#333;
 	font-family:'Arial';
+	
+}
+
+#batb5-bracket .top-spacer {
+
+	height:153px;	
+	
+}
+
+#batb5-bracket .main-heading {
+	
+	height:112px;
+	background-image:url(/theme/battle-at-the-berrics-5/img/heading.jpg);
 	
 }
 
 #bracket {
 	
 	position:relative;	
-	height:500px;
-	background-image:url(/theme/battle-at-the-berrics-5/img/bracket-bg.png);
+	height:445px;
+
+	
+}
+
+#batb5-bracket .bracket-bg {
+	
+background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
+	
 	background-repeat:no-repeat;
+	
+}
+
+#batb5-prediction-rules {
+	
+	background-color:#1e2128;		
+	
+	
+}
+
+#batb5-prediction-rules .left-col {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/rules-header.jpg);
+	background-repeat:no-repeat;
+	background-position:right top;
+	float:left;
+	width:690px;
+	
+	color:#f0f0f0;
+	
+}
+
+#batb5-prediction-rules .rules {
+
+	margin-top:95px;
+	font-size:14px;	
+	margin-left:20px;
+}
+
+#batb5-prediction-rules .right-col {
+	
+	float:right;
+	width:310px;
 	
 }
 
 #batb5-voting {
 
-	padding:5px;	
+	padding:10px;	
+	background-color:#1e2128;
 	
 }
 
@@ -52,15 +113,16 @@
 #batb5-voting .voting-box {
 
 	float:right;	
-	width:49%;
-	border:1px solid #999;
+	width:48.2%;
+	padding:5px;
+	background-color:#772f26;
 	
 }
 
 #batb5-voting .voting-box .heading {
 
 	text-align:center;
-	border-bottom:1px solid #999;
+	
 	padding:4px;	
 	font-weight:bold;
 	
@@ -74,13 +136,23 @@
 
 #batb5-voting .voting-box .inner {
 
-	padding:5px;	
+	background-color:white;
+	
+}
+
+#batb5-voting .name-wrapper {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/vs-icon.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	height:75px;
+	border-bottom:5px solid #772f26;
 	
 }
 
 #batb5-voting .voting-box .name {
 
-	width:40%;
+	width:45%;
 	float:right;	
 	text-align:center;
 	font-size:22px;
@@ -97,7 +169,7 @@
 	margin-left:41%;
 	margin-right:41%;
 	text-align:center;
-	line-height:42px;
+	
 	
 }
 
@@ -116,9 +188,7 @@
 
 #batb5-voting .voting-box .voting-form .vote-heading {
 
-	border:1px solid #999;
-	border-left: none;
-	border-right: none;
+	border-bottom:5px solid #772f26;
 	text-align:center;	
 	padding:4px;
 	font-weight:bold;
@@ -126,29 +196,25 @@
 
 #batb5-voting .voting-box .voting-form label {
 	
-	width:40%;
+	width:50%;
 	float:left;
 	display:block;
-	font-weight:bold;
-	font-size:14px;
-	text-indent:4px;
 	
+	font-size:18px;
+	padding-right:10px;
+	text-align:right;
 }
 #batb5-voting .voting-box .voting-form .select {
 	
-	border-bottom:1px solid #999;	
-	padding:3px;
+	border-bottom:2px dashed #772f26;
+	padding:6px;
 }
 
-#batb5-voting .voting-box .voting-form .select:last-child {
-	
-	border:none;	
-	
-}
+
 
 #batb5-voting .voting-box .voting-form .select select {
 
-	width:200px;	
+	width:185px;	
 	
 }
 
@@ -158,7 +224,7 @@
 	
 	border-bottom:1px solid #999;
 	padding:4px;
-	
+
 }
 
 #batb5-voting .voting-box .voting-form .result {

@@ -135,7 +135,7 @@ font-family:'Arial';
 	<div class='heading'>
 		<img src='/img/splash/vans/header.jpg' border='0' /><br /><img src='/img/splash/vans/stage4.gif' border='0'/>
 	</div>
-	<div class='part'>PART 1</div>
+	<div class='part'><?php echo $part; ?></div>
 	<div class='vans-post'>
 		<?php 
 			echo $this->element("/dailyops/post-bit",array("dop"=>$post));

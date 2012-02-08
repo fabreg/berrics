@@ -18,6 +18,10 @@
 					<div id='top-widget'>
 						<?php if($this->theme == "canteen"): ?>
 							<?php echo $this->element("canteen/cart-widget"); ?>
+						<?php else: ?>
+						<div id='yn3-top-banner'>
+						
+						</div>
 						<?php endif; ?>
 					</div>
 					</div>
