@@ -73,7 +73,7 @@ TOP BANNER
 	top:5px;
 	
 }
-#yn3-top-banner {
+#yn3-top-top-banner {
 
 	height:90px;	
 	background-image:url(/theme/younited-nations-3/img/yn3-top-banner.jpg);
@@ -82,7 +82,7 @@ TOP BANNER
 	background-repeat:no-repeat;
 	cursor:pointer;
 }
-#yn3-top-banner .days {
+#yn3-top-top-banner .days {
 
 	position:absolute;
 	top:59px;

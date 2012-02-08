@@ -85,7 +85,7 @@ $(document).ready(function() {
 	var days = Math.floor(diff / (1000 * 60 * 60 * 24));
 	
 	//younited nations 3 top banner
-	$("#yn3-top-banner").click(function() { 
+	$("#yn3-top-top-banner").click(function() { 
 		
 		document.location.href = "/younited-nations-3"
 		
