@@ -221,16 +221,44 @@ background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
 #batb5-voting .voting-box .voting-form .result-heading {
 	
 	text-align:center;	
-	
-	border-bottom:1px solid #999;
-	padding:4px;
+	line-height:22px;
+	border-bottom:2px dashed #772f26;
+	padding:5px;
+	font-weight:bold;
 
 }
 
 #batb5-voting .voting-box .voting-form .result {
 
 	line-height:22px;
-		
+	border-bottom:2px dashed #772f26;
+	padding:5px;
+}
+
+/*
+VOTING BUTTONS
+*/
+#batb5-voting .voting-box .submit input {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/submit-button.jpg);
+	width:191px;
+	height:31px;
+	border:none;
+	background-color:transparent;
+	text-indent:-10000px;
+	
+}
+
+#batb5-voting .voting-box .fb-button-div {
+
+	padding:5px;	
+	
+}
+
+#batb5-voting .voting-box .tweet-button-div {
+
+	text-align:center;
+	padding:5px;	
 	
 }
 

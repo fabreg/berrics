@@ -127,7 +127,7 @@ class Batb5Controller extends DailyopsController {
 			
 			//insert the vote
 			$this->data['BatbVote']['user_id'] = $this->Session->read("Auth.User.id");
-			$this->data['BatbVote']['babt_event_id'] = $this->event_id;
+			$this->data['BatbVote']['batb_event_id'] = $this->event_id;
 			
 			if($this->BatbVote->save($this->data)) {
 				
