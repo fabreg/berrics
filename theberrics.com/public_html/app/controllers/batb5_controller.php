@@ -51,17 +51,46 @@ class Batb5Controller extends DailyopsController {
 		$this->setFeaturedMatches($event);
 		
 		//get and set the users profile
-		$this->loadModel("UserProfile");
-		$profile = $this->UserProfile->find("first",array(
+		if($this->Session->check("Auth.User.id")) {
+			
+				
+				$this->loadModel("UserProfile");
+				$profile = $this->UserProfile->find("first",array(
+							
+								"conditions"=>array(
+									"UserProfile.user_id"=>$this->Session->read("Auth.User.id")
+								),
+								"contain"=>array()
+							
+							));
+				$this->set(compact("profile"));
+			
+			
+		}
+		
+		//set the posts
+		$this->setPosts($event);
 					
-						"conditions"=>array(
-							"UserProfile.user_id"=>$this->Session->read("Auth.User.id")
-						),
-						"contain"=>array()
-					
-					));
-		$this->set(compact("profile"));
-					
+	}
+	
+	public function setPosts($event) {
+		
+		$posts = array();
+		
+		//check to see if this was a bracket click	
+		if(isset($this->params['named']['battle']) && !empty($this->params['named']['battle'])) {
+			
+			//match id
+			$match_id = base64_decode($this->params['named']['battle']);
+
+			
+			
+		} elseif(!empty($this->params['named'][''])) {
+			
+			
+			
+		}
+		
 	}
 	
 	
@@ -144,12 +173,7 @@ class Batb5Controller extends DailyopsController {
 		
 		
 	}
-	
-	private function setPosts() {
-		
-		
-		
-	}
+
 	
 	
 }

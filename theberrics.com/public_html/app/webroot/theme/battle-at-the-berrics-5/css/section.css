@@ -84,6 +84,19 @@ background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
 	margin-left:20px;
 }
 
+#batb5-prediction-rules .rules ul {
+	
+	padding:0px;
+	margin:5px;
+	
+}
+
+#batb5-prediction-rules .rules ul li {
+
+	list-style:'bullet';
+	
+}
+
 #batb5-prediction-rules .right-col {
 	
 	float:right;
@@ -233,6 +246,7 @@ background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
 	line-height:22px;
 	border-bottom:2px dashed #772f26;
 	padding:5px;
+	
 }
 
 /*
@@ -275,6 +289,51 @@ VOTING BUTTONS
 }
 
 
+.user-credentials {
+
+		padding:10px;	
+	background-color:#1e2128;
+	text-align:center;
+	font-size:11px;
+	font-style:italic;
+	color:white;	
+	
+}
+
+#lrg-300-250 {
+	
+	width:300px;
+	height:250px;
+	padding-top:10px;	
+	
+}
+
+#bottom-ads {
+
+	width:728px;
+	margin:auto;
+	margin-top:15px;
+	
+}
+
+#downloads {
+
+	position:absolute;
+	top:385px;
+	left:440px;
+	text-align:center;	
+	color:#333;
+	font-size:14px;
+	
+}
+
+#downloads .links a {
+	
+	color:black;
+	font-size:13px;
+}
+
+
 /*
 	Matches	
 */
@@ -285,6 +344,16 @@ VOTING BUTTONS
 	font-family:'Arial';
 	color:black;
 	width:115px;
+	text-decoration:none;
+	
+}
+
+.battle a {
+	
+
+	color:black;
+	text-decoration:none;	
+	
 }
 
 .battle .spacer {

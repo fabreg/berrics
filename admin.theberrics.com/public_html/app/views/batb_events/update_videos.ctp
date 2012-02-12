@@ -30,7 +30,7 @@
 		?>
 	</fieldset>
 		<fieldset>
-		<legend>Attach Posts (*** Use this for BATB4 ****)</legend>
+		<legend>Attach Posts (*** Use this for BATB4 & BATB5 ****)</legend>
 		<?php 
 		
 		
