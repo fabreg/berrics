@@ -160,7 +160,7 @@ class Batb5Controller extends DailyopsController {
 			
 			if($this->BatbVote->save($this->data)) {
 				
-				return $this->flash("Thanks for voting!","/battle-at-the-berrics-5");
+				return $this->flash("Thanks for voting!","/battle-at-the-berrics-5?".microtime());
 				
 			}
 			
