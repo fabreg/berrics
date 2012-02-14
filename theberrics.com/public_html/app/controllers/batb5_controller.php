@@ -77,19 +77,58 @@ class Batb5Controller extends DailyopsController {
 		
 		$posts = array();
 		
+		$this->loadModel("Dailyop");
+		
 		//check to see if this was a bracket click	
 		if(isset($this->params['named']['battle']) && !empty($this->params['named']['battle'])) {
-			
+				
 			//match id
 			$match_id = base64_decode($this->params['named']['battle']);
+			
+			$this->loadModel("BatbMatch");
+			
+			$match = $this->BatbMatch->find("first",array(
 
+				"conditions"=>array(
+					"BatbMatch.id"=>$match_id
+				)
+				
+			));
+			
+			if(empty($match['BatbMatch']['id'])) {
+				
+				return $this->cakeError("error404");
+				
+			}
+			
+			//check for pregame
+			
+			if(!empty($match['BatbMatch']['pregame_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['pregame_dailyop_id']));
+						
+			//check for battle
+			
+			if(!empty($match['BatbMatch']['battle_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['battle_dailyop_id']));
+			
+			//check postgame
+			
+			if(!empty($match['BatbMatch']['postgame_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['postgame_dailyop_id']));
 			
 			
-		} elseif(!empty($this->params['named'][''])) {
+		} else if(!empty($this->params['uri'])) {
 			
 			
+			$posts[] = $this->Dailyop->returnPost(array(
+					
+					"DailyopSection.uri"=>$this->params['section'],
+					"Dailyop.uri"=>$this->params['uri'],
+					"Dailyop.active"=>1
 			
+			),$this->isAdmin());
+			
+			//die(print_r($posts));
 		}
+		
+		$this->set(compact("posts"));
 		
 	}
 	

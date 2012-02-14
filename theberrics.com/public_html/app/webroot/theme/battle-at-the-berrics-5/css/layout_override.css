@@ -6,3 +6,71 @@ body {
 	background-image:url(/theme/battle-at-the-berrics-5/img/main-bg.jpg);	
 
 }
+
+/*Generic post */
+
+.d-post-bit .container-top {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/gen-post-top.jpg);
+	
+}
+
+
+.d-post-bit .container {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/gen-post-bg.jpg);
+	
+}
+
+.d-post-bit .bottom {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/gen-post-bg.jpg);
+	background-repeat:repeat-y;
+}
+
+
+
+/*
+	TEAM BERRA POST
+*/
+
+.team-berra .container-top {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/sb-post-top.jpg);
+
+}
+
+.team-berra .container {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/sb-post-bg.jpg);
+
+}
+
+.team-berra .bottom {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/sb-post-bg.jpg);
+	background-repeat:repeat-y;
+	
+}
+
+/*
+TEAM KOSTON
+*/
+.team-koston .container-top {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/ek-post-top.jpg);
+
+}
+
+.team-koston .container {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/ek-post-bg.jpg);
+
+}
+
+.team-koston .bottom {
+
+	background-image:url(/theme/battle-at-the-berrics-5/img/ek-post-bg.jpg);
+	background-repeat:repeat-y;
+	
+}

@@ -203,6 +203,7 @@ class SplashController extends BerricsAppController {
 			case 5:
 				$this->ross();
 				return $this->render("ross");
+				break;
 			case 6:
 				$this->dc_2012();
 				return $this->render("dc_2012");

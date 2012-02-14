@@ -20,9 +20,27 @@
 		
 	}
 	
+	//loop thru the tags and find certain strings for extra css classes
+	
+	$extra_class = '';
+	
+	foreach($t as $tag) {
+		
+		switch(strtolower($tag['name'])) {
+			
+			case "team koston":
+				$extra_class = "team-koston";
+				break;
+			case "team berra":
+				$extra_class = "team-berra";
+				break;
+			
+		}
+	
+	}
 	
 ?>
-<div class='d-post-bit'>
+<div class='d-post-bit <?php echo $extra_class; ?>'>
 	<div class='container'>
 		<div class='container-top'>
 			<div class='title'>

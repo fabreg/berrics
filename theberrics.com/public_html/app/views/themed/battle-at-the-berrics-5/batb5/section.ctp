@@ -6,7 +6,18 @@ $this->Html->script(array("section"),array("inline"=>false));
 ?>
 <div id='batb5-bracket'>
 	<div class='main-heading'></div>
-	<div class='post'></div>
+	<div class='post'>
+	
+		<?php if(isset($posts) && count($posts)>0): ?>
+			<?php foreach($posts as $post): ?>
+				<div style='width:728px; margin:auto;'>
+					<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
+				</div>
+				<div style='height:8px;'></div>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	
+	</div>
 	<div class='bracket-bg'>
 		<div class='top-spacer'></div>
 		<div id='bracket'>
