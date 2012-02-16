@@ -227,6 +227,14 @@ function dupe_uri_check() {
 	
 }
 
+function handleUserAssignment(data) {
+
+	$("#assigned-users").append("<div>"+data.User.first_name+" "+data.User.last_name+"</div>");
+
+	UserSearch.closeModal();
+	
+}
+
 
 </script>
 <style>
@@ -415,6 +423,14 @@ function dupe_uri_check() {
 			?>
 		</div>
 	</fieldset>
+	<fieldset>
+		<legend>Assign Users</legend>
+		<?php echo $this->Form->input("assigned_users",array("type"=>"hidden")); ?>
+		<div><a href='javascript:UserSearch.openSearch("handleUserAssignment");'>Select a user</a></div>
+		<div id='assigned-users'>
+		
+		</div>
+	</fieldset>
 	<?php echo $this->Form->end(); ?>
 	<fieldset>
 		<legend>Media File(s)</legend>
@@ -457,6 +473,7 @@ function dupe_uri_check() {
 		</div>
 		
 	</fieldset>
+
 </div>
 <?php 
 

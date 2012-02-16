@@ -40,7 +40,7 @@ var UserSearch = {
 	
 		$("#user-modal").css({
 			
-			"height":"100%",
+			"height":$(document).height()+"px",
 			"width":"100%",
 			"background-image":"url(/img/blk-px.png)",
 			"position":"absolute",
@@ -54,7 +54,9 @@ var UserSearch = {
 			"width":"80%",
 			"background-color":"white",
 			"margin":"auto",
-			"overflow":"auto"
+			"overflow":"auto",
+			"position":"fixed",
+			"margin-left":"10%"
 			
 		});
 		
