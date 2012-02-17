@@ -40,7 +40,7 @@ body {
 	background-image:none;
 
 	background-color:black;
-	background-image:url(/img/splash/lrg/bg.jpg);
+	background-image:url(/img/splash/lrg/stupid-bg.jpg);
 	
 }
 #post {
@@ -56,8 +56,8 @@ body {
 #gc-trailer {
 	background-repeat:no-repeat;
 	background-position:top center;
-	background-image:url(/img/splash/lrg/main-bg.jpg);
-	height:720px;
+	
+	
 }
 
 #enter {
@@ -121,9 +121,13 @@ body {
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
 	<div style='clear:both; height:10px;'></div>
-
+	<div style='text-align:center;'>
+		<a href='http://l-r-g.com/skate' target='_blank'>
+			<img src='/img/splash/lrg/enourmouse-rogo.jpg' border='0'/>
+		</a>
+	</div>
 <div style='text-align:center;' id="enter">
-
+	
 </div>
 </div>
-<div style='text-align:center;'><a href='/dailyops' style='font-size:28px; color:black; '>ENTER THE BERRICS</a></div>
+<div style='text-align:center;'><a href='/dailyops' style='font-size:38px; color:black; '>- ENTER THE BERRICS -</a></div>
