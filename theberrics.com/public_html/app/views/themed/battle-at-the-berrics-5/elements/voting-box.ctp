@@ -26,7 +26,11 @@ $letters_array = BatbMatch::winningLettersDrop();
 		
 		<div class='voting-form'>
 			<div class='vote-heading'>YOUR PREDICTION</div>
-			<?php if($this->Session->check("Auth.User.id")): ?>
+			<?php if(in_array(strtoupper(date("D")),array("SAT","SUN"))): ?>
+			<div style='text-align:center; padding:5px;'>
+				<img border='0' src='/theme/battle-at-the-berrics-5/img/submissions-closed.jpg'/>
+			</div>
+			<?php elseif($this->Session->check("Auth.User.id")): ?>
 				<?php if(isset($match['BatbVote']['id'])): ?>
 						<?php 
 						
