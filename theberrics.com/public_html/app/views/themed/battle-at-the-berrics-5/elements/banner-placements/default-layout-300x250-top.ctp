@@ -7,7 +7,7 @@
 </script>
 <noscript>
 <a href="http://ad.doubleclick.net/N5885/jump/batb5_dailyops;sz=300x250;tile=2;ord=[timestamp]?">
-<img src="http://ad.doubleclick.net/N5885/ad/batb5_dailyops_p1;sz=300x250;tile=2;ord=[timestamp]?" width="300" height="250" />
+<img src="http://ad.doubleclick.net/N5885/ad/batb5_dailyops;sz=300x250;tile=2;ord=[timestamp]?" width="300" height="250" />
 </a>
 </noscript>
 
