@@ -50,6 +50,20 @@
 	
 }
 
+#bracket a {
+
+	
+	background-color:#dddc82;
+	color:#222;	
+}
+
+#bracket a:hover {
+
+		background-color:#999;
+	color:#333;
+	
+}
+
 #batb5-bracket .bracket-bg {
 	
 background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
