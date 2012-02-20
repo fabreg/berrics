@@ -16,15 +16,12 @@ class MediaFilesController extends AdminAppController {
 		
 		//lets fix the fucked up swfupload session thing
 		
-		if(in_array($this->params['action'],array("handle_video_file_upload","handle_image_upload","handle_video_still_upload","handle_ajax_video_file_upload"))) {
+		if(in_array($this->params['action'],array("handle_video_file_upload","handle_image_upload","handle_video_still_upload","handle_ajax_media_file_upload"))) {
 			
 			$this->Session->id($this->params['pass'][0]);
 			$this->Session->start();
 			
 		}
-		
-		
-		
 		
 		parent::beforeFilter();
 		
@@ -1066,18 +1063,27 @@ class MediaFilesController extends AdminAppController {
 	}
 	
 	public function handle_ajax_media_file_upload() {
-		
+
 		$file = $_FILES['Filedata'];
-			
+
 		$ext = $this->getExt($file['name']);
 		
-		$tmp_path = TMP."/".$this->params['pass'][1].".".$ext;
+		$file_name = $this->params['pass'][1].".".$ext;
+		
+		$tmp_path = TMP."upload/".$file_name;
 		
 		if(move_uploaded_file($file['tmp_name'],$tmp_path)) {
 			
+			App::import("Vendor","LLFTP",array("file"=>"LLFTP.php"));
 			
+			$ll = new LLFTP();
+			
+			//transfer file to limelight
+			
+			$ll->ftpFile($file_name,$tmp_path);
 			
 		}
+		
 		die(":)");
 	}
 	

@@ -172,6 +172,11 @@ var VideoFileUpload = {
 							
 							
 						},
+						upload_error_handler:function(f,e,m) { 
+							
+							alert(m);
+							
+						},
 						debug:true
 						
 					};

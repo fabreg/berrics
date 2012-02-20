@@ -132,6 +132,9 @@
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Add Video File",array("controller"=>"media_files","action"=>"add_video")); ?>
 			</li>
+			<li class='li-sub-nav-button'>
+				<?php echo $this->Html->link("Add Blank Entry",array("controller"=>"media_files","action"=>"add_blank_file")); ?>
+			</li>
 			<li class='li-sub-nav-header'>Media File Uploads</li>
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Manage Uploads",array("controller"=>"media_file_uploads","action"=>"index")); ?>

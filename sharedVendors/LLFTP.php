@@ -28,7 +28,18 @@ class LLFTP {
 	
 	public function close() {
 		
+		if($this->conn) return ftp_close($this->conn);
 		
+	}
+	
+	public function ftpFile($file_name,$tmp_path) {
+		
+		
+		$this->connect();
+		
+		ftp_put($this->conn,$file_name,$tmp_path);
+		
+		$this->close(); 
 		
 	}
 	
