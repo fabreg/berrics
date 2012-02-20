@@ -71,7 +71,7 @@ class MediaFile extends AppModel {
 		$a = array(
 		
 			"bcove"=>"Video (LimeLight CDN)",
-			"video"=>"Video (?? new CDN???)",
+			//"video"=>"Video (?? new CDN???)",
 			"img"=>"Image File (Berrics CDN)",
 			"flash"=>" SWF File",
 			"piclink"=>"Image w/ Anchor (Legacy)",

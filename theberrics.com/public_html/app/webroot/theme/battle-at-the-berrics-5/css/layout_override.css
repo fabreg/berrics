@@ -28,6 +28,12 @@ body {
 	background-repeat:repeat-y;
 }
 
+.d-post-bit .container .container-top .title .sub-title {
+
+	color:#333;	
+	
+}
+
 
 
 /*
@@ -53,6 +59,13 @@ body {
 	
 }
 
+
+.team-berra .container .container-top .title .sub-title {
+
+	color:#e9e9e9;	
+	
+}
+
 /*
 TEAM KOSTON
 */
@@ -72,5 +85,11 @@ TEAM KOSTON
 
 	background-image:url(/theme/battle-at-the-berrics-5/img/ek-post-bg.jpg);
 	background-repeat:repeat-y;
+	
+}
+
+.team-koston .container .container-top .title .sub-title {
+
+	color:#e9e9e9;	
 	
 }

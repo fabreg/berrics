@@ -16,12 +16,15 @@ class MediaFilesController extends AdminAppController {
 		
 		//lets fix the fucked up swfupload session thing
 		
-		if(in_array($this->params['action'],array("handle_video_file_upload","handle_image_upload","handle_video_still_upload"))) {
+		if(in_array($this->params['action'],array("handle_video_file_upload","handle_image_upload","handle_video_still_upload","handle_ajax_video_file_upload"))) {
 			
 			$this->Session->id($this->params['pass'][0]);
 			$this->Session->start();
 			
 		}
+		
+		
+		
 		
 		parent::beforeFilter();
 		
@@ -702,9 +705,7 @@ class MediaFilesController extends AdminAppController {
 			
 		}
 		
-		
 		//move the file into the tmpDir
-		
 		move_uploaded_file($file['tmp_name'],$tmpDir."/".$file['name']);
 		
 		die("<script></script>Video uploaded successfully ..... ");
@@ -1046,6 +1047,78 @@ class MediaFilesController extends AdminAppController {
 			));
 			
 			
+			
+		}
+		
+	}
+	
+	public function ajax_media_file_upload($id = false) {
+		
+		if(!$id) return $this->cakeError("error404");
+		
+		$this->data = $this->MediaFile->find("first",array(
+			"conditions"=>array(
+				"MediaFile.id"=>$id
+			)
+		));
+		
+		
+	}
+	
+	public function handle_ajax_media_file_upload() {
+		
+		$file = $_FILES['Filedata'];
+			
+		$ext = $this->getExt($file['name']);
+		
+		$tmp_path = TMP."/".$this->params['pass'][1].".".$ext;
+		
+		if(move_uploaded_file($file['tmp_name'],$tmp_path)) {
+			
+			
+			
+		}
+		die(":)");
+	}
+	
+	public function add_blank_file() {
+		
+		if(count($this->data)>0) {
+			
+			if($this->MediaFile->save($this->data)) {
+				
+				//check for a dailyops ops id
+				if(isset($this->data['MediaFile']['dailyop_id'])) {
+					
+					$this->loadModel("DailyopMediaItem");
+					
+					$this->DailyopMediaItem->create();
+					
+					$data = array(
+						"media_file_id"=>$this->MediaFile->id,
+						"display_weight"=>99,
+						"dailyop_id"=>$this->data['MediaFile']['dailyop_id']
+					);
+					
+					$this->DailyopMediaItem->save($data);
+					
+				}
+				
+				//check for a url callback
+				
+				$this->Session->setFlash("New Media File Added Successfully");
+				
+				if(isset($this->data['MediaFile']['callback'])) {
+					
+					return $this->redirect(base64_decode($this->data['MediaFile']['callback']));
+					
+				} else {
+					
+					return $this->redirect("/media_files");
+					
+				}
+				
+			}
 			
 		}
 		

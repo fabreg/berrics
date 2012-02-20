@@ -17,6 +17,7 @@
 			"jquery.ui.timepicker-0.0.8.js",
 			"top-nav",
 			"/jw/jwplayer.js",
+			"swfupload/swfupload.js",
 			"admin"
 		));
 		echo $scripts_for_layout;

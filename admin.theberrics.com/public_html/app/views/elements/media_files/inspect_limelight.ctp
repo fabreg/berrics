@@ -1,13 +1,3 @@
-<?php
-
-	App::import("Vendor","LLFTP",array("file"=>"LLFTP.php"));
-
-	$ll = new LLFTP();
-	
-	
-
-	
-?>	
 <fieldset>
 	<legend>Limelight CDN</legend>
 	<?php 
@@ -22,10 +12,14 @@
 		?>
 		<a href='<?php echo $ll_url; ?>' target='_blank'><?php echo $ll_url; ?></a>
 	</div>
+	<div>
+		<span class='span-button'>
+			<a href='javascript:VideoFileUpload.openUpload("<?php echo $this->data['MediaFile']['id']; ?>");'>Update Video File</a>
+		</span>
+	</div>
 </fieldset>
 
 
 <?php
 	//print_r($this->data);
-	
 ?>
