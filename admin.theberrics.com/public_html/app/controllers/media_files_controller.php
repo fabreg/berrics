@@ -1025,6 +1025,32 @@ class MediaFilesController extends AdminAppController {
 	} 
 	
 	
+	/*
+	 * 
+	 * NEW METHODS
+	 * 
+	 */
+	
+	public function inspect($id = false) {
+		
+		if(!$id) return $this->cakeError("error404");
+		
+		//check for an update
+		if(count($this->data)) {
+			
+			
+		} else {
+			
+			$this->data = $this->MediaFile->find("first",array(
+				"conditions"=>array("MediaFile.id"=>$id)
+			));
+			
+			
+			
+		}
+		
+	}
+	
 	
 	
 }
