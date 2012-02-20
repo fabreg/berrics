@@ -14,7 +14,7 @@ class LLFTP {
 	
 	public function connect() {
 		
-		if(!$conn) { 
+		if(!$this->conn) { 
 		
 			$this->conn = ftp_connect($this->domain);
 		
@@ -37,9 +37,11 @@ class LLFTP {
 		
 		$this->connect();
 		
-		ftp_put($this->conn,$file_name,$tmp_path);
+		$upload = ftp_put($this->conn,$file_name,$tmp_path,FTP_BINARY);
 		
 		$this->close(); 
+		
+		return $upload;
 		
 	}
 	

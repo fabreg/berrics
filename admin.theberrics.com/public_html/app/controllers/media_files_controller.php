@@ -1080,7 +1080,31 @@ class MediaFilesController extends AdminAppController {
 			
 			//transfer file to limelight
 			
-			$ll->ftpFile($file_name,$tmp_path);
+			$result = $ll->ftpFile($file_name,$tmp_path);
+			
+			if($result) {
+				
+				$this->loadModel("MediaFile");
+				
+				$this->MediaFile->create();
+				
+				$this->MediaFile->id = $this->params['pass'][1];
+				
+				$udata = array(
+					"limelight_file"=>$file_name
+				);
+				
+				$this->MediaFile->save($udata);
+				
+				$this->Session->setFlash("Video file uploaded to Limelight Successfully");
+				
+				die(json_encode($this->MediaFile->read()));
+				
+			} else {
+				
+				die("Failed");
+				
+			}
 			
 		}
 		

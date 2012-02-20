@@ -8,6 +8,19 @@
 			echo $this->Form->input("MediaFile.name");
 			
 		?>
+		<div>
+			<label>Date Created</label>
+			<div><?php echo $this->Time->niceShort($this->data['MediaFile']['created']); ?></div>
+		</div>
+		<div>
+			<label>Date Modified</label>
+			<div><?php echo $this->Time->niceShort($this->data['MediaFile']['modified']); ?></div>
+		</div>
+		<?php 
+		
+			echo $this->Form->input("tags");
+		
+		?>
 	</fieldset>
 	
 	<?php 

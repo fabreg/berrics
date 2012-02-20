@@ -100,7 +100,7 @@ var VideoFileUpload = {
 		
 			Array.prototype.shift.call(arguments);
 			
-			this.completedCallback = arguments[1] || null;
+			this.completedCallback = arguments[0] || null;
 			
 			Array.prototype.shift.call(arguments);
 			
@@ -151,25 +151,26 @@ var VideoFileUpload = {
 						},
 						upload_progress_handler:function(f,bl,bt) {
 							
-							$("#progress-div").html("Uploading:"+bl+" / "+bt);
 							
-						},
-						upload_complete_handler:function() {
-						
-							var s = '';
-							for(var a in arguments[0].post) {
+							var str = "Uploading:"+bl+" / "+bt;
 							
-								s += a+":"+arguments[0].post[a];
-								s += "\n"
+							
+							if(bl >= bt) {
+								
+								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......</div>"
 								
 							}
 							
-							alert(s);
+							$("#progress-div").html(str);
+						},
+						upload_complete_handler:function() {
+						
+							
 							
 						},
 						upload_success_handler:function(f,d,r) {
 							
-							
+							VideoFileUpload.handleCallback(d);
 							
 						},
 						upload_error_handler:function(f,e,m) { 
@@ -207,7 +208,177 @@ var VideoFileUpload = {
 			
 			$("#upload-modal").remove();
 			
+		},
+		handleCallback:function(file) {
+			
+			var obj = eval("("+file+")");
+			
+			
+			var fn = window[VideoFileUpload.completedCallback];
+			
+			Array.prototype.unshift.call(VideoFileUpload.callbackArgs, obj);
+			
+			if(typeof fn === 'function') {
+				
+				fn.apply(this,VideoFileUpload.callbackArgs);
+				
+			} else {
+			
+				alert("Callback if not in scope");
+				
+			}
+			
 		}
+		
+		
+		
+};
+
+var VideoStillUpload = {
+		
+
+		media_file_id:null,
+		completedCallback:null,
+		callbackArgs:null,
+		openUpload:function() { 
+				
+			this.media_file_id = arguments[0] || null;
+		
+			Array.prototype.shift.call(arguments);
+			
+			this.completedCallback = arguments[0] || null;
+			
+			Array.prototype.shift.call(arguments);
+			
+			if(arguments.length>1) {
+				
+				this.callbackArgs = arguments;
+				
+			} else {
+			
+				this.callbackArgs = new Array();
+				
+			}
+			
+			$('body').append("<div id='upload-modal'><div id='upload-modal-content'></div></div>");
+			
+			$.get("/media_files/ajax_media_file_upload/"+this.media_file_id,function(d) { 
+				
+				$("#upload-modal-content").html(d); 
+			
+				//bootstrap swf upload
+				var opt = {
+						
+						flash_url:"/swfupload/swfupload.swf",
+						button_placeholder_id:"video-upload-button",
+						button_image_url:"/img/video-file-upload-button.png",
+						button_height:50,
+						button_width:200,
+						button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT,
+						upload_url:"/media_files/handle_ajax_video_still_upload/"+xid+"/"+VideoStillUpload.media_file_id,
+						file_types:"*.mp4;*.mov;*.mpg;*.mpeg",
+						file_types_description: "Update us with a video",
+						file_queue_limit:1,
+						file_queued_handler:function(f) {
+							
+							this.startUpload();
+						
+						},
+						
+						file_queue_error_handler:function(f,e,m) {
+							
+							//alert(m);
+							
+						},
+						upload_start_handler:function(f) {
+							
+							
+							
+						},
+						upload_progress_handler:function(f,bl,bt) {
+							
+							
+							var str = "Uploading:"+bl+" / "+bt;
+							
+							
+							if(bl >= bt) {
+								
+								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......</div>"
+								
+							}
+							
+							$("#progress-div").html(str);
+						},
+						upload_complete_handler:function() {
+						
+							
+							
+						},
+						upload_success_handler:function(f,d,r) {
+							
+							VideoStillUpload.handleCallback(d);
+							
+						},
+						upload_error_handler:function(f,e,m) { 
+							
+							alert(m);
+							
+						},
+						debug:true
+						
+					};
+				new SWFUpload(opt);
+				
+			});
+			
+			this.handleResize();
+				
+		},
+		handleResize:function() {
+			
+			$('body,html').css({
+				
+				"overflow":"hidden"
+				
+			});
+			
+			
+		},
+		closeUpload:function() {
+			
+			$('body,html').css({
+				
+				"overflow":"auto"
+				
+			});
+			
+			$("#upload-modal").remove();
+			
+		},
+		handleCallback:function(file) {
+			
+			var obj = eval("("+file+")");
+			
+			
+			var fn = window[VideoStillUpload.completedCallback];
+			
+			Array.prototype.unshift.call(VideoStillUpload.callbackArgs, obj);
+			
+			if(typeof fn === 'function') {
+				
+				fn.apply(this,VideoStillUpload.callbackArgs);
+				
+			} else {
+			
+				alert("Callback if not in scope");
+				
+			}
+			
+		}
+		
+		
+		
+		
 		
 		
 		

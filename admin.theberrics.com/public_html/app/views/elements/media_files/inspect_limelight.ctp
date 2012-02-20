@@ -1,3 +1,15 @@
+<script>
+
+function handleUpload() {
+
+	VideoFileUpload.closeUpload();
+
+	//submit the form
+	$("form").submit();
+	
+}
+
+</script>
 <fieldset>
 	<legend>Limelight CDN</legend>
 	<?php 
@@ -14,7 +26,7 @@
 	</div>
 	<div>
 		<span class='span-button'>
-			<a href='javascript:VideoFileUpload.openUpload("<?php echo $this->data['MediaFile']['id']; ?>");'>Update Video File</a>
+			<a href='javascript:VideoFileUpload.openUpload("<?php echo $this->data['MediaFile']['id']; ?>","handleUpload");'>Upload New Video File</a>
 		</span>
 	</div>
 </fieldset>
