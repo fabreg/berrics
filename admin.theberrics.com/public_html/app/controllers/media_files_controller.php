@@ -1155,6 +1155,15 @@ class MediaFilesController extends AdminAppController {
 	}
 	
 	
+	public function ajax_video_still_upload($id= false) {
+		
+		
+		
+		
+		
+	}
+	
+	
 	
 }
 ?>

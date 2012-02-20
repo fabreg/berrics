@@ -262,7 +262,7 @@ var VideoStillUpload = {
 			
 			$('body').append("<div id='upload-modal'><div id='upload-modal-content'></div></div>");
 			
-			$.get("/media_files/ajax_media_file_upload/"+this.media_file_id,function(d) { 
+			$.get("/media_files/ajax_video_still_upload/"+this.media_file_id,function(d) { 
 				
 				$("#upload-modal-content").html(d); 
 			
@@ -276,8 +276,8 @@ var VideoStillUpload = {
 						button_width:200,
 						button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT,
 						upload_url:"/media_files/handle_ajax_video_still_upload/"+xid+"/"+VideoStillUpload.media_file_id,
-						file_types:"*.mp4;*.mov;*.mpg;*.mpeg",
-						file_types_description: "Update us with a video",
+						file_types:"*.jpg;*.jpeg;*.gif;*.png",
+						file_types_description: "Upload image",
 						file_queue_limit:1,
 						file_queued_handler:function(f) {
 							
