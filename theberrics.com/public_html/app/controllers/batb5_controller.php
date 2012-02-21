@@ -209,6 +209,8 @@ class Batb5Controller extends DailyopsController {
 	
 	public function ajax_leaderboard($type = "overall") {
 		
+		$this->skip_page_view = true;
+		
 		//load the stats
 		$this->leaderboard($type);
 		
