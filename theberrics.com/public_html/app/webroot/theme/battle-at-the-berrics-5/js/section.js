@@ -27,4 +27,27 @@ $(document).ready(function() {
 		
 	});
 	
+	loadLeaderSummary('overall');
+	loadLeaderSummary('weekly');
+	
 });
+
+function loadLeaderSummary(type) {
+	
+	var t = type || "overall";
+	
+	$.get("/battle-at-the-berrics-5/ajax_leaderboard/"+t,function(d) { 
+		
+		switch(t) {
+		
+		case "overall":
+			$('.stats-box:eq(1)').html(d);
+			break;
+		case "weekly":
+			$('.stats-box:eq(0)').html(d);
+			break;
+		}
+		
+	});
+	
+}

@@ -1098,6 +1098,8 @@ class MediaFilesController extends AdminAppController {
 				
 				$this->Session->setFlash("Video file uploaded to Limelight Successfully");
 				
+				unlink($tmp_path);
+				
 				die(json_encode($this->MediaFile->read()));
 				
 			} else {
@@ -1157,10 +1159,14 @@ class MediaFilesController extends AdminAppController {
 	
 	public function ajax_video_still_upload($id= false) {
 		
+		$file = $_FILES['Filedata'];
+
+		$ext = $this->getExt($file['name']);
 		
+		$file_name = $this->params['pass'][1].".".$ext;
 		
-		
-		
+		$tmp_path = TMP."upload/".$file_name;
+
 	}
 	
 	

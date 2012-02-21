@@ -347,6 +347,70 @@ VOTING BUTTONS
 	font-size:13px;
 }
 
+#stats-summary {
+
+	padding:10px;	
+	background-color:#1e2128;	
+	
+}
+
+#stats-summary .stats-box {
+
+	float:right;
+	width:48%;	
+	
+}
+
+#stats-summary .stats-box:first-child {
+
+	float:left;	
+	
+}
+
+#stats-summary .stats-box table {
+
+	width:100%;	
+	
+}
+
+#stats-summary .stats-box table td {
+
+	color:#e9e9e9;
+	font-size:13px;	
+	padding:5px;
+	border-bottom:1px solid #666;
+}
+
+#stats-summary .stats-box table .score {
+
+	font-weight:bold;
+	color:#772f26;	
+	font-size:14px;
+}
+
+#stats-summary .leader-summary-heading {
+	
+	padding:5px;
+	font-weight:bold;
+	font-size:13px;
+	background-color:#666;
+	text-align:center;
+	color:#333;
+		
+	
+}
+
+#stats-header {
+
+	font-size:36px;
+	font-weight:bold;	
+	padding:10px;	
+	background-color:#1e2128;	
+	text-align:center;
+	color:#e9e9e9;
+	
+}
+
 
 /*
 	Matches	
@@ -505,7 +569,7 @@ VOTING BUTTONS
 }
 .match_4_1 .spacer {
 
-	height:39px;	
+	height:53px;	
 	
 }
 

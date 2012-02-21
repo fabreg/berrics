@@ -119,10 +119,6 @@ $this->Html->script(array("section"),array("inline"=>false));
 		endif;	
 	
 	?>
-	<div id='stats-summary'>
-	
-	
-	</div>
 	<div id='bottom-ads'>
 		<script type="text/javascript">
 		  var ord = window.ord || Math.floor(Math.random() * 1e16);
@@ -135,6 +131,15 @@ $this->Html->script(array("section"),array("inline"=>false));
 		</noscript>
 	</div>
 	<div style='height:20px;'></div>
+	<div id='stats-header'>
+		BATBV TOP 150
+	</div>
+	<div id='stats-summary'>
+		<div class='stats-box'></div>
+		<div class='stats-box'></div>
+		<div style='clear:both;'></div>
+	</div>
+
 	<div id='batb5-archive'>
 		<?php //print_r($event); ?>
 	</div>

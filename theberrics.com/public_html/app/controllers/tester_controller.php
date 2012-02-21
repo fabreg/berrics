@@ -62,6 +62,38 @@ class TesterController extends BerricsAppController {
 		
 	}
 	
+	public function fix_batb($id = false) {
+		
+		
+		$this->loadModel("BatbVote");
+		
+		
+		$votes = $this->BatbVote->query("
+			select user_id,count(*) as `total` from batb_votes where batb_match_id = {$id} group by user_id order by total desc 
+		");
+		
+		$i = 0;
+		//die(pr($votes));
+		foreach($votes as $v) {
+			
+			if($v[0]['total']>1) {
+				
+				$uid = $v['batb_votes']['user_id'];
+				$dlimit = $v[0]['total']-1;
+				
+				//echo "Total: ".$dlimit;
+				//echo "User: ".$uid;
+				//echo "<br />";
+				//$this->BatbVote->query("DELETE FROM batb_votes WHERE user_id='{$uid}' AND batb_match_id='{$id}' LIMIT {$dlimit}");
+				echo "DELETE FROM batb_votes WHERE user_id='{$uid}' AND batb_match_id='{$id}' LIMIT {$dlimit};";
+			}
+			
+		}
+		echo $i;
+		die($i);
+		
+	}
+	
 	
 	
 	public function fb() {

@@ -207,6 +207,134 @@ class Batb5Controller extends DailyopsController {
 		
 	}
 	
+	public function ajax_leaderboard($type = "overall") {
+		
+		//load the stats
+		$this->leaderboard($type);
+		
+		return $this->render("/elements/leader-summary");
+		
+	}
+	
+	private function leaderboard($stats = "weekly") { 
+		
+		$this->loadModel("User");
+		$this->loadModel("BatbScore");
+		$this->loadModel("BatbVote");
+		$this->loadModel("BatbEvent");
+		
+		$event = $this->BatbEvent->find("first",array(
+		
+			"conditions"=>array(
+				"BatbEvent.id"=>$this->event_id
+			),
+			"contain"=>array()
+		
+		));
+		
+		//$stats = "overall";
+		
+		
+		if($stats == "weekly") {
+			
+			//sum up the weekly stats based on the featured stats match
+			$feat1 = $event['BatbEvent']['featured_stats1_id'];
+			$feat2 = $event['BatbEvent']['featured_stats2_id'];
+			
+			
+			$leaders = Cache::read("batb5_weekly_stats","1min");
+			
+			if($leaders === false) {
+				
+				$leaders = $this->BatbVote->find("all",array(
+				
+								"fields"=>array("SUM( BatbVote.total_points ) AS  `total`" , "User.id, User.first_name", "User.last_name", "User.facebook_account_num","SUM(BatbVote.rps_points) as `rps_points`","SUM(BatbVote.match_points) as `match_points`","SUM(BatbVote.letters_points) as `letters_points`"),
+								"joins"=>array(
+									"LEFT JOIN users AS `User` ON (User.id = BatbVote.user_id)"
+								),
+								"conditions"=>array(
+									"BatbVote.batb_match_id"=>array($feat1,$feat2)
+								),
+								"group"=>array("BatbVote.user_id"),
+								"order"=>array("total"=>"DESC","User.batb_winner"=>"DESC"),
+								"limit"=>150,
+								"contain"=>array()
+							
+							));
+							
+							
+				Cache::write("batb5_weekly_stats",$leaders,"1min");
+				
+			}
+			
+			
+			
+			
+			
+		} else {
+			
+			
+			$leaders = Cache::read("batb5_overall_stats","1min");
+
+			if($leaders === false) {
+				
+		
+					$leaders = $this->BatbScore->find('all',array(
+				
+						"fields"=>array("(BatbScore.rps_score+BatbScore.match_score+BatbScore.letters_score) AS `total`,
+											User.first_name,User.last_name,User.facebook_account_num,User.id,
+											BatbScore.rps_score,BatbScore.match_score,BatbScore.letters_score"),
+						"conditions"=>array("BatbScore.batb_event_id"=>$this->event_id),
+						"contain"=>array("User"),
+						"limit"=>150,
+						"order"=>array("total"=>"DESC")
+					
+					));
+					
+					Cache::write("batb5_overall_stats",$leaders,"1min");
+		
+				
+			}
+			
+
+			
+			
+		}
+		
+		
+		
+		$this->set(compact("leaders"));
+		
+		
+	}
+	
+	public function scorecard($user_id = false) {
+		
+		
+		
+		//check the id
+		if(!$user_id) return $this->cakeError("error404");
+		
+		$this->loadModel("BatbVote");
+		
+		//get all the users votes
+		$votes = $this->BatbVote->find("all",array(
+			"conditions"=>array(
+				"BatbVote.batb_event_id"=>$this->event_id,
+				"BatbVote.user_id"=>$user_id
+			),
+			"contain"=>array(
+				"BatbMatch"=>array(
+					"Player1User",
+					"Player2User"
+				)
+			)
+		));
+		
+		die(print_r($votes));
+		
+	}
+	
 	public function view() {
 		
 		
