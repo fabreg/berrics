@@ -244,7 +244,7 @@ class Batb5Controller extends DailyopsController {
 			$feat2 = $event['BatbEvent']['featured_stats2_id'];
 			
 			
-			$leaders = Cache::read("batb5_weekly_stats","1min");
+			$leaders = Cache::read("batb5_weekly_stats","5min");
 			
 			if($leaders === false) {
 				
@@ -265,7 +265,7 @@ class Batb5Controller extends DailyopsController {
 							));
 							
 							
-				Cache::write("batb5_weekly_stats",$leaders,"1min");
+				Cache::write("batb5_weekly_stats",$leaders,"5min");
 				
 			}
 			
@@ -276,7 +276,7 @@ class Batb5Controller extends DailyopsController {
 		} else {
 			
 			
-			$leaders = Cache::read("batb5_overall_stats","1min");
+			$leaders = Cache::read("batb5_overall_stats","5min");
 
 			if($leaders === false) {
 				
@@ -293,7 +293,7 @@ class Batb5Controller extends DailyopsController {
 					
 					));
 					
-					Cache::write("batb5_overall_stats",$leaders,"1min");
+					Cache::write("batb5_overall_stats",$leaders,"5min");
 		
 				
 			}
