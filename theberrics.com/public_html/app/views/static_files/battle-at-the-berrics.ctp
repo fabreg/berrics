@@ -65,6 +65,11 @@ $(document).ready(function() {
 	
 });
 </script>
+<div style='padding-bottom:5px;'>
+	<a href='/battle-at-the-berrics-5'>
+		<img border='0' src='/img/layout/batb/batb5-tile.jpg' />
+	</a>
+</div>
 <ul id='batb-list'>
 	<li>
 		<div class='inner'><a href='/battle-at-the-berrics-4' title='Battle At The Berrics 4: U.S. VS. THEM'><span>Battle At The Berrics 4: U.S. VS. THEM</span><img src='/img/layout/batb/4.jpg' border='0' /></a></div>

@@ -42,6 +42,8 @@ foreach($dailyops as $k=>$dop):
 		
 		//echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_cole.jpg'/></a></div>";
 		
+		echo "<div style='text-align:center;'><a href='/battle-at-the-berrics-5'><img border='0' src='/theme/battle-at-the-berrics-5/img/week1-winner.jpg' /></a></div>";
+		
 	}
 	?>
 
