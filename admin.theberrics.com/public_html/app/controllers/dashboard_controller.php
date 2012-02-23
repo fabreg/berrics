@@ -31,6 +31,16 @@ class DashboardController extends AdminAppController {
 		
 	}
 	
+	public function dailyops() {
+		
+		$this->loadModel("Dailyop");
+		
+		$posts = $this->Dailyop->returnDailyopsDashboard();
+		
+		$this->set(compact("posts"));
+		
+	}
+	
 	
 	public function canteen() {
 		

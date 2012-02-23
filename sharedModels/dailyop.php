@@ -52,7 +52,12 @@ class Dailyop extends AppModel {
 			'deleteQuery' => '',
 			'insertQuery' => ''
 		),
-		"Meta"
+		"Meta",
+		"AssignedUser"=>array(
+			"className"=>"User",
+			"foreignKey"=>"dailyop_id",
+			"joinTable"=>"dailyops_users"
+		)
 	);
 	//berrics news category
 	private $news_id = 65;
@@ -88,6 +93,12 @@ class Dailyop extends AppModel {
 		if($contain) {
 			
 			$_contain = $contain;
+			
+		}
+		
+		if($admin) { //force users to be pulled up if admin setting is true
+			
+			$_contain[] = 'AssignedUser';
 			
 		}
 				
@@ -768,45 +779,92 @@ class Dailyop extends AppModel {
 		
 	}
 		
-	
-	function paginate ($conditions, $fields, $order, $limit, $page = 1, $recursive = null, $extra = array()) {
-		$args = func_get_args();
-		$uniqueCacheId = '';
-		foreach ($args as $arg) {
-			$uniqueCacheId .= serialize($arg);
-		}
-		if (!empty($extra['contain'])) {
-			$contain = $extra['contain'];
+	public function returnDailyopsDashboard() {
+		
+		//get all the upcoming posts
+		$posts = $this->find("all",array(
+			"conditions"=>array(
+				"Dailyop.publish_date > NOW()"
+			),
+			"contain"=>array(
+				"DailyopMediaItem"=>array("MediaFile"),
+				"DailyopSection",
+				"AssignedUser",
+				"DailyopTextItem"=>array("MediaFile")
+			),
+			"order"=>array(
+				"Dailyop.publish_date"=>"ASC"
+			)
+		));
+		
+		
+		foreach($posts as $k=>$v) {
+			
+			$posts[$k]['Status'] = array(
+				"msg"=>"",
+				"pass"=>true
+			);
+			
+			//run the checks
+			if(count($v['DailyopMediaItem'])<=0 && !$v['Dailyop']['hide_media']) {
+				
+				$posts[$k]['Status']['pass'] = false;
+				$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>No Media Attached to post</div>";
+				
+				
+			} else {
+				
+				//we have some media, let's do some checks
+				switch($v['DailyopSection']['id']) {
+					
+					case "14":
+						
+						break;
+					default:
+						foreach($v['DailyopMediaItem'] as $kitem=>$item) {
+							
+							switch($item['MediaFile']['media_type']) {
+								
+								case "bcove":
+									//ensure video file is on limelight
+									if(empty($item['MediaFile']['limelight_file'])) {
+										
+										$posts[$k]['Status']['pass'] = false;
+										$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Video[{$kitem}]: File Not Uploaded <a href='javascript:VideoFileUpload.openUpload(\"".$item['MediaFile']['id']."\",\"handleVideoUpload\");'>(Click Here To Upload)</a></div>";
+										
+									}
+									//ensure video still image has been uploaded
+									if(empty($item['MediaFile']['file_video_still'])) {
+										
+										$posts[$k]['Status']['pass'] = false;
+										$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Video[{$kitem}]: Image Not Uploaded <a href='javascript:VideoStillUpload.openUpload(\"".$item['MediaFile']['id']."\",\"handleStillUpload\");'>(Click Here To Upload)</a></div>";
+										
+									}
+									//ensure advertising params have been set on video
+									if(empty($item['MediaFile']['preroll_label'])) {
+										
+										$posts[$k]['Status']['pass'] = false;
+										$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Video[{$kitem}]: Advertising not set <a href='/media_files/inspect/".$item['MediaFile']['id']."/".base64_encode($this->here)."'>(Edit Video)</a></div>";
+										
+									}
+									break;
+								case "img":
+									break;
+								
+							}
+							
+						}
+						break;
+					
+				}
+				
+				
+			}
+			
 		}
 		
-		if(is_array($extra['joins'])) $joins = $extra['joins'];
-
-		$uniqueCacheId = md5($uniqueCacheId);
-		$pagination = Cache::read('pagination-'.$this->alias.'-'.$uniqueCacheId, 'paginate_cache');
-		if (empty($pagination)) {
-			$pagination = $this->find('all', compact('conditions', 'fields', 'order', 'limit', 'page', 'recursive', 'group', 'contain','joins'));
-			Cache::write('pagination-'.$this->alias.'-'.$uniqueCacheId, $pagination, 'paginate_cache');
-		}
-		return $pagination;
-	}
-
-	function paginateCount ($conditions = null, $recursive = 0, $extra = array()) {
-		$args = func_get_args();
-		$uniqueCacheId = '';
-		foreach ($args as $arg) {
-			$uniqueCacheId .= serialize($arg);
-		}
-		$uniqueCacheId = md5($uniqueCacheId);
-		if (!empty($extra['contain'])) {
-			$contain = $extra['contain'];
-		}
-			if(is_array($extra['joins'])) $joins = $extra['joins'];
-		$paginationcount = Cache::read('paginationcount-'.$this->alias.'-'.$uniqueCacheId, 'paginate_cache');
-		if (empty($paginationcount)) {
-			$paginationcount = $this->find('count', compact('conditions', 'contain', 'recursive','joins'));
-			Cache::write('paginationcount-'.$this->alias.'-'.$uniqueCacheId, $paginationcount, 'paginate_cache');
-		}
-		return $paginationcount;
+		return $posts;
+		
 	}
 	
 	

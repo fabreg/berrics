@@ -423,25 +423,33 @@ function handleUserAssignment(data) {
 			?>
 		</div>
 	</fieldset>
-	<fieldset>
-		<legend>Assign Users</legend>
-		<?php echo $this->Form->input("assigned_users",array("type"=>"hidden")); ?>
-		<div><a href='javascript:UserSearch.openSearch("handleUserAssignment");'>Select a user</a></div>
-		<div id='assigned-users'>
-		
-		</div>
-	</fieldset>
-	<?php echo $this->Form->end(); ?>
-	<fieldset>
+	
+<fieldset>
 		<legend>Media File(s)</legend>
 			<div style='padding:10px;'>
-				<?php echo $this->Admin->attachMediaLink("DailyopMediaItem","dailyop_id",$this->data['Dailyop']['id'],"/dailyops/edit/".$this->data['Dailyop']['id']); ?>
+				<span class='span-button'><?php echo $this->Admin->attachMediaLink("DailyopMediaItem","dailyop_id",$this->data['Dailyop']['id'],"/dailyops/edit/".$this->data['Dailyop']['id']); ?></span> 
+				<span class='span-button'><a href='/media_files/add_blank_file/<?php echo base64_encode($this->here); ?>/dailyop_id:<?php echo $this->data['Dailyop']['id']; ?>'>Attach Blank Media Item</a></span>
 			</div>
+			<div style='clear:both;'></div>
 			<div id='media-file-list'>
 				
 			</div>
 			<div style="clear:both;"></div>
 	</fieldset>
+		<fieldset>
+		<legend>Assign Users</legend>
+		<?php 
+		
+			echo $this->Form->input("AssignedUser",array("options"=>$users,"multiple"=>true));
+			echo $this->Form->submit("Update");
+		?>
+	</fieldset>
+<?php 
+
+	echo $this->Form->end();
+	
+?>
+	
 	<fieldset>
 		<legend>Meta Data</legend>
 			<div>
@@ -465,11 +473,7 @@ function handleUserAssignment(data) {
 			<div id='metas' class='index' style='width:475px;'>
 				
 			</div>
-		<?php 
-		
-			echo $this->Form->end();
-			
-		?>
+
 		</div>
 		
 	</fieldset>

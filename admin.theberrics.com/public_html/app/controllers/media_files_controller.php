@@ -16,7 +16,12 @@ class MediaFilesController extends AdminAppController {
 		
 		//lets fix the fucked up swfupload session thing
 		
-		if(in_array($this->params['action'],array("handle_video_file_upload","handle_image_upload","handle_video_still_upload","handle_ajax_media_file_upload"))) {
+		if(in_array($this->params['action'],array("handle_video_file_upload",
+													"handle_image_upload",
+													"handle_video_still_upload",
+													"handle_ajax_media_file_upload",
+													"handle_ajax_video_still_upload",
+													"handle_ajax_image_upload"))) {
 			
 			$this->Session->id($this->params['pass'][0]);
 			$this->Session->start();
@@ -1036,6 +1041,13 @@ class MediaFilesController extends AdminAppController {
 		//check for an update
 		if(count($this->data)) {
 			
+			$this->data['Tag'] = $this->MediaFile->Tag->parseTags($this->data['MediaFile']['tags']);
+			
+			$this->MediaFile->id = $this->data['MediaFile']['id'];
+			
+			$this->MediaFile->save($this->data);
+			
+			$this->redirect($this->here);
 			
 		} else {
 			
@@ -1115,42 +1127,57 @@ class MediaFilesController extends AdminAppController {
 	
 	public function add_blank_file() {
 		
+		
+	
+		
 		if(count($this->data)>0) {
 			
 			if($this->MediaFile->save($this->data)) {
-				
-				//check for a dailyops ops id
-				if(isset($this->data['MediaFile']['dailyop_id'])) {
+			
+					if(isset($this->data['MediaFile']['dailyop_id'])) {
+						
+						//create a dailyop media item
+						$this->loadModel("DailyopMediaItem");
+						
+						$this->DailyopMediaItem->create();
+						
+						$mi = array(
+							"dailyop_id"=>$this->data['MediaFile']['dailyop_id'],
+							"media_file_id"=>$this->MediaFile->id
+						);
+						
+						$this->DailyopMediaItem->save($mi);
+						
+					}
 					
-					$this->loadModel("DailyopMediaItem");
+					//check for a url callback
 					
-					$this->DailyopMediaItem->create();
+					$this->Session->setFlash("New Media File Added Successfully");
 					
-					$data = array(
-						"media_file_id"=>$this->MediaFile->id,
-						"display_weight"=>99,
-						"dailyop_id"=>$this->data['MediaFile']['dailyop_id']
-					);
+					if(isset($this->data['MediaFile']['callback'])) {
+						
+						return $this->redirect(base64_decode($this->data['MediaFile']['callback']));
+						
+					} else {
+						
+						return $this->redirect("/media_files");
+						
+					}
 					
-					$this->DailyopMediaItem->save($data);
-					
-				}
-				
-				//check for a url callback
-				
-				$this->Session->setFlash("New Media File Added Successfully");
-				
-				if(isset($this->data['MediaFile']['callback'])) {
-					
-					return $this->redirect(base64_decode($this->data['MediaFile']['callback']));
-					
-				} else {
-					
-					return $this->redirect("/media_files");
-					
-				}
-				
+
 			}
+			
+		}
+		
+		if(isset($this->params['named']['dailyop_id'])) {
+			
+			$this->loadModel("Dailyop");
+			
+			$post = $this->Dailyop->returnPost(array(
+				"Dailyop.id"=>$this->params['named']['dailyop_id']
+			),$this->isAdmin());
+			
+			$this->set(compact("post"));
 			
 		}
 		
@@ -1159,14 +1186,101 @@ class MediaFilesController extends AdminAppController {
 	
 	public function ajax_video_still_upload($id= false) {
 		
+		
+
+	}
+	
+	public function handle_ajax_video_still_upload() {
+		
 		$file = $_FILES['Filedata'];
 
 		$ext = $this->getExt($file['name']);
 		
-		$file_name = $this->params['pass'][1].".".$ext;
+		$file_name = md5($this->params['pass'][1].time()).".".$ext;
 		
 		$tmp_path = TMP."upload/".$file_name;
+		
+		
+		if(move_uploaded_file($file['tmp_name'],$tmp_path)) {
+			
+			App::import('Vendor','ImgServer',array("file"=>"ImgServer.php"));
+			
+			$img = ImgServer::instance();
+			
+			$img->upload_video_still($file_name,$tmp_path);
+				
+			unlink($tmp_path);
+			
+			$this->loadModel("MediaFile");
+			
+			$this->MediaFile->create();
+			
+			$this->MediaFile->id = $this->params['pass'][1];
+			
+			$udata = array(
+				"file_video_still"=>$file_name
+			);
+			
+			$this->MediaFile->save($udata);
+			
+			$this->Session->setFlash("Video Still Updated Successfully");
+			
+			die(json_encode($this->MediaFile->read()));
+				
+			
+			
+		}
+		
+		die(";)");
+		
+	}
+	
+	public function ajax_image_upload($id = false) {
+		
+		
+	}
+	
+	public function handle_ajax_image_upload() {
+		
+		$file = $_FILES['Filedata'];
 
+		$ext = $this->getExt($file['name']);
+		
+		$file_name = md5($this->params['pass'][1].time()).".".$ext;
+		
+		$tmp_path = TMP."upload/".$file_name;
+		
+		
+		if(move_uploaded_file($file['tmp_name'],$tmp_path)) {
+			
+			App::import('Vendor','ImgServer',array("file"=>"ImgServer.php"));
+			
+			$img = ImgServer::instance();
+			
+			$img->upload_image_file($file_name,$tmp_path);
+			
+			unlink($tmp_path);
+			
+			$this->loadModel("MediaFile");
+			
+			$this->MediaFile->create();
+			
+			$this->MediaFile->id = $this->params['pass'][1];
+			
+			$udata = array(
+				"file"=>$file_name
+			);
+			
+			$this->MediaFile->save($udata);
+			
+			$this->Session->setFlash("Image file uploaded successfully");
+			
+			die(json_encode($this->MediaFile->read()));
+			
+		}
+		
+		die(";-)");
+		
 	}
 	
 	

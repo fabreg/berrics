@@ -28,6 +28,7 @@ $tag_str = implode(",",$tag_array);
 		echo $this->Form->input("first_name");
 		echo $this->Form->input("last_name");
 		echo $this->Form->input("email");
+		echo $this->Form->input("title");
 		echo $this->Form->input('user_group_id');
 		echo $this->Form->input("birth_date",array("minYear"=>1970,"maxYear"=>2011));
 		echo $this->Form->input("profile_image_url");

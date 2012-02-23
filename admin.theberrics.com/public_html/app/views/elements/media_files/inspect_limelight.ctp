@@ -11,7 +11,8 @@ function handleUpload() {
 
 </script>
 <fieldset>
-	<legend>Limelight CDN</legend>
+	<legend>Video File</legend>
+	<p></p>
 	<?php 
 	
 		echo $this->Form->input("MediaFile.limelight_file",array("disabled"=>true));

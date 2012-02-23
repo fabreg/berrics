@@ -226,6 +226,31 @@ class User extends AppModel {
 		
 	}
 	
+	public function returnAssignedUserList() {
+		
+		$users = $this->find("all",array(
+			"conditions"=>array(
+				"User.user_group_id"=>10
+			),
+			"contain"=>array(),
+			"order"=>array(
+				"User.first_name"=>"ASC",
+				"User.last_name"=>"ASC"
+			)
+		));
+		
+		$select = array();
+		
+		foreach($users as $v) {
+
+			$select[$v['User']['id']] = $v['User']['first_name']." ".$v['User']['last_name']." (".$v['User']['title'].") ";
+			
+		}
+			
+		return $select;
+		
+	}
+	
 	/**
 	 * Set validation rules for updating a password
 	 * @return void

@@ -195,7 +195,11 @@ var VideoFileUpload = {
 				"overflow":"hidden"
 				
 			});
-			
+			$("#upload-modal").css({
+				
+				"height":$('body').height()+"px"
+				
+			});
 			
 		},
 		closeUpload:function() {
@@ -342,6 +346,11 @@ var VideoStillUpload = {
 				
 			});
 			
+			$("#upload-modal").css({
+				
+				"height":$('body').height()+"px"
+				
+			});
 			
 		},
 		closeUpload:function() {
@@ -359,7 +368,6 @@ var VideoStillUpload = {
 			
 			var obj = eval("("+file+")");
 			
-			
 			var fn = window[VideoStillUpload.completedCallback];
 			
 			Array.prototype.unshift.call(VideoStillUpload.callbackArgs, obj);
@@ -375,14 +383,156 @@ var VideoStillUpload = {
 			}
 			
 		}
+
+};
+
+
+var ImageFileUpload = {
 		
+		media_file_id:null,
+		completedCallback:null,
+		callbackArgs:null,
+		openUpload:function() { 
+				
+			this.media_file_id = arguments[0] || null;
 		
-		
-		
-		
+			Array.prototype.shift.call(arguments);
+			
+			this.completedCallback = arguments[0] || null;
+			
+			Array.prototype.shift.call(arguments);
+			
+			if(arguments.length>1) {
+				
+				this.callbackArgs = arguments;
+				
+			} else {
+			
+				this.callbackArgs = new Array();
+				
+			}
+			
+			$('body').append("<div id='upload-modal'><div id='upload-modal-content'></div></div>");
+			
+			$.get("/media_files/ajax_image_upload/"+this.media_file_id,function(d) { 
+				
+				$("#upload-modal-content").html(d); 
+			
+				//bootstrap swf upload
+				var opt = {
+						
+						flash_url:"/swfupload/swfupload.swf",
+						button_placeholder_id:"video-upload-button",
+						button_image_url:"/img/video-file-upload-button.png",
+						button_height:50,
+						button_width:200,
+						button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT,
+						upload_url:"/media_files/handle_ajax_image_upload/"+xid+"/"+ImageFileUpload.media_file_id,
+						file_types:"*.jpg;*.jpeg;*.gif;*.png",
+						file_types_description: "Upload image",
+						file_queue_limit:1,
+						file_queued_handler:function(f) {
+							
+							this.startUpload();
+						
+						},
+						
+						file_queue_error_handler:function(f,e,m) {
+							
+							//alert(m);
+							
+						},
+						upload_start_handler:function(f) {
+							
+							
+							
+						},
+						upload_progress_handler:function(f,bl,bt) {
+							
+							
+							var str = "Uploading:"+bl+" / "+bt;
+							
+							
+							if(bl >= bt) {
+								
+								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......</div>"
+								
+							}
+							
+							$("#progress-div").html(str);
+						},
+						upload_complete_handler:function() {
+						
+							
+							
+						},
+						upload_success_handler:function(f,d,r) {
+							
+							ImageFileUpload.handleCallback(d);
+							
+						},
+						upload_error_handler:function(f,e,m) { 
+							
+							alert(m);
+							
+						},
+						debug:true
+						
+					};
+				new SWFUpload(opt);
+				
+			});
+			
+			this.handleResize();
+				
+		},
+		handleResize:function() {
+			
+			$('body,html').css({
+				
+				"overflow":"hidden"
+				
+			});
+			
+			$("#upload-modal").css({
+				
+				"height":$('body').height()+"px"
+				
+			});
+			
+		},
+		closeUpload:function() {
+			
+			$('body,html').css({
+				
+				"overflow":"auto"
+				
+			});
+			
+			$("#upload-modal").remove();
+			
+		},
+		handleCallback:function(file) {
+			
+			var obj = eval("("+file+")");
+			
+			var fn = window[ImageFileUpload.completedCallback];
+			
+			Array.prototype.unshift.call(ImageFileUpload.callbackArgs, obj);
+			
+			if(typeof fn === 'function') {
+				
+				fn.apply(this,ImageFileUpload.callbackArgs);
+				
+			} else {
+			
+				alert("Callback if not in scope");
+				
+			}
+			
+		}
 		
 		
 };
-
 
 

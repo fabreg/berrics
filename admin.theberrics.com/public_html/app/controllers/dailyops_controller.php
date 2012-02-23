@@ -113,7 +113,7 @@ class DailyopsController extends AdminAppController {
 			
 			$this->data['Dailyop']['publish_date'] = date("Y-m-d",strtotime("+20 Days"));
 			
-			if ($this->Dailyop->save($this->data)) {
+			if ($this->Dailyop->saveAll($this->data)) {
 				//$this->Session->setFlash(__('The dailyop has been saved', true));
 				
 				return $this->flash("Dailyops Post Added Successfully","/dailyops/edit/".$this->Dailyop->id);
@@ -124,7 +124,8 @@ class DailyopsController extends AdminAppController {
 			}
 		}
 		$dailyopSections = $this->Dailyop->DailyopSection->returnSelectList();
-		$this->set(compact('users', 'dailyopSections', 'mediaFiles', 'tags'));
+		$users = $this->Dailyop->User->returnAssignedUserList();
+		$this->set(compact('users', 'dailyopSections', 'mediaFiles', 'tags','users'));
 	}
 
 	function edit($id = null) {
@@ -133,6 +134,8 @@ class DailyopsController extends AdminAppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			
+			//die(pr($this->data));
 			
 			$this->data['Tag'] = $this->Dailyop->Tag->parseTags($this->data['Tag']['Tag']);
 			
@@ -244,7 +247,7 @@ class DailyopsController extends AdminAppController {
 		$this->data['Dailyop']['pub_time'] = date("H:i",strtotime($this->data['Dailyop']['publish_date']));
 		
 		
-		//$users = $this->Dailyop->User->userSelectList();
+		$users = $this->Dailyop->User->returnAssignedUserList();
 		$dailyopSections = $this->Dailyop->DailyopSection->returnSelectList();
 		$unifiedStores = $this->Dailyop->UnifiedStore->find("list",array("order"=>array("UnifiedStore.shop_name"=>"ASC")));
 		//$mediaFiles = $this->Dailyop->MediaFile->find('list');

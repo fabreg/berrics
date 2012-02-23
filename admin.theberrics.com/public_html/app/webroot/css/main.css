@@ -422,7 +422,7 @@ MEDIA AJAX WINDOW THING
 
 #upload-modal {
 	
-	height:100%;
+	
 	width:100%;
 	background-image:url(/img/blk-px.png);
 	position:absolute;
@@ -467,7 +467,20 @@ MEDIA AJAX WINDOW THING
 		float:left;
 }
 
+.dop-status-error {
+	
+	color:red;
+	font-weight:bold;	
+	padding:2px;
+	font-size:12px;
+}
 
+.dop-status-good {
+
+	color:green;
+	font-weight:bold;	
+	
+}
 
 
 
