@@ -4,6 +4,7 @@ $tag_array = Set::extract("/Tag/name",$this->data);
 $tag_str = implode(",",$tag_array);
 ?>
 <div class='form index'>
+	<h2>Media File Inspector</h2>
 	<?php echo $this->Form->create("MediaFile",array("url"=>$this->here))?>
 	<fieldset>
 		<legend>Details</legend>

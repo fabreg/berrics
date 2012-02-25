@@ -784,7 +784,8 @@ class Dailyop extends AppModel {
 		//get all the upcoming posts
 		$posts = $this->find("all",array(
 			"conditions"=>array(
-				"Dailyop.publish_date > NOW()"
+				"Dailyop.publish_date > NOW()",
+					"DailyopSection.id !="=>65
 			),
 			"contain"=>array(
 				"DailyopMediaItem"=>array("MediaFile"),
@@ -805,7 +806,7 @@ class Dailyop extends AppModel {
 				"pass"=>true
 			);
 			
-			//run the checks
+			//run media checks
 			if(count($v['DailyopMediaItem'])<=0 && !$v['Dailyop']['hide_media']) {
 				
 				$posts[$k]['Status']['pass'] = false;
@@ -817,8 +818,9 @@ class Dailyop extends AppModel {
 				//we have some media, let's do some checks
 				switch($v['DailyopSection']['id']) {
 					
-					case "14":
-						
+					case 65:
+						break;
+					case 14:
 						break;
 					default:
 						foreach($v['DailyopMediaItem'] as $kitem=>$item) {
@@ -834,7 +836,7 @@ class Dailyop extends AppModel {
 										
 									}
 									//ensure video still image has been uploaded
-									if(empty($item['MediaFile']['file_video_still'])) {
+									if(empty($item['MediaFile']['file_video_still']) || $item['MediaFile']['file_video_still'] == "true") {
 										
 										$posts[$k]['Status']['pass'] = false;
 										$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Video[{$kitem}]: Image Not Uploaded <a href='javascript:VideoStillUpload.openUpload(\"".$item['MediaFile']['id']."\",\"handleStillUpload\");'>(Click Here To Upload)</a></div>";
@@ -844,7 +846,7 @@ class Dailyop extends AppModel {
 									if(empty($item['MediaFile']['preroll_label'])) {
 										
 										$posts[$k]['Status']['pass'] = false;
-										$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Video[{$kitem}]: Advertising not set <a href='/media_files/inspect/".$item['MediaFile']['id']."/".base64_encode($this->here)."'>(Edit Video)</a></div>";
+										$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Video[{$kitem}]: Advertising not set <a href='/media_files/inspect/".$item['MediaFile']['id']."/'>(Edit Video)</a></div>";
 										
 									}
 									break;
@@ -855,9 +857,16 @@ class Dailyop extends AppModel {
 							
 						}
 						break;
-					
 				}
 				
+				
+			}
+			
+			//run dupe URI checks
+			if(!$this->dupeUriCheck($v)) {
+				
+				$posts[$k]['Status']['pass'] = false;
+				$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Duplicate URI <a href='/media_files/inspect/".$item['MediaFile']['id']."/'>(Edit Video)</a></div>";
 				
 			}
 			

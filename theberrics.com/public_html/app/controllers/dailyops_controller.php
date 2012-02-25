@@ -63,7 +63,7 @@ class DailyopsController extends BerricsAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(date("Y-m-d") == "2012-02-18") { 
+			if(date("Y-m-d") == "2012-02-25") { 
 				
 				$batb_mode = true;
 				
@@ -102,7 +102,7 @@ class DailyopsController extends BerricsAppController {
 		
 		
 		
-		if($home_page && count($dailyops)<3 && !$batb_mode) {
+		if($home_page && count($dailyops)<1 && !$batb_mode) {
 			
 			//let's get yesterdays posts
 			//$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));

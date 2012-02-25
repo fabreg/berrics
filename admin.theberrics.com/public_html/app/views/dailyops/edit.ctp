@@ -319,41 +319,62 @@ function handleUserAssignment(data) {
 
 }
 
+.top-checks div.checkbox {
+
+	float:left;
+	margin-right:10px;
+}
+
 </style>
 <div class="dailyops form">
+<h2>Dailyops Post</h2>
 <?php echo $this->Form->create('Dailyop');?>
 	<fieldset>
- 		<legend>Edit DailyOp's Post</legend>
- 			
-
-	<?php
-		echo $this->Form->input("postback",array("type"=>"hidden","value"=>$this->params['pass'][1]));
-		echo $this->Form->input('id');
+		<legend>Post Settings</legend>
+		<div class='top-checks'>
+	<?php 
+		
 		echo $this->Form->input("active");
 		echo $this->Form->input("promo");
 		echo $this->Form->input("hidden");
 		echo $this->Form->input("news_post");
 		echo $this->Form->input("fix_later");
 		echo $this->Form->input("featured_archive");
+		echo $this->Form->input("hide_media");
+		echo $this->Form->input("slide_show");
+		echo $this->Form->input("contest_post");
 		echo $this->Form->input("display_weight",array("options"=>$sort));
+		echo $this->Form->submit("Update");
+		
+	?>
+	<div style='clear:both;'></div>
+	</div>
+	</fieldset>
+	<fieldset>
+ 		<legend>Edit DailyOp's Post</legend>
+ 			
+
+		<?php
+			if(isset($this->params['pass'][1])) {
+				
+							echo $this->Form->input("postback",array("type"=>"hidden","value"=>$this->params['pass'][1]));
+				
+			}
+			echo $this->Form->input('id');
 		?>
 		<div>
-		<label>User</label>
-			<?php echo $this->data['User']['first_name']; ?> <?php echo $this->data['User']['last_name']; ?> ( Edit )
+		<label>Created By</label>
+			<?php echo $this->data['User']['first_name']; ?> <?php echo $this->data['User']['last_name']; ?> ( <?php echo $this->Time->niceShort($this->data['Dailyop']['created']); ?> )
 		</div>
 		<?php 
 		echo $this->Form->input("pub_date",array("type"=>"text","label"=>"Publish Date"));
 		echo $this->Form->input("pub_time",array("type"=>"text","label"=>"Publish Time"));
 		echo $this->Form->input("theme_override",array("options"=>$themes,"empty"=>true,"label"=>"Theme Override (These are themes that reside on the dev server)"));
-		echo $this->Form->input("misc_category",array("options"=>Arr::dailyopsMiscCategories(),"empty"=>true));
+		echo $this->Form->input("misc_category",array("options"=>Arr::dailyopsMiscCategories(),"empty"=>true,"label"=>"Misc. Category ( Used for special posts including the news )"));
 		echo $this->Form->input('name');
 		echo $this->Form->input("sub_title");
-		echo $this->Form->input("hide_media");
-		
 		echo $this->Form->input('text_content');
 		echo $this->Form->input('html_content');
-		echo $this->Form->input("slide_show");
-		echo $this->Form->input("contest_post");
 		echo $this->Form->input('dailyop_section_id');
 		echo $this->Form->input("unified_store_id",array("empty"=>true));
 		echo "<div style='padding:10px;'>";
@@ -362,6 +383,7 @@ function handleUserAssignment(data) {
 		echo $this->Form->input("uri");
 		echo "<div style='padding:10px;'><input type='button' value='Check URI' id='check_uri_button' /></div>";
 		echo $this->Form->input('Tag',array("type"=>"text","value"=>$tag_str,"label"=>"Tags (Comma sperate each tag)"));
+		echo $this->Form->submit("Update");
 	?>
 	</fieldset>
 	
@@ -374,7 +396,7 @@ function handleUserAssignment(data) {
 			echo $this->Form->input("url");
 			echo $this->Form->input("window_target");
 			echo $this->Form->input("link_to_post_url");
-		
+			echo $this->Form->submit("Update");
 		?>
 	</fieldset>
 	<fieldset>
@@ -391,12 +413,9 @@ function handleUserAssignment(data) {
 			echo $this->Form->input("parent_dailyop_id",array("options"=>$episodes,"empty"=>true));
 			
 			echo $this->Form->input("episode_display_weight",array("options"=>$sort,"empty"=>false));
+			echo $this->Form->submit("Update");
 		?>
 	</fieldset>
-	<?php 
-		echo $this->Form->submit("Update");
-	?>
-
 	<a name="text-items"></a>
 	<fieldset>
 		<legend>Text Items (* For Articles)</legend>

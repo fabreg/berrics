@@ -157,7 +157,7 @@ var VideoFileUpload = {
 							
 							if(bl >= bt) {
 								
-								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......</div>"
+								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......<br />The Screen will refresh when completed</div>"
 								
 							}
 							
@@ -307,7 +307,7 @@ var VideoStillUpload = {
 							
 							if(bl >= bt) {
 								
-								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......</div>"
+								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......<br />The Screen will refresh when completed</div>"
 								
 							}
 							
@@ -455,7 +455,7 @@ var ImageFileUpload = {
 							
 							if(bl >= bt) {
 								
-								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......</div>"
+								str += "<div style='color:green; font-weight:bold;'>Processing File Please Wait A Moment......<br />The Screen will refresh when completed</div>"
 								
 							}
 							

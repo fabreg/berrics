@@ -19,7 +19,7 @@ function handleStillUpload() {
 			<th>Status</th>
 			<th>Title - SubTitle</th>
 			<th>Publish Date</th>
-			<th>Publish Date</th>
+			<th>Section</th>
 			<th>Publish Date</th>
 			<th>Publish Date</th>
 			<th>Publish Date</th>
@@ -47,10 +47,10 @@ function handleStillUpload() {
 				<?php if(!empty($post['Dailyop']['sub_title'])): ?>
 				- <?php echo $post['Dailyop']['sub_title']; ?>
 				<?php endif; ?>
+				<div style='font-size:11px; font-style:italic;'><?php echo $post['DailyopSection']['uri']; ?>/<?php echo $post['Dailyop']['uri']; ?> ()</div>
 			</td>
-						<td><?php echo date("D",strtotime($post['Dailyop']['publish_date'])); ?>, <?php echo date("M dS,Y [H:i:s]",strtotime($post['Dailyop']['publish_date'])); ?></td>
-			
-			<td></td>
+			<td><?php echo date("D",strtotime($post['Dailyop']['publish_date'])); ?>, <?php echo date("M dS,Y [H:i:s]",strtotime($post['Dailyop']['publish_date'])); ?></td>
+			<td><?php echo $post['DailyopSection']['name']; ?></td>
 			<td></td>
 			<td></td>
 			<td></td>
