@@ -27,7 +27,7 @@ function handleStillUpload() {
 		</tr>
 		<?php foreach($posts as $post): ?>
 		<tr>
-			<td>
+			<td nowrap >
 				<?php foreach($post['AssignedUser'] as $user): ?>
 				<div class='<?php echo $user['id']; ?>'>
 					<?php echo $user['first_name']; ?> <?php echo $user['last_name']; ?> ( <?php echo $user['title']; ?> )

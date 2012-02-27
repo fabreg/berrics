@@ -235,6 +235,12 @@ function handleUserAssignment(data) {
 	
 }
 
+function handleVideoUpload() {
+
+	$('form').submit();
+	
+}
+
 
 </script>
 <style>
@@ -262,10 +268,36 @@ function handleUserAssignment(data) {
 .media-item .right {
 
 	float:right;
-	width:250px;
+	width:275px;
 
 	
 }
+
+.media-item .right table {
+
+	width:100%;
+	font-size:11px;
+}
+
+.media-item .right table tr td {
+
+	padding:3px;
+
+}
+
+.media-item .right table tr td:first-child {
+
+	font-weight:bold;
+	text-align:right;
+
+}
+
+.media-item .right table tr:nth-child(odd) {
+
+	background-color:#e9e9e9;
+
+}
+
 
 .media-item .right dl {
 

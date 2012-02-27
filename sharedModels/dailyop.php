@@ -866,7 +866,7 @@ class Dailyop extends AppModel {
 			if(!$this->dupeUriCheck($v)) {
 				
 				$posts[$k]['Status']['pass'] = false;
-				$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Duplicate URI <a href='/media_files/inspect/".$item['MediaFile']['id']."/'>(Edit Video)</a></div>";
+				$posts[$k]['Status']['msg'] .= "<div class='dop-status-error'>Duplicate URI <a href='/dailyops/edit/".$v['Dailyop']['id']."/'>(Edit Post)</a></div>";
 				
 			}
 			
@@ -875,8 +875,5 @@ class Dailyop extends AppModel {
 		return $posts;
 		
 	}
-	
-	
-	
-	
+
 }
