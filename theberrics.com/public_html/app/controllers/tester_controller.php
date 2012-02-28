@@ -89,8 +89,8 @@ class TesterController extends BerricsAppController {
 			}
 			
 		}
-		echo $i;
-		die($i);
+		//echo $i;
+		die();
 		
 	}
 	
