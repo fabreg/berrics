@@ -32,6 +32,7 @@
 			<td></td>
 			<td class='actions'>
 				<a href='/berrics_records/edit/<?php echo $record['BerricsRecord']['id']; ?>'>Edit</a>
+				<a href='/berrics_records/uploads/<?php Echo $record['BerricsRecord']['id']; ?>'>View Uploads</a>
 			</td>
 		</tr>
 		<?php endforeach;?>

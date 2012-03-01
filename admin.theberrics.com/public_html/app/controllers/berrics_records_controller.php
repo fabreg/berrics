@@ -86,6 +86,39 @@ class BerricsRecordsController extends AdminAppController {
 		
 	}
 	
+	public function uploads($id = false) {
+		
+		if(!$id) return $this->cakeError("error404");
+		
+		$record = $this->BerricsRecord->find("first",array(
+			"conditions"=>array(
+				"BerricsRecord.id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		//get the uploads
+		$this->loadModel("MediaFileUpload");
+		
+		$uploads = $this->MediaFileUpload->find("all",array(
+			"conditions"=>array(
+				"model"=>"BerricsRecord",
+				"foreign_key"=>$id
+			),
+			"contain"=>array(
+				"User"
+			),
+			"order"=>Array(
+				"MediaFileUpload.created"=>"ASC"
+			)
+		));
+		
+		$this->set(compact("uploads","record"));
+		
+		
+	}
+	
+	
 	
 	public function setDailyopsList() {
 		
@@ -162,6 +195,7 @@ class BerricsRecordsController extends AdminAppController {
 		return $this->flash("Record Post Deleted Successfully","/berrics_records/edit/".$berrics_record_id);
 		
 	}
+
 	
 	
 	
