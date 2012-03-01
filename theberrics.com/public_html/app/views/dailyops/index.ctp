@@ -40,7 +40,7 @@ foreach($dailyops as $k=>$dop):
 		
 		//echo $this->element("31-days-of-theotis/winner-banner");
 		
-		echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_mikemo.jpg'/></a></div>";
+		//echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_mikemo.jpg'/></a></div>";
 		
 		echo "<div style='text-align:center; padding-bottom:3px;'><a href='/battle-at-the-berrics-5'><img border='0' src='/theme/battle-at-the-berrics-5/img/week2-winner.jpg' /></a></div>";
 		
