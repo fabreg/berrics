@@ -32,10 +32,10 @@ class SplashRoute extends CakeRoute {
 
 		}
 		
-		if(date('Y-m-d')=='2012-02-17') {
+		if(date('Y-m-d')=='2012-03-02') {
 			
 			$params['controller'] = "splash";
-			$params['action'] = "lrg";
+			$params['action'] = "index";
 			
 		} 
 		

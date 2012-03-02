@@ -937,6 +937,7 @@ class Arr {
 		$a = array(
 		
 			"BATB4"=>"BATB4",
+			"BATB5"=>"BATB5",
 			"PRE001"=>"PRE001",
 			"LEVIS"=>"LEVIS",
 			"POST001"=>"POST001",

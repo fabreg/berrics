@@ -17,6 +17,3 @@
 		<?php endforeach; ?>
 	</table>
 </div>
-<?php 
-	pr($uploads);
-?>
