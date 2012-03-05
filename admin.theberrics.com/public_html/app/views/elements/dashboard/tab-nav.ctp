@@ -20,8 +20,7 @@ $(document).ready(function() {
 <div id='dashboard-tab-nav'>
 	<ul>
 		<li><a href='/dashboard/'>Dailyops</a></li>
-		<li><a href='/dashboard/canteen'>Canteen</a></li>
-		<li><a href='/dashboard/reporting'>Reporting</a></li>
+		<li><a href='/dashboard/younited_nations'>Younited Nations Uploads</a></li>
 	</ul>
 	<div style='clear:both;'></div>
 </div>

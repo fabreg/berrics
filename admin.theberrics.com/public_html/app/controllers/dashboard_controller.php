@@ -117,6 +117,35 @@ class DashboardController extends AdminAppController {
 		
 	}
 	
+	public function younited_nations() {
+		
+		//get all the younited nations 3 downloads
+		$this->loadModel("YounitedNationsEventEntry");
+		
+		$this->YounitedNationsEventEntry->bindModel(array(
+			"hasMany"=>array(
+				"MediaFileUpload"=>array(
+					"className"=>"MediaFileUpload",
+					"conditions"=>array("MediaFileUpload.model"=>"YounitedNationsEventEntry"),
+					"foreignKey"=>"foreign_key"
+				)
+			)
+		));
+		
+		$entries = $this->YounitedNationsEventEntry->find("all");
+		
+		foreach($entries as $k=>$v) {
+			
+			if(count($v['MediaFileUpload'])<1) unset($entries[$k]);
+			
+		}
+		
+		//die(pr($entries));
+		
+		$this->set(compact("entries"));
+		
+	}
+	
 	
 	
 	
