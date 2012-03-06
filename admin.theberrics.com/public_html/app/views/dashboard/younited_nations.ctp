@@ -18,7 +18,7 @@ echo $this->element("dashboard/tab-nav");
 		<tr>
 			<td><?php echo $v['YounitedNationsEventEntry']['id']; ?></td>
 			<td><?php echo $this->Time->niceShort($v['YounitedNationsEventEntry']['created']); ?></td>
-			<td><?php echo $v['YounitedNationsPosse']['name']; ?></td>
+			<td><?php echo $v['YounitedNationsPosse']['name']; ?> <a href='/younited_nations_events/view_entry/<?php echo $v['YounitedNationsEventEntry']['id']; ?>' target='_blank'>(View Crew Details)</a></td>
 			<td><?php echo $v['YounitedNationsPosse']['geo_formatted']; ?></td>
 			<td>
 				<?php foreach($v['MediaFileUpload'] as $u): ?>
