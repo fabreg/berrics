@@ -8,11 +8,11 @@ body {
 
 #yn3 {
 
-	width:368px;
-	height:772px;
+	width:581px;
+	height:483px;
 	margin:auto;
 	position:relative;
-	background-image:url(/img/splash/yn3splash/images/yn3-logo.jpg);
+	background-image:url(/img/splash/yn3splash/images/logo.png);
 	background-repeat:no-repeat;
 	cursor:pointer;
 }
@@ -20,12 +20,14 @@ body {
 .date {
 
 	position:absolute;
-	top:676px;
+	top:245px;
+	left:5px;
 	width:100%;
-	text-align:center;
+	text-align:left;
 	font-weight:bold;
-	font-size:20px;
-	color:#59291d;
+	font-size:216px;
+	color:black;
+	font-family:'Arial';
 }
 
 .date .day {
@@ -39,7 +41,7 @@ body {
 	text-align:center;
 	font-size:24px;
 	padding-bottom:40px;
-	
+	padding-top:40px;
 }
 #enter-link a {
 	
@@ -79,7 +81,7 @@ $(document).ready(function() {
 			}
 		
 		?>
-		<span class='day'><?php echo $days_left?></span> <?php echo $blurb; ?>
+		<span class='day'><?php echo $days_left?></span>
 	</div>
 </div>
 <div id='enter-link'>
