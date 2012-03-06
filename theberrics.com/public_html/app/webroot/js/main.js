@@ -79,7 +79,7 @@ $(document).ready(function() {
 	DailyopsSlideShow.init();
 	
 	//yn3 date math
-	var date = new Date("March 15, 2012");
+	var date = new Date("March 16, 2012");
 	var now = new Date();
 	var diff = date.getTime() - now.getTime();
 	var days = Math.floor(diff / (1000 * 60 * 60 * 24));

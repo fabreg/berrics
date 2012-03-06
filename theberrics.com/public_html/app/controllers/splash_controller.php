@@ -37,6 +37,12 @@ class SplashController extends BerricsAppController {
 		
 	}
 	
+	public function yn3_countdown() {
+		
+		
+		
+		
+	}
 	
 	public function test() {
 		
