@@ -39,7 +39,7 @@ class SplashController extends BerricsAppController {
 	
 	public function yn3_countdown() {
 		
-		$this->set("title_for_layout","The Berrics - Vans Shoes Presents: YOUnited Nations 3");
+		$this->set("title_for_layout","The Berrics - Vans Presents: YOUnited Nations 3");
 		
 		
 	}
