@@ -44,6 +44,12 @@ class SplashController extends BerricsAppController {
 		
 	}
 	
+	public function kony() {
+		
+		$this->set("title_for_layout","The Berrics - The worlds most award winning skateboarding site.");
+		
+	}
+	
 	public function test() {
 		
 		
