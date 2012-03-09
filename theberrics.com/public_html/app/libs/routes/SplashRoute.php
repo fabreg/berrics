@@ -23,7 +23,7 @@ class SplashRoute extends CakeRoute {
 		//$news = true;
 		
 		$params['controller'] = "splash";
-		$params['action'] = "kony";
+		$params['action'] = "yn3_countdown";
 		
 		if($news) {
 			
