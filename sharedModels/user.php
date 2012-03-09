@@ -88,6 +88,30 @@ class User extends AppModel {
 		"Tag"
 	);
 	
+	public function returnUserProfile($id = false) {
+		
+		
+		$token = "user-profile-".$id;
+		
+		if(($profile = Cache::read($token,"1min")) === false) {
+			
+			$profile = $this->find("first",array(
+				"conditions"=>array(),
+				"contain"=>array(
+					"UserProfile",
+					"UserGroup"
+				)
+			));
+			
+			Cache::write($token,$profile,"1min");
+			
+		}
+		
+		return $profile;
+		
+		
+	}
+	
 	/**
 	 * Returns a user account. If one is not found a new one is created and returned
 	 * @param Array $data

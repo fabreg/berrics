@@ -312,12 +312,23 @@ class Batb5Controller extends DailyopsController {
 	
 	public function scorecard($user_id = false) {
 		
-		
-		
+		//clear out the right columnd
+		$this->set("right_column","");
+
 		//check the id
 		if(!$user_id) return $this->cakeError("error404");
 		
 		$this->loadModel("BatbVote");
+		$this->loadModel("User");
+		$this->loadModel("BatbScore");
+		
+		$profile = $this->User->returnUserProfile($user_id);
+		
+		//if user isn't found bounce'em
+		if(!isset($profile['User']['id'])) return $this->cakeError("error404");
+		
+		//page title
+		$title_for_layout = "DC Shoes Presents: Battle At The Berrics 5 - ".$profile['User']['first_name']." ".$profile['User']['last_name'];
 		
 		//get all the users votes
 		$votes = $this->BatbVote->find("all",array(
@@ -333,9 +344,27 @@ class Batb5Controller extends DailyopsController {
 			)
 		));
 		
-		die(print_r($votes));
+		//get the summary row
+		$score_total = $this->BatbScore->find("first",array(
+			"conditions"=>array(
+				"BatbScore.user_id"=>$profile['User']['id'],
+				"BatbScore.batb_event_id"=>$this->event_id
+			),
+			"contain"=>array()
+		));
+		
+		$this->set(compact("profile","votes","title_for_layout","score_total"));
+		
+		//die(print_r($votes));
 		
 	}
+	
+	public function my_scorecard() {
+		
+		
+		
+	}
+
 	
 	public function view() {
 		
