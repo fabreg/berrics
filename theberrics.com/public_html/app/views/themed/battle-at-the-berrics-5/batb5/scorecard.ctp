@@ -5,7 +5,9 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 ?>
 <div id='scorecard'>
 	<div class='main-heading'>
-	
+		<a href='/battle-at-the-berrics-5'>
+			<img border='0' alt='Battle At The Berrics 5' src='/img/layout/clear.png' width='1000' height='112' />
+		</a>
 	</div>
 	<div class='card-heading'>
 		<div class='profile'>
