@@ -25,7 +25,7 @@ $pos = 1;
 			<?php foreach($leaders as $k=>$v): ?>
 			<tr>
 				<td width='1%'><?php echo $pos; ?>.</td>
-				<td><?php $name = strtoupper($v['User']['first_name'])." ".strtoupper($v['User']['last_name']); echo $this->Text->truncate($name,35); ?></td>
+				<td><a href='/battle-at-the-berrics-5/scorecard/<?php echo $v['User']['id']; ?>'><?php $name = strtoupper($v['User']['first_name'])." ".strtoupper($v['User']['last_name']); echo $this->Text->truncate($name,35); ?></a></td>
 				<td width='1%' class='score'><?php echo $v[0]['total']; ?></td>
 			</tr>
 			<?php 

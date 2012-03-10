@@ -113,6 +113,7 @@ $this->Html->script(array("section"),array("inline"=>false));
 	?>
 	<div class='user-credentials'>
 		Signed in as: <?php echo $this->Session->read("Auth.User.email"); ?> <a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>(Click Here To Sign Out)</a>
+		<div><a href='/battle-at-the-berrics-5/scorecard/<?php echo $this->Session->read("Auth.User.id"); ?>'>Click Here To View Your Scorecard</a></div>
 	</div>
 	<?php 
 	

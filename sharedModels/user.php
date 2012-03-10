@@ -96,7 +96,9 @@ class User extends AppModel {
 		if(($profile = Cache::read($token,"1min")) === false) {
 			
 			$profile = $this->find("first",array(
-				"conditions"=>array(),
+				"conditions"=>array(
+					"User.id"=>$id
+				),
 				"contain"=>array(
 					"UserProfile",
 					"UserGroup"

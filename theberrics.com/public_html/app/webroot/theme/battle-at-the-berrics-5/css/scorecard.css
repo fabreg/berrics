@@ -72,6 +72,13 @@
 	
 }
 
+#scorecard .card-heading .profile .name a {
+
+	text-decoration:none;
+	color:inherit;	
+	
+}
+
 #scorecard .card-heading .profile  .fb-like {
 
 	float:right;	
@@ -116,9 +123,54 @@
 
 #scorecard .votes {
 	
-		background-image:url(/theme/battle-at-the-berrics-5/img/scorecard-bg.jpg);
-		min-height:500px;
-		color:#333;
+	background-image:url(/theme/battle-at-the-berrics-5/img/scorecard-bg.jpg);
+	min-height:500px;
+	color:#333;
+	
+}
+.battle-card {
+
+	width:98%;
+	margin:auto;	
+	color:#f7f7f7;
+	font-family:'Arial';
+	
+}
+.battle-card .inner {
+	
+	padding:5px;	
+	
+}
+
+.battle-card table {
+	
+	width:100%;	
+	
+}
+
+.battle-card table td {
+	
+	text-align:center;
+	
+}
+
+.battle-card table .points-cell {
+	
+	font-size:32px;
+	font-weight:bold;	
+}
+
+.team-berra-card {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/score-team-berra-bg.jpg);
+	
+}
+
+
+.team-koston-card {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/score-team-koston-bg.jpg);
+	
 }
 
 

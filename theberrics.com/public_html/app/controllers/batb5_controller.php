@@ -314,7 +314,10 @@ class Batb5Controller extends DailyopsController {
 		
 		//clear out the right columnd
 		$this->set("right_column","");
-
+		
+		//
+		if(!$user_id && $this->Session->check("Auth.User.id")) return $this->redirect("/battle-at-the-berrics-5/scorecard/".$this->Session->read("Auth.User.id"));
+		
 		//check the id
 		if(!$user_id) return $this->cakeError("error404");
 		
@@ -361,7 +364,15 @@ class Batb5Controller extends DailyopsController {
 	
 	public function my_scorecard() {
 		
-		
+		if(!$this->Session->check("Auth.User.id")) {
+			
+			return $this->redirect("/identity/login/send_to_facebook/".base64_encode($this->here));
+			
+		} else {
+			
+			return $this->redirect("/battle-at-the-berrics-5/scorecard/".$this->Session->read("Auth.User.id"));
+			
+		}
 		
 	}
 
