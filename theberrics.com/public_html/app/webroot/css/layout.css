@@ -843,6 +843,18 @@ DAILY OPS
     
 }
 
+.d-post-bit .tags .tag {
+
+	white-space:nowrap;	
+	
+}
+
+.d-post-bit .tags .tag img {
+
+	vertical-align:bottom;
+	margin-right:1px;
+}
+
 
 .d-post-bit .footer .socialize {
     

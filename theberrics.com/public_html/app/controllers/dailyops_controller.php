@@ -90,7 +90,7 @@ class DailyopsController extends BerricsAppController {
 		
 			"contain"=>array(
 				"User",
-				"Tag",
+				"Tag"=>array("User"),
 				"DailyopSection",
 				"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
 			),
@@ -114,7 +114,7 @@ class DailyopsController extends BerricsAppController {
 				
 					"contain"=>array(
 						"User",
-						"Tag",
+						"Tag"=>array("User"),
 						"DailyopSection",
 						"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
 					),

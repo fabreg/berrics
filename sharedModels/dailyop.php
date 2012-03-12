@@ -79,7 +79,9 @@ class Dailyop extends AppModel {
 					),
 					"User",
 					"DailyopSection",
-					"Tag",
+					"Tag"=>array(
+						"User"
+					),
 					"Meta",
 					"DailyopTextItem"=>array(
 						"MediaFile",

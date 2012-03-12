@@ -1114,6 +1114,23 @@ class TesterController extends AdminAppController {
 	}
 	
 	
+	public function tag_test() {
+		
+		$this->loadModel("Tag");
+		
+		$tags = $this->Tag->find("all",array(
+			"conditions"=>array(
+				"Tag.name"=>"nick tucker"
+			),
+			"contain"=>array(
+				"User"
+			)
+		));
+		
+		print_r($tags);
+		die();
+	}
+	
 	
 	
 	

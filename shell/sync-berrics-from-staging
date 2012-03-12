@@ -23,11 +23,11 @@ rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt
 ssh root@web6 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
 ssh root@web6 '/sbin/service httpd start';
 
-#ssh root@web7 'apachectl -k graceful-stop';
-#sleep 4;
-#rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web7:/home/sites/berrics/
-#ssh root@web7 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-#ssh root@web7 '/sbin/service httpd start';
+ssh root@web7 'apachectl -k graceful-stop';
+sleep 4;
+rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web7:/home/sites/berrics/
+ssh root@web7 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
+ssh root@web7 '/sbin/service httpd start';
 
 ssh root@web8 'apachectl -k graceful-stop';
 sleep 4;

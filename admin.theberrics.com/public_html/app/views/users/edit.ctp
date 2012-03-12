@@ -51,12 +51,15 @@ $tag_str = implode(",",$tag_array);
 		<legend>Social Network Stuff</legend>
 		<?php 
 		
-			echo $this->Form->input("twitter_handle");
+			echo $this->Form->input("twitter_handle",array("label"=>"Twitter Handle ( Use @ symbol )"));
 		
+			echo $this->Form->input("instagram_handle");
+			
 			echo $this->Form->input("twitter_url");
 
 			echo $this->Form->input("facebook_url");
-
+			
+			
 			
 
 		?>
