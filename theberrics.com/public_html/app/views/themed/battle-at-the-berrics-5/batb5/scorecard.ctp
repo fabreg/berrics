@@ -115,9 +115,9 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 							} else {
 								
 								$points = 0;
-								if($v['BatbVote']['rps_winner_user_id'] == $v['BatbMatch']['rps_winner_user_id']) $points += 5;
+								if($v['BatbVote']['rps_winner_user_id'] == $v['BatbMatch']['rps_winner_user_id']) $points += 1;
 								if($v['BatbVote']['match_winner_user_id'] == $v['BatbMatch']['match_winner_user_id']) $points += 10;
-								if($v['BatbVote']['winner_letters'] == $v['BatbMatch']['winner_letters'] && $points >= 10) $points += 1;
+								if($v['BatbVote']['winner_letters'] == $v['BatbMatch']['winner_letters'] && $points >= 10) $points += 15;
 								echo $points;
 								
 							}
