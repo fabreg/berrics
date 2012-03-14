@@ -14,24 +14,61 @@ $(document).ready(function() {
 });
 
 </script>
+<style>
+.index table td {
+
+	font-size:10px;
+
+}
+</style>
 <div class="users index">
 	<h2><?php __('Users');?></h2>
 	<div class='form'>
 		<fieldset>
 			<legend><a href='#' rel='toggle-search'>Search</a></legend>
-			<div id='search' style='display:none;'>
-			<?php 
 			
-				echo $this->Form->create("User",array("url"=>array("action"=>"search")));
-				echo $this->Form->input("first_name");
-				echo $this->Form->input("last_name");
-				echo $this->Form->input("email");
-				echo $this->Form->input("UserGroup",array("empty"=>"* ALL"));
-				echo $this->Form->end("Search");
-			
-			
-			?>
+			<div id='search' style='display:none; width:500px;'>
+				<?php 
+					echo $this->Form->create("User",array("url"=>array("action"=>"search")));
+				?>
+				<div>
+					<div style='width:49%; float:left;'>
+					<?php 
+						echo $this->Form->input("first_name");
+					?>
+					</div>
+					<div style='width:49%; float:left;'>
+					<?php 
+						echo $this->Form->input("last_name");
+					?>
+					</div>
+					<div style='clear:both;'></div>
+				</div>
+				<?php 
+					echo $this->Form->input("email");
+					echo $this->Form->input("UserGroup",array("empty"=>"* ALL"));
+					
+				
+				
+				?>
+				<div>
+					<div style='width:49%; float:left;'>
+					<?php 
+						echo $this->Form->input("twitter_handle");
+					?>
+					</div>
+					<div style='width:49%; float:left;'>
+					<?php 
+						echo $this->Form->input("instagram_handle");
+					?>
+					</div>
+					<div style='clear:both;'></div>
+				</div>
+				<?php 
+					echo $this->Form->end("Search");
+				?>
 			</div>
+			
 		</fieldset>
 	</div>
 	<p>
@@ -55,9 +92,9 @@ $(document).ready(function() {
 			
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort("email"); ?>
-			<th><?php echo $this->Paginator->sort('twitter_account_num');?></th>
-			<th><?php echo $this->Paginator->sort('facebook_account_num');?></th>
+			<th><?php echo $this->Paginator->sort("email"); ?></th>
+			<th><?php echo $this->Paginator->sort("twitter_handle"); ?></th>
+			<th><?php echo $this->Paginator->sort("instagram_handle"); ?></th>
 			<th><?php echo $this->Paginator->sort('user_group_id');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
@@ -78,8 +115,8 @@ $(document).ready(function() {
 		<td><?php echo $this->Time->niceShort($user['User']['modified']); ?>&nbsp;</td>
 
 		<td><?php echo $user['User']['email']; ?></td>
-		<td><?php echo $user['User']['twitter_account_num']; ?>&nbsp;</td>
-		<td><?php echo $user['User']['facebook_account_num']; ?>&nbsp;</td>
+		<td><?php echo $user['User']['twitter_handle']; ?></td>
+		<td><?php echo $user['User']['instagram_handle']; ?></td>
 		<td>
 			<?php echo $this->Html->link($user['UserGroup']['name'], array('controller' => 'user_groups', 'action' => 'view', $user['UserGroup']['id'])); ?>
 		</td>
