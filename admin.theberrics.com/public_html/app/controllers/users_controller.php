@@ -14,6 +14,13 @@ class UsersController extends AdminAppController {
 		
 	}
 	
+	
+	public function profile_search() {
+		
+		
+		
+	}
+	
 	public function search() {
 		
 		$url = array(
