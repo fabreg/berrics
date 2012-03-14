@@ -82,7 +82,20 @@ class UsersController extends AdminAppController {
 				$this->data['User']['UserGroup'] = $this->params['named']['User.UserGroup'];
 				
 			}
-
+			if(isset($this->params['named']['User.twitter_handle'])) {
+				
+				$cond['User.twitter_handle LIKE'] = "%".str_replace(" ","%",$this->params['named']['User.twitter_handle'])."%";
+				$this->data['User']['twitter_handle'] = $this->params['named']['User.twitter_handle'];
+				
+			}
+			
+			if(isset($this->params['named']['User.instagram_handle'])) {
+				
+				$cond['User.instagram_handle LIKE'] = "%".str_replace(" ","%",$this->params['named']['User.instagram_handle'])."%";
+				$this->data['User']['instagram_handle'] = $this->params['named']['User.instagram_handle'];
+				
+			}
+			
 		}
 		
 	
