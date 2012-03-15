@@ -52,7 +52,7 @@ body {
 
 	text-align:center;
 	font-size:100px;
-	font-weight:bold;
+	font-weight:bolder;
 	color:#622a1f;
 	font-family:'Arial';
 	line-height:80px;
