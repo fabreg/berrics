@@ -357,6 +357,13 @@ function handleVideoUpload() {
 	margin-right:10px;
 }
 
+.top-checks div.checkbox label span {
+
+	font-size:10px;
+	font-style:italic;
+
+}
+
 </style>
 <div class="dailyops form">
 <h2>Dailyops Post</h2>
@@ -364,23 +371,23 @@ function handleVideoUpload() {
 	<fieldset>
 		<legend>Post Settings</legend>
 		<div class='top-checks'>
-	<?php 
-		
-		echo $this->Form->input("active");
-		echo $this->Form->input("promo");
-		echo $this->Form->input("hidden");
-		echo $this->Form->input("news_post");
-		echo $this->Form->input("fix_later");
-		echo $this->Form->input("featured_archive");
-		echo $this->Form->input("hide_media");
-		echo $this->Form->input("slide_show");
-		echo $this->Form->input("contest_post");
-		echo $this->Form->input("display_weight",array("options"=>$sort));
-		echo $this->Form->submit("Update");
-		
-	?>
-	<div style='clear:both;'></div>
-	</div>
+			<?php 
+				
+				echo $this->Form->input("active",array("label"=>"Active <span>(Activate/Deactivate Post)</span>"));
+				echo $this->Form->input("promo",array("label"=>"Promo <span>(Do not show post in related searches)</span>"));
+				echo $this->Form->input("hidden",array("label"=>"Hidden <span>(Hide post from main dailyops archive)</span>"));
+				echo $this->Form->input("news_post",array("label"=>"News Post <span>(Post is a news post and is handled with care)</span>"));
+				echo $this->Form->input("fix_later",array("label"=>"Fix Later <span>(Marker to indicate the shit is fucked and needs to be fixed)</span>"));
+				echo $this->Form->input("featured_archive",array("label"=>"Featured Archive <span>(Show post on Dailyops Featured Archive Slot)</span>"));
+				echo $this->Form->input("hide_media",array("label"=>"Hide Media <span>(Hide Media Element on Post View)</span>"));
+				echo $this->Form->input("slide_show",array("label"=>"Slide Show <span>(Act as a slide show)</span>"));
+				echo $this->Form->input("contest_post",array("label"=>"Contest Post <span>(Mark post as a contest)</span>"));
+				echo $this->Form->input("display_weight",array("options"=>$sort));
+				echo $this->Form->submit("Update");
+				
+			?>
+			<div style='clear:both;'></div>
+		</div>
 	</fieldset>
 	<fieldset>
  		<legend>Edit DailyOp's Post</legend>

@@ -58,41 +58,64 @@ if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI']) && isset($_SERVER['DEVS
 
 
 //tags
-Router::connect("/tags/paginate_posts/*",array("controller"=>"tags","action"=>"paginate_posts"));
-
-
-Router::connect("/tags/:letter",array(
-
-	"controller"=>"tags",
-	"action"=>"cloud"
-
-),array(
-
-	"letter"=>"[a-z0-9]{1}"
-
-));
-
-
-//tag drill down
-Router::connect("/tags/:slug/*",array(
-
-	"controller"=>"tags",
-	"action"=>"index"
+if(preg_match('/\/tags/',$_SERVER['REQUEST_URI'])) {
 	
-),array(
+	Router::connect("/tags/paginate_posts/*",array("controller"=>"tags","action"=>"paginate_posts"));
+	
+	
+	Router::connect("/tags/:letter",array(
+	
+		"controller"=>"tags",
+		"action"=>"cloud"
+	
+	),array(
+	
+		"letter"=>"[a-z0-9]{1}"
+	
+	));
+	
+	
+	//tag drill down
+	Router::connect("/tags/:slug/*",array(
+	
+		"controller"=>"tags",
+		"action"=>"index"
+		
+	),array(
+	
+	
+		"slug"=>"[a-z\-_0-9]{2,}"
+	
+	
+	));
+	
+	Router::connect("/tags/*",array(
+	
+		"controller"=>"tags",
+		"action"=>"cloud_index"
+	
+	));
+	
+}
 
-
-	"slug"=>"[a-z\-_0-9]{2,}"
-
-
-));
-
-Router::connect("/tags/*",array(
-
-	"controller"=>"tags",
-	"action"=>"cloud_index"
-
-));
+//profiles
+if(preg_match('/\/profiles/',$_SERVER['REQUEST_URI'])) {
+	
+	
+	Router::connect("/profiles",array("controller"=>"profiles","action"=>"index"));
+	
+	Router::connect("/profiles/:uri",
+		array(
+			"controller"=>"profiles",
+			"action"=>"view"
+		),
+		array(
+			"uri"=>"[a-zA-Z0-9\-_]{4,}.html"		
+		)
+	);
+	
+	
+}
 
 
 //the dailyops route. This route will define which controller "/dailyops" will use

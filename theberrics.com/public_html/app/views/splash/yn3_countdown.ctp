@@ -9,7 +9,7 @@ body {
 #yn3 {
 
 	width:581px;
-	height:483px;
+	height:290px;
 	margin:auto;
 	position:relative;
 	background-image:url(/img/splash/yn3splash/images/logo.png);
@@ -48,7 +48,15 @@ body {
 	color:inherit;
 
 }
+.large-text {
 
+	text-align:center;
+	font-size:100px;
+	font-weight:bold;
+	color:#622a1f;
+	font-family:'Arial';
+	line-height:80px;
+}
 </style>
 <script type='text/javascript'>
 $(document).ready(function() { 
@@ -63,26 +71,11 @@ $(document).ready(function() {
 });
 </script>
 <div id='yn3'>
-	<div class='date'>
-		<?php 
-		
-			$today = date("d");
-			
-			$days_left = 15-$today;
-			
-			if($days_left > 1) {
-				
-				$blurb = "DAYS REMAINING TO ENTER";
-				
-			} else {
-				
-				$blurb = "DAY REMAINING TO ENTER";
-				
-			}
-		
-		?>
-		<span class='day'><?php echo $days_left?></span>
-	</div>
+
+</div>
+<div class='large-text'>
+LAST DAY<br />
+TO ENTER
 </div>
 <div id='enter-link'>
 <a href='/dailyops'>- ENTER THE BERRICS -</a>

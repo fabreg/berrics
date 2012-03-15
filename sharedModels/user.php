@@ -353,5 +353,42 @@ class User extends AppModel {
 		
 	}
 	
+	public function returnProfile($cond = array(),$options = array(),$isAdmin = false) {
+		
+		
+		$p = $this->find("first",array(
+		
+			"conditions"=>$cond,
+			"contain"=>array()
+		
+		));
+		
+		return $p;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

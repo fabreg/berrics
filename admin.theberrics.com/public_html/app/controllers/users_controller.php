@@ -227,8 +227,11 @@ class UsersController extends AdminAppController {
 			
 			));
 		}
+		
+		$userProfile = $this->User->ensure_user_profile($this->data['User']['id']);
+		
 		$userGroups = $this->User->UserGroup->find('list');
-		$this->set(compact('userGroups'));
+		$this->set(compact('userGroups','userProfile'));
 	}
 
 	function delete($id = null) {

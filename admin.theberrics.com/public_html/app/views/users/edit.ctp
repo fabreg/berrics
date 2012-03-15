@@ -28,9 +28,13 @@ $tag_str = implode(",",$tag_array);
 		echo $this->Form->input("first_name");
 		echo $this->Form->input("last_name");
 		echo $this->Form->input("email");
+		echo $this->Form->input("berrics_employee");
+		echo $this->Form->input("pro_skater");
+		echo $this->Form->input("am_skater");
 		echo $this->Form->input("title");
 		echo $this->Form->input('user_group_id');
 		echo $this->Form->input("birth_date",array("minYear"=>1970,"maxYear"=>2011));
+		echo $this->Form->input("profile_uri",array("label"=>"Profile Uri <span>(Must end in .html)</span>"));
 		echo $this->Form->input("profile_image_url");
 		echo $this->Form->input("tags",array("type"=>"text","label"=>"Tags ( Comma seperated )","value"=>$tag_str));
 		
@@ -65,6 +69,9 @@ $tag_str = implode(",",$tag_array);
 		?>
 	</fieldset>
 	<fieldset>
+		<legend>Profile</legend>
+	</fieldset>
+	<fieldset>
 		<legend>Social Networking BACKEND STUFF</legend>
 		<?php 
 		
@@ -79,22 +86,4 @@ $tag_str = implode(",",$tag_array);
 		?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('User.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List User Groups', true), array('controller' => 'user_groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User Group', true), array('controller' => 'user_groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Banners', true), array('controller' => 'banners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Banner', true), array('controller' => 'banners', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Dailyops', true), array('controller' => 'dailyops', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Dailyop', true), array('controller' => 'dailyops', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Media Files', true), array('controller' => 'media_files', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Media File', true), array('controller' => 'media_files', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List User Permissions', true), array('controller' => 'user_permissions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User Permission', true), array('controller' => 'user_permissions', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
