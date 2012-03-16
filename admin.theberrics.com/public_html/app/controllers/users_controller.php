@@ -5,6 +5,9 @@ App::import("Controller","AdminApp");
 class UsersController extends AdminAppController {
 
 	var $name = 'Users';
+	
+	//public $helpers = array("Berrics");
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -207,6 +210,14 @@ class UsersController extends AdminAppController {
 			
 			$this->data['Tag'] = $this->User->Tag->parseTags($this->data['User']['tags']);
 			
+			if(isset($this->data['UpdateProfileImage'])) {
+				
+				
+				
+				$this->handleProfileImageUpload();
+				
+			}
+			
 			if ($this->User->save($this->data)) {
 				$this->Session->setFlash(__('The user has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -231,6 +242,7 @@ class UsersController extends AdminAppController {
 		$userProfile = $this->User->ensure_user_profile($this->data['User']['id']);
 		
 		$userGroups = $this->User->UserGroup->find('list');
+		
 		$this->set(compact('userGroups','userProfile'));
 	}
 
@@ -349,6 +361,32 @@ class UsersController extends AdminAppController {
 		$this->set("results",$results);
 		
 	}
+	
+	private function handleProfileImageUpload() {
+		
+		$file = $this->data['User']['profile_image'];
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$name = md5(microtime()).".".$ext;
+		
+		//move to temp folder
+		$tmp_path = TMP.$name;
+		
+		move_uploaded_file($file['tmp_name'],$tmp_path);
+		
+		App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+		
+		$i = ImgServer::instance();
+		
+		//upload file to server
+		$i->upload_profile_image($name,$tmp_path);
+		
+		$this->data['User']['profile_img_file'] = $name;
+		
+		
+	}
+	
 
 }
 ?>

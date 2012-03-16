@@ -302,6 +302,12 @@ class BerricsHelper extends AppHelper {
 		
 	}
 	
+	public function profileThumb($user,$opts = array()) {
+		
+		
+		
+	}
+	
 	
 }
 

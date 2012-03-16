@@ -176,6 +176,18 @@ class ImgServer {
 		$this->close();
 		
 	}
+	
+	public function upload_profile_image($file_name, $file_path) {
+		
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/profile-img");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		$this->close();
+		
+	}
 
 	
 	

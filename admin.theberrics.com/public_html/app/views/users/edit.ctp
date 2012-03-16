@@ -5,7 +5,7 @@ $tag_str = implode(",",$tag_array);
 
 ?>
 <div class="users form">
-<?php echo $this->Form->create('User');?>
+<?php echo $this->Form->create('User',array("url"=>$this->here,"enctype"=>"multipart/form-data"));?>
 	<fieldset>
  		<legend><?php __('Edit User'); ?></legend>
  		<?php 
@@ -33,14 +33,34 @@ $tag_str = implode(",",$tag_array);
 		echo $this->Form->input("am_skater");
 		echo $this->Form->input("title");
 		echo $this->Form->input('user_group_id');
-		echo $this->Form->input("birth_date",array("minYear"=>1970,"maxYear"=>2011));
+		echo $this->Form->input("birth_date",array("minYear"=>1940,"maxYear"=>2011));
 		echo $this->Form->input("profile_uri",array("label"=>"Profile Uri <span>(Must end in .html)</span>"));
 		echo $this->Form->input("profile_image_url");
 		echo $this->Form->input("tags",array("type"=>"text","label"=>"Tags ( Comma seperated )","value"=>$tag_str));
-		
+		echo $this->Form->input("profile_theme",array("options"=>array("profile"=>"Standard")));
+		echo $this->Form->submit("Update"); 
 	?>
 	</fieldset>
-	
+	<fieldset>
+		<legend>Profile Image</legend>
+		<?php 
+		
+			echo $this->Form->input("profile_image",array("type"=>"file"));
+			echo $this->Form->submit("Update Image",array("name"=>"data[UpdateProfileImage]"));
+			
+		?>
+		<?php 
+			if(empty($this->data['User']['profile_img_file'])):
+		?>
+			<div>No Image Uploaded</div>
+		<?php else: ?>
+			<div style='padding:10px;'>
+			<?php echo $this->Media->profileThumb($this->data['User'],array(
+				"w"=>"100"
+			)); ?>
+			</div>
+		<?php endif; ?>
+	</fieldset>
 	<fieldset>
 		<legend>Contact Information</legend>
 		<?php 
