@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class LimelightController extends AdminAppController {
+class LimelightController extends LocalAppController {
 	
 	public $uses = array("MediaFile");
 	

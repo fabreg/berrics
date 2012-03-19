@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class MetaController extends AdminAppController {
+class MetaController extends LocalAppController {
 	
 	public $uses = array("Meta");
 	

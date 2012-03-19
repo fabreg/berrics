@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class CanteenCategoriesController extends AdminAppController {
+class CanteenCategoriesController extends LocalAppController {
 
 	public function beforeFilter() {
 		

@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class GatewayTransactionsController extends AdminAppController {
+class GatewayTransactionsController extends LocalAppController {
 
 	var $name = 'GatewayTransactions';
 

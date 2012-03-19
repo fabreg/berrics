@@ -1,9 +1,9 @@
 <?php
 
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class BangyoselfEventsController extends AdminAppController {	
+class BangyoselfEventsController extends LocalAppController {	
 	
 	
 	public $uses = array("BangyoselfEvent","BangyoselfEntry");

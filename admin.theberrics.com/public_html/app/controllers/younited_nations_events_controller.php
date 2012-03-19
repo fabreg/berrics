@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class YounitedNationsEventsController extends AdminAppController {
+class YounitedNationsEventsController extends LocalAppController {
 	
 	public $uses = array("YounitedNationsEvent");
 	

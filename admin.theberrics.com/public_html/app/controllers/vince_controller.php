@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class VinceController extends AdminAppController {
+class VinceController extends LocalAppController {
 	
 	
 	public $uses = array();

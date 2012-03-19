@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class BannerClicksController extends AdminAppController {
+class BannerClicksController extends LocalAppController {
 
 	var $name = 'BannerClicks';
 	public function beforeFilter() {

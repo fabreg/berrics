@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class UserGroupsController extends AdminAppController {
+class UserGroupsController extends LocalAppController {
 
 	var $name = 'UserGroups';
 	public function beforeFilter() {

@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class UserContestsController extends AdminAppController {
+class UserContestsController extends LocalAppController {
 	
 	
 	public function beforeFilter() {

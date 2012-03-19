@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class DailyopsController extends AdminAppController {
+class DailyopsController extends LocalAppController {
 
 	var $name = 'Dailyops';
 	public function beforeFilter() {

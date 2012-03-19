@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class SystemController extends AdminAppController {
+class SystemController extends LocalAppController {
 	
 	public $uses = array();
 	public function beforeFilter() {

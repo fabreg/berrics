@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class CoverPagesController extends AdminAppController {
+class CoverPagesController extends LocalAppController {
 	
 	public function beforeFilter() {
 		

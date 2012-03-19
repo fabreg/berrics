@@ -1,10 +1,10 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
 App::import("Vendor","DfpApi",array("file"=>"DfpApi.php"));
 
-class DfpReportsController extends AdminAppController {
+class DfpReportsController extends LocalAppController {
 	
 	
 	public $uses = array('DfpReport');

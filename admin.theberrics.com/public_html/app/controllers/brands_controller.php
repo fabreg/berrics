@@ -1,9 +1,9 @@
 <?php
 
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class BrandsController extends AdminAppController {
+class BrandsController extends LocalAppController {
 
 	var $name = 'Brands';
 	

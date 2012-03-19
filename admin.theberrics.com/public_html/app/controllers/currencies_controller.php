@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class CurrenciesController extends AdminAppController {
+class CurrenciesController extends LocalAppController {
 
 	var $name = 'Currencies';
 

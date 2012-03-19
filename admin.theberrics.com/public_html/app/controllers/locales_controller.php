@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class LocalesController extends AdminAppController {
+class LocalesController extends LocalAppController {
 
 	var $name = 'Locales';
 	public function beforeFilter() {

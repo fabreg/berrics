@@ -1,6 +1,6 @@
 <?php
-App::import("Controller","AdminApp");
-class BatbEventsController extends AdminAppController {
+App::import("Controller","LocalApp");
+class BatbEventsController extends LocalAppController {
 	
 	
 	public function beforeFilter() {

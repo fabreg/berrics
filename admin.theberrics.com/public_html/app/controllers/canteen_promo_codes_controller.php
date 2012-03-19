@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class CanteenPromoCodesController extends AdminAppController {
+class CanteenPromoCodesController extends LocalAppController {
 
 	var $name = 'CanteenPromoCodes';
 	

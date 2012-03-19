@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 App::import("Vendor","UploadServer",array("file"=>"UploadServer.php"));
 
-class MediaFileUploadsController extends AdminAppController {
+class MediaFileUploadsController extends LocalAppController {
 	
 	
 	public $uses = array("MediaFileUpload");

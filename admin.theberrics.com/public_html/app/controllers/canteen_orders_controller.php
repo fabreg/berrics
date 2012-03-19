@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class CanteenOrdersController extends AdminAppController {
+class CanteenOrdersController extends LocalAppController {
 	
 	
 	private $skip_order_update_note = false;

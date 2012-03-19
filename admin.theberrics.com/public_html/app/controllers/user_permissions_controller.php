@@ -1,6 +1,6 @@
 <?php
-App::import("Controller","AdminApp");
-class UserPermissionsController extends AdminAppController {
+App::import("Controller","LocalApp");
+class UserPermissionsController extends LocalAppController {
 
 	var $name = 'UserPermissions';
 

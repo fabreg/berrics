@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
-class MediaFilesController extends AdminAppController {
+class MediaFilesController extends LocalAppController {
 
 	var $name = 'MediaFiles';
 	

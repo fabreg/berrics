@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class TesterController extends AdminAppController {
+class TesterController extends LocalAppController {
 	
 	public $uses = array();
 	

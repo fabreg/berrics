@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class LegacyController extends AdminAppController {
+class LegacyController extends LocalAppController {
 	
 	public $uses = array();
 	

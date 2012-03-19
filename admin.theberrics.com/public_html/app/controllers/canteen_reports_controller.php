@@ -1,7 +1,7 @@
 <?php
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class CanteenReportsController extends AdminAppController {
+class CanteenReportsController extends LocalAppController {
 	
 	public $uses = array();
 	

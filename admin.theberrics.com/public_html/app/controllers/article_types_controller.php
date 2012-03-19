@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class ArticleTypesController extends AdminAppController {
+class ArticleTypesController extends LocalAppController {
 
 	public function beforeFilter() {
 		

@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
 
-class ArticleManagerController extends AdminAppController {
+class ArticleManagerController extends LocalAppController {
 	
 	
 	public $uses = array("Article","ArticleType","ArticleParagraph","ArticleMediaItem");

@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class AberricanOriginalsController extends AdminAppController {
+class AberricanOriginalsController extends LocalAppController {
 	
 	
 	public function beforeFilter() {

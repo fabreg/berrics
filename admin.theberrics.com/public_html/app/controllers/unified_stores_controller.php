@@ -1,10 +1,10 @@
 <?php
 
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
 
-class UnifiedStoresController extends AdminAppController {
+class UnifiedStoresController extends LocalAppController {
 
 	var $name = 'UnifiedStores';
 

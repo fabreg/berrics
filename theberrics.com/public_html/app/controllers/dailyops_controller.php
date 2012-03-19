@@ -63,15 +63,14 @@ class DailyopsController extends BerricsAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(in_array(date("Y-m-d"),array("2012-03-17"))) { 
+			if(in_array(date("Y-m-d"),array("2012-03-19"))) { 
 				
 				$batb_mode = true;
 				
 			}
 			
 			switch($dateIn) {
-				
-				
+	
 				default:
 					
 					$conditions[] = "DATE(Dailyop.publish_date) = '$dateIn'";
@@ -79,10 +78,7 @@ class DailyopsController extends BerricsAppController {
 				break;
 				
 			}
-			
-
-
-			
+	
 		}
 		
 		

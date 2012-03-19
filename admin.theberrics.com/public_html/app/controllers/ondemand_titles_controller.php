@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class OndemandTitlesController extends AdminAppController {
+class OndemandTitlesController extends LocalAppController {
 
 	var $name = 'OndemandTitles';
 	

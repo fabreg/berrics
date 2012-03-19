@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class EmailMessagesController extends AdminAppController {
+class EmailMessagesController extends LocalAppController {
 
 	public function beforeFilter() {
 		

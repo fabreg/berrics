@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 App::import("Vendors","BCAPI",array("file"=>"bc_api.php"));
 
-class FixDannysBullshitController extends AdminAppController {
+class FixDannysBullshitController extends LocalAppController {
 	
 	
 	public $uses = array();

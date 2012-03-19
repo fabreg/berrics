@@ -1,7 +1,7 @@
 <?php
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
-class DailyopSectionsController extends AdminAppController {
+class DailyopSectionsController extends LocalAppController {
 
 	var $name = 'DailyopSections';
 	public function beforeFilter() {

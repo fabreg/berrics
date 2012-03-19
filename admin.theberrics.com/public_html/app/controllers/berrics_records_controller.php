@@ -1,9 +1,9 @@
 <?php
 
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class BerricsRecordsController extends AdminAppController {
+class BerricsRecordsController extends LocalAppController {
 	
 	
 	

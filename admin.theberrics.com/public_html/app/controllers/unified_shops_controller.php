@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
 
-class UnifiedShopsController extends AdminAppController {
+class UnifiedShopsController extends LocalAppController {
 
 	
 	public function beforeFilter() {

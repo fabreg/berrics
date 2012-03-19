@@ -1,9 +1,9 @@
 <?php
 
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class TrafficReportsController extends AdminAppController {
+class TrafficReportsController extends LocalAppController {
 	
 	
 	public $uses = array();

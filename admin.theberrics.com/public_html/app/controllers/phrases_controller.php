@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","AdminApp");
+App::import("Controller","LocalApp");
 
-class PhrasesController extends AdminAppController {
+class PhrasesController extends LocalAppController {
 
 	var $name = 'Phrases';
 	public function beforeFilter() {
