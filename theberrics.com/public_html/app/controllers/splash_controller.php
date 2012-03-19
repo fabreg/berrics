@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class SplashController extends BerricsAppController {
+class SplashController extends LocalAppController {
 	
 	public $uses = array("SplashPage");
 	public function beforeFilter() {

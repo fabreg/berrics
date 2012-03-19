@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class TheotisController extends BerricsAppController {
+class TheotisController extends LocalAppController {
 	
 	
 	public $uses = array();

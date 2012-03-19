@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class StaticFilesController extends BerricsAppController {
+class StaticFilesController extends LocalAppController {
 	
 	public $uses = array();
 	

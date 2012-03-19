@@ -4,7 +4,7 @@ App::import("Vendor","BCAPI",array("file"=>"bc_api.php"));
 App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
 
 
-class BerricsAppController extends AppController {
+class LocalAppController extends AppController {
 	
 	
 	

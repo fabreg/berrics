@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
 
-class TrickipediaController extends BerricsAppController {
+class TrickipediaController extends LocalAppController {
 	
 	
 	public $uses = array();

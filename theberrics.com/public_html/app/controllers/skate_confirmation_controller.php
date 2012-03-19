@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class SkateConfirmationController extends BerricsAppController {
+class SkateConfirmationController extends LocalAppController {
 	
 
 	public $uses = array("User");

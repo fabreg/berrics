@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 App::import("Vendor","UpsApi",array("file"=>"UpsApi.php"));
 
-class TesterController extends BerricsAppController {
+class TesterController extends LocalAppController {
 	
 	public $uses = array();
 	

@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
 
-class CanteenAppController extends BerricsAppController {
+class CanteenAppController extends LocalAppController {
 	
 	public $app_name = "TheCanteen";
 	

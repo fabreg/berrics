@@ -1,7 +1,7 @@
 <?php
- App::import("Controller","BerricsApp");
+ App::import("Controller","LocalApp");
  
- class FbappBangyoself3Controller extends BerricsAppController {
+ class FbappBangyoself3Controller extends LocalAppController {
  	
  	
  	public $uses = array();

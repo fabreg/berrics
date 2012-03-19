@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class CommanderController extends BerricsAppController {
+class CommanderController extends LocalAppController {
 	
 	public $uses = array();
 	

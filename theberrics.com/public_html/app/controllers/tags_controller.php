@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class TagsController extends BerricsAppController {
+class TagsController extends LocalAppController {
 	
 	public function beforeFilter() {
 		

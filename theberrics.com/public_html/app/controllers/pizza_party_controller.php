@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
 
-class PizzaPartyController extends BerricsAppController {
+class PizzaPartyController extends LocalAppController {
 	
 	public $uses = array();
 	

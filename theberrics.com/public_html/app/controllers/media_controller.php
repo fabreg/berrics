@@ -1,10 +1,10 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 App::import("Vendor","BCAPI",array("file"=>"bc_api.php"));
 
 
-class MediaController extends BerricsAppController {
+class MediaController extends LocalAppController {
 	
 	public $uses = array();
 	

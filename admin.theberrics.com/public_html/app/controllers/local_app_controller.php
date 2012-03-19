@@ -3,7 +3,7 @@
 
 App::import("Vendor","BCAPI",array("file"=>"bc_api.php"));
 
-class LocalrAppController extends AppController {
+class LocalAppController extends AppController {
 	
 	
 	public $app_name = "AdminPanel";

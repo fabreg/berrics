@@ -1,9 +1,9 @@
 <?php
 
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class ProfilesController extends BerricsAppController {
+class ProfilesController extends LocalAppController {
 	
 	public $uses = array("User");
 	

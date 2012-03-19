@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","BerricsApp");
+App::import("Controller","LocalApp");
 
-class DailyopsController extends BerricsAppController {
+class DailyopsController extends LocalAppController {
 	
 	//public $cacheAction = "1 Minute";
 	
