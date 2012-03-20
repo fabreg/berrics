@@ -1132,6 +1132,88 @@ class TesterController extends LocalAppController {
 	}
 	
 	
+	public function yn3_video() {
+		
+		/*$this->loadModel("MediaFileUpload");
+		
+		$uploads = $this->MediaFileUpload->find("all",array(
+			"conditions"=>array(
+				"MediaFileUpload.model"=>"YounitedNationsEventEntry"
+			),
+			"contain"=>array()
+		));
+		
+		$vids = array();
+		
+		foreach($uploads as $v) {
+			
+			$vids[$v['MediaFileUpload']['foreign_key']][] = $v['MediaFileUpload']['file_name'];
+			
+		}
+		
+		foreach($vids as $k=>$v) {
+			
+			if(!is_dir(TMP."yn3/".$k)) mkdir(TMP."yn3/".$k."-".$v);
+			
+			foreach($v as $vv) {
+				
+				
+			}
+			echo "\n";
+			echo "scp root@berricsupload:/home/uploads/".$vv." {$k}";
+			
+			
+		}
+		
+		die(pr($vids));
+		*/
+		
+		
+			//get all the younited nations 3 downloads
+		$this->loadModel("YounitedNationsEventEntry");
+		
+		$this->YounitedNationsEventEntry->bindModel(array(
+			"hasMany"=>array(
+				"MediaFileUpload"=>array(
+					"className"=>"MediaFileUpload",
+					"conditions"=>array("MediaFileUpload.model"=>"YounitedNationsEventEntry"),
+					"foreignKey"=>"foreign_key"
+				)
+			)
+		));
+		
+		$entries = $this->YounitedNationsEventEntry->find("all");
+		
+		foreach($entries as $k=>$v) {
+			
+			if(count($v['MediaFileUpload'])<1) unset($entries[$k]);
+			
+		}
+		
+		foreach($entries as $v) {
+			
+			$dir = "/yn3/".$v['YounitedNationsEventEntry']['id']."-".preg_replace('/[^a-zA-Z0-9\s]/', "", $v['YounitedNationsPosse']['name']);
+			
+			//if(!is_dir($dir)) mkdir($dir);
+			echo "\n";
+			echo "mkdir \"{$dir}\"; \n";
+			echo "chmod 777 '{$dir}';";
+			
+			foreach($v['MediaFileUpload'] as $f) {
+				
+				echo "\n";
+				echo "scp root@uploadserver:/home/uploads/".$f['file_name']." '".$dir."/'";
+				
+			}
+			
+		}
+		
+		die(pr($entries));
+		
+		
+	}
+	
+	
 	
 	
 }

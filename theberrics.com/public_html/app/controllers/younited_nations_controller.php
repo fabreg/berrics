@@ -36,7 +36,7 @@ class YounitedNationsController extends DailyopsController {
 			
 				if($this->params['action'] == "section") {
 			
-					$this->params['action'] = "entry_form";
+					$this->params['action'] = "crews";
 					
 				}
 				
