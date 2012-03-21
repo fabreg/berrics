@@ -13,7 +13,7 @@ $pos = 1;
 					echo "OVERALL";
 				break;
 				default:
-					echo "WEEK 1";
+					echo "WEEKLY";
 				break;
 				
 			}
