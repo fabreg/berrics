@@ -253,6 +253,20 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	public function element_am_video() {
+		
+		$this->layout = "empty";
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4830
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	public function dc_rediscover() {
 		
 		$this->layout = "empty";
