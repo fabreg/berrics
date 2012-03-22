@@ -191,7 +191,7 @@
 			</li>
 			<li class='li-sub-nav-header'>SLS Qualifying</li>
 			<li class='li-sub-nav-button'>
-				<a href='/sls'>Manager Entries</a>
+				<a href='/sls'>Manage Entries</a>
 			</li>
 			<li class='li-sub-nav-header'>Battle At The Berrics</li>
 			<li class='li-sub-nav-button'>

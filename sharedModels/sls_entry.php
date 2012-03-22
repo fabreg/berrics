@@ -6,4 +6,6 @@ class SlsEntry extends AppModel {
 		"Dailyop"
 	);
 	
+	
+	
 }

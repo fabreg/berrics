@@ -146,6 +146,18 @@ class DashboardController extends LocalAppController {
 		
 	}
 	
+	public function sls() {
+		
+		
+		$this->loadModel("SlsVote");
+
+		$stats = $this->SlsVote->getVoteStats();
+		
+		$this->set(compact("stats"));
+		
+		
+	}
+	
 	
 	
 	

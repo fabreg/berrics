@@ -114,7 +114,7 @@ $(document).ready(function() {
 		<td><?php echo $this->Time->niceShort($user['User']['created']); ?>&nbsp;</td>
 		<td><?php echo $this->Time->niceShort($user['User']['modified']); ?>&nbsp;</td>
 
-		<td><?php echo $user['User']['email']; ?></td>
+		<td><?php echo $user['User']['email']; ?> <span style='font-size:10px;'><a target='_blank' href='http://facebook.com/profile.php?id=<?php echo $user['User']['facebook_account_num']; ?>'>(Facebook)</a></span></td>
 		<td><?php echo $user['User']['twitter_handle']; ?></td>
 		<td><?php echo $user['User']['instagram_handle']; ?></td>
 		<td>

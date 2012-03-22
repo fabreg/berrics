@@ -21,6 +21,7 @@ $(document).ready(function() {
 	<ul>
 		<li><a href='/dashboard/'>Dailyops</a></li>
 		<li><a href='/dashboard/younited_nations'>Younited Nations Uploads</a></li>
+		<li><a href='/dashboard/sls'>SLS Qualifying Stats</a></li>
 	</ul>
 	<div style='clear:both;'></div>
 </div>

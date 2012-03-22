@@ -177,6 +177,39 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 		
 	}
 	
+	public function test_sls() {
+		
+		set_time_limit(0);
+		
+		$this->loadModel("User");
+		$this->loadModel("SlsVote");
+		$this->loadModel("SlsEntry");
+		
+		//get all the users
+		$users = $this->User->find("all",array(
+			"fields"=>array("User.id"),
+			"contain"=>array()
+		));
+		
+		//get all the entrys
+		$entries = $this->SlsEntry->find("all",array(
+			"contain"=>array()
+		));
+		
+		foreach($users as $u) {
+			
+			shuffle($entries);
+			
+			for($i=0;$i<=4;$i++) {
+				
+				$this->SlsVote->place_vote($u['User']['id'],$entries[$i]['SlsEntry']['id']);
+				print "Vote Placed :".$this->SlsVote->id." <br />";
+			}
+			
+		}
+		
+	}
+	
 	
 	
 }

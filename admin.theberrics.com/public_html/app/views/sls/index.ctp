@@ -13,7 +13,7 @@
 		<?php foreach($data as $v): ?>
 		<tr>
 			<td><?php echo $v['SlsEntry']['id']; ?></td>
-			<td><?php echo $v['Dailyop']['name']; ?>-<?php echo $v['Dailyop']['sub_title']; ?></td>
+			<td><?php echo $v['Dailyop']['name']; ?>-<?php echo $v['Dailyop']['sub_title']; ?> <span style='font-size:10px;'><a href='/dailyops/edit/<?php echo $v['Dailyop']['id']; ?>' target='_blank'>(Edit Post)</a></span></td>
 			
 			<td><?php echo $v['SlsEntry']['name']; ?></td>
 			<td>
