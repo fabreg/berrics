@@ -189,6 +189,10 @@
 			<li class='li-sub-nav-button'>
 				<a href='/berrics_records/add'>Add New Record</a>
 			</li>
+			<li class='li-sub-nav-header'>SLS Qualifying</li>
+			<li class='li-sub-nav-button'>
+				<a href='/sls'>Manager Entries</a>
+			</li>
 			<li class='li-sub-nav-header'>Battle At The Berrics</li>
 			<li class='li-sub-nav-button'>
 				<a href='/batb_events'>Manage Events</a>

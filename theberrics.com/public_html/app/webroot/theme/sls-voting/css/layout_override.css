@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+#sls-voting-section {
+
+
+}
+
+#sls-voting-section .voting-heading {
+
+}
+
+#sls-voting-section .vote-section {
+
+}
+
+#sls-voting-section .vote-section .entries {
+
+	width:49%;
+	float:left;
+	
+}
+
+#sls-voting-section .vote-section .voting {
+
+	width:49%;
+	float:right;
+	
+}

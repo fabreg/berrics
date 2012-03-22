@@ -70,7 +70,8 @@ class DailyopSection extends AppModel {
 			"newsv2"=>"Aberrican News V2",
 			"younited_nations"=>"YOUnited Nations",
 			"theotis"=>"31 Days Of Theotis",
-			"berrics_records"=>"For The Record"
+			"berrics_records"=>"For The Record",
+			"sls_voting"=>"Street League Voting"
 			
 		);
 		

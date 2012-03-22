@@ -1,8 +1,8 @@
 <?php
 
-App::import("Controller","LocalApp");
+App::import("Controller","Dailyops");
 
-class SlsVotingController extends LocalAppController {
+class SlsVotingController extends DailyopsController {
 	
 	
 	public $uses = array();
@@ -15,10 +15,25 @@ class SlsVotingController extends LocalAppController {
 		
 		$this->Auth->allow("*");
 		
+		$this->theme = "sls-voting";
+		
 	}
 	
 	public function section() {
 		
+		//get all the entires
+		$entries = $this->SlsEntry->find("all",array(
+			"conditions"=>array(
+				"SlsEntry.active"=>1
+			),
+			"contain"=>array(),
+			"order"=>array(
+				"SlsEntry.sort_order"=>"ASC"
+			)
+		));
+		
+		
+		$this->set(compact("entries"));
 		
 	}
 	
