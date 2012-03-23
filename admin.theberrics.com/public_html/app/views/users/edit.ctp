@@ -4,6 +4,13 @@ $tag_array = Set::extract("/Tag/name",$this->data);
 $tag_str = implode(",",$tag_array);
 
 ?>
+<style type='text/css'>
+.user-profile-img-thumb {
+
+	float:left; margin:5px;
+
+}
+</style>
 <div class="users form">
 <?php echo $this->Form->create('User',array("url"=>$this->here,"enctype"=>"multipart/form-data"));?>
 	<fieldset>
@@ -43,11 +50,7 @@ $tag_str = implode(",",$tag_array);
 	</fieldset>
 	<fieldset>
 		<legend>Profile Image</legend>
-		<div>
-		<?php 
-			echo $this->Form->input("profile_image_url",array("label"=>"Profile Image Url ( Facebook )"));
-		?>
-		</div>
+
 		<?php 
 			
 			echo $this->Form->input("profile_image",array("type"=>"file"));
@@ -61,12 +64,13 @@ $tag_str = implode(",",$tag_array);
 		<?php else: ?>
 			<div style='padding:10px;'>
 			<?php foreach($this->data['UserProfileImage'] as $img): ?>
-			<div>
+			<div class='user-profile-img-thumb'>
 			<?php echo $this->Media->profileThumb($img,array(
 				"w"=>"100"
 			));?>
 			</div>
 			<?php endforeach; ?>
+			<div style='clear:both;'></div>
 			</div>
 		<?php endif; ?>
 	</fieldset>
@@ -107,11 +111,13 @@ $tag_str = implode(",",$tag_array);
 			echo $this->Form->input('facebook_oauth_key');
 			echo $this->Form->input('facebook_oauth_secret');
 			echo $this->Form->input('facebook_account_num');
+			echo $this->Form->input("profile_image_url",array("label"=>"Profile Image Url ( Facebook )"));
 			echo $this->Form->input('twitter_oauth_key');
 			echo $this->Form->input('twitter_oauth_secret');
 			echo $this->Form->input('twitter_account_num');
-			
-		
+			echo $this->Form->input('instagram_account_num');
+			echo $this->Form->input("instagram_profile_image");
+			echo $this->Form->submit("Update Instagram Data",array("name"=>"data[UpdateInstagramData]"));
 		?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

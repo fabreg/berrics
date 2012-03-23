@@ -360,7 +360,12 @@ class User extends AppModel {
 		$p = $this->find("first",array(
 		
 			"conditions"=>$cond,
-			"contain"=>array()
+			"contain"=>array(
+				"UserGroup",
+				"UserProfileImage"=>array(
+					"order"=>array("UserProfileImage.default"=>"DESC")
+				)
+			)
 		
 		));
 		

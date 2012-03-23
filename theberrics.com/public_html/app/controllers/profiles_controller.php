@@ -17,6 +17,8 @@ class ProfilesController extends LocalAppController {
 		
 		$this->theme = "profiles";
 		
+	
+		
 	}
 	
 	

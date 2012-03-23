@@ -211,10 +211,14 @@ class UsersController extends LocalAppController {
 			$this->data['Tag'] = $this->User->Tag->parseTags($this->data['User']['tags']);
 			
 			if(isset($this->data['UpdateProfileImage'])) {
-				
-				
-				
+
 				$this->handleProfileImageUpload();
+				
+			}
+			
+			if(isset($this->data['UpdateInstagramData'])) {
+				
+				$this->updateInstagram();
 				
 			}
 			
@@ -360,6 +364,23 @@ class UsersController extends LocalAppController {
 		));
 		
 		$this->set("results",$results);
+		
+	}
+	
+	private function updateInstagram() {
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+		
+		$i = InstagramApi::berricsInstance();
+		
+		$search = $i->instagram->searchUser($this->data['User']['instagram_handle']);
+		
+		$insta = json_decode($search,true);
+		
+		//die(print_r($insta));
+		
+		$this->data['User']['instagram_account_num'] = $insta['data'][0]['id'];
+		$this->data['User']['instagram_profile_image'] = $insta['data'][0]['profile_picture'];
 		
 	}
 	

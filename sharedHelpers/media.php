@@ -306,7 +306,7 @@ class MediaHelper extends AppHelper {
 		
 		//the file
 		
-		$opt['src'] = "/profile-img/".$user['file_name'];
+		$opt['src'] = "/profile-img/".$img['file_name'];
 		
 		
 		//check some stuff

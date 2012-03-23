@@ -101,6 +101,7 @@ if(preg_match('/\/tags/',$_SERVER['REQUEST_URI'])) {
 //profiles
 if(preg_match('/\/profiles/',$_SERVER['REQUEST_URI'])) {
 	
+	//App::import("Lib","ProfilesRoute",array("file"=>"routes/ProfilesRoute.php"));
 	
 	Router::connect("/profiles",array("controller"=>"profiles","action"=>"index"));
 	
@@ -108,9 +109,11 @@ if(preg_match('/\/profiles/',$_SERVER['REQUEST_URI'])) {
 		array(
 			"controller"=>"profiles",
 			"action"=>"view"
-		),
+		));
+	
+	Router::connect("/profiles/:action/:uri",
 		array(
-			"uri"=>"[a-zA-Z0-9\-_]{4,}.html"		
+			"controller"=>"profiles"
 		)
 	);
 	

@@ -122,10 +122,13 @@ class TesterController extends LocalAppController {
 		
 		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
 		
-		$i = InstagramApi::instance();
+		$i = InstagramApi::berricsInstance();
 		
-		$i->instagram->openAuthorizationUrl();
+		$search = $i->instagram->searchUser("_mikemo");
 		
+		//$i->instagram->openAuthorizationUrl();
+		
+		die(print_r($search));
 		
 		
 	}
