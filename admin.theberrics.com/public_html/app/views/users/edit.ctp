@@ -35,7 +35,7 @@ $tag_str = implode(",",$tag_array);
 		echo $this->Form->input('user_group_id');
 		echo $this->Form->input("birth_date",array("minYear"=>1940,"maxYear"=>2011));
 		echo $this->Form->input("profile_uri",array("label"=>"Profile Uri <span>(Must end in .html)</span>"));
-		echo $this->Form->input("profile_image_url");
+		
 		echo $this->Form->input("tags",array("type"=>"text","label"=>"Tags ( Comma seperated )","value"=>$tag_str));
 		echo $this->Form->input("profile_theme",array("options"=>array("profile"=>"Standard")));
 		echo $this->Form->submit("Update"); 
@@ -43,21 +43,30 @@ $tag_str = implode(",",$tag_array);
 	</fieldset>
 	<fieldset>
 		<legend>Profile Image</legend>
+		<div>
 		<?php 
-		
+			echo $this->Form->input("profile_image_url",array("label"=>"Profile Image Url ( Facebook )"));
+		?>
+		</div>
+		<?php 
+			
 			echo $this->Form->input("profile_image",array("type"=>"file"));
 			echo $this->Form->submit("Update Image",array("name"=>"data[UpdateProfileImage]"));
 			
 		?>
 		<?php 
-			if(empty($this->data['User']['profile_img_file'])):
+			if(count($this->data['UserProfileImage'])<=0):
 		?>
 			<div>No Image Uploaded</div>
 		<?php else: ?>
 			<div style='padding:10px;'>
-			<?php echo $this->Media->profileThumb($this->data['User'],array(
+			<?php foreach($this->data['UserProfileImage'] as $img): ?>
+			<div>
+			<?php echo $this->Media->profileThumb($img,array(
 				"w"=>"100"
-			)); ?>
+			));?>
+			</div>
+			<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
 	</fieldset>

@@ -79,7 +79,8 @@ class User extends AppModel {
 			'counterQuery' => ''
 		),
 		"BatbScore",
-		"UserBillingProfile"
+		"UserBillingProfile",
+		"UserProfileImage"
 	);
 
 

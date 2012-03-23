@@ -64,9 +64,11 @@ body {
 
 #enter a {
 
-	color:#f0f0f0;
-	font-size:22px;
+	color:#231f20;
+	font-size:26px;
 	font-family:'Times New Roman';
+	font-weight:bold;
+	padding-top:10px;
 }
 
 .d-post-bit {
@@ -113,10 +115,10 @@ display:none;
 .video-heading {
 
 	height:249px;
-	background-image:url(/img/splash/element-am-video/title-bg.jpg);
+	background-image:url(/img/splash/element-am-video/new-title.jpg);
 	background-repeat:no-repeat;
 	background-position: center center;
-	min-width:930px;
+	min-width:900px;
 }
 
 </style>
@@ -129,6 +131,6 @@ display:none;
 	</div>
 	<div class='video-heading'></div>
 	<div id='enter'>
-		<a href='/dailyops' title='The DailyOps'><img src='/img/splash/element-am-video/enter.jpg' border='0' /></a>
+		<a href='/dailyops' title='The DailyOps'>- ENTER THE BERRICS -</a>
 	</div>
 </div>

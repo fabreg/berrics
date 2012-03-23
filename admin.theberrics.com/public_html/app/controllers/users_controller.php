@@ -232,7 +232,8 @@ class UsersController extends LocalAppController {
 				"contain"=>array(
 			
 					"UserGroup",
-					"Tag"		
+					"Tag",
+					"UserProfileImage"		
 			
 				)
 			
@@ -382,8 +383,15 @@ class UsersController extends LocalAppController {
 		//upload file to server
 		$i->upload_profile_image($name,$tmp_path);
 		
-		$this->data['User']['profile_img_file'] = $name;
+		//$this->data['User']['profile_img_file'] = $name;
+		//insert a new profile image row
+		$this->loadModel("UserProfileImage");
+		$this->UserProfileImage->create();
 		
+		$this->UserProfileImage->save(array(
+			"file_name"=>$name,
+			"user_id"=>$this->data['User']['id']
+		));
 		
 	}
 	

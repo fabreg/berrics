@@ -302,11 +302,11 @@ class MediaHelper extends AppHelper {
 	}
 	
 	
-	public function profileThumb($user=array(),$opt = array(),$attr = array()) {
+	public function profileThumb($img=array(),$opt = array(),$attr = array()) {
 		
 		//the file
 		
-		$opt['src'] = "/profile-img/".$user['profile_img_file'];
+		$opt['src'] = "/profile-img/".$user['file_name'];
 		
 		
 		//check some stuff
