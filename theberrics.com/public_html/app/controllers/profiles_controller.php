@@ -7,6 +7,8 @@ class ProfilesController extends LocalAppController {
 	
 	public $uses = array("User");
 	
+	private $profile = false;
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -17,7 +19,17 @@ class ProfilesController extends LocalAppController {
 		
 		$this->theme = "profiles";
 		
-	
+		if(isset($this->params['uri'])) {
+			
+			$profile = $this->User->returnProfile(array(
+		
+				"User.profile_uri"=>$this->params['uri']
+			
+			));
+			$this->profile = $profile;
+			$this->set(compact("profile"));
+			
+		}
 		
 	}
 	
@@ -30,13 +42,17 @@ class ProfilesController extends LocalAppController {
 	
 	public function view() {
 		
-		$profile = $this->User->returnProfile(array(
 		
-			"User.profile_uri"=>$this->params['uri']
 		
-		));
+	}
+	
+	public function instagram() {
 		
-		$this->set(compact("profile"));
+		$this->loadModel("InstagramImageItem");
+		
+		$instagram = $this->InstagramImageItem->returnInstagramRecent($this->profile['User']);
+		
+		$this->set(compact("instagram"));
 		
 	}
 	

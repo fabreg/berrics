@@ -14,6 +14,7 @@ class InstagramApi {
      );
      
      public static $berrics_access_token = '5828832.6043dfa.02175a8a5986444eb0ca3d3e2d0652d5';
+     										
      public static $berrics_id = '5828832';
      
      public static $access_token = false;

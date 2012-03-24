@@ -201,7 +201,7 @@ class UsersController extends LocalAppController {
 		
 	}
 	
-	function edit($id = null) {
+	function edit($id = null,$callback=false) {
 		if (!$id && empty($this->data)) {
 			$this->Session->setFlash(__('Invalid user', true));
 			$this->redirect(array('action' => 'index'));
@@ -222,9 +222,26 @@ class UsersController extends LocalAppController {
 				
 			}
 			
+			if(isset($this->data['MakeDefaultImage'])) {
+				
+				$this->makeDefaultImage();
+				
+			}
+			
+			if(isset($this->data['DeleteProfileImage'])) {
+				
+				$this->deleteProfileImage();
+				
+			}
+			
 			if ($this->User->save($this->data)) {
+				
 				$this->Session->setFlash(__('The user has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				
+				//if($callback) return $this->redirect(base64_decode($callback));
+				
+				$this->redirect($this->here);
+				
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
 			}
@@ -364,6 +381,38 @@ class UsersController extends LocalAppController {
 		));
 		
 		$this->set("results",$results);
+		
+	}
+	
+	private function deleteProfileImage() {
+		
+		$this->loadModel("UserProfileImage");
+		
+		$this->UserProfileImage->delete(key($this->data['DeleteProfileImage']));
+		
+	}
+	
+	private function makeDefaultImage() {
+		
+		
+		if(!isset($this->data['User']['id'])) return false;
+		
+		$this->loadModel("UserProfileImage");
+		
+		//update all the images
+		$this->UserProfileImage->updateAll(
+			array(
+				"user_id"=>$this->data['User']['id']
+			),
+			array(
+				"default"=>0
+			)
+		);
+		
+		$this->UserProfileImage->create();
+		$this->UserProfileImage->id = key($this->data['MakeDefaultImage']);
+		
+		$this->UserProfileImage->save(array("default"=>1));
 		
 	}
 	

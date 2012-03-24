@@ -2368,3 +2368,20 @@ emails of the weeks
 	
 }
 
+#profiles-main-details {
+
+}
+
+#profiles-main-details .profile-image {
+
+	width:375px;
+	float:left;
+	text-align:center;
+}
+
+#profiles-main-details .profile-info {
+
+	width:620px;
+	float:right;
+	
+}

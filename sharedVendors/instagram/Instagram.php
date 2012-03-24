@@ -36,7 +36,7 @@ class Instagram {
         'access_token' => 'https://api.instagram.com/oauth/access_token',
         'user' => 'https://api.instagram.com/v1/users/%d/?access_token=%s',
         'user_feed' => 'https://api.instagram.com/v1/users/self/feed?access_token=%s&max_id=%d&min_id=%d',
-        'user_recent' => 'https://api.instagram.com/v1/users/%d/media/recent/?access_token=%s&max_id=%d&min_id=%d&max_timestamp=%d&min_timestamp=%d',
+        'user_recent' => 'https://api.instagram.com/v1/users/%d/media/recent/?access_token=%s',
         'user_search' => 'https://api.instagram.com/v1/users/search?q=%s&access_token=%s',
         'user_follows' => 'https://api.instagram.com/v1/users/%d/follows?access_token=%s',
         'user_followed_by' => 'https://api.instagram.com/v1/users/%d/followed-by?access_token=%s',
@@ -240,7 +240,7 @@ class Instagram {
      * @param $minTimestamp. Return media after this UNIX timestamp
      */
     public function getUserRecent($id, $maxId = '', $minId = '', $maxTimestamp = '', $minTimestamp = '') {
-        $endpointUrl = sprintf($this->_endpointUrls['user_recent'], $id, $this->getAccessToken(), $maxId, $minId, $maxTimestamp, $minTimestamp);
+        $endpointUrl = sprintf($this->_endpointUrls['user_recent'], $id, $this->getAccessToken());
         $this->_initHttpClient($endpointUrl);
         return $this->_getHttpClientResponse();
     }

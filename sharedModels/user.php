@@ -375,6 +375,17 @@ class User extends AppModel {
 	
 	
 	
+	public static function stanceSelect() {
+		
+		return array(
+			"regular"=>"Regular",
+			"goofy"=>"Goofy"
+		);
+		
+	}
+	
+	
+	
 	
 	
 	

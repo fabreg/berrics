@@ -8,6 +8,15 @@ $tag_str = implode(",",$tag_array);
 .user-profile-img-thumb {
 
 	float:left; margin:5px;
+	text-align:center;
+	border:1px solid #ccc;
+	padding:3px;
+}
+
+.user-profile-img-thumb .submit input[type=submit] {
+
+	font-size:12px;
+	padding:5px;
 
 }
 </style>
@@ -65,9 +74,18 @@ $tag_str = implode(",",$tag_array);
 			<div style='padding:10px;'>
 			<?php foreach($this->data['UserProfileImage'] as $img): ?>
 			<div class='user-profile-img-thumb'>
-			<?php echo $this->Media->profileThumb($img,array(
-				"w"=>"100"
-			));?>
+				<?php echo $this->Media->profileThumb($img,array(
+					"w"=>"100"
+				));?>
+				<?php 
+				
+					if(!$img['default']):
+				
+				?>
+				<div><?php echo $this->Form->submit("Make Default",array("name"=>"data[MakeDefaultImage][{$img['id']}]")); ?></div>
+				<?php endif; ?>
+				<div><?php echo $this->Form->submit("Delete",array("name"=>"data[DeleteProfileImage][{$img['id']}]")); ?></div>
+				
 			</div>
 			<?php endforeach; ?>
 			<div style='clear:both;'></div>
