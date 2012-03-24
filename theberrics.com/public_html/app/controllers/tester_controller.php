@@ -122,6 +122,7 @@ class TesterController extends LocalAppController {
 		
 		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
 		
+
 		$i = InstagramApi::instance();
 		
 		//$search = $i->instagram->searchUser("_mikemo");
@@ -129,7 +130,6 @@ class TesterController extends LocalAppController {
 		$i->instagram->openAuthorizationUrl();
 		
 		//die(print_r($search));
-		
 		
 	}
 	
@@ -141,26 +141,25 @@ class TesterController extends LocalAppController {
 		
 		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
 		
-		$data = InstagramApi::$conf;
-		
-		$data['code'] = $_REQUEST['code'];
-		//die(print_r($data));
-		$c = curl_init("https://api.instagram.com/oauth/access_token");
-		
-		curl_setopt($c,CURLOPT_POST,true);
-		curl_setopt($c,CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($c,CURLOPT_POSTFIELDS,$data);
-		
-		$r = curl_exec($c);
-		
-		die(print_r($r));
+		$i = InstagramApi::berricsInstance();
+		$u = $i->instagram->getCurrentUser();
 		
 		//$i = InstagramApi::berricsInstance();
 		
 		//$pop = $i->instagram->getUserRecent(InstagramApi::$berrics_id);
 		
-		//die(print_r($pop));
+		die(print_r($u));
 		
+		
+	}
+	
+	public function instagram_user($user = false) {
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+		
+		$i = InstagramApi::berricsInstance();
+		$u = $i->instagram->getUser(4374294);
+		
+		die(print_r(json_decode($u)));
 		
 	}
 	

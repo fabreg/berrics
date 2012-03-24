@@ -32,7 +32,7 @@ class Instagram {
      * @var string
      */
     protected $_endpointUrls = array(
-        'authorize' => 'https://api.instagram.com/oauth/authorize/?client_id=%s&redirect_uri=%s&response_type=%s',
+        'authorize' => 'https://api.instagram.com/oauth/authorize/?client_id=%s&redirect_uri=%s&response_type=%s&scope=basic+likes+comments',
         'access_token' => 'https://api.instagram.com/oauth/access_token',
         'user' => 'https://api.instagram.com/v1/users/%d/?access_token=%s',
         'user_feed' => 'https://api.instagram.com/v1/users/self/feed?access_token=%s&max_id=%d&min_id=%d',

@@ -21,6 +21,14 @@
 	text-align:center;
 
 }
+
+#instagram-profile .profile-image {
+	
+	width:100px;
+	height:100px;
+
+}
+
 </style>
 <div>
 <?php 
@@ -28,8 +36,10 @@
 ?>
 
 </div>
-<div>
-<img src='<?php echo $profile['User']['instagram_profile_image']; ?>' border='0' />
+<div id='instagram-profile'>
+<div class='profile-image'>
+<img src='<?php echo $profile['User']['instagram_profile_image']; ?>' border='0' width='100%' height='100%' />
+</div>
 @<?php echo $profile['User']['instagram_handle']; ?>
 </div>
 <div>
