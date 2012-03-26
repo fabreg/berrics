@@ -234,7 +234,7 @@ class UsersController extends LocalAppController {
 				
 			}
 			
-			if ($this->User->save($this->data)) {
+			if ($this->User->saveAll($this->data)) {
 				
 				$this->Session->setFlash(__('The user has been saved', true));
 				
@@ -247,7 +247,7 @@ class UsersController extends LocalAppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->User->find("first",array(
+			/*$this->data = $this->User->find("first",array(
 			
 				"conditions"=>array("User.id"=>$id),
 				"contain"=>array(
@@ -258,7 +258,10 @@ class UsersController extends LocalAppController {
 			
 				)
 			
-			));
+			));*/
+			
+			$this->data = $this->User->returnProfile(array("User.id"=>$id));
+			
 		}
 		
 		$userProfile = $this->User->ensure_user_profile($this->data['User']['id']);
@@ -418,6 +421,8 @@ class UsersController extends LocalAppController {
 	
 	private function updateInstagram() {
 		
+		if(empty($this->data['User']['instagram_handle'])) return false;
+		
 		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
 		
 		$i = InstagramApi::berricsInstance();
@@ -430,6 +435,24 @@ class UsersController extends LocalAppController {
 		
 		$this->data['User']['instagram_account_num'] = $insta['data'][0]['id'];
 		$this->data['User']['instagram_profile_image'] = $insta['data'][0]['profile_picture'];
+		
+		//update the users profile with the instagram info
+		
+		$instaData = $i->instagram->getUser($this->data['User']['instagram_account_num']);
+		
+		$instaData = json_decode($instaData,true);
+		
+		$profile = $this->User->ensure_user_profile($this->data['User']['id']);
+		
+		$this->User->UserProfile->create();
+		
+		$this->User->UserProfile->id = $profile['UserProfile']['id'];
+		
+		$this->User->UserProfile->save(array(
+			"instagram_followers"=>$instaData['data']['counts']['followed_by'],
+			"instagra_last_updated"=>'NOW()'
+		));
+		
 		
 	}
 	

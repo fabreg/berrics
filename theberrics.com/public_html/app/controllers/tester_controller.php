@@ -276,6 +276,60 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 	}
 	
 	
+	public function insta_test() {
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram_api.php"));
+
+		$i = InstagramApi::berricsInstance();
+
+		//$user = 
+		
+		
+		//get all usrs that have an instagram account num
+		$this->loadModel("User");
+		$this->loadModel("UserProfile");
+		
+		$users = $this->User->find("all",array(
+			"contain"=>array(),
+			"conditions"=>array(
+				"User.instagram_account_num !="=>""
+			)
+		));
+		
+		
+		
+		foreach($users as $v) {
+			
+			$acc = $i->instagram->getUser($v['User']['instagram_account_num']);
+			
+			$data = json_decode($acc);
+			
+			//update the users profiles
+			$this->UserProfile->create();
+
+			$this->UserProfile->updateAll(
+				array(
+					"instagram_followers"=>$data->data->counts->followed_by,
+					"instagram_last_updated"=>'NOW()'
+				),
+				array(
+					"user_id"=>$v['User']['id']
+				)
+			);
+			
+			
+			
+		}
+		
+		die("done");
+	
+		
+	}
+	
+	
+	
+	
+	
 	
 }
 

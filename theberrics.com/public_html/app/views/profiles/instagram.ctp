@@ -30,12 +30,6 @@
 }
 
 </style>
-<div>
-<?php 
-	echo $this->element("profiles/main-details");	
-?>
-
-</div>
 <div id='instagram-profile'>
 <div class='profile-image'>
 <img src='<?php echo $profile['User']['instagram_profile_image']; ?>' border='0' width='100%' height='100%' />

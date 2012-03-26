@@ -19,17 +19,7 @@ class ProfilesController extends LocalAppController {
 		
 		$this->theme = "profiles";
 		
-		if(isset($this->params['uri'])) {
-			
-			$profile = $this->User->returnProfile(array(
-		
-				"User.profile_uri"=>$this->params['uri']
-			
-			));
-			$this->profile = $profile;
-			$this->set(compact("profile"));
-			
-		}
+		$this->setProfile();
 		
 	}
 	
@@ -53,6 +43,29 @@ class ProfilesController extends LocalAppController {
 		$instagram = $this->InstagramImageItem->returnInstagramRecent($this->profile['User']);
 		
 		$this->set(compact("instagram"));
+		
+	}
+	
+	private function setProfile() {
+		
+		if(isset($this->params['uri'])) {
+			
+			$profile = $this->User->returnProfile(array(
+		
+				"User.profile_uri"=>$this->params['uri']
+			
+			));
+			$this->profile = $profile;
+			$this->set(compact("profile"));
+			
+		}
+		
+		
+		if(
+			!isset($this->params['uri']) || 
+			!isset($profile['User']['id'])	
+		) return $this->cakeError("error404");
+		
 		
 	}
 	

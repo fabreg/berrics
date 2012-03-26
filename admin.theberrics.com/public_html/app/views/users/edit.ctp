@@ -121,6 +121,12 @@ $tag_str = implode(",",$tag_array);
 	</fieldset>
 	<fieldset>
 		<legend>Profile</legend>
+		<?php 
+		
+			echo $this->Form->input("UserProfile.id");
+			echo $this->Form->input("UserProfile.instagram_followers");
+		
+		?>
 	</fieldset>
 	<fieldset>
 		<legend>Social Networking BACKEND STUFF</legend>

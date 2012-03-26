@@ -356,18 +356,27 @@ class User extends AppModel {
 	
 	public function returnProfile($cond = array(),$options = array(),$isAdmin = false) {
 		
-		
 		$p = $this->find("first",array(
 		
 			"conditions"=>$cond,
 			"contain"=>array(
+				"UserProfile",
 				"UserGroup",
 				"UserProfileImage"=>array(
 					"order"=>array("UserProfileImage.default"=>"DESC")
-				)
+				),
+				"Tag"
 			)
 		
 		));
+		
+		if(!isset($p['UserProfile']['id'])) {
+			
+			$profile = $this->ensure_user_profile($p['User']['id']);
+			
+			$p['UserProfile'] = $profile['UserProfile'];
+			
+		}
 		
 		return $p;
 		
