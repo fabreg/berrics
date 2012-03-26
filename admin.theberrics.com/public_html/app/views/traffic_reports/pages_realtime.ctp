@@ -13,8 +13,8 @@ $c = Arr::countries();
 		</tr>
 		<?php foreach($pages as $page): $p = $page['PageView']; ?>
 		<tr>
-			<td><?php echo $p['id']; ?></td>
-			<td><?php echo $p['created']; ?></td>
+			<td><?php echo number_format($p['id']); ?></td>
+			<td nowrap><?php echo $p['created']; ?></td>
 			<td><?php echo $c[$p['geo_country']]; ?></td>
 			<td><?php echo $p['geo_region_name']; ?>/<?php echo $p['geo_city']; ?></td>
 			<td><a href='http://theberrics.com<?php echo $p['script_url']; ?>' target='_blank'><?php echo $p['script_url']; ?></a></td>
