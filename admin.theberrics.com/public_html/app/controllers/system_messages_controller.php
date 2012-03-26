@@ -16,6 +16,9 @@ class SystemMessagesController extends LocalAppController {
 	
 	function index() {
 		$this->SystemMessage->recursive = 0;
+		
+		$this->paginate['SystemMessage']['order'] = array("SystemMessage.id"=>"DESC");
+		
 		$this->set('systemMessages', $this->paginate());
 	}
 

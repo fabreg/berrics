@@ -1214,7 +1214,14 @@ class TrafficReportsController extends LocalAppController {
 		
 		$this->loadStuff();
 		
+		$pages = $this->PageView->find("all",array(
+			"conditions"=>array("PageView.domain_name"=>"theberrics.com","script_url !="=>"/dailyops/rss"),
+			"contain"=>array(),
+			"order"=>array("PageView.id"=>"DESC"),
+			"limit"=>100
+		));
 		
+		$this->set(compact("pages"));
 		
 	}
 	
@@ -1229,7 +1236,7 @@ class TrafficReportsController extends LocalAppController {
 		$this->loadModel("FactMediaView");
 		$this->loadModel("MediaFile");
 		$this->loadModel("MediaFileView");
-		$this->loadModel("PageViews");
+		$this->loadModel("PageView");
 		
 	}
 	

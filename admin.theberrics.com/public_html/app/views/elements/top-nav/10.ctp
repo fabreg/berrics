@@ -4,6 +4,9 @@
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-header'>Traffic</li>
 			<li class='li-sub-nav-button'>
+				<?php echo $this->Html->link("Realtime",array("controller"=>"traffic_reports","action"=>"pages_realtime")); ?>
+			</li>
+			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Monthly Overview",array("controller"=>"traffic_reports","action"=>"monthly")); ?>
 			</li>
 			<li class='li-sub-nav-button'>
