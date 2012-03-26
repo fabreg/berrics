@@ -20,7 +20,7 @@ if($user):
 <div id='contest'>
 CONGRATULATIONS<br /><br />
 YOU HAVE BEEN ENTERED IN THE BRANDON BIEBEL DRAWING <br />
-If you are selected. We will send an email to the address listed below on March 1st 2012 with further details<br /><br />
+If you are selected. We will send an email to the address listed below on March 29th 2012 with further details<br /><br />
 <?php echo $user['User']['email']; ?> <br /><br />
 <a href='/dailyops'>Back to the Daily Ops</a>
 </div>
