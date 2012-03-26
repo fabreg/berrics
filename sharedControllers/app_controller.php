@@ -5,6 +5,7 @@ App::import("Vendor","FacebookApi",array("file"=>"facebook_api.php"));
 App::import("Vendor","Tools",array("file"=>"Tools.php"));
 App::import("Vendor","Arr",array("file"=>"arr.php"));
 App::import("Vendor","Lang",array("file"=>"Lang.php"));
+App::import("Vendor","SysMsg",array("file"=>"SysMsg.php"));
 
 class AppController extends Controller {
 

@@ -124,7 +124,7 @@ $tag_str = implode(",",$tag_array);
 		<?php 
 		
 			echo $this->Form->input("UserProfile.id");
-			echo $this->Form->input("UserProfile.instagram_followers");
+			echo $this->Form->input("UserProfile.instagram_followers",array("disabled"=>true));
 		
 		?>
 	</fieldset>
@@ -139,8 +139,8 @@ $tag_str = implode(",",$tag_array);
 			echo $this->Form->input('twitter_oauth_key');
 			echo $this->Form->input('twitter_oauth_secret');
 			echo $this->Form->input('twitter_account_num');
-			echo $this->Form->input('instagram_account_num');
-			echo $this->Form->input("instagram_profile_image");
+			echo $this->Form->input('instagram_account_num',array("disabled"=>true));
+			echo $this->Form->input("instagram_profile_image",array("disabled"=>true));
 			echo $this->Form->submit("Update Instagram Data",array("name"=>"data[UpdateInstagramData]"));
 		?>
 	</fieldset>

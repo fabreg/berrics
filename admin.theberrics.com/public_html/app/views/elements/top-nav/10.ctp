@@ -45,6 +45,9 @@
 		<?php echo $this->Html->link("System",array("controller"=>"websites","action"=>"index")); ?>
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-button'>
+				<?php echo $this->Html->link("System Messages",array("controller"=>"system_messages","action"=>"index")); ?>
+			</li>
+			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("Server Stuff",array("controller"=>"system","action"=>"index")); ?>
 			</li>
 			<li class='li-sub-nav-button'>

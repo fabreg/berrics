@@ -382,6 +382,62 @@ class User extends AppModel {
 		
 	}
 	
+	public function updateInstagramDetails($User = array(),$crontab = false) {
+		
+		if(
+			(!isset($User['id']) || !isset($User['instagram_handle'])) || 
+			(empty($User['id']) || empty($User['instagram_handle']))
+		) {
+			
+			return false;
+			
+		}
+		
+		
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+		
+		$i = InstagramApi::berricsInstance();
+		
+		$search = $i->instagram->searchUser($User['instagram_handle']);
+		
+		$insta = json_decode($search,true);
+		
+		$udata = array();
+		
+		$udata['instagram_account_num'] = $insta['data'][0]['id'];
+		$udata['instagram_profile_image'] = $insta['data'][0]['profile_picture'];
+		
+		//update the users profile with the instagram info
+		$this->create();
+		$this->id = $User['id'];
+
+		$this->save($udata);
+		
+		$instaData = $i->instagram->getUser($udata['instagram_account_num']);
+		
+		$instaData = json_decode($instaData,true);
+		
+		$profile = $this->ensure_user_profile($User['id']);
+		
+		$this->UserProfile->create();
+		
+		$this->UserProfile->id = $profile['UserProfile']['id'];
+		
+		$this->UserProfile->save(array(
+			"instagram_followers"=>$instaData['data']['counts']['followed_by'],
+			"instagra_last_updated"=>'NOW()'
+		));
+		
+		SysMsg::add(array(
+			"category"=>"Instagram",
+			"from"=>"UserModel",
+			"title"=>"Update Instagram: ".$User['instagram_handle'],
+			"crontab"=>$crontab
+		));
+		
+	}
+	
 	
 	
 	public static function stanceSelect() {

@@ -38,6 +38,13 @@ class TrafficEtlShell extends Shell {
 		
 		$this->hr();
 		
+		SysMsg::add(array(
+			"category"=>"TrafficReports",
+			"from"=>"TrafficEtlShell",
+			"title"=>"Processing ETL for: ".$date." ".$hour,
+			"crontab"=>1
+		));
+		
 		$this->out("Processing ETL for: ".$date." ".$hour);
 		
 		$this->hr();
@@ -46,7 +53,12 @@ class TrafficEtlShell extends Shell {
 		
 		$this->populateFactPageViews($date,$hour);
 		$this->out("Completed ETL for: ".$date." ".$hour);
-		
+		SysMsg::add(array(
+			"category"=>"TrafficReports",
+			"from"=>"TrafficEtlShell",
+			"title"=>"Completed ETL for: ".$date." ".$hour,
+			"crontab"=>1
+		));
 	}
 	
 	private function build_dimensions($date = false,$hour = false) {

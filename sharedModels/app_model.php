@@ -1,5 +1,7 @@
 <?php
 
+App::import("Vendor","SysMsg",array("file"=>"SysMsg.php"));
+
 class AppModel extends Model {
 	
 	

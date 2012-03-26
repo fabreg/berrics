@@ -45,6 +45,13 @@ class MediaEtlShell extends Shell {
 		
 		$this->out("Media View ETL: ".$date." ".$hour);
 		
+		SysMsg::add(array(
+			"category"=>"TrafficReports",
+			"from"=>"MediaEtlShell",
+			"title"=>"Processing Media View ETL: ".$date." ".$hour,
+			"crontab"=>1
+		));
+		
 		//die("-stopped");
 		
 		$this->populateDimDates($date);
@@ -105,7 +112,12 @@ class MediaEtlShell extends Shell {
 			
 		}
 		
-		
+		SysMsg::add(array(
+			"category"=>"TrafficReports",
+			"from"=>"MediaEtlShell",
+			"title"=>"Completed Media View ETL: ".$date." ".$hour,
+			"crontab"=>1
+		));
 		
 	}
 	

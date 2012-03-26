@@ -421,38 +421,9 @@ class UsersController extends LocalAppController {
 	
 	private function updateInstagram() {
 		
-		if(empty($this->data['User']['instagram_handle'])) return false;
+		$this->User->updateInstagramDetails($this->data['User']);
 		
-		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
-		
-		$i = InstagramApi::berricsInstance();
-		
-		$search = $i->instagram->searchUser($this->data['User']['instagram_handle']);
-		
-		$insta = json_decode($search,true);
-		
-		//die(print_r($insta));
-		
-		$this->data['User']['instagram_account_num'] = $insta['data'][0]['id'];
-		$this->data['User']['instagram_profile_image'] = $insta['data'][0]['profile_picture'];
-		
-		//update the users profile with the instagram info
-		
-		$instaData = $i->instagram->getUser($this->data['User']['instagram_account_num']);
-		
-		$instaData = json_decode($instaData,true);
-		
-		$profile = $this->User->ensure_user_profile($this->data['User']['id']);
-		
-		$this->User->UserProfile->create();
-		
-		$this->User->UserProfile->id = $profile['UserProfile']['id'];
-		
-		$this->User->UserProfile->save(array(
-			"instagram_followers"=>$instaData['data']['counts']['followed_by'],
-			"instagra_last_updated"=>'NOW()'
-		));
-		
+		return $this->render();
 		
 	}
 	
