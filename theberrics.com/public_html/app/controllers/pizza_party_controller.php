@@ -118,7 +118,7 @@ class PizzaPartyController extends LocalAppController {
 		
 		//id for the pizza party
 		
-		$id = 5;
+		$id = 6;
 		
 		///check to see if the person has already entered and if they didn't let's insert a new contest entry row
 		
