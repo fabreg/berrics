@@ -93,8 +93,13 @@ coursekillaz (Away)
 			
 		</div>
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
-		<div style='text-align:center; padding-top:95px;'>
-			<a href='/dailyops' style='color:#fff; font-size:24px; font-weight:bold;'>
+		<div>
+			<a href='http://streetleague.com/' target='_blank'>
+				<img src='/img/layout/clear.png' border='0' height='85' width='100%'/>
+			</a>
+		</div>
+		<div style='text-align:center; padding-top:15px;'>
+			<a href='/dailyops' style='color:#fff; font-size:32px; font-weight:bold;'>
 				- ENTER THE BERRICS - 
 			</a>
 		</div>
