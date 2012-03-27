@@ -19,6 +19,12 @@ class InstagramImageItem extends AppModel {
 			
 			$recent = json_decode($recent,true);
 			
+			SysMsg::add(array(
+				"category"=>"Instragram",
+				"title"=>"Referesh Instagram Feed: ".$User['instagram_handle'],
+				"from"=>"InstagramImageItem"
+			));
+			
 			//die(addslashes(serialize()));
 			
 			foreach($recent['data'] as $k=>$v) {

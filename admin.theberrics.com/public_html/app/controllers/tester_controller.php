@@ -23,6 +23,13 @@ class TesterController extends LocalAppController {
 		
 	}
 	
+	public function dump_session() {
+		
+		
+		die(pr($this->Session->read()));
+		
+	}
+	
 	public function check_session($cookie = false) {
 		
 
