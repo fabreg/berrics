@@ -513,6 +513,20 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	public function sls_selection() {
+		
+		$this->layout = "empty";
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4870
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	
 	
 }
