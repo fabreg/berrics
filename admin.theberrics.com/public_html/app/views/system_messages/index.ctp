@@ -17,10 +17,8 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('category');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('message');?></th>
 			<th><?php echo $this->Paginator->sort('crontab');?></th>
 			<th><?php echo $this->Paginator->sort('alert');?></th>
 			<th><?php echo $this->Paginator->sort('from');?></th>
@@ -36,13 +34,38 @@
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $systemMessage['SystemMessage']['id']; ?>&nbsp;</td>
-		<td><?php echo $systemMessage['SystemMessage']['created']; ?>&nbsp;</td>
-		<td><?php echo $systemMessage['SystemMessage']['modified']; ?>&nbsp;</td>
+		<td><?php echo $this->Time->niceShort($systemMessage['SystemMessage']['created']); ?>&nbsp;</td>
 		<td><?php echo $systemMessage['SystemMessage']['category']; ?>&nbsp;</td>
 		<td><?php echo $systemMessage['SystemMessage']['title']; ?>&nbsp;</td>
-		<td><?php echo $systemMessage['SystemMessage']['message']; ?>&nbsp;</td>
-		<td><?php echo $systemMessage['SystemMessage']['crontab']; ?>&nbsp;</td>
-		<td><?php echo $systemMessage['SystemMessage']['alert']; ?>&nbsp;</td>
+		<td style='text-align:center;'>
+		<?php 
+			switch($systemMessage['SystemMessage']['crontab']) {
+				
+				case 1:
+					echo "<span style='color:green; font-weight:bold'>Yes</span>";
+					break;
+				default:
+					echo "<span style='color:red;'>No</span>";
+					break;
+				
+				
+			}
+		?>
+		</td>
+		<td style='text-align:center;'><?php 
+			
+			switch($systemMessage['SystemMessage']['alert']) {
+				
+				case 1:
+					echo "<span style='color:red; font-weight:bold'>Yes</span>";
+					break;
+				default:
+					echo "<span style='color:green;'>No</span>";
+					break;
+				
+			}
+		
+		?></td>
 		<td><?php echo $systemMessage['SystemMessage']['from']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $systemMessage['SystemMessage']['id'])); ?>
