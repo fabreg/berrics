@@ -1,5 +1,20 @@
 @CHARSET "UTF-8";
 
+#page-container {
+
+	background-image:url(/theme/sls-voting/img/grip-bg.jpg);
+	background-repeat:repeat-y;
+	background-position:center top;
+	
+}
+
+#sls-qualifying-body { 
+
+	
+		
+}
+
+
 #sls-voting-section {
 
 

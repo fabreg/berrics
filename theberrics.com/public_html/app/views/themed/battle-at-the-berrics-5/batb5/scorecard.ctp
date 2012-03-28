@@ -102,7 +102,7 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 							</td>
 							<td>
 							<?php 
-								if($v['BatbVote']['match_winner_user_id'] == $p1['id']) echo $letters_drop[$v['BatbMatch']['winner_letters']];
+								if($v['BatbVote']['match_winner_user_id'] == $p1['id']) echo $letters_drop[$v['BatbVote']['winner_letters']];
 							?>
 							</td>
 							<td rowspan='2' class='points-cell'>
@@ -118,7 +118,7 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 								if($v['BatbVote']['rps_winner_user_id'] == $v['BatbMatch']['rps_winner_user_id']) $points += 1;
 								if($v['BatbVote']['match_winner_user_id'] == $v['BatbMatch']['match_winner_user_id']) $points += 10;
 								if($v['BatbVote']['winner_letters'] == $v['BatbMatch']['winner_letters'] && $points >= 10) $points += 15;
-								echo $points;
+								echo $v['BatbVote']['total_points'];
 								
 							}
 								

@@ -1,3 +1,8 @@
+<?php 
+
+$this->html->script(array("jquery.cookie.js","section"),array("inline"=>false));
+
+?>
 <div id='sls-voting-section'>
 	<div class='voting-heading'></div>
 	<div class='vote-section'>

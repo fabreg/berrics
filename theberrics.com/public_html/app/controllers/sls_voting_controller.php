@@ -37,7 +37,7 @@ class SlsVotingController extends DailyopsController {
 		//get all the entires
 		$entries = $this->SlsEntry->find("all",array(
 			
-			"contain"=>array("Dailyop"),
+			"contain"=>array(),
 			"order"=>array(
 				"SlsEntry.sort_order"=>"ASC"
 			)
