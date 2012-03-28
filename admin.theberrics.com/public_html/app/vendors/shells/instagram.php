@@ -27,9 +27,9 @@ class InstagramShell extends Shell {
 			
 			$this->User->create();
 			$this->User->id = $u['User']['id'];
-			$this->User->save(array("uri"=>$uri));
+			$this->User->save(array("profile_uri"=>$uri));
 			
-			$this->User->updateInstagramDetails($u,true);
+			$this->User->updateInstagramDetails($u['User'],true);
 			
 			$this->out("Processing: {$uri}");
 			
