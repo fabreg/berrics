@@ -41,9 +41,14 @@
  *
  */
 //FORCE DEVSERVER!
-
-if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
+if(php_uname('n')=='WEB2VM.THEBERRIC') {
 	
+	$_SERVER['DEVSERVER']=1;
+	
+}
+
+if($_SERVER['DEVSERVER'] == 1) {
+
 	App::build(array(
 	
 		"models"=>array("/home/sites/berrics.dev/sharedModels/"),

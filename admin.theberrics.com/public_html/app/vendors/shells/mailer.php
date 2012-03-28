@@ -29,6 +29,15 @@ class MailerShell extends Shell {
 		
 		));	
 		
+		SysMsg::add(array(
+			"category"=>"Emailer",
+			"from"=>"MailerShell",
+			"crontab"=>1,
+			"title"=>"Emails to processes: ".count($emails)
+		));
+		
+		$success = 0;
+		
 		foreach($emails as $msg) {
 			
 			$e = $msg['EmailMessage'];
@@ -56,11 +65,19 @@ class MailerShell extends Shell {
 				
 				$this->EmailMessage->create();
 				$this->EmailMessage->id = $e['id'];
-				$this->EmailMessage->save(array("processed"=>1,"send_date"=>date("Y-m-d H:i:s")));
+				$this->EmailMessage->save(array("processed"=>1,"send_date"=>'NOW()'));
+				$success++;
 				
 			}
 				
 		}
+		
+		SysMsg::add(array(
+			"category"=>"Emailer",
+			"from"=>"MailerShell",
+			"crontab"=>1,
+			"title"=>"Email Send Results: Success ({$success}) Total (".count($emails).")"
+		));
 		
 		
 		

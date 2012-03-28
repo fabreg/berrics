@@ -205,13 +205,10 @@ class SplashController extends LocalAppController {
 				return $this->render("gatorade");
 			break;
 			case 3;
-				$this->by3('yoshi');
-				return $this->render("by3");
+				$this->dc_mo();
+				return $this->render("dc_mo");
 			break;
 			case 4:
-				$this->by3();
-				return $this->render("by3");
-			break;
 			case 5:
 				$this->ross();
 				return $this->render("ross");
