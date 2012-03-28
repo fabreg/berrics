@@ -18,10 +18,11 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('category');?></th>
+			<th><?php echo $this->Paginator->sort('from');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
 			<th><?php echo $this->Paginator->sort('crontab');?></th>
 			<th><?php echo $this->Paginator->sort('alert');?></th>
-			<th><?php echo $this->Paginator->sort('from');?></th>
+			
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -36,6 +37,7 @@
 		<td><?php echo $systemMessage['SystemMessage']['id']; ?>&nbsp;</td>
 		<td><?php echo $this->Time->niceShort($systemMessage['SystemMessage']['created']); ?>&nbsp;</td>
 		<td><?php echo $systemMessage['SystemMessage']['category']; ?>&nbsp;</td>
+		<td><?php echo $systemMessage['SystemMessage']['from']; ?>&nbsp;</td>
 		<td><?php echo $systemMessage['SystemMessage']['title']; ?>&nbsp;</td>
 		<td style='text-align:center;'>
 		<?php 
@@ -66,7 +68,7 @@
 			}
 		
 		?></td>
-		<td><?php echo $systemMessage['SystemMessage']['from']; ?>&nbsp;</td>
+		
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $systemMessage['SystemMessage']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $systemMessage['SystemMessage']['id'])); ?>
