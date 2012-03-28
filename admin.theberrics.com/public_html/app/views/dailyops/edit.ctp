@@ -159,11 +159,14 @@ function formatMediaItem(d) {
 	$(".media-item select[name='data[sort_order]']").change(function() { 
 
 
-		var media_item_id = $(this).parent().parent().parent().find("input[name='data[media_item_id]']").val();
+		var media_item_id = $(this).parent().parent().parent().parent().parent().find("input[name='data[media_item_id]']").val();
 
 		var display_weight = $(this).val();
 
 		$("#media-file-list").css({opacity:.5});
+
+		alert(media_item_id);
+		
 		$.get("/dailyops/updateMediaItemWeight/"+media_item_id+"/"+display_weight,function(d) { reloadMediaFiles(d); });
 		
 	});

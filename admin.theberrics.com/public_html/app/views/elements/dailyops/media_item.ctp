@@ -30,7 +30,7 @@ for($a = 1; $a<=100; $a++) {
 	?>
 	</div>
 	<div class='right'>
-		<table cellspacing='0'>
+		<table cellspacing='0' media_item_id='<?echo $i['id']; ?>'>
 			<tr>
 				<td>Media Type:</td>
 				<td><?php echo $types[$m['media_type']]; ?></td>

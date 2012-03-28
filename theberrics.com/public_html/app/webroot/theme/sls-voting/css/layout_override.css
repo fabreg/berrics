@@ -10,16 +10,24 @@
 
 #sls-qualifying-body { 
 
-	
+	margin-top:-20px;
 		
 }
 
 
 #sls-voting-section {
 
-
+	background-image:url(/theme/sls-voting/img/blk-px.png);
+	width:990px;
+	margin:auto;
 }
 
+#sls-voting-section .inner {
+
+	padding:5px;
+
+}
+	
 #sls-voting-section .voting-heading {
 
 }
@@ -40,4 +48,18 @@
 	width:49%;
 	float:right;
 	
+}
+
+#sls-voting-section .rules {
+
+	
+	width:95%;
+	margin:auto;
+	background-color:#000;
+
+}
+#sls-voting-section .rules .inner {
+
+	padding:10px;
+
 }
