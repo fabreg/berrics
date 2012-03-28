@@ -165,8 +165,6 @@ function formatMediaItem(d) {
 
 		$("#media-file-list").css({opacity:.5});
 
-		alert(media_item_id);
-		
 		$.get("/dailyops/updateMediaItemWeight/"+media_item_id+"/"+display_weight,function(d) { reloadMediaFiles(d); });
 		
 	});
