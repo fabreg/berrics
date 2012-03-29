@@ -32,7 +32,7 @@ class SplashRoute extends CakeRoute {
 
 		}
 		
-		if(in_array(date('Y-m-d'),array('2012-03-27'))) {
+		if(in_array(date('Y-m-d'),array('2012-03-29'))) {
 			
 			$params['controller'] = "splash";
 			$params['action'] = "sls_selection";
