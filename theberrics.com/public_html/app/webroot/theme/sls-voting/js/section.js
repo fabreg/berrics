@@ -3,19 +3,35 @@ $(document).ready(function() {
 	var pre = new Image();
 	pre.src = '/theme/sls-voting/img/loading.png';
 	
-	//boot strap links
-	$('.play-button a').click(function() { 
+	if( 		
+			navigator.userAgent.match(/Android/i)
+			 || navigator.userAgent.match(/webOS/i)
+			 || navigator.userAgent.match(/iPhone/i)
+			 || navigator.userAgent.match(/iPod/i)
+			 || navigator.userAgent.match(/BlackBerry/i)
+	)
+	{
+			 
+	
 		
-		SlsVideo.openVideo($(this).attr("href"));
 		
-		return false;
+	} else {
+	
+		//boot strap links
+		$('.play-button a').click(function() { 
+			
+			SlsVideo.openVideo($(this).attr("href"));
+			
+			return false;
+			
+		});
 		
-	});
+	}
 	
 	
 	$(window).scroll(function(e) { 
 		
-		if($(window).scrollTop()>400) {
+		if($(window).scrollTop()>400 && $(window).height()>650) {
 		
 			$('.voting-form').css({
 				

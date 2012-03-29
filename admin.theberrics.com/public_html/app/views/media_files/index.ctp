@@ -162,6 +162,8 @@ function imageHover() {
 			<?php else: ?>
 				<?php //echo $this->Html->link(__('View', true), array('action' => 'view', $mediaFile['MediaFile']['id'])); ?>
 				<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $mediaFile['MediaFile']['id'],base64_encode($this->here))); ?>
+				<?php echo $this->Html->link(__('New Edit', true), array('action' => 'inspect', $mediaFile['MediaFile']['id'],base64_encode($this->here))); ?>
+				
 				<?php
 				
 					switch($mediaFile['MediaFile']['media_type']) {
