@@ -33,9 +33,21 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 					<div class='inner'>
 						Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah 
 					</div>
+					<div style='text-align:center;'>
+						<img border='0' src='/theme/sls-voting/img/grand-prize-heading.jpg' />
+					</div>
+					<div class='inner'>
+						5 People will be entered to win tickets and VIP passes to the street league event of their choice.
+						How? Correctly vote for the 5 winners of the selection and you are instanly entered in the drawing.
+					</div>
 				</div>
 				<div class='voting-form'>
-				
+					<div style='text-align:center;'>
+						<img border='0' src='/theme/sls-voting/img/your-vote-heading.jpg' />
+					</div>
+					<div class='inner'>
+						Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff 
+					</div>
 				</div>
 			</div>
 			<div style='clear:both;'></div>

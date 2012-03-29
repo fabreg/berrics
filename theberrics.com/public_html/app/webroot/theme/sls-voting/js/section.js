@@ -12,6 +12,30 @@ $(document).ready(function() {
 		
 	});
 	
+	
+	$(window).scroll(function(e) { 
+		
+		if($(window).scrollTop()>400) {
+		
+			$('.voting-form').css({
+				
+				"position":"fixed",
+				"top":"115px"
+				
+			});
+			
+		} else {
+			
+			$('.voting-form').css({
+				
+				"position":"static"
+				
+			});
+		}
+		
+	});
+	
+	
 
 	
 });
