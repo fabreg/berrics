@@ -516,7 +516,7 @@ class SplashController extends LocalAppController {
 		$this->loadModel("Dailyop");
 		$post = $this->Dailyop->returnPost(array(
 		
-			"Dailyop.id"=>4870
+			"Dailyop.id"=>4876
 		
 		),1);
 		

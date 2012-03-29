@@ -1,16 +1,22 @@
 @CHARSET "UTF-8";
 
+body {
+
+	height:100%;	
+	
+}
+
 #page-container {
 
 	background-image:url(/theme/sls-voting/img/grip-bg.jpg);
 	background-repeat:repeat-y;
 	background-position:center top;
-	
+	padding-top:130px;
 }
 
 #sls-qualifying-body { 
 
-	margin-top:-20px;
+	margin-top:-40px;
 		
 }
 
@@ -18,7 +24,7 @@
 #sls-voting-section {
 
 	background-image:url(/theme/sls-voting/img/blk-px.png);
-	width:990px;
+	width:975px;
 	margin:auto;
 }
 
@@ -63,3 +69,136 @@
 	padding:10px;
 
 }
+#sls-voting-section .entry-div-wrapper {
+	
+
+}
+
+#sls-voting-section .entry-div {
+
+	background-repeat:no-repeat;
+	height:102px;
+	width:433px;
+	margin:auto;
+	position:relative;
+}
+#sls-voting-section .entry-spacer {
+
+	width:65%;
+	height:2px;
+	background-color:#fff;
+	margin:auto;
+	margin-top:6px;
+	margin-bottom:6px;	
+	
+}
+
+#sls-voting-section .entry-div .play-button {
+	
+	width:125px;
+	height:30px;
+	line-height:30px;
+	background-color:#fff;
+	border:1px solid #000;	
+	color:#000;
+	text-align:center;
+	position:absolute;
+	top:60px;
+	left:120px;
+	z-index:1005;
+	font-family:'Arial Black';
+}
+
+#sls-voting-section .entry-div .play-button a {
+
+	color:inherit;	
+	text-decoration:none;
+	
+}
+
+#sls-voting-section .entry-div .vote-button {
+	
+	width:125px;
+	height:30px;
+	line-height:30px;
+	background-color:#fff;
+	border:1px solid #000;	
+	color:#000;
+	text-align:center;
+	position:absolute;
+	top:60px;
+	left:265px;
+	z-index:1005;
+	font-family:'Arial Black';
+}
+
+.sls-video-post .post-bit {
+
+		
+	
+}
+
+.sls-video-post .d-post-bit .container,
+.sls-video-post .d-post-bit .container-top,
+.sls-video-post .d-post-bit .bottom 
+ {
+
+	background-image:none;
+	background-color:#000;
+	
+}
+
+
+
+
+/*overlay*/
+#video-overlay { 
+
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-image:url(/img/layout/blk-px.png);
+	z-index:1499;
+
+}
+
+#video-overlay .inner {
+	
+	position:relative;
+	height:100%;
+	width:100%;
+}
+
+#video-overlay .loading {
+
+	height:100%;
+	width:100%;
+	background-image:url(/theme/sls-voting/img/loading.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	
+}
+
+#video-overlay .sls-video-post .d-post-bit {
+
+	margin-bottom:0px;	
+	
+}
+
+#video-overlay .sls-video-post {
+	padding-top:85px;
+	width:728px;
+	margin:auto;	
+	display:none;
+}
+#video-overlay .sls-video-post .bottom,
+#video-overlay .sls-video-post .container hr,
+#video-overlay .sls-video-post .title h2
+ {
+
+	display:none;	
+	
+}
+

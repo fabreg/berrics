@@ -7,6 +7,8 @@ class SlsVotingController extends DailyopsController {
 	
 	public $uses = array("SlsEntry");
 	
+	public $components = array("RequestHandler");
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -19,7 +21,16 @@ class SlsVotingController extends DailyopsController {
 		
 		if($this->params['action'] == "view") {
 			
-			$this->params['action'] = "section";
+			if($this->RequestHandler->isAjax()) {
+				
+				$this->params['action'] = "open_video";
+				
+			} else {
+				
+				$this->params['action'] = "section";
+				
+			}
+			
 			
 		}
 		
@@ -39,9 +50,17 @@ class SlsVotingController extends DailyopsController {
 			
 			"contain"=>array(),
 			"order"=>array(
-				"SlsEntry.sort_order"=>"ASC"
+				"SlsEntry.name"=>"ASC"
 			)
 		));
+		
+		foreach($entries as $k=>$v) {
+			
+			$post = $this->SlsEntry->Dailyop->returnPost(array("Dailyop.id"=>$v['SlsEntry']['dailyop_id']),1);
+			
+			$entries[$k] = array_merge($entries[$k],$post);
+			
+		}
 		
 		$this->set(compact("entries"));
 		
@@ -53,7 +72,7 @@ class SlsVotingController extends DailyopsController {
 		
 	}
 	
-	public function setPost() {
+	private function setPost() {
 		
 		$this->loadModel("Dailyop");
 		
@@ -63,6 +82,14 @@ class SlsVotingController extends DailyopsController {
 		),$this->isAdmin());
 		
 		$this->set(compact("post"));
+		
+	}
+	
+	public function open_video() {
+		
+		$this->layout = "ajax";
+		
+		$this->render("/elements/video-post");
 		
 	}
 	

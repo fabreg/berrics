@@ -30,7 +30,7 @@ var swfPlayer = "/swf/BerricsPlayer.swf";
 body {
 
 	background-color:#000;
-	background-image:url(/img/splash/sls-selection/bg.jpg);
+	background-image:url(/img/splash/sls-selection/bg-2.jpg);
 	background-position: center center;
 	background-repeat:repeat-y;
 
@@ -88,18 +88,14 @@ body {
 coursekillaz (Away)
 </style>
 <div>
-	<div style='width:728px; margin:auto; padding-top:172px; min-height:800px; background-image:url(/img/splash/sls-selection/video-bg.png); background-position: top center; background-repeat:no-repeat;'>
-		<div style='text-align:center; height:50px;'>
+	<div style='width:728px; margin:auto; padding-top:172px; min-height:800px; background-image:url(/img/splash/sls-selection/video-heading-2.png); background-position: top center; background-repeat:no-repeat;'>
+		<div style='text-align:center; height:80px;'>
 			
 		</div>
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
-		<div>
-			<a href='http://streetleague.com/' target='_blank'>
-				<img src='/img/layout/clear.png' border='0' height='85' width='100%'/>
-			</a>
-		</div>
+
 		<div style='text-align:center; padding-top:15px;'>
-			<a href='/dailyops' style='color:#fff; font-size:32px; font-weight:bold;'>
+			<a href='/dailyops' style='color:#ffd204; font-size:32px; font-weight:bold;'>
 				- ENTER THE BERRICS - 
 			</a>
 		</div>

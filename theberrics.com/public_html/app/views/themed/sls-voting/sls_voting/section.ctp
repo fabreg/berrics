@@ -11,13 +11,19 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 				<div>
 					<img border='0' src='/theme/sls-voting/img/selection-heading.png' />
 				</div>
+				<div class='entry-div-wrapper'>
 				<?php foreach($entries as $v): ?>
-				<div class='entry-div'>
-					<div class='inner'>
-						<div><?php echo $v['SlsEntry']['name']; ?></div>
+					<div class='entry-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>);'>
+						<div class='play-button'>
+							<a href='/<?php echo $this->params['section']; ?>/<?php echo $v['Dailyop']['uri']; ?>'>Play Video</a>
+						</div>
+						<div class='vote-button'>
+							Place Vote
+						</div>
 					</div>
-				</div>
+					<div class='entry-spacer'></div>
 				<?php endforeach; ?>
+				</div>
 			</div>
 			<div class='voting'>
 				<div class='rules'>
@@ -36,6 +42,3 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 		</div>
 	</div>
 </div>
-<?php 
-print_r($entries);
-?>

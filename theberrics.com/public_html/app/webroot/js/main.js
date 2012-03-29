@@ -284,7 +284,7 @@ function initThumbHovers() {
 }
 
 
-function berricsRelatedVideoScreen(media_file_id, dailyop_id) {
+var berricsRelatedVideoScreen = function(media_file_id, dailyop_id) {
 	
 	
 	$.ajax({
