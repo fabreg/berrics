@@ -65,14 +65,13 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 						<img border='0' src='/theme/sls-voting/img/rules-heading.jpg' />
 					</div>
 					<div class='inner'>
-						Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah Rules Blah Blah 
+You've heard of the 'sponsor me' tape, right?  Well guess what?  Pros have to make them too.  Street League Skateboarding has 5 open slots and these 10 guys each put together an edit of new and unseen footage in hopes to be selected as one of 2012's newest SLs pros.  Watch their videos, and pick your top 5.  Their fate is in your hands...
 					</div>
 					<div style='text-align:center;'>
 						<img border='0' src='/theme/sls-voting/img/grand-prize-heading.jpg' />
 					</div>
 					<div class='inner'>
-						5 People will be entered to win tickets and VIP passes to the <em>Street League 2012</em> event of their choice.
-						How? Correctly vote for the 5 winners of the selection and you are instanly entered in the drawing.
+						5 people will win tickets and VIP passes for themselves and 2 friends to a <em>SLs 2012</em> event of their choice.  How?  Correctly vote for the 5 qualifiers of The Selection and you will be instantly entered into the drawing.
 					</div>
 				</div>
 				<div class='voting-form'>
