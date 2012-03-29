@@ -5,8 +5,8 @@
 	<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	<?php if($this->params['isAjax']): ?>
 	<script>FB.XFBML.parse();</script>
-	<div>
-	<a href='javascript:SlsVideo.closeVideo();'> [x] Close Video [x]</a>
+	<div style='width:100%; text-align:center; background-color:#000;'>
+	<a href='javascript:SlsVideo.closeVideo();'> <img border='0' src='/theme/sls-voting/img/close_video.jpg' /></a>
 	</div>
 	<?php endif; ?>
 </div>

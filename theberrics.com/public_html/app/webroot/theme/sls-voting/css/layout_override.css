@@ -18,7 +18,8 @@ body {
 
 	width:900px;
 	margin:auto;	
-	
+	margin-top:25px;
+	margin-bottom:25px;
 }
 
 #footer .inner {
@@ -173,6 +174,7 @@ body {
 	font-size:16px;
 	border:none;
 	margin-top:1px;
+	cursor:pointer;
 }
 
 
@@ -302,7 +304,7 @@ body {
 
 #video-overlay .sls-video-post .d-post-bit .bottom {
 	
-	height:40px;
+	min-height:25px;
 		
 }
 

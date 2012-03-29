@@ -63,6 +63,14 @@ $(document).ready(function() {
 	});
 	
 	
+	$('form').submit(function() { 
+		
+		$('input[type=submit]').attr("disabled",true);
+		
+		return true;
+		
+	});
+	
 
 	
 });

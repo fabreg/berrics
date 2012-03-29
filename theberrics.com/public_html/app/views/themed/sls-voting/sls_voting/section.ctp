@@ -83,6 +83,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 						<?php if($this->Session->check("Auth.User.id")): ?>
 						<div style='font-style:italic; font-size:12px; text-align:center;'>Logged in as: <?php echo $this->Session->read("Auth.User.email"); ?> (<a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a>)</div>
 						<?php else: ?>
+						<div style='text-align:center;'><img src='/theme/sls-voting/img/facebook-sign-in.png' align='absmiddle' border='0'/> A valid facebook account is required to vote</div>
 						<?php endif;?>
 						<?php for($i=0;$i<5;$i++): ?>
 							<?php 
@@ -111,6 +112,3 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 		</div>
 	</div>
 </div>
-<?php 
-print_r($votes);
-?>
