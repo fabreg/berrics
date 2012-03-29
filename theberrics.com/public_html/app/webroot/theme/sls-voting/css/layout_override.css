@@ -309,7 +309,8 @@ body {
 #video-overlay .sls-video-post .bottom .tags,
 #video-overlay .sls-video-post .bottom .date-info,
 #video-overlay .sls-video-post .container hr,
-#video-overlay .sls-video-post .title
+#video-overlay .sls-video-post .title,
+#video-overlay .sls-video-post .bottom .twitter
  {
 
 	display:none;	
