@@ -38,7 +38,11 @@ $(document).ready(function() {
 	
 	$(window).scroll(function(e) { 
 		
-		if($(window).scrollTop()>400 && $(window).height()>650) {
+		var factor = 400;
+		
+		if($('#scroll-chk').length>0) factor+=470;
+		
+		if($(window).scrollTop()>factor && $(window).height()>650) {
 		
 			$('.voting-form').css({
 				

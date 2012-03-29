@@ -21,7 +21,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 		if(isset($post)) { 
 			
 			echo $this->element("video-post",array("dop"=>$post));
-			
+			echo "<div id='scroll-chk'></div>";
 		}
 		?>
 		<div class='voting-heading'></div>
