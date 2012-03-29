@@ -80,7 +80,30 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 						<img border='0' src='/theme/sls-voting/img/your-vote-heading.jpg' />
 					</div>
 					<div class='inner'>
-						Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff Voting Stuff 
+						<?php if($this->Session->check("Auth.User.id")): ?>
+						<div style='font-style:italic; font-size:12px; text-align:center;'>Logged in as: <?php echo $this->Session->read("Auth.User.email"); ?> (<a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a>)</div>
+						<?php else: ?>
+						<?php endif;?>
+						<?php for($i=0;$i<5;$i++): ?>
+							<?php 
+								if($this->Session->check("Auth.User.id") && isset($votes[$i])): 
+									foreach($entries as $v) if($v['SlsEntry']['id'] == $votes[$i]) $e=$v;
+							?>
+							<div class='vote-result-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $e['DailyopMediaItem'][2]['MediaFile']['file']; ?>);'>
+								<div class='delete-form'>
+								<?php 
+									echo $this->Form->create("SlsVote",array("url"=>"/{$this->params['section']}/delete_vote"));
+									echo $this->Form->input("id",array("value"=>base64_encode($votes[$i])));
+									echo $this->Form->submit("DELETE",array("div"=>false));
+									echo $this->Form->end();
+								?>
+								</div>
+							</div>
+							<?php else: ?>
+								<div class='no-vote'>
+								</div>
+							<?php endif; ?>
+						<?php endfor; ?>
 					</div>
 				</div>
 			</div>

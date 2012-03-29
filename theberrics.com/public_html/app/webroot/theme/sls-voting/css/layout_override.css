@@ -188,6 +188,49 @@ body {
 
 }
 
+#sls-voting-section .vote-result-div {
+
+	height:84px;
+	width:375px;
+	position:relative;	
+	
+}
+#sls-voting-section .vote-result-div .delete-form {
+	
+	z-index:1002;
+	position:absolute;
+	top:60px;
+	left:90px;
+	
+}
+
+#sls-voting-section .vote-result-div .delete-form input {
+
+	background-color:transparent;
+	cursor:pointer;
+	border:none;
+	color:#fff;
+	font-size:11px;
+	font-family:'Arial Black';	
+	text-decoration:underline;
+}
+
+#sls-voting-section .vote-result-div .x-out {
+
+	position:absolute;	
+	z-index:1001;
+}
+
+#sls-voting-section  .no-vote {
+
+	margin-top:3px;	
+	margin-bottom:3px;
+	height:70px;
+	background-image:url(/theme/sls-voting/img/no-vote.jpg);
+	background-repeat:no-repeat;
+	background-position:10px 10px;
+}
+
 .sls-video-post {
 
 	width:728px;
@@ -256,9 +299,9 @@ body {
 	display:none;
 }
 
-#video-overlay .sls-video-post .bottom {
+#video-overlay .sls-video-post .d-post-bit .bottom {
 	
-	height:auto;
+	height:40px;
 		
 }
 

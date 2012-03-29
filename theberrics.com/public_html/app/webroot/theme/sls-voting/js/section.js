@@ -1,3 +1,4 @@
+var st = 0;
 $(document).ready(function() { 
 	
 	var pre = new Image();
@@ -20,11 +21,17 @@ $(document).ready(function() {
 		//boot strap links
 		$('.play-button a').click(function() { 
 			
+			sc = $(window).scrollTop();
+			
 			SlsVideo.openVideo($(this).attr("href"));
+			
+			$(window).scrollTop(sc);
 			
 			return false;
 			
 		});
+		
+
 		
 	}
 	
@@ -81,6 +88,12 @@ var SlsVideo = {
 						$('.dailyop_media_item:eq(0)').click();
 						
 						//$("#video-overlay").click(function() { SlsVideo.closeVideo(); });
+						
+						berricsRelatedVideoScreen = function(d,a) {
+						
+							SlsVideo.closeVideo();
+							
+						}
 						
 					});
 					

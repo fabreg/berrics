@@ -158,5 +158,27 @@ class SlsVotingController extends DailyopsController {
 		
 	}
 	
+	public function delete_vote() {
+		
+		$id = base64_decode($this->data['SlsVote']['id']);
+		
+		$chk = $this->SlsVote->find("first",array(
+			"conditions"=>array(
+				"SlsVote.user_id"=>$this->Session->read("Auth.User.id"),
+				"SlsVote.sls_entry_id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		if(isset($chk['SlsVote']['id'])) {
+			
+			$this->SlsVote->delete($chk['SlsVote']['id']);
+			
+		}
+		
+		return $this->redirect("/".$this->params['section']);
+		
+	}
+	
 	
 }
