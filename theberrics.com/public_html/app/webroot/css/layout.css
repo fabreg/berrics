@@ -843,15 +843,10 @@ DAILY OPS
     
 }
 
-.d-post-bit .tags .tag {
-
-	
-	
-}
 
 .d-post-bit .tags .tag img {
 
-	vertical-align:bottom;
+	border-top:1px solid #000;
 	margin-right:1px;
 }
 

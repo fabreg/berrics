@@ -42,11 +42,11 @@
 						foreach($t as $v) {
 							echo "<span class='tag'>";
 							
-							if(isset($v['User'][0]['facebook_account_num']) && !empty($v['User'][0]['facebook_account_num'])) echo "<a href='http://facbook.com/profile.php?id={$v['User'][0]['facebook_account_num']}' target='_blank' class='tag-sn-icon'><img border='0' src='/img/layout/fb-tag-icon.jpg'  /></a>";
+							if(isset($v['User'][0]['facebook_account_num']) && !empty($v['User'][0]['facebook_account_num'])) echo "<a href='http://facbook.com/profile.php?id={$v['User'][0]['facebook_account_num']}' target='_blank' ><img border='0' src='/img/layout/fb-tag-icon.jpg'  /></a>";
 							
-							if(isset($v['User'][0]['twitter_handle']) && !empty($v['User'][0]['twitter_handle'])) echo "<a href='http://twitter.com/{$v['User'][0]['twitter_handle']}' target='_blank' class='tag-sn-icon'><img border='0' src='/img/layout/twitter-tag-icon.jpg'  /></a>";
+							if(isset($v['User'][0]['twitter_handle']) && !empty($v['User'][0]['twitter_handle'])) echo "<a href='http://twitter.com/{$v['User'][0]['twitter_handle']}' target='_blank' ><img border='0' src='/img/layout/twitter-tag-icon.jpg' /></a>";
 							
-							if(isset($v['User'][0]['instagram_handle']) && !empty($v['User'][0]['instagram_handle'])) echo "<a href='http://web.stagram.com/n/{$v['User'][0]['instagram_handle']}' target='_blank' class='tag-sn-icon'><img border='0' src='/img/layout/instagram-tag-icon.jpg' /></a>";
+							if(isset($v['User'][0]['instagram_handle']) && !empty($v['User'][0]['instagram_handle'])) echo "<a href='http://web.stagram.com/n/{$v['User'][0]['instagram_handle']}' target='_blank' ><img border='0' src='/img/layout/instagram-tag-icon.jpg'  /></a>";
 							
 							
 							echo "<a href='/tags/".$v['slug']."' title='".$v['name']."'>".strtoupper($v['name'])."</a>";
