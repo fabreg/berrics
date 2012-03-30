@@ -41,7 +41,17 @@ rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt
 ssh root@web9 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
 ssh root@web9 '/sbin/service httpd start';
 
+ssh root@web10 'apachectl -k graceful-stop';
+sleep 4;
+rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web10:/home/sites/berrics/
+ssh root@web10 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
+ssh root@web10 '/sbin/service httpd start';
 
+ssh root@web11 'apachectl -k graceful-stop';
+sleep 4;
+rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web11:/home/sites/berrics/
+ssh root@web11 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
+ssh root@web11 '/sbin/service httpd start';
 
 
 #FLUSH THE MEMCACHE SERVER
