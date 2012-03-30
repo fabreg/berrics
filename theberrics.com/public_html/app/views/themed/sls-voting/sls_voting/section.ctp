@@ -79,7 +79,7 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  Pros have to ma
 						<img border='0' src='/theme/sls-voting/img/your-vote-heading.jpg' />
 					</div>
 					<div class='inner'>
-						<div style='font-size:12px; text-align:center;'>Click "Place Vote" on the right</div>
+						<div style='font-size:12px; text-align:center;'>Click "Place Vote" on the left</div>
 						<?php if($this->Session->check("Auth.User.id")): ?>
 						<div style='font-style:italic; font-size:12px; text-align:center;'>Logged in as: <?php echo $this->Session->read("Auth.User.email"); ?> (<a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a>)</div>
 						<?php else: ?>
