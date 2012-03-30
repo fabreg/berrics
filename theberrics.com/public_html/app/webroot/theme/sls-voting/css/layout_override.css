@@ -89,6 +89,7 @@ body {
 #sls-voting-section .rules .inner {
 	padding:13px;
 	font-size:15px;
+	text-align:justify;
 }
 #sls-voting-section .entry-div-wrapper {
 	
@@ -188,6 +189,7 @@ body {
 
 	padding:13px;
 	font-size:14px;
+		text-align:justify;
 }
 
 #sls-voting-section .vote-result-div {
