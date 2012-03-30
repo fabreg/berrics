@@ -65,8 +65,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 						<img border='0' src='/theme/sls-voting/img/rules-heading.jpg' />
 					</div>
 					<div class='inner'>
-You've heard of the 'sponsor me' tape, right?  Well guess what?  Pros have to make them too.  Street League Skateboarding has 5 open slots and these 10 guys each put together an edit of new and unseen footage in hopes to be selected as one of 2012's newest SLs pros.  Watch their videos, and pick your top 5.  Their fate is in your hands...
-					</div>
+You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection is that's on steroids.  Street League has 5 open slots and these 10 guys each put together an edit of new and unseen footage in hopes to be selected as one of 2012's newest Street League pros.  Watch their videos, and pick your top 5.  Their fate is in your hands...					</div>
 					<div style='text-align:center;'>
 						<img border='0' src='/theme/sls-voting/img/grand-prize-heading.jpg' />
 					</div>
