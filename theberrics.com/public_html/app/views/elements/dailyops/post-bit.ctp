@@ -40,7 +40,7 @@
 	}
 	
 ?>
-<div class='d-post-bit <?php echo $extra_class; ?>'>
+<div class='d-post-bit <?php echo $extra_class; ?>' dailyop_id='<?php echo $d['id']; ?>' >
 	<div class='container'>
 		<div class='container-top'>
 			<div class='title'>

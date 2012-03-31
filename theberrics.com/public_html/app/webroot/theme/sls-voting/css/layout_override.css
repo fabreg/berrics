@@ -259,7 +259,18 @@ body {
 }
 
 
+#sls-voting-section .sls-video-post .entry-div {
 
+	background-color:#000;	
+	margin-top:50px;
+	margin-bottom:40px;
+}
+
+#sls-voting-section .sls-video-post .entry-div .play-button {
+
+	display:none;	
+	
+}
 
 /*overlay*/
 #video-overlay { 

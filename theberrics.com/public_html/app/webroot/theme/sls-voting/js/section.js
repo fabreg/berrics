@@ -142,6 +142,16 @@ var SlsVideo = {
 			
 			$("#video-overlay").fadeOut("fast",function() { $("#video-overlay").remove(); });
 			
+		},
+		videoOverScreen:function(m_id,d_id) {
+			
+			var post_div = $('.d-post-bit[dailyop_id='+d_id+']').parent();
+			
+			var form_div = $('.entry-div[dailyop_id='+d_id+']').clone();
+			
+			
+			$(post_div).html($(form_div));
+			
 		}
 		
 		

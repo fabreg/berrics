@@ -32,7 +32,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 				</div>
 				<div class='entry-div-wrapper'>
 				<?php foreach($entries as $v): ?>
-					<div class='entry-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>);'>
+					<div class='entry-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>);' dailyop_id='<?php echo $v['Dailyop']['id']; ?>'>
 						<div class='play-button'>
 							<a href='/<?php echo $this->params['section']; ?>/<?php echo $v['Dailyop']['uri']; ?>'>Play Video</a>
 						</div>
