@@ -1,6 +1,6 @@
 <div class='sls-video-post'>
 	<?php if($this->params['isAjax']): ?>
-	<div style='height:85px;'></div>
+	<div style='height:88px;'></div>
 	<?php endif; ?>
 	<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	<?php if($this->params['isAjax']): ?>
@@ -11,6 +11,9 @@
 	<?php else: ?>
 	<script>
 	berricsRelatedVideoScreen = function(m,d) { SlsVideo.videoOverScreen(m,d); };
+	
+
 	</script>
+
 	<?php endif; ?>
 </div>

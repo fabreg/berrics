@@ -91,7 +91,8 @@ var SlsVideo = {
 				
 				"url":uri,
 				"success":function(d) {
-				
+					
+					$.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
 					berricsRelatedVideoScreen = function(media_file_id, dailyop_id) {
 						
 						SlsVideo.closeVideo();
@@ -112,6 +113,7 @@ var SlsVideo = {
 							SlsVideo.closeVideo();
 							
 						}
+						
 						
 					});
 					

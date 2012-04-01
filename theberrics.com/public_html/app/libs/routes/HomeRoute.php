@@ -12,12 +12,32 @@ class HomeRoute extends CakeRoute {
 			
 		}
 		
-		if(date("Y-m-d")=="2011-12-19" && $_SERVER['REQUEST_URI'] == "/dailyops") {
+		
+		if($_SERVER['REQUEST_URI'] == "/dailyops") {
 			
-			$params['controller'] = "younited_nations";
-			$params['action'] = "crews";
+			
+				if(date("Y-m-d")=="2011-12-19") {
+					
+					$params['controller'] = "younited_nations";
+					$params['action'] = "crews";
+					
+				}
+				
+				switch(date("Y-m-d")) {
+					
+					
+					case "2012-04-02":
+					case "2012-04-03":
+					case "2012-04-04":
+						$params['controller'] = "sls_voting";
+						$params['action'] = "section";
+					break;
+					
+				}
 			
 		}
+		
+		
 		
 		return $params;
 	}
