@@ -136,6 +136,8 @@ var SlsVideo = {
 		},
 		closeVideo:function() { 
 			
+			var sc = $(window).scrollTop();
+			
 			$('body,html').css({
 				
 				"overflow":"auto"
@@ -143,6 +145,8 @@ var SlsVideo = {
 			});
 			
 			$("#video-overlay").fadeOut("fast",function() { $("#video-overlay").remove(); });
+			
+			$(window).scrollTop(sc);
 			
 		},
 		videoOverScreen:function(m_id,d_id) {
