@@ -82,4 +82,3 @@
 		$Dispatcher = new Dispatcher();
 		$Dispatcher->dispatch();
 	}
-	echo "<!-- " . round(getMicrotime() - $TIME_START, 4) . "s -->";
