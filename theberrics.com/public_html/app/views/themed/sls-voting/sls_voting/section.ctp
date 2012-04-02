@@ -92,7 +92,7 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 							<div class='vote-result-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $e['DailyopMediaItem'][2]['MediaFile']['file']; ?>);'>
 								<div class='delete-form'>
 								<?php 
-									echo $this->Form->create("SlsVote",array("url"=>"//street-league-selection-2012/delete_vote"));
+									echo $this->Form->create("SlsVote",array("url"=>"/street-league-selection-2012/delete_vote"));
 									echo $this->Form->input("id",array("value"=>base64_encode($votes[$i])));
 									echo $this->Form->submit("DELETE",array("div"=>false));
 									echo $this->Form->end();
@@ -111,6 +111,10 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 		</div>
 	</div>
 </div>
+
+
+<?php if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])): ?>
+<div style='width:728px; margin:auto;'>
 	<div id='paging-menu'>
 		<div class='left'>
 		<?php 
@@ -137,11 +141,10 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 		</div>
 		<div style='clear:both'></div>
 	</div>
-</div>
-<div style='width:728px; margin:auto;'>
 <?php 
 
 echo $this->element("dailyops/date-bit");
 
 ?>
 </div>
+<?php endif; ?>
