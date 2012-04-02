@@ -104,7 +104,7 @@ var SlsVideo = {
 					
 					$("#video-overlay .inner .sls-video-post").slideDown('slow',function() { 
 						
-						$('.dailyop_media_item:eq(0)').click();
+						$('#video-overlay .dailyop_media_item:eq(0)').click();
 						
 						//$("#video-overlay").click(function() { SlsVideo.closeVideo(); });
 						

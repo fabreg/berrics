@@ -12,30 +12,36 @@ class HomeRoute extends CakeRoute {
 			
 		}
 		
+		$date_in = date("Y-m-d");
 		
-		if($_SERVER['REQUEST_URI'] == "/dailyops") {
+		if(
+		isset($params['year']) && 
+		isset($params['month']) &&
+		isset($params['day']) &&
+		(strtotime("{$params['year']}-{$params['month']}-{$params['day']}")<time())
+		) {
 			
-			
-				if(date("Y-m-d")=="2011-12-19") {
-					
-					$params['controller'] = "younited_nations";
-					$params['action'] = "crews";
-					
-				}
-				
-				switch(date("Y-m-d")) {
-					
-					
-					case "2012-04-02":
-					case "2012-04-03":
-					case "2012-04-04":
-						$params['controller'] = "sls_voting";
-						$params['action'] = "section";
-					break;
-					
-				}
+			$date_in = "{$params['year']}-{$params['month']}-{$params['day']}";
 			
 		}
+		
+		
+		switch($date_in) {
+					
+			case "2011-12-19":	
+					$params['controller'] = "younited_nations";
+					$params['action'] = "crews";
+			break;
+			
+			//case "2012-04-01":
+			case "2012-04-02":
+				$params['controller'] = "sls_voting";
+				$params['action'] = "section";
+			break;
+					
+		}
+		
+
 		
 		
 		

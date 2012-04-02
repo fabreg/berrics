@@ -36,7 +36,15 @@ class SlsVotingController extends DailyopsController {
 		
 		if(isset($this->params['uri']) && !empty($this->params['uri'])) {
 			
-			$this->setPost();
+			$p = $this->setPost();
+			
+			$this->setFacebookMetaImg($p['DailyopMediaItem'][0]['MediaFile']);
+			
+		}
+		
+		if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])) {
+			
+			$this->get_full_date_nav();
 			
 		}
 			
@@ -79,7 +87,9 @@ class SlsVotingController extends DailyopsController {
 			
 		}
 		
-		$this->set(compact("entries","votes"));
+		$meta_d = "You've heard of the 'sponsor me' tape, right? Well guess what? The Selection is that's on steroids. Street League has 5 open slots and these 10 guys each put together an edit of new and unseen footage in hopes to be selected as one of 2012's newest Street League pros. Watch their videos, and pick your top 5. Their fate is in your hands...";
+		
+		$this->set(compact("entries","votes","meta_d"));
 		
 	}
 	
@@ -99,6 +109,8 @@ class SlsVotingController extends DailyopsController {
 		),$this->isAdmin());
 		
 		$this->set(compact("post"));
+		
+		return $post;
 		
 	}
 	
