@@ -35,8 +35,7 @@ class HomeRoute extends CakeRoute {
 			
 			//case "2012-04-01":
 			case "2012-04-02":
-				header('Location:http://theberrics.com/street-league-selection-2012');
-				exit();
+				
 				$params['controller'] = "sls_voting";
 				$params['action'] = "section";
 			break;

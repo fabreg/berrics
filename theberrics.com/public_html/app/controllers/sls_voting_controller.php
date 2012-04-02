@@ -91,6 +91,16 @@ class SlsVotingController extends DailyopsController {
 		
 		$this->set(compact("entries","votes","meta_d"));
 		
+		
+		$dateIn = date("Y-m-d");
+		
+		$older_date = $this->Dailyop->getNextDate($dateArg);
+		
+		$newer_date = $this->Dailyop->getNextDate($dateArg,false);
+		
+		$this->set(compact("dateIn","newer_date","older_date"));
+		
+		
 	}
 	
 	public function view() {

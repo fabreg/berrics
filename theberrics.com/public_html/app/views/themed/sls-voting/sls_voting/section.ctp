@@ -1,7 +1,7 @@
 <?php 
 
 $this->set("title_for_layout","Street League 2012 - The Selection");
-
+$this->Html->script(array("dailyops/post-bit"),array("inline"=>false));
 $kw = array();
 
 foreach($entries as $e) {
@@ -34,7 +34,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 				<?php foreach($entries as $v): ?>
 					<div class='entry-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>);' dailyop_id='<?php echo $v['Dailyop']['id']; ?>'>
 						<div class='play-button'>
-							<a href='/<?php echo $this->params['section']; ?>/<?php echo $v['Dailyop']['uri']; ?>'>Play Video</a>
+							<a href='/street-league-selection-2012/<?php echo $v['Dailyop']['uri']; ?>'>Play Video</a>
 						</div>
 						<div class='vote-button'>
 							<?php 
@@ -110,4 +110,38 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 			<div style='clear:both;'></div>
 		</div>
 	</div>
+</div>
+	<div id='paging-menu'>
+		<div class='left'>
+		<?php 
+		
+			if($newer_date && !preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI'])) {
+				$newer_date = strtotime($newer_date);
+				echo $this->Html->link("<span> ".date("F jS, Y",$newer_date)."</span>",date("/Y/m/d",$newer_date),array("escape"=>false,"title"=>date("F jS, Y",$newer_date)));
+				
+			}
+			
+		?>
+		</div>
+		<div class='right'>
+		<?php 
+			
+			if($older_date) {
+				
+				$older_date = strtotime($older_date);
+				echo $this->Html->link("<span>".date("F jS, Y",$older_date)."</span>",date("/Y/m/d",$older_date),array("escape"=>false,"title"=>date("F jS, Y",$older_date)));
+				
+			}
+			
+		?>
+		</div>
+		<div style='clear:both'></div>
+	</div>
+</div>
+<div style='width:728px; margin:auto;'>
+<?php 
+
+echo $this->element("dailyops/date-bit");
+
+?>
 </div>
