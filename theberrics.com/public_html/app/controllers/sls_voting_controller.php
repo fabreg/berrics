@@ -87,7 +87,7 @@ class SlsVotingController extends DailyopsController {
 			
 		}
 		
-		$meta_d = "You've heard of the 'sponsor me' tape, right? Well guess what? The Selection is that's on steroids. Street League has 5 open slots and these 10 guys each put together an edit of new and unseen footage in hopes to be selected as one of 2012's newest Street League pros. Watch their videos, and pick your top 5. Their fate is in your hands...";
+		$meta_d = "You've heard of the 'sponsor me' tape, right? Well guess what? The Selection is that on steroids. Street League has 5 open slots and these 10 guys each put together an edit of new and unseen footage in hopes to be selected as one of 2012's newest Street League pros. Watch their videos, and pick your top 5. Their fate is in your hands...";
 		
 		$this->set(compact("entries","votes","meta_d"));
 		
