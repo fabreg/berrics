@@ -45,7 +45,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 							<div class='vote-placed'>Vote Placed</div>
 							
 							<?php else: 
-								echo $this->Form->create("SlsVote",array("url"=>"/{$this->params['section']}/place_vote"));
+								echo $this->Form->create("SlsVote",array("url"=>"/street-league-selection-2012/place_vote"));
 								echo $this->Form->input("sls_entry_id",array("type"=>"hidden","value"=>$v['SlsEntry']['id']));
 								echo $this->Form->submit("Place Vote",array("div"=>false));
 								echo $this->Form->end();
@@ -92,7 +92,7 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 							<div class='vote-result-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $e['DailyopMediaItem'][2]['MediaFile']['file']; ?>);'>
 								<div class='delete-form'>
 								<?php 
-									echo $this->Form->create("SlsVote",array("url"=>"/{$this->params['section']}/delete_vote"));
+									echo $this->Form->create("SlsVote",array("url"=>"//street-league-selection-2012/delete_vote"));
 									echo $this->Form->input("id",array("value"=>base64_encode($votes[$i])));
 									echo $this->Form->submit("DELETE",array("div"=>false));
 									echo $this->Form->end();
@@ -110,4 +110,12 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 			<div style='clear:both;'></div>
 		</div>
 	</div>
+</div>
+<div style='width:728px; margin:auto;'>
+<?php 
+	
+	if(isset($date_nav_array)) {
+		echo $this->element("dailyops/date-bit"); 
+	}
+?>
 </div>
