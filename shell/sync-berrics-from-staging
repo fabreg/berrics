@@ -5,7 +5,11 @@ rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt
 rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web2:/home/sites/berrics/
 
 
-
+ssh root@web4 'apachectl -k graceful-stop';
+sleep 4;
+rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt /home/sites/berrics.staging/ root@web4:/home/sites/berrics/
+ssh root@web4 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
+ssh root@web4 '/sbin/service httpd start';
 
 ssh root@web5 'apachectl -k graceful-stop';
 sleep 4;

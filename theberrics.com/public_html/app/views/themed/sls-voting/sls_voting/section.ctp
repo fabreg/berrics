@@ -111,11 +111,3 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 		</div>
 	</div>
 </div>
-<div style='width:728px; margin:auto;'>
-<?php 
-	
-	if(isset($date_nav_array)) {
-		echo $this->element("dailyops/date-bit"); 
-	}
-?>
-</div>
