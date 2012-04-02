@@ -114,7 +114,7 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 
 
 <?php if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])): ?>
-<div style='width:728px; margin:auto;'>
+<div style='width:728px; margin:auto; padding-top:80px;'>
 	<div id='paging-menu'>
 		<div class='left'>
 		<?php 
@@ -130,6 +130,8 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 		<div class='right'>
 		<?php 
 			
+			$older_date = "2012-04-01";
+		
 			if($older_date) {
 				
 				$older_date = strtotime($older_date);

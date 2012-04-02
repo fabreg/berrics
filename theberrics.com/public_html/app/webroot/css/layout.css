@@ -553,23 +553,23 @@ LEFT COL HTML OVERRIDES
 /*
 DAILY OPS
 */
-#dailyops #paging-menu {
+#paging-menu {
 
     font-size:80%;  
     
 }
-#dailyops #paging-menu span {
+#paging-menu span {
 
     display:none;   
     
 }
-#dailyops #paging-menu .left {
+#paging-menu .left {
 
     float:left;
         
 }
 
-#dailyops #paging-menu .left a {
+#paging-menu .left a {
 
     float:left;
     height:47px;
@@ -578,18 +578,18 @@ DAILY OPS
     display:block;
 }
 
-#dailyops #paging-menu .left a:hover {
+#paging-menu .left a:hover {
 
     background-image:url(/img/layout/newer-button-over.png);
     
 }
 
-#dailyops #paging-menu .right {
+#paging-menu .right {
 
     float:right; 
     
 }
-#dailyops #paging-menu .right a {
+#paging-menu .right a {
 
     float:right;    
     height:47px;
@@ -597,7 +597,7 @@ DAILY OPS
     background-image:url(/img/layout/older-button.png);
     display:block;
 }
-#dailyops #paging-menu .right a:hover {
+#paging-menu .right a:hover {
     
     background-image:url(/img/layout/older-button-over.png);
     
