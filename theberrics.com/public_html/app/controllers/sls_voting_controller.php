@@ -54,22 +54,7 @@ class SlsVotingController extends DailyopsController {
 	public function section() {
 		
 		//get all the entires
-		$entries = $this->SlsEntry->find("all",array(
-			
-			"contain"=>array(),
-			"order"=>array(
-				"SlsEntry.name"=>"ASC"
-			)
-		));
-		
-		foreach($entries as $k=>$v) {
-			
-			$post = $this->SlsEntry->Dailyop->returnPost(array("Dailyop.id"=>$v['SlsEntry']['dailyop_id']),1);
-			
-			$entries[$k] = array_merge($entries[$k],$post);
-			
-		}
-		
+		$entries = $this->SlsEntry->returnEntries();
 		
 		$votes = array();
 		
