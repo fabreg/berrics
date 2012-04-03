@@ -33,48 +33,61 @@ class SlsVote extends AppModel {
 		
 	}
 	
-	public function getVoteStats($cached = false) {
+	public function getVoteStats($opt = array()) {
 		
 		$token = "sls-qualifying-stats";
 		
-		$data = $this->find("all",array(
 		
-			"fields"=>array(
-				"COUNT(*) AS `total_votes`","SlsEntry.*"
-			),
-			"joins"=>array(
-				"INNER JOIN sls_entries AS `SlsEntry` ON (SlsEntry.id = SlsVote.sls_entry_id)"
-			),
-			"group"=>array(
-				"SlsEntry.id"
-			),
-			"order"=>array(
-				"total_votes"=>"DESC"
-			),
-			"contain"=>array()
 		
-		));
-		
-		//get all the posts and grand total
-		$grand_total = 0;
-		
-		foreach($data as $k=>$v) {
+		if(($data = Cache::read($token,"1min"))===false || isset($opt['no_cache'])) {
 			
-			$post = $this->SlsEntry->Dailyop->returnPost(array("Dailyop.id"=>$v['SlsEntry']['dailyop_id']),1);
 			
-			$data[$k]['Post'] = $post;
+			$data = $this->find("all",array(
+		
+				"fields"=>array(
+					"COUNT(*) AS `total_votes`","SlsEntry.*"
+				),
+				"joins"=>array(
+					"INNER JOIN sls_entries AS `SlsEntry` ON (SlsEntry.id = SlsVote.sls_entry_id)"
+				),
+				"group"=>array(
+					"SlsEntry.id"
+				),
+				"order"=>array(
+					"total_votes"=>"DESC"
+				),
+				"contain"=>array()
 			
-			$grand_total += $v[0]['total_votes'];
+			));
+			
+			//get all the posts and grand total
+			$grand_total = 0;
+			
+			foreach($data as $k=>$v) {
+				
+				$post = $this->SlsEntry->Dailyop->returnPost(array("Dailyop.id"=>$v['SlsEntry']['dailyop_id']),1);
+				
+				$data[$k]['Post'] = $post;
+				
+				$grand_total += $v[0]['total_votes'];
+				
+			}
+			
+			foreach($data as $k=>$v) {
+				
+				$data[$k]['Percentage'] = round(($v[0]['total_votes']/$grand_total)*100,2);
+				
+				$post = $this->SlsEntry->Dailyop->returnPost(array("Dailyop.id"=>$data[$k]['SlsEntry']['dailyop_id']));
+				
+				$data[$k]['Post'] = $post;
+			}
+			
+			$data = array("Stats"=>$data,"GrandTotal"=>$grand_total);
+			
 			
 		}
 		
-		foreach($data as $k=>$v) {
-			
-			$data[$k]['Percentage'] = round(($v[0]['total_votes']/$grand_total)*100,2);
-			
-		}
 		
-		$data = array("Stats"=>$data,"GrandTotal"=>$grand_total);
 		
 		return $data;
 		

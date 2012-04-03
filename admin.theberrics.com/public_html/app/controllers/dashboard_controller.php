@@ -151,7 +151,7 @@ class DashboardController extends LocalAppController {
 		
 		$this->loadModel("SlsVote");
 
-		$stats = $this->SlsVote->getVoteStats();
+		$stats = $this->SlsVote->getVoteStats(array("no_cache"=>true));
 		
 		$this->set(compact("stats"));
 		
