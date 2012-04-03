@@ -3,7 +3,7 @@
 class EmailMessage extends AppModel {
 	
 	public $belongsTo = array(
-		"CanteenOrder"
+	
 	);
 	
 	public function queueCanteenEmail() {

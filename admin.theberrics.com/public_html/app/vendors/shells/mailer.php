@@ -2,7 +2,7 @@
 $_SERVER['DEVSERVER']=1;
 class MailerShell extends Shell {
 	
-	public $uses = array("EmailMessage","CanteenOrder","User");
+	public $uses = array("EmailMessage","User");
 	private $email = null;
 	private $controller = null;
 	

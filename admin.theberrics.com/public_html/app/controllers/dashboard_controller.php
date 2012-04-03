@@ -45,7 +45,7 @@ class DashboardController extends LocalAppController {
 	public function canteen() {
 		
 		App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
-		
+		/*
 		$this->loadModel("CanteenOrder");
 		
 		$today = date("Y-m-d");
@@ -72,7 +72,7 @@ class DashboardController extends LocalAppController {
 		
 		
 		$this->set(compact("today_order_status","today_shipping_status","three_day_order_status","three_day_shipping_status","three_day_start","three_day_end"));
-		
+		*/
 	}
 	
 	
