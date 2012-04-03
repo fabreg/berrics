@@ -39,7 +39,7 @@ class SlsVote extends AppModel {
 		
 		
 		
-		if(($data = Cache::read($token,"1min"))===false || isset($opt['no_cache'])) {
+		if(($data = Cache::read($token,"5min"))===false || isset($opt['no_cache'])) {
 			
 			
 			$data = $this->find("all",array(
@@ -76,13 +76,12 @@ class SlsVote extends AppModel {
 			foreach($data as $k=>$v) {
 				
 				$data[$k]['Percentage'] = round(($v[0]['total_votes']/$grand_total)*100,2);
-				
-				$post = $this->SlsEntry->Dailyop->returnPost(array("Dailyop.id"=>$data[$k]['SlsEntry']['dailyop_id']));
-				
-				$data[$k]['Post'] = $post;
+
 			}
 			
 			$data = array("Stats"=>$data,"GrandTotal"=>$grand_total);
+			
+			Cache::write($token,$data,"5min");
 			
 			
 		}

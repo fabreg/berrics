@@ -513,14 +513,28 @@ class SplashController extends LocalAppController {
 	public function sls_selection() {
 		
 		$this->layout = "empty";
-		$this->loadModel("Dailyop");
-		$post = $this->Dailyop->returnPost(array(
 		
-			"Dailyop.id"=>4876
+		$this->loadModel("SlsVote");
 		
-		),1);
+		$s = array();
 		
-		$this->set(compact("post"));
+		$stats = $this->SlsVote->getVoteStats();
+	
+		foreach($stats['Stats'] as $k=>$v) {
+			
+			if($k>4) {
+				
+				$s['out'][] = $v;
+				
+			} else {
+				
+				$s['in'][] = $v;
+				
+			}
+			
+		}
+		
+		$this->set(compact("s"));
 		
 	}
 	
