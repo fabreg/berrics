@@ -35,6 +35,8 @@ class HomeRoute extends CakeRoute {
 			
 			//case "2012-04-01":
 			case "2012-04-02":
+			case "2012-04-03":
+			case "2012-04-04":
 				
 				$params['controller'] = "sls_voting";
 				$params['action'] = "section";
