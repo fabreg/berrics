@@ -99,27 +99,7 @@ body {
 			<img src='/img/splash/sls-selection/selection-header.png' />
 		</div>
 		<div style='width:800px; margin:auto;'>
-			<div style='text-align:center; font-size:12px; font-weight:bold; font-family:"Arial"; color:red;'>* Information Updated Every Five Minutes *</div>
-			<div style='float:left; width:375px;'>
-				<div style='text-align:center;'>
-					<img src='/img/splash/sls-selection/in.png' border='0'/>
-				</div>
-				<?php foreach($s['in'] as $v):  ?>
-				<div>
-					<img src='http://img.theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>'  border='0'/>
-				</div>
-				<?php endforeach; ?>
-			</div>
-			<div style='float:right; width:375px;'>
-			<div style='text-align:center;'>
-					<img src='/img/splash/sls-selection/out.png' border='0'/>
-				</div>
-			<?php foreach($s['out'] as $v):  ?>
-				<div>
-					<img src='http://img.theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>'  border='0'/>
-				</div>
-				<?php endforeach; ?>
-			</div>
+		
 			<div style='clear:both;'></div>
 		</div>
 		<div style='text-align:center; padding-top:15px;' class='enter'>
