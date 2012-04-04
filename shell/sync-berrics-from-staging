@@ -12,27 +12,6 @@ rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt
 ssh root@web5 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
 ssh root@web5 '/sbin/service httpd start';
 
-ECHO "web6";
-ssh root@web6 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web6:/home/sites/berrics/
-ssh root@web6 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web6 '/sbin/service httpd start';
-
-ECHO "web7";
-ssh root@web7 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web7:/home/sites/berrics/
-ssh root@web7 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web7 '/sbin/service httpd start';
-
-ECHO "web8";
-ssh root@web8 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web8:/home/sites/berrics/
-ssh root@web8 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web8 '/sbin/service httpd start';
-
 ECHO "web9";
 ssh root@web9 'apachectl -k graceful-stop';
 sleep 4;
