@@ -26,19 +26,7 @@ class User extends AppModel {
 	);
 
 	var $hasMany = array(
-		'Banner' => array(
-			'className' => 'Banner',
-			'foreignKey' => 'user_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
+		
 		'Dailyop' => array(
 			'className' => 'Dailyop',
 			'foreignKey' => 'user_id',
