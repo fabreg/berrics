@@ -36,12 +36,11 @@ class TagsController extends LocalAppController {
 				$this->Session->setFlash(__('The tag could not be saved. Please, try again.', true));
 			}
 		}
-		$banners = $this->Tag->Banner->find('list');
 		$dailyopSections = $this->Tag->DailyopSection->find('list');
 		$dailyops = $this->Tag->Dailyop->find('list');
 		$mediaFiles = $this->Tag->MediaFile->find('list');
 		
-		$this->set(compact('banners', 'dailyopSections', 'dailyops', 'mediaFiles', 'trikipediaTricks'));
+		$this->set(compact('dailyopSections', 'dailyops', 'mediaFiles', 'trikipediaTricks'));
 	}
 
 	function edit($id = null) {
@@ -60,11 +59,11 @@ class TagsController extends LocalAppController {
 		if (empty($this->data)) {
 			$this->data = $this->Tag->read(null, $id);
 		}
-		$banners = $this->Tag->Banner->find('list');
+		
 		$dailyopSections = $this->Tag->DailyopSection->find('list');
 		$dailyops = $this->Tag->Dailyop->find('list');
 		$mediaFiles = $this->Tag->MediaFile->find('list');
-		$this->set(compact('banners', 'dailyopSections', 'dailyops', 'mediaFiles', 'trikipediaTricks'));
+		$this->set(compact('dailyopSections', 'dailyops', 'mediaFiles', 'trikipediaTricks'));
 	}
 
 	function delete($id = null) {

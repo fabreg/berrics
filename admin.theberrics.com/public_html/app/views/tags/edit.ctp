@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
-		echo $this->Form->input('Banner');
 		echo $this->Form->input('DailyopSection');
 		echo $this->Form->input('Dailyop');
 		echo $this->Form->input('MediaFile');
@@ -20,8 +19,6 @@
 
 		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Tag.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Tag.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Tags', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Html->link(__('List Banners', true), array('controller' => 'banners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Banner', true), array('controller' => 'banners', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Dailyop Sections', true), array('controller' => 'dailyop_sections', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Dailyop Section', true), array('controller' => 'dailyop_sections', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Dailyops', true), array('controller' => 'dailyops', 'action' => 'index')); ?> </li>
