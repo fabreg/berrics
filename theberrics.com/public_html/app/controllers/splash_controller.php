@@ -197,30 +197,18 @@ class SplashController extends LocalAppController {
 		switch($seed) {
 			
 			case 1:
-				$this->wild();
-				return $this->render("wild");
-			break;
 			case 2:
-				$this->gatorade();
-				return $this->render("gatorade");
-			break;
 			case 3;
 				$this->dc_mo();
 				return $this->render("dc_mo");
 			break;
 			case 4:
 			case 5:
-				$this->ross();
-				return $this->render("ross");
-				break;
 			case 6:
 				$this->dc_2012();
 				return $this->render("dc_2012");
 				break;
 			case 7:
-				$this->haroshi();
-				return $this->render("haroshi");
-				break;
 			case 8:
 				$this->lrg();
 				return $this->render("lrg");
