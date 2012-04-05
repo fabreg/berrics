@@ -89,6 +89,88 @@ var UserSearch = {
 };
 
 
+var InventorySearch = {
+		
+	selectedCallBack:null,
+	selectedCallBackArgs:new Array(),
+	openSearch:function() { 
+		
+		this.selectedCallBack = arguments[0] || null;
+	
+		if(arguments.length>1) {
+			
+			Array.prototype.shift.call(arguments);
+			
+			this.selectedCallBackArgs = arguments;
+			
+		} else {
+		
+			this.selectedCallBackArgs = new Array();
+			
+		}
+		
+		$('body').prepend("<div id='inventory-modal'><div id='inventory-modal-content'></div></div>");
+		
+		$.get("/canteen_inventory_records/inventory_modal_search",function(d) {  $("#inventory-modal-content").html(d);   });
+		
+		this.handleResize();
+		
+		
+	},
+	handleResize:function() { 
+	
+		$("#inventory-modal").css({
+			
+			"height":$(document).height()+"px",
+			"width":"100%",
+			"background-image":"url(/img/blk-px.png)",
+			"position":"absolute",
+			"z-index":"1002"
+				
+		});
+		
+		$("#inventory-modal-content").css({
+			
+			"min-height":"80%",
+			"width":"80%",
+			"background-color":"white",
+			"margin":"auto",
+			"overflow":"auto",
+			"position":"fixed",
+			"margin-left":"10%"
+			
+		});
+		
+	},
+	handleSelect:function(record) {
+	
+		var fn = window[this.selectedCallBack];
+		
+		Array.prototype.unshift.call(this.selectedCallBackArgs, record);
+		
+		
+		if(typeof fn === 'function') {
+			
+			fn.apply(this,this.selectedCallBackArgs);
+			
+		} else {
+		
+			alert("Callback if not in scope");
+			
+		}
+		
+	},
+	closeModal:function() {
+		
+		$("#inventory-modal").remove();
+		
+	}
+		
+		
+};
+
+
+
 var VideoFileUpload = {
 		
 		media_file_id:null,

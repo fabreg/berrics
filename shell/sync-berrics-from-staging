@@ -40,33 +40,7 @@ rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt
 ssh root@web10 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
 ssh root@web10 '/sbin/service httpd start';
 
-print "web11";
-ssh root@web11 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web11:/home/sites/berrics/
-ssh root@web11 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web11 '/sbin/service httpd start';
 
-print "web12";
-ssh root@web12 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web12:/home/sites/berrics/
-ssh root@web12 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web12 '/sbin/service httpd start';
-
-print "web13";
-ssh root@web13 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web13:/home/sites/berrics/
-ssh root@web13 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web13 '/sbin/service httpd start';
-
-print "web14";
-ssh root@web14 'apachectl -k graceful-stop';
-sleep 4;
-rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt  /home/sites/berrics.staging/ root@web14:/home/sites/berrics/
-ssh root@web14 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
-ssh root@web14 '/sbin/service httpd start';
 
 #FLUSH THE MEMCACHE SERVER
 ssh root@cacheserver 'echo "flush_all" | nc 127.0.0.1 11211';

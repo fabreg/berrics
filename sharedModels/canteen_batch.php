@@ -32,28 +32,4 @@ class CanteenBatch extends AppModel {
 		)
 	);
 
-	public function getList($limit = false) {
-		
-		$list = $this->find('all',array(
-			
-			"contain"=>array("User"),
-			"order"=>array("CanteenBatch.id"=>"DESC"),
-			"limit"=>50
-		
-		));
-		
-		$a = array();
-		
-		foreach($list as $l) {
-			
-			$a[$l['CanteenBatch']['id']] = $l['User']['first_name']." ".$l['User']['last_name'].": ".$l['CanteenBatch']['name'];
-			
-		}
-		
-		return $a;
-		
-	}
-	
-	
 }
-?>

@@ -18,6 +18,6 @@ $merch_template = $p['merch_template'];
 
 $this->set(compact("price","user_currency"));
 
-echo $this->element("canteen_product/{$merch_template}-view");
+echo $this->element("canteen_product/standard-view");
 
 ?>

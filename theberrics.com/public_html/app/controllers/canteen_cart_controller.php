@@ -15,8 +15,13 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	
 	public function index() {
+		
+		
+		
+	}
+	
+	public function _index() {
 		
 		//let's get all the cart items
 		
@@ -120,7 +125,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	public function add() {
+	public function _add() {
 		
 		//$this->Session->
 		$cart = $this->Session->read("CanteenOrder");
@@ -141,7 +146,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	public function clear_cart() {
+	public function _clear_cart() {
 		
 		$this->Session->delete("CanteenOrder");
 		
@@ -149,13 +154,13 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	private function updateOrderSession($order = array()) {
+	private function _updateOrderSession($order = array()) {
 		
 		$this->Session->write("CanteenOrder",$order);
 		
 	}
 	
-	public function process($payload = array()) {
+	public function _process($payload = array()) {
 		
 		
 		//get the order from the session
@@ -197,7 +202,7 @@ class CanteenCartController extends CanteenAppController {
 
 	}
 	
-	public function calc_cart() {
+	public function _calc_cart() {
 		
 		$this->loadModel("CanteenOrder");
 		
@@ -207,7 +212,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	public function remove($id) {
+	public function _remove($id) {
 		
 		//get the cart
 		
@@ -232,7 +237,7 @@ class CanteenCartController extends CanteenAppController {
 	}
 	
 	
-	public function invoice($id = false) {
+	public function _invoice($id = false) {
 		
 		if(!$id) {
 			
@@ -251,7 +256,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	public function print_invoice($id= false) {
+	public function _print_invoice($id= false) {
 		
 		if(!$id) {
 			

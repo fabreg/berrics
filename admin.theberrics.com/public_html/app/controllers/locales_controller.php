@@ -13,6 +13,8 @@ class LocalesController extends LocalAppController {
 
 	}
 	function index() {
+		$this->loadModel("Locale");
+		die(print_r($this->Locale));
 		$this->Locale->recursive = 0;
 		$this->set('locales', $this->paginate());
 	}

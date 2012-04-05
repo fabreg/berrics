@@ -1,7 +1,7 @@
 <div class='form index'>
 <h2>Editing Product ID: <?php echo $this->data['CanteenProduct']['id']; ?></h2>
 <?php 
-	echo $this->Form->create("CanteenProduct",array("enctype"=>"multipart/form-data"));
+	echo $this->Form->create("CanteenProduct",array("enctype"=>"multipart/form-data","id"=>"CanteenProductEditForm"));
 	echo $this->Form->input("id");
 ?>
 <div style='float:left; width:48%;'>

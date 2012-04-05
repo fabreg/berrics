@@ -473,6 +473,35 @@ class CanteenProductsController extends LocalAppController {
 		return false;
 		
 	}
+	
+	public function attach_inventory_record() {
+		
+		if(count($this->data)>0) {
+
+			$this->loadModel("CanteenProductInventory");
+			
+			$this->CanteenProductInventory->create();
+			
+			die($this->CanteenProductInventory->save($this->data));
+			
+		}
+		
+		die(0);
+	}
+	
+	public function detach_inventory_record() {
+		
+		if(count($this->data)>0) {
+			
+			$this->loadModel("CanteenProductInventory");
+			
+			die($this->CanteenProductInventory->delete($this->data['canteen_product_inventory_id']));
+			
+		}
+
+		die(0);
+		
+	}
 
 	
 }

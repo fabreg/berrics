@@ -10,8 +10,14 @@ class CanteenProduct extends AppModel {
 			"foreignKey"=>"parent_canteen_product_id",
 			"order"=>array("CanteenProductOption.display_weight"=>"ASC")
 		),
+		"ParentCanteenProduct"=>array(
+			"className"=>"CanteenProduct",
+			"foreignKey"=>"parent_canteen_product_id",
+			"order"=>array("CanteenProductOption.display_weight"=>"ASC")
+		),
 		"CanteenProductPrice",
-		"CanteenProductImage"
+		"CanteenProductImage",
+		"CanteenProductInventory",
 	
 	);
 	
@@ -46,6 +52,11 @@ class CanteenProduct extends AppModel {
 					"conditions"=>array(
 						"CanteenProductOption.active"=>1,
 						"CanteenProductOption.deleted"=>0
+					),
+					"CanteenProductInventory"=>array(
+						"CanteenInventoryRecord"=>array(
+							"Warehouse"
+						)
 					)
 				),
 				"CanteenProductImage"=>array(
@@ -55,6 +66,9 @@ class CanteenProduct extends AppModel {
 						"CanteenProductImage.display_weight"=>"ASC"
 					)
 				 
+				),
+				"CanteenProductInventory"=>array(
+					"CanteenInventoryRecord"
 				),
 				"Meta"
 			)

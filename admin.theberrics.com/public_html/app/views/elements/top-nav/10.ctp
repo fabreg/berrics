@@ -248,6 +248,16 @@
 			<li class='li-sub-nav-button'>
 				<a href='/canteen_products/add'>Create new product</a>
 			</li>
+			<li class='li-sub-nav-header'>Warehouses / Inventory</li>
+			<li class='li-sub-nav-button'>
+				<a href='/warehouses'>Manage Warehouses</a>
+			</li>
+			<li class='li-sub-nav-button'>
+				<a href='/canteen_inventory_records'>Manage Inventories</a>
+			</li>
+			<li class='li-sub-nav-button'>
+				<a href='/canteen_inventory_records/add'>Create Inventory Record</a>
+			</li>
 		</ul>
 	</li>
 	<li class='li-button'><a href='#' target='_blank'>Unified</a>
