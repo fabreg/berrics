@@ -5,16 +5,12 @@ class CanteenProduct extends AppModel {
 	
 	public $hasMany = array(
 	
-		"CanteenProductOption"=>array(
+		"ChildCanteenProduct"=>array(
 			"className"=>"CanteenProduct",
 			"foreignKey"=>"parent_canteen_product_id",
-			"order"=>array("CanteenProductOption.display_weight"=>"ASC")
+			"order"=>array("ChildCanteenProduct.display_weight"=>"ASC")
 		),
-		"ParentCanteenProduct"=>array(
-			"className"=>"CanteenProduct",
-			"foreignKey"=>"parent_canteen_product_id",
-			"order"=>array("CanteenProductOption.display_weight"=>"ASC")
-		),
+		
 		"CanteenProductPrice",
 		"CanteenProductImage",
 		"CanteenProductInventory",
@@ -23,7 +19,11 @@ class CanteenProduct extends AppModel {
 	
 	public $belongsTo = array(
 		"CanteenCategory",
-		"Brand"
+		"Brand",
+		"ParentCanteenProduct"=>array(
+			"className"=>"CanteenProduct",
+			"foreignKey"=>"parent_canteen_product_id"
+		),
 	);
 	
 	public $hasAndBelongsToMany = array(
@@ -47,11 +47,11 @@ class CanteenProduct extends AppModel {
 				"CanteenProductPrice"=>array(
 					"Currency"
 				),
-				"CanteenProductOption"=>array(
+				"ChildCanteenProduct"=>array(
 				
 					"conditions"=>array(
-						"CanteenProductOption.active"=>1,
-						"CanteenProductOption.deleted"=>0
+						"ChildCanteenProduct.active"=>1,
+						"ChildCanteenProduct.deleted"=>0
 					),
 					"CanteenProductInventory"=>array(
 						"CanteenInventoryRecord"=>array(
@@ -92,10 +92,10 @@ class CanteenProduct extends AppModel {
 			
 				
 				$_contain = array(
-						"CanteenProductOption"=>array(
+						"ChildCanteenProduct"=>array(
 							"conditions"=>array(
-								"CanteenProductOption.deleted"=>0,
-								"CanteenProductOption.active"=>1
+								"ChildCanteenProduct.deleted"=>0,
+								"ChildCanteenProduct.active"=>1
 							)
 						),
 						"CanteenProductPrice"=>array(
@@ -183,6 +183,53 @@ class CanteenProduct extends AppModel {
 		
 		
 		return $prod;
+		
+	}
+	
+	public function returnCartItem($opts = array()) {
+		
+		$def = array(
+			"parent_canteen_product_id"=>NULL,
+			"currency_id"=>"USD"
+		);
+		
+		$opts = array_merge($def,$opts);
+		
+		$parent_product = $this->find("first",array(
+			"contain"=>array(
+				"ParentCanteenProduct"=>array(
+					"CanteenProductImage",
+					"CanteenProductPrice"=>array(
+						"conditions"=>array(
+							"CanteenProductPrice.currency_id"=>$opts['currency_id']
+						)
+					)
+				)
+			),
+			"conditions"=>array(
+				"ParentCanteenProduct.id"=>$opts['parent_canteen_product_id']
+			)
+		));
+		
+		//$parent_product['ParentCanteenProduct'] = $parent_product['CanteenProduct'];
+		
+		
+		$product = $this->find("first",array(
+			"conditions"=>array("CanteenProduct.id"=>$opts['canteen_product_id']),
+			"contain"=>array(
+					"ParentCanteenProduct"=>array(
+						"CanteenProductImage",
+						"CanteenProductPrice"=>array(
+							"conditions"=>array(
+								"CanteenProductPrice.currency_id"=>$opts['currency_id']
+							)
+						),
+						"Brand"
+					)
+			)
+		));
+		
+		return array_merge($product);
 		
 	}
 

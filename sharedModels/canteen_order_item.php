@@ -33,7 +33,8 @@ class CanteenOrderItem extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+		"CanteenInventoryRecord"
 	);
 
 	var $hasMany = array(

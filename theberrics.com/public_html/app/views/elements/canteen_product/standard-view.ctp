@@ -61,11 +61,11 @@ function initOptionClick() {
 
 	$("#product-standard-view .product-options .option").click(function() { 
 
-		var id = $(this).attr("canteen_product_option_id");
+		var id = $(this).attr("canteen_product_id");
 
 		//pop the field
 
-		$("#CanteenOrderItemCanteenProductOptionId").val(id);
+		$("#h-fields input[name*='[canteen_product_id]']").val(id);
 
 		//uncheckk allllllll of them
 
@@ -156,12 +156,12 @@ function initOptionClick() {
 							</div>
 						</div>
 						<?php endif; ?>
-						<?php if(isset($product['CanteenProductOption']) && count($product['CanteenProductOption'])>0): ?>
+						<?php if(isset($product['ChildCanteenProduct']) && count($product['ChildCanteenProduct'])>0): ?>
 						<div class='product-options'>
 							<label>CHOOSE AN OPTION:</label>
 							<div class='options-div'>
-								<?php foreach($product['CanteenProductOption'] as $o): ?>
-								<div class='option' canteen_product_option_id='<?php echo $o['id']; ?>'>
+								<?php foreach($product['ChildCanteenProduct'] as $o): ?>
+								<div class='option' canteen_product_id='<?php echo $o['id']; ?>'>
 									<div class='check'></div>
 									<?php echo $o['opt_value']; ?>
 								</div>
@@ -190,9 +190,9 @@ function initOptionClick() {
 						<?php endif; ?>
 						<div id='h-fields' style='display:none;'>
 							<?php
-								echo $this->Form->input("CanteenOrderItem.quantity",array("type"=>"hidden","value"=>"1"));
-								echo $this->Form->input("CanteenOrderItem.canteen_product_id",array("type"=>"hidden","value"=>$product['CanteenProduct']['id']));
-								echo $this->Form->input("CanteenOrderItem.canteen_product_option_id",array("type"=>"hidden"));
+								echo $this->Form->input("CanteenOrderItem.0.quantity",array("type"=>"hidden","value"=>"1"));
+								echo $this->Form->input("CanteenOrderItem.0.parent_canteen_product_id",array("type"=>"hidden","value"=>$product['CanteenProduct']['id']));
+								echo $this->Form->input("CanteenOrderItem.0.canteen_product_id",array("type"=>"hidden"));
 							?>
 						</div>
 						<div class='submit-button'>

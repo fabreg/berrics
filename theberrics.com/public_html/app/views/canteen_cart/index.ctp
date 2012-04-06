@@ -25,7 +25,6 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 						<tr>
 							<th>VISUAL</th>
 							<th><?php echo strtoupper(Lang::instance()->p("CommonFields","items",$user_locale)); ?></th>
-							<th><?php echo strtoupper(Lang::instance()->p("CommonFields","qty",$user_locale)); ?></th>
 							<th><?php echo strtoupper(Lang::instance()->p("CommonFields","price",$user_locale)); ?></th>
 						</tr>	
 					</thead>
@@ -35,45 +34,35 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 							<td width='2%' align='center' valign='middle' class='product-img'>
 								<?php 
 							
-									$img = Set::extract("/CanteenProductImage[thumb_image=1]",$item);
-									
-									if(count($img)<=0) {
+									foreach($item['ChildCanteenOrderItem'] as $c) {
 										
-										$img = Set::extract("/CanteenProductImage[front_image=1]",$item);
+										echo $this->Media->productThumb($c['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>45,"h"=>45));
 										
 									}
-									
-									echo $this->Media->productThumb($img[0]['CanteenProductImage'],array("h"=>47,"w"=>47));
-									
-									echo $this->Form->input("CanteenOrderItem.{$k}.canteen_product_id",array("type"=>"hidden","value"=>$item['CanteenProduct']['id']));
-									echo $this->Form->input("CanteenOrderItem.{$k}.canteen_product_option_id",array("type"=>"hidden","value"=>$item['CanteenProductOption'][0]['id']));
-									echo $this->Form->input("CanteenOrderItem.{$k}.quantity",array("type"=>"hidden","value"=>$item['CanteenOrderItem'][0]['quantity']));
-									
 								?>
 							</td>
 							<td valign='top' >
-								<div class='item-wrapper'>
-									<div class='delete' hash='<?php echo $item['hash']; ?>'>REMOVE</div>
-									<span class='brand'><?php echo strtoupper($item['Brand']['name']); ?></span>
-									<br />
-									<?php echo $item['CanteenProduct']['name']; ?><?php echo (!empty($item['CanteenProduct']['sub_title'])) ? " - ".$item['CanteenProduct']['sub_title']:""; ?>
-									<?php if(isset($item['CanteenProductOption'][0]['id'])): ?>
-									<br /><span class='product-option'><?php echo strtoupper($item['CanteenProductOption'][0]['opt_label']); ?>:<?php echo strtoupper($item['CanteenProductOption'][0]['opt_value']); ?></span>
-									<?php endif; ?>
-								</div>
+								<div class='delete' hash='<?php echo $item['hash']; ?>'>REMOVE</div>
+								<?php foreach($item['ChildCanteenOrderItem'] as $key=>$c): ?>
+									<div class='item-wrapper'>
+										<?php echo $c['ParentCanteenProduct']['name']; ?><?php echo (!empty($c['ParentCanteenProduct']['sub_title'])) ? " - ".$c['ParentCanteenProduct']['sub_title']:""; ?>
+										<?php if(!empty($c['CanteenProduct']['opt_label'])): ?> <span class='brand'>BY: <?php echo strtoupper($c['ParentCanteenProduct']['Brand']['name']); ?></span>
+										<br /><span class='product-option'><?php echo strtoupper($c['CanteenProduct']['opt_label']); ?>:<?php echo strtoupper($c['CanteenProduct']['opt_value']); ?></span>
+										<?php endif; ?>
+									</div>
+								<?php endforeach; ?>
 							</td>
-							<td align='center' class='qty'><?php echo $item['quantity']; ?></td>
-							<td class='price'><?php echo $this->Number->currency($item['price'],$user_currency_id); ?></td>
+							<td class='price'><?php echo $this->Number->currency($item['sub_total'],$user_currency_id); ?></td>
 						</tr>	
 						<?php endforeach; ?>
 						<tr>
 							<td align='center'>
 								<img alt='' border='0' src='/img/layout/canteen/ups-logo.png' />
 							</td>
-							<td colspan='3'>
+							<td colspan='2'>
 							<div class='brand'>SHIPPING</div>
 							<div>
-							<?php echo $this->Form->input("CanteenOrder.shipping_option",array("type"=>"select","options"=>$shipping_codes)); ?>
+								<?php echo $this->Form->input("CanteenOrder.shipping_option",array("type"=>"select","options"=>$shipping_codes)); ?>
 							</div>
 							</td>
 							
@@ -86,11 +75,11 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 				<div class='totals'>
 					<dl class='totals-list'>
 						<dt>Sub-Total..</dt>
-						<dd id='sub-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='sub-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['sub_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt>Shipping...</dt>
-						<dd id='shipping-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='shipping-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt class='grand-total-label'>Total......</dt>
-						<dd id='grand-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='grand-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['grand_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 					</dl>
 				</div>
 				<div class='form'>
@@ -101,7 +90,7 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 							</div>
 							<div class='shipping'>
 								<h3>SHIPPING INFORMATION</h3>
-								<?php echo $this->element("checkout-forms/shipping-form"); ?>
+								<?php echo $this->element("checkout-forms/shipping-form",array("index"=>"shipping")); ?>
 							</div>
 							<div class='billing'>
 								<h3>PAYMENT INFORMATION</h3>

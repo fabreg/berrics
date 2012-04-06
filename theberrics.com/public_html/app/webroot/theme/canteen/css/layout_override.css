@@ -1043,7 +1043,7 @@ PRODUCT EXTRA INFO
 }
 
 
-#canteen-cart .items table .item-wrapper .delete {
+#canteen-cart .items table .delete {
 
 	position:absolute;
 	font-size:11px;

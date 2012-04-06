@@ -2,7 +2,7 @@
 $(document).ready(function() { 
 
 
-	$('input[name="data[CanteenOrderItem][canteen_product_option_id]"]:eq(0)').attr("disabled",false);
+	$('input[name="data[CanteenOrderItem][canteen_product_id]"]:eq(0)').attr("disabled",false);
 
 
 
@@ -53,13 +53,13 @@ echo $this->Form->create("CanteenOrder",array("url"=>$uri));
 						
 					} else {
 						
-						echo $this->Form->input("CanteenOrderItem.canteen_product_option_id",array("value"=>$product['id'],"type"=>"hidden"));
+						echo $this->Form->input("CanteenOrderItem.canteen_product_id",array("value"=>$product['id'],"type"=>"hidden"));
 						
 					}
 					
 					
 					echo $this->Form->input("CanteenOrderItem.quantity",array("value"=>1,"div"=>array("id"=>"qty-div")));
-					echo $this->Form->input("CanteenOrderItem.canteen_product_id",array("value"=>$product['CanteenProduct']['id'],"type"=>"hidden"));
+					echo $this->Form->input("CanteenOrderItem.parent_canteen_product_id",array("value"=>$product['CanteenProduct']['id'],"type"=>"hidden"));
 					echo $this->Form->input("CanteenOrderItem.currency_id",array("value"=>$user_currency,"type"=>"hidden"));
 					echo $this->Form->submit("Add To Cart",array("div"=>array("id"=>"add-to-cart-div")));
 				

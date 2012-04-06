@@ -1,6 +1,6 @@
 <?php 
 
-if(count($this->data['CanteenProductOption'])>0):
+if(count($this->data['ChildCanteenProduct'])>0):
 ?>
 <script type='text/javascript'>
 $(document).ready(function() { 
@@ -32,7 +32,7 @@ var handleInventorySelect = function(record,product_id) {
 
 	return false;
 	
-}
+};
 var removeInventory = function(id) {
 
 	$.ajax({
@@ -49,28 +49,31 @@ var removeInventory = function(id) {
 		}
 	});
 	
-}
+};
 </script>
 <div class='index'>
 <table cellspacing='0'>
 <tr>
 	<th align='left' width='1%'>Sort</th>
 	<th align='left'>Label</th>
+	<th align='left'>Value</th>
 	<th align='left'>Inventory</th>
 	<th align='center'>-</th>
 </tr>
 <?php 
-	foreach($this->data['CanteenProductOption'] as $k=>$o):
-	echo $this->Form->input("CanteenProductOption.{$k}.id");
+	foreach($this->data['ChildCanteenProduct'] as $k=>$o):
+	echo $this->Form->input("ChildCanteenProduct.{$k}.id");
 ?>
 	<tr>
 		<td>
-			<input type='text' name='data[CanteenProductOption][<?php echo $k; ?>][display_weight]' value='<?php echo $o['display_weight']; ?>' style='width:30px;' />
+			<input type='text' name='data[ChildCanteenProduct][<?php echo $k; ?>][display_weight]' value='<?php echo $o['display_weight']; ?>' style='width:30px;' />
 		</td>
 		<td>
-			<input type='text' name='data[CanteenProductOption][<?php echo $k; ?>][opt_label]' value='<?php echo $o['opt_label']; ?>' />
+			<input type='text' name='data[ChildCanteenProduct][<?php echo $k; ?>][opt_label]' value='<?php echo $o['opt_label']; ?>' />
 		</td>
-
+		<td>
+			<input type='text' name='data[ChildCanteenProduct][<?php echo $k; ?>][opt_value]' value='<?php echo $o['opt_value']; ?>' />
+		</td>
 		<td>
 			<?php if(count($o['CanteenProductInventory'])): ?>
 				<?php foreach($o['CanteenProductInventory'] as $inv): ?>

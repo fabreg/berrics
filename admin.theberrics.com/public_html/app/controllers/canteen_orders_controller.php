@@ -27,5 +27,13 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
+	public function edit($order_id) {
+		
+		$order = $this->CanteenOrder->returnAdminOrder($order_id);
+		
+		die(pr($order));
+		
+	}
+	
 	
 }
