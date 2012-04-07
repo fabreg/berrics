@@ -4,6 +4,8 @@ App::import("Controller","LocalApp");
 
 class CanteenProductsController extends LocalAppController {
 	
+	private $updateHash = "";
+	
 	public function beforeFilter() {
 		
 		App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
@@ -152,17 +154,23 @@ class CanteenProductsController extends LocalAppController {
 				
 				$this->uploadImage();
 				
+				$this->updateHash = "#Images";
+				
 			}
 			
 			if(isset($this->data['AddMeta'])) {
 				
 				$this->insertMeta();
 				
+				$this->updateHash = "#Meta Data";
+				
 			}
 			
 			if(isset($this->data['RemoveMeta'])) {
 				
 				$this->removeMeta();
+				
+				$this->updateHash = "#Meta Data";
 				
 			}
 			
@@ -184,18 +192,21 @@ class CanteenProductsController extends LocalAppController {
 				
 				$this->promoteFrontImage();
 				
+				$this->updateHash = "#Images";
 			}
 			
 			if(isset($this->data['PromoteThumbImage'])) {
 				
 				$this->promoteThumbImage();
 				
+				$this->updateHash = "#Images";
 			}
 			
 			if(isset($this->data['RemoveImage'])) {
 				
 				$this->removeImage();
 				
+				$this->updateHash = "#Images";
 			}
 			
 			if(isset($this->data['RemoveOption'])) {
@@ -203,11 +214,8 @@ class CanteenProductsController extends LocalAppController {
 				$this->removeOption();
 				
 			}
-			
-			
-			
-			
-			return $this->flash("Product Updated Successfully","/canteen_products/edit/".$this->data['CanteenProduct']['id']);
+	
+			return $this->flash("Product Updated Successfully","/canteen_products/edit/".$this->data['CanteenProduct']['id']."/c:".time().$this->updateHash);
 			
 		} else {
 			
@@ -269,6 +277,7 @@ class CanteenProductsController extends LocalAppController {
 			);
 			
 		}
+		
 		
 		
 	}

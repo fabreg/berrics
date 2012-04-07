@@ -982,14 +982,14 @@ PRODUCT EXTRA INFO
 } 
 
 
-#canteen-cart .items {
+.cart-items {
 
 	width:86%;
 	margin-left:85px;
 
 }
 
-#canteen-cart .items table {
+.cart-items table {
 	
 	width:100%;
 	font-size:14px;
@@ -999,7 +999,7 @@ PRODUCT EXTRA INFO
 	border-bottom:none;
 }
 
-#canteen-cart .items table th {
+.cart-items table th {
 
 	font-family:'Arial';
 	font-size:10px;
@@ -1011,7 +1011,7 @@ PRODUCT EXTRA INFO
 	
 }
 
-#canteen-cart .items table td {
+.cart-items table td {
 
 	border:1px solid #c1c1c1;
 	border-left:none;
@@ -1022,13 +1022,13 @@ PRODUCT EXTRA INFO
 	font-size:14px;
 }
 
-#canteen-cart .items table .price {
+.cart-items table .price {
 
 	text-align:center;
 	width:130px;
 
 }
-#canteen-cart .items table td .brand {
+.cart-items table td .brand {
 
 	font-family:'Arial';
 	font-size:11px;
@@ -1036,14 +1036,20 @@ PRODUCT EXTRA INFO
 	color:#777;
 }
 
-#canteen-cart .items table .item-wrapper {
+.cart-items table .item-wrapper {
 
 	position:relative;
 
 }
 
+.cart-items table .item-wrapper .img-thumb {
+	
+	float:left;
+	margin:3px;	
+	
+}
 
-#canteen-cart .items table .delete {
+.cart-items table .delete {
 
 	position:absolute;
 	font-size:11px;
@@ -1057,13 +1063,13 @@ PRODUCT EXTRA INFO
 	
 }
 
-#canteen-cart .items table .qty {
+.cart-items table .qty {
 
 	width:65px;
 	
 }
 
-#canteen-cart .items table .product-option {
+.cart-items table .product-option {
 
 	font-style:italic;
 	color:#000;
@@ -1072,7 +1078,7 @@ PRODUCT EXTRA INFO
 
 }
 
-#canteen-cart .items table .product-img {
+.cart-items table .product-img {
 
 	padding-left:8px;
 	padding-right:8px;
@@ -1251,6 +1257,7 @@ PRODUCT EXTRA INFO
 	line-height:25px;
 	text-indent:6px;
 	margin-top:3px;
+	font-weight:bold;
 }
 
 #canteen-cart .checkout .form div.input {
@@ -1496,8 +1503,6 @@ PRODUCT EXTRA INFO
 	
 	
 }
-
-
 
 /*
 	

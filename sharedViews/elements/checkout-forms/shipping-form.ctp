@@ -7,42 +7,38 @@ $index = ucfirst($index);
 
 ?>
 <script>
-var ship_to_states={};
+var ship_to_states_<?php echo $index; ?>={};
 $(document).ready(function() {
 
 	//get all the opt groups in an object
 	$("#UserAddress<?php echo $index; ?>State optgroup").each(function() { 
 
-		ship_to_states[$(this).attr("label")]=$(this).html();
+		ship_to_states_<?php echo $index; ?>[$(this).attr("label")]=$(this).html();
 		
 	});
 
-	for(var a in ship_to_states) {
 
-			//alert(ship_to_states[a]);
-	}
-	
-	$("#UserAddress<?php echo $index; ?>Country").change(function() { 
+	$("#UserAddress<?php echo $index; ?>CountryCode").change(function() { 
 
-		shipChangeState();
+		shipChangeState<?php echo $index; ?>();
 
 	});
 	//$("#UserAddress<?php echo $index; ?>Country").change();
-	shipChangeState();
+	shipChangeState<?php echo $index; ?>();
 	
 });
 
-function shipChangeState() {
+function shipChangeState<?php echo $index; ?>() {
 
-	var country = $("#UserAddress<?php echo $index; ?>Country").val();
+	var country = $("#UserAddress<?php echo $index; ?>CountryCode").val();
 
 	//check to see if we have an already selected state or value
 	var sel = $("#UserAddress<?php echo $index; ?>State").val();
 	
-	if(ship_to_states[country]) {
+	if(ship_to_states_<?php echo $index; ?>[country]) {
 
 		
-		$("#UserAddress<?php echo $index; ?>State").html(ship_to_states[country]);
+		$("#UserAddress<?php echo $index; ?>State").html(ship_to_states_<?php echo $index; ?>[country]);
 		$("#<?php echo $index; ?>-form-state-text-div").hide();
 		$("#<?php echo $index; ?>-form-state-select-div").show();
 
@@ -62,18 +58,16 @@ function shipChangeState() {
 }
 
 </script>
-<div id='shipping-form'>
+<div id='<?php echo strtolower($index); ?>-form'>
 <?php echo $this->Form->input("UserAddress.{$index}.first_name",array("label"=>$l['fname'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.last_name",array("label"=>$l['lname'])); ?>
-<?php echo $this->Form->input("UserAddress.{$index}.email",array("label"=>$l['email'])); ?>
-<?php echo $this->Form->input("UserAddress.{$index}.street_address",array("label"=>$l['streetaddress'])); ?>
-<?php echo $this->Form->input("UserAddress.{$index}.apt",array("label"=>$l['apt'])); ?>
-<?php echo $this->Form->input("UserAddress.{$index}.country",array("options"=>Arr::countries(),"label"=>$l['country'])); ?>
+<?php if($index=="Shipping") echo $this->Form->input("UserAddress.{$index}.email",array("label"=>$l['email'])); ?>
+<?php echo $this->Form->input("UserAddress.{$index}.street",array("label"=>$l['streetaddress'])); ?>
+<?php if($index=="Shipping") echo $this->Form->input("UserAddress.{$index}.apt",array("label"=>$l['apt'])); ?>
+<?php echo $this->Form->input("UserAddress.{$index}.country_code",array("options"=>Arr::countries(),"label"=>$l['country'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.state",array("options"=>Arr::states(),"label"=>$l['state'],"div"=>array("id"=>"{$index}-form-state-select-div"))); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.state-text",array("label"=>$l['state'],"div"=>array("id"=>"{$index}-form-state-text-div"))); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.city",array("label"=>$l['city'])); ?>
-<?php echo $this->Form->input("UserAddress.{$index}.postal",array("label"=>$l['zip'])); ?>
+<?php echo $this->Form->input("UserAddress.{$index}.postal_code",array("label"=>$l['zip'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.phone",array("label"=>$l['phonenum'])); ?>
-
-
 </div>

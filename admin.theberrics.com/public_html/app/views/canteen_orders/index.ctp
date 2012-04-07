@@ -8,6 +8,7 @@
 			<th><?php echo $this->Paginator->sort("order_status"); ?></th>
 			<th><?php echo $this->Paginator->sort("fulfillment_status"); ?></th>
 			<th><?php echo $this->Paginator->sort("shipping_status"); ?></th>
+			<th>-</th>
 		</tr>
 		<?php foreach($orders as $o): ?>
 		<tr>
@@ -17,6 +18,9 @@
 			<td><?php echo strtoupper($o['CanteenOrder']['order_status']); ?></td>
 			<td><?php echo strtoupper($o['CanteenOrder']['fulfillment_status']); ?></td>
 			<td><?php echo strtoupper($o['CanteenOrder']['shipping_status']); ?></td>
+			<td class='actions'>
+				<a href='/canteen_orders/edit/<?php echo $o['CanteenOrder']['id']; ?>'>Edit</a>
+			</td>
 		</tr>
 		<?php endforeach; ?>
 	</table>

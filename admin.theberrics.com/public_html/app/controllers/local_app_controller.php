@@ -8,7 +8,7 @@ class LocalAppController extends AppController {
 	
 	public $app_name = "AdminPanel";
 	
-	public $helpers = array("Admin");
+	public $helpers = array("Admin","Number");
 	
 	public function beforeFilter() {
 		

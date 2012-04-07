@@ -36,10 +36,6 @@ foreach($dailyops as $k=>$dop):
 		
 		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style=''>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
 		
-		//echo "<div style='text-align:center; padding:0px; padding-bottom:5px;'><a href='/chris-coles-battle-royale/eric-koston-vs-joey-brezinski.html' title='Skullcandy Presents: 31 Days Of Theotis'><img style='display:block; padding:0px; margin:auto;' src='/theme/31-days-of-theotis/img/31DOT_toppost-12.jpg' border='0' alt='Skullcandy Presents: 31 Days Of Theotis' /></a></div>";
-		
-		//echo $this->element("31-days-of-theotis/winner-banner");
-		
 		echo "<div style='text-align:center; padding-bottom:3px;'><a href='/battle-at-the-berrics-5'><img border='0' src='/theme/battle-at-the-berrics-5/img/week7-winner.jpg' /></a></div>";
 		
 		//echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_biebel.jpg'/></a></div>";

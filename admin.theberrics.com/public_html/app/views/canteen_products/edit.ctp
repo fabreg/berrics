@@ -24,6 +24,8 @@ $(document).ready(function() {
 	});
 
 	selectSet(0);
+
+	detectHash();
 	
 });
 
@@ -49,6 +51,32 @@ function selectSet(ind) {
 	
 }
 
+function detectHash() {
+
+	var h = document.location.hash;
+
+	if(h.length>1) {
+
+		h = h.replace(/#/,'');
+
+		h = h.toLowerCase();
+		
+		$('#tab-nav li').each(function() { 
+
+			var t = $(this).text().toLowerCase();
+
+			if(t==h) {
+
+				selectSet($(this).index());
+
+			}
+			
+		});
+		
+	}
+	
+}
+
 </script>
 <div class='form index'>
 <h2>Editing Product ID: <?php echo $this->data['CanteenProduct']['id']; ?></h2>
@@ -68,7 +96,7 @@ function selectSet(ind) {
 
 
 	<fieldset>
-		<legend>Options & Quantities</legend>
+		<legend>Options & Inventory</legend>
 		<?php echo $this->element("canteen_product/qty-options"); ?>
 	</fieldset>
 	<fieldset>

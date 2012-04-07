@@ -31,7 +31,7 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$order = $this->CanteenOrder->returnAdminOrder($order_id);
 		
-		die(pr($order));
+		$this->data = $order;
 		
 	}
 	

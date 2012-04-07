@@ -19,11 +19,26 @@ class CanteenCartController extends CanteenAppController {
 			
 		if(count($this->data)>0) {
 			
+			$order_id = $this->Session->read("CanteenOrder.CanteenOrder.id");
+			
+			if(!empty($order_id)) {
+				
+				return $this->process($this->data);
+				
+			}
+			
 			$this->data = array_merge($this->Session->read("CanteenOrder"),$this->data);
 			
 			//die(print_r($this->data));
 			
-			$this->CanteenOrder->saveOnlineOrder($this->data,true);
+			if(($order_id = $this->CanteenOrder->saveOnlineOrder($this->data,true))) {
+				
+				$this->Session->write("CanteenOrder.CanteenOrder.id",$order_id);
+				
+				return $this->process($this->data);
+				
+			}
+			
 			
 		} else {
 			
@@ -37,20 +52,20 @@ class CanteenCartController extends CanteenAppController {
 		$this->data = $this->CanteenOrder->calculateCartTotal($order);
 		$this->data['CanteenOrder']['same_as_shipping_checkbox']=1;
 		$geo_c = env("GEOIP_COUNTRY_CODE");
-		$this->data['UserAddress']['Shipping']['country'] = (strlen($geo_c)<=0) ? "US":$geo_c;
+		$this->data['UserAddress']['Shipping']['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
 			
 		if(isset($_GET['x']) && $this->isAdmin()) {
 			
 			$this->data['UserAddress']['Shipping']['first_name'] = "John";
 			$this->data['UserAddress']['Shipping']['last_name'] = "Testing";
-			$this->data['UserAddress']['Shipping']['street_address'] = "123 Ghetto Ave";
+			$this->data['UserAddress']['Shipping']['street'] = "123 Ghetto Ave";
 			$this->data['UserAddress']['Shipping']['apt'] = "#327";
 			$this->data['UserAddress']['Shipping']['city'] = "Compton";
 			$this->data['UserAddress']['Shipping']['state'] = "CA";
-			$this->data['UserAddress']['Shipping']['country'] = "US";
+			$this->data['UserAddress']['Shipping']['country_code'] = "US";
 			$this->data['UserAddress']['Shipping']['email'] = "john.hardy@me.com";
 			$this->data['UserAddress']['Shipping']['phone'] = "888-888-8888";
-			$this->data['UserAddress']['Shipping']['postal'] = "90210";
+			$this->data['UserAddress']['Shipping']['postal_code'] = "90210";
 			
 			$this->data['CardData']['number'] = "4111111111111111";
 			$this->data['CardData']['exp_month'] = 2;
@@ -149,10 +164,10 @@ class CanteenCartController extends CanteenAppController {
 			$this->data['CanteenOrder']['apt'] = "#327";
 			$this->data['CanteenOrder']['city'] = "Compton";
 			$this->data['CanteenOrder']['state'] = "CA";
-			$this->data['CanteenOrder']['country'] = "US";
+			$this->data['CanteenOrder']['country_code'] = "US";
 			$this->data['CanteenOrder']['email'] = "john.hardy@me.com";
 			$this->data['CanteenOrder']['phone'] = "888-888-8888";
-			$this->data['CanteenOrder']['postal'] = "90210";
+			$this->data['CanteenOrder']['postal_code'] = "90210";
 			
 			$this->data['CardData']['number'] = "4111111111111111";
 			$this->data['CardData']['exp_month'] = 2;
@@ -219,7 +234,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	public function _process($payload = array()) {
+	public function process($payload = array()) {
 		
 		
 		//get the order from the session
@@ -230,6 +245,7 @@ class CanteenCartController extends CanteenAppController {
 			return $this->cakeError("error404");
 			
 		}
+		
 		
 		$order = $this->CanteenOrder->returnAdminOrder($order_id);
 		
@@ -242,7 +258,7 @@ class CanteenCartController extends CanteenAppController {
 		switch(strtoupper($order['CanteenOrder']['order_status'])) {
 			
 			case "PENDING":
-				$this->CanteenOrder->chargeOrder(array_merge($payload,$order),"charge");
+				$this->CanteenOrder->chargeOnlineOrder(array_merge($payload,$order),"charge");
 				//return $this->render();
 				return $this->process();
 			break;
@@ -261,13 +277,15 @@ class CanteenCartController extends CanteenAppController {
 
 	}
 	
-	public function _calc_cart() {
+	public function calc_cart() {
+		
+		$this->layout = "ajax";
 		
 		$this->loadModel("CanteenOrder");
 		
-		$order = $this->CanteenOrder->calculateCartTotal($this->data);
+		$order = $this->CanteenOrder->calculateCartTotal(array_merge($this->Session->read("CanteenOrder"),$this->data));
 		
-		die(json_encode($order));
+		$this->set(compact("order"));
 		
 	}
 	
@@ -296,7 +314,7 @@ class CanteenCartController extends CanteenAppController {
 	}
 	
 	
-	public function _invoice($id = false) {
+	public function invoice($id = false) {
 		
 		if(!$id) {
 			

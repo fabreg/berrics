@@ -1,4 +1,7 @@
 <?php
+
+App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
+
 class CanteenOrder extends AppModel {
 	var $name = 'CanteenOrder';
 	
@@ -58,6 +61,16 @@ class CanteenOrder extends AppModel {
 		)
 	);
 	
+	/**
+	 * Taxable Country plus province codes
+	 * @var unknown_type
+	 */
+	public $taxZones = array(
+		"US"=>array(
+			"CA"=>9.75
+		)
+	);
+	
 	/*
 	 * 
 	 * OVERLOAD
@@ -86,7 +99,7 @@ class CanteenOrder extends AppModel {
 	
 	private function genId() {
 		
-		$id = mt_rand(111111,99999999);
+		$id = mt_rand(10000000,99999999);
 		
 		$chk = $this->find("count",array("conditions"=>array("CanteenOrder.id"=>$id)));
 		
@@ -107,44 +120,47 @@ class CanteenOrder extends AppModel {
 		
 		$CanteenOrder['CanteenOrder']['sub_total'] = 0;
 		$CanteenOrder['CanteenOrder']['grand_total'] = 0;
+		$CanteenOrder['CanteenOrder']['shipping_total'] = 0;
+		$CanteenOrder['CanteenOrder']['tax_total'] = 0;
 		
-		foreach($items as $k=>$v) {
+		//format shipping and billing addresses if needed
+		
+		if(!isset($CanteenOrder['CanteenOrder']['id'])) {
 			
-			$c = $v['ChildCanteenOrderItem'];
-			
-			$v['sub_total'] = $v['quantity'] = 0;
-			
-			foreach($c as $key=>$val) {
+			if(isset($CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']) && 
+				$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']==1
+			) {
 				
-				$_ops = array(
-					"canteen_product_id" =>$val['canteen_product_id']
-				);
-				
-				if(isset($val['parent_canteen_product_id']) && !empty($val['parent_canteen_product_id'])) $_ops['parent_canteen_product_id'] = $val['parent_canteen_product_id'];
-				
-				if(isset($CanteenOrder['CanteenOrder']['currency_id']) && !empty($CanteenOrder['CanteenOrder']['currency_id'])) $_ops['currency_id'] = $CanteenOrder['CanteenOrder']['currency_id'];
-				
-				$v['ChildCanteenOrderItem'][$key] =  array_merge($v['ChildCanteenOrderItem'][$key],$this->CanteenOrderItem->CanteenProduct->returnCartItem($_ops));
-				
-				$v['sub_total'] += $v['ChildCanteenOrderItem'][$key]['ParentCanteenProduct']['CanteenProductPrice'][0]['price'];
-				
-				$v['quantity'] += $v['ChildCanteenOrderItem'][$key]['quantity'];
+				$CanteenOrder['UserAddress']['Billing'] = $CanteenOrder['UserAddress']['Shipping'];
 				
 			}
 			
-			$CanteenOrder['CanteenOrder']['sub_total'] += $v['sub_total'];
+			$CanteenOrder['UserAddress'][] = array_merge($CanteenOrder['UserAddress']['Shipping'],array("address_type"=>"shipping"));
+			$CanteenOrder['UserAddress'][] = array_merge($CanteenOrder['UserAddress']['Billing'],array("address_type"=>"billing"));
 			
-			$items[$k] = $v;
-			
-			$CanteenOrder['CanteenOrder']['grand_total'] += $items[$k]['sub_total'];
+			unset($CanteenOrder['UserAddress']['Shipping'],$CanteenOrder['UserAddress']['Billing']);
 			
 		}
 		
-		$CanteenOrder['CanteenOrderItem'] = $items;
-
-		//die(print_r($CanteenOrder));
-		return $CanteenOrder;
+		$CanteenOrder = $this->CanteenOrderItem->calculateCartItems($CanteenOrder);
 		
+		//calculate the order totals
+		#subtotal
+		foreach($CanteenOrder['CanteenOrderItem'] as $k=>$v) $CanteenOrder['CanteenOrder']['sub_total'] += $v['sub_total'];
+		
+		#tax total
+		foreach($CanteenOrder['CanteenOrderItem'] as $k=>$v) $CanteenOrder['CanteenOrder']['tax_total'] += $v['tax_total'];
+		
+		#shipping_total
+		
+		
+		#grand_total
+		$CanteenOrder['CanteenOrder']['grand_total'] =  $CanteenOrder['CanteenOrder']['sub_total'] + 
+														$CanteenOrder['CanteenOrder']['shipping_total'] + 
+														$CanteenOrder['CanteenOrder']['tax_total'];
+		
+
+		return $CanteenOrder;
 		
 	}
 	
@@ -154,7 +170,12 @@ class CanteenOrder extends AppModel {
 		
 		$CanteenOrder = $this->calculateCartTotal($CanteenOrder);
 		
-		if(!$this->save($CanteenOrder)) return false;
+		
+		$CanteenOrder['CanteenOrder']['order_status'] = "pending";
+		$CanteenOrder['CanteenOrder']['shipping_status'] = "pending";
+		$CanteenOrder['CanteenOrder']['fulfillment_status'] = "pending";
+	
+		if(!$this->save($CanteenOrder['CanteenOrder'])) throw new Exception("Unable to save order!");
 		
 		$order_id = $this->id;
 		
@@ -169,9 +190,9 @@ class CanteenOrder extends AppModel {
 			$this->CanteenOrderItem->save(array("CanteenOrderItem"=>$item));
 			
 			$parent_id = $this->CanteenOrderItem->id;
-			
+
 			foreach($item['ChildCanteenOrderItem'] as $child) {
-				
+					
 				$child['parent_id'] = $parent_id;
 				
 				$this->CanteenOrderItem->create();
@@ -182,29 +203,13 @@ class CanteenOrder extends AppModel {
 			
 		}
 		
-		//save addresses
-		
 		//save the shipping address
-		if(isset($CanteenOrder['UserAddress']['Shipping'])) {
+		foreach($CanteenOrder['UserAddress'] as $a) {
 			
+			$a['model'] = "CanteenOrder";
+			$a['foreign_key'] = $order_id;
 			$this->UserAddress->create();
-			
-			$CanteenOrder['UserAddress']['Shipping']['foreign_key'] = $order_id;
-			
-			$CanteenOrder['UserAddress']['Shipping']['model'] = "CanteenOrder";
-			
-			$CanteenOrder['UserAddress']['Shipping']['address_type'] = "shipping";
-			
-			$this->UserAddress->save($CanteenOrder['UserAddress']['Shipping']);
-			
-		}
-		
-		if($attempt_charge) {
-			
-			$order = $this->returnAdminOrder($order_id);
-			$trans_data = GatewayTransactionVO::formatCanteenOrder(array_merge($CanteenOrder,$order));
-			
-			die(print_r($trans_data));
+			$this->UserAddress->save($a);
 			
 		}
 		
@@ -212,15 +217,69 @@ class CanteenOrder extends AppModel {
 		
 	}
 	
-	public function returnAdminOrder($canteen_order_id = false) {
+	/**
+	 * 
+	 * @param CanteenOrder $CanteenOrder
+	 * @param String $method charge | auth 
+	 * @return void
+	 */
+	public function chargeOnlineOrder($CanteenOrder,$method = "charge") {
 		
+		$gateway_id = CanteenConfig::get("gateway_account_id");
+		
+		
+		$trans = GatewayTransactionVO::formatCanteenOrder($CanteenOrder);
+		
+		$res = $this->GatewayTransaction->GatewayAccount->run($method,$gateway_id,$trans);
+		
+		//verb to update order status
+		$verb = "declined";
+		
+		//if the charge succeeded
+		if($res) {
+			
+			switch(strtoupper($method)) {
+				
+				case "CHARGE":
+					$verb = "approved";		
+					break;
+				case "AUTH":
+					$verb = "authorized";
+					break;
+			}
+			
+			unset($CanteenOrder['CardData']);
+			
+		}
+		
+		
+		$this->create();
+		
+		$this->id = $CanteenOrder['CanteenOrder']['id'];
+		
+		$this->save(array(
+			"order_status"=>$verb
+		));
+		
+		return $res;
+		
+	}
+	
+	public function returnAdminOrder($canteen_order_id = false) {
+
 		$order = $this->find("first",array(
-			"conditions"=>array(),
+			"conditions"=>array(
+				"CanteenOrder.id"=>$canteen_order_id
+			),
 			"contain"=>array(
 				"UserAddress",
 				"CanteenOrderItem"=>array(
 					"ChildCanteenOrderItem"=>array(
-						"CanteenProduct"=>array("ParentCanteenProduct"),
+						"CanteenProduct"=>array(
+							"ParentCanteenProduct"=>array(
+								"CanteenProductImage"
+							)
+						),
 						"CanteenInventoryRecord"=>array("Warehouse")
 					)
 				),
@@ -228,11 +287,21 @@ class CanteenOrder extends AppModel {
 				"CanteenShippingRecord",
 				"GatewayTransaction"=>array(
 					"GatewayAccount"
-				)
+				),
+				"Currency"
 			)
 		));
 		
 		return $order;
+	}
+	
+	public function extractAddresses($CanteenOrder) {
+		
+		$shipping = array();
+		
+		$billing = array();
+
+		
 	}
 	
 	

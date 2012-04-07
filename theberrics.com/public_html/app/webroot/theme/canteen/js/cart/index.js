@@ -19,10 +19,9 @@ $(document).ready(function() {
 	toggleBilling($("#same-as-shipping-check"));
 	
 	
-	$("#CanteenOrderCountry").bind("change",function(e) { 
+	$("select[name*='[Shipping][country_code]'],select[name*='[Shipping][state]']").bind("change",function(e) { 
 		
-		//alert(e);
-		
+	
 		calculateCart();
 		
 		
@@ -47,15 +46,25 @@ function calculateCart() {
 		"dataType":"json",
 		success:function(d) {
 			
-			var str = '';
-			for(var a in d['CanteenOrder']) {
+			$("#sub-total-dd").html(d.CanteenOrder.sub_total);
+			$("#tax-total-dd").html(d.CanteenOrder.tax_total);
+			$("#grand-total-dd,#grand-total span").html(d.CanteenOrder.grand_total);
 			
-				str += a+":"+d['CanteenOrder'][a]+"\n\r";
+			
+			var t = d.CanteenOrder.tax_total;
+			
+			t = t.replace(/[^0-9\.]/,'');
+		
+			if(Number(t)>0) {
+			
+				$("#tax-total-dd,#tax-total-dt").show();
+				
+			} else {
+				
+				$("#tax-total-dd,#tax-total-dt").hide();
 				
 			}
-			
-			//alert(str);
-			$('body').append(objectToString(d));
+			//$('body').append(objectToString(d));
 		}
 		
 	});

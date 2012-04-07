@@ -284,18 +284,20 @@ class GatewayAccount extends AppModel {
 		//check the gateway to see if we can create the profile
 		$up = $gw->get("user_billing_profile");
 		
+		$c = $gw->get("customer");
+		$cc = $gw->get("card_data");
+		$t = $gw->get("transaction");
+		$acc = $gw->get("gateway_account");
+		
 		if(
 			isset($up['acc_op1']) || 
 			isset($up['acc_op2']) || 
 			isset($up['acc_op3']) || 
 			isset($up['acc_op4']) || 
-			isset($up['acc_op5'])
+			isset($up['acc_op5']) && !empty($c['user_id'])
 		) {
 			
-			$c = $gw->get("customer");
-			$cc = $gw->get("card_data");
-			$t = $gw->get("transaction");
-			$acc = $gw->get("gateway_account");
+			
 			
 			$this->UserBillingProfile->create();
 			
