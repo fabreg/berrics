@@ -16,6 +16,8 @@ class LocalAppController extends AppController {
 		
 		$this->Auth->deny("*");
 		
+		$this->set("user_locale","en_us");
+		
 	}
 	
 	

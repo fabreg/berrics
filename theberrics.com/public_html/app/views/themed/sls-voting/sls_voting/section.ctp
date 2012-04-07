@@ -37,21 +37,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 							<a href='/street-league-selection-2012/<?php echo $v['Dailyop']['uri']; ?>'>Play Video</a>
 						</div>
 						<div class='vote-button'>
-							<?php 
-								if(count($votes)>=5):
-								elseif(in_array($v['SlsEntry']['id'],$votes)): 
-							?>
 							
-							<div class='vote-placed'>Vote Placed</div>
-							
-							<?php else: 
-								echo $this->Form->create("SlsVote",array("url"=>"/street-league-selection-2012/place_vote"));
-								echo $this->Form->input("sls_entry_id",array("type"=>"hidden","value"=>$v['SlsEntry']['id']));
-								echo $this->Form->submit("Place Vote",array("div"=>false));
-								echo $this->Form->end();
-								
-								endif; 
-							?>
 							 
 						</div>
 					</div>
@@ -90,14 +76,7 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 									foreach($entries as $v) if($v['SlsEntry']['id'] == $votes[$i]) $e=$v;
 							?>
 							<div class='vote-result-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $e['DailyopMediaItem'][2]['MediaFile']['file']; ?>);'>
-								<div class='delete-form'>
-								<?php 
-									echo $this->Form->create("SlsVote",array("url"=>"/street-league-selection-2012/delete_vote"));
-									echo $this->Form->input("id",array("value"=>base64_encode($votes[$i])));
-									echo $this->Form->submit("DELETE",array("div"=>false));
-									echo $this->Form->end();
-								?>
-								</div>
+								
 							</div>
 							<?php else: ?>
 								<div class='no-vote'>

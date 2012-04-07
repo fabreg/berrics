@@ -60,7 +60,10 @@ class UserAddressesController extends LocalAppController {
 			}
 		}
 		if (empty($this->data)) {
-			$this->data = $this->UserAddress->read(null, $id);
+			
+			$data = $this->UserAddress->read(null, $id);
+			
+			$this->data['UserAddress']['Update'] = $data['UserAddress'];
 		}
 	}
 

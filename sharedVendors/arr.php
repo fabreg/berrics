@@ -833,7 +833,7 @@ class Arr {
 	
 	public static function states() {
 		$gb = self::gbStates();
-		sort($gb);
+		asort($gb);
 		$a = array(
 		
 			"US"=>self::usStates(),

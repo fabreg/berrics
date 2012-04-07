@@ -61,9 +61,9 @@ function shipChangeState<?php echo $index; ?>() {
 <div id='<?php echo strtolower($index); ?>-form'>
 <?php echo $this->Form->input("UserAddress.{$index}.first_name",array("label"=>$l['fname'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.last_name",array("label"=>$l['lname'])); ?>
-<?php if($index=="Shipping") echo $this->Form->input("UserAddress.{$index}.email",array("label"=>$l['email'])); ?>
+<?php if($index!="Billing") echo $this->Form->input("UserAddress.{$index}.email",array("label"=>$l['email'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.street",array("label"=>$l['streetaddress'])); ?>
-<?php if($index=="Shipping") echo $this->Form->input("UserAddress.{$index}.apt",array("label"=>$l['apt'])); ?>
+<?php if($index!="Billing") echo $this->Form->input("UserAddress.{$index}.apt",array("label"=>$l['apt'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.country_code",array("options"=>Arr::countries(),"label"=>$l['country'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.state",array("options"=>Arr::states(),"label"=>$l['state'],"div"=>array("id"=>"{$index}-form-state-select-div"))); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.state-text",array("label"=>$l['state'],"div"=>array("id"=>"{$index}-form-state-text-div"))); ?>
