@@ -44,7 +44,7 @@ body {
 		<img border='0' src='/img/splash/wfl/dway.jpg'/>
 	</div>
 	<?php if(
-		$_SERVER['GEOIP_COUNTRY_CODE']=="US"
+		$_SERVER['GEOIP_COUNTRY_CODE']=="US" && strtolower($_SERVER['GEOIP_REGION_NAME'])=='california'
 	): ?>
 	<div class='connect'>
 		<a href='/identity/login/send_to_facebook/<?php echo base64_encode("/wfl"); ?>'>Click Here To Connect With Facebook To Win Tickets!</a>
