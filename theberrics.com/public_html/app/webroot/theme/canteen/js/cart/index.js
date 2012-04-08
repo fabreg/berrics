@@ -48,22 +48,9 @@ function calculateCart() {
 			
 			$("#sub-total-dd").html(d.CanteenOrder.sub_total);
 			$("#tax-total-dd").html(d.CanteenOrder.tax_total);
+			$("#shipping-total-dd").html(d.CanteenOrder.shipping_total);
 			$("#grand-total-dd,#grand-total span").html(d.CanteenOrder.grand_total);
-			
-			
-			var t = d.CanteenOrder.tax_total;
-			
-			t = t.replace(/[^0-9\.]/,'');
-		
-			if(Number(t)>0) {
-			
-				$("#tax-total-dd,#tax-total-dt").show();
-				
-			} else {
-				
-				$("#tax-total-dd,#tax-total-dt").hide();
-				
-			}
+	
 			//$('body').append(objectToString(d));
 		}
 		

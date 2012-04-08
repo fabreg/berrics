@@ -27,7 +27,7 @@ class GatewayTransactionVO {
 		$t['Customer']['country'] = 		Set::classicExtract($customer[0],"UserAddress.country_code");
 		$t['Customer']['email'] = 			Set::classicExtract($customer[0],"UserAddress.email");
 		$t['Customer']['city'] = 			Set::classicExtract($customer[0],"UserAddress.city");
-		$t['Customer']['state'] = 			Set::classicExtract($customer[0],"UserAddress.province");
+		$t['Customer']['state'] = 			Set::classicExtract($customer[0],"UserAddress.state");
 		$t['Customer']['phone'] = 			Set::classicExtract($customer[0],"UserAddress.phone");
 		$t['Customer']['user_id'] = 		Set::classicExtract($customer[0],"UserAddress.user_id");
 		

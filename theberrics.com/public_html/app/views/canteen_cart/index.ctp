@@ -29,7 +29,7 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 						<dt id='tax-total-dt'>Sales-Tax..</dt>
 						<dd id='tax-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['tax_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt>Shipping...</dt>
-						<dd id='shipping-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='shipping-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt class='grand-total-label'>Total......</dt>
 						<dd id='grand-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['grand_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 					</dl>

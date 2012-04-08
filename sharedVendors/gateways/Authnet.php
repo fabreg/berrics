@@ -28,6 +28,7 @@ class Authnet extends GatewayBase {
 		switch($this->response_data['response_code']) {
 			
 			case 1:
+				$this->runCreateUserProfile();
 				return true;
 			break;
 			default:
@@ -49,6 +50,7 @@ class Authnet extends GatewayBase {
 		switch($this->response_data['response_code']) {
 			
 			case 1:
+				$this->runCreateUserProfile();
 				return true;
 			break;
 			default:
@@ -72,6 +74,7 @@ class Authnet extends GatewayBase {
 		switch($this->response_data['response_code']) {
 			
 			case 1:
+				
 				return true;
 			break;
 			default:
@@ -152,6 +155,9 @@ class Authnet extends GatewayBase {
 				)
 			
 			));
+			
+			$this->transaction_result['acc_op1'] = $result->CreateCustomerProfileResult->customerProfileId;
+			$this->transaction_result['acc_op2'] = $result->CreateCustomerProfileResult->customerPaymentProfileIdList->long;
 			
 		}
 

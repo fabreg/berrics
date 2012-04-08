@@ -10,6 +10,13 @@ $this->set(array(
 
 $countries = Arr::countries();
 
+$shipping = Set::extract("/UserAddress[address_type=shipping]",$order);
+
+$billing = Set::extract("/UserAddress[address_type=billing]",$order);
+
+$shipping = $shipping[0]['UserAddress'];
+$billing = $billing[0]['UserAddress'];
+
 ?>
 <div id='canteen-invoice'>
 	<div class='invoice'>
@@ -32,25 +39,25 @@ $countries = Arr::countries();
 					<div class='ship-to'>
 						<div class='heading'>SHIP TO:</div>
 						<div class='envelope'>
-						<?php echo $order['CanteenOrder']['first_name']; ?> <?php echo $order['CanteenOrder']['last_name']; ?> <br />[<?php echo $order['CanteenOrder']['email']; ?>]
+						<?php echo $shipping['first_name']; ?> <?php echo $shipping['last_name']; ?> <br />[<?php echo $shipping['email']; ?>]
 						<br />
-						<?php echo $order['CanteenOrder']['street_address']; ?> <?php echo $order['CanteenOrder']['apt']; ?>
+						<?php echo $shipping['street']; ?> <?php echo $shipping['apt']; ?>
 						<br />
-						<?php echo $order['CanteenOrder']['city']; ?>, <?php echo $order['CanteenOrder']['state']; ?> <?php echo $order['CanteenOrder']['postal']; ?>
+						<?php echo $shipping['city']; ?>, <?php echo $shipping['state']; ?> <?php echo $shipping['postal_code']; ?>
 						<br />
-						<?php echo strtoupper($countries[$order['CanteenOrder']['country']]); ?>
+						<?php echo strtoupper($countries[$shipping['country_code']]); ?>
 						</div>
 					</div>
 					<div class='bill-to'>
 						<div class='heading'>BILL TO:</div>
 						<div class='envelope'>
-						<?php echo $order['CanteenOrder']['bill_first_name']; ?> <?php echo $order['CanteenOrder']['bill_last_name']; ?>
+						<?php echo $billing['first_name']; ?> <?php echo $billing['last_name']; ?>
 						<br />
-						<?php echo $order['CanteenOrder']['bill_address']; ?>
+						<?php echo $billing['street']; ?>
 						<br />
-						<?php echo $order['CanteenOrder']['bill_city']; ?>, <?php echo $order['CanteenOrder']['bill_state']; ?> <?php echo $order['CanteenOrder']['bill_postal']; ?>
+						<?php echo $billing['city']; ?>, <?php echo $billing['state']; ?> <?php echo $billing['postal_code']; ?>
 						<br />
-						<?php echo strtoupper($countries[$order['CanteenOrder']['bill_country']]);  ?>
+						<?php echo strtoupper($countries[$billing['country_code']]);  ?>
 						<br />&nbsp;
 						</div>
 					</div>

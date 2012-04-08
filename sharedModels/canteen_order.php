@@ -14,7 +14,8 @@ class CanteenOrder extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+		"CanteenPromoCode"
 	);
 
 	var $hasMany = array(
@@ -152,14 +153,17 @@ class CanteenOrder extends AppModel {
 		foreach($CanteenOrder['CanteenOrderItem'] as $k=>$v) $CanteenOrder['CanteenOrder']['tax_total'] += $v['tax_total'];
 		
 		#shipping_total
+		$weights = Set::extract("/CanteenOrderItem/ChildCanteenOrderItem/weight",$CanteenOrder);
 		
+		$weight = array_sum($weights);
+		
+		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency($CanteenOrder['CanteenOrder']['currency_id'],"USD",CanteenShippingRecord::returnShippingRate($weight,$CanteenOrder['UserAddress'][0]['country_code']));
 		
 		#grand_total
 		$CanteenOrder['CanteenOrder']['grand_total'] =  $CanteenOrder['CanteenOrder']['sub_total'] + 
 														$CanteenOrder['CanteenOrder']['shipping_total'] + 
 														$CanteenOrder['CanteenOrder']['tax_total'];
 		
-
 		return $CanteenOrder;
 		
 	}
@@ -168,13 +172,12 @@ class CanteenOrder extends AppModel {
 		
 		$this->create();
 		
-		$CanteenOrder = $this->calculateCartTotal($CanteenOrder);
-		
-		
 		$CanteenOrder['CanteenOrder']['order_status'] = "pending";
 		$CanteenOrder['CanteenOrder']['shipping_status'] = "pending";
 		$CanteenOrder['CanteenOrder']['fulfillment_status'] = "pending";
-	
+		
+		$CanteenOrder = $this->calculateCartTotal($CanteenOrder);
+		
 		if(!$this->save($CanteenOrder['CanteenOrder'])) throw new Exception("Unable to save order!");
 		
 		$order_id = $this->id;
@@ -250,6 +253,8 @@ class CanteenOrder extends AppModel {
 			
 			unset($CanteenOrder['CardData']);
 			
+			
+			
 		}
 		
 		
@@ -261,7 +266,50 @@ class CanteenOrder extends AppModel {
 			"order_status"=>$verb
 		));
 		
+		if($res) {
+			
+			//allocate inventory
+			$_SERVER['FORCEMASTER'] = true;
+			$this->processOrderInventory($CanteenOrder['CanteenOrder']['id']);
+			$this->CanteenShippingRecord->createShipment($CanteenOrder['CanteenOrder']['id']);
+			unset($_SERVER['FORCEMASTER']);
+		}
+		
 		return $res;
+		
+	}
+	
+	public function processOrderInventory($canteen_order_id) {
+		
+		$order = $this->returnAdminOrder($canteen_order_id);
+		
+		//check all the sub items and allocate the invventory record and debit qty as allocated
+		foreach($order['CanteenOrderItem'] as $item) {
+			
+			foreach($item['ChildCanteenOrderItem'] as $child) {
+				
+				if($inv_id = $child['CanteenProduct']['CanteenProductInventory'][0]['CanteenInventoryRecord']['id']) {
+				
+					$qty = $child['quantity'];
+					
+					$this->CanteenOrderItem->create();
+					
+					$this->CanteenOrderItem->id = $child['id'];
+					
+					if(
+						$this->CanteenOrderItem->CanteenProduct->CanteenProductInventory->CanteenInventoryRecord->allocateInventory($inv_id,$child['quantity'])
+					) {
+						
+						$this->CanteenOrderItem->save(array(
+							"canteen_inventory_record_id"=>$inv_id
+						));
+							
+					}
+
+				}
+			}
+			
+		}
 		
 	}
 	
@@ -272,23 +320,31 @@ class CanteenOrder extends AppModel {
 				"CanteenOrder.id"=>$canteen_order_id
 			),
 			"contain"=>array(
+				"CanteenOrderNote"=>array("ChildCanteenOrderNote"),
+				"CanteenShippingRecord"=>array("Warehouse"),
+				"Currency",
+				"CanteenPromoCode",	
 				"UserAddress",
 				"CanteenOrderItem"=>array(
 					"ChildCanteenOrderItem"=>array(
+						"CanteenInventoryRecord"=>array("Warehouse"),
 						"CanteenProduct"=>array(
+							"CanteenProductInventory"=>array(
+								"order"=>array("CanteenProductInventory.priority"=>"DESC"),
+								"CanteenInventoryRecord"=>array("Warehouse")
+							),
 							"ParentCanteenProduct"=>array(
 								"CanteenProductImage"
 							)
 						),
-						"CanteenInventoryRecord"=>array("Warehouse")
-					)
+						"CanteenShippingRecord"=>array("Warehouse")
+					),
+					
 				),
-				"CanteenOrderNote",
-				"CanteenShippingRecord",
+				
 				"GatewayTransaction"=>array(
 					"GatewayAccount"
-				),
-				"Currency"
+				)
 			)
 		));
 		

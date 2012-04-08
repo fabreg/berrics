@@ -112,9 +112,10 @@ class GatewayAccount extends AppModel {
 		
 		$this->GatewayTransaction->create();
 		$this->GatewayTransaction->id = $tid;
+
 		$this->GatewayTransaction->save($gw->get("transaction_result"));
 		
-		$this->createUserBillingProfile($gw);
+		
 		
 		return $charge;
 		

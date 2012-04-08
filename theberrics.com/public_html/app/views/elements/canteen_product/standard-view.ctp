@@ -19,6 +19,7 @@ $(document).ready(function() {
 	$("#product-standard-view .product-options .option:eq(0)").click();
 
 	initProductThumbs();
+
 	
 });
 
@@ -149,7 +150,7 @@ function initOptionClick() {
 									<div class='check'>
 										
 									</div>
-									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35' border='0' alt='' />
+									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35&w=35' border='0' alt='' />
 								</div>
 								<?php endforeach; ?>
 								<div style='clear:both;'></div>

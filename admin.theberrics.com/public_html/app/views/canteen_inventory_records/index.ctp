@@ -8,6 +8,7 @@
 			<th><?php echo $this->Paginator->sort('canteen_product_id');?></th>
 			<th><?php echo $this->Paginator->sort('foreign_key');?></th>
 			<th><?php echo $this->Paginator->sort('quantity');?></th>
+			<th><?php echo $this->Paginator->sort('allocated');?></th>
 			<th><?php echo $this->Paginator->sort('warehouse_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -27,6 +28,7 @@
 		<td><?php echo $canteenInventoryRecord['CanteenInventoryRecord']['canteen_product_id']; ?>&nbsp;</td>
 		<td><?php echo $canteenInventoryRecord['CanteenInventoryRecord']['foreign_key']; ?>&nbsp;</td>
 		<td><?php echo $canteenInventoryRecord['CanteenInventoryRecord']['quantity']; ?>&nbsp;</td>
+		<td><?php echo $canteenInventoryRecord['CanteenInventoryRecord']['allocated']; ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($canteenInventoryRecord['Warehouse']['name'], array('controller' => 'warehouses', 'action' => 'view', $canteenInventoryRecord['Warehouse']['id'])); ?>
 		</td>

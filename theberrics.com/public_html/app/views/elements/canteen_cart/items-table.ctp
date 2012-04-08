@@ -1,5 +1,9 @@
 <?php 
 
+$shipping_codes = array(
+	"standard"=>"Standard",
+	"expidited"=>"Expidited"
+);
 
 
 ?>
@@ -25,11 +29,22 @@
 									echo $this->Media->productThumb($c['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>40,"h"=>40));							
 								?>
 							</div>
-							<?php echo $c['CanteenProduct']['ParentCanteenProduct']['name']; ?><?php echo (!empty($c['CanteenProduct']['ParentCanteenProduct']['sub_title'])) ? " - ".$c['CanteenProduct']['ParentCanteenProduct']['sub_title']:""; ?>
-							<?php if(!empty($c['CanteenProduct']['opt_label'])): ?> <span class='brand'>BY: <?php echo strtoupper($c['CanteenProduct']['ParentCanteenProduct']['Brand']['name']); ?></span>
-							<br /><span class='product-option'><?php echo strtoupper($c['CanteenProduct']['opt_label']); ?>:<?php echo strtoupper($c['CanteenProduct']['opt_value']); ?></span>
+							<?php 
+							
+								echo $c['title']; 
+
+								if(isset($c['CanteenProduct']['ParentCanteenProduct']['Brand'])):
+							?>
+							<span class='brand'>BY: <?php echo strtoupper($c['CanteenProduct']['ParentCanteenProduct']['Brand']['name']); ?></span>
+							<?php 
+								endif;
+							?>
+							
+							<?php if(!empty($c['sub_title'])): ?> 
+							<br /><span class='product-option'><?php echo $c['sub_title']; ?></span>
 							<?php endif; ?>
 						</div>
+						<div style='clear:both;'></div>
 					<?php endforeach; ?>
 				</td>
 				<td class='price'><?php echo $this->Number->currency($item['sub_total'],$user_currency_id); ?></td>
@@ -42,7 +57,7 @@
 				<td colspan='2'>
 				<div class='brand'>SHIPPING</div>
 				<div>
-					<?php echo $this->Form->input("CanteenOrder.shipping_option",array("type"=>"select","options"=>$shipping_codes)); ?>
+					<?php echo $this->Form->input("CanteenOrder.shipping_method",array("type"=>"select","options"=>$shipping_codes)); ?>
 				</div>
 				</td>
 				

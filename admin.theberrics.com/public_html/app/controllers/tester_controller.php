@@ -1221,6 +1221,19 @@ class TesterController extends LocalAppController {
 	}
 	
 	
+		
+	
+	public function test_inv() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+	
+		
+		$this->CanteenShippingRecord->createShipment(55104651);
+		
+		//$this->CanteenInventoryRecord->allocateInventory(3,1);
+		
+	}
 	
 	
 }

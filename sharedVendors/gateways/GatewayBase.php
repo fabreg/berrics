@@ -244,7 +244,7 @@ abstract class GatewayBase {
 		
 		if($this->beforeCreateUserProfile()) $trans = $this->runAddCustomerAccount();
 		
-		$this->afterCreateUserProfile();($trans);
+		$this->afterCreateUserProfile($trans);
 		
 		return $trans;
 		

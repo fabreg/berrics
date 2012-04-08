@@ -17,6 +17,7 @@ $(document).ready(function() {
 	$("#CanteenProductPubDate").datepicker({
 		"dateFormat":"yy-mm-dd"
 	});
+	
 	$("#CanteenProductPubTime").timepicker({
 	    showPeriod: false,
 	    showLeadingZero: false
@@ -46,6 +47,7 @@ $(document).ready(function() {
 				echo $this->Form->input("allow_free_shipping");
 				echo $this->Form->input("allow_discount");
 				echo $this->Form->input("featured");
+				echo $this->Form->input("digital_item");
 			?>
 			<div style='clear:both;'></div>
 		</div>

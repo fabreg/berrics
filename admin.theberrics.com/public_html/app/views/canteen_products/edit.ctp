@@ -78,6 +78,18 @@ function detectHash() {
 }
 
 </script>
+<style>
+#tab-nav li {
+
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+-moz-border-radius-bottomright: 0px;
+-moz-border-radius-bottomleft: 0px;
+-webkit-border-radius: 10px 10px 0px 0px;
+border-radius: 10px 10px 0px 0px;
+
+}
+</style>
 <div class='form index'>
 <h2>Editing Product ID: <?php echo $this->data['CanteenProduct']['id']; ?></h2>
 <?php 

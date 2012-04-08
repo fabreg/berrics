@@ -116,6 +116,7 @@ class CanteenController extends CanteenAppController {
 			if($_p) $products[] = $_p;
 			
 		}
+		
 		$this->set(compact("category","filters","products"));
 			
 	}

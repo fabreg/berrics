@@ -6,6 +6,8 @@ $order['CanteenOrder']['tax_total'] = $this->Number->currency($order['CanteenOrd
 
 $order['CanteenOrder']['grand_total'] = $this->Number->currency($order['CanteenOrder']['grand_total'],$order['CanteenOrder']['currency_id']);
 
+$order['CanteenOrder']['shipping_total'] = $this->Number->currency($order['CanteenOrder']['shipping_total'],$order['CanteenOrder']['currency_id']);
+
 die(json_encode($order));
 
 ?>

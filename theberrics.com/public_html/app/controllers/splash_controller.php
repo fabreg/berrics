@@ -526,6 +526,13 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	public function wfl() {
+		
+		
+		
+		
+	}
+	
 	
 	
 }

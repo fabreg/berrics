@@ -30,6 +30,7 @@ class CanteenInventoryRecordsController extends LocalAppController {
 	function add() {
 		if (!empty($this->data)) {
 			$this->CanteenInventoryRecord->create();
+			$this->data['CanteenInventoryRecord']['allocated'] = 0;
 			if ($this->CanteenInventoryRecord->save($this->data)) {
 				$this->Session->setFlash(__('The canteen inventory record has been saved', true));
 				$this->redirect(array('action' => 'index'));

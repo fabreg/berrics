@@ -48,10 +48,12 @@ class CanteenCartController extends CanteenAppController {
 		$order = $this->Session->read("CanteenOrder");
 		
 		$order['CanteenOrder']['currency_id'] = $this->getUserCurrency();
-
+		$geo_c = env("GEOIP_COUNTRY_CODE");
+		$order['UserAddress']['Shipping']['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
+		
+		
 		$this->data = $this->CanteenOrder->calculateCartTotal($order);
 		$this->data['CanteenOrder']['same_as_shipping_checkbox']=1;
-		$geo_c = env("GEOIP_COUNTRY_CODE");
 		$this->data['UserAddress']['Shipping']['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
 			
 		if(isset($_GET['x']) && $this->isAdmin()) {
@@ -73,6 +75,9 @@ class CanteenCartController extends CanteenAppController {
 			$this->data['CardData']['code'] = 123;
 			
 		}
+		
+		
+		
 	}
 	
 	public function _index() {
@@ -180,9 +185,7 @@ class CanteenCartController extends CanteenAppController {
 	}
 
 	public function add() {
-		
 
-		//$this->Session->
 		$cart = $this->Session->read("CanteenOrder");
 		
 		if(!isset($cart['CateenOrder'])) {
@@ -204,13 +207,13 @@ class CanteenCartController extends CanteenAppController {
 
 		}
 		
-		$item['hash'] = md5(time().mt_rand(999,9999));
-		
+		$line_item['hash'] = md5(time().mt_rand(999,9999));
+
 		$cart['CanteenOrderItem'][] = $line_item;
 
 		$this->Session->write("CanteenOrder",$cart);
 		
-		return $this->redirect("/canteen/cart/");
+		return $this->redirect("/canteen/cart");
 		
 	}
 	

@@ -43,5 +43,13 @@ class CanteenOrderNote extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	public function addNote($data) {
+		
+		$this->create();
+		
+		return $this->save($data);
+		
+	}
 
 }
