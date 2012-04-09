@@ -235,7 +235,9 @@ class CanteenProductsController extends LocalAppController {
 		
 		//$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->find("list"));
 		$this->set("canteenCategories",$this->CanteenProduct->CanteenCategory->treeList());
-		$this->set("brands",$this->CanteenProduct->Brand->find("list"));
+		$this->set("brands",$this->CanteenProduct->Brand->find("list",array("order"=>array("Brand.name"=>"ASC"))));
+		
+		$this->set("currencies",$this->CanteenProduct->CanteenProductPrice->Currency->find("list",array("order"=>array("Currency.name"=>"ASC"))));
 		
 	}
 	

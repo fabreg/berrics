@@ -39,8 +39,8 @@ function shipChangeState<?php echo $index; ?>() {
 
 		
 		$("#UserAddress<?php echo $index; ?>State").html(ship_to_states_<?php echo $index; ?>[country]);
-		$("#<?php echo $index; ?>-form-state-text-div").hide();
-		$("#<?php echo $index; ?>-form-state-select-div").show();
+		$("#<?php echo $index; ?>-form-state-text-div").hide().find('input').attr({"disabled":true});
+		$("#<?php echo $index; ?>-form-state-select-div").show().find('select').attr({"disabled":false});
 
 		//try and set the selected val
 		if(sel.length>0) {
@@ -51,8 +51,8 @@ function shipChangeState<?php echo $index; ?>() {
 		
 	} else {
 
-		$("#<?php echo $index; ?>-form-state-select-div").hide();
-		$("#<?php echo $index; ?>-form-state-text-div").show();
+		$("#<?php echo $index; ?>-form-state-select-div").hide().find('select').attr({"disabled":true});
+		$("#<?php echo $index; ?>-form-state-text-div").show().find('input').attr({"disabled":false});
 	}
 	
 }

@@ -29,7 +29,7 @@ class CanteenController extends CanteenAppController {
 		$this->set(compact("cats"));
 		
 	}
-
+	
 	public function category() {
 		
 		

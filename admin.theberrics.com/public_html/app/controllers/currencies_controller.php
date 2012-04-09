@@ -68,5 +68,13 @@ class CurrenciesController extends LocalAppController {
 		$this->Session->setFlash(__('Currency was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	public function ajax_convert($currency_from,$currency_to,$amount) {
+		
+		$value = $this->Currency->convertCurrency($currency_from,$currency_to,$amount);
+		
+		die(number_format($value,2));
+		
+	}
 }
 ?>

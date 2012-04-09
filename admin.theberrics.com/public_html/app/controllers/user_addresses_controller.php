@@ -45,7 +45,10 @@ class UserAddressesController extends LocalAppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			if ($this->UserAddress->save($this->data)) {
+			
+			$this->UserAddress->id = $this->data['UserAddress']['Update']['id'];
+			
+			if ($this->UserAddress->save($this->data['UserAddress']['Update'])) {
 				$this->Session->setFlash(__('The user address has been saved', true));
 				
 				if(isset($this->params['named']['callback'])) {

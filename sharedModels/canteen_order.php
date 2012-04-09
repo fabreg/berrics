@@ -164,6 +164,8 @@ class CanteenOrder extends AppModel {
 														$CanteenOrder['CanteenOrder']['shipping_total'] + 
 														$CanteenOrder['CanteenOrder']['tax_total'];
 		
+		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);
+														
 		return $CanteenOrder;
 		
 	}

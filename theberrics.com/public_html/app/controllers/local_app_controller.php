@@ -38,7 +38,7 @@ class LocalAppController extends AppController {
 		
 		if(!isset($_SERVER['GEOIP_POSTAL_CODE']))  $_SERVER['GEOIP_POSTAL_CODE'] = '';
 		
-		if(!isset($_SERVER['GEOIP_REGION_NAME'])) $_SERVER['GEOIP_REGION_NAME'] = "Los Angeles";
+		if(!isset($_SERVER['GEOIP_REGION_NAME'])) $_SERVER['GEOIP_REGION_NAME'] = "California";
 		
 	}
 	
