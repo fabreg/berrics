@@ -210,18 +210,7 @@ border-radius: 10px 10px 0px 0px;
 						<th>Total</th>
 					</tr>
 					<?php foreach($this->data['CanteenOrderItem'] as $item): ?>
-						<tr style='background-color:#ccc;'>
-							<td>
-								-
-							</td>
-							<td><?php echo $item['title']; if(!empty($item['sub_title'])) echo $item['sub_title']; ?> &nbsp;</td>
-							<td align='center'>-</td>
-							<td align='center'>-</td>
-							<td align='center'>-</td>
-							<td align='center'><?php echo number_format($item['tax_total'],2); ?></td>
-							<td align='center'><?php echo number_format($item['sub_total'],2); ?></td>
-							<td align='center'><?php echo number_format($item['tax_total']+$item['sub_total'],2); ?></td>
-						</tr>
+						
 						<?php foreach($item['ChildCanteenOrderItem'] as $child): ?>
 						<tr style='background-color:#f0f0f0;'>
 							<td>
@@ -252,12 +241,24 @@ border-radius: 10px 10px 0px 0px;
 									endif;
 								?>
 							</td>
-							<td align='center'><?php echo $child['quantity']; ?></td>
+							<td align='center' width='1%' nowrap><?php echo $child['quantity']; ?></td>
 							<td align='center'>-</td>
 							<td align='center'>-</td>
 							<td align='center'>-</td>
 						</tr>
 						<?php endforeach;?>
+						<tr style='background-color:#ccc;'>
+							<td>
+								-
+							</td>
+							<td><?php echo $item['title']; if(!empty($item['sub_title'])) echo $item['sub_title']; ?> &nbsp;</td>
+							<td align='center'>-</td>
+							<td align='center'>-</td>
+							<td align='right' nowrap><strong>Line Totals:</strong></td>
+							<td align='center'><?php echo number_format($item['tax_total'],2); ?></td>
+							<td align='center'><?php echo number_format($item['sub_total'],2); ?></td>
+							<td align='center'><?php echo number_format($item['tax_total']+$item['sub_total'],2); ?></td>
+						</tr>
 					<?php endforeach; ?>
 				</table>
 			</div>

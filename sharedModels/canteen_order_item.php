@@ -126,7 +126,7 @@ class CanteenOrderItem extends AppModel {
 				$CanteenOrderItem['sub_total'] += $ChildItems[$key]['sub_total'];
 				
 			}
-			
+
 			//sales tax
 			if(!$CanteenOrderItem['promo']) {
 				

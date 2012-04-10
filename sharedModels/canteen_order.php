@@ -218,7 +218,19 @@ class CanteenOrder extends AppModel {
 			
 		}
 		
+		
 		return $order_id;
+		
+	}
+	
+	public function saveNewOrder($CanteenOrder) {
+		
+		
+	}
+	
+	public function updateOrder($CanteenOrder) {
+		
+		
 		
 	}
 	

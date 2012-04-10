@@ -18,7 +18,10 @@ class CanteenOrdersController extends LocalAppController {
 	public function index() {
 		
 		$this->paginate['CanteenOrder'] = array(
-			"order"=>array("CanteenOrder.created"=>"DESC")
+			"order"=>array("CanteenOrder.created"=>"DESC"),
+			"contain"=>array(
+				"UserAddress"
+			)
 		);
 		
 		$orders = $this->Paginate("CanteenOrder");
