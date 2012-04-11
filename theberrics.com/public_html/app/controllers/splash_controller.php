@@ -44,6 +44,22 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	public function yn3_final_trailer() {
+		
+		$this->set("title_for_layout","The Berrics - Vans Presents: YOUnited Nations 3");
+		$this->layout = "empty";
+		
+		//get the chaz post
+		$this->loadModel("Dailyop");
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>4939
+		
+		));
+		
+		$this->set(compact("post"));
+	}
+	
 	public function kony() {
 		
 		$this->set("title_for_layout","The Berrics - The worlds most award winning skateboarding site.");
