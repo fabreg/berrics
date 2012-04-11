@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+body {
+
+	background-image:url(/theme/yn3-finals/img/bg.jpg);
+
+}
+
+
+.d-post-bit {
+
+	background-image:none;
+	
+}
+
+.d-post-bit .container {
+
+	background-image:none;
+	background-color:#000;
+}
+
+.d-post-bit .container hr {
+	
+	display:none;
+	
+}
+
+.d-post-bit .container-top {
+
+	background-image:none;
+	background-color:#000;
+	background-image:url(/theme/yn3-finals/img/vans-post-logo.jpg);
+	background-position:top right;
+	background-repeat:no-repeat;
+}
+
+.d-post-bit .bottom {
+
+	background-image:none;
+	background-color:#000;
+
+}
+
+.d-post-bit .bottom .footer
+	 {
+
+	border-top:1px dashed #666;
+
+}
