@@ -17,7 +17,8 @@ class CanteenShippingRecord extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+		"UserAddress"
 	);
 
 	var $hasMany = array(
@@ -251,6 +252,25 @@ class CanteenShippingRecord extends AppModel {
 			}
 			
 		}
+		
+	}
+	
+	public function returnAdminRecord($id) {
+		
+		
+		$record = $this->find("first",array(
+				"conditions"=>array("CanteenShippingRecord.id"=>$id),
+				"contain"=>array(
+					"CanteenOrderItem"=>array(
+						"CanteenInventoryRecord"=>array("Warehouse")
+					),
+					"CanteenOrder",
+					"UserAddress",
+					"Warehouse"
+				)
+			));
+			
+		return $record;
 		
 	}
 	

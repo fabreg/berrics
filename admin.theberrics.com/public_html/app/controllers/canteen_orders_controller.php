@@ -13,6 +13,8 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$this->initPermissions();
 		
+		$this->Auth->allow("barcode");
+		
 	}
 	
 	public function index() {
@@ -20,8 +22,10 @@ class CanteenOrdersController extends LocalAppController {
 		$this->paginate['CanteenOrder'] = array(
 			"order"=>array("CanteenOrder.created"=>"DESC"),
 			"contain"=>array(
-				"UserAddress"
-			)
+				"UserAddress",
+				"CanteenShippingRecord"
+			),
+			"limit"=>50
 		);
 		
 		$orders = $this->Paginate("CanteenOrder");
@@ -38,5 +42,23 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
+	public function print_order($id) {
+		
+		
+		$order = $this->CanteenOrder->returnAdminOrder($id);
+		
+		$this->set(compact("order"));
+		
+		$this->render("/elements/canteen_printing/order-receipt");
+		
+	}
+	
+	public function barcode() {
+
+
+		$this->layout = "empty";
+
+
+	}
 	
 }
