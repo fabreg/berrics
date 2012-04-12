@@ -95,4 +95,10 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
+	public function credit_items() {
+		
+		
+		
+	}
+	
 }
