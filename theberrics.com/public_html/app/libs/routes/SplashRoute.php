@@ -23,7 +23,7 @@ class SplashRoute extends CakeRoute {
 		//$news = true;
 		
 		$params['controller'] = "splash";
-		$params['action'] = "random";
+		$params['action'] = "index";
 		
 		if($news) {
 			
@@ -35,7 +35,7 @@ class SplashRoute extends CakeRoute {
 		if(in_array(date('Y-m-d'),array('2012-04-12'))) {
 			
 			$params['controller'] = "splash";
-			$params['action'] = "yn3_final_trailer";
+			$params['action'] = "index";
 			
 		} 
 
