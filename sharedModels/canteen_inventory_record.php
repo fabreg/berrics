@@ -40,5 +40,11 @@ class CanteenInventoryRecord extends AppModel {
 		
 		
 	}
+	
+	public function returnAllocatedInventory($canteen_inventory_record_id = false,$qty=0) {
+		
+		
+		
+	}
 
 }

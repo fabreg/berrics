@@ -21,6 +21,7 @@
 			<th>ShipTo</th>
 			<th><?php echo $this->Paginator->sort("currency_id"); ?></th>
 			<th><?php echo $this->Paginator->sort("grand_total"); ?></th>
+			<th>BalanceTest</th>
 			<th>-</th>
 		</tr>
 		<?php foreach($orders as $o): 
@@ -52,6 +53,13 @@
 			</td>
 			<td width='1%' nowrap align='center'><?php echo $o['CanteenOrder']['currency_id']; ?></td>
 			<td width='1%' nowrap align='center'><?php echo number_format($o['CanteenOrder']['grand_total'],2); ?></td>
+			<td>
+				<?php 
+					if(!$o['balance']['transaction_test']) echo "<div>Transaction Totals Do Not Match Order Totals</div>";
+					if(!$o['balance']['line_item_test']) echo "<div>Line Item Totals Do Not Match Order SubTotal+TaxTotal</div>";
+					if(!$o['balance']['transaction_test']) echo "<div>Transaction Totals Do Not Match Order Totals</div>";
+				?>
+			</td>
 			<td class='actions'>
 				<a href='/canteen_orders/edit/<?php echo $o['CanteenOrder']['id']; ?>'>Edit</a>
 				<a href='/canteen_orders/print_order/<?php echo $o['CanteenOrder']['id']; ?>' target='_blank'>Print Receipt</a>

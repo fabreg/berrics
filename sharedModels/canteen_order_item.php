@@ -201,5 +201,40 @@ class CanteenOrderItem extends AppModel {
 		
 		
 	}
+	
+	/**
+	 * Remove a child item from an order and update it's parent with new sub_total
+	 * 
+	 * @param ChildCanteenOrderItem.id $item_id
+	 * @return decimal
+	 */
+	public function returnOrderItem($item_id) {
+		
+		$item = $this->find("first",array("conditions"=>array("CanteenOrderItem.id"=>$item_id)));
+		
+		if($item) {
+			
+			$this->CanteenInventoryRecord->returnAllocatedInventory($item['CanteenOrderItem']['canteen_inventory_record_id'],$item['CanteenOrderItem']['quantity']);
+			
+		}
+		
+		//is there a parent line item to update?
+		
+		if(!empty($item['CanteenOrderItem']['parent_id'])) {
+			
+			//deduct the total from the parent row
+			$this->query(
+				"UPDATE canteen_order_items SET sub_total=(sub_total-{$item['CanteenOrderItem']['sub_total']}) WHERE id={$item['CanteenOrderItem']['parent_id']}"
+			);
+			
+		}
+		
+		//now, commit suicide
+		
+		$this->delete($item['CanteenOrderItem']['id']);
+		
+		return $item['CanteenOrderItem']['sub_total'] + $item['CanteenOrderItem']['tax_total'];
+		
+	}
 
 }

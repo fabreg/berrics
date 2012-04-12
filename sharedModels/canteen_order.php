@@ -374,6 +374,70 @@ class CanteenOrder extends AppModel {
 		
 	}
 	
+	public function validateOrderBalance($CanteenOrder) {
+		
+		$result = array(
+			"transaction_test"=>false,
+			"line_item_test"=>false,
+			"tax_test"=>false
+		);
+		
+		$transTotals = array("in"=>0,"out"=>0);
+		
+		foreach($CanteenOrder['GatewayTransaction'] as $t) {
+			
+			if($t['approved']) {
+				
+				switch(strtoupper($t['method'])) {
+					
+					case "CHARGE":
+					case "CAPTURE":
+					case "AUTH":
+						$transTotals['in'] += $t['amount'];
+						break;
+					default:
+						$transTotals['out'] += $t['amount'];
+						break;
+					
+				}
+			}
+			
+		}
+		
+		$lineTotals = array("sub_total"=>0,"tax_total"=>0);
+		
+		foreach($CanteenOrder['CanteenOrderItem'] as $l) {
+			
+			$lineTotals['sub_total'] += $l['sub_total'];
+			$lineTotals['tax_total'] += $l['tax_total'];
+			
+		}
+		
+		//check total money coming in VS the orders grand total
+		if(($transTotals['in']-$transTotals['out'])==$CanteenOrder['CanteenOrder']['grand_total']) {
+			
+			$result['transaction_test'] = true;
+			
+		}
+		
+		//check the line items totals VS the orders grand totals
+		if(($lineTotals['sub_total']+$lineTotals['tax_total'])==($CanteenOrder['CanteenOrder']['sub_total']+$CanteenOrder['CanteenOrder']['tax_total'])) {
+			
+			$result['line_item_test'] = true;
+			
+		}
+		
+		//check the line items tax totals vs the orders tax total
+		if($lineTotals['tax_total']==$CanteenOrder['CanteenOrder']['tax_total']) {
+			
+			$result['tax_test'] = true;
+			
+		}
+		
+		return array_merge($result,array("Transactions"=>$transTotals,"LineItems"=>$lineTotals));
+		
+	}
+	
 	
 	
 	

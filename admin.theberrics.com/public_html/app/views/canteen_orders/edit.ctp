@@ -1,3 +1,9 @@
+<?php 
+
+	
+
+
+?>
 <script>
 $(document).ready(function() { 
 
@@ -145,14 +151,7 @@ border-radius: 10px 10px 0px 0px;
 						<td width='30%' align='right'>Order Status</td>
 						<td><?php echo strtoupper($this->data['CanteenOrder']['order_status']); ?></td>
 					</tr>
-					<tr>
-						<td width='30%' align='right'>Fulfillment Status</td>
-						<td><?php echo strtoupper($this->data['CanteenOrder']['fulfillment_status']); ?></td>
-					</tr>
-					<tr>
-						<td width='30%' align='right'>Shipping Status</td>
-						<td><?php echo strtoupper($this->data['CanteenOrder']['shipping_status']); ?></td>
-					</tr>
+					
 					<tr>
 						<td width='30%' align='right'>Shipping Method</td>
 						<td><?php echo strtoupper($this->data['CanteenOrder']['shipping_method']); ?></td>
@@ -189,7 +188,18 @@ border-radius: 10px 10px 0px 0px;
 				</table>
 			</div>
 			<div style='float:left; width:40%;'>
-			
+				<ul class='actions'>
+					<li>
+						<a href='/canteen_orders/cancel_order/<?php echo $this->data['CanteenOrder']['id']; ?>' onclick='return confirm("Are you sure you want to cancel this order?"); '>
+							Cancel Order
+						</a>
+					</li>
+					<li>
+						<a href='/canteen_orders/credit_totals/<?php echo $this->data['CanteenOrder']['id']; ?>'>
+							Credit Order
+						</a>
+					</li>
+				</ul>
 			</div>
 			<div style='clear:both;'></div>
 		</div>

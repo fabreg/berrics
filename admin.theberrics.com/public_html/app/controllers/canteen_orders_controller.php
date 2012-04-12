@@ -23,12 +23,16 @@ class CanteenOrdersController extends LocalAppController {
 			"order"=>array("CanteenOrder.created"=>"DESC"),
 			"contain"=>array(
 				"UserAddress",
-				"CanteenShippingRecord"
+				"CanteenShippingRecord",
+				"CanteenOrderItem",
+				"GatewayTransaction"
 			),
 			"limit"=>50
 		);
 		
 		$orders = $this->Paginate("CanteenOrder");
+		
+		foreach($orders as $k=>$v) $orders[$k]['balance'] = $this->CanteenOrder->validateOrderBalance($v);
 		
 		$this->set(compact("orders"));
 		
@@ -37,6 +41,8 @@ class CanteenOrdersController extends LocalAppController {
 	public function edit($order_id) {
 		
 		$order = $this->CanteenOrder->returnAdminOrder($order_id);
+		
+	
 		
 		$this->data = $order;
 		
@@ -59,6 +65,34 @@ class CanteenOrdersController extends LocalAppController {
 		$this->layout = "empty";
 
 
+	}
+	
+	public function cancel_order($order_id,$override = false) {
+		
+		if(!$order_id) return $this->cakeError("error404");
+		
+		$order = $this->CanteenOrder->returnAdminOrder($order_id);
+		
+		$valid = array();
+		
+		
+		
+	}
+	
+	public function credit_totals($order_id = false) {
+		
+		if(!$order_id) return $this->cakeError("error404");
+		
+		if(count($this->data)>0) {
+			
+			
+		}
+		
+		
+		$order = $this->CanteenOrder->returnAdminOrder($order_id);
+		
+		$this->set(compact("order"));
+		
 	}
 	
 }

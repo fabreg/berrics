@@ -220,45 +220,56 @@
 		</ul>
 	</li>
 	<li class='li-button'><a href='#' target='_blank'>Canteen</a>
-		<ul class='sub-nav-list'>
-			<li class='li-sub-nav-header'>Configuration</li>
+		<div>
 			
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_config'>Dump Configuration</a>
-			</li>
-				<li class='li-sub-nav-header'>Orders</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_orders'>Manage Orders</a>
-			</li>
-			<li class='li-sub-nav-header'>Batches</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_batches'>Manage Batches</a>
-			</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_batches/add'>Create New Batch</a>
-			</li>
-			<li class='li-sub-nav-header'>Categories</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_categories'>Manage Categories</a>
-			</li>
-			<li class='li-sub-nav-header'>Products</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_products'>Manage Products</a>
-			</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_products/add'>Create new product</a>
-			</li>
-			<li class='li-sub-nav-header'>Warehouses / Inventory</li>
-			<li class='li-sub-nav-button'>
-				<a href='/warehouses'>Manage Warehouses</a>
-			</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_inventory_records'>Manage Inventories</a>
-			</li>
-			<li class='li-sub-nav-button'>
-				<a href='/canteen_inventory_records/add'>Create Inventory Record</a>
-			</li>
-		</ul>
+			<ul class='sub-nav-list' style='width:175px; float:left;'>
+				<li class='li-sub-nav-header'>Configuration</li>
+				
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_config'>Dump Configuration</a>
+				</li>
+					<li class='li-sub-nav-header'>Orders</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_orders'>Manage Orders</a>
+				</li>
+				<li class='li-sub-nav-header'>Batches</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_batches'>Manage Batches</a>
+				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_batches/add'>Create New Batch</a>
+				</li>
+				<li class='li-sub-nav-header'>Categories</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_categories'>Manage Categories</a>
+				</li>	
+			</ul>
+			<ul class='sub-nav-list' style='width:200px; float:left; left:175px;'>
+				<li class='li-sub-nav-header'>Products</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_products'>Manage Products</a>
+				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_products/add'>Create new product</a>
+				</li>
+				<li class='li-sub-nav-header'>Warehouses / Inventory</li>
+				<li class='li-sub-nav-button'>
+					<a href='/warehouses'>Manage Warehouses</a>
+				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_inventory_records'>Manage Inventories</a>
+				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_inventory_records/add'>Create Inventory Record</a>
+				</li>
+				<li class='li-sub-nav-header'>Shipping</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_shipping_records'>Manage Shipments</a>
+				</li>
+			</ul>
+			
+		</div>
+		
 	</li>
 	<li class='li-button'><a href='#' target='_blank'>Unified</a>
 		<ul class='sub-nav-list'>
