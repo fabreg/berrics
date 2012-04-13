@@ -9,6 +9,8 @@
 	$url = $this->Berrics->dailyopsPostUrl($dop);
 	$report_queue = $this->Session->read("MediaFileReportQueue");
 	
+	$fb_like = (!empty($d['fb_like_uri_override'])) ? $d['fb_like_uri_override']:$url;
+	
 	if(!is_array($report_queue)) {
 		
 		$report_queue = array();
@@ -81,7 +83,7 @@
 						?>
 						
 					<?php else: ?>
-					<div class="fb-like" data-href="<?php echo urlencode("http://theberrics.com".$url); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style='float:left;'></div>
+					<div class="fb-like" data-href="<?php echo urlencode("http://theberrics.com".$fb_like); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style='float:left;'></div>
 					<?php  /* <fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like> */ ?>
 					<?php endif; ?>
 					

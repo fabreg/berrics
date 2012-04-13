@@ -228,6 +228,18 @@
     #bangin
     RewriteRule ^(bangin\.php) /bangin [R=301,L]
     
+    ## fix weekendtage
+    RewriteRule ^(gen-ops\/a-weekendtage-announcement-part-2.html)  /weekendtage/a-weekendtage-announcement-part-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-part-1.html)  /weekendtage/weekendtage-part-1.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-part-2.html)  /weekendtage/weekendtage-part-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-christmas-part-1.html)  /weekendtage/weekendtage-christmas-part-1.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-christmas-part-2.html)  /weekendtage/weekendtage-christmas-part-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-march-2012.html)  /weekendtage/weekendtage-march-2012.html [R=301,L]
+   	RewriteRule ^(gen-ops\/weekendtage-phoenix-am.html)  /weekendtage/weekendtage-phoenix-am.html [R=301,L]
+   	RewriteRule ^(gen-ops\/breaking-news-bulletin.html)  /weekendtage/breaking-news-bulletin.html [R=301,L]
+    
+    
+    
 ### END BERRICS URL FIXES
 
 

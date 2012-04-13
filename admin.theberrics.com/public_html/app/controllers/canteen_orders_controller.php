@@ -25,7 +25,7 @@ class CanteenOrdersController extends LocalAppController {
 				"UserAddress",
 				"CanteenShippingRecord",
 				"CanteenOrderItem",
-				"GatewayTransaction"
+				"GatewayTransaction"=>array("GatewayAccount")
 			),
 			"limit"=>50
 		);
@@ -95,7 +95,7 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
-	public function credit_items() {
+	public function credit_items($order_id) {
 		
 		
 		

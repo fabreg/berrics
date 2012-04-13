@@ -62,7 +62,7 @@ class Currency extends AppModel {
 			
 		}
 		
-		return $amount;
+		return number_format($amount,2);
 		
 	}
 	

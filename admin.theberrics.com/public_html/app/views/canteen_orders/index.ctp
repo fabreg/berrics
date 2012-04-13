@@ -55,7 +55,7 @@
 			<td width='1%' nowrap align='center'><?php echo number_format($o['CanteenOrder']['grand_total'],2); ?></td>
 			<td>
 				<?php 
-					if(!$o['balance']['transaction_test']) echo "<div>Transaction Totals Do Not Match Order Totals</div>";
+					if(!$o['balance']['transaction_test']) echo "<div>{$o['balance']['transaction_msg']}</div>";
 					if(!$o['balance']['line_item_test']) echo "<div>Line Item Totals Do Not Match Order SubTotal+TaxTotal</div>";
 					if(!$o['balance']['transaction_test']) echo "<div>Transaction Totals Do Not Match Order Totals</div>";
 				?>

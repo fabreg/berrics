@@ -393,10 +393,11 @@ class CanteenOrder extends AppModel {
 					case "CHARGE":
 					case "CAPTURE":
 					case "AUTH":
-						$transTotals['in'] += $t['amount'];
+						$transTotals['in'] += $this->Currency->convertCurrency($t['GatewayAccount']['currency_id'],$CanteenOrder['CanteenOrder']['currency_id'],$t['amount']);
+	
 						break;
 					default:
-						$transTotals['out'] += $t['amount'];
+						$transTotals['out'] += $this->Currency->convertCurrency($t['GatewayAccount']['currency_id'],$CanteenOrder['CanteenOrder']['currency_id'],$t['amount']);
 						break;
 					
 				}
@@ -412,11 +413,15 @@ class CanteenOrder extends AppModel {
 			$lineTotals['tax_total'] += $l['tax_total'];
 			
 		}
-		
+		//if($CanteenOrder['CanteenOrder']['currency_id']=="EUR") die($transTotals['in']-$transTotals['out']);
 		//check total money coming in VS the orders grand total
 		if(($transTotals['in']-$transTotals['out'])==$CanteenOrder['CanteenOrder']['grand_total']) {
 			
 			$result['transaction_test'] = true;
+			
+		} else {
+			
+			$result['transaction_msg'] = "Transaction Total Difference: ".(($transTotals['in']-$transTotals['out'])-$CanteenOrder['CanteenOrder']['grand_total']);
 			
 		}
 		
