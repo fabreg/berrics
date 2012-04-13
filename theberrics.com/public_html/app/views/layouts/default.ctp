@@ -109,7 +109,8 @@
 									<a href="/features.html" title='The Berrics Features'>Features</a> | 
 									<a href="/news" title='Aberrican Times'>News</a> | 
 									<a href="http://berricsunified.com/" target="_blank">Unified</a> | 
-									<a href="http://theberricscanteen.com/" target="_blank"/>Canteen</a> 
+									<a href="http://theberricscanteen.com/" target="_blank"/>Canteen</a> | 
+									<a href="/terms.html" target="_blank"/>Terms of service</a>
 						</div>
 						<?php 
 									if(isset($_SERVER['DEVSERVER'])) {
