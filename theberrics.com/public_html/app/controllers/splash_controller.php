@@ -563,7 +563,7 @@ public function dc_apr() {
 		$this->loadModel("Dailyop");
 		$post = $this->Dailyop->returnPost(array(
 		
-			"Dailyop.id"=>4344
+			"Dailyop.id"=>4943
 		
 		),1);
 		
