@@ -88,6 +88,17 @@
 				)); 
 			?>
 		</td>
+		<td style='height:75px;' valign='middle'>
+			<?php 
+				echo $this->Media->brandLogoThumb(array(
+				
+					"Brand"=>$brand['Brand'],
+					"h"=>70,
+					"canteen"=>true
+				
+				)); 
+			?>
+		</td>
 		<td><?php echo $brand['Brand']['website_url']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $brand['Brand']['id'])); ?>
