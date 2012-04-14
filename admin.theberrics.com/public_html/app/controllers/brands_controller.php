@@ -15,8 +15,33 @@ class BrandsController extends LocalAppController {
 	
 	}
 	
+	public function search() {
+		
+		
+		$url = array(
+		
+			"action"=>"index",
+			"search"=>true
+		);
+		
+		
+		foreach($this->data as $k=>$v) {
+			
+			foreach($v as $kk=>$vv) {
+				
+				$url[$k.".".$kk]=urlencode($vv);
+				
+			}
+			
+		}
+		
+		return $this->redirect($url);
+		
+		
+	}
 	
 	function index() {
+		
 		$this->Brand->recursive = 0;
 		
 		$this->paginate['Brand'] = array(
@@ -26,6 +51,21 @@ class BrandsController extends LocalAppController {
 			)
 		
 		);
+		
+		if(isset($this->params['named']['search'])) {
+			
+			//Brand name
+			if(isset($this->params['named']['Brand.name'])) {
+				
+				$this->paginate['Brand']['conditions']['Brand.name LIKE'] = "%".str_replace(" ","%",$this->params['named']['Brand.name'])."%";
+				
+				$this->data['Brand']['name'] = $this->params['named']['Brand.name'];
+				
+			}
+			
+			
+		}
+		
 		
 		$this->set('brands', $this->paginate());
 	}
@@ -49,6 +89,7 @@ class BrandsController extends LocalAppController {
 			$this->data['Brand']['established_date'] = $this->data['Brand']['est_date'];
 			
 			$this->uploadLogo();
+			
 			
 			if ($this->Brand->save($this->data)) {
 				$this->Session->setFlash(__('The brand has been saved', true));
@@ -78,6 +119,12 @@ class BrandsController extends LocalAppController {
 			$this->data['Brand']['established_date'] = $this->data['Brand']['est_date'];
 			
 			$this->uploadLogo();
+		
+			if(isset($this->data['CanteenLogo'])) {
+				
+				$this->handleCanteenLogoUpload();
+				
+			}
 			
 			if ($this->Brand->save($this->data)) {
 				$this->Session->setFlash(__('The brand has been saved', true));
@@ -133,6 +180,28 @@ class BrandsController extends LocalAppController {
 			unset($this->data['Brand']['image_logo']);
 						
 		}
+		
+	}
+	
+	public function handleCanteenLogoUpload() {
+		
+		$file = $this->data['Brand']['new_canteen_logo'];
+		
+		if(!is_uploaded_file($file['tmp_name'])) return false;
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$fileName = md5(time().mt_rand(1,100)).".".$ext;
+		
+		move_uploaded_file($file['tmp_name'],TMP."upload/".$fileName);
+		
+		App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+		
+		ImgServer::instance()->upload_canteen_brand_logo($fileName,TMP."upload/".$fileName);
+			
+		$this->data['Brand']['canteen_logo'] = $fileName;
+		
+		unlink(TMP."upload/".$fileName);
 		
 	}
 }

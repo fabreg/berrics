@@ -1,30 +1,7 @@
 $(document).ready(function() { 
 
 
-	$('.canteen-product-thumb').hover(
-		function() { 
-
-			$(this).find('.info').fadeIn();
-			
-		},
-		function() { 
-
-			$(this).find('.info').hide();
-			
-		}
-	).click(function() { 
-
-		var ref = $(this).find("a").attr("href");
-
-		document.location.href = ref;
-		
-	});
-
-	$('.canteen-product-thumb a').click(function() { 
-
-		return false;
-
-	});
+	
 
 
 	$("#reveal").click(function() { 

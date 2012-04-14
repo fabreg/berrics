@@ -248,7 +248,13 @@ class MediaHelper extends AppHelper {
 			
 		}
 		
-		$img['src'] = "/brand-logos/".$brand['image_logo'];
+		
+		$file = $brand['image_logo'];
+		
+		if(isset($b['canteen']) && $b['canteen'] == true)
+			$file = $brand['canteen_logo'];
+		
+		$img['src'] = "/brand-logos/".$file;
 		
 		$src = "http://img.theberrics.com/i.php?".http_build_query($img);
 		

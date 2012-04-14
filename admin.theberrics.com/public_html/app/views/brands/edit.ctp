@@ -43,9 +43,40 @@ $(document).ready(function() {
 		echo $this->Form->input('description');
 		echo $this->Form->input('website_url');
 		echo $this->Form->input("tags");
-		echo $this->Form->input('image_logo',array('type'=>'file','label'=>'Logo Image'));
+		
 		
 	?>
 	</fieldset>
+	<fieldset>
+		<legend>Canteen Logo</legend>
+		<?php if(!empty($this->data['Brand']['canteen_logo'])): ?>
+		<?php echo $this->Media->brandLogoThumb(array(
+				"Brand"=>$this->data['Brand'],
+				"h"=>100,
+				"canteen"=>true
+			));?>
+		<?php else: ?>
+		No Logo Uploaded
+		<?php endif; ?>
+		<?php 
+			echo $this->Form->input("new_canteen_logo",array("type"=>"file"));
+			echo $this->Form->submit("Update Canteen Logo",array("name"=>"data[CanteenLogo]"));
+		?>
+	</fieldset>
+	<fieldset>
+		<legend>Logo</legend>
+		<?php if(!empty($this->data['Brand']['image_logo'])): ?>
+			<?php echo $this->Media->brandLogoThumb(array(
+				"Brand"=>$this->data['Brand'],
+				"h"=>100
+			));?>
+		<?php else: ?>
+		No Logo Uploaded
+		<?php endif; ?>
+		<?php 
+		echo $this->Form->input('image_logo',array('type'=>'file','label'=>'Logo Image'));
+		?>
+	</fieldset>
+	
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>

@@ -1,3 +1,17 @@
+<div id='canteen-home'>
+	<div>
+	
+	
+	</div>
+	<div class='featured-brands'>
+		
+	</div>
+	<div class='featured-products'>
+		<?php foreach($featured as $v): ?>
+		<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
+		<?php endforeach; ?>
+	</div>
+</div>
 <div id='canteen-product-thumbs'>
 	<dl>
 	<?php foreach($cats as $c): ?>

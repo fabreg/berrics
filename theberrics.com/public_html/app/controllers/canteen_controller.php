@@ -21,12 +21,34 @@ class CanteenController extends CanteenAppController {
 	public function index() {
 		
 		$this->loadModel("CanteenCategory");
+		$this->loadModel("CanteenProduct");
 		
 		$cats = $this->CanteenCategory->find("all",array(
 			"order"=>array("CanteenCategory.lft"=>"ASC")
 		));
 		
-		$this->set(compact("cats"));
+		//get three featured products
+		
+		$fp = $this->CanteenProduct->find("all",array(
+			"contain"=>array(),
+			"conditions"=>array(
+				"CanteenProduct.active"=>1,
+				"CanteenProduct.parent_canteen_product_id"=>NULL,
+				"CanteenProduct.featured"=>1
+			),
+			"limit"=>3,
+			"order"=>array("RAND()")
+		));
+		
+		$featured = array();
+		
+		foreach($fp as $v) {
+			
+			$featured[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$v['CanteenProduct']['id'])),false,false,array("no_related"=>true));
+			
+		}
+
+		$this->set(compact("cats","featured"));
 		
 	}
 	
@@ -49,7 +71,7 @@ class CanteenController extends CanteenAppController {
 					"DATE(CanteenProduct.publish_date)<NOW()",
 					"CanteenProduct.canteen_category_id"=>$category['CanteenCategory']['id']
 		
-			);
+		);
 		$meta_filters = array();
 		$brand_filters = array();
 	

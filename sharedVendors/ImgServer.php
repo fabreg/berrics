@@ -188,6 +188,18 @@ class ImgServer {
 		$this->close();
 		
 	}
+	
+	public function upload_canteen_brand_logo($file_name, $file_path) {
+		
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/brand-logos");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		$this->close();
+		
+	}
 
 	
 	
