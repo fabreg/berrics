@@ -23,7 +23,7 @@ class MailerShell extends Shell {
 		$emails = $this->EmailMessage->find("all",array(
 		
 			"conditions"=>array(
-				"EmailMessage.processed"=>0
+				"EmailMessage.processed !="=>1
 			),
 			"contain"=>array()
 		
@@ -68,6 +68,15 @@ class MailerShell extends Shell {
 				$this->EmailMessage->save(array("processed"=>1,"send_date"=>'NOW()'));
 				$success++;
 				
+			} else {
+				
+				SysMsg::add(array(
+					"category"=>"Emailer",
+					"from"=>"MailerShell",
+					"crontab"=>1,
+					"title"=>"Email Failure - Message ID: {$e['id']}"
+				));
+						
 			}
 				
 		}
