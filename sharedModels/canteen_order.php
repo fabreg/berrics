@@ -15,7 +15,15 @@ class CanteenOrder extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		"CanteenPromoCode"
+		"CanteenPromoCode",
+		"UserAccountCanteenPromoCode"=>array(
+			"className"=>"CanteenPromoCode",
+			"foreignKey"=>"user_account_canteen_promo_code"
+		),
+		"PromotionCanteenPromoCode"=>array(
+			"className"=>"CanteenPromoCode",
+			"foreignKey"=>"promotion_canteen_promo_code"
+		)
 	);
 
 	var $hasMany = array(
@@ -124,25 +132,7 @@ class CanteenOrder extends AppModel {
 		$CanteenOrder['CanteenOrder']['shipping_total'] = 0;
 		$CanteenOrder['CanteenOrder']['tax_total'] = 0;
 		
-		//format shipping and billing addresses if needed
-		
-		if(!isset($CanteenOrder['CanteenOrder']['id'])) {
-			
-			if(isset($CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']) && 
-				$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']==1
-			) {
-				
-				$CanteenOrder['UserAddress']['Billing'] = $CanteenOrder['UserAddress']['Shipping'];
-				
-			}
-			
-			$CanteenOrder['UserAddress'][] = array_merge($CanteenOrder['UserAddress']['Shipping'],array("address_type"=>"shipping"));
-			$CanteenOrder['UserAddress'][] = array_merge($CanteenOrder['UserAddress']['Billing'],array("address_type"=>"billing"));
-			
-			unset($CanteenOrder['UserAddress']['Shipping'],$CanteenOrder['UserAddress']['Billing']);
-			
-		}
-		
+		//die(print_r($CanteenOrder));
 		$CanteenOrder = $this->CanteenOrderItem->calculateCartItems($CanteenOrder);
 		
 		//calculate the order totals
@@ -177,6 +167,20 @@ class CanteenOrder extends AppModel {
 		$CanteenOrder['CanteenOrder']['order_status'] = "pending";
 		$CanteenOrder['CanteenOrder']['shipping_status'] = "pending";
 		$CanteenOrder['CanteenOrder']['fulfillment_status'] = "pending";
+
+		//format addresses 
+		$CanteenOrder = $this->formatOnlineOrderAddresses($CanteenOrder);
+		
+		
+		if(!isset($CanteenOrder['CanteenOrder']['id'])) { //new order
+			
+			
+			
+		} else { //we are updating an order
+			
+			$this->id = $CanteenOrder['CanteenOrder']['id'];
+			
+		}
 		
 		$CanteenOrder = $this->calculateCartTotal($CanteenOrder);
 		
@@ -184,13 +188,25 @@ class CanteenOrder extends AppModel {
 		
 		$order_id = $this->id;
 		
-		//save cart items
+		//save the shipping address
+		foreach($CanteenOrder['UserAddress'] as $a) {
+			
+			$a['model'] = "CanteenOrder";
+			$a['foreign_key'] = $order_id;
+			$this->UserAddress->create();
+			if(isset($a['id'])) $this->UserAddress->id = $a['id'];
+			$this->UserAddress->save($a);
+			
+		}
 		
+		//save cart items
 		foreach($CanteenOrder['CanteenOrderItem'] as $item) {
 			
 			$item['canteen_order_id'] = $order_id;
 			
 			$this->CanteenOrderItem->create();
+			
+			if(isset($item['id'])) $this->CanteenOrderItem->id = $item['id'];
 			
 			$this->CanteenOrderItem->save(array("CanteenOrderItem"=>$item));
 			
@@ -202,24 +218,39 @@ class CanteenOrder extends AppModel {
 				
 				$this->CanteenOrderItem->create();
 				
+				if(isset($child['id'])) $this->CanteenOrderItem->id = $child['id'];
+				
 				$this->CanteenOrderItem->save($child);
 				
 			}
 			
 		}
 		
-		//save the shipping address
-		foreach($CanteenOrder['UserAddress'] as $a) {
+	
+		
+		
+		return $order_id;
+		
+	}
+	
+	public function formatOnlineOrderAddresses($CanteenOrder) {
+		
+	//format shipping and billing addresses if needed
+		if(isset($CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']) && 
+			$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']==1
+		) {
 			
-			$a['model'] = "CanteenOrder";
-			$a['foreign_key'] = $order_id;
-			$this->UserAddress->create();
-			$this->UserAddress->save($a);
+			if(!isset($CanteenOrder['UserAddress'][1]['id'])) {
+				
+				$CanteenOrder['UserAddress'][1] = $CanteenOrder['UserAddress'][0];
+				$CanteenOrder['UserAddress'][1]['address_type'] = "billing";
+				
+			}
 			
 		}
 		
 		
-		return $order_id;
+		return $CanteenOrder;
 		
 	}
 	
@@ -287,6 +318,9 @@ class CanteenOrder extends AppModel {
 			$this->processOrderInventory($CanteenOrder['CanteenOrder']['id']);
 			$this->CanteenShippingRecord->createShipment($CanteenOrder['CanteenOrder']['id']);
 			unset($_SERVER['FORCEMASTER']);
+			
+			//queue order email
+			$this->EmailMessage->canteenOrderConfirmation($CanteenOrder);
 		}
 		
 		return $res;
@@ -357,8 +391,10 @@ class CanteenOrder extends AppModel {
 				),
 				
 				"GatewayTransaction"=>array(
+					"order"=>array("GatewayTransaction.created"=>"DESC"),
 					"GatewayAccount"
-				)
+				),
+				"EmailMessage"
 			)
 		));
 		

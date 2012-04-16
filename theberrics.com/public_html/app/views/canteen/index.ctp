@@ -1,7 +1,41 @@
+<style>
+
+.featured-brand {
+
+
+}
+
+.featured-brand .logo {
+
+	float:left;
+
+}
+
+.featured-brand .canteen-product-thumb {
+
+	float:left;
+	margin-right:5px;
+
+}
+
+</style>
 <div id='canteen-home'>
 	<div>
 	
 	
+	</div>
+	<div class='featured-brand'>
+		<div class='logo'>
+			<?php echo $this->Media->brandLogoThumb(array(
+				"Brand"=>$featured_brand['Brand'],
+				"h"=>"150",
+				"canteen"=>true
+			)); ?>
+		</div>
+		<?php foreach($featured_brand['Products'] as $v): ?>
+		<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
+		<?php endforeach; ?>
+		<div style='clear:both;'></div>
 	</div>
 	<div class='featured-brands'>
 		
@@ -11,6 +45,7 @@
 		<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
 		<?php endforeach; ?>
 	</div>
+	
 </div>
 <div id='canteen-product-thumbs'>
 	<dl>

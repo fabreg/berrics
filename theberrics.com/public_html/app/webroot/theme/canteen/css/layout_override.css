@@ -1085,6 +1085,24 @@ PRODUCT EXTRA INFO
 
 }
 
+#canteen-cart #flashMessage {
+	
+	
+	background-color:red;
+	color:white;
+	line-height:20px;
+	font-size:14px;
+	padding:5px;
+	border-radius:12px;
+	moz-border-radius:12px;	
+	text-align:center;
+	font-weight:bold;
+	font-family:'Arial';
+	width:80%;
+	margin:auto;
+
+}
+
 #canteen-cart .container {
 
 	background-image:url(/img/layout/canteen/cart/cart-repeat-bg.jpg);

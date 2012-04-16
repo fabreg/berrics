@@ -96,7 +96,7 @@ class CanteenOrderItem extends AppModel {
 	private function parseLineItem($CanteenOrderItem,$currency_id = "USD",$taxRate = 0.00) {
 		
 		$ChildItems = $CanteenOrderItem['ChildCanteenOrderItem'];
-
+		
 		if(!$ChildItems) {
 			
 			return false;

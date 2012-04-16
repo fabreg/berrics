@@ -19,7 +19,7 @@ $(document).ready(function() {
 	toggleBilling($("#same-as-shipping-check"));
 	
 	
-	$("select[name*='[Shipping][country_code]'],select[name*='[Shipping][state]']").bind("change",function(e) { 
+	$("select[name*='[0][country_code]'],select[name*='[0][state]']").bind("change",function(e) { 
 		
 	
 		calculateCart();

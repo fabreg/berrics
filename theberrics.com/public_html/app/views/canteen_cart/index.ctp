@@ -39,10 +39,11 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 						<div class='container-top'>
 							<div class='heading'>
 								<h2>CHECKOUT</h2>
+								<div><?php echo $this->Session->flash(); ?></div>
 							</div>
 							<div class='shipping'>
 								<h3>SHIPPING INFORMATION</h3>
-								<?php echo $this->element("checkout-forms/shipping-form",array("index"=>"shipping")); ?>
+								<?php echo $this->element("checkout-forms/user-address",array("index"=>0,"address_type"=>"shipping")); ?>
 							</div>
 							<div class='billing'>
 								<h3>PAYMENT INFORMATION</h3>
@@ -51,7 +52,7 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 									echo $this->Form->input("same_as_shipping_checkbox",array("type"=>"checkbox","label"=>"Billing Address Same As Shipping",'id'=>'same-as-shipping-check',"div"=>array("id"=>"same-as-shipping-div")));
 								?>
 								<div style='clear:both;'></div>
-								<?php echo $this->element("checkout-forms/shipping-form",array("index"=>"billing")); ?>
+								<div id='billing-form'><?php echo $this->element("checkout-forms/user-address",array("index"=>1,"address_type"=>"billing")); ?></div>
 								<div id='grand-total'>
 									TOTAL: <span><?php echo $this->Number->currency($this->data['CanteenOrder']['grand_total'],$user_currency_id); ?></span>
 								</div>

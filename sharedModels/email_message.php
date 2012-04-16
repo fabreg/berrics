@@ -44,6 +44,26 @@ class EmailMessage extends AppModel {
 		
 	}
 	
+	public function canteenOrderConfirmation($CanteenOrder) {
+		
+		$ship = Set::extract("/UserAddress[address_type=shipping]",$CanteenOrder);
+		
+		$this->create();
+		
+		
+		$this->save(array(
+			"subject"=>"Order Confirmation - The Berrics Canteen",
+			"to"=>$ship[0]['UserAddress']['email'],
+			"from"=>"Do Not Reply <do.not.reply@theberrics.com>",
+			"send_as"=>"html",
+			"template"=>"canteen_order_conf",
+			"app_name"=>"Canteen",
+			"serialized_data"=>serialize(array("CanteenOrder"=>$CanteenOrder['CanteenOrder'])),
+			"model"=>"CanteenOrder",
+			"foreign_key"=>$CanteenOrder['CanteenOrder']['id']
+		));
+	}
+	
 	
 	public function resendEmail($email_id = false, $resend_label = false) {
 		

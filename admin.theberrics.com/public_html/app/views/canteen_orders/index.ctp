@@ -11,6 +11,19 @@
 </style>
 <div class='index'>
 	<h2>Canteen Orders</h2>
+	<p>
+	<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+	));
+	?>	</p>
+
+	<div class="paging">
+		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+	 | 	<?php echo $this->Paginator->numbers();?>
+ |
+		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+	</div>
 	<table cellspacing='0' class='order-table'>
 		<tr>
 			<th><?php echo $this->Paginator->sort("id"); ?></th>
@@ -19,15 +32,17 @@
 			<th><?php echo $this->Paginator->sort("order_status"); ?></th>
 			<th>Shipments</th>
 			<th>ShipTo</th>
+			<th>BillTo</th>
+			<th>BalanceTest</th>
 			<th><?php echo $this->Paginator->sort("currency_id"); ?></th>
 			<th><?php echo $this->Paginator->sort("grand_total"); ?></th>
-			<th>BalanceTest</th>
+			
 			<th>-</th>
 		</tr>
 		<?php foreach($orders as $o): 
 		
 			$shipto = Set::extract("/UserAddress[address_type=shipping]",$o);	
-			
+			$billto = Set::extract("/UserAddress[address_type=billing]",$o);
 		?>
 		<tr>
 			<td width='1%' nowrap align='center'><?php echo $o['CanteenOrder']['id']; ?></td>
@@ -48,11 +63,16 @@
 			<td align='center'>
 				<?php if(isset($shipto[0]['UserAddress'])): ?>
 				<?php echo $shipto[0]['UserAddress']['first_name']; ?> <?php echo $shipto[0]['UserAddress']['last_name']; ?> 
-				(<?php echo $shipto[0]['UserAddress']['country_code']; ?>)
+				(<?php echo $shipto[0]['UserAddress']['country_code']; ?>)<br />
+				<?php echo $shipto[0]['UserAddress']['email']; ?>
 				<?php endif; ?>
 			</td>
-			<td width='1%' nowrap align='center'><?php echo $o['CanteenOrder']['currency_id']; ?></td>
-			<td width='1%' nowrap align='center'><?php echo number_format($o['CanteenOrder']['grand_total'],2); ?></td>
+			<td align='center'>
+				<?php if(isset($billto[0]['UserAddress'])): ?>
+				<?php echo $billto[0]['UserAddress']['first_name']; ?> <?php echo $billto[0]['UserAddress']['last_name']; ?> 
+				(<?php echo $billto[0]['UserAddress']['country_code']; ?>)
+				<?php endif; ?>
+			</td>
 			<td>
 				<?php 
 					if(!$o['balance']['transaction_test']) echo "<div>{$o['balance']['transaction_msg']}</div>";
@@ -60,6 +80,9 @@
 					if(!$o['balance']['transaction_test']) echo "<div>Transaction Totals Do Not Match Order Totals</div>";
 				?>
 			</td>
+			<td width='1%' nowrap align='center'><?php echo $o['CanteenOrder']['currency_id']; ?></td>
+			<td width='1%' nowrap align='center'><?php echo number_format($o['CanteenOrder']['grand_total'],2); ?></td>
+			
 			<td class='actions'>
 				<a href='/canteen_orders/edit/<?php echo $o['CanteenOrder']['id']; ?>'>Edit</a>
 				<a href='/canteen_orders/print_order/<?php echo $o['CanteenOrder']['id']; ?>' target='_blank'>Print Receipt</a>
@@ -67,4 +90,17 @@
 		</tr>
 		<?php endforeach; ?>
 	</table>
+	<p>
+	<?php
+	echo $this->Paginator->counter(array(
+	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
+	));
+	?>	</p>
+
+	<div class="paging">
+		<?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+	 | 	<?php echo $this->Paginator->numbers();?>
+ |
+		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+	</div>
 </div>

@@ -4,6 +4,8 @@ App::import("Controller","LocalApp");
 
 class EmailMessagesController extends LocalAppController {
 
+	public $components = array("Email");
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -22,7 +24,37 @@ class EmailMessagesController extends LocalAppController {
 			$this->Session->setFlash(__('Invalid email message', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->set('emailMessage', $this->EmailMessage->read(null, $id));
+		
+		$e = $this->EmailMessage->find("first",array(
+			"conditions"=>array(
+				"EmailMessage.id"=>$id
+			)
+		
+		));
+		$msg = $e;
+		$e = $e['EmailMessage'];
+			
+			$this->Email->reset();
+			$this->Email->to = $e['to'];
+			$this->Email->from = $e['from'];
+			$this->Email->subject=$e['subject'];
+			$this->Email->cc = explode(",",$e['cc']);
+			$this->Email->bcc = $e['bcc'];
+			$this->Email->sendAs = $e['send_as'];
+			$this->Email->template = $e['template'];
+			$this->Email->smtpOptions = array(
+												'port'=>'465',
+												'timeout'=>'30',
+												'host' => 'ssl://smtp.gmail.com',
+												'username'=>'do.not.reply@theberrics.com',
+												'password'=>'19Berrics82',
+			);
+			
+			$this->set("msg",$msg);
+			
+			$this->Email->delivery = 'debug';
+			
+			$this->Email->send();
 	}
 
 	function add() {

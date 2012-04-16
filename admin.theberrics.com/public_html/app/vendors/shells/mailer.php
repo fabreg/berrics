@@ -3,7 +3,7 @@ $_SERVER['DEVSERVER']=1;
 class MailerShell extends Shell {
 	
 	public $uses = array("EmailMessage","User");
-	private $email = null;
+	private $Email = null;
 	private $controller = null;
 	
 	public function initialize() {
@@ -11,9 +11,9 @@ class MailerShell extends Shell {
 		parent::initialize();
 		App::import("Component","Email");
 		App::import("Core","Controller");
-		$this->email =& new EmailComponent(null);
+		$this->Email =& new EmailComponent(null);
 		$this->controller =& new Controller();
-		$this->email->initialize($this->controller);
+		$this->Email->initialize($this->controller);
 		
 	}
 	
@@ -42,15 +42,15 @@ class MailerShell extends Shell {
 			
 			$e = $msg['EmailMessage'];
 			
-			$this->email->reset();
-			$this->email->to = $e['to'];
-			$this->email->from = $e['from'];
-			$this->email->subject=$e['subject'];
-			$this->email->cc = explode(",",$e['cc']);
-			$this->email->bcc = $e['bcc'];
-			$this->email->sendAs = $e['send_as'];
-			$this->email->template = $e['template'];
-			$this->email->smtpOptions = array(
+			$this->Email->reset();
+			$this->Email->to = $e['to'];
+			$this->Email->from = $e['from'];
+			$this->Email->subject=$e['subject'];
+			$this->Email->cc = explode(",",$e['cc']);
+			$this->Email->bcc = $e['bcc'];
+			$this->Email->sendAs = $e['send_as'];
+			$this->Email->template = $e['template'];
+			$this->Email->smtpOptions = array(
 												'port'=>'465',
 												'timeout'=>'30',
 												'host' => 'ssl://smtp.gmail.com',
@@ -61,7 +61,7 @@ class MailerShell extends Shell {
 			
 			$this->controller->set(compact("msg"));
 			
-			if($this->email->send()) {
+			if($this->Email->send()) {
 				
 				$this->EmailMessage->create();
 				$this->EmailMessage->id = $e['id'];

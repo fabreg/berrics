@@ -423,6 +423,9 @@ border-radius: 10px 10px 0px 0px;
 		<fieldset>
 			<legend>Order Notes</legend>
 		</fieldset>
+		<fieldset>
+			<legend>Email Messages</legend>
+		</fieldset>
 	</div>
 </div>
 <?php 

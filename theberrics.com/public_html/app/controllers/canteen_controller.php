@@ -23,6 +23,7 @@ class CanteenController extends CanteenAppController {
 		$this->loadModel("CanteenCategory");
 		$this->loadModel("CanteenProduct");
 		
+		
 		$cats = $this->CanteenCategory->find("all",array(
 			"order"=>array("CanteenCategory.lft"=>"ASC")
 		));
@@ -47,8 +48,31 @@ class CanteenController extends CanteenAppController {
 			$featured[] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$v['CanteenProduct']['id'])),false,false,array("no_related"=>true));
 			
 		}
-
-		$this->set(compact("cats","featured"));
+		
+		$featured_brand = $this->CanteenProduct->Brand->find("first",array(
+			
+			"conditions"=>array("Brand.id"=>3),
+			"contain"=>array()
+		
+		));
+		
+		$fbp = $this->CanteenProduct->find("all",array(
+			"contain"=>array(),
+			"conditions"=>array(
+				"CanteenProduct.active"=>1,
+				"CanteenProduct.parent_canteen_product_id"=>NULL,
+				"CanteenProduct.featured"=>1,
+				"CanteenProduct.brand_id"=>3
+			)
+		));
+		
+		foreach($fbp as $v) {
+			
+			$featured_brand['Products'][] = $this->CanteenProduct->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$v['CanteenProduct']['id'])),false,false,array("no_related"=>true));
+			
+		}
+		
+		$this->set(compact("cats","featured","featured_brand"));
 		
 	}
 	
