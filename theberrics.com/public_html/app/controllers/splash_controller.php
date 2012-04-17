@@ -445,6 +445,37 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	public function weekendtage() {
+		
+		$this->loadModel("Dailyop");
+		
+		$ids = $this->Dailyop->find("all",array(
+			"fields"=>array(
+				"Dailyop.id"
+			),
+			"conditions"=>array(
+				"Dailyop.dailyop_section_id"=>76
+			),
+			"contain"=>array()
+		));
+		
+		$ids = Set::classicExtract($ids,"{n}.Dailyop.id");
+		
+		$seed = mt_rand(0,count($ids));
+		
+		
+		$this->layout = "empty";
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>$ids[$seed]
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	public function vans() {
 		
 		$this->layout = "empty";

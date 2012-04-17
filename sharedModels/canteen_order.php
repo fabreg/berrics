@@ -225,10 +225,7 @@ class CanteenOrder extends AppModel {
 			}
 			
 		}
-		
-	
-		
-		
+
 		return $order_id;
 		
 	}
@@ -240,7 +237,14 @@ class CanteenOrder extends AppModel {
 			$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']==1
 		) {
 			
-			if(!isset($CanteenOrder['UserAddress'][1]['id'])) {
+			if(isset($CanteenOrder['UserAddress'][1]['id'])) {
+				
+				$bid = $CanteenOrder['UserAddress'][1]['id'];
+				$CanteenOrder['UserAddress'][1] = $CanteenOrder['UserAddress'][0];
+				$CanteenOrder['UserAddress'][1]['address_type'] = "billing";
+				$CanteenOrder['UserAddress'][1]['id'] = $bid;
+				
+			} else if(!isset($CanteenOrder['UserAddress'][1]['id'])) {
 				
 				$CanteenOrder['UserAddress'][1] = $CanteenOrder['UserAddress'][0];
 				$CanteenOrder['UserAddress'][1]['address_type'] = "billing";

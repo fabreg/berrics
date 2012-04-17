@@ -393,6 +393,7 @@ border-radius: 10px 10px 0px 0px;
 						<th>ID</th>
 						<th>Created/Modified</th>
 						<th>Gateway/Account</th>
+						<th>Approved</th>
 						<th>Currency</th>
 						<th>Type</th>
 						<th>Amount</th>
@@ -405,6 +406,21 @@ border-radius: 10px 10px 0px 0px;
 						</td>
 						<td align='center'>
 							<?php echo $t['GatewayAccount']['provider']; ?>/<?php echo $t['GatewayAccount']['name']; ?>
+						</td>
+						<td align='center'>
+							<?php
+							
+							switch($t['approved']) {
+								
+								case 1:
+									echo "<span style='color:green;'>Yes</span>";
+									break;
+								default:
+									echo "<span style='color:red;'>No</span>";
+									break;
+							}
+							
+							?>
 						</td>
 						<td align='center'>
 							<?php echo $t['currency_id']; ?>
@@ -425,6 +441,32 @@ border-radius: 10px 10px 0px 0px;
 		</fieldset>
 		<fieldset>
 			<legend>Email Messages</legend>
+			<table cellspacing='0'>
+				<tr>
+					<th>ID</th>
+					<th>Created</th>
+					<th>Sent</th>
+					<th>Subject</th>
+					<th>To</th>
+					<th-></th->
+				</tr>
+				<?php foreach($this->data['EmailMessage'] as $e): ?>
+				<tr>
+					<td><?php echo $e['id']; ?></td>
+					<td><?php echo $this->Time->niceShort($e['created']); ?></td>
+					<td>
+					<?php if(!$e['processed']): ?>
+					Not Sent
+					<?php else: ?>
+					<?php echo $this->Time->niceShort($e['sent']); ?>
+					<?php endif; ?>
+					</td>
+					<td><?php echo $e['subject']; ?></td>
+					<td><?php echo $e['to']; ?></td>
+					<th-></th->
+				</tr>
+				<?php endforeach; ?>
+			</table>
 		</fieldset>
 	</div>
 </div>
