@@ -91,8 +91,8 @@ The contents of your order including your shipping address is listed below.
 		<td style='border-bottom:1px solid #000;' nowrap width='150'><?php echo $o['CanteenOrder']['grand_total']; ?> (<?php echo $o['CanteenOrder']['currency_id']; ?>)</td>
 	</tr>
 </table>
-<div style='padding:20px;'>
-	<a href='http://dev.theberrics.com/canteen/order/printable/receipt/<?php echo $o['CanteenOrder']['hash']; ?>'>
+<div style='padding:20px; clear:both;'>
+	<a href='http://dev.theberrics.com/canteen/printable/receipt/<?php echo $o['CanteenOrder']['hash']; ?>'>
 		Click here for a printer friendly receipt
 	</a>
 </div>
