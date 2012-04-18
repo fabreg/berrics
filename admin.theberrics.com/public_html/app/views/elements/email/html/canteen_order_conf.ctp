@@ -35,6 +35,7 @@ The contents of your order including your shipping address is listed below.
 		<div><?php echo $shipTo[0]['UserAddress']['street']; ?> <?php echo $shipTo[0]['UserAddress']['apt']; ?></div>
 		<div><?php echo $shipTo[0]['UserAddress']['city']; ?> <?php echo $shipTo[0]['UserAddress']['state']; ?>, <?php echo $shipTo[0]['UserAddress']['postal_code']; ?></div>
 		<div><?php echo $shipTo[0]['UserAddress']['phone']; ?></div>
+		<div>Shipping Method: <?php echo strtoupper($o['CanteenOrder']['shipping_method']); ?></div>
 	</div>
 	<div></div>
 	<div style='clear:both;'></div>

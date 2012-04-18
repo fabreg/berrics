@@ -179,6 +179,10 @@ body {
 				<td>Order Status:</td>
 				<td><?php echo strtoupper($order['CanteenOrder']['order_status']); ?></td>
 			</tr>
+			<tr>
+				<td>Shipping Method:</td>
+				<td><?php echo strtoupper($order['CanteenOrder']['shipping_method']); ?></td>
+			</tr>
 		</table>
 	</div>
 	<div style='clear:both;'></div>
@@ -213,6 +217,13 @@ body {
 		<?php echo $item['sub_total']; ?>
 	</td>
 </tr>
+<?php if(!empty($order['CanteenOrder']['UserAccountCanteenPromoCode']['name'])): ?>
+<tr>
+	<td colspan='3'>
+		<?php echo $order['CanteenOrder']['UserAccountCanteenPromoCode']['name']; ?>
+	</td>
+</tr>
+<?php endif; ?>
 <?php endforeach; ?>
 </table>
 </div>
@@ -222,6 +233,12 @@ body {
 	</div>
 	<div class='totals'>
 		<table cellspacing='0'>
+			<?php if($order['CanteenOrder']['discount_total']!=0): ?>
+			<tr>
+				<td>Discount Total:</td>
+				<td><?php echo number_format($order['CanteenOrder']['discount_total'],2); ?></td>
+			</tr>
+			<?php endif; ?>
 			<tr>
 				<td>Sub Total:</td>
 				<td><?php echo number_format($order['CanteenOrder']['sub_total'],2); ?></td>
