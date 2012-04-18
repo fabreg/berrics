@@ -149,7 +149,7 @@ class CanteenOrder extends AppModel {
 		
 		$weight = array_sum($weights);
 		
-		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency($CanteenOrder['CanteenOrder']['currency_id'],"USD",CanteenShippingRecord::returnShippingRate($weight,$CanteenOrder['UserAddress'][0]['country_code']));
+		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency($CanteenOrder['CanteenOrder']['currency_id'],"USD",CanteenShippingRecord::returnShippingRate($weight,$CanteenOrder['UserAddress'][0]['country_code'],$CanteenOrder['CanteenOrder']['shipping_method']));
 		
 		//calculate promo codes
 		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);

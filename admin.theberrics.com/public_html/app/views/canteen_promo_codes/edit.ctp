@@ -1,7 +1,7 @@
 <div class="canteenPromoCodes form">
-<?php echo $this->Form->create('CanteenPromoCode');?>
+<?php echo $this->Form->create('CanteenPromoCode',array("enctype"=>"multipart/form-data"));?>
 	<fieldset>
-		<legend><?php __('Edit Canteen Promo Code',array("enctype"=>"multipart/form-data")); ?></legend>
+		<legend><?php __('Edit Canteen Promo Code'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('expire_date');
@@ -12,13 +12,13 @@
 		echo $this->Form->input('promo_type');
 		echo $this->Form->input('promo_code');
 	?>
-		<?php if(empty($this->data['CanteenPromoCode']['icon_file'])): ?>
+		<?php if(!empty($this->data['CanteenPromoCode']['icon_file'])): ?>
 		<div>
 			<img border='0' src='http://img.theberrics.com/canteen-promo-icons/<?php echo $this->data['CanteenPromoCode']['icon_file']; ?>' />
 		</div>
 		<?php endif; ?>
 	<?php 
-			echo $this->Form->input("icon_file");
+			echo $this->Form->input("icon_file",array("type"=>"file"));
 		
 	?>
 	</fieldset>

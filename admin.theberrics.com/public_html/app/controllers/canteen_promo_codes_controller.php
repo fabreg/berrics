@@ -30,6 +30,9 @@ class CanteenPromoCodesController extends LocalAppController {
 	function add() {
 		if (!empty($this->data)) {
 			$this->CanteenPromoCode->create();
+			
+			$this->handleIconUpload();
+			
 			if ($this->CanteenPromoCode->save($this->data)) {
 				$this->Session->setFlash(__('The canteen promo code has been saved', true));
 				$this->redirect(array('action' => 'index'));
@@ -42,13 +45,35 @@ class CanteenPromoCodesController extends LocalAppController {
 	private function handleIconUpload() {
 		
 		$file = $this->data['CanteenPromoCode']['icon_file'];
-		
+	
 		if(!is_uploaded_file($file['tmp_name'])) {
 			
 			unset($this->data['CanteenPromoCode']['icon_file']);
 			
+			return;
+			
 		}
 		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$fileName = md5(microtime().mt_rand(99,999)).".".$ext;
+		
+		if(move_uploaded_file($file['tmp_name'],TMP.$fileName)) {
+			
+			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+			
+			ImgServer::instance()->upload_canteen_promo_icon($fileName,TMP.$fileName);
+			
+			$this->data['CanteenPromoCode']['icon_file'] = $fileName;
+			
+			unlink(TMP.$fileName);
+			
+		} else {
+			
+			unset($this->data['CanteenPromoCode']['icon_file']);
+			
+		}
+
 	}
 
 	function edit($id = null) {
@@ -57,6 +82,9 @@ class CanteenPromoCodesController extends LocalAppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
+			
+			$this->handleIconUpload();
+			
 			if ($this->CanteenPromoCode->save($this->data)) {
 				$this->Session->setFlash(__('The canteen promo code has been saved', true));
 				$this->redirect(array('action' => 'index'));

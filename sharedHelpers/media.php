@@ -361,7 +361,58 @@ class MediaHelper extends AppHelper {
 			
 	}
 	
-	
+	public function promoCodeIcon($promoCode,$opt = array(),$attr = array()) {
+		
+		//the file
+		
+		$opt['src'] = "/canteen-promo-icons/".$promoCode['icon_file'];
+		
+		
+		//check some stuff
+		
+		if(empty($opt['zc'])) {
+			
+			$opt['zc'] = 0;
+			
+		}
+		
+		
+		
+		$size = '';
+		
+		if(isset($opt['h'])) {
+			
+			$size .="&h=".$opt['h'];
+			
+		} else {
+			
+			//$size .="&h=1000";
+			
+		}
+		
+		if(isset($opt['w'])) {
+			
+			$size .= "&w=".$opt['w'];
+			
+		} else {
+			
+		//	$size.="&w=1000";
+			
+		}
+		
+		$proto = 'http';
+		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+			
+			$proto = 'https';
+			
+		}
+		
+		$attr['border'] = 0;
+		
+		//return the thumbnail
+		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
+			
+	}
 	
 }
 

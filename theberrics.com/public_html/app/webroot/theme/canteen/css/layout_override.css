@@ -1043,9 +1043,10 @@ PRODUCT EXTRA INFO
 	
 }
 
-.cart-items table .qty {
+.cart-items td .qty {
 
-	width:65px;
+	font-size:11px;
+	line-height:12px;
 	
 }
 

@@ -1,10 +1,10 @@
 <?php 
 
 $this->Html->script(array("cart/index","jquery.form"),array("inline"=>false));
-
-$shipping_codes = CanteenConfig::get("shipping_codes");
-
-
+$shipping_codes = array(
+	"standard"=>"Standard",
+	"expedited"=>"Expedited"
+);
 
 ?>
 <?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here,"id"=>"checkout-form")); ?>
@@ -47,6 +47,7 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 							</div>
 							<div class='shipping'>
 								<h3>SHIPPING INFORMATION</h3>
+								<?php echo $this->Form->input("CanteenOrder.shipping_method",array("type"=>"select","options"=>$shipping_codes,"label"=>"Method")); ?>
 								<?php echo $this->element("checkout-forms/user-address",array("index"=>0,"address_type"=>"shipping")); ?>
 							</div>
 							<div class='billing'>

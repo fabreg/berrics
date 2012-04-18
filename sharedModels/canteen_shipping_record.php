@@ -89,13 +89,25 @@ class CanteenShippingRecord extends AppModel {
 				"US"
 			),
 			"rates"=>array(
-				0=>19.95,
-				1=>5.00,
-				2=>6.00,
-				3=>7.00,
-				4=>8.00,
-				5=>9.00,
-				6=>10.00
+				"standard"=>array(
+					0=>19.95,
+					1=>5.00,
+					2=>6.00,
+					3=>7.00,
+					4=>8.00,
+					5=>9.00,
+					6=>10.00
+				),
+				"expedited"=>array(
+					0=>19.95,
+					1=>10.00,
+					2=>12.00,
+					3=>14.00,
+					4=>16.00,
+					5=>18.00,
+					6=>20.00
+				)
+				
 			)
 		);
 		
@@ -105,13 +117,25 @@ class CanteenShippingRecord extends AppModel {
 				"CA"
 			),
 			"rates"=>array(
-				0=>19.95,
-				1=>6.00,
-				2=>7.00,
-				3=>8.00,
-				4=>9.00,
-				5=>10.00,
-				6=>11.00
+				"standard"=>array(
+					0=>19.95,
+					1=>9.00,
+					2=>10.00,
+					3=>11.00,
+					4=>12.00,
+					5=>13.00,
+					6=>14.00
+				),
+				"expedited"=>array(
+					0=>19.95,
+					1=>10.00,
+					2=>12.00,
+					3=>14.00,
+					4=>16.00,
+					5=>18.00,
+					6=>20.00
+				)
+				
 			)
 		);
 		//aus
@@ -126,13 +150,25 @@ class CanteenShippingRecord extends AppModel {
 		$z['def'] = array(
 			"countries"=>array(),
 			"rates"=>array(
-				0=>30.95,
-				1=>50.00,
-				2=>60.00,
-				3=>70.00,
-				4=>80.00,
-				5=>90.00,
-				6=>100.00
+				"standard"=>array(
+					0=>19.95,
+					1=>14.00,
+					2=>15.00,
+					3=>16.00,
+					4=>17.00,
+					5=>18.00,
+					6=>19.00
+				),
+				"expedited"=>array(
+					0=>39.95,
+					1=>19.00,
+					2=>21.00,
+					3=>22.00,
+					4=>23.00,
+					5=>24.00,
+					6=>25.00
+				)
+				
 			)
 		);
 		
@@ -140,7 +176,7 @@ class CanteenShippingRecord extends AppModel {
 		
 	}
 	
-	public static function returnShippingRate($weight=1.00,$country_code='US') {
+	public static function returnShippingRate($weight=1.00,$country_code='US',$method = "standard") {
 		
 		
 		$weight = ceil($weight);
@@ -149,14 +185,14 @@ class CanteenShippingRecord extends AppModel {
 		
 		$zones = self::shippingZones();
 		
-		$rates = $zones['def']['rates'];
+		$rates = $zones['def']['rates'][$method];
 		$rate = $rates[0];
 		
 		foreach($zones as $v) {
 			
 			if(in_array($country_code,$v['countries'])) {
 				
-				$rates = $v['rates'];
+				$rates = $v['rates'][$method];
 				
 				$rate = $rates[0];
 				

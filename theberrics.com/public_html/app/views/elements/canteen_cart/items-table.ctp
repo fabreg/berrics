@@ -1,9 +1,6 @@
 <?php 
 
-$shipping_codes = array(
-	"standard"=>"Standard",
-	"expidited"=>"Expidited"
-);
+
 
 
 ?>
@@ -26,7 +23,7 @@ $shipping_codes = array(
 						<div class='item-wrapper'>
 							<div class='img-thumb'>
 								<?php 
-									echo $this->Media->productThumb($c['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>40,"h"=>40));							
+									echo $this->Media->productThumb($c['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>45,"h"=>45));							
 								?>
 							</div>
 							<?php 
@@ -43,6 +40,7 @@ $shipping_codes = array(
 							<?php if(!empty($c['sub_title'])): ?> 
 							<br /><span class='product-option'><?php echo $c['sub_title']; ?></span>
 							<?php endif; ?>
+							<br /><span class='qty'>Qty: <?php echo $c['quantity']; ?></span>
 						</div>
 						<div style='clear:both;'></div>
 					<?php endforeach; ?>
@@ -53,25 +51,16 @@ $shipping_codes = array(
 			<?php if(!empty($this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name'])): ?>
 			<tr>
 				<td>
-				
+					
 				</td>
 				<td colspan='2'>
+					<div style='float:left; margin-left:5px; margin-right:5px;'>
+					<?php echo $this->Media->promoCodeIcon($this->data['CanteenOrder']['UserAccountCanteenPromoCode'],array("w"=>45,"h"=>45)); ?>
+					</div>
 					<?php echo $this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name']; ?>
 				</td>
 			</tr>
 			<?php endif;?>
-			<tr>
-				<td align='center'>
-					<img alt='' border='0' src='/img/layout/canteen/ups-logo.png' />
-				</td>
-				<td colspan='2'>
-				<div class='brand'>SHIPPING</div>
-				<div>
-					<?php echo $this->Form->input("CanteenOrder.shipping_method",array("type"=>"select","options"=>$shipping_codes)); ?>
-				</div>
-				</td>
-				
-			</tr>
 		</tbody>
 	</table>	
 </div>

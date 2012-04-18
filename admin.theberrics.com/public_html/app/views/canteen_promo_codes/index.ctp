@@ -18,6 +18,7 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
+			<th>Icon</th>
 			<th><?php echo $this->Paginator->sort('expire_date');?></th>
 			<th><?php echo $this->Paginator->sort('start_date');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
@@ -38,6 +39,9 @@
 		<td><?php echo $canteenPromoCode['CanteenPromoCode']['id']; ?>&nbsp;</td>
 		<td><?php echo $canteenPromoCode['CanteenPromoCode']['created']; ?>&nbsp;</td>
 		<td><?php echo $canteenPromoCode['CanteenPromoCode']['modified']; ?>&nbsp;</td>
+		<td align='center'>
+			<?php echo $this->Media->promoCodeIcon($canteenPromoCode['CanteenPromoCode'],array("h"=>45)); ?>
+		</td>
 		<td><?php echo $canteenPromoCode['CanteenPromoCode']['expire_date']; ?>&nbsp;</td>
 		<td><?php echo $canteenPromoCode['CanteenPromoCode']['start_date']; ?>&nbsp;</td>
 		<td><?php echo $canteenPromoCode['CanteenPromoCode']['name']; ?>&nbsp;</td>
