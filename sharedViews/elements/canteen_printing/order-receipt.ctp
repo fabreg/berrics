@@ -217,10 +217,10 @@ body {
 		<?php echo $item['sub_total']; ?>
 	</td>
 </tr>
-<?php if(!empty($order['CanteenOrder']['UserAccountCanteenPromoCode']['name'])): ?>
+<?php if(!empty($order['UserAccountCanteenPromoCode']['name'])): ?>
 <tr>
 	<td colspan='3'>
-		<?php echo $order['CanteenOrder']['UserAccountCanteenPromoCode']['name']; ?>
+		<?php echo $order['UserAccountCanteenPromoCode']['name']; ?>
 	</td>
 </tr>
 <?php endif; ?>
