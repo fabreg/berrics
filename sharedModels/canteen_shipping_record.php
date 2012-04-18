@@ -178,11 +178,8 @@ class CanteenShippingRecord extends AppModel {
 	
 	public static function returnShippingRate($weight=1.00,$country_code='US',$method = "standard") {
 		
-		
 		$weight = ceil($weight);
-		
-		
-		
+
 		$zones = self::shippingZones();
 		
 		$rates = $zones['def']['rates'][$method];

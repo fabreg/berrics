@@ -58,6 +58,8 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 				$cls = "team-berra-card";
 				
 				if($v['BatbMatch']['bracket_num'] == 5 && $v['BatbMatch']['match_num'] > 8) $cls = "team-koston-card";
+				if($v['BatbMatch']['bracket_num'] == 4 && $v['BatbMatch']['match_num'] > 4) $cls = "team-koston-card";
+				
 				
 				$letters_drop = BatbMatch::winningLettersDrop();
 				

@@ -46,11 +46,11 @@ $this->Html->script(array("section"),array("inline"=>false));
 				?>
 				<div class='battle match_<?php echo $match['BatbMatch']['bracket_num']; ?>_<?php echo $match['BatbMatch']['match_num']; ?>'>
 					<div class='player'>
-						<?php echo $player1_name; ?>
+						<?php echo $player1_name; ?>&nbsp;
 					</div>
 					<div class='spacer'></div>
 					<div class='player'>
-						<?php echo $player2_name; ?>
+						<?php echo $player2_name; ?>&nbsp;
 					</div>
 				</div>
 				<?php endforeach; ?>
