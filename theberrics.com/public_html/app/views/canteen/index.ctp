@@ -42,8 +42,9 @@
 	</div>
 	<div class='featured-products'>
 		<?php foreach($featured as $v): ?>
-		<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
+		<?php $c .= $this->element("canteen/product-thumb",array("product"=>$v)); ?>
 		<?php endforeach; ?>
+		<?php echo $this->element("paper1",array("content"=>$c)); ?>
 	</div>
 	
 </div>

@@ -101,7 +101,7 @@ var removeInventory = function(id) {
 	endforeach;
 ?>
 </table>
-	<?php echo $this->Form->submit("Update Options"); 
+	<?php echo $this->Form->submit("Update Options",array("name"=>"data[UpdateOptions]")); 
 		echo $this->Form->submit("Add New Option",array("name"=>"data[AddNewOption]"));		
 	?>
 </div>
@@ -111,9 +111,8 @@ else:
 ?>
 <?php 
 
-	echo $this->Form->input("quantity");
-	echo $this->Form->submit("Update Quantity");
-	echo $this->Form->submit("Add Multiple Options",array("name"=>"data[AddNewOption]"));
+	
+	echo $this->Form->submit("Add A Purchase Option",array("name"=>"data[AddNewOption]"));
 ?>
 <?php 
 

@@ -170,6 +170,10 @@ border-radius: 10px 10px 0px 0px;
 						?></td>
 					</tr>
 					<tr>
+						<td width='30%' align='right'>Discount Total</td>
+						<td><?php echo $this->Number->currency($this->data['CanteenOrder']['discount_total'],$this->data['Currency']['id']); ?></td>
+					</tr>
+					<tr>
 						<td width='30%' align='right'>Sub Total</td>
 						<td><?php echo $this->Number->currency($this->data['CanteenOrder']['sub_total'],$this->data['Currency']['id']); ?></td>
 					</tr>

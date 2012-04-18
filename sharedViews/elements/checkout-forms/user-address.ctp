@@ -7,13 +7,7 @@ $(document).ready(function() {
 
 	var formDiv = $("#user-address-form-<?php echo $index; ?>");
 	var states = {};
-	$(formDiv).find("#UserAddressStateDrop optgroup").each(function() { 
-	
-		states[$(this).attr("label")]=$(this).html();
-		
-	});
-	
-	$(formDiv).find("#UserAddressCountryDrop").change(function() {
+	var func = function() {
 	
 		var country = $(formDiv).find("#UserAddressCountryDrop").val();
 
@@ -22,25 +16,36 @@ $(document).ready(function() {
 		
 		if(states[country]) {
 
-			
-			$(formDiv).find("#UserAddressStateDrop").html(ship_to_states_<?php echo $index; ?>[country]);
-			$("#user-address-form-<?php echo $index; ?> #user-address-form-state-text-div").hide().find('input').attr({"disabled":true});
-			$("#user-address-form-<?php echo $index; ?> #user-address>-form-state-select-div").show().find('select').attr({"disabled":false});
+			//alert("yup");
+			$(formDiv).find("#UserAddressStateDrop").html(states[country]);
+			$(formDiv).find("#user-address-form-state-text-div").hide().find('input').attr({"disabled":true}).val('');
+			$(formDiv).find("#user-address-form-state-select-div").show().find('select').attr({"disabled":false});
 
 			//try and set the selected val
 			if(sel.length>0) {
 
-				$("#user-address-form-<?phpt echo $index; ?> #UserAddressStateDrop[value="+sel+"]").attr({"selected":"selected"});
+				$(formDiv).find("#UserAddressStateDrop[value="+sel+"]").attr({"selected":"selected"});
 				
 			}
 			
 		} else {
 
-			$("#user-address-form-<?php echo $index; ?> #user-address-form-state-select-div").hide().find('select').attr({"disabled":true});
-			$("#user-address-form-<?php echo $index; ?> #user-address-form-state-text-div").show().find('input').attr({"disabled":false});
+			$(formDiv).find("#user-address-form-state-select-div").hide().find('select').attr({"disabled":true});
+			$(formDiv).find("#user-address-form-state-text-div").show().find('input').attr({"disabled":false});
 		}
 	
+	};
+	
+	$(formDiv).find("#UserAddressStateDrop optgroup").each(function() { 
+	
+		states[$(this).attr("label")]=$(this).html();
+		
 	});
+	
+	$(formDiv).find("#UserAddressCountryDrop").change(func);
+
+	//func();
+	$(formDiv).find("#UserAddressCountryDrop").change();
 	
 });
 </script>
@@ -54,7 +59,7 @@ $(document).ready(function() {
 <?php if($address_type!="billing") echo $this->Form->input("UserAddress.{$index}.apt",array("label"=>$l['apt'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.country_code",array("options"=>Arr::countries(),"label"=>$l['country'],"id"=>"UserAddressCountryDrop")); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.state",array("options"=>Arr::states(),"label"=>$l['state'],"div"=>array("id"=>"user-address-form-state-select-div"),"id"=>"UserAddressStateDrop")); ?>
-<?php echo $this->Form->input("UserAddress.{$index}.state-text",array("label"=>$l['state'],"div"=>array("id"=>"user-address-form-state-text-div"))); ?>
+<?php echo $this->Form->input("UserAddress.{$index}.state",array("label"=>$l['state'],"div"=>array("id"=>"user-address-form-state-text-div"))); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.city",array("label"=>$l['city'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.postal_code",array("label"=>$l['zip'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.phone",array("label"=>$l['phonenum'])); ?>

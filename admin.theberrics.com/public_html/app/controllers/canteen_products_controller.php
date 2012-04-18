@@ -148,6 +148,8 @@ class CanteenProductsController extends LocalAppController {
 				
 				$this->CanteenProduct->addNewOption($this->data);
 				
+				$this->updateHash = "#Options %26 Inventory";
+				
 			}
 			
 			if(isset($this->data['AddNewImage'])) {
@@ -212,7 +214,13 @@ class CanteenProductsController extends LocalAppController {
 			if(isset($this->data['RemoveOption'])) {
 				
 				$this->removeOption();
+				$this->updateHash = "#Options %26 Inventory";
+			}
+			
+			if(isset($this->data['UpdateOptions'])) {
 				
+				
+				$this->updateHash = "#Options %26 Inventory";
 			}
 	
 			return $this->flash("Product Updated Successfully","/canteen_products/edit/".$this->data['CanteenProduct']['id']."/c:".time().$this->updateHash);
@@ -381,7 +389,6 @@ class CanteenProductsController extends LocalAppController {
 			
 			ImgServer::instance()->delete_product_image($img['CanteenProductImage']['file_name']);
 			
-			
 		}
 		
 	}
@@ -398,8 +405,8 @@ class CanteenProductsController extends LocalAppController {
 		
 		if($opt_id) {
 			
-			$this->CanteenProduct->CanteenProductOption->id = $opt_id;
-			$this->CanteenProduct->CanteenProductOption->save(array(
+			$this->CanteenProduct->id = $opt_id;
+			$this->CanteenProduct->save(array(
 				
 				"deleted"=>1,
 				"active"=>0

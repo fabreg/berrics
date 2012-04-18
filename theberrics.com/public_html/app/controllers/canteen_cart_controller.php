@@ -48,6 +48,16 @@ class CanteenCartController extends CanteenAppController {
 			
 		} else {
 			
+			if($this->Session->check("Auth.User.id")) {
+				
+				$this->Session->write("CanteenOrder.CanteenOrder.user_account_canteen_promo_code_id",1);
+				
+			} else {
+				
+				$this->Session->write("CanteenOrder.CanteenOrder.user_account_canteen_promo_code_id",null);
+				
+			}
+			
 			
 		}
 		
@@ -285,7 +295,19 @@ class CanteenCartController extends CanteenAppController {
 		
 		$this->loadModel("CanteenOrder");
 		
-		$CanteenOrder = $this->CanteenOrder->formatOnlineOrderAddresses(array_merge($this->Session->read("CanteenOrder"),$this->data));
+		foreach($this->data as $k=>$v) {
+				
+				if($this->Session->check("CanteenOrder.{$k}")) {
+					
+					$this->data[$k] = array_merge($this->Session->read("CanteenOrder.{$k}"),$this->data[$k]);
+					
+				}
+				
+		}
+		
+		$this->data['CanteenOrderItem'] = $this->Session->read("CanteenOrder.CanteenOrderItem");
+		
+		$CanteenOrder = $this->CanteenOrder->formatOnlineOrderAddresses($this->data);
 		
 		$order = $this->CanteenOrder->calculateCartTotal($CanteenOrder);
 		

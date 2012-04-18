@@ -51,7 +51,7 @@ function calculateCart() {
 			$("#shipping-total-dd").html(d.CanteenOrder.shipping_total);
 			$("#grand-total-dd,#grand-total span").html(d.CanteenOrder.grand_total);
 	
-			//$('body').append(objectToString(d));
+			//$('body').append(d.toString());
 		}
 		
 	});

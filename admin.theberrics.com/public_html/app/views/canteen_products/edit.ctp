@@ -53,7 +53,7 @@ function selectSet(ind) {
 
 function detectHash() {
 
-	var h = document.location.hash;
+	var h = unescape(document.location.hash);
 
 	if(h.length>1) {
 
@@ -126,11 +126,12 @@ border-radius: 10px 10px 0px 0px;
 		<legend>Meta Data</legend>
 		<?php echo $this->element("canteen_product/meta-data"); ?>
 	</fieldset>
+	<!-- 
 	<fieldset>
 		<legend>Warehouse Info</legend>
 		<?php echo $this->element("canteen_product/wh-info"); ?>
 	</fieldset>
-
+ 	-->
 <div style='clear:both;'></div>
 <?php 
 	echo $this->Form->end();

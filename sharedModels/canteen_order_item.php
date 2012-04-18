@@ -60,27 +60,18 @@ class CanteenOrderItem extends AppModel {
 		
 		$salesTax = false;
 		
-		$taxRate = 0.00;
 		
-		$address = Set::extract("/UserAddress[address_type=shipping]",$CanteenOrder);
-		
-		if(
-			array_key_exists($address[0]['UserAddress']['country_code'],$this->CanteenOrder->taxZones) && 
-			array_key_exists($address[0]['UserAddress']['state'],$this->CanteenOrder->taxZones[$address[0]['UserAddress']['country_code']])
-		) {
-			
-			$taxRate = $this->CanteenOrder->taxZones[$address[0]['UserAddress']['country_code']][$address[0]['UserAddress']['state']];
-			
-		}
 		
 		foreach($CanteenOrderItems as $k=>$v) {
 			
 			
-			$item = $this->parseLineItem($v,$CanteenOrder['CanteenOrder']['currency_id'],$taxRate);
+			$item = $this->parseLineItem($v,$CanteenOrder['CanteenOrder']['currency_id']);
 			
 			if($item) {
 				
 				$CanteenOrderItems[$k] = $item;
+	
+				$CanteenOrder['CanteenOrder']['taxable_total'] += $item['taxable_total'];
 				
 			}
 			
@@ -93,7 +84,7 @@ class CanteenOrderItem extends AppModel {
 	}
 	
 	
-	private function parseLineItem($CanteenOrderItem,$currency_id = "USD",$taxRate = 0.00) {
+	private function parseLineItem($CanteenOrderItem,$currency_id = "USD") {
 		
 		$ChildItems = $CanteenOrderItem['ChildCanteenOrderItem'];
 		
@@ -130,7 +121,7 @@ class CanteenOrderItem extends AppModel {
 			//sales tax
 			if(!$CanteenOrderItem['promo']) {
 				
-				$CanteenOrderItem['tax_total'] += ($taxRate/100)*$CanteenOrderItem['sub_total'];
+				$CanteenOrderItem['taxable_total'] += $CanteenOrderItem['sub_total'];
 				
 			}
 			
@@ -143,7 +134,7 @@ class CanteenOrderItem extends AppModel {
 	}
 	
 	
-	private function parseCanteenProduct($Item,$currency_id,$taxRate) {
+	private function parseCanteenProduct($Item,$currency_id) {
 		
 			$Item['sub_total'] = $Item['tax_total'] = 0;
 		
@@ -183,13 +174,14 @@ class CanteenOrderItem extends AppModel {
 			
 			$Item['title'] .= " - ".$Item['CanteenProduct']['ParentCanteenProduct']['sub_title'];
 			
+			if(isset($Item['CanteenProduct']['ParentCanteenProduct']['Brand']['name'])) $Item['brand_label'] = $Item['CanteenProduct']['ParentCanteenProduct']['Brand']['name'];
+			
 			$Item['sub_title'] = $Item['CanteenProduct']['opt_label'];
 			
 			$Item['sub_title'] .= ":".$Item['CanteenProduct']['opt_value'];
 			
 			$Item['weight'] = $Item['CanteenProduct']['ParentCanteenProduct']['shipping_weight'];
 			
-			//$Item['tax_total'] = ($taxRate/100)*$Item['CanteenProduct']['ParentCanteenProduct']['CanteenProductPrice'][0]['price'];
 			if(empty($Item['sub_total']))
 				$Item['sub_total'] = $Item['CanteenProduct']['ParentCanteenProduct']['CanteenProductPrice'][0]['price']*$Item['quantity'];
 	

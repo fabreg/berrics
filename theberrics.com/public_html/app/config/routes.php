@@ -54,6 +54,7 @@ if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI']) && isset($_SERVER['DEVS
 	Router::connect("/canteen/cart/:action/*",array("controller"=>"canteen_cart"));
 	Router::connect("/canteen/cart",array("controller"=>"canteen_cart"));
 	
+	
 	//promo
 	Router::connect("/canteen/promo",array("controller"=>"canteen_promo","action"=>"index"));
 	

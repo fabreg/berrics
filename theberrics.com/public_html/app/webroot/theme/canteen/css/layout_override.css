@@ -744,37 +744,9 @@ PRODUCT EXTRA INFO
 
 #canteen-invoice .invoice {
 
-	float:left;
-	width:771px;
+
 	
 		
-}
-
-#canteen-invoice .invoice .container  {
-	
-	background-image:url(/img/layout/canteen/order-conf-repeat.jpg);
-	margin-top:527px;
-	
-	
-}
-
-
-#canteen-invoice .invoice  .container-top {
-	
-
-	background-image:url(/img/layout/canteen/order-conf-top.jpg);
-	margin-top:-527px;	
-	min-height:590px;
-	background-repeat:no-repeat;
-}
-
-
-
-#canteen-invoice .invoice  .bottom {
-
-	background-image:url(/img/layout/canteen/order-conf-bottom.jpg);
-	height:103px;	
-	
 }
 
 #canteen-invoice .header {
@@ -808,7 +780,7 @@ PRODUCT EXTRA INFO
 #canteen-invoice .ship-to {
 	
 	float:left;
-	width:46%;
+	width:48%;
 	
 	
 }
@@ -816,7 +788,7 @@ PRODUCT EXTRA INFO
 #canteen-invoice .bill-to {
 	
 	float:right;
-	width:46%;
+	width:48%;
 	
 	
 }
@@ -826,6 +798,14 @@ PRODUCT EXTRA INFO
 	padding:5px;
 	border:1px solid #ccc;
 		
+	
+}
+
+#canteen-invoice .customer .bill-to .envelope {
+
+	background-image:url(/img/layout/canteen/thumb-print.png);	
+	background-repeat:no-repeat;
+	background-position: bottom right;
 	
 }
 
@@ -864,14 +844,14 @@ PRODUCT EXTRA INFO
 }
 
 
-#canteen-invoice .cart-items {
+#canteen-invoice .invoice-items {
 
 		width:94%;
 		margin:auto;
 		margin-top:10px;
 }
 
-#canteen-invoice .cart-items table {
+#canteen-invoice .invoice-items table {
 	
 	color:black;
 	width:100%;
@@ -879,7 +859,7 @@ PRODUCT EXTRA INFO
 	border-left:none;
 	border-top:none;
 }
-#canteen-invoice .cart-items table th {
+#canteen-invoice .invoice-items table th {
 	
 	background-image:url(/img/layout/canteen/order-conf-cart-items-header-bg.jpg);
 	font-size:10px;
@@ -893,7 +873,7 @@ PRODUCT EXTRA INFO
 	border-bottom:none;
 }
 
-#canteen-invoice .cart-items table td {
+#canteen-invoice .invoice-items table td {
 	
 	font-size:14px;
 	border:1px solid #999;

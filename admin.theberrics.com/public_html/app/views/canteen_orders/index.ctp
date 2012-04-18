@@ -1,3 +1,8 @@
+<?php 
+
+//pr($this->params);
+
+?>
 <style>
 .order-table {
 
@@ -8,9 +13,54 @@
 	font-size:11px;
 
 }
+.search-bit {
+
+	float:left;
+	margin:3px;
+	padding:5px;
+	line-height:15px;
+	font-size:12px;
+	border:1px solid #999;
+	background-color:#e0e0e0;
+	-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+
+}
+
 </style>
 <div class='index'>
 	<h2>Canteen Orders</h2>
+	<div style='padding:10px;'>
+		<div>
+			<ul>
+				<li>
+					<a href='/canteen_orders/search'>Search Orders</a>
+				</li>
+			</ul>
+		</div>
+		<div>
+		<?php if(count($this->params['named'])>0): ?>
+		<fieldset>
+			<legend>Search Conditions</legend>
+			<div>
+				<?php 
+					
+					foreach($this->params['named'] as $k=>$v): 
+						if(!preg_match('/^(CanteenOrder|UserAddress)\./',$k)) continue;
+						$v = base64_decode($v);
+				?>
+					<div class='search-bit'>
+						<?php echo "<strong>{$k}</strong> : {$v}"; ?>
+					</div>
+				<?php endforeach; ?>
+				<div style='clear:both;'></div>
+			</div>
+		</fieldset>
+		<?php endif; ?>
+		</div>
+		<div style='clear:both;'></div>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(

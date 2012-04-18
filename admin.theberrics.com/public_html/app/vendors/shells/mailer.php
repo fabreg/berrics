@@ -23,12 +23,12 @@ class MailerShell extends Shell {
 		$emails = $this->EmailMessage->find("all",array(
 		
 			"conditions"=>array(
-				"EmailMessage.processed !="=>1
+				"EmailMessage.processed"=>NULL
 			),
 			"contain"=>array()
 		
 		));	
-		
+
 		SysMsg::add(array(
 			"category"=>"Emailer",
 			"from"=>"MailerShell",

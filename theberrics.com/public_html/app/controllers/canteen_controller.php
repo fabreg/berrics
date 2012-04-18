@@ -279,7 +279,9 @@ class CanteenController extends CanteenAppController {
 			
 			$this->loadModel("CanteenOrder");
 			
-			$order = $this->CanteenOrder->returnAdminOrder($id);
+			$o = $this->CanteenOrder->find("first",array("contain"=>array(),"conditions"=>array("CanteenOrder.hash"=>$id)));
+			
+			$order = $this->CanteenOrder->returnAdminOrder(Set::classicExtract($o,"CanteenOrder.id"));
 			
 			if(isset($order['CanteenOrder']['id'])) {
 				
@@ -292,6 +294,48 @@ class CanteenController extends CanteenAppController {
 			return $this->cakeError("error404");
 			
 		}
+		
+	}
+	
+	public function printable($type,$hash = false) {
+		
+		$this->layout = "canteen_printer";
+		
+		
+		if($hash) {
+			
+			$this->loadModel("CanteenOrder");
+			
+			$o = $this->CanteenOrder->find("first",array("contain"=>array(),"conditions"=>array("CanteenOrder.hash"=>$hash)));
+			
+			$order = $this->CanteenOrder->returnAdminOrder(Set::classicExtract($o,"CanteenOrder.id"));
+			
+			if(isset($order['CanteenOrder']['id'])) {
+				
+				$this->set(compact("order"));
+				
+			} else {
+				
+				return $this->cakeError("error404");
+				
+			}
+			
+		} else {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
+		switch($type) {
+			
+			case "receipt":
+			default:
+				$ele = "order-receipt";
+			break;
+			
+		}
+		
+		$this->render("/elements/canteen_printing/{$ele}");
 		
 	}
 	

@@ -18,11 +18,15 @@ class CanteenOrder extends AppModel {
 		"CanteenPromoCode",
 		"UserAccountCanteenPromoCode"=>array(
 			"className"=>"CanteenPromoCode",
-			"foreignKey"=>"user_account_canteen_promo_code"
+			"foreignKey"=>"user_account_canteen_promo_code_id"
 		),
 		"PromotionCanteenPromoCode"=>array(
 			"className"=>"CanteenPromoCode",
-			"foreignKey"=>"promotion_canteen_promo_code"
+			"foreignKey"=>"promotion_canteen_promo_code_id"
+		),
+		"ShippingCanteenPromoCode"=>array(
+			"className"=>"CanteenPromoCode",
+			"foreignKey"=>"shipping_canteen_promo_code_id"
 		)
 	);
 
@@ -92,11 +96,11 @@ class CanteenOrder extends AppModel {
 			if($data['CanteenOrder']) {
 				
 				$data['CanteenOrder']['id'] = $this->genId();
-				
+				$data['CanteenOrder']['hash'] = sha1($data['CanteenOrder']['id']);
 			} else {
 				
 				$data['id'] = $this->genId();
-				
+				$data['hash'] = sha1($data['id']);
 			}
 			
 			
@@ -127,10 +131,11 @@ class CanteenOrder extends AppModel {
 		
 		$items = $CanteenOrder['CanteenOrderItem'];
 		
-		$CanteenOrder['CanteenOrder']['sub_total'] = 0;
-		$CanteenOrder['CanteenOrder']['grand_total'] = 0;
+		$CanteenOrder['CanteenOrder']['sub_total'] 		= 0;
+		$CanteenOrder['CanteenOrder']['grand_total'] 	= 0;
 		$CanteenOrder['CanteenOrder']['shipping_total'] = 0;
-		$CanteenOrder['CanteenOrder']['tax_total'] = 0;
+		$CanteenOrder['CanteenOrder']['tax_total'] 		= 0;
+		$CanteenOrder['CanteenOrder']['discount_total'] = 0;
 		
 		//die(print_r($CanteenOrder));
 		$CanteenOrder = $this->CanteenOrderItem->calculateCartItems($CanteenOrder);
@@ -138,10 +143,7 @@ class CanteenOrder extends AppModel {
 		//calculate the order totals
 		#subtotal
 		foreach($CanteenOrder['CanteenOrderItem'] as $k=>$v) $CanteenOrder['CanteenOrder']['sub_total'] += $v['sub_total'];
-		
-		#tax total
-		foreach($CanteenOrder['CanteenOrderItem'] as $k=>$v) $CanteenOrder['CanteenOrder']['tax_total'] += $v['tax_total'];
-		
+
 		#shipping_total
 		$weights = Set::extract("/CanteenOrderItem/ChildCanteenOrderItem/weight",$CanteenOrder);
 		
@@ -149,13 +151,35 @@ class CanteenOrder extends AppModel {
 		
 		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency($CanteenOrder['CanteenOrder']['currency_id'],"USD",CanteenShippingRecord::returnShippingRate($weight,$CanteenOrder['UserAddress'][0]['country_code']));
 		
+		//calculate promo codes
+		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);
+		
+		//calculate tax off of taxable total
+		$taxRate = 0.00;
+		
+		$address = Set::extract("/UserAddress[address_type=shipping]",$CanteenOrder);
+		
+		if(
+			array_key_exists($address[0]['UserAddress']['country_code'],$this->taxZones) && 
+			array_key_exists($address[0]['UserAddress']['state'],$this->taxZones[$address[0]['UserAddress']['country_code']])
+		) {
+			
+			$taxRate = $this->taxZones[$address[0]['UserAddress']['country_code']][$address[0]['UserAddress']['state']];
+			
+		}
+		
+		$CanteenOrder['CanteenOrder']['tax_total'] = ($taxRate/100)*$CanteenOrder['CanteenOrder']['taxable_total'];
+		
 		#grand_total
 		$CanteenOrder['CanteenOrder']['grand_total'] =  $CanteenOrder['CanteenOrder']['sub_total'] + 
 														$CanteenOrder['CanteenOrder']['shipping_total'] + 
 														$CanteenOrder['CanteenOrder']['tax_total'];
 		
-		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);
-														
+		
+
+		
+		
+		
 		return $CanteenOrder;
 		
 	}
@@ -376,6 +400,9 @@ class CanteenOrder extends AppModel {
 				"CanteenShippingRecord"=>array("Warehouse"),
 				"Currency",
 				"CanteenPromoCode",	
+				"ShippingCanteenPromoCode",
+				"PromotionCanteenPromoCode",
+				"UserAccountCanteenPromoCode",
 				"UserAddress",
 				"CanteenOrderItem"=>array(
 					"ChildCanteenOrderItem"=>array(
@@ -419,7 +446,7 @@ class CanteenOrder extends AppModel {
 		$result = array(
 			"transaction_test"=>false,
 			"line_item_test"=>false,
-			"tax_test"=>false
+			"tax_test"=>true
 		);
 		
 		$transTotals = array("in"=>0,"out"=>0);
@@ -432,7 +459,6 @@ class CanteenOrder extends AppModel {
 					
 					case "CHARGE":
 					case "CAPTURE":
-					case "AUTH":
 						$transTotals['in'] += $this->Currency->convertCurrency($t['GatewayAccount']['currency_id'],$CanteenOrder['CanteenOrder']['currency_id'],$t['amount']);
 	
 						break;
@@ -450,7 +476,7 @@ class CanteenOrder extends AppModel {
 		foreach($CanteenOrder['CanteenOrderItem'] as $l) {
 			
 			$lineTotals['sub_total'] += $l['sub_total'];
-			$lineTotals['tax_total'] += $l['tax_total'];
+			
 			
 		}
 		//if($CanteenOrder['CanteenOrder']['currency_id']=="EUR") die($transTotals['in']-$transTotals['out']);
@@ -466,7 +492,7 @@ class CanteenOrder extends AppModel {
 		}
 		
 		//check the line items totals VS the orders grand totals
-		if(($lineTotals['sub_total']+$lineTotals['tax_total'])==($CanteenOrder['CanteenOrder']['sub_total']+$CanteenOrder['CanteenOrder']['tax_total'])) {
+		if(($lineTotals['sub_total']+$CanteenOrder['CanteenOrder']['discount_total'])==($CanteenOrder['CanteenOrder']['sub_total'])) {
 			
 			$result['line_item_test'] = true;
 			
@@ -480,6 +506,24 @@ class CanteenOrder extends AppModel {
 		}
 		
 		return array_merge($result,array("Transactions"=>$transTotals,"LineItems"=>$lineTotals));
+		
+	}
+	
+	public static function orderStatusDrop() {
+		
+		$a=array(
+			"declined",
+			"approved",
+			"authorized",
+			"fraud",
+			"canceled"
+		);
+		
+		$r = array();
+		
+		foreach($a as $v) $r[$v] = strtoupper($v);
+		
+		return $r;
 		
 	}
 	

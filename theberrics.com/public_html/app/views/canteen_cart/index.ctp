@@ -24,6 +24,10 @@ $shipping_codes = CanteenConfig::get("shipping_codes");
 			<div class='checkout'>
 				<div class='totals'>
 					<dl class='totals-list'>
+						<?php if($this->data['CanteenOrder']['discount_total']<0): ?>
+						<dt class='discount-total-label'>Discount...</dt>
+						<dd id='discount-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['discount_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<?php endif; ?>
 						<dt>Sub-Total..</dt>
 						<dd id='sub-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['sub_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt id='tax-total-dt'>Sales-Tax..</dt>

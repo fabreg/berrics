@@ -221,8 +221,7 @@
 	</li>
 	<li class='li-button'><a href='#' target='_blank'>Canteen</a>
 		<div>
-			
-			<ul class='sub-nav-list' style='width:175px; float:left;'>
+			<ul class='sub-nav-list' style='width:175px; float:left; left:-50px;'>
 				<li class='li-sub-nav-header'>Configuration</li>
 				
 				<li class='li-sub-nav-button'>
@@ -232,25 +231,12 @@
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_orders'>Manage Orders</a>
 				</li>
-				<li class='li-sub-nav-header'>Batches</li>
 				<li class='li-sub-nav-button'>
-					<a href='/canteen_batches'>Manage Batches</a>
+					<a href='/canteen_orders/search'>Search Orders</a>
 				</li>
+				<li class='li-sub-nav-header'>Shipping</li>
 				<li class='li-sub-nav-button'>
-					<a href='/canteen_batches/add'>Create New Batch</a>
-				</li>
-				<li class='li-sub-nav-header'>Categories</li>
-				<li class='li-sub-nav-button'>
-					<a href='/canteen_categories'>Manage Categories</a>
-				</li>	
-			</ul>
-			<ul class='sub-nav-list' style='width:200px; float:left; left:175px;'>
-				<li class='li-sub-nav-header'>Products</li>
-				<li class='li-sub-nav-button'>
-					<a href='/canteen_products'>Manage Products</a>
-				</li>
-				<li class='li-sub-nav-button'>
-					<a href='/canteen_products/add'>Create new product</a>
+					<a href='/canteen_shipping_records'>Manage Shipments</a>
 				</li>
 				<li class='li-sub-nav-header'>Warehouses / Inventory</li>
 				<li class='li-sub-nav-button'>
@@ -262,10 +248,26 @@
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_inventory_records/add'>Create Inventory Record</a>
 				</li>
-				<li class='li-sub-nav-header'>Shipping</li>
+			</ul>
+			<ul class='sub-nav-list' style='width:200px; float:left; left:125px;'>
+				<li class='li-sub-nav-header'>Products</li>
 				<li class='li-sub-nav-button'>
-					<a href='/canteen_shipping_records'>Manage Shipments</a>
+					<a href='/canteen_products'>Manage Products</a>
 				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_products/add'>Create new product</a>
+				</li>
+				<li class='li-sub-nav-header'>Categories</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_categories'>Manage Categories</a>
+				</li>	
+				<li class='li-sub-nav-header'>Promo Codes</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_promo_codes'>Manage Promo Codes</a>
+				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_promo_codes/add'>Add Promo Code</a>
+				</li>	
 			</ul>
 			
 		</div>

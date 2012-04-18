@@ -5,17 +5,14 @@ App::import("Controller","LocalApp");
 class CanteenPromoCodesController extends LocalAppController {
 
 	var $name = 'CanteenPromoCodes';
-	
+
 	public function beforeFilter() {
-		
 		
 		parent::beforeFilter();
 		
 		$this->initPermissions();
 		
-		
 	}
-	
 	
 	function index() {
 		$this->CanteenPromoCode->recursive = 0;
@@ -40,8 +37,18 @@ class CanteenPromoCodesController extends LocalAppController {
 				$this->Session->setFlash(__('The canteen promo code could not be saved. Please, try again.', true));
 			}
 		}
-		$users = $this->CanteenPromoCode->User->find('list');
-		$this->set(compact('users'));
+	}
+	
+	private function handleIconUpload() {
+		
+		$file = $this->data['CanteenPromoCode']['icon_file'];
+		
+		if(!is_uploaded_file($file['tmp_name'])) {
+			
+			unset($this->data['CanteenPromoCode']['icon_file']);
+			
+		}
+		
 	}
 
 	function edit($id = null) {
@@ -60,8 +67,6 @@ class CanteenPromoCodesController extends LocalAppController {
 		if (empty($this->data)) {
 			$this->data = $this->CanteenPromoCode->read(null, $id);
 		}
-		$users = $this->CanteenPromoCode->User->find('list');
-		$this->set(compact('users'));
 	}
 
 	function delete($id = null) {
@@ -77,4 +82,3 @@ class CanteenPromoCodesController extends LocalAppController {
 		$this->redirect(array('action' => 'index'));
 	}
 }
-?>

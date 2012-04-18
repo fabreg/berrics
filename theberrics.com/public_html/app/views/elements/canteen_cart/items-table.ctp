@@ -33,9 +33,9 @@ $shipping_codes = array(
 							
 								echo $c['title']; 
 
-								if(isset($c['CanteenProduct']['ParentCanteenProduct']['Brand'])):
+								if(!empty($c['brand_label'])):
 							?>
-							<span class='brand'>BY: <?php echo strtoupper($c['CanteenProduct']['ParentCanteenProduct']['Brand']['name']); ?></span>
+							<span class='brand'>BY: <?php echo strtoupper($c['brand_label']); ?></span>
 							<?php 
 								endif;
 							?>
@@ -50,6 +50,16 @@ $shipping_codes = array(
 				<td class='price'><?php echo $this->Number->currency($item['sub_total'],$user_currency_id); ?></td>
 			</tr>	
 			<?php endforeach; ?>
+			<?php if(!empty($this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name'])): ?>
+			<tr>
+				<td>
+				
+				</td>
+				<td colspan='2'>
+					<?php echo $this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name']; ?>
+				</td>
+			</tr>
+			<?php endif;?>
 			<tr>
 				<td align='center'>
 					<img alt='' border='0' src='/img/layout/canteen/ups-logo.png' />

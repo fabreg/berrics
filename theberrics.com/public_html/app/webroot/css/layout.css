@@ -2352,6 +2352,50 @@ emails of the weeks
 	
 }
 
+/*
+
+PAPER 1
+
+*/
+
+.paper1 {
+	
+	width:728px;
+	
+}
+
+.paper1 .container-top {
+	
+	background-image:url(/img/layout/paper/paper1-top.jpg);
+	background-repeat:no-repeat;
+	float:left;
+	margin-top:-502px;
+	width:728px;
+}
+
+.paper1 .container {
+
+	margin-top:502px;
+	background-image:url(/img/layout/paper/paper1-repeat.jpg);
+	
+}
+
+.paper1 .content {
+
+	padding:10px;
+	padding-top:15px;	
+	
+}
+
+.paper1 .bottom {
+	
+	background-image:url(/img/layout/paper/paper1-bottom.jpg);
+	height:96px;
+	
+}
+
+
+
 
 /*
 	PROFILES
