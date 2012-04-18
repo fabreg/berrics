@@ -49,17 +49,30 @@ The contents of your order including your shipping address is listed below.
 		foreach($o['CanteenOrderItem'] as $item):
 			foreach($item['ChildCanteenOrderItem'] as $child):
 	?>
-		<tr>
-			<td><?php echo $child['title']; ?> <?php echo 'By: '.$child['brand_label']; ?> <?php echo (!empty($child['sub_title'])) ? "<br />".$child['sub_title']:""; ?></td>
-			<td align='center'><?php echo $child['quantity']; ?></td>
-		</tr>
+	<tr>
+		<td><?php echo $child['title']; ?> <?php echo 'By: '.$child['brand_label']; ?> <?php echo (!empty($child['sub_title'])) ? "<br />".$child['sub_title']:""; ?></td>
+		<td align='center'><?php echo $child['quantity']; ?></td>
+	</tr>
 	<?php
 			endforeach; 
 		endforeach;
 	?>
+	<?php if(!empty($o['UserAccountCanteenPromoCode']['name'])): ?>
+	<tr>
+		<td colspan='2'>
+			<?php echo $o['UserAccountCanteenPromoCode']['name']; ?>
+		</td>
+	</tr>
+	<?php endif; ?>
 </table>
 <h4>Totals</h4>
 <table cellspacing='0' cellpadding='5' align='left'>
+	<?php if($o['CanteenOrder']['discount_total']!=0): ?>
+	<tr>
+		<td width='120' nowrap align='right'>Discount Total</td>
+		<td style='border-bottom:1px solid #000;'><?php echo $o['CanteenOrder']['discount_total']; ?></td>
+	</tr>
+	<?php endif; ?>
 	<tr>
 		<td width='80' nowrap align='right'>Sub Total</td>
 		<td style='border-bottom:1px solid #000;'><?php echo $o['CanteenOrder']['sub_total']; ?></td>
@@ -77,3 +90,6 @@ The contents of your order including your shipping address is listed below.
 		<td style='border-bottom:1px solid #000;' nowrap width='150'><?php echo $o['CanteenOrder']['grand_total']; ?> (<?php echo $o['CanteenOrder']['currency_id']; ?>)</td>
 	</tr>
 </table>
+<div style='height:150px;'>
+
+</div>
