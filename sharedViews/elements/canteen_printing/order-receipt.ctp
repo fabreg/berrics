@@ -217,6 +217,7 @@ body {
 		<?php echo $item['sub_total']; ?>
 	</td>
 </tr>
+<?php endforeach; ?>
 <?php if(!empty($order['UserAccountCanteenPromoCode']['name'])): ?>
 <tr>
 	<td colspan='3'>
@@ -224,7 +225,6 @@ body {
 	</td>
 </tr>
 <?php endif; ?>
-<?php endforeach; ?>
 </table>
 </div>
 <div>
