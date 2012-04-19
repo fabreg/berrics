@@ -1,9 +1,3 @@
-<?php 
-
-
-
-
-?>
 <div class='cart-items'>
 	<table cellspacing='0'>
 		<thead>
@@ -16,9 +10,11 @@
 		<tbody>
 			<?php foreach($this->data['CanteenOrderItem'] as $k=>$item): ?>
 			<tr>
-				<td align="center" valign="center">&nbsp;</td>
+				<td align="center" valign="center">
+				<div class='delete' hash='<?php echo $item['hash']; ?>'>X</div>
+				</td>
 				<td valign='top' >
-					<div class='delete' hash='<?php echo $item['hash']; ?>'>REMOVE</div>
+					
 					<?php foreach($item['ChildCanteenOrderItem'] as $key=>$c): ?>
 						<div class='item-wrapper'>
 							<div class='img-thumb'>

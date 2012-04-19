@@ -224,7 +224,7 @@ class CanteenCartController extends CanteenAppController {
 
 		}
 		
-		$line_item['hash'] = md5(time().mt_rand(999,9999));
+		$line_item['hash'] = sha1(time().mt_rand(999,9999));
 
 		$cart['CanteenOrderItem'][] = $line_item;
 
