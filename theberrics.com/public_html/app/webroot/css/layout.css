@@ -2384,7 +2384,7 @@ PAPER 1
 
 	padding:10px;
 	padding-top:15px;	
-	
+	min-height:500px;
 }
 
 .paper1 .bottom {
@@ -2394,6 +2394,48 @@ PAPER 1
 	
 }
 
+/*
+ORDER STATUS
+*/
+#order-status {
+	
+	font-family:'Courier';
+	color:#333;
+}
+
+#order-status .heading {
+
+	border-bottom:2px dotted #999;	
+	padding:5px;
+	color:#666;
+	font-size:24px;
+	text-align:center;
+	font-family:'Times New Roman';
+}
+
+#order-status .order-bit {
+	
+	margin-top:10px;
+	
+}
+
+#order-status .order-bit .label {
+	
+	font-size:11px;
+	font-family:'Arial';
+	color:#333;
+	font-weight:bold;
+	text-indent:10px;
+	
+}
+
+#order-status .order-bit .value {
+	
+	padding:5px;
+	border:2px solid #ccc;
+	font-size:14px;
+	
+}
 
 
 

@@ -35,6 +35,7 @@
 			<th><?php echo $this->Paginator->sort("style_code"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
+			<th><?php echo $this->Paginator->sort("sub_title"); ?></th>
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
 			<th>-</th>
 		</tr>
@@ -91,6 +92,7 @@
 			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
 			<td><?php echo $p['name']; ?></td>
 			<td align='center' nowrap width='1%'><?php echo $c['name']; ?></td>
+			<td align='center' nowrap width='1%'><?php echo $c['sub_title']; ?></td>
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 			</td>

@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 			//$("#canteen-navbar ul li ul").hide();
 			
-			$(this).find("ul").show('normal');
+			$(this).find("ul").fadeIn('normal');
 			$(this).addClass("over");
 		},
 		function() { 

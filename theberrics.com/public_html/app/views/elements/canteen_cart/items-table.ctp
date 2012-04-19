@@ -53,7 +53,7 @@
 				<td>
 					
 				</td>
-				<td colspan='2'>
+				<td colspan='2' valign='center'>
 					<div style='float:left; margin-left:5px; margin-right:5px;'>
 					<?php echo $this->Media->promoCodeIcon($this->data['CanteenOrder']['UserAccountCanteenPromoCode'],array("w"=>45,"h"=>45)); ?>
 					</div>
