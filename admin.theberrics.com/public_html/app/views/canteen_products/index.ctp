@@ -31,9 +31,9 @@
 			<th>Thumb Image</th>
 			<th><?php echo $this->Paginator->sort("active"); ?></th>
 			<th><?php echo $this->Paginator->sort("featured"); ?></th>
+			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("display_weight"); ?></th>
 			<th><?php echo $this->Paginator->sort("style_code"); ?></th>
-			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("Brand.name"); ?></th>
@@ -44,6 +44,7 @@
 			foreach($products as $prod):
 				$p = $prod['CanteenProduct'];
 				$c = $prod['CanteenCategory'];
+				$b = $prod['Brand'];
 		?>
 		<tr>
 			<td width='1%' nowrap>
@@ -88,12 +89,12 @@
 					
 				?>
 			</td>
-			<td align='center' nowrap width='1%'><?php echo $p['style_code']; ?></td>
 			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
-			<td><?php echo $p['name']; ?></td>
-			<td align='center' nowrap width='1%'><?php echo $c['name']; ?> - <?php echo $c['sub_title']; ?></td>
-			<td align='center'><?php echo $c['CanteenCategory']['name']; ?></td>
-			<td align='center'><?php echo $c['Brand']['name']; ?></td>
+			
+			<td align='center' nowrap width='1%'><?php echo $p['style_code']; ?></td>
+			<td align='center' nowrap width='1%'><?php echo $p['name']; ?> - <?php echo $p['sub_title']; ?></td>
+			<td align='center'><?php echo $c['name']; ?></td>
+			<td align='center'><?php echo $b['name']; ?></td>
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 			</td>
