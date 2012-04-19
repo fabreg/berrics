@@ -152,6 +152,16 @@ class CanteenProductsController extends LocalAppController {
 				
 			}
 			
+			if(isset($this->data['AddCommonShirtOptions'])) {
+				
+				$this->CanteenProduct->addCommonShirtOptions($this->data);
+				
+				$this->updateHash = "#Options %26 Inventory";
+				
+			}
+			
+			
+			
 			if(isset($this->data['AddNewImage'])) {
 				
 				$this->uploadImage();
@@ -453,6 +463,12 @@ class CanteenProductsController extends LocalAppController {
 			
 		}
 		
+		
+		
+		
+	}
+	
+	private function addCommonShirtOptions() {
 		
 		
 		

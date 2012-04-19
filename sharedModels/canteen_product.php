@@ -247,6 +247,30 @@ class CanteenProduct extends AppModel {
 		
 	}
 	
+	public function addCommonShirtOptions($data = array()) {
+		
+		$id = $data['CanteenProduct']['id'];
+		
+		//sizes
+		$s = array("S","M","L","XL");
+		
+		foreach($s as $k=>$v) {
+			
+			$this->create();
+			$this->save(array(
+				"parent_canteen_product_id"=>$id,
+				"active"=>1,
+				"delete"=>0,
+				"opt_label"=>"Size",
+				"opt_value"=>$v,
+				"display_weight"=>($k+1)
+			));
+			
+		}
+		
+		
+	}
+	
 	public static function merchTemplates() {
 		
 		$a = array(

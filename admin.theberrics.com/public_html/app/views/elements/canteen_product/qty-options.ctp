@@ -113,6 +113,7 @@ else:
 
 	
 	echo $this->Form->submit("Add A Purchase Option",array("name"=>"data[AddNewOption]"));
+	echo $this->Form->submit("** Add Common Shirt Options **",array("name"=>"data[AddCommonShirtOptions]"));
 ?>
 <?php 
 
