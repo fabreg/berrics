@@ -12,20 +12,19 @@ $shipTo = Set::extract("/UserAddress[address_type=shipping]",$o);
 <div>
 <p>
 <?php echo $shipTo[0]['UserAddress']['first_name']; ?>,<br />
-This email is to confirm that The Canteen has received your order.<br />
+Thanks for shopping at The Berrics Canteen.<br />
+This email confirms we have received and approved your order.<br />
 <?php if($o['CanteenOrder']['order_status'] == "approved"): ?>
-Your order has been approved and you will receive an additional email once your order has shipped.<br />
+You will receive another email once your order has shipped. <br />
 <?php else: ?>
 While your order has been authorized it may still need further review. Expect and email or a phone call from us with an updated status of your order in the next 24-48 hours.<br />
 <?php 
 	endif;
-?>
-Should you have a question or if you would like to check the status of your order, please use the following link: <br />
+?> 
+Should you have a question or to check the status of your order, please use the following link:<br /><br />
 <a href='http://theberrics.com/canteen/order/<?php echo $o['CanteenOrder']['hash']; ?>'>http://theberrics.com/canteen/order/<?php echo $o['CanteenOrder']['hash']; ?></a>
 </p>
-<p>
-The contents of your order including your shipping address is listed below.
-</p>
+
 <h2>Order #: <?php echo $o['CanteenOrder']['id']; ?></h2>
 </div>
 <div>
@@ -67,7 +66,7 @@ The contents of your order including your shipping address is listed below.
 	<?php endif; ?>
 </table>
 <h4>Totals</h4>
-<table cellspacing='0' cellpadding='5' align='left'>
+<table cellspacing='0' cellpadding='5' align='right'>
 	<?php if($o['CanteenOrder']['discount_total']!=0): ?>
 	<tr>
 		<td width='120' nowrap align='right'>Discount Total</td>

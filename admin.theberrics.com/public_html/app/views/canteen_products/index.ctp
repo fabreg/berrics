@@ -99,6 +99,7 @@
 			
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
+				<a target='_blank' href='http://dev.theberrics.com/canteen/item/<?php echo $p['uri']; ?>'>Dev Link</a>
 			</td>
 		</tr>
 		<?php 
