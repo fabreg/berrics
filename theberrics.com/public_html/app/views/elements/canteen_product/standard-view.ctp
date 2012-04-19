@@ -197,7 +197,14 @@ function initOptionClick() {
 							?>
 						</div>
 						<div class='submit-button'>
-							<?php echo $this->Form->submit("Add to Cart"); ?>
+							<?php 
+								
+								if(count(Set::classicExtract($product,"ChildCanteenProduct"))>0):
+								echo $this->Form->submit("Add to Cart"); 
+								else:
+							?>
+							<span style='color:red;'>NEED OUT OF STOCK BUTTON!</span>
+							<?php endif; ?>
 						</div>
 						<div class='zuckerberg-shoutout'>
 							<div style='float:left; margin-right:4px;'>
@@ -277,3 +284,7 @@ function initOptionClick() {
 	</div>
 	<div style='clear:both;'></div>
 </div>
+<?php 
+
+print_r($product)
+?>
