@@ -58,13 +58,15 @@ class CanteenProductsController extends LocalAppController {
 						"CanteenProductImage.display_weight"=>"ASC"
 					),
 					"limit"=>1
-				)
+				),
+				"Brand"
 			),
 			"conditions"=>array(
 				
 					"CanteenProduct.parent_canteen_product_id"=>NULL
 				
-			)
+			),
+			"order"=>array("CanteenProduct.created"=>"DESC")
 		
 		);
 		
