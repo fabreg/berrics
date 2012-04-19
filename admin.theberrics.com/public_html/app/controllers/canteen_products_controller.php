@@ -104,6 +104,19 @@ class CanteenProductsController extends LocalAppController {
 			
 			$this->data['Tag'] = $this->CanteenProduct->Tag->parseTags($this->data['CanteenProduct']['tags']);
 			
+			if(empty($this->data['CanteenProduct']['uri'])) {
+				
+				$brand = $this->CanteenProduct->Brand->find("first",array(
+					"conditions"=>array("Brand.id"=>$this->data['CanteenProduct']['brand_id']),
+					"contain"=>array()
+				));
+				
+				$ustr = $brand['Brand']['name']." ".$this->data['CanteenProduct']['name']." ".$this->data['CanteenProduct']['sub_title'];
+				
+				$this->data['CanteenProduct']['uri'] = Tools::safeUrl($ustr).".html";
+				
+			}
+			
 			$this->CanteenProduct->save($this->data);
 			
 			$new_id = $this->CanteenProduct->id;
@@ -124,6 +137,10 @@ class CanteenProductsController extends LocalAppController {
 				));
 				
 			}
+			
+			
+			
+			
 			
 			return $this->flash("Product Added Successfully","/canteen_products/edit/".$new_id);
 			
