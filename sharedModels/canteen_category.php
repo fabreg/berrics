@@ -150,7 +150,7 @@ class CanteenCategory extends AppModel {
 			
 				$filters['Brand'][$p['Brand']['id']] = $p['Brand'];
 				
-				foreach($p['Meta'] as $m) $filters['Meta'][$m['key']][$m['id']] = $m['val'];
+				foreach($p['Meta'] as $m) $filters['Meta'][strtolower($m['key'])][$m['id']] = $m['val'];
 				
 			}
 

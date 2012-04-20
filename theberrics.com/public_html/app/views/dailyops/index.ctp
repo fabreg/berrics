@@ -63,6 +63,20 @@ foreach($dailyops as $k=>$dop):
 endforeach;
 
 ?>
+
+<?php if(isset($yn3)): ?>
+<div>
+<?php foreach($yn3 as $yp): ?>
+<div style='float:left;'>
+<?php echo $this->element("dailyops/post-thumb-large",array("dop"=>$yp)); ?>
+</div>
+<?php endforeach; ?>
+<div style='clear:both; height:30px;'></div>
+</div>
+<?php endif; ?>
+
+
+
 	<div id='paging-menu'>
 		<div class='left'>
 		<?php 

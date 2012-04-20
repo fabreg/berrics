@@ -204,6 +204,44 @@ class DailyopsController extends LocalAppController {
 			
 		}
 		
+		
+		//get the additional yn3 posts
+		if(preg_match("/^(\/dailyops)/",$_SERVER['REQUEST_URI'])) {
+			
+			switch(date("Y-m-d")) {
+				
+				case "2012-04-20":
+					$dateSeed = strtotime("-2 Days");
+					
+					$dateArg = date("Y-m-d",$dateSeed);
+					
+					$yp = $this->Dailyop->find("all",array(
+						"conditions"=>array(
+							"Dailyop.active"=>1,
+							"Dailyop.hidden"=>0,
+							"Dailyop.dailyop_section_id"=>66,
+							"DATE(Dailyop.publish_date) < '{$dateArg}'"
+						),
+						"contain"=>array(),
+						"order"=>array("Dailyop.publish_date"=>"DESC")
+					));
+					
+					
+					foreach($yp as $v) {
+						
+						$yn3[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$v['Dailyop']['id']));
+						
+					}
+					
+					$this->set(compact("yn3"));
+					
+					break;
+				
+				
+			}
+			
+		}
+		
 
 	}
 	
