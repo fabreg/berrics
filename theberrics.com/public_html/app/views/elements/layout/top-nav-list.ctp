@@ -20,8 +20,8 @@
 							                );
 							$yn['DailyopSection'] =  Array
 							                (
-							                    'name' => 'YOUnited Nations',
-							                    'uri' => 'younited-nations.html',
+							                    'name' => 'YOUnited Nations 3',
+							                    'uri' => 'younited-nations-3',
 							                    'sort_weight' => 0,
 							                    'icon_dark_file' => 'yn-featured.png',
 							                    'icon_light_file' => 'yn-featured.png',
