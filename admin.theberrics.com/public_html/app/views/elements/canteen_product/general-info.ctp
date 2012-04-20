@@ -68,7 +68,7 @@ $(document).ready(function() {
 				echo $this->Form->input("description");
 				echo $this->Form->input("brand_id");
 				echo $this->Form->input("canteen_category_id");
-				echo $this->Form->input("display_weight");
+				if($this->params['action'] != "add") echo $this->Form->input("display_weight");
 				echo $this->Form->input("tags",array("value"=>$tag_str));
 				echo $this->Form->input("uri");
 				echo $this->Form->input("shipping_weight");

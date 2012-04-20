@@ -238,6 +238,9 @@
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_shipping_records'>Manage Shipments</a>
 				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_shipping_records/process'>Process Shipment</a>
+				</li>
 				<li class='li-sub-nav-header'>Warehouses / Inventory</li>
 				<li class='li-sub-nav-button'>
 					<a href='/warehouses'>Manage Warehouses</a>

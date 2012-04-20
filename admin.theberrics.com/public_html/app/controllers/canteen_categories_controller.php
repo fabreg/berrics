@@ -131,6 +131,63 @@ class CanteenCategoriesController extends LocalAppController {
 		
 	}
 	
+	public function sort_products($id = false) {
+		
+		if(!$id) return $this->cakeError("error404");
+		
+		$this->loadModel("CanteenProduct");
+		
+		if(count($this->data)>0) {
+			
+			
+			foreach($this->data['CanteenProduct']['display_weight'] as $k=>$w) {
+				
+				$this->CanteenProduct->create();
+				
+				$this->CanteenProduct->id = $k;
+				
+				$this->CanteenProduct->save(array(
+					"display_weight"=>$w
+				));
+				
+			}
+			
+			return $this->flash("Sorting Updated",$this->here);
+			
+		}
+		
+		
+		
+		
+		$products = $this->CanteenProduct->find("all",array(
+							"conditions"=>array(
+								"CanteenProduct.parent_canteen_product_id"=>NULL,
+								"CanteenProduct.active"=>1,
+								"CanteenProduct.featured"=>1,
+								"CanteenProduct.canteen_category_id"=>$id
+							),
+							"contain"=>array(
+								"CanteenProductImage"=>array(
+									"order"=>array("CanteenProductImage.thumb_image"=>"DESC")
+								),
+								"Brand"
+							),
+							"order"=>array(
+								"CanteenProduct.display_weight"=>"ASC"
+							)
+		));
+		
+		$category = $this->CanteenCategory->find("first",array(
+			"conditions"=>array(
+				"CanteenCategory.id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		$this->set(compact("products","category"));
+		
+	}
+	
 	
 	
 }

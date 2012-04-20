@@ -201,34 +201,39 @@ class CanteenCartController extends CanteenAppController {
 	}
 
 	public function add() {
-
-		$cart = $this->Session->read("CanteenOrder");
 		
-		if(!isset($cart['CateenOrder'])) {
+		if(count($this->data)>0) {
 			
-			$cart['CanteenOrder'] = array();
+			$cart = $this->Session->read("CanteenOrder");
+			
+			if(!isset($cart['CateenOrder'])) {
+				
+				$cart['CanteenOrder'] = array();
+				
+			}
+	
+			//create a top level line item
+			$line_item = array();
+			
+			foreach($this->data['CanteenOrderItem'] as $k=>$v) {
+				
+				$line_item['ChildCanteenOrderItem'][] = array(
+					"canteen_product_id"=>$v['canteen_product_id'],
+					"quantity"=>$v['quantity'],
+					"parent_canteen_product_id"=>$v['parent_canteen_product_id']
+				);
+				
+	
+			}
+			
+			$line_item['hash'] = sha1(time().mt_rand(999,9999));
+	
+			$cart['CanteenOrderItem'][] = $line_item;
+	
+			$this->Session->write("CanteenOrder",$cart);
 			
 		}
-
-		//create a top level line item
-		$line_item = array();
 		
-		foreach($this->data['CanteenOrderItem'] as $k=>$v) {
-			
-			$line_item['ChildCanteenOrderItem'][] = array(
-				"canteen_product_id"=>$v['canteen_product_id'],
-				"quantity"=>$v['quantity'],
-				"parent_canteen_product_id"=>$v['parent_canteen_product_id']
-			);
-			
-
-		}
-		
-		$line_item['hash'] = sha1(time().mt_rand(999,9999));
-
-		$cart['CanteenOrderItem'][] = $line_item;
-
-		$this->Session->write("CanteenOrder",$cart);
 		
 		return $this->redirect("/canteen/cart");
 		
@@ -315,7 +320,7 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
-	public function _remove($id) {
+	public function remove($id) {
 		
 		//get the cart
 		

@@ -80,6 +80,10 @@
 									//echo $this->Html->link("Add Aberrica Cover Page",array("controller"=>"cover_pages","action"=>"add",$v['CanteenCategory']['id']));
 								//	echo $this->Html->link("View Cover Pages",array("controller"=>"cover_pages","action"=>"index","CoverPage.aberrica_category_id"=>$v['CanteenCategory']['id']));
 									echo $this->Html->link("Add Child",array("action"=>"add",$v['CanteenCategory']['id']));
+								} else {
+									
+									echo $this->Html->link("Sort Products",array("action"=>"sort_products",$v['CanteenCategory']['id']));
+									
 								}
 							?> 
 							<?php echo $this->Html->link("Move Up",array("action"=>"move_up",$v['CanteenCategory']['id'],1)); ?>

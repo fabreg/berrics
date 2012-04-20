@@ -11,7 +11,9 @@
 			<?php foreach($this->data['CanteenOrderItem'] as $k=>$item): ?>
 			<tr>
 				<td align="center" valign="center">
-				<div class='delete' hash='<?php echo $item['hash']; ?>'>X</div>
+				<div class='delete' hash='<?php echo $item['hash']; ?>'>
+					<img border='0' src='/img/layout/canteen/cart/remove-item-icon.png' />
+				</div>
 				</td>
 				<td valign='top' >
 					

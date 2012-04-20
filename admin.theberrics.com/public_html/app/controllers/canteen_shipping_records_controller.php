@@ -59,6 +59,19 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 	}
 	
+	public function process() {
+		
+		
+		
+	}
+	
+	
+	public function ajax_lookup() {
+		
+		die(print_r($this->data));
+		
+	}
+	
 	
 	
 	

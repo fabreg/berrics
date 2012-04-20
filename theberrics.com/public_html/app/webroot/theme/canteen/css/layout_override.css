@@ -1542,14 +1542,14 @@ PRODUCT EXTRA INFO
 #canteen-category .products .container {
 
 	margin-top:547px;	
-	background-image:url(/img/layout/canteen/category/cat-bg-center.jpg);
+	background-image:url(/img/layout/canteen/category/prod-cat-repeat.jpg);
 	background-repeat:repeat-y
 }
 
 #canteen-category .products .container-top {
 
 	margin-top:-547px;
-	background-image:url(/img/layout/canteen/category/cat-bg-top.jpg);
+	background-image:url(/img/layout/canteen/category/prod-cat-top.jpg);
 	background-repeat:no-repeat;
 	
 	

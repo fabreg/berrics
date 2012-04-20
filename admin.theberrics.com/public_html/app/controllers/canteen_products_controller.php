@@ -117,6 +117,8 @@ class CanteenProductsController extends LocalAppController {
 				
 			}
 			
+			$this->data['CanteenProduct']['display_weight'] = 99;
+			
 			$this->CanteenProduct->save($this->data);
 			
 			$new_id = $this->CanteenProduct->id;

@@ -38,7 +38,7 @@ $this->Html->script(array("jquery.form","category"),array("inline"=>false));
 		<div style='clear:both;'></div>
 		</div>
 		-->
-	
+		<div style='padding:5px; text-align:right;'><?php echo count($products); ?> Items</div>
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>
