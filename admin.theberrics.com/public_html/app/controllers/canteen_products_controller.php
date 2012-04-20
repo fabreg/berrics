@@ -117,8 +117,7 @@ class CanteenProductsController extends LocalAppController {
 				
 			}
 			
-			$this->data['CanteenProduct']['display_weight'] = 99;
-			
+			$this->data['CanteenProduct']['display_weight'] = 99;			
 			$this->CanteenProduct->save($this->data);
 			
 			$new_id = $this->CanteenProduct->id;
@@ -559,4 +558,11 @@ class CanteenProductsController extends LocalAppController {
 	}
 
 	
+	public function ajax_inv($id) {
+		
+		$product = $this->CanteenProduct->returnAdminProduct($id);
+		
+		$this->set(compact("product"));
+		
+	}
 }

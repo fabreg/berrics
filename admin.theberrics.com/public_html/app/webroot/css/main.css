@@ -63,10 +63,11 @@ div.index td {
 	border:1px solid #cccccc;
 	border-top:none;
 	border-right:none;
+	
 }
 
 div.index tr {
-	
+	background-color:white;
 }
 
 div.index tr:nth-child(odd) {

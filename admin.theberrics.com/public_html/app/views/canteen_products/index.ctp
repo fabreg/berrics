@@ -1,3 +1,44 @@
+<script>
+
+$(document).ready(function() { 
+
+
+	$('.quick-inv').click(function() { 
+
+		var id = $(this).attr("canteen_product_id");
+		
+		openDetails(id,this);
+		$(this).remove();
+	});
+	
+
+	
+});
+
+function openDetails(id,ele) {
+
+	var div = $(ele).parent().parent();
+
+	var $newDiv = $("<tr><td colspan='10' inv='"+id+"' style='padding:0px;' align='right'>Loading</td></tr>");
+	
+	$(div).after($newDiv);
+
+	$.ajax({
+	
+		"url":"/canteen_products/ajax_inv/"+id,
+		"success":function(d) {
+
+			$('td[inv='+id+']').html(d);
+		
+		}
+
+	});
+
+	
+}
+
+
+</script>
 <div class='index form'>
 	<h2>Canteen Products</h2>
 	
@@ -37,7 +78,6 @@
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("Brand.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
-			
 			<th>-</th>
 		</tr>
 		<?php 
@@ -92,14 +132,15 @@
 			</td>
 			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
 			
-			<td align='center' nowrap width='1%'><?php echo $p['style_code']; ?></td>
-			<td align='center' width='1%' nowrap><?php echo $c['name']; ?></td>
-			<td align='center' width='1%' nowrap><?php echo $b['name']; ?></td>
+			<td align='center' nowrap width='1%' ><?php echo $p['style_code']; ?></td>
+			<td align='center' width='1%' nowrap ><?php echo $c['name']; ?></td>
+			<td align='center' width='1%' nowrap ><?php echo $b['name']; ?></td>
 			<td align='left' nowrap ><?php echo $p['name']; ?> - <?php echo $p['sub_title']; ?></td>
 			
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 				<a target='_blank' href='http://dev.theberrics.com/canteen/item/<?php echo $p['uri']; ?>'>Dev Link</a>
+				<a href='javascript:return false;' class='quick-inv' canteen_product_id='<?php echo $p['id']; ?>'>Quick View: Options & Inv</a>
 			</td>
 		</tr>
 		<?php 
