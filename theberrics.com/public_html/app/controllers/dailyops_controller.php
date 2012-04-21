@@ -63,7 +63,7 @@ class DailyopsController extends LocalAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(in_array(date("Y-m-d"),array("2012-04-19","2012-04-14"))) { 
+			if(in_array(date("Y-m-d"),array("2012-04-21","2012-04-23"))) { 
 				
 				$batb_mode = true;
 				
@@ -177,13 +177,6 @@ class DailyopsController extends LocalAppController {
 			$this->theme = $theme_override;
 			
 		}
-		
-		if(in_array(date("Y-m-d"),array("2011-10-29","2011-10-30","2011-10-31"))) {
-			
-			$this->theme = "halloween-2011";
-			
-		}
-		
 		
 		$dateIn = $dailyops[0]['Dailyop']['publish_date'];
 		
