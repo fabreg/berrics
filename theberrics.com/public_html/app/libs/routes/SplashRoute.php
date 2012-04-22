@@ -29,6 +29,10 @@ class SplashRoute extends CakeRoute {
 			
 			$params['controller'] = "newsv2";
 			$params['action'] = "section";
+			$params['pass'][] = date("Y");
+			$params['pass'][] = date("m");
+			$params['pass'][] = date("d");
+			
 
 		}
 		

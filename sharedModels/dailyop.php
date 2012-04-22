@@ -877,5 +877,51 @@ class Dailyop extends AppModel {
 		return $posts;
 		
 	}
+	
+	public function returnAtArchive() {
+		
+		$token = "at-archive-posts";
+		
+		if(($data = Cache::read($token,"1min")) == false) {
+			
+			$data = $this->find("all",array(
+			
+				"conditions"=>array(
+					"Dailyop.publish_date <= NOW()",
+					"Dailyop.active"=>1,
+					"Dailyop.misc_category"=>"news-general",
+					"Dailyop.dailyop_section_id"=>65,
+					"YEAR(Dailyop.publish_date)=2012",
+					"Dailyop.display_weight"=>1
+				),
+				"group"=>array(
+					"DATE(Dailyop.publish_date)",
+					"MONTH(Dailyop.publish_date)",
+					"DAY(Dailyop.publish_date)"
+					
+				),
+				"order"=>array(
+					"Dailyop.publish_date"=>"DESC",
+					"Dailyop.display_weight"=>"ASC"
+				),
+				"contain"=>array(
+					"DailyopTextItem"=>array(
+						"order"=>array(
+							"DailyopTextItem.display_weight"=>"ASC"
+						),
+						"limit"=>1,
+						"MediaFile"
+					)
+				)
+			
+			));
+			
+			Cache::write($token,$data,"1min");
+			
+		}
+		
+		return $data;
+		
+	}
 
 }

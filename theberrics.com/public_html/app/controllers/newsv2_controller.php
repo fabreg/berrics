@@ -18,10 +18,23 @@ class Newsv2Controller extends DailyopsController {
 	 	//force the newsv2 theme
 	 	
 	 	$this->theme = "newsv2";
-	 
+	 	
+	 	if(	!isset($this->params['pass'][0]) && 
+			!isset($this->params['pass'][1]) && 
+			!isset($this->params['pass'][2]) && $this->params['action'] != "view")
+			$this->params['action'] = "archive";
 	 	
 	}
 	
+	public function archive() {
+		
+		$this->loadModel("Dailyop");
+		
+		$posts = $this->Dailyop->returnAtArchive();
+		
+		$this->set(compact("posts"));
+		
+	}
 	
 	public function section() {
 		
