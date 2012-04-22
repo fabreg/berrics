@@ -34,6 +34,7 @@ class Newsv2Controller extends DailyopsController {
 		
 		$this->set(compact("posts"));
 		
+		$this->set("title_for_layout","Aberrican Times Archive");
 	}
 	
 	public function section() {
