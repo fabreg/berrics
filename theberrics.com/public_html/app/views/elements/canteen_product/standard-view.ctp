@@ -77,6 +77,12 @@ function initOptionClick() {
 		
 	});
 
+	if($("#product-standard-view .product-options .option").length<=1) {
+
+		$("#product-standard-view .product-options").hide();
+		
+	}
+	
 }
 
 </script>

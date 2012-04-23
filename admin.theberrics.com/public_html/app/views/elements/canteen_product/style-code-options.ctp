@@ -17,3 +17,26 @@
 <?php endif;?>
 	
 <?php echo $this->Form->submit("Update Product"); ?>
+<div>
+<h3>Related Styles</h3>
+<table cellspacing='0'>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>-</th>
+	</tr>
+	<?php foreach($this->data['RelatedStyles'] as $r): ?>
+	<tr>
+		<td>
+		<?php echo $r['CanteenProduct']['id']; ?>
+		</td>
+		<td>
+		<?php echo $r['CanteenProduct']['name']; ?>  - <?php echo $r['CanteenProduct']['sub_title']; ?>
+		</td>
+		<td class='actions'>
+			<a href='/canteen_product/edit/<?php echo $r['CanteenProduct']['id']; ?>'>Edit</a>
+		</td>
+	</tr>
+	<?php endforeach; ?>
+</table>
+</div>

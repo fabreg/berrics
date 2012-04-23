@@ -79,6 +79,17 @@ class CanteenProduct extends AppModel {
 		
 		$p['CanteenProduct']['pub_time'] = date("H:i",strtotime($p['CanteenProduct']['publish_date']));
 		
+		//get the related style codes
+		$r = $this->find("all",array(
+			"conditions"=>array(
+				"CanteenProduct.style_code"=>$p['CanteenProduct']['style_code'],
+				"CanteenProduct.id !="=>$p['CanteenProduct']['id']
+			),
+			"contain"=>array()
+		));
+		
+		$p['RelatedStyles'] = $r;
+		
 		return $p;
 		
 	}

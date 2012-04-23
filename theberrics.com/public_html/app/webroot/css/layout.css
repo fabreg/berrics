@@ -2437,6 +2437,29 @@ ORDER STATUS
 	
 }
 
+#order-status .shipping-records {
+	
+	float:right;
+	width:48%;
+	
+	
+}
+
+#order-status .shipping-records fieldset {
+	
+	margin:4px;
+	padding:5px;
+	border:2px solid #ccc;
+
+}
+
+#order-status .shipping-records fieldset legend {
+	
+	margin-left:3px;
+	margin-right:3px;
+	font-size:14px;	
+	font-weight:bold;
+}
 
 
 /*
