@@ -1,6 +1,6 @@
 <div id='order-status'>
 	<div>
-		<div style='float:left; width:48%;'>
+		<div class='order'>
 			<div class='heading'>
 				CANTEEN ORDER STATUS
 			</div>
@@ -13,7 +13,19 @@
 			<div class='order-bit'>
 				<div class='label'>ORDER STATUS</div>
 				<div class='value'>
-					<?php echo strtoupper($order['CanteenOrder']['order_status']); ?>
+					<?php 
+						switch(strtolower($order['CanteenOrder']['order_status'])) {
+							
+							case "approved":
+								$status_style='color:green; font-weight:bold;';
+								break;
+							default:
+								$status_style = "";
+								break;
+							
+						}
+					?>
+					<span style='<?php echo $status_style; ?>'><?php echo strtoupper($order['CanteenOrder']['order_status']); ?></span>
 				</div>
 			</div>
 			<div class='order-bit'>
@@ -90,6 +102,7 @@
 							?>
 						</div>
 					</div>
+					<div style='clear:both;'></div>
 				</fieldset>
 			<?php 
 					endforeach;
@@ -107,7 +120,12 @@
 	<div class='heading'>
 		ORDER NOTES
 	</div>
-	<div>
-		<?php echo $this->element("canteen_notes/add-note-form"); ?>
+	<div class='notes-form-div'>
+		<div class='order-notes-help'></div>
+		<div class='order-notes-form'>
+			<?php echo $this->element("canteen_notes/add-note-form"); ?>
+		</div>
+		<div style='clear:both;'></div>
+		
 	</div>
 </div>

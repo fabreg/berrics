@@ -2439,10 +2439,7 @@ ORDER STATUS
 
 #order-status .shipping-records {
 	
-	float:right;
-	width:48%;
-	
-	
+
 }
 
 #order-status .shipping-records fieldset {
@@ -2461,6 +2458,38 @@ ORDER STATUS
 	font-weight:bold;
 }
 
+#order-status .order .order-bit,
+#order-status .shipping-records .order-bit {
+	
+	float:left;
+	width:48%;	
+	
+}
+#order-status .order .order-bit:nth-child(odd),
+#order-status .shipping-records .order-bit:nth-child(odd) {
+
+	float:right;	
+	
+}
+
+#order-status .order-notes-form-div {
+
+		
+	
+}
+#order-status .order-notes-help {
+	
+	width:30%;
+	float:left;
+	
+}
+
+#order-status .order-notes-form {
+
+		width:68%;
+		float:right;
+	
+}
 
 /*
 	PROFILES

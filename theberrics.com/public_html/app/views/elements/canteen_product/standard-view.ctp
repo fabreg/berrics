@@ -6,6 +6,8 @@ $this->set("title_for_layout",$product['CanteenProduct']['name']." By:".$product
 
 $this->set("meta_d",$product['CanteenProduct']['description']);
 
+$in_stock = true;
+
 ?>
 <script>
 $(document).ready(function() { 
@@ -167,7 +169,19 @@ function initOptionClick() {
 						<div class='product-options'>
 							<label>CHOOSE AN OPTION:</label>
 							<div class='options-div'>
-								<?php foreach($product['ChildCanteenProduct'] as $o): ?>
+								<?php foreach($product['ChildCanteenProduct'] as $o): 
+								
+										
+									if(CanteenConfig::get("realtime_inventory")) {
+										
+										//check the quantities
+										$inv_check = Set::extract("/CanteenProductInventory/CanteenInventoryRecord[quantity>0]",$o);
+										
+										if(count($inv_check)<=0) continue;
+										
+									}
+								
+								?>
 								<div class='option' canteen_product_id='<?php echo $o['id']; ?>'>
 									<div class='check'></div>
 									<?php echo $o['opt_value']; ?>
@@ -185,7 +199,12 @@ function initOptionClick() {
 						<div class='product-specs'>
 							<label>SPECIFICATIONS:</label>
 							<div class='meta-div'>
-								<?php foreach($product['Meta'] as $m): ?>
+								<?php 
+								
+									foreach($product['Meta'] as $m): 
+								
+									
+								?>
 								<dl>
 									<dt><?php echo strtoupper($m['key']); ?>:</dt>
 									<dd><?php echo strtoupper($m['val']); ?></dd>
@@ -256,40 +275,7 @@ function initOptionClick() {
 		</div>
 		<div class='container-bottom'></div>
 </div>
-<div id='product-transit-info'>
-	<?php 
-		
-		$ups = new UpsApi();
-		//pr($ups);
-		
-		$shipping_estimate = $ups->timeInTransitCached(array(
-			"country_code"=>$_SERVER['GEOIP_COUNTRY_CODE'],
-			"postal_code"=>$_SERVER['GEOIP_POSTAL_CODE'],
-			"province"=>$_SERVER['GEOIP_REGION_NAME']
-		));
-		
-		print_r($shipping_estimate);
-		
-	?>
-	<div class='left'>
-		
-	</div>
-	<div class='right'>
-		<div class='currency-selector'>
-			<span class='label'>CURRENCY: <?php echo $user_currency_id; ?></span>
-		</div>
-		<div class='shipping-estimate'>
-			<div>UPS DELIVERY ESTIMATE</div>
-			<ul>
-				<?php foreach($shipping_estimate['TimeInTransitResponse']['TransitResponse']['ServiceSummary'] as $v): ?>
-				<li><?php echo $v['Service']['Description']; ?>: <?php echo $v['EstimatedArrival']['DayOfWeek']; ?> <?php echo $v['EstimatedArrival']['Date']; ?></li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
-		<?php //print_r($shipping_estimate['TimeInTransitResponse']['TransitResponse']['ServiceSummary']); ?>
-	</div>
-	<div style='clear:both;'></div>
-</div>
+
 <?php 
 
 print_r($product)

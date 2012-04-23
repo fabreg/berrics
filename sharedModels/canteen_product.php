@@ -1,5 +1,7 @@
 <?php 
 
+App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
+
 class CanteenProduct extends AppModel {
 	
 	
@@ -107,6 +109,9 @@ class CanteenProduct extends AppModel {
 							"conditions"=>array(
 								"ChildCanteenProduct.deleted"=>0,
 								"ChildCanteenProduct.active"=>1
+							),
+							"CanteenProductInventory"=>array(
+								"CanteenInventoryRecord"
 							)
 						),
 						"CanteenProductPrice"=>array(
@@ -123,6 +128,7 @@ class CanteenProduct extends AppModel {
 						"Meta"=>array("order"=>array("Meta.key"=>"ASC"))
 
 				);
+	
 				
 				$_cond = array();
 			

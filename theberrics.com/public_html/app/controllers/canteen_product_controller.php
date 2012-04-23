@@ -21,6 +21,7 @@ class CanteenProductController extends CanteenAppController {
 			"CanteenProduct.uri"=>$uri
 		)));
 		
+		
 		$this->set(compact("product"));
 		
 	}
