@@ -1,4 +1,5 @@
-<div style='width:728px; margin:auto;'>
+
+<div style='width:728px; float:left;'>
 	<?php 
 	
 		$content = $this->element("canteen/order-status");
@@ -6,3 +7,7 @@
 		
 	?>
 </div>
+<div style='float:right; width:300px;'>
+	<?php echo $this->element("layout/right-banners"); ?>
+</div>
+<div style='clear:both;'></div>

@@ -116,16 +116,17 @@
 			?>
 		</div>
 		<div style='clear:both;'></div>
-	</div>
-	<div class='heading'>
+		<div class='heading'>
 		ORDER NOTES
-	</div>
-	<div class='notes-form-div'>
-		<div class='order-notes-help'></div>
-		<div class='order-notes-form'>
-			<?php echo $this->element("canteen_notes/add-note-form"); ?>
 		</div>
-		<div style='clear:both;'></div>
-		
+		<div class='notes-form-div'>
+			<div class='order-notes-help'></div>
+			<div class='order-notes-form'>
+				<?php echo $this->element("canteen_notes/add-note-form"); ?>
+			</div>
+			<div style='clear:both;'></div>
+			
+		</div>
 	</div>
+	
 </div>

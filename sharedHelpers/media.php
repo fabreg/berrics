@@ -356,8 +356,18 @@ class MediaHelper extends AppHelper {
 		
 		$attr['border'] = 0;
 		
+		$src = "{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
+		
+		if(isset($opt['lazy'])) {
+			
+			$attr['data-original'] = $src;
+			$src ="/img/layou/blk-px.png";
+			
+			
+		}
+		
 		//return the thumbnail
-		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
+		return $this->Html->image($src,$attr);
 			
 	}
 	

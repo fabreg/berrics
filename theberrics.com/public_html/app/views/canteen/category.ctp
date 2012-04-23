@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("jquery.form","category"),array("inline"=>false));
+$this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inline"=>false));
 
 ?>
 <style>

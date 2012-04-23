@@ -244,17 +244,9 @@ function initOptionClick() {
 						<div class='main-image'>
 							<?php 
 								
-								$img = Set::extract('/CanteenProductImage[front_image=1]',$product);
+								$img = Set::extract('/CanteenProductImage',$product);
 								
-								if(count($img)<0) {
-									
-									$img = $product['CanteenProductImage'][0];
-									
-								} else {
-									
-									$img = $img[0]['CanteenProductImage'];
-									
-								}
+								$img = $img[0]['CanteenProductImage'];
 								
 								echo $this->Media->productThumb($img,array("w"=>485),array("img"=>$img['file_name'])); 
 								

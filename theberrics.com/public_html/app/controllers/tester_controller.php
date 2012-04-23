@@ -325,6 +325,163 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 	
 		
 	}
+	
+	public function sls_winners() {
+		
+		$u = array(
+			'4d686498-68a4-4c67-9d3f-53c00ab5431b',
+			'4dbf39ba-39ac-4b29-8054-1ec50ab5431b',
+			'4d686301-01a8-41e4-90eb-53c10ab5431b',
+			'4d67f84b-301c-48ae-b6b2-53440ab5431b',
+			'4f45dca1-f608-41ab-ad20-3e9b323849cf'
+		);
+		
+		$a = array(2,5,7,8,11);
+		
+		$res = array();
+		
+		$this->loadModel("SlsVote");
+		
+		$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>1
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+	$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>1
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+	$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>2
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+	$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>3
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+	$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>4
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+	$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>5
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+		$votes = $this->SlsVote->find('all',array(
+			"contain"=>array(),
+			"limit"=>25000,
+			"page"=>6
+		));
+		
+		foreach($votes as $v) {
+			
+			if(in_array($v['SlsVote']['sls_entry_id'],$a)) $res[$v['SlsVote']['user_id']][] = 1;
+			
+		}
+		
+		unset($votes);
+		
+		$winners = array();
+		
+		foreach($res as $k=>$v) {
+			
+			if($k == '4e23ecba-2e28-4055-94f0-01ee323849cf') continue;
+			if($k == '4d672328-c628-42ed-ac9a-4ffa0ab5431b') continue;
+			if($k == '4d70ea4a-084c-4889-8353-6f330ab55011') continue;
+			if($k == '4f396cec-4d30-4682-ab3a-47e30ab7c103') continue;
+			
+			
+			
+			
+			if(count($winners)<5) {
+				
+				if(count($v)==5) $winners[] = $k;
+				
+			} else {
+				
+				continue 1;
+				
+			}
+			
+		}
+		
+		unset($res);
+		
+		$this->loadModel("User");
+		
+		$w = $this->User->find("all",array(
+			"conditions"=>array(
+				"User.id"=>$winners
+			),
+			"contain"=>array()
+		));
+		
+		$s = "";
+		
+		foreach($w as $v) {
+			
+			$s .= $v['User']['id'];
+			$s.= "\n";
+			$s .= $v['User']['first_name']." ".$v['User']['last_name'];
+			$s.= "\n";
+			$s .= $v['User']['email'];
+			$s.= "\n";
+			$s .= "http://facebook.com/profile.php?id={$v['User']['facebook_account_num']}";
+			$s.= "\n";
+			$s.= "\n";
+			
+		}
+		
+		die("<pre>{$s}</pre>");
+		
+	}
 
 	
 	
