@@ -5,6 +5,10 @@
    	# FUCK WWW
    	RewriteCond %{HTTP_HOST} ^www.theberrics.com$ [NC]
    	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
+   	
+   	RewriteCond %{HTTP_HOST} ^(www\.)?myberrics\.com [NC]
+   	RewriteCond %{HTTP_HOST} ^(www\.)?berricscanteen\.com [NC]
+	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
 	
 	##FIX TSHIRT  INDESICIVNESS
 	RewriteRule ^(apparel) /t-shirts [R=301,L]
