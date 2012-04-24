@@ -153,6 +153,8 @@ class CanteenCategory extends AppModel {
 				foreach($p['Meta'] as $m) $filters['Meta'][strtolower($m['key'])][$m['id']] = $m['val'];
 				
 			}
+			
+			//$filters['Meta'] = Set::sort($filters['Meta'],"{s}.{n}.{s}","asc");
 
 			Cache::write($cache_token,$filters,"1min");
 			

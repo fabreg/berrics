@@ -43,6 +43,34 @@
 	
 	}
 	
+	label {
+	
+		width:175px;
+		display:block;
+	
+	}
+	
+	div.text,div.password {
+	
+		width:90%;
+		margin:auto;
+	
+	}
+	
+	div input {
+	
+		width:99%;
+	
+	}
+	
+	.submit {
+	
+		width:50%;
+		margin:auto;
+		padding:10px;
+	
+	}
+	
 </style>
 
 <?php 
