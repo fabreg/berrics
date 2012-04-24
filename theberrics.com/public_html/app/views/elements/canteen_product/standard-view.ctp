@@ -158,7 +158,7 @@ function initOptionClick() {
 									<div class='check'>
 										
 									</div>
-									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35&w=35' border='0' alt='' />
+									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35&w=35&zc=1' border='0' alt='' style='border:1px solid #333;' />
 								</div>
 								<?php endforeach; ?>
 								<div style='clear:both;'></div>
