@@ -34,7 +34,7 @@
 		<?php echo $r['CanteenProduct']['name']; ?>  - <?php echo $r['CanteenProduct']['sub_title']; ?>
 		</td>
 		<td class='actions'>
-			<a href='/canteen_product/edit/<?php echo $r['CanteenProduct']['id']; ?>'>Edit</a>
+			<a href='/canteen_products/edit/<?php echo $r['CanteenProduct']['id']; ?>'>Edit</a>
 		</td>
 	</tr>
 	<?php endforeach; ?>
