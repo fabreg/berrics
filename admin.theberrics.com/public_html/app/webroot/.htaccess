@@ -2,6 +2,7 @@
     RewriteEngine On
     
     RewriteCond %{HTTP_HOST} ^(www\.)?myberrics\.com [NC]
+   	RewriteCond %{HTTP_HOST} ^(www\.)?theberricscanteen\.com [NC]
 	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
     
     RewriteCond %{REQUEST_FILENAME} !-d
