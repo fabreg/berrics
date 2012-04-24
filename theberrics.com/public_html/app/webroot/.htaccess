@@ -7,7 +7,7 @@
    	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
    	
    	RewriteCond %{HTTP_HOST} ^(www\.)?myberrics\.com [NC]
-   	RewriteCond %{HTTP_HOST} ^(www\.)?berricscanteen\.com [NC]
+   	RewriteCond %{HTTP_HOST} ^(www\.)?theberricscanteen\.com [NC]
 	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
 	
 	##FIX TSHIRT  INDESICIVNESS
