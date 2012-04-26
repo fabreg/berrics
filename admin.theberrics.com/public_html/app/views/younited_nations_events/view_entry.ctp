@@ -99,4 +99,18 @@
 		<div class='uploads'></div>
 	</div>
 	<div style='clear:both;'></div>
+		<div class='form'>
+		<fieldset>
+			<legend>Edit Entry</legend>
+			<?php 
+			
+				echo $this->Form->create("YounitedNationsEventEntry",array("url"=>$this->here));
+				echo $this->Form->input("id",array("value"=>$entry['YounitedNationsEventEntry']['id']));
+				echo $this->Form->input("finalist");
+				echo $this->Form->input("entry_dailyop_id",array("options"=>$posts));
+				echo $this->Form->end("Update");
+			
+			?>
+		</fieldset>
+	</div>
 </div>

@@ -43,6 +43,31 @@ class YounitedNationsEventsController extends LocalAppController {
 		
 	}
 	
+	public function search_entries($id) {
+		
+		$url = array(
+		
+			"action"=>"view",
+			"s"=>true,
+			$id
+			
+		);
+		
+		
+		foreach($this->data as $k=>$v) {
+			
+			foreach($v as $kk=>$vv) {
+				
+				$url[$k.".".$kk]=urlencode($vv);
+				
+			}
+			
+		}
+		
+		return $this->redirect($url);
+		
+	}
+	
 	public function view($id = false) {
 		
 		if(!$id) {
@@ -59,6 +84,7 @@ class YounitedNationsEventsController extends LocalAppController {
 			),
 			"contain"=>array()
 		));
+
 		
 		
 		$this->paginate['YounitedNationsEventEntry'] = array(
@@ -76,6 +102,26 @@ class YounitedNationsEventsController extends LocalAppController {
 		
 		);
 		
+		
+				
+		
+		if(isset($this->params['named']['s'])) {
+			
+			
+			if(isset($this->params['named']['YounitedNationsPosse.name'])) {
+				
+				
+				$this->data['YounitedNationsPosse'] = $this->params['named']['YounitedNationsPosse.name'];
+				
+				$this->paginate['YounitedNationsEventEntry']['conditions']['YounitedNationsPosse.name LIKE'] = "%".str_replace(" ","%",$this->params['named']['YounitedNationsPosse.name'])."%";
+				
+			}
+			
+			
+		}
+		
+		
+		
 		$entries = $this->paginate("YounitedNationsEventEntry");
 		
 		$this->set(compact("event","entries"));
@@ -85,6 +131,14 @@ class YounitedNationsEventsController extends LocalAppController {
 	
 	
 	public function view_entry($id = false) {
+		
+		
+		if(count($this->data)>0) {
+			
+			
+			die(pr($this->data));
+			
+		}
 		
 		$this->loadModel("YounitedNationsEventEntry");
 		//get the entry and all the other stuff
@@ -116,9 +170,24 @@ class YounitedNationsEventsController extends LocalAppController {
 		
 		));
 		
+		//get all the younited nations three posts
 		
-		$this->set(compact("entry","files"));
 		
+		$this->loadModel("Dailyop");
+		
+		
+		$p = $this->Dailyop->find("all",array(
+			"conditions"=>array(
+				"Dailyop.dailyop_section_id"=>66
+			),
+			"contain"=>array()
+		));
+		
+		$posts = array();
+		
+		foreach($p as $v) $posts[$v['Dailyop']['id']] = $v['Dailyop']['name']." - ".$v['Dailyop']['sub_title'];
+		
+		$this->set(compact("entry","files","posts"));
 		
 	}
 	
