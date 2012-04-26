@@ -63,5 +63,4 @@ $(document).ready(function() {
 <?php echo $this->Form->input("UserAddress.{$index}.city",array("label"=>$l['city'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.postal_code",array("label"=>$l['zip'])); ?>
 <?php echo $this->Form->input("UserAddress.{$index}.phone",array("label"=>$l['phonenum'])); ?>
-
 </div>
