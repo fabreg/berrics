@@ -35,6 +35,7 @@ class Newsv2Controller extends DailyopsController {
 		$this->set(compact("posts"));
 		
 		$this->set("title_for_layout","Aberrican Times Archive");
+		
 	}
 	
 	public function section() {
@@ -149,6 +150,15 @@ class Newsv2Controller extends DailyopsController {
 		//set the events
 		$this->setNewsEvents();
 		
+		if($this->params['uri'] == "happy-birthday-eric-koston.html") {
+			
+			$this->loadModel("InstagramImageItem");
+			
+			$instagram = $this->InstagramImageItem->returnImagesByTagRaw("happybirthdayerickoston");
+			
+			$this->set(compact("instagram"));
+			
+		}
 		
 	}
 	

@@ -185,5 +185,26 @@ class InstagramImageItem extends AppModel {
 		
 	}
 	
+	public function returnImagesByTagRaw($tag = "berrics") {
+		
+		$token = "instagram-images-by-tag-raw-".md5($tag);
+		
+		if(($data = Cache::read($token,"1min")) === false) {
+			
+			$i = InstagramApi::berricsInstance();
+			
+			$images = $i->instagram->getRecentTags($tag);
+			
+			$data = json_decode($images,true);
+		
+			Cache::write($token,$data,"1min");
+			
+		}
+		
+		
+		return $data;
+		
+	}
+	
 	
 }
