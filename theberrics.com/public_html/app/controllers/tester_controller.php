@@ -482,6 +482,14 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 		die("<pre>{$s}</pre>");
 		
 	}
+	
+	public function test_instagram_tag() {
+		
+		$this->loadModel("InstagramImageItem");
+		
+		$this->InstagramImageItem->returnImagesByTag("happybirthdayerickoston");
+		
+	}
 
 	
 	

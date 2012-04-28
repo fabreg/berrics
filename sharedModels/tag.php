@@ -54,7 +54,8 @@ class Tag extends AppModel {
 		"Article",
 		"Brand",
 		"OndemandTitle",
-		"CanteenProduct"
+		"CanteenProduct",
+		"InstagramImageItem"
 		
 	);
 	
