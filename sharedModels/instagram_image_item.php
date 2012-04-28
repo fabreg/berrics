@@ -34,8 +34,11 @@ class InstagramImageItem extends AppModel {
 				
 				//check to see if there is an instagra object
 				$check = $this->find("first",array(
-					"conditions"=>array("InstagramImageItem.instagram_object_id"=>$v['id'])
+					"conditions"=>array("InstagramImageItem.instagram_object_id"=>$v['id']),
+					"contain"=>array()
 				));
+				
+				
 				
 				if(!isset($check['InstagramImageItem']['id'])) {
 	
@@ -66,11 +69,22 @@ class InstagramImageItem extends AppModel {
 					"instagram_account_num"=>$v['user']['id']
 				));
 				
+				if(isset($check['InstagramImageItem']['id'])) {
+					
+					$d['InstagramImageItem']['id'] = $check['InstagramImageItem']['id'];
+					
+				}
+				
+				
+				
 				$tags = implode(",",$v['tags']);
 				
 				$d['Tag'] = $this->Tag->parseTags($tags);
 				
-				$this->saveAll($d);
+				//die(print_r($d));
+				
+				$this->save($d);
+				//$this->create();
 				
 			}
 			
@@ -107,7 +121,8 @@ class InstagramImageItem extends AppModel {
 				
 				//check to see if there is an instagra object
 				$check = $this->find("first",array(
-					"conditions"=>array("InstagramImageItem.instagram_object_id"=>$v['id'])
+					"conditions"=>array("InstagramImageItem.instagram_object_id"=>$v['id']),
+					"contain"=>array()
 				));
 				
 				if(!isset($check['InstagramImageItem']['id'])) {
