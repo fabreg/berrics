@@ -46,12 +46,25 @@ $c = Arr::countries();
 			<td align='center'><?php echo $e['YounitedNationsEventEntry']['id']; ?></td>
 			<td align='center'><?php echo $this->Time->niceShort($e['YounitedNationsEventEntry']['created']); ?></td>
 			<td align='center'><?php echo $this->Time->niceShort($e['YounitedNationsEventEntry']['modified']); ?></td>
-			<td align='center'><?php echo $e['YounitedNationsEventEntry']['finalist']; ?></td>
+			<td align='center'><?php 
+			
+				switch($e['YounitedNationsEventEntry']['finalist']) {
+					
+					case 1:
+						echo "<span style='color:green;'>Yes</span>";
+						break;
+					default:
+						echo "<span style='color:red;'>No</span>";
+						break;
+					
+				}
+			
+			?></td>
 			<td><?php echo $e['YounitedNationsPosse']['name']; ?></td>
 			<td><?php echo $c[$e['YounitedNationsPosse']['country']];  ?></td>
 			<td><?php echo $e['YounitedNationsPosse']['geo_formatted']; ?></td>
 			<td class='actions'>
-				<a href='/younited_nations_events/view_entry/<?php echo $e['YounitedNationsEventEntry']['id']; ?>/<?php echo base64_encode($this->here); ?>'>View</a>
+				<a href='/younited_nations_events/view_entry/<?php echo $e['YounitedNationsEventEntry']['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>View</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>

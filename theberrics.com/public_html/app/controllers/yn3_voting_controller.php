@@ -1,18 +1,23 @@
 <?php
 
-App::import("Controller","LocalApp");
+App::import("Controller","Dailyops");
 
-class Yn3VotingController extends LocalAppController { 
+class Yn3VotingController extends DailyopsController { 
 
 	public $uses = array();
 	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
-		
-		$this->initPermissions();
-		
+
 		$this->theme = "yn3-voting";
+		
+		if($this->params['action'] == "index" || empty($this->params['action'])) {
+			
+			
+			$this->params['action'] = "section";
+			
+		}
 		
 	}
 	

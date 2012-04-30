@@ -133,14 +133,22 @@ class YounitedNationsEventsController extends LocalAppController {
 	public function view_entry($id = false) {
 		
 		
+		$this->loadModel("YounitedNationsEventEntry");
+		
 		if(count($this->data)>0) {
 			
+			$this->YounitedNationsEventEntry->create();
 			
-			die(pr($this->data));
+			$this->YounitedNationsEventEntry->id = $this->data['YounitedNationsEvenEntry']['id'];
+			
+			$this->YounitedNationsEventEntry->save($this->data);
+			
+			$this->Session->setFlash("Entry Updated");
+			
+			return $this->redirect(base64_decode($this->params['named']['callback']));
 			
 		}
 		
-		$this->loadModel("YounitedNationsEventEntry");
 		//get the entry and all the other stuff
 		$entry = $this->YounitedNationsEventEntry->find("first",array(
 			
@@ -188,6 +196,8 @@ class YounitedNationsEventsController extends LocalAppController {
 		foreach($p as $v) $posts[$v['Dailyop']['id']] = $v['Dailyop']['name']." - ".$v['Dailyop']['sub_title'];
 		
 		$this->set(compact("entry","files","posts"));
+		
+		$this->data = $entry;
 		
 	}
 	
