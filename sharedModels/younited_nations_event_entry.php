@@ -5,7 +5,8 @@ class YounitedNationsEventEntry extends AppModel {
 	public $belongsTo = array(
 		"YounitedNationsPosse"=>array(
 			"foreignKey"=>"younited_nations_posse_id"
-		)
+		),
+		"Dailyop"
 	);
 	
 	

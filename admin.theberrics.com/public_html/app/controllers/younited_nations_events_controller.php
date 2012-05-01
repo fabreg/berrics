@@ -93,7 +93,7 @@ class YounitedNationsEventsController extends LocalAppController {
 				"YounitedNationsEventEntry.younited_nations_event_id"=>$id
 			),
 			"order"=>array(
-				"YounitedNationsEventEntry.id"=>"DESC"
+				"YounitedNationsEventEntry.finalist"=>"DESC"
 			),
 			"limit"=>100,
 			"contain"=>array(

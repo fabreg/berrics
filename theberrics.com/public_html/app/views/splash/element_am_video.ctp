@@ -41,7 +41,7 @@ $(document).ready(function() {
 <style>
 body {
 
-	background-image:url(/img/splash/element-am-video/bg.jpg);
+	background-image:url(/img/splash/element-am-video/future-nature-splash-bg.jpg);
 	
 	background-position:top center;
 	
@@ -114,11 +114,24 @@ display:none;
 
 .video-heading {
 
-	height:249px;
-	background-image:url(/img/splash/element-am-video/new-title.jpg);
+	height:350px;
+	background-image:url(/img/splash/element-am-video/future-nature-splash-text.gif);
 	background-repeat:no-repeat;
 	background-position: center center;
-	min-width:900px;
+	width:996px;
+	margin:auto;
+	position:relative;
+}
+
+.link {
+
+	position:absolute;
+	height:180px;
+	width:390px;
+	right:0px;
+	top:150px;
+
+
 }
 
 </style>
@@ -129,7 +142,13 @@ display:none;
 	<div id='post'>
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
-	<div class='video-heading'></div>
+	<div class='video-heading'>
+		<div class='link'>
+		<a href='http://elementunitedstates.com/future-nature/' target='_blank'>
+			<img border='0' height='180' width='390' src='/img/layout/clear.png'/>
+		</a>
+		</div>
+	</div>
 	<div id='enter'>
 		<a href='/dailyops' title='The DailyOps'>- ENTER THE BERRICS -</a>
 	</div>

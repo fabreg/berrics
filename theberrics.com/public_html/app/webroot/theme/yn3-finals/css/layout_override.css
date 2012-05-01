@@ -40,9 +40,67 @@ body {
 
 }
 
-.d-post-bit .bottom .footer
-	 {
+.d-post-bit .bottom .footer {
 
 	border-top:1px dashed #666;
 
+}
+
+/* yn3 voting */
+
+#yn3-voting {
+
+
+}
+
+#yn3-voting .voting-top {
+	
+
+	height:14px;
+	background-image:url(/theme/yn3-finals/img/voting-bg-top.jpg);	
+	
+}
+
+#yn3-voting .content {
+
+	background-image:url(/theme/yn3-finals/img/voting-bg-repeat.jpg);	
+	
+}
+
+#yn3-voting .content .inner {
+
+	padding-left:20px;
+	padding-right:20px;
+	
+}
+
+#yn3-voting .left-col {
+
+	flaot:left;
+		
+	
+}
+
+
+#yn3-voting .vote-div {
+	
+	border-bottom:1px dotted #333;
+	margin-bottom:3px;
+
+}
+
+#yn3-voting .vote-div .thumb {
+
+		float:left;
+		width:102px;
+		height:102px;
+
+}
+
+#yn3-voting .vote-div .info {
+	
+	float:left;
+	background-color:red;
+	width:250px;
+	
 }
