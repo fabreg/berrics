@@ -29,7 +29,11 @@
 								<a href='/younited-nations-3/<?php echo $v['Post']['Dailyop']['uri']; ?>'>PLAY VIDEO</a>
 							</div>
 							<div class='vote-form'>
-								
+								<?php if(!array_key_exists($v['YounitedNationsEventEntry']['id'],$votes)): ?>
+								FORM
+								<?php else: ?>
+								ALREADY VOTED
+								<?php endif; ?>
 							</div>
 						</div>
 						<div style='clear:both;'></div>
