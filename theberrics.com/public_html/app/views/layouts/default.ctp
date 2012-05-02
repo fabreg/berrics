@@ -37,7 +37,7 @@
 	<meta property="fb:app_id" content="128870297181216">
 	<?php if($this->params['action'] == "view"): ?>
 	<meta property="og:url" content="http://theberrics.com<?php echo $_SERVER['REQUEST_URI']; ?>">
-	<meta property="og:type" content="link">
+	<meta property="og:type" content="website">
 	<?php endif; ?>
 	<script type='text/javascript'>
 		var swfPlayer = "/swf/BerricsPlayer.swf";
