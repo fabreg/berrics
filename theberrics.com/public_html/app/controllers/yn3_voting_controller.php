@@ -19,12 +19,7 @@ class Yn3VotingController extends DailyopsController {
 		}
 		
 	}
-	
-	public function view() {
-		
-		
-		
-	}
+
 	
 	
 	public function section() {

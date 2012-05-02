@@ -103,7 +103,19 @@ class DailyopSection extends AppModel {
 				"order"=>array("DailyopSection.name"=>"ASC")
 			));
 			
-			
+			if(isset($_SERVER['DEVSERVER'])) {
+				
+				foreach($sections as $k=>$v) {
+					
+					if($v['DailyopSection']['uri'] == 'younited-nations-3') {
+						
+						$sections[$k]['DailyopSection']['directive'] = "yn3_voting";
+						
+					}
+					
+				}
+				
+			}
 			
 			
 			Cache::write("dop_sections",$sections,"1min");

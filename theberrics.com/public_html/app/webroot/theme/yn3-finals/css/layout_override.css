@@ -76,11 +76,17 @@ body {
 
 #yn3-voting .left-col {
 
-	flaot:left;
+	float:left;
 	width:475px;
-	
+	margin-left:20px;
 }
 
+#yn3-voting .right-col {
+
+	float:right;
+	width:458px;
+	margin-right:20px;
+}
 
 #yn3-voting .vote-div {
 	
@@ -100,7 +106,57 @@ body {
 #yn3-voting .vote-div .info {
 	
 	float:left;
-	background-color:red;
-	width:250px;
+	width:365px;
+	margin-left:5px;
+}
+
+#yn3-voting .vote-div .info .crew-name-label {
+	
+	padding-top:3px;
+	border-top:dotted 1px #333;
+	font-size:10px;
+	font-weight:bold;	
+	color:#000;
+	font-family:'Arial';
 	
 }
+#yn3-voting .vote-div .info .play-button {
+
+	float:left;	
+	
+}
+
+#yn3-voting .rules-box {
+	
+	background-image:url(/theme/yn3-finals/img/rule-box-bg.jpg);
+	height:668px;
+	width:458px;
+	font-family:'Courier';
+	color:black;
+	font-size:13px;
+	
+}
+
+#yn3-voting .rules-box .rules1 {
+	
+	width:96%;
+	margin:auto;
+	padding-top:110px;
+	
+}
+
+#yn3-voting .rules-box .rules2 {
+	
+	width:96%;
+	margin:auto;
+	padding-top:27px;
+	
+}
+
+
+
+
+
+
+
+
