@@ -126,6 +126,16 @@ body {
 	
 }
 
+#yn3-voting .vote-div .info .vote-box-form .submit input {
+
+	border:none;
+	background-color:transparent;
+	background-image:url(/theme/yn3-finals/img/place-vote-button.jpg);
+	height:35px;
+	width:149px;
+	
+}
+
 #yn3-voting .rules-box {
 	
 	background-image:url(/theme/yn3-finals/img/rule-box-bg.jpg);
@@ -152,6 +162,17 @@ body {
 	padding-top:27px;
 	
 }
+
+#yn3-voting .rules-box .rules3 {
+	
+	width:96%;
+	margin:auto;
+	padding-top:27px;
+	font-size:12px;
+	font-weight:bold;
+	
+}
+
 
 
 

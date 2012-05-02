@@ -34,17 +34,21 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 								</a>
 							</div>
 							<div class='vote-form'>
-								<?php if(!array_key_exists($v['YounitedNationsEventEntry']['id'],$votes)): ?>
+							<?php if(count($votes)>=3): ?>
+								3 VOTES REACHED
+								<?php elseif(!array_key_exists($v['YounitedNationsEventEntry']['id'],$votes)): ?>
 								<div class='vote-box-form'>
 									<?php 
 										echo $this->Form->create("YounitedNationsVote",array("url"=>"/".$this->params['section']."/place_vote"));
 										echo $this->Form->input("younited_nations_event_entry_id",array("type"=>"hidden","value"=>$v['YounitedNationsEventEntry']['id']));
-										echo $this->Form->submit();
+										echo $this->Form->input("younited_nations_event_id",array("type"=>"hidden","value"=>4));
+										echo $this->Form->submit("&nbsp;");
 										echo $this->Form->end();
 									?>
 								</div>
+							
 								<?php else: ?>
-								ALREADY VOTED
+								VOTE PLACED
 								<?php endif; ?>
 							</div>
 						</div>
@@ -68,6 +72,12 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 					&bull; A crown with your crew's name engraved in it. <br />
 					&bull; A party with the Vans team at the Berrics to celebrate 
 					  your win.<br />
+					</div>
+					<div class='rules3'>
+					&bull; Sign in with your facebook profile<br />
+					&bull; Select your top 3 by clicking 'PLACE VOTE' on the left.<br />
+					&bull; Click 'Submit' after you have selected your top 3.
+					
 					</div>
 				</div>
 			</div>

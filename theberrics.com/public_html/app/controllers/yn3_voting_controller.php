@@ -42,9 +42,8 @@ class Yn3VotingController extends DailyopsController {
 				"contain"=>array()
 			));
 			
-			foreach($v as $val) $votes[$v['YounitedNationsVote']['younited_nations_event_entry_id']] = $v; 
+			foreach($v as $val) $votes[$val['YounitedNationsVote']['younited_nations_event_entry_id']] = $val; 
 		}
-		
 		
 		$this->set(compact("votes"));
 		
@@ -70,6 +69,10 @@ class Yn3VotingController extends DailyopsController {
 		
 		if(count($this->data)>0) {
 			
+			$this->data['YounitedNationsVote']['user_id'] = $this->Session->read("Auth.User.id");
+			
+			$this->loadModel("YounitedNationsVote");
+			
 			$this->YounitedNationsVote->create();
 			
 			$this->YounitedNationsVote->save($this->data);
@@ -77,8 +80,6 @@ class Yn3VotingController extends DailyopsController {
 			return $this->redirect("/younited-nations-3");
 			
 		}
-		
-		
 	}
 	
 	private function setEntries() {
