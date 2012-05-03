@@ -36,10 +36,10 @@ class SplashRoute extends CakeRoute {
 
 		}
 		
-		if(in_array(date('Y-m-d'),array('2012-05-01'))) {
+		if(in_array(date('Y-m-d'),array('2012-05-03'))) {
 			
 			$params['controller'] = "splash";
-			$params['action'] = "element_am_video";
+			$params['action'] = "index";
 			
 		} 
 

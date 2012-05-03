@@ -63,7 +63,7 @@ class DailyopsController extends LocalAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(in_array(date("Y-m-d"),array("2012-04-21","2012-04-30"))) { 
+			if(in_array(date("Y-m-d"),array("2012-04-21","2012-04-30","2012-05-03"))) { 
 				
 				$batb_mode = true;
 				
@@ -206,6 +206,7 @@ class DailyopsController extends LocalAppController {
 				case "2012-04-20":
 				case "2012-04-26":
 				case "2012-04-27":
+				case "2012-05-03":
 					$dateSeed = strtotime("-2 Days");
 					
 					$dateArg = date("Y-m-d",$dateSeed);
