@@ -97,9 +97,9 @@ body {
 
 #yn3-voting .vote-div .thumb {
 
-		float:left;
-		width:102px;
-		height:102px;
+	float:left;
+	width:102px;
+	height:102px;
 
 }
 
@@ -126,6 +126,15 @@ body {
 	
 }
 
+#yn3-voting .vote-div .info .vote-box-form,
+#yn3-voting .vote-div .info .vote-placed-div
+ {
+	
+	float:left;
+	margin-left:15px;	
+	
+}
+
 #yn3-voting .vote-div .info .vote-box-form .submit input {
 
 	border:none;
@@ -133,7 +142,7 @@ body {
 	background-image:url(/theme/yn3-finals/img/place-vote-button.jpg);
 	height:35px;
 	width:149px;
-	
+	cursor:pointer;
 }
 
 #yn3-voting .rules-box {
@@ -149,25 +158,23 @@ body {
 
 #yn3-voting .rules-box .rules1 {
 	
-	width:96%;
+	width:94%;
 	margin:auto;
-	padding-top:110px;
-	
+	padding-bottom:5px;
 }
 
 #yn3-voting .rules-box .rules2 {
 	
-	width:96%;
+	width:94%;
 	margin:auto;
-	padding-top:27px;
+padding-bottom:5px;
 	
 }
 
 #yn3-voting .rules-box .rules3 {
 	
-	width:96%;
+	width:94%;
 	margin:auto;
-	padding-top:27px;
 	font-size:12px;
 	font-weight:bold;
 	

@@ -6,20 +6,51 @@ class Yn3VotingController extends DailyopsController {
 
 	public $uses = array("YounitedNationsEventEntry");
 	
+	public $components = array("RequestHandler");
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
 
 		$this->theme = "yn3-finals";
 		
-		if($this->params['action'] == "index" || empty($this->params['action'])) {
+		if(in_array($this->params['action'],array("index","view")) || empty($this->params['action'])) {
 			
-			$this->params['action'] = "section";
+		
+			if($this->RequestHandler->isAjax()) {
+				
+				$this->params['action'] = "open_video";
+				
+			} else {
+				
+				$this->params['action'] = "section";
+				
+			}
+		}
+		
+		if(isset($this->params['uri']) && !empty($this->params['uri'])) {
+			
+			$this->setPost();
 			
 		}
 		
 	}
-
+	
+	private function setPost() {
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array("Dailyop.uri"=>$this->params['uri'],"DailyopSection.id"=>66),$this->isAdmin());
+		
+		$this->set(compact("post"));
+		
+	}
+	
+	public function open_video() {
+		
+		$this->layout = "ajax";
+		
+		$this->render("/elements/video-post");
+		
+	}
 	
 	
 	public function section() {

@@ -207,6 +207,7 @@ class DailyopsController extends LocalAppController {
 				case "2012-04-26":
 				case "2012-04-27":
 				case "2012-05-03":
+				case "2012-05-04":
 					$dateSeed = strtotime("-2 Days");
 					
 					$dateArg = date("Y-m-d",$dateSeed);
