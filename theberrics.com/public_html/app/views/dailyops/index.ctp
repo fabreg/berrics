@@ -55,7 +55,12 @@ body {
 	color:#781212;
 
 }
+.d-post-bit .container-top .title .sub-title {
 
+color:white;
+
+
+}
 </style>
 <?php endif; ?>
 <div id='dailyops'>
