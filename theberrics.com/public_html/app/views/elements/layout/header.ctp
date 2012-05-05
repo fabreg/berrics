@@ -17,6 +17,12 @@
 				$logo_img = 'theberrics-header-logo.png';
 
 			}
+			
+			if(date("Y-m-d")=="2012-05-05") {
+				
+				$logo_img = "/theme/cinco-de-mayo/img/el-berrics-logo.png";
+				
+			}
 		
 			echo $this->Html->image($logo_img,array("url"=>"/dailyops","border"=>"0"));
 		

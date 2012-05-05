@@ -16,6 +16,48 @@ switch($this->theme) {
 
 
 ?>
+<?php if(date("Y-m-d")=="2012-05-05"): ?>
+<style>
+
+body {
+
+	bacgkround-color:black;
+	background-image:url(/theme/cinco-de-mayo/img/cinco-body.jpg);
+
+}
+
+.d-post-bit {
+
+	background-color:transparent;
+
+}
+.d-post-bit .container-top {
+
+	background-color:transparent;
+	background-image:url(/theme/cinco-de-mayo/img/cinco-post-top.jpg);
+
+}
+.d-post-bit .container {
+
+	background-color:transparent;
+	background-image:url(/theme/cinco-de-mayo/img/cinco-post-bg.jpg);
+
+}
+
+.d-post-bit .bottom {
+
+	background-image:url(/theme/cinco-de-mayo/img/cinco-post-bottom.jpg);
+
+}
+
+.d-post-bit .container-top .title h2 a {
+
+	color:#781212;
+
+}
+
+</style>
+<?php endif; ?>
 <div id='dailyops'>
 <?php 
 if(!isset($this->params['section'])):
