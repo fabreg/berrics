@@ -213,8 +213,7 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 					<div class='rules1'>
 					<ul>
 					<li> Vote now for your top 3 YOUnited Nations videos.</li>
-					<li> Winner will be decided by the amount of votes, a Vans 
-					  judging panel, & a Berrics judging panel.</li>
+					<li> Winner will be decided by the number of votes along with a Vans and Berrics panel.</li>
 					<li> Voting ends 5/13/12.</li>
 					</ul>
 					</div>
@@ -244,7 +243,8 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 					<div id='user-vote-box'>
 					<?php if($this->Session->check("Auth.User.id")): ?>
 					<div class='user-logged-in'>
-						Logged in as: <?php echo $this->Session->read("Auth.User.email"); ?>
+						Logged in as: <?php echo $this->Session->read("Auth.User.email"); ?><br />
+						<a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>' style='color:black;'>(Click Here To Sign-Out)</a>
 					</div>
 					<?php endif; ?>
 					<?php 

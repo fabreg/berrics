@@ -100,15 +100,23 @@ class Yn3VotingController extends DailyopsController {
 		
 		if(count($this->data)>0) {
 			
-			$this->data['YounitedNationsVote']['user_id'] = $this->Session->read("Auth.User.id");
-			
 			$this->loadModel("YounitedNationsVote");
 			
-			$this->YounitedNationsVote->create();
+			$chk = $this->YounitedNationsVote->find("count",array("conditions"=>array("YounitedNationsVote.user_id"=>$this->Session->read("Auth.User.id"))));
 			
-			$this->YounitedNationsVote->save($this->data);
+			if($chk<3) {
+				
+				$this->data['YounitedNationsVote']['user_id'] = $this->Session->read("Auth.User.id");
+				
+				$this->YounitedNationsVote->create();
+				
+				$this->YounitedNationsVote->save($this->data);
+				
+				sleep(1);
+					
+			}
 			
-			sleep(1);
+			
 			
 			return $this->redirect("/younited-nations-3");
 			

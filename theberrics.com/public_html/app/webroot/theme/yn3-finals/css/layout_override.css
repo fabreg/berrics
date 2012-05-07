@@ -258,7 +258,15 @@ padding-bottom:5px;
 	background-image:url(/theme/yn3-finals/img/bullet.png);
 	padding-left:10px;
 	background-repeat:no-repeat;
-	background-position:0px 5px;
+
+}
+
+.user-logged-in {
+	
+	
+	padding-top:3px;
+	text-align:center;	
+	
 }
 
 /*overlay*/
@@ -294,6 +302,11 @@ padding-bottom:5px;
 #video-overlay .yn3-video-post .d-post-bit {
 
 	margin-bottom:0px;	
+	
+}
+#video-overlay .yn3-video-post .d-post-bit .container-top {
+
+	background-image:none;	
 	
 }
 
