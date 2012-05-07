@@ -1,3 +1,10 @@
+<?php 
+
+$voting_closed = false;
+
+foreach($votes as $v) if($v['YounitedNationsVote']['closed']==1) $voting_closed = true;
+
+?>
 <script>
 var st = 0;
 $(document).ready(function() { 
