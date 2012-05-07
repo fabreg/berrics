@@ -211,31 +211,35 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 						<img border='0' src='/theme/yn3-finals/img/yn3.jpg' />
 					</div>
 					<div class='rules1'>
-					&bull; Vote now for your top 3 YOUnited Nations videos.<br />
-					&bull; Winner will be decided by the amount of votes, a Vans 
-					  judging panel, & a Berrics judging panel.<br />
-					&bull; Voting ends 5/13/12.
+					<ul>
+					<li> Vote now for your top 3 YOUnited Nations videos.</li>
+					<li> Winner will be decided by the amount of votes, a Vans 
+					  judging panel, & a Berrics judging panel.</li>
+					<li> Voting ends 5/13/12.</li>
+					</ul>
 					</div>
 					<div style='text-align:center;'>
 						<img border='0' src='/theme/yn3-finals/img/grand-prize.jpg' />
 					</div>
 					<div class='rules2'>
-					&bull; All expense paid trip to the Berrics to film your own 
-					  United Nations.<br />
-					&bull; Vans for everyone in your crew for a year.<br />
-					&bull; A shoot all skaters profile for the winning filmer.<br />
-					&bull; A crown with your crew's name engraved in it. <br />
-					&bull; A party with the Vans team at the Berrics to celebrate 
-					  your win.<br />
+					<ul>
+					<li> All expense paid trip to the Berrics to film your own 
+					  United Nations.</li>
+					<li> Vans for everyone in your crew for a year.</li>
+					<li> A shoot all skaters profile for the winning filmer.</li>
+					<li> A crown with your crew's name engraved in it. </li>
+					<li> A party with the Vans team at the Berrics to celebrate 
+					  your win.</li></ul>
 					</div>
 					<div style='text-align:center;'>
 						<img border='0' src='/theme/yn3-finals/img/how-to-vote.jpg' />
 					</div>
 					<div class='rules3'>
-					&bull; Sign in with your facebook profile<br />
-					&bull; Select your top 3 by clicking 'PLACE VOTE' on the left.<br />
-					&bull; Click 'Submit' after you have selected your top 3.
-					
+					<ul>
+					<li> Sign in with your facebook profile</li>
+					<li> Select your top 3 by clicking 'PLACE VOTE' on the left.</li>
+					<li> Click 'Submit' after you have selected your top 3.</li>
+					</ul>
 					</div>
 					<div id='user-vote-box'>
 					<?php if($this->Session->check("Auth.User.id")): ?>

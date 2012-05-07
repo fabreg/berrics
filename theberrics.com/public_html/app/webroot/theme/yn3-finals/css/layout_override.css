@@ -246,7 +246,20 @@ padding-bottom:5px;
 	
 }
 
+.rules-box ul {
 
+	list-style:none;
+		
+	
+}
+
+.rules-box ul li {
+	
+	background-image:url(/theme/yn3-finals/img/bullet.png);
+	padding-left:10px;
+	background-repeat:no-repeat;
+	background-position:0px 5px;
+}
 
 /*overlay*/
 #video-overlay { 
