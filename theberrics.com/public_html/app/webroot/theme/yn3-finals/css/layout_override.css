@@ -180,6 +180,72 @@ padding-bottom:5px;
 	
 }
 
+.vote-row {
+	
+	width:92%;
+	margin:auto;	
+	margin-top:25px;
+}
+
+.vote-row-thumb {
+
+	float:left;
+	width:65px;
+		
+}
+
+.vote-row-crew {
+	
+	float:left;
+	margin-left:5px;
+	border-bottom:1px dotted #999;	
+	width:auto;
+}
+
+.remove-div {
+
+		float:left;
+		margin-left:5px;
+		width:40px;
+		margin-top:25px;
+}
+
+.remove-div .submit input {
+	
+	background-color:transparent;
+	border:none;
+	font-size:12px;
+	font-family:'Courier';
+	color:black;
+	font-weight:bold;	
+	cursor:pointer;
+	
+}
+
+.blank-vote {
+
+	width:92%;
+	margin:auto;
+	margin-top:25px;	
+	
+}
+.submit-entries-div {
+
+	text-align:center;
+	padding:10px;
+	font-size:18px;	
+	
+}
+.submit-entries-div .submit input {
+	
+	border:none;
+	background-color:transparent;
+	background-image:url(/theme/yn3-finals/img/submit-top-3.jpg);
+	height:34px;
+	width:183px;	
+	
+}
+
 
 
 /*overlay*/

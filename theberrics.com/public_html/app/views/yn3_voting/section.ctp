@@ -183,7 +183,7 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 							</div>
 							<div class='vote-form'>
 							<?php if(count($votes)>=3): ?>
-								3 VOTES REACHED
+								
 								<?php elseif(!array_key_exists($v['YounitedNationsEventEntry']['id'],$votes)): ?>
 								<div class='vote-box-form'>
 									<?php 
@@ -237,6 +237,84 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 					&bull; Click 'Submit' after you have selected your top 3.
 					
 					</div>
+					<div id='user-vote-box'>
+					<?php if($this->Session->check("Auth.User.id")): ?>
+					<div class='user-logged-in'>
+						Logged in as: <?php echo $this->Session->read("Auth.User.email"); ?>
+					</div>
+					<?php endif; ?>
+					<?php 
+						$vote_rows = array();
+						
+						foreach($votes as $v) $vote_rows[] = $v;
+						
+						for($i=0;$i<3;$i++): 
+						
+					?>
+						<?php 
+							if(isset($vote_rows[$i])): 
+							
+							$vote_row = false;
+							foreach($entries as $v) if($vote_rows[$i]['YounitedNationsVote']['younited_nations_event_entry_id'] == $v['YounitedNationsEventEntry']['id']) $vote_row = $v;
+						?>
+						<div class='vote-row'>
+							<div class='vote-row-thumb'>
+								<?php echo $this->Media->mediaThumb(array(
+																	"MediaFile"=>$vote_row['Post']['DailyopMediaItem'][1]['MediaFile'],
+																	"w"=>50,
+																	"h"=>50
+								)); ?>
+							</div>
+							<div class='vote-row-crew'>
+								<?php echo $this->Media->mediaThumb(array(
+								"MediaFile"=>$vote_row['Post']['DailyopMediaItem'][2]['MediaFile'],
+								"h"=>40
+							)); ?>
+							</div>
+							
+							<?php if(!$voting_closed): ?>
+							<div class='remove-div'>
+								<?php 
+									echo $this->Form->create("YounitedNationsVote",array("url"=>"/younited-nations-3/remove_vote"));
+									echo $this->Form->input("id",array("type"=>"hidden","value"=>$vote_rows[$i]['YounitedNationsVote']['id']));
+									echo $this->Form->submit("Remove");
+									echo $this->Form->end();
+								?>
+							</div>
+							<?php endif; ?>
+							<div style='clear:both;'></div>
+						</div>
+						<?php else: ?>
+						<div class='blank-vote'>
+							<div class='vote-row-thumb'>
+								<img border='0' src='/theme/yn3-finals/img/no-vote.jpg' />
+							</div>
+							<div class='vote-row-crew'>
+							
+							</div>
+							<div style='clear:both;'></div>
+						</div>
+						<?php endif;?>
+					<?php endfor; ?>
+					<div class='submit-entries-div'>
+						<?php if(count($votes)>=3): ?>
+							<?php if($voting_closed): ?>
+								YOUR VOTE HAS BEEN ACCEPTED
+							<?php else: ?>
+								<?php 
+									echo $this->Form->create("YounitedNationsVote",array("url"=>"/younited-nations-3/close_votes"));
+									echo $this->Form->submit(" ");
+									echo $this->Form->end();
+								?>
+							<?php endif; ?>
+						<?php else: ?>
+							SELECT YOUR CREWS TO THE LEFT
+						<?php endif; ?>
+					</div>
+				</div>
+				</div>
+				<div>
+					<img border='0' src='/theme/yn3-finals/img/sam-dawg.jpg' />
 				</div>
 			</div>
 			<div style='clear:both;'></div>

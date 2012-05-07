@@ -108,6 +108,8 @@ class Yn3VotingController extends DailyopsController {
 			
 			$this->YounitedNationsVote->save($this->data);
 			
+			sleep(1);
+			
 			return $this->redirect("/younited-nations-3");
 			
 		}
@@ -146,6 +148,52 @@ class Yn3VotingController extends DailyopsController {
 		
 	}
 	
+	public function remove_vote() {
+		
+		if(!$this->Session->check("Auth.User.id") || count($this->data)<=0) return $this->cakeError("error404");
+		
+		$this->loadModel("YounitedNationsVote");
+		$chk = $this->YounitedNationsVote->find("first",array(
+			"contain"=>array(),
+			"conditions"=>array(
+				"YounitedNationsVote.id"=>$this->data['YounitedNationsVote']['id'],
+				"YounitedNationsVote.user_id"=>$this->Session->read("Auth.User.id")
+			)
+		));
+		
+		if(isset($chk['YounitedNationsVote']['id'])) {
+			
+			
+			$this->YounitedNationsVote->delete($chk['YounitedNationsVote']['id']);
+			
+			sleep(1);
+			
+		}
+		
+		return $this->redirect("/younited-nations-3");
+		
+	}
+	
+	public function close_votes() {
+		
+		if(!$this->Session->check("Auth.User.id")) return $this->cakeError("error404");
+		
+		
+		$this->loadModel("YounitedNationsVote");
+		
+		$this->YounitedNationsVote->updateAll(
+			array(
+				"YounitedNationsVote.closed"=>1
+			),
+			array(
+				"YounitedNationsVote.user_id"=>$this->Session->read("Auth.User.id")
+			)
+		);
+		
+		sleep(1);
+		return $this->redirect("/younited-nations-3");
+		
+	}
 	
 
 }
