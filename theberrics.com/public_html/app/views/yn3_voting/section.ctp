@@ -37,14 +37,7 @@ $(document).ready(function() {
 	}
 	
 	
-	$(window).scroll(function(e) { 
-		
-		superScrollMethod();
-		
-	});
-	
-	superScrollMethod();
-	
+
 	$('form').submit(function() { 
 		
 		$('input[type=submit]').attr("disabled",true);
@@ -57,30 +50,7 @@ $(document).ready(function() {
 	
 });
 
-function superScrollMethod() {
-	
-	var factor = 400;
-	
-	if($('#scroll-chk').length>0) factor+=470;
-	
-	if($(window).scrollTop()>factor && $(window).height()>650) {
-	
-		$('.voting-form').css({
-			
-			"position":"fixed",
-			"top":"115px"
-			
-		});
-		
-	} else {
-		
-		$('.voting-form').css({
-			
-			"position":"static"
-			
-		});
-	}
-}
+
 
 var Yn3Video = {
 		
