@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("canteen/order-status"),array("inline"=>false));
+$this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>false));
 
 
 ?>
@@ -128,7 +128,13 @@ $this->Html->script(array("canteen/order-status"),array("inline"=>false));
 		<div class='notes-form-div'>
 			<div class='order-notes-help'></div>
 			<div class='order-notes-form'>
-				<?php echo $this->element("canteen_notes/add-note-form"); ?>
+				<?php 
+					echo $this->Form->create("CanteenOrderNote",array("url"=>"/canteen/order_note/".base64_encode($this->here)));
+					echo $this->Form->input("action",array("value"=>"customer_note","type"=>"hidden"));
+					echo $this->Form->input("canteen_order_id",array("type"=>"hidden","value"=>$order['CanteenOrder']['id']));
+					echo $this->Form->input("message");
+					echo $this->Form->end();
+				?>
 			</div>
 			<div style='clear:both;'></div>
 			

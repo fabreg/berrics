@@ -52,9 +52,15 @@ class CanteenOrderNote extends AppModel {
 		
 	}
 	
-	public function addCustomerNote() {
+	public function addCustomerNote($data = array()) {
 		
+		$this->create();
 		
+		$data['feedback_required'] = 1;
+		
+		$this->save($data);
+		
+		return $this->id;
 		
 	}
 

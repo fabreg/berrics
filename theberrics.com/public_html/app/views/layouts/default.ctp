@@ -24,19 +24,25 @@
 		
 	}
 	
+	$pt = "The Berrics";
+	
+	$pt .=  (preg_match("/(canteen)/",$_SERVER['REQUEST_URI'])) ? "Canteen":"";
+	
+	$pt .= " - ".$title_for_layout;
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title>The Berrics <?php echo (preg_match("/(canteen)/",$_SERVER['REQUEST_URI'])) ? "Canteen":""; ?> - <?php echo $title_for_layout; ?></title>
+	<title><?php echo $pt; ?></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
 	<META name="description" content="<?php echo $meta_d?>"> 
 	<META name="keywords" content="<?php echo $meta_k?>"> 
 	<meta property="fb:app_id" content="128870297181216">
 	<?php if($this->params['action'] == "view"): ?>
 	<meta property="og:url" content="http://theberrics.com<?php echo $_SERVER['REQUEST_URI']; ?>">
+	<meta property="og:title" content="<?php echo $pt; ?>">
 	<meta property="og:type" content="website">
 	<?php endif; ?>
 	<script type='text/javascript'>

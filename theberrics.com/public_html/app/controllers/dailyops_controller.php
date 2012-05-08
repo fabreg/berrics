@@ -271,9 +271,11 @@ class DailyopsController extends LocalAppController {
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
 		
-		$title = addslashes($post['Dailyop']['name']." ".$post['Dailyop']['sub_title']);
+		$title = addslashes($post['Dailyop']['name']);
 		
-		$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
+		if(!empty($post['Dailyop']['sub_title'])) $title .=" ".stripslashes($post['Dailyop']['sub_title']);
+		
+		//$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
 		
 		
 		$this->set(compact("fb_meta_img"));
@@ -349,7 +351,7 @@ class DailyopsController extends LocalAppController {
 		
 		//set the title of the page
 		
-		$this->set("title_for_layout",$entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']);
+		$this->set("title_for_layout",stripslashes($entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']));
 		
 		//build a list of tags for meta_k
 		
