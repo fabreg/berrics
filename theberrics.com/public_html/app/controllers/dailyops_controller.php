@@ -271,7 +271,7 @@ class DailyopsController extends LocalAppController {
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
 		
-		$title = addslashes($post['Dailyop']['name']." - ".$post['Dailyop']['sub_title']);
+		$title = addslashes($post['Dailyop']['name']." ".$post['Dailyop']['sub_title']);
 		
 		$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
 		
