@@ -251,6 +251,36 @@ class DailyopsController extends LocalAppController {
 		
 	}
 	
+	protected function setFacebookMetaData($post) {
+		
+		//set the image
+		$mediaFile = $post['DailyopMediaItem'][0]['MediaFile'];
+		$img = '';
+		
+		switch($mediaFile['media_type']) {
+			
+			case "bcove":
+				$img = "/video/stills/".$mediaFile['file_video_still'];
+			break;
+			default:
+				$img = "/images/".$mediaFile['file'];
+			break;
+		}
+		
+		$img = "http://img.theberrics.com".$img;
+		
+		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
+		
+		$title = addslashes($post['Dailyop']['name']." - ".$post['Dailyop']['sub_title']);
+		
+		$fb_meta_img .= "<meta preperty='og:title' content='The Berrics - {$title}' />";	
+		
+		
+		$this->set(compact("fb_meta_img"));
+		
+		
+		
+	}
 	
 	protected function setFacebookMetaImg($mediaFile) {
 		
@@ -308,10 +338,11 @@ class DailyopsController extends LocalAppController {
 		//let's get the media item we want to show on facebook
 		if(isset($entry['DailyopMediaItem'][0]['MediaFile'])) {
 			
-			$this->setFacebookMetaImg($entry['DailyopMediaItem'][0]['MediaFile']);
+			//$this->setFacebookMetaImg($entry['DailyopMediaItem'][0]['MediaFile']);
 			
 		}
 		
+		$this->setFacebookMetaData($entry);
 		
 		$this->set(compact("entry","posts"));
 		

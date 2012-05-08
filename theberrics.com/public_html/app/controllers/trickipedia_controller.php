@@ -1,9 +1,9 @@
 <?php
 
-App::import("Controller","LocalApp");
+App::import("Controller","Dailyops");
 
 
-class TrickipediaController extends LocalAppController {
+class TrickipediaController extends DailyopsController {
 	
 	
 	public $uses = array();
@@ -11,10 +11,6 @@ class TrickipediaController extends LocalAppController {
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
-		
-		$this->initPermissions();
-		
-		$this->Auth->allow("*");
 		
 		if($this->params['action']=="view") {
 			
@@ -106,7 +102,7 @@ class TrickipediaController extends LocalAppController {
 		}
 		
 		$video = $this->Dailyop->returnPost(array("Dailyop.uri"=>$uri,'Dailyop.dailyop_section_id'=>4),$this->isAdmin());
-		
+		$this->setFacebookMetaData($video);
 		
 		$this->set(compact("posts","video"));
 	}
