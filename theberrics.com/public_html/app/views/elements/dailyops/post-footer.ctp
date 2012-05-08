@@ -65,24 +65,8 @@
 					<div class='twitter'>
 						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://theberrics.com".$url; ?>" data-text='<?php echo addslashes($d['name']." ".$d['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
 					</div> 
-					<?php if($d['contest_post'] == 1): ?>
-						<?php 
 						
-							echo $this->Form->create("UserContest",array("style"=>"float:left;","url"=>"/31-days-of-theotis/found"));
-						?>
-						<div class='fb-form-button'><img alt='' border='0' src='/theme/31-days-of-theotis/img/fakebook.png' onclick='$(this).parent().parent().submit(); return true;' />
-						<div class='flag'>
-						<?php echo mt_rand(10,99); ?>
-						</div>
-						</div>
-						<?php
-						//make the cipher
-							echo $this->Form->input($this->Session->id(),array("type"=>"hidden","value"=>base64_encode(serialize(Array("session_id"=>$this->Session->id(),"dailyop_id"=>$d['id'])))));
-							echo $this->Form->end();
-						
-						?>
-						
-					<?php else: ?>
+					<?php if(strtotime($d['publish_date'])<time()): ?>
 					<div class="fb-like" data-href="<?php echo urlencode("http://theberrics.com".$fb_like); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style='float:left;'></div>
 					<?php  /* <fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like> */ ?>
 					<?php endif; ?>
