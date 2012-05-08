@@ -1,3 +1,9 @@
+<?php 
+
+$this->Html->script(array("canteen/order-status"),array("inline"=>false));
+
+
+?>
 <div id='order-status'>
 	<div>
 		<div class='order'>

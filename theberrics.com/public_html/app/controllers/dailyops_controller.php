@@ -269,6 +269,7 @@ class DailyopsController extends LocalAppController {
 		$img = "http://img.theberrics.com".$img;
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
+		
 			
 		$this->set(compact("fb_meta_img"));
 		

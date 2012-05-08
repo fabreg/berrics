@@ -51,5 +51,11 @@ class CanteenOrderNote extends AppModel {
 		return $this->save($data);
 		
 	}
+	
+	public function addCustomerNote() {
+		
+		
+		
+	}
 
 }
