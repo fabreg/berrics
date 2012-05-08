@@ -11,6 +11,8 @@ class Batb5Controller extends DailyopsController {
 	private $event_id = 50018;
 	//private $event_id = 50016;
 	
+	private $pt = '';
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -33,7 +35,7 @@ class Batb5Controller extends DailyopsController {
 	public function section() {
 		
 		//page title
-		$this->set("title_for_layout","DC Shoes Presents: Battle at the Berrics 5");
+		$this->pt = "DC Shoes Presents: Battle at the Berrics 5";
 		
 		if(count($this->data)>0) $this->handleVoteSubmit();
 		
@@ -70,6 +72,8 @@ class Batb5Controller extends DailyopsController {
 		
 		//set the posts
 		$this->setPosts($event);
+		
+		$this->set("title_for_layout",$this->pt);
 					
 	}
 	
@@ -126,6 +130,10 @@ class Batb5Controller extends DailyopsController {
 			),$this->isAdmin());
 			
 			//die(print_r($posts));
+			
+			$this->pt .=": ".$posts[0]['Dailyop']['name']." - ".$posts[0]['Dailyop']['sub_title'];
+			
+			$this->setFacebookMetaData($posts[0]);
 		}
 		
 		$this->set(compact("posts"));
