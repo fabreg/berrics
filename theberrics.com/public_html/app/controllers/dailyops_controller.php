@@ -273,7 +273,7 @@ class DailyopsController extends LocalAppController {
 		
 		$title = addslashes($post['Dailyop']['name']." - ".$post['Dailyop']['sub_title']);
 		
-		$fb_meta_img .= "<meta preperty='og:title' content='The Berrics - {$title}' />";	
+		$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
 		
 		
 		$this->set(compact("fb_meta_img"));
