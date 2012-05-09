@@ -179,7 +179,7 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 								CREW NAME
 							</div>
 							<div class='play-button'>
-								<a href='/<?php echo $this->params['section']; ?>/<?php echo $v['Post']['Dailyop']['uri']; ?>'>
+								<a href='/younited-nations-3/<?php echo $v['Post']['Dailyop']['uri']; ?>'>
 									<img border='0' src='/theme/yn3-finals/img/play-video-button.jpg' />
 								</a>
 							</div>
@@ -189,7 +189,7 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 								<?php elseif(!array_key_exists($v['YounitedNationsEventEntry']['id'],$votes)): ?>
 								<div class='vote-box-form'>
 									<?php 
-										echo $this->Form->create("YounitedNationsVote",array("url"=>"/".$this->params['section']."/place_vote"));
+										echo $this->Form->create("YounitedNationsVote",array("url"=>"/younited-nations-3/place_vote"));
 										echo $this->Form->input("younited_nations_event_entry_id",array("type"=>"hidden","value"=>$v['YounitedNationsEventEntry']['id']));
 										echo $this->Form->input("younited_nations_event_id",array("type"=>"hidden","value"=>4));
 										echo $this->Form->submit(" ");
@@ -328,3 +328,41 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 	</div>
 	<div class='bottom'></div>
 </div>
+
+<?php if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])): ?>
+<div style='width:728px; margin:auto; padding-top:80px;'>
+	<div id='paging-menu'>
+		<div class='left'>
+		<?php 
+		
+			if($newer_date && !preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI'])) {
+				$newer_date = strtotime($newer_date);
+				echo $this->Html->link("<span> ".date("F jS, Y",$newer_date)."</span>",date("/Y/m/d",$newer_date),array("escape"=>false,"title"=>date("F jS, Y",$newer_date)));
+				
+			}
+			
+		?>
+		</div>
+		<div class='right'>
+		<?php 
+			
+			$older_date = "2012-05-10";
+		
+			if($older_date) {
+				
+				$older_date = strtotime($older_date);
+				echo $this->Html->link("<span>".date("F jS, Y",$older_date)."</span>",date("/Y/m/d",$older_date),array("escape"=>false,"title"=>date("F jS, Y",$older_date)));
+				
+			}
+			
+		?>
+		</div>
+		<div style='clear:both'></div>
+	</div>
+<?php 
+
+echo $this->element("dailyops/date-bit");
+
+?>
+</div>
+<?php endif; ?>

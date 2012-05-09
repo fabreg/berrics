@@ -3,76 +3,46 @@
 echo $this->element("dashboard/tab-nav");
 
 ?>
-<div class='index'>
-	<div style='width:33%; float:left;'>
-		<div class='round-div'>
-			<div class='header'>Orders (<?php echo count($today_order_status); ?>): Today</div>
-			<table cellspacing='0'>
-				<tr>
-					<th colspan='2' align='left'>
-						Order Status
-					</th>
-				</tr>
-				<?php foreach($today_order_status as $v): ?>
-				<tr>
-					<td width='1%'><?php echo strtoupper($v['CanteenOrder']['order_status']); ?></td>
-					<td><?php echo	$v[0]['total']; ?></td>
-				</tr>
-				
-				<?php endforeach; ?>
-			</table>
-			<div style='height:15px'></div>
-			<table cellspacing='0'>
-				<tr>
-					<th colspan='2' align='left'>
-						Shipping Status
-					</th>
-				</tr>
-				<?php foreach($today_shipping_status as $v): ?>
-				<tr>
-					<td width='1%'><?php echo strtoupper($v['CanteenOrder']['shipping_status']); ?></td>
-					<td><?php echo	$v[0]['total']; ?></td>
-				</tr>
-				<?php endforeach; ?>
-			</table>
-		</div>
-		<div class='round-div'>
-			<div class='header'>Orders (<?php echo count($three_day_order_status); ?>): <?php echo $three_day_start; ?> - <?php echo $three_day_end; ?></div>
-			<table cellspacing='0'>
-				<tr>
-					<th colspan='2' align='left'>
-						Order Status
-					</th>
-				</tr>
-				<?php foreach($three_day_order_status as $v): ?>
-				<tr>
-					<td width='1%'><?php echo strtoupper($v['CanteenOrder']['order_status']); ?></td>
-					<td><?php echo	$v[0]['total']; ?></td>
-				</tr>
-				
-				<?php endforeach; ?>
-			</table>
-			<div style='height:15px'></div>
-			<table cellspacing='0'>
-				<tr>
-					<th colspan='2' align='left'>
-						Shipping Status
-					</th>
-				</tr>
-				<?php foreach($three_day_shipping_status as $v): ?>
-				<tr>
-					<td width='1%'><?php echo strtoupper($v['CanteenOrder']['shipping_status']); ?></td>
-					<td><?php echo	$v[0]['total']; ?></td>
-				</tr>
-				<?php endforeach; ?>
-			</table>
-		</div>		
-	</div>
-	<div style='width:33%; float:left;'>
-		
-	</div>
-	<div style='width:33%; float:left;'>
+<style>
+.canteen-scroll-box {
+
+	height:400px;
+	background-color:#6f8591;
+		-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border:1px solid #e9e9e9;
+	-webkit-box-shadow: 1px 1px 5px 2px #999;
+	box-shadow: 1px 1px 5px 2px #999;
 	
+}
+
+.canteen-scroll-box .heading {
+	font-weight:bold;
+	font-size:18px;
+	line-height:35px;
+	color:#f7f7f7;
+	text-align:center;
+}
+
+.canteen-scroll-box .content {
+	width:97%;
+	margin:auto;
+	overflow:auto;
+	height:350px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background-color:white;
+	border:1px solid #e9e9e9;
+}
+</style>
+<div class='index'>
+	<div>
+		<div style='float:left; width:48%;'>
+			
+		</div>
+		<div style='float:right; width:48%;'>
+			
+		</div>
+		<div style='clear:both;'></div>
 	</div>
-	<div style='clear:both;'></div>
 </div>

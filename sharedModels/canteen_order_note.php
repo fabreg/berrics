@@ -56,7 +56,7 @@ class CanteenOrderNote extends AppModel {
 		
 		$this->create();
 		
-		$data['feedback_required'] = 1;
+		$data['CanteenOrderNote']['feedback_required'] = 1;
 		
 		$this->save($data);
 		

@@ -49,7 +49,7 @@ class DashboardController extends LocalAppController {
 		$this->loadModel("CanteenOrderNote");
 		
 		//get all the pending customer notes
-		$pending_notes = $this->CanteenOrderNote->find("all",array(
+		$customer_notes = $this->CanteenOrderNote->find("all",array(
 			"conditions"=>array(
 				"CanteenOrderNote.feedback_required"=>1
 			),
@@ -58,7 +58,17 @@ class DashboardController extends LocalAppController {
 			)
 		));
 		
-		$this->set("pending_notes");
+		$this->set("customer_notes");
+		
+		//get all the pending shipments
+		
+		//get all the pending orders
+		
+		//get some ordering stats
+		
+		//get some low inventory stats
+		
+		
 		
 	}
 	

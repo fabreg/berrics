@@ -618,6 +618,16 @@ public function dc_apr() {
 		
 	}
 	
+	public function berra_bday() {
+		
+		$this->loadModel("InstagramImageItem");
+		
+		$instagram = $this->InstagramImageItem->returnImagesByTagRaw("happybirthdaysteveberra");
+		
+		$this->set(compact("instagram"));
+		
+	}
+	
 }
 
 ?>

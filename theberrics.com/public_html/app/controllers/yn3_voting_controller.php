@@ -36,6 +36,19 @@ class Yn3VotingController extends DailyopsController {
 			
 		}
 		
+		if(preg_match('/\/dailyops/',$_SERVER['REQUEST_URI'])) {
+			
+			$this->get_full_date_nav();
+			
+			$dateIn = date("Y-m-d");
+		
+			$older_date = $this->Dailyop->getNextDate($dateIn);
+			
+			$newer_date = $this->Dailyop->getNextDate($dateIn,false);
+			
+			$this->set(compact("dateIn","newer_date","older_date"));
+		}
+		
 	}
 	
 	private function setPost() {
@@ -81,7 +94,7 @@ class Yn3VotingController extends DailyopsController {
 			foreach($v as $val) $votes[$val['YounitedNationsVote']['younited_nations_event_entry_id']] = $val; 
 		}
 		
-		if(!$this->pt) $this->pt = "Vans Shoes Presents: YOUnited Nations 3";
+		if(!$this->pt) $this->pt = "Vans Presents: YOUnited Nations 3";
 		
 		$this->set("title_for_layout",$this->pt);
 		
