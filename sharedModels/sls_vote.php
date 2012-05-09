@@ -37,8 +37,6 @@ class SlsVote extends AppModel {
 		
 		$token = "sls-qualifying-stats";
 		
-		
-		
 		if(($data = Cache::read($token,"5min"))===false || isset($opt['no_cache'])) {
 			
 			

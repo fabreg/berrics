@@ -63,5 +63,16 @@ class CanteenOrderNote extends AppModel {
 		return $this->id;
 		
 	}
+	
+	public function setCustomerNoteValidation() {
+		
+		$this->validate = array(
+			"message"=>array(
+				"rule"=>array("minLength",10),
+				"message"=>"Your message must be at least 10 characters"
+			)
+		);
+		
+	}
 
 }

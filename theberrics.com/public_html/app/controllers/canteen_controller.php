@@ -275,6 +275,8 @@ class CanteenController extends CanteenAppController {
 	
 	public function order($id = false) {
 		
+		if(count($this->data)>0) $this->order_note(base64_encode($this->here));
+		
 		if($id) {
 			
 			$this->loadModel("CanteenOrder");
@@ -286,6 +288,10 @@ class CanteenController extends CanteenAppController {
 			if(isset($order['CanteenOrder']['id'])) {
 				
 				$this->set(compact("order"));
+				
+			} else {
+				
+				return $this->cakeError("error404");
 				
 			}
 			
@@ -336,6 +342,44 @@ class CanteenController extends CanteenAppController {
 		}
 		
 		$this->render("/elements/canteen_printing/{$ele}");
+		
+	}
+	
+	private function order_note($callback = false) {
+		
+		$this->loadModel("CanteenOrderNote");
+		
+		$this->CanteenOrderNote->setCustomerNoteValidation();
+		
+		$this->CanteenOrderNote->set($this->data);
+		
+		$validation = $this->CanteenOrderNote->validates();
+		
+		if($validation) {
+			
+			$this->CanteenOrderNote->addCustomerNote($this->data);
+			
+			$redir = $this->here;
+			
+			return $this->redirect($redir);
+			
+		} else {
+			
+			if($callback) {
+				
+				$this->Session->setFlash("There were errors in your note, please correct them");
+				
+				return $this->redirect(base64_decode($callback));
+				
+			} else {
+
+				
+				return $this->cakeError("error404");	
+			
+				
+			}
+			
+		}
 		
 	}
 	

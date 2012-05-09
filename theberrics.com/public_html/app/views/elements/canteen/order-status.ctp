@@ -129,10 +129,11 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 			<div class='order-notes-help'></div>
 			<div class='order-notes-form'>
 				<?php 
-					echo $this->Form->create("CanteenOrderNote",array("url"=>"/canteen/order_note/".base64_encode($this->here)));
+					echo $this->Form->create("CanteenOrderNote",array("url"=>$this->here));
 					echo $this->Form->input("action",array("value"=>"customer_note","type"=>"hidden"));
 					echo $this->Form->input("canteen_order_id",array("type"=>"hidden","value"=>$order['CanteenOrder']['id']));
 					echo $this->Form->input("message");
+					echo $this->Form->submit("Add Note");
 					echo $this->Form->end();
 				?>
 			</div>
@@ -142,3 +143,4 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 	</div>
 	
 </div>
+<?php print_r($order); ?>
