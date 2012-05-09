@@ -319,7 +319,9 @@ padding-bottom:5px;
 #video-overlay .yn3-video-post .d-post-bit .bottom {
 	
 	min-height:25px;
-		
+background-image:url(/theme/yn3-finals/img/vans-post-logo.jpg);
+background-repeat:no-repeat;
+background-position:right top;
 }
 
 #video-overlay .yn3-video-post .bottom .tags,
