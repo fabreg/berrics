@@ -6,7 +6,9 @@ class YounitedNationsEventEntry extends AppModel {
 		"YounitedNationsPosse"=>array(
 			"foreignKey"=>"younited_nations_posse_id"
 		),
-		"Dailyop"
+		"Dailyop"=>array(
+			"foreignKey"=>"entry_dailyop_id"
+		)
 	);
 	
 	

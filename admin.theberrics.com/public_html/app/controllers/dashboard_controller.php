@@ -145,6 +145,21 @@ class DashboardController extends LocalAppController {
 		
 	}
 	
+	public function yn3_stats() {
+		
+		$this->loadModel("YounitedNationsVote");
+		$this->loadModel("YounitedNationsEventEntry");
+		
+		$stats = $this->YounitedNationsVote->return_event_stats();
+		
+		foreach($stats as $v) {
+			
+			
+			
+		}
+		
+	}
+	
 	
 	
 	
