@@ -79,9 +79,9 @@ class SlsVotingController extends DailyopsController {
 		
 		$dateIn = date("Y-m-d");
 		
-		$older_date = $this->Dailyop->getNextDate($dateArg);
+		$older_date = $this->Dailyop->getNextDate($dateIn);
 		
-		$newer_date = $this->Dailyop->getNextDate($dateArg,false);
+		$newer_date = $this->Dailyop->getNextDate($dateIn,false);
 		
 		$this->set(compact("dateIn","newer_date","older_date"));
 		

@@ -152,11 +152,27 @@ class DashboardController extends LocalAppController {
 		
 		$stats = $this->YounitedNationsVote->return_event_stats();
 		
-		foreach($stats as $v) {
+		$gt = 0;
+		
+		foreach($stats as $k=>$v) {
 			
+			$entry = $this->YounitedNationsEventEntry->find("first",array(
+				"conditions"=>array(
+					"YounitedNationsEventEntry.id"=>$v['YounitedNationsVote']['younited_nations_event_entry_id']
+				),
+				"contain"=>array(
+					"YounitedNationsPosse",
+					"Dailyop"
+				)
+			));
 			
+			$stats[$k] = array_merge($v,$entry);
+			
+			$gt += $v[0]['votes'];
 			
 		}
+		
+		$this->set(compact("stats","gt"));
 		
 	}
 	

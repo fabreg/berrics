@@ -4,6 +4,8 @@ $voting_closed = false;
 
 foreach($votes as $v) if($v['YounitedNationsVote']['closed']==1) $voting_closed = true;
 
+$meta_d = "Vote now for your top 3 YOUnited Nations videos. Winner will be decided by the number of votes along with a Vans and Berrics panel. Voting ends 5/13/12. All expense paid trip to the Berrics to film your own United Nations. Vans for everyone in your crew for a year. A shoot all skaters profile for the winning filmer. A crown with your crew's name engraved in it. A party with the Vans team at the Berrics to celebrate your win. Sign in with your facebook profile Select your top 3 by clicking 'PLACE VOTE' on the left. Click 'Submit' after you have selected your top 3. Click 'Submit' after you have selected your top 3.</li>";
+$this->set("meta_d",$meta_d);
 ?>
 <script>
 var st = 0;

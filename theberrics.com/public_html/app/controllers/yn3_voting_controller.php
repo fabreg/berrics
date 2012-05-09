@@ -7,6 +7,9 @@ class Yn3VotingController extends DailyopsController {
 	public $uses = array("YounitedNationsEventEntry");
 	
 	public $components = array("RequestHandler");
+	
+	private $pt = false;
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -39,6 +42,8 @@ class Yn3VotingController extends DailyopsController {
 		$this->loadModel("Dailyop");
 		
 		$post = $this->Dailyop->returnPost(array("Dailyop.uri"=>$this->params['uri'],"DailyopSection.id"=>66),$this->isAdmin());
+		
+		$this->pt = $post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];
 		
 		$this->set(compact("post"));
 		
@@ -75,6 +80,10 @@ class Yn3VotingController extends DailyopsController {
 			
 			foreach($v as $val) $votes[$val['YounitedNationsVote']['younited_nations_event_entry_id']] = $val; 
 		}
+		
+		if(!$this->pt) $this->pt = "Vans Shoes Presents: YOUnited Nations 3";
+		
+		$this->set("title_for_layout",$this->pt);
 		
 		$this->set(compact("votes"));
 		
