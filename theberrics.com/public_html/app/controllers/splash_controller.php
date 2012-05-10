@@ -626,6 +626,8 @@ public function dc_apr() {
 		
 		$this->set(compact("instagram"));
 		
+		$this->set("title_for_layout","The Berrics - Happy Birthday Steve Berra! - Instagram: #happybirthdaysteveberra");
+		
 	}
 	
 }
