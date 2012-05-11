@@ -58,7 +58,7 @@ class DashboardController extends LocalAppController {
 			)
 		));
 		
-		$this->set("customer_notes");
+		$this->set(compact("customer_notes"));
 		
 		//get all the pending shipments
 		
