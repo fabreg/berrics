@@ -61,6 +61,24 @@ class DashboardController extends LocalAppController {
 		$this->set(compact("customer_notes"));
 		
 		//get all the pending shipments
+		$this->loadModel("CanteenShippingRecord");
+		$pending_shipments = $this->CanteenShippingRecord->find("count",array(
+			"conditions"=>array(
+				"CanteenShippingRecord.shipping_status"=>"pending"
+			),
+			"contain"=>Array()
+		));
+		
+		$this->set(compact("pending_shipments"));
+		
+		$processing_shipments = $this->CanteenShippingRecord->find("count",array(
+			"conditions"=>array(
+				"CanteenShippingRecord.shipping_status"=>"processing"
+			),
+			"contain"=>Array()
+		));
+		
+		$this->set(compact("processing_shipments"));
 		
 		//get all the pending orders
 		

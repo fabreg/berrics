@@ -64,8 +64,8 @@ echo $this->element("dashboard/tab-nav");
 		</div>
 		<div style='float:right; width:48%;'>
 			<div>
-				<h2>Pending Shipments ()</h2>
-				<h2>Shipments in Processing ()</h2>
+				<h2>Pending Shipments (<?php echo $pending_shipments; ?>)</h2>
+				<h2>Shipments in Processing (<?php echo $processing_shipments; ?>)</h2>
 			</div>
 			<div>
 				<h2>Order Stats ( Today )</h2>
