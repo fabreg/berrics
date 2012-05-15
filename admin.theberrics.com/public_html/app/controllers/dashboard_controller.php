@@ -47,6 +47,7 @@ class DashboardController extends LocalAppController {
 		App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
 		
 		$this->loadModel("CanteenOrderNote");
+		$this->loadModel("CanteenOrder");
 		
 		//get all the pending customer notes
 		$customer_notes = $this->CanteenOrderNote->find("all",array(
@@ -80,10 +81,44 @@ class DashboardController extends LocalAppController {
 		
 		$this->set(compact("processing_shipments"));
 		
-		//get all the pending orders
+		//get today's order stats
+		$date_today = date("Y-m-d");
+		
+		$orders_today = $this->CanteenOrder->find("all",array(
+			"fields"=>array(
+				'COUNT(*) AS `total`',"CanteenOrder.order_status"
+			),
+			"conditions"=>array(
+				"DATE(created) = '{$date_today}'"
+			),
+			"contain"=>array(),
+			"group"=>array(
+				"CanteenOrder.order_status"
+			),
+			"order"=>array("total"=>"DESC")
+		));
+		
+		$this->set(compact("orders_today"));
 		
 		//get some ordering stats
+		$yesterday = date("Y-m-d",strtotime("-1 Day"));
+		$month_ago = date("Y-m-d",strtotime("-30 Days"));
 		
+		$orders_month = $this->CanteenOrder->find("all",array(
+			"fields"=>array(
+				'COUNT(*) AS `total`',"CanteenOrder.order_status"
+			),
+			"conditions"=>array(
+				"DATE(created) BETWEEN '{$yesterday}' AND '{$month_ago}'"
+			),
+			"contain"=>array(),
+			"group"=>array(
+				"CanteenOrder.order_status"
+			),
+			"order"=>array("total"=>"DESC")
+		));
+		
+		$this->set(compact("orders_month"));
 		//get some low inventory stats
 		
 		

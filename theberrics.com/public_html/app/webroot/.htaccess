@@ -242,6 +242,15 @@
    	RewriteRule ^(gen-ops\/weekendtage-phoenix-am.html)  /weekendtage/weekendtage-phoenix-am.html [R=301,L]
    	RewriteRule ^(gen-ops\/breaking-news-bulletin.html)  /weekendtage/breaking-news-bulletin.html [R=301,L]
     
+    ## fix younited nations 3
+    RewriteRule ^(gen-ops\/yn3-and-the-winner-is.html) /younited-nations-3/yn3-and-the-winner-is.html [R=301,L]
+	RewriteRule ^(gen-ops\/younited-nations-3-winner-1.html) /younited-nations-3/younited-nations-3-winner-1.html [R=301,L]
+	RewriteRule ^(gen-ops\/younited-nations-3-winner-2.html) /younited-nations-3/younited-nations-3-winner-2.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-wardrobe-department-award.html) /younited-nations-3/yn3-wardrobe-department-award.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-frostbite-award.html) /younited-nations-3/yn3-frostbite-award.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-all-girl-crew-award.html) /younited-nations-3/yn3-all-girl-crew-award.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-tranny-crew-award.html) /younited-nations-3/yn3-tranny-crew-award.html [R=301,L]
+    
     
     
 ### END BERRICS URL FIXES

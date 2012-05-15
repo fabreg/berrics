@@ -3,7 +3,11 @@
 class EmailMessage extends AppModel {
 	
 	public $belongsTo = array(
-	
+		"CanteenOrder"=>array(
+			"className"=>"CanteenOrder",
+			"foreignKey"=>"CanteenOrder.foreign_key",
+			"conditions"=>array("CanteenOrder.model"=>"CanteenOrder")
+		)
 	);
 	
 	public function queueCanteenEmail() {
@@ -43,6 +47,11 @@ class EmailMessage extends AppModel {
 		throw new Exception("Wrong Parameters For Queue Canteen Email");
 		
 	}
+	/**
+	 * 
+	 * @param unknown_type $CanteenOrder
+	 * @return unknown_type
+	 */
 	
 	public function canteenOrderConfirmation($CanteenOrder) {
 		
@@ -64,7 +73,12 @@ class EmailMessage extends AppModel {
 		));
 	}
 	
-	
+	/**
+	 * 
+	 * @param unknown_type $email_id
+	 * @param unknown_type $resend_label
+	 * @return unknown_type
+	 */
 	public function resendEmail($email_id = false, $resend_label = false) {
 		
 		
@@ -86,6 +100,27 @@ class EmailMessage extends AppModel {
 		
 		return $this->save($email['EmailMessage']);
 		
+		
+	}
+	
+	public function sendOrderNoteUpdate($canteen_order_id,$orig_id = false,$reply_id = false) {
+		
+		$order = $this->CanteenOrder->returnAdminOrder($canteen_order_id);
+		
+		//get the shipping address email
+		
+		$address = Set::extract("/CanteenOrderAddress[address_type=/shipping|billing/]",$order);
+		
+		die(print_r($address));
+		
+		$d = array();
+		
+		$d['subject'] = "The Berrics Canteen: A note has been added to your order";
+		
+		$d['serialized_data'] = serialize(array(
+			"reply_id"=>$reply_id,
+			"orig_id"=>$orig_id
+		));
 		
 	}
 	

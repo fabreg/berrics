@@ -25,21 +25,35 @@ class CanteenOrdersController extends LocalAppController {
 		
 		if(count($this->data)>0) {
 			
+			$this->CanteenOrderNote->create();
 			
+			$this->data['CanteenOrderNote']['user_id'] = $this->Auth->User("id");
 			
-			$reply_to = $this->CanteenOrderNote->findById($this->data['CanteenOrderNote']['parent_id']);
-			
-			$this->CanteenOrderNote->updateNoteStatus($this->data['CanteenOrderNote']['id'],"answered");
-			
-			if(!empty($reply_to['CanteenOrderNote']['parent_id'])) {
+			if($this->CanteenOrderNote->save($this->data)) {
 				
-				$this->data['CanteenOrderNote']['parent_id'] = $reply_to['CanteenOrderNote']['parent_id'];
+				$reply_id = $this->CanteenOrderNote->id;
+				
+				$this->CanteenOrderNote->create();
+				
+				$this->CanteenOrderNote->id = $id; 
+				
+				$this->CanteenOrderNote->save(array(
+					"note_status"=>"answered"
+				));
+				
+				//queue an email?
+				
+				if($this->data['CanteenOrderNote']['send_email']==1) {
+					
+					$this->loadModel("EmailMessage");
+					
+					$this->EmailMessage->sendOrderNoteUpdate($this->data['CanteenOrderNote']['canteen_order_id'],$id,$reply_id);
+					
+				}
+				
+				die(1);
 				
 			}
-			
-			
-			
-			
 			
 		}
 		
@@ -50,7 +64,6 @@ class CanteenOrdersController extends LocalAppController {
 				"CanteenOrderNote.id"=>$id
 			),
 			"contain"=>array(
-				"ChildCanteenOrderNote"=>array("User"),
 				"User"
 			)
 		));

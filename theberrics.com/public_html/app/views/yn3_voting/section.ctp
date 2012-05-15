@@ -184,22 +184,7 @@ if(empty($this->params['section'])) $this->params['section'] = "yn3_voting";
 								</a>
 							</div>
 							<div class='vote-form'>
-							<?php if(count($votes)>=3): ?>
-								
-								<?php elseif(!array_key_exists($v['YounitedNationsEventEntry']['id'],$votes)): ?>
-								<div class='vote-box-form'>
-									<?php 
-										echo $this->Form->create("YounitedNationsVote",array("url"=>"/younited-nations-3/place_vote"));
-										echo $this->Form->input("younited_nations_event_entry_id",array("type"=>"hidden","value"=>$v['YounitedNationsEventEntry']['id']));
-										echo $this->Form->input("younited_nations_event_id",array("type"=>"hidden","value"=>4));
-										echo $this->Form->submit(" ");
-										echo $this->Form->end();
-									?>
-								</div>
 							
-								<?php else: ?>
-									<div class='vote-placed-div'><img border='0' src='/theme/yn3-finals/img/vote-placed-button.jpg' /></div>
-								<?php endif; ?>
 							</div>
 						</div>
 						<div style='clear:both;'></div>

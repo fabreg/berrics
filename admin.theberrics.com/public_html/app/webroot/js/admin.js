@@ -654,7 +654,7 @@ var CanteenOrderNote = {
 				$("#ajax_order_note_form").ajaxForm({
 					
 					"success":function(d) {
-					
+						$('body').append(d);
 						CanteenOrderNote.handleCallback();
 					
 					}

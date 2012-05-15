@@ -498,6 +498,36 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 	}
 
 	
+	public function yn3_links() {
+		
+		$this->loadModel("Dailyop");
+		
+		$posts = $this->Dailyop->find("all",array(
+			"conditions"=>array(
+				"Dailyop.id"=>array(
+					5146,
+					5147,
+					5148,
+					5149,
+					5150,
+					5151,
+					5152
+				)
+			),
+			"contain"=>array(
+				"DailyopSection"
+			)
+		));
+		
+		foreach($posts as $v) {
+			
+			echo "RewriteRule ^(gen-ops\/{$v['Dailyop']['uri']})  /younited-nations-3/{$v['Dailyop']['uri']} [R=301,L]";
+			echo "<br />";
+			
+			
+		}
+		die();
+	}
 	
 	
 	

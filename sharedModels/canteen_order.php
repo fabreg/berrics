@@ -396,7 +396,7 @@ class CanteenOrder extends AppModel {
 				"CanteenOrder.id"=>$canteen_order_id
 			),
 			"contain"=>array(
-				"CanteenOrderNote"=>array("ChildCanteenOrderNote","User"),
+				"CanteenOrderNote"=>array("User"),
 				"CanteenShippingRecord"=>array("Warehouse"),
 				"Currency",
 				"CanteenPromoCode",	

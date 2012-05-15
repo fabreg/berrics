@@ -454,7 +454,7 @@ border-radius: 10px 10px 0px 0px;
 			<table cellspacing='0'>
 				<tr>
 					<th>ID</th>
-					<th>Feedback Required</th>
+					<th>STATUS</th>
 					<th>Created</th>
 					<th>From</th>
 					<th>Message</th>
@@ -466,16 +466,7 @@ border-radius: 10px 10px 0px 0px;
 					<td width='1%' align='center'>
 					<?php 
 						
-						switch($note['feedback_required']) {
-							
-							case 1:
-								echo "<span style='color:red; font-weight:bold;'>YES</span>";
-								break;
-							default:
-								echo "<span style='color:green;'>NO</span>";
-								break;
-							
-						}
+						echo strtoupper($note['note_status']); 	
 					
 					?>
 					</td>
