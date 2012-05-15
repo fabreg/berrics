@@ -617,4 +617,102 @@ var ImageFileUpload = {
 		
 };
 
+var CanteenOrderNote = {
+		
+		
+		
+		canteen_note_id:null,
+		completedCallback:null,
+		callbackArgs:null,
+		reply:function() { 
+				
+			this.canteen_note_id = arguments[0] || null;
+		
+			Array.prototype.shift.call(arguments);
+			
+			this.completedCallback = arguments[0] || null;
+			
+			Array.prototype.shift.call(arguments);
+			
+			if(arguments.length>1) {
+				
+				this.callbackArgs = arguments;
+				
+			} else {
+			
+				this.callbackArgs = new Array();
+				
+			}
+			
+			
+			$('body').append("<div id='upload-modal'><div id='upload-modal-content'></div></div>");
+			
+			$.get("/canteen_orders/ajax_note_reply/"+this.canteen_note_id,function(d) { 
+				
+				$("#upload-modal-content").html(d); 
+				
+				$("#ajax_order_note_form").ajaxForm({
+					
+					"success":function(d) {
+					
+						CanteenOrderNote.handleCallback();
+					
+					}
+					
+				});
+			
+			});
+			
+			this.handleResize();
+				
+		},
+		handleResize:function() {
+			
+			$('body,html').css({
+				
+				"overflow":"hidden"
+				
+			});
+			
+			$("#upload-modal").css({
+				
+				"height":$('body').height()+"px"
+				
+			});
+			
+		},
+		close:function() {
+			
+			$('body,html').css({
+				
+				"overflow":"auto"
+				
+			});
+			
+			$("#upload-modal").remove();
+			
+		},
+		handleCallback:function() {
+			
+			var obj = {};
+			
+			var fn = window[CanteenOrderNote.completedCallback];
+			
+			Array.prototype.unshift.call(CanteenOrderNote.callbackArgs, obj);
+			
+			if(typeof fn === 'function') {
+				
+				fn.apply(this,CanteenOrderNote.callbackArgs);
+				
+			} else {
+			
+				alert("Callback not in scope");
+				
+			}
+			
+		}
+		
+		
+};
+
 

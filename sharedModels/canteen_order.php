@@ -41,7 +41,7 @@ class CanteenOrder extends AppModel {
 			'className' => 'CanteenOrderNote',
 			'foreignKey' => 'canteen_order_id',
 			'dependent' => false,
-			
+			"conditions"=>array("CanteenOrderNote.parent_id"=>NULL)
 		),
 		'CanteenShippingRecord' => array(
 			'className' => 'CanteenShippingRecord',
@@ -396,7 +396,7 @@ class CanteenOrder extends AppModel {
 				"CanteenOrder.id"=>$canteen_order_id
 			),
 			"contain"=>array(
-				"CanteenOrderNote"=>array("ChildCanteenOrderNote"),
+				"CanteenOrderNote"=>array("ChildCanteenOrderNote","User"),
 				"CanteenShippingRecord"=>array("Warehouse"),
 				"Currency",
 				"CanteenPromoCode",	

@@ -17,7 +17,49 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
-public function search() {
+	public function ajax_note_reply($id = false) {
+		
+				
+		$this->loadModel("CanteenOrderNote");
+		
+		
+		if(count($this->data)>0) {
+			
+			
+			
+			$reply_to = $this->CanteenOrderNote->findById($this->data['CanteenOrderNote']['parent_id']);
+			
+			$this->CanteenOrderNote->updateNoteStatus($this->data['CanteenOrderNote']['id'],"answered");
+			
+			if(!empty($reply_to['CanteenOrderNote']['parent_id'])) {
+				
+				$this->data['CanteenOrderNote']['parent_id'] = $reply_to['CanteenOrderNote']['parent_id'];
+				
+			}
+			
+			
+			
+			
+			
+		}
+		
+		
+		//get the order note
+		$note = $this->CanteenOrderNote->find("first",array(
+			"conditions"=>array(
+				"CanteenOrderNote.id"=>$id
+			),
+			"contain"=>array(
+				"ChildCanteenOrderNote"=>array("User"),
+				"User"
+			)
+		));
+		
+		$this->set(compact("note"));
+		
+	}
+	
+	public function search() {
 		
 		
 		if(count($this->data)>0) {

@@ -83,6 +83,12 @@ function selectSet(ind) {
 	
 }
 
+function handleNote() {
+
+
+	alert("handled");
+}
+
 </script>
 <style>
 .big-table td {
@@ -442,6 +448,57 @@ border-radius: 10px 10px 0px 0px;
 		</fieldset>
 		<fieldset>
 			<legend>Order Notes</legend>
+			<?php 
+				if(count($this->data['CanteenOrderNote'])>0):
+			?>
+			<table cellspacing='0'>
+				<tr>
+					<th>ID</th>
+					<th>Feedback Required</th>
+					<th>Created</th>
+					<th>From</th>
+					<th>Message</th>
+					<th>-</th>
+				</tr>
+				<?php foreach($this->data['CanteenOrderNote'] as $note): ?>
+				<tr>
+					<td width='1%'><?php echo $note['id']; ?></td>
+					<td width='1%' align='center'>
+					<?php 
+						
+						switch($note['feedback_required']) {
+							
+							case 1:
+								echo "<span style='color:red; font-weight:bold;'>YES</span>";
+								break;
+							default:
+								echo "<span style='color:green;'>NO</span>";
+								break;
+							
+						}
+					
+					?>
+					</td>
+					<td width='1%' nowrap  align='center'><?php echo $this->Time->niceShort($note['created']); ?></td>
+					<td width='15%'  align='center'>
+						<?php if(isset($note['User']['id'])): ?>
+						<a href='/users/edit/<?php echo $note['User']['id']; ?>' target='_blank'><?php echo $note['User']['first_name']; ?> <?php echo $note['User']['last_name']; ?></a>
+						<?php else: ?>
+						CUSTOMER
+						<?php endif; ?>
+					</td>
+					<td width='80%'>
+					<?php echo nl2br($note['message']); ?>
+					</td>
+					<td class='actions'>
+						<a href='javascript:CanteenOrderNote.reply(<?php echo $note['id']; ?>,"handleNote");'>Reply</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+			<?php else: ?>
+			<div>NO NOTES</div>
+			<?php endif; ?>
 		</fieldset>
 		<fieldset>
 			<legend>Email Messages</legend>
@@ -452,7 +509,7 @@ border-radius: 10px 10px 0px 0px;
 					<th>Sent</th>
 					<th>Subject</th>
 					<th>To</th>
-					<th-></th->
+					<th>-</th>
 				</tr>
 				<?php foreach($this->data['EmailMessage'] as $e): ?>
 				<tr>

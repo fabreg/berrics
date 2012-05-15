@@ -51,7 +51,7 @@ class DashboardController extends LocalAppController {
 		//get all the pending customer notes
 		$customer_notes = $this->CanteenOrderNote->find("all",array(
 			"conditions"=>array(
-				"CanteenOrderNote.feedback_required"=>1
+				"CanteenOrderNote.note_status"=>"question"
 			),
 			"contain"=>array(
 				"ChildCanteenOrderNote"

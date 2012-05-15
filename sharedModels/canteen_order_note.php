@@ -58,6 +58,8 @@ class CanteenOrderNote extends AppModel {
 		
 		$data['CanteenOrderNote']['feedback_required'] = 1;
 		
+		$data['CanteenOrderNote']['note_status'] = "question";
+		
 		$this->save($data);
 		
 		return $this->id;
@@ -72,6 +74,18 @@ class CanteenOrderNote extends AppModel {
 				"message"=>"Your message must be at least 10 characters"
 			)
 		);
+		
+	}
+	
+	public function updateNoteStatus($id = false,$status = "") {
+		
+		$this->create();
+		
+		$this->id = $id;
+		
+		return $this->save(array(
+			"note_status"=>$status
+		));
 		
 	}
 

@@ -5,6 +5,7 @@ $shipping_codes = array(
 	"standard"=>"Standard",
 	"expedited"=>"Expedited"
 );
+$l = Lang::returnSection("CommonFields",$user_locale);
 
 ?>
 <?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here,"id"=>"checkout-form")); ?>
@@ -46,7 +47,7 @@ $shipping_codes = array(
 								<div><?php echo $this->Session->flash(); ?></div>
 							</div>
 							<div class='shipping'>
-								<h3>SHIPPING INFORMATION</h3>
+								<h3><?php echo $l['shipaddress']; ?></h3>
 								<?php echo $this->Form->input("CanteenOrder.shipping_method",array("type"=>"select","options"=>$shipping_codes,"label"=>"Method")); ?>
 								<?php echo $this->element("checkout-forms/user-address",array("index"=>0,"address_type"=>"shipping")); ?>
 							</div>
