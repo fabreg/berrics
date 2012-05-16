@@ -529,7 +529,13 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 		die();
 	}
 	
-	
+	public function test_note_email() {
+		
+		$this->loadModel("EmailMessage");
+		
+		$this->EmailMessage->sendOrderNoteUpdate(31435334);
+		
+	}
 	
 }
 

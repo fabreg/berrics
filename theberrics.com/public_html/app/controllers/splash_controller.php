@@ -630,6 +630,13 @@ public function dc_apr() {
 		
 	}
 	
+	public function sls_kc() {
+		
+		
+		
+		
+	}
+	
 }
 
 ?>

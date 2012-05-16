@@ -86,7 +86,8 @@ function selectSet(ind) {
 function handleNote() {
 
 
-	alert("handled");
+	document.location.href = document.location.href;
+	
 }
 
 </script>

@@ -5,8 +5,8 @@ class EmailMessage extends AppModel {
 	public $belongsTo = array(
 		"CanteenOrder"=>array(
 			"className"=>"CanteenOrder",
-			"foreignKey"=>"CanteenOrder.foreign_key",
-			"conditions"=>array("CanteenOrder.model"=>"CanteenOrder")
+			"foreignKey"=>"foreign_key",
+			"conditions"=>array("model"=>"CanteenOrder")
 		)
 	);
 	
@@ -109,18 +109,26 @@ class EmailMessage extends AppModel {
 		
 		//get the shipping address email
 		
-		$address = Set::extract("/CanteenOrderAddress[address_type=/shipping|billing/]",$order);
-		
-		die(print_r($address));
+		$address = Set::extract("/UserAddress[address_type=/shipping|billing/]",$order);
 		
 		$d = array();
 		
 		$d['subject'] = "The Berrics Canteen: A note has been added to your order";
+		$d['to'] = $address[0]['UserAddress']['email'];
+		$d['from'] = "Do Not Reply <do.not.reply@theberrics.com>";
+		$d['send_as'] = "html";
+		$d['template'] = "canteen_order_note_update";
+		$d['model'] = "CanteenOrder";
+		$d['foreign_key'] = $canteen_order_id;
 		
 		$d['serialized_data'] = serialize(array(
 			"reply_id"=>$reply_id,
 			"orig_id"=>$orig_id
 		));
+		
+		$this->create();
+		
+		return $this->save($d);
 		
 	}
 	
