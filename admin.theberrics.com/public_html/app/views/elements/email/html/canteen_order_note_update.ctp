@@ -28,7 +28,7 @@ if(!empty($data['reply_id'])) {
 	
 	$reply_note = $co->CanteenOrderNote->find("first",array(
 		"conditions"=>array(
-			"CanteenOrderNote.id"=>$data['orig_id']
+			"CanteenOrderNote.id"=>$data['reply_id']
 		),
 		"contain"=>array("User")
 	));
@@ -49,16 +49,16 @@ if(!empty($data['reply_id'])) {
 	<?php if(isset($orig_note)): ?>
 	<tr>
 		<td>
-			<div><strong>You</strong></div>
-			<?php echo $orig_note['CanteenOrderNote']['message']; ?>
+			<div><strong>You:</strong></div>
+			<?php echo nl2br($orig_note['CanteenOrderNote']['message']); ?>
 		</td>
 	</tr>
 	<?php endif; ?>
 	<?php if(isset($reply_note)): ?>
 	<tr>
 		<td>
-			<div><strong>The Berrics</strong></div>
-			<?php echo $reply_note['CanteenOrderNote']['message']; ?>
+			<div><strong>The Berrics:</strong></div>
+			<?php echo nl2br($reply_note['CanteenOrderNote']['message']); ?>
 		</td>
 	</tr>
 	<?php endif; ?>
