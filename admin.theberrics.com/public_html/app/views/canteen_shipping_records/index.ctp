@@ -38,6 +38,9 @@
 			<td><?php echo $s['carrier_name']; ?></td>
 			<td class='actions'>
 				<a href='/canteen_shipping_records/edit/<?php echo $s['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>Edit</a>
+				<?php if(strtoupper($s['shipping_status'])=="PENDING"): ?>
+				<a href='/canteen_shipping_records/process_usps_shipment/<?php echo $s['id']; ?>/calback:<?php echo base64_encode($this->here); ?>'>USPS Shipment</a>
+				<?php endif; ?>
 			</td>
 		</tr>
 		<?php endforeach; ?>

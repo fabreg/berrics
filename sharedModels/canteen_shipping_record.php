@@ -49,11 +49,11 @@ class CanteenShippingRecord extends AppModel {
 			if($data['CanteenShippingRecord']) {
 				
 				$data['CanteenShippingRecord']['id'] = $this->genId();
-				
+				$data['CanteenShippingRecord']['hash'] = md5($data['CanteenShippingRecord']['id']);
 			} else {
 				
 				$data['id'] = $this->genId();
-				
+				$data['hash'] = md5($data['id']);
 			}
 			
 			
@@ -285,6 +285,60 @@ class CanteenShippingRecord extends AppModel {
 			}
 			
 		}
+		
+	}
+	
+	public function process_usps_shipment($id) {
+		
+		$record = $this->returnAdminRecord($id);
+		
+		if($record['UserAddress']['country_code'] == "US") {
+			
+			$record = $this->process_usps_dom($record);
+			
+		} else {
+			
+			$record = $this->process_usps_int($record);
+			
+		}
+		
+		die(print_r($record));
+		
+	}
+	
+	private function process_usps_dom($record) {
+		
+		App::import("Vendor","UspsApi",array("file"=>"UspsApi.php"));
+		
+		$u = new UspsApi();
+		
+		//process_weight
+		$weight = 0;
+		
+		foreach($record['CanteenOrderItem'] as $item) {
+			
+			$weight += $item['weight'];
+			
+		}
+		
+		$record['CanteenShippingRecord']['weight'] = $record['UserAddress']['weight'] = $weight;
+		
+		$res = $u->ship_delcon($record['UserAddress']);
+		
+		//parse xml response
+		$xml = simplexml_load_string($res);
+		
+		die(print_r($xml));
+		
+	}
+	
+	private function process_usps_int($record) {
+		
+		
+	}
+	
+	private function process_usps_label() {
+		
 		
 	}
 	

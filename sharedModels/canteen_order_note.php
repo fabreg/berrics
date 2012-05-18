@@ -58,7 +58,9 @@ class CanteenOrderNote extends AppModel {
 		
 		$data['CanteenOrderNote']['feedback_required'] = 1;
 		
-		$data['CanteenOrderNote']['note_status'] = "question";
+		$data['CanteenOrderNote']['note_type'] = "question";
+		
+		$data['CanteenOrderNote']['note_status'] = "pending";
 		
 		$this->save($data);
 		

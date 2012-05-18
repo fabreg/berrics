@@ -537,6 +537,26 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 		
 	}
 	
+	public function test_usps() {
+		
+		App::import("Vendor","UspsApi",array("file"=>"UspsApi.php"));
+		
+		$u = new UspsApi();
+		
+		$u->run_tests();
+		
+		die();
+		
+	}
+	
+	public function phpinfo() {
+		
+		phpinfo();
+		
+		die();
+		
+	}
+	
 }
 
 

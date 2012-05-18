@@ -232,6 +232,9 @@
 					<a href='/canteen_orders'>Manage Orders</a>
 				</li>
 				<li class='li-sub-nav-button'>
+					<a href='/canteen_order_notes'>Manage Order Notes</a>
+				</li>
+				<li class='li-sub-nav-button'>
 					<a href='/canteen_orders/search'>Search Orders</a>
 				</li>
 				<li class='li-sub-nav-header'>Shipping</li>

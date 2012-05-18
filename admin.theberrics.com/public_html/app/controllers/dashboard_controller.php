@@ -52,10 +52,11 @@ class DashboardController extends LocalAppController {
 		//get all the pending customer notes
 		$customer_notes = $this->CanteenOrderNote->find("all",array(
 			"conditions"=>array(
-				"CanteenOrderNote.note_status"=>"question"
+				"CanteenOrderNote.note_status"=>"pending",
+				"CanteenOrderNote.note_type"=>"question"
 			),
 			"contain"=>array(
-				"ChildCanteenOrderNote"
+				"User"
 			)
 		));
 		
@@ -109,7 +110,7 @@ class DashboardController extends LocalAppController {
 				'COUNT(*) AS `total`',"CanteenOrder.order_status"
 			),
 			"conditions"=>array(
-				"DATE(created) BETWEEN '{$yesterday}' AND '{$month_ago}'"
+				
 			),
 			"contain"=>array(),
 			"group"=>array(

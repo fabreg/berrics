@@ -13,7 +13,9 @@
 		<?php 
 			echo $this->Form->create("CanteenOrderNote",array("url"=>$this->here,"id"=>"ajax_order_note_form"));
 			echo $this->Form->input("canteen_order_id",array("value"=>$note['CanteenOrderNote']['canteen_order_id'],"type"=>"hidden"));
-			echo $this->Form->input("note_status",array("type"=>"hidden","value"=>"reply"));
+			echo $this->Form->input("parent_id",array("type"=>"hidden","value"=>$note['CanteenOrderNote']['id']));
+			echo $this->Form->input("note_status",array("type"=>"hidden","value"=>""));
+			echo $this->Form->input("note_type",array("type"=>"hidden","value"=>"answer"));
 			echo $this->Form->input("message");
 			echo $this->Form->input("send_email",array("type"=>"checkbox","label"=>"Send Customer Email Update?","value"=>1,"checked"=>"1"));
 			echo $this->Form->end("Send Note");

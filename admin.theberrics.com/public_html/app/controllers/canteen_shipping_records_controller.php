@@ -6,7 +6,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 	
 	
 	
-	public $uses = array("CanteenShippingRecord");
+	public $uses = array("CanteenShippingRecord","CanteenOrder");
 	
 	
 	public function beforeFilter() {
@@ -29,6 +29,16 @@ class CanteenShippingRecordsController extends LocalAppController {
 				"Warehouse"
 			)
 		);
+		
+		if(isset($this->params['named']['s'])) {
+			
+			if($this->params['named']['shipping_status']) {
+				
+				$this->paginate['CanteenShippingRecord']['conditions']['CanteenShippingRecord.shipping_status'] = $this->params['named']['shipping_status'];
+				
+			}
+			
+		}
 		
 		$records = $this->paginate("CanteenShippingRecord");
 		
@@ -59,7 +69,11 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 	}
 	
-	public function process() {
+	
+	public function process_usps_shipment($id) {
+		
+		$record = $this->CanteenShippingRecord->process_usps_shipment($id);
+		
 		
 		
 		
