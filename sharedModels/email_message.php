@@ -132,4 +132,33 @@ class EmailMessage extends AppModel {
 		
 	}
 	
+	public function sendCanteenShippingConfirmation($canteen_shipping_record_id = false) {
+		
+		$csr = ClassRegistry::init("CanteenShippingRecord");
+		
+		$record = $csr->returnAdminRecord($canteen_shipping_record_id);
+		
+		$d = array();
+		
+		$d['subject'] = "The Berrics Canteen: Your order has shipped";
+		$d['to'] = $record['UserAddress']['email'];
+		$d['from'] = "Do Not Reply <do.not.reply@theberrics.com>";
+		$d['send_as'] = "html";
+		$d['template'] = "canteen_shipping_confirmation";
+		$d['model'] = "CanteenShippingRecord";
+		$d['foreign_key'] = $canteen_shipping_record_id;
+		
+		$d['serialized_data'] = serialize(array(
+			"canteen_shipping_record_id"=>$canteen_shipping_record_id
+		));
+		
+		unset($csr);
+		
+		$this->create();
+		
+		return $this->save($d);
+		
+		
+	}
+	
 }

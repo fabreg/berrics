@@ -5,6 +5,13 @@
 	<?php
 		echo $this->Form->input('name');
 		echo $this->Form->input('active');
+		echo $this->Form->input("address1");
+		echo $this->Form->input("address2");
+		echo $this->Form->input("city");
+		echo $this->Form->input("state");
+		echo $this->Form->input("zip");
+		echo $this->Form->input("country_code");
+		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

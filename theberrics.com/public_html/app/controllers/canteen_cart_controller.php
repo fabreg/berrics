@@ -76,14 +76,14 @@ class CanteenCartController extends CanteenAppController {
 			
 			$this->data['UserAddress'][0]['first_name'] = "John";
 			$this->data['UserAddress'][0]['last_name'] = "Testing";
-			$this->data['UserAddress'][0]['street'] = "123 Ghetto Ave";
-			$this->data['UserAddress'][0]['apt'] = "#327";
-			$this->data['UserAddress'][0]['city'] = "Compton";
+			$this->data['UserAddress'][0]['street'] = "11201 Otsego St";
+			$this->data['UserAddress'][0]['apt'] = "#107";
+			$this->data['UserAddress'][0]['city'] = "North Hollywood";
 			$this->data['UserAddress'][0]['state'] = "CA";
 			$this->data['UserAddress'][0]['country_code'] = "US";
 			$this->data['UserAddress'][0]['email'] = "john.hardy@me.com";
 			$this->data['UserAddress'][0]['phone'] = "888-888-8888";
-			$this->data['UserAddress'][0]['postal_code'] = "90210";
+			$this->data['UserAddress'][0]['postal_code'] = "91601";
 			
 			$this->data['CardData']['number'] = "4111111111111111";
 			$this->data['CardData']['exp_month'] = 2;

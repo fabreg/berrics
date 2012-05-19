@@ -557,6 +557,16 @@ skate.4.me@hotmail.com,steezemachine@hotmail.com,porkypen15@yahoo.com,cody.blanc
 		
 	}
 	
+	public function test_label() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+		$str = $this->CanteenShippingRecord->returnImg();
+		
+		$this->CanteenShippingRecord->process_usps_label($str,123456);
+		
+	}
+	
 }
 
 

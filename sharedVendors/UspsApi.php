@@ -22,7 +22,7 @@ class UspsApi {
 		if($login) $this->setLogin($login);
 
 		if($from_address) $this->setFromAddress($from_address);
-		
+
 	}	
 	
 	public function setLogin() {
@@ -30,8 +30,11 @@ class UspsApi {
 		
 	}
 	
-	public function setFromAddress() {
+	public function setFromAddress($from_address) {
 		
+		$from = array_merge($from_address,$this->from_address);
+
+		$this->from_address = $from;
 		
 	}
 	
@@ -50,15 +53,30 @@ class UspsApi {
 		
 	}
 	
+	private function from_element_int() {
+		
+		$a = "<FromFirstName>The Berrics</FromFirstName>
+			<FromLastName>Canteen</FromLastName>
+			<FromFirm>{$this->from_address['name']}</FromFirm>
+			<FromAddress1>{$this->from_address['address1']}</FromAddress1>
+			<FromAddress2>{$this->from_address['address2']}</FromAddress2>
+			<FromCity>{$this->from_address['city']}</FromCity>
+			<FromState>{$this->from_address['state']}</FromState>
+			<FromZip5>{$this->from_address['zip']}</FromZip5>
+			<FromZip4></FromZip4>
+			<FromPhone>0000000000</FromPhone>
+			";
+		
+		return $a;
+		
+	}
+	
 	public function ship_delcon($a) {
 		
 		//do some data scrubbing
 		
 		if(!isset($a['ref_number'])) $a['ref_number'] = '';
-		
-		
-		
-		
+
 		$s = "<DeliveryConfirmationV3.0Request USERID='{$this->login['username']}' PASSWORD='{$this->login['password']}'>
 				<Option>1</Option>
 				<ImageParameters></ImageParameters>";
@@ -100,10 +118,70 @@ class UspsApi {
 		
 	}
 	
-	public function ship_int() {
+	public function ship_int($a,$items) {
 		
+
+		$oz = $a['weight'] * 16;
 		
+		$lbs = floor($oz/16);
+			
+		$oz = floor($oz - ($lbs*16));
 		
+		$countries = $this->countries();
+				
+		
+		$_s = "<FirstClassMailIntlRequest USERID='{$this->login['username']}' PASSWORD='{$this->login['password']}'>
+			
+			    <Option/>
+			
+			    <Revision>2</Revision>
+			
+			    <ImageParameters/>
+			
+			   ";
+		$_s.= $this->from_element_int();
+			
+		$_s .= "<ToName>{$a['first_name']} {$a['last_name']}</ToName>
+			
+			    <ToFirm></ToFirm>
+			
+			    <ToAddress1>{$a['street']}</ToAddress1>
+			
+			    <ToAddress2>{$a['apt']}</ToAddress2>
+			
+			    <ToCity>{$a['city']}</ToCity>
+			
+			    <ToCountry>{$countries[$a['country_code']]}</ToCountry>
+			
+			    <ToPostalCode>{$a['postal_code']}</ToPostalCode>
+			
+			    <ToPOBoxFlag>N</ToPOBoxFlag>
+			    <ToPhone />
+			    <ToFax />
+			    <ToEmail />
+			    <FirstClassMailType>PARCEL</FirstClassMailType>
+			    <ShippingContents>
+					{$items}
+			    </ShippingContents>
+			    <GrossPounds>{$lbs}</GrossPounds>
+			    <GrossOunces>{$oz}</GrossOunces>
+			    <Machinable>false</Machinable>
+			    <ContentType>MERCHANDISE</ContentType>
+			    <Agreement>Y</Agreement>
+			    <Comments />
+			    <ImageType>TIF</ImageType>
+			    <ImageLayout>ONEPERFILE</ImageLayout>
+			    <HoldForManifest>N</HoldForManifest>
+			    <Size>REGULAR</Size>
+			</FirstClassMailIntlRequest>";
+
+					
+		$url = "https://secure.shippingapis.com/ShippingAPI.dll";
+					
+		$res = $this->curlGet($url,array("API"=>"FirstClassMailIntl","XML"=>$_s));
+		
+		return $res;	
+	
 	}
 
 
@@ -118,6 +196,44 @@ class UspsApi {
 			
 			return $ret;
 			
+	}
+	
+	public function processCanteenItems($data) {
+		
+		
+		
+		$items = '';
+		
+		foreach($data as $v) {
+			
+			$oz = $v['weight'] * 16;
+
+			$lbs = floor($oz/16);
+			
+			$oz = floor($oz - ($lbs*16));
+			
+			$s = "<ItemDetail>
+			
+			            <Description>{$v['title']} {$v['sub_title']}</Description>
+			
+			            <Quantity>{$v['quantity']}</Quantity>
+			
+			            <Value>{$v['sub_total']}</Value>
+			
+			            <NetPounds>{$lbs}</NetPounds>
+			
+			            <NetOunces>{$oz}</NetOunces>
+			
+			            <HSTariffNumber></HSTariffNumber>
+			
+			            <CountryOfOrigin>United States</CountryOfOrigin>
+			
+			        </ItemDetail>";
+			$items .= $s;
+			
+		}
+		
+		return $items;
 	}
 	
 	

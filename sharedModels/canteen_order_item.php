@@ -228,5 +228,41 @@ class CanteenOrderItem extends AppModel {
 		return $item['CanteenOrderItem']['sub_total'] + $item['CanteenOrderItem']['tax_total'];
 		
 	}
+	
+	public function processLineItemInventory($item_id) {
+		
+		//let's get the line item
+		$item = $this->find("first",array(
+			"conditions"=>array(
+				"CanteenOrderItem.id"=>$item_id,
+				"OR"=>array(
+					"CanteenOrderItem.inventory_processed"=>0,
+					"CanteenOrderItem.inventory_processed"=>NULL
+				)
+			),
+			"contain"=>array(
+				"CanteenInventoryRecord"
+			)
+		));
+		
+		$qty_on_order = $item['CanteenOrderItem']['quantity'];
+		
+		if(!empty($item['CanteenOrderItem']['canteen_inventory_record_id'])) {
+			
+			$this->query(
+				"UPDATE canteen_inventory_records SET allocated = (allocated-{$qty_on_order}) WHERE id = '{$item['CanteenOrderItem']['canteen_inventory_record_id']}'"
+			);
+			
+			$this->create();
+			$this->id = $item['CanteenOrderItem']['id'];
+			$this->save(array(
+				"inventory_processed"=>1
+			));
+			
+		}
+		
+		
+		
+	}
 
 }

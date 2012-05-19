@@ -18,25 +18,28 @@ body {
 
 .shipping-record h1 {
 
-	font-size:22px;
+	font-size:18px;
 
 }
 .order-info {
 
 	float:right;
-
+	width:40%;
+	text-align:right;
+	font-size:10px;
 }
 
 .addresses {
 	
 	float:left;
-
+	width:50%;
+	font-size:10px;
 }
 
 .items {
 
 	padding-top:10px;
-	border-top:2px solid #999;
+	
 
 }
 
@@ -64,7 +67,7 @@ border:1px solid #999;
 .items table td {
 
 	text-align:left;
-	font-size:12px;
+	font-size:11px;
 	border:1px solid #999;
 	border-bottom:none;
 	border-right:none;
@@ -82,7 +85,7 @@ border:1px solid #999;
 
 .addresses .UserAddress {
 
-	font-size:13px;
+	font-size:11px;
 
 }
 
@@ -100,7 +103,7 @@ border:1px solid #999;
 .order-info table td {
 
 	padding:2px;
-	
+	font-size:11px;
 }
 
 .order-info table td:nth-child(1) {
@@ -115,11 +118,11 @@ border:1px solid #999;
 <div class='header'>
 
 <div class='addresses'>
-<h1>The Berrics Canteen - Packing List</h1>
+<h1>Berrics Canteen Packing List</h1>
 	<?php echo $this->element("canteen_printing/user-address",array("ua"=>$record['UserAddress'],"heading"=>"Ship To:")); ?>
 </div>
 <div class='order-info'>
-<table cellspacing='0'>
+<table cellspacing='0' align='right'>
 	
 	<tr>
 		<td>Shipment ID:</td>
@@ -161,10 +164,9 @@ border:1px solid #999;
 	-
 	</td>
 	<td>
-		<div><strong>Item:</strong> <?php echo $child['title']; ?> | <?php echo $child['sub_title']; ?></div>
+		<div><strong>Item:</strong> <?php echo $child['title']; ?> | <?php echo $child['sub_title']; ?> | By: <?php echo $child['brand_label']; ?></div>
 		<div><strong>WH: </strong><?php echo $child['CanteenInventoryRecord']['Warehouse']['name']; ?></div>
 		<div><strong>Item#: </strong><?php echo $child['CanteenInventoryRecord']['foreign_key']; ?></div>
-		
 	</td>
 
 	<td style='text-align:center;'>
@@ -177,7 +179,7 @@ border:1px solid #999;
 <div style='padding:5px;'>
 	<div style='float:right;'>
 		<div style='font-weight:bold; padding-bottom:5px;'>Totals Items:<span style='text-decoration:underline;'><?php echo $total; ?> </span></div>
-		<img border='0' src='http://dev.admin.theberrics.com/canteen_orders/barcode?num=<?php echo $record['CanteenShippingRecord']['id']; ?>' />
+		
 	</div>
 	<div style='float:right;'>
 		

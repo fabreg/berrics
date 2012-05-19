@@ -242,7 +242,7 @@
 					<a href='/canteen_shipping_records'>Manage Shipments</a>
 				</li>
 				<li class='li-sub-nav-button'>
-					<a href='/canteen_shipping_records/process'>Process Shipment</a>
+					<a href='/canteen_shipping_records/checkout_shipments'>Checkout Shipments</a>
 				</li>
 				<li class='li-sub-nav-header'>Warehouses / Inventory</li>
 				<li class='li-sub-nav-button'>

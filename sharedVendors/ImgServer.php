@@ -212,6 +212,18 @@ class ImgServer {
 		$this->close();
 		
 	}
+	
+	public function upload_shipping_label($file_name, $file_path) {
+		
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/shipping");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		$this->close();
+		
+	}
 
 	
 	

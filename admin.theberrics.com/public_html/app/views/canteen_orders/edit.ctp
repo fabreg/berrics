@@ -248,7 +248,21 @@ border-radius: 10px 10px 0px 0px;
 								<strong>WH: </strong><?php echo $child['CanteenInventoryRecord']['Warehouse']['name']; ?><br />
 								<strong>ITEM: </strong><?php echo $child['CanteenInventoryRecord']['name']; ?> (#<?php echo $child['CanteenInventoryRecord']['foreign_key']; ?>)<br />
 								<strong>QTY: </strong><?php echo $child['CanteenInventoryRecord']['quantity']; ?><br />
-								<strong>QTY ALLOCATED: </strong><?php echo $child['CanteenInventoryRecord']['allocated']; ?>
+								<strong>QTY IN ALLOCATION: </strong><?php echo $child['CanteenInventoryRecord']['allocated']; ?><br />
+								<strong>INV PROCESSED:</strong> <?php 
+								
+									switch($child['inventory_processed']) {
+										
+										case 1:
+											echo "YES";
+										break;
+										default:
+											echo "NO";
+										break;
+										
+									}
+								
+								?>
 							<?php endif; ?>
 							</td>
 							<td>

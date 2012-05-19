@@ -6,6 +6,12 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('active');
+		echo $this->Form->input("address1",array("label"=>"Address 1 ( ** USE THIS FOR APT OR SUITE **"));
+		echo $this->Form->input("address2",array("label"=>"Address 2 ( ** USE THIS FOR STREET AND HOUSE NUMBER **"));
+		echo $this->Form->input("city");
+		echo $this->Form->input("state");
+		echo $this->Form->input("zip");
+		echo $this->Form->input("country_code");
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
