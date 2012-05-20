@@ -218,8 +218,8 @@ class MediaHelper extends AppHelper {
 		
 				
 		$proto = 'http';
-		
-		if(preg_match('/(https)/i',$_SERVER['SCRIPT_URI'])) {
+	
+		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
 			
 			$proto = 'https';
 			

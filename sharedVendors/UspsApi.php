@@ -237,6 +237,104 @@ class UspsApi {
 	}
 	
 	
+	public function calc_dom_rate($data) {
+		
+		$method = "FIRST CLASS";
+		
+		$oz = $data['weight'] * 16;
+
+		if($oz>=13) $method = "Parcel Post";
+		
+		
+		$lbs = floor($oz/16);
+		
+		$oz = floor($oz - ($lbs*16));
+		
+		$s = "<RateV4Request USERID='{$this->login['username']}'>
+			    <Revision>2</Revision>
+			    <Package ID='1ST'>
+			        <Service>{$method}</Service>
+			        <FirstClassMailType>PARCEL</FirstClassMailType>
+			        <ZipOrigination>{$data['origin_zip']}</ZipOrigination>
+			        <ZipDestination>{$data['dest_zip']}</ZipDestination>
+			        <Pounds>{$lbs}</Pounds>			
+			        <Ounces>{$oz}</Ounces>			
+			        <Container/>			
+			        <Size>REGULAR</Size>			
+			        <Machinable>false</Machinable>		
+			    </Package>			
+			</RateV4Request>";
+		
+		$url = "http://production.shippingapis.com/ShippingAPI.dll";
+		$d = array(
+			"API"=>"RateV4",
+			"XML"=>$s
+		);
+		
+		$res = $this->curlGet($url,$d);
+		
+		return $res;
+		
+	}
+	
+	public function calc_int_rate($data) {
+		
+		$oz = $data['weight'] * 16;
+
+		$lbs = floor($oz/16);
+		
+		$oz = floor($oz - ($lbs*16));
+		
+		$s = "<IntlRateV2Request USERID='{$this->login['username']}'>
+
+			  <Revision>2</Revision>
+			
+			  <Package ID='1ST'>
+			
+			    <Pounds>{$lbs}</Pounds>
+			
+			    <Ounces>{$oz}</Ounces>
+			
+			    <Machinable>False</Machinable>
+			
+			    <MailType>Package</MailType>
+			
+			    <ValueOfContents></ValueOfContents>
+			
+			    <Country>{$data['country']}</Country>
+			
+			    <Container>RECTANGULAR</Container>
+			
+			    <Size>REGULAR</Size>
+			
+			    <Width>0</Width>
+			
+			    <Length>0</Length>
+			
+			    <Height>0</Height>
+			
+			    <Girth>0</Girth>
+			
+			    <OriginZip>{$data['origin_zip']}</OriginZip>
+			
+			    <CommercialFlag>N</CommercialFlag>
+			
+			  </Package>
+			
+			</IntlRateV2Request>";
+		
+		$url = "http://production.shippingapis.com/ShippingAPI.dll";
+		$d = array(
+			"API"=>"IntlRateV2",
+			"XML"=>$s
+		);
+		
+		$res = $this->curlGet($url,$d);
+		
+		return $res;
+	}
+	
+	
 	public function countries() {
 		
 		$a = array(

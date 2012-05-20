@@ -3,6 +3,7 @@
 class ImgServer {
 	
 	public static $instance = false;
+	public static $connected = false;
 	public $sftp = false;
 	
 	private function __construct() {
@@ -47,6 +48,10 @@ class ImgServer {
 		if(!$this->sftp->login('root','WEB2B7eMsiJ43')) {
 			
 			die("Failed to connect to img.theberrics.com");
+			
+		} else {
+			
+			self::$connected = true;
 			
 		}
 		
@@ -215,13 +220,13 @@ class ImgServer {
 	
 	public function upload_shipping_label($file_name, $file_path) {
 		
-		$this->connect();
+		if(!self::$connected) { $this->connect();  }
 		
 		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/shipping");
 		
 		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
 		
-		$this->close();
+		//$this->close();
 		
 	}
 

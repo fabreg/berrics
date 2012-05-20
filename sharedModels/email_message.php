@@ -61,7 +61,7 @@ class EmailMessage extends AppModel {
 		
 		
 		$this->save(array(
-			"subject"=>"Order Confirmation - The Berrics Canteen",
+			"subject"=>"The Berrics Canteen: Order Confirmation",
 			"to"=>$ship[0]['UserAddress']['email'],
 			"from"=>"Do Not Reply <do.not.reply@theberrics.com>",
 			"send_as"=>"html",
@@ -145,8 +145,8 @@ class EmailMessage extends AppModel {
 		$d['from'] = "Do Not Reply <do.not.reply@theberrics.com>";
 		$d['send_as'] = "html";
 		$d['template'] = "canteen_shipping_confirmation";
-		$d['model'] = "CanteenShippingRecord";
-		$d['foreign_key'] = $canteen_shipping_record_id;
+		$d['model'] = "CanteenOrder";
+		$d['foreign_key'] = $record['CanteenShippingRecord']['canteen_order_id'];
 		
 		$d['serialized_data'] = serialize(array(
 			"canteen_shipping_record_id"=>$canteen_shipping_record_id

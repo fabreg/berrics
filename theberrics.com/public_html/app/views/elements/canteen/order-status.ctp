@@ -95,9 +95,26 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 						<div class='value'>
 							<?php
 							
-								if(!empty($v['tracking_number'])) {
+								if(!empty($v['shipment_number'])) {
 									
-									echo strtoupper($v['tracking_number']);
+									switch(strtoupper($v['carrier_name'])) {
+							
+											case "USPS":
+
+												if(!empty($v['tracking_number'])) {
+					
+													echo "<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['tracking_number']}'>{$v['tracking_number']}</a>";
+													
+												} else {
+													
+													echo "<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['shipment_number']}'>{$v['shipment_number']}</a>";
+													
+												}
+												
+											break;
+							
+									}
+									//echo strtoupper($v['tracking_number']);
 									
 								} else {
 									

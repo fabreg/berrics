@@ -81,13 +81,13 @@ echo $this->element("dashboard/tab-nav");
 				<fieldset>
 					<legend>Shipments in Pending</legend>
 					<div style='font-size:60px; font-weight:bold; text-align:center;'>
-						<a href='/canteen_shipping_records/index/s:1/shipping_status:pending' target='_blank'><?php echo $pending_shipments; ?></a>
+						<a href='/canteen_shipping_records/index/s:1/CanteenShippingRecord.shipping_status:pending' target='_blank'><?php echo $pending_shipments; ?></a>
 					</div>
 				</fieldset>
 				<fieldset>
 					<legend>Shipments in Processing</legend>
 					<div style='font-size:60px; font-weight:bold; text-align:center;'>
-						<a href='/canteen_shipping_records/index/s:1/shipping_status:processing'><?php echo $processing_shipments; ?></a>
+						<a href='/canteen_shipping_records/index/s:1/CanteenShippingRecord.shipping_status:processing'><?php echo $processing_shipments; ?></a>
 					</div>
 				</fieldset>
 				<fieldset>

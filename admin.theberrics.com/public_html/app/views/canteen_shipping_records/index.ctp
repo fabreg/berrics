@@ -16,8 +16,25 @@ $(document).ready(function() {
 
 	});
 
+	$('input[name=process_print_batch]').click(function() { 
+
+		setBatchCommand('process_usps_print');
+
+	});
+	$('input[name=usps_print]').click(function() { 
+
+		setBatchCommand('usps_print');
+
+	});
 	
 });
+
+function setBatchCommand(cmd) {
+
+	$('#checkbox_form').append('<input type="hidden" name="data[Command]" value="'+cmd+'"/>').submit();
+	
+}
+
 </script>
 <style>
 
@@ -59,7 +76,8 @@ $(document).ready(function() {
 			<fieldset>
 				<legend>Batch Operations</legend>
 				<div>
-					<input type='button' value='Process & Print USPS Shipments' name='' />
+					<input type='button' value='Process & Print USPS Shipments' name='process_print_batch' />
+					<input type='button' value='Print USPS Shipments' name='usps_print' />
 				</div>
 			</fieldset>
 		</div>
@@ -79,7 +97,7 @@ $(document).ready(function() {
 		<?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
 	</div>
 	<?php 
-		echo $this->Form->create("CanteenShippingRecord",array("url"=>"/canteen_shipping_records/batch_operation"));
+		echo $this->Form->create("CanteenShippingRecord",array("url"=>"/canteen_shipping_records/batch_operation",'id'=>'checkbox_form'));
 	?>
 	<table cellspacing='0'>
 		<tr>
@@ -103,15 +121,39 @@ $(document).ready(function() {
 		?>
 		<tr>
 			<td>
-				<?php if(strtoupper($s['shipping_status']) == "PENDING"): ?>
+				<?php if((strtoupper($s['shipping_status']) == "PENDING") || (isset($this->params['named']['CanteenShippingRecord.shipping_status']))): ?>
 				<input type='checkbox' value='<?php echo $s['id']; ?>' name='data[canteen_shipping_record_id][]'  class='record_check' />
 				<?php endif; ?>
 			</td>
 			<td><?php echo $s['id']; ?></td>
 			<td><?php echo $this->Time->niceShort($s['created']); ?></td>
 			<td><?php echo $this->Time->niceShort($s['modified']); ?></td>
-			<td><?php echo strtoupper($s['shipping_status']); ?></td>
-			<td><?php echo $w['name']; ?></td>
+			<td><?php 
+				
+				$color = "green";
+				switch(strtoupper($s['shipping_status'])) {
+					
+					case "PENDING";
+						$color="orange";
+						break;
+					case "PROCESSING";
+						$color="blue";
+						break;
+					case "SHIPPED":
+						$color="green";
+						break;
+					case "CANCELED":
+						$color="grey";
+						break;
+					
+				}
+			
+				echo "<span style='color:{$color}; font-weight:bold; font-size:14px;'>";
+				echo strtoupper($s['shipping_status']);
+				echo "</span>";
+				?>
+				</td>
+			<td style='font-size:14px; font-weight:bold;'><?php echo $w['name']; ?></td>
 			<td><?php echo $s['carrier_name']; ?></td>
 			<td>
 				<?php 

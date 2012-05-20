@@ -2437,6 +2437,12 @@ ORDER STATUS
 	
 }
 
+#order-status .order-bit .value a {
+	
+	color:#333;	
+	
+}
+
 #order-status .shipping-records {
 	
 

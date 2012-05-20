@@ -77,10 +77,7 @@ border:1px solid #999;
 
 .items table td strong {
 
-	width:55px;
-	text-align:right;
-	display:block;
-	float:left;
+
 }
 
 .addresses .UserAddress {
@@ -164,9 +161,8 @@ border:1px solid #999;
 	-
 	</td>
 	<td>
+		<div><strong>WH: </strong><?php echo $child['CanteenInventoryRecord']['Warehouse']['name']; ?> <strong>Item#: </strong><?php echo $child['CanteenInventoryRecord']['foreign_key']; ?></div>
 		<div><strong>Item:</strong> <?php echo $child['title']; ?> | <?php echo $child['sub_title']; ?> | By: <?php echo $child['brand_label']; ?></div>
-		<div><strong>WH: </strong><?php echo $child['CanteenInventoryRecord']['Warehouse']['name']; ?></div>
-		<div><strong>Item#: </strong><?php echo $child['CanteenInventoryRecord']['foreign_key']; ?></div>
 	</td>
 
 	<td style='text-align:center;'>

@@ -15,6 +15,14 @@ class EmailMessagesController extends LocalAppController {
 	}
 	
 	function index() {
+		
+		$this->paginate['EmailMessage'] = array(
+		
+			"order"=>array("EmailMessage.id"=>"DESC"),
+			"limit"=>50
+		
+		);
+		
 		$this->EmailMessage->recursive = 0;
 		$this->set('emailMessages', $this->paginate());
 	}

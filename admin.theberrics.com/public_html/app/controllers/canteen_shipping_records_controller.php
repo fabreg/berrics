@@ -166,6 +166,8 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 	}
 	
+
+	
 	public function ajax_checkout_shipments() {
 		
 		
@@ -230,7 +232,127 @@ class CanteenShippingRecordsController extends LocalAppController {
 	
 	
 	
+	public function batch_operation() {
+		
+		switch($this->data['Command']) {
+			
+			case 'process_usps_print':
+				$this->process_usps_batch($this->data['canteen_shipping_record_id'],true);
+				break;
+			case "usps_print":
+				$ids = base64_encode(serialize($this->data['canteen_shipping_record_id']));
+				return $this->redirect(array("action"=>"print_usps_combo_batch",$ids));
+				break;
+		}
+		
+		
+	}
+
+	private function process_usps_batch($ids = array(),$print = true) {
+		
+		$orders_to_print = array();
+		
+		foreach($ids as $v) {
+			
+			$record = $this->CanteenShippingRecord->findById($v);
+			
+			if(empty($record['CanteenShippingRecord']['shipment_number'])) {
+				
+				$record = $this->CanteenShippingRecord->process_usps_shipment($v);
+				
+			}
+			
+			
+			if(isset($record['CanteenShippingRecord']['shipment_number']) && !empty($record['CanteenShippingRecord']['shipment_number'])) {
+				
+				$orders_to_print[] = $record['CanteenShippingRecord']['id'];
+				
+			}
+			
+		}
+		
+		if($print) {
+			
+			$ids = base64_encode(serialize($orders_to_print));
+			
+			return $this->redirect("/canteen_shipping_records/print_usps_combo_batch/{$ids}");
+			
+		}
+		
+		
+	}
 	
+	public function print_usps_combo_batch($str = false) {
+	
+		$ids = unserialize(base64_decode($str));
+		
+		$records = array();
+		
+		foreach($ids as $v) {
+			
+			$r = $this->CanteenShippingRecord->returnAdminRecord($v);
+			
+			if(!empty($r['CanteenShippingRecord']['shipment_number'])) {
+				
+				$records[] = $r;
+				
+			}
+			
+		}
+		
+		$this->set(compact("records"));
+	
+	}
+	
+	public function usps_rate_calculator() {
+		
+		
+		if(isset($this->data)) {
+			
+			App::import("Vendor","Usps",array("file"=>"UspsApi.php"));
+			
+			$u = new UspsApi();
+			
+			switch($this->data['CalcRate']['command']) {
+				
+				case "dom":
+						$res = $u->calc_dom_rate($this->data['CalcRate']);
+			
+						$xml = simplexml_load_string($res);
+						
+						$this->set(compact("xml"));
+						
+						return $this->render("/elements/canteen_shipping_records/dom-rate-result");
+			
+					break;
+				case "int":
+						
+						$c = Arr::countries();
+						
+						$this->data['CalcRate']['country'] = $c[$this->data['CalcRate']['country']];
+						
+						$res = $u->calc_int_rate($this->data['CalcRate']);
+			
+						$xml = simplexml_load_string($res);
+						
+						$this->set(compact("xml"));
+						
+						return $this->render("/elements/canteen_shipping_records/int-rate-result");
+					break;
+				
+			}
+			$res = $u->calc_dom_rate($this->data['CalcRate']);
+			
+			$xml = simplexml_load_string($res);
+			
+			$this->set(compact("xml"));
+			
+			return $this->render("/elements/canteen_shipping_records/dom-rate-result");
+			
+		}
+		
+		
+	}
 	
 	
 }
