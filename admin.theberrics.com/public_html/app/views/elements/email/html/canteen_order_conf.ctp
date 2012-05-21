@@ -6,12 +6,11 @@ $co = ClassRegistry::init("CanteenOrder");
 
 $o = $co->returnAdminOrder($oo['CanteenOrder']['id']);
 
-$shipTo = Set::extract("/UserAddress[address_type=shipping]",$o);
 
 ?>
 <div>
 <p>
-<?php echo $shipTo[0]['UserAddress']['first_name']; ?>,<br />
+<?php echo $o['ShippingAddress']['first_name']; ?>,<br />
 Thanks for shopping at The Berrics Canteen.<br />
 This email confirms we have received and approved your order.<br />
 <?php if($o['CanteenOrder']['order_status'] == "approved"): ?>
@@ -30,10 +29,10 @@ Should you have a question or to check the status of your order, please use the 
 <div>
 	<div style='float:left; width:300px;'>
 		<div><strong>Ship To:</strong></div>
-		<div><?php echo $shipTo[0]['UserAddress']['first_name']; ?> <?php echo $shipTo[0]['UserAddress']['last_name']; ?></div>
-		<div><?php echo $shipTo[0]['UserAddress']['street']; ?> <?php echo $shipTo[0]['UserAddress']['apt']; ?></div>
-		<div><?php echo $shipTo[0]['UserAddress']['city']; ?> <?php echo $shipTo[0]['UserAddress']['state']; ?>, <?php echo $shipTo[0]['UserAddress']['postal_code']; ?></div>
-		<div><?php echo $shipTo[0]['UserAddress']['phone']; ?></div>
+		<div><?php echo $o['ShippingAddress']['first_name']; ?> <?php echo $o['ShippingAddress']['last_name']; ?></div>
+		<div><?php echo $o['ShippingAddress']['street']; ?> <?php echo $o['ShippingAddress']['apt']; ?></div>
+		<div><?php echo $o['ShippingAddress']['city']; ?> <?php echo $o['ShippingAddress']['state']; ?>, <?php echo $o['ShippingAddress']['postal_code']; ?></div>
+		<div><?php echo $o['ShippingAddress']['phone']; ?></div>
 		<div>Shipping Method: <?php echo strtoupper($o['CanteenOrder']['shipping_method']); ?></div>
 	</div>
 	<div></div>
