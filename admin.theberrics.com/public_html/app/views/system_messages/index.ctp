@@ -1,5 +1,15 @@
 <div class="systemMessages index">
 	<h2><?php __('System Messages');?></h2>
+	<div class='form'>
+		<fieldset>
+			<legend>Filter Messages</legend>
+			<?php 
+				echo $this->Form->create("SystemMessage",array("url"=>"/system_messages/search"));
+				echo $this->Form->input("category",array("options"=>$catSelect));
+				echo $this->Form->end("Go");
+			?>
+		</fieldset>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(

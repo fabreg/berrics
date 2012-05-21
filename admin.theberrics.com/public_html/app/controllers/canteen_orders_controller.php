@@ -156,7 +156,8 @@ class CanteenOrdersController extends LocalAppController {
 		$this->paginate['CanteenOrder'] = array(
 			"order"=>array("CanteenOrder.created"=>"DESC"),
 			"contain"=>array(
-				"UserAddress",
+				"BillingAddress",
+				"ShippingAddress",
 				"CanteenShippingRecord",
 				"CanteenOrderItem",
 				"GatewayTransaction"=>array("GatewayAccount")

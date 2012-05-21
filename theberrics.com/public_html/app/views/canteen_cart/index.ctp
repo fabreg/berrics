@@ -43,22 +43,23 @@ $l = Lang::returnSection("CommonFields",$user_locale);
 					<div class='container'>
 						<div class='container-top'>
 							<div class='heading'>
-								<h2>CHECKOUT</h2>
+								<h2><img src='/img/layout/canteen/cart/cart-lock-icon.png' border='0' />CHECKOUT</h2>
 								<div><?php echo $this->Session->flash(); ?></div>
 							</div>
 							<div class='shipping'>
-								<h3><?php echo $l['shipaddress']; ?></h3>
+								<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo strtoupper($l['shipaddress']); ?></h3>
 								<?php echo $this->Form->input("CanteenOrder.shipping_method",array("type"=>"hidden","label"=>"Method","value"=>"standard")); ?>
-								<?php echo $this->element("checkout-forms/user-address",array("index"=>0,"address_type"=>"shipping")); ?>
+								<?php echo $this->element("checkout-forms/shipping-address",array("index"=>0,"address_type"=>"shipping")); ?>
 							</div>
 							<div class='billing'>
-								<h3>PAYMENT INFORMATION</h3>
+								<h3>PAYMENT INFORMATION <img border='0' src='/img/layout/canteen/cart/card-icons.png' style='margin-top:-16px;'></h3>
+								
 								<?php echo $this->element("checkout-forms/cc-form"); ?>
 								<?php 
 									echo $this->Form->input("same_as_shipping_checkbox",array("type"=>"checkbox","label"=>"Billing Address Same As Shipping",'id'=>'same-as-shipping-check',"div"=>array("id"=>"same-as-shipping-div")));
 								?>
 								<div style='clear:both;'></div>
-								<div id='billing-form'><?php echo $this->element("checkout-forms/user-address",array("index"=>1,"address_type"=>"billing")); ?></div>
+								<div id='billing-form'><?php echo $this->element("checkout-forms/billing-address",array("index"=>1,"address_type"=>"billing")); ?></div>
 								<div id='grand-total'>
 									TOTAL: <span><?php echo $this->Number->currency($this->data['CanteenOrder']['grand_total'],$user_currency_id); ?></span>
 								</div>
@@ -83,10 +84,10 @@ $l = Lang::returnSection("CommonFields",$user_locale);
 	echo $this->Form->input("geoip_country_code",array("value"=>env("GEOIP_COUNTRY_CODE"),"type"=>"hidden"));
 	echo $this->Form->input("geoip_city",array("value"=>env("GEOIP_CITY"),"type"=>"hidden"));
 echo $this->Form->end(); ?>
+<pre>
 <?php 
 
-
-pr($this->data);
-
+print_r($this->params)
 
 ?>
+</pre>

@@ -14,12 +14,63 @@ class SystemMessagesController extends LocalAppController {
 		
 	}
 	
+	
+	public function search() {
+		
+		if(count($this->data)>0) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"s"=>true
+				);
+				
+				
+				foreach($this->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						$url[$k.".".$kk]=urlencode($vv);
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+		
+
+		
+		
+	}
+	
 	function index() {
+		
 		$this->SystemMessage->recursive = 0;
 		
 		$this->paginate['SystemMessage']['order'] = array("SystemMessage.id"=>"DESC");
 		
+		$this->buildSelects();
+		
+		
+		if(isset($this->params['named']['s'])) {
+			
+			if(isset($this->params['named']['SystemMessage.category'])) {
+				
+				
+				$this->paginate['SystemMessage']['conditions']['SystemMessage.category']=
+				$this->data['SystemMessage']['category'] =	
+															$this->params['named']['SystemMessage.category'];
+				
+			}
+			
+			
+		}
+		
+		
 		$this->set('systemMessages', $this->paginate());
+		
 	}
 
 	function view($id = null) {
@@ -72,4 +123,22 @@ class SystemMessagesController extends LocalAppController {
 		$this->Session->setFlash(__('System message was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	private function buildSelects() {
+		
+		//get categories
+		$cats = $this->SystemMessage->find("all",array(
+			"fields"=>array(
+				'DISTINCT(SystemMessage.category) as `SystemMessage.cat`'
+			),
+		));
+		
+		$catSelect = array();
+		
+		foreach($cats as $v) $catSelect[$v['SystemMessage']['SystemMessage.cat']] = $v['SystemMessage']['SystemMessage.cat'];
+		
+		$this->set(compact("catSelect"));
+		
+	}
+	
 }

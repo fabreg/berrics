@@ -14,8 +14,8 @@ $shipping = Set::extract("/UserAddress[address_type=shipping]",$order);
 
 $billing = Set::extract("/UserAddress[address_type=billing]",$order);
 
-$shipping = $shipping[0]['UserAddress'];
-$billing = $billing[0]['UserAddress'];
+$shipping = $order['ShippingAddress'];
+$billing = $order['BillingAddress'];
 
 ?>
 <div id='canteen-invoice'>
@@ -56,9 +56,7 @@ $billing = $billing[0]['UserAddress'];
 						<br />
 						<?php echo $billing['street']; ?>
 						<br />
-						<?php echo $billing['city']; ?>, <?php echo $billing['state']; ?> <?php echo $billing['postal_code']; ?>
-						<br />
-						<?php echo strtoupper($countries[$billing['country_code']]);  ?>
+						<?php echo $billing['postal_code']; ?> <?php echo strtoupper($countries[$billing['country_code']]);  ?>
 						</div>
 					</div>
 					<div style='clear:both;'></div>

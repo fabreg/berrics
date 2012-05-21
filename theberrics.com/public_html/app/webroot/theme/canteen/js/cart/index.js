@@ -19,7 +19,7 @@ $(document).ready(function() {
 	toggleBilling($("#same-as-shipping-check"));
 	
 	
-	$("select[name*='[0][country_code]'],select[name*='[0][state]'],select[name='data[CanteenOrder][shipping_method]']").bind("change",function(e) { 
+	$("select[name*='[country_code]'],select[name*='[state]'],select[name='data[CanteenOrder][shipping_method]']").bind("change",function(e) { 
 		
 	
 		calculateCart();
@@ -32,6 +32,12 @@ $(document).ready(function() {
 		//calculateCart();
 	
 	
+	});
+	
+	$('.form-error').focus(function() { 
+		
+		$(this).removeClass('form-error');
+		
 	});
 	
 	
@@ -74,14 +80,25 @@ function toggleBilling(check) {
 	$('.form input[type=text],.form select').bind('blur keyup change',function() { 
 
 		var id = $(this).attr("id");
-
+		
+		var name = $(this).attr('name');
+		
+		switch(id) {
+		
+			case /Email/.test(id): 
+					alert($('input[name*="email"]').val());
+			break;
+		}
+		
 		switch(id) {
 
 			//void all optional fields
-			case "CanteenOrderApt":
+			case "ShippingAddressApt":
+			case "UserAddress1Apt":
 			break;
 		
-			case "CanteenOrderEmail":
+			case "ShippingAddressEmail":
+			//case "UserAddress1Email":
 				validateEmail(id);
 			break;
 			case "CardDataNumber":
@@ -96,7 +113,6 @@ function toggleBilling(check) {
 			break;
 		
 		}
-
 		
 	});
 

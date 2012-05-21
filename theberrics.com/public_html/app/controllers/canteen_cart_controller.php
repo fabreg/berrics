@@ -3,7 +3,7 @@ App::import("Controller","CanteenApp");
 class CanteenCartController extends CanteenAppController {
 	
 	
-	public $uses = array("CanteenOrder");
+	public $uses = array("CanteenOrder","UserAddress");
 	
 	public function beforeFilter() {
 		
@@ -21,51 +21,65 @@ class CanteenCartController extends CanteenAppController {
 			
 			$order_id = $this->Session->read("CanteenOrder.CanteenOrder.id");
 			
-			//$this->data = array_merge($this->Session->read("CanteenOrder"),$this->data);
+			$this->CanteenOrder->ShippingAddress->setOrderAddressValidation();
+			$this->CanteenOrder->ShippingAddress->set($this->data['ShippingAddress']);
+			$this->loadModel("CardData");
+			$this->CardData->setCardValidation();
+			$this->CardData->set($this->data['CardData']);
 			
-			foreach($this->data as $k=>$v) {
+			if($this->CanteenOrder->ShippingAddress->validates() && $this->CardData->validates()) {
 				
-				if($this->Session->check("CanteenOrder.{$k}")) {
+				//merge the form data with existing session data
+				foreach($this->data as $k=>$v) {
 					
-					$this->data[$k] = array_merge($this->Session->read("CanteenOrder.{$k}"),$this->data[$k]);
+					if($this->Session->check("CanteenOrder.{$k}")) {
+						
+						$this->data[$k] = array_merge($this->Session->read("CanteenOrder.{$k}"),$this->data[$k]);
+						
+					}
 					
 				}
 				
-			}
-			
-			$this->data['CanteenOrderItem'] = $this->Session->read("CanteenOrder.CanteenOrderItem");
-			
-			//die(print_r($this->data));
-			
-			if(($order_id = $this->CanteenOrder->saveOnlineOrder($this->data,true))) {
+				$this->data['CanteenOrderItem'] = $this->Session->read("CanteenOrder.CanteenOrderItem");
 				
-				$this->Session->write("CanteenOrder",$this->CanteenOrder->returnAdminOrder($order_id));
+				//save the order and proceeed
 				
-				return $this->process($this->data);
+				if(($order_id = $this->CanteenOrder->saveOnlineOrder($this->data,true))) {
+					
+					$this->Session->write("CanteenOrder",$this->CanteenOrder->returnAdminOrder($order_id));
+					
+					return $this->process($this->data);
+					
+				}
 				
-			}
+			} 
 			
+			
+		} 
+		
+		if($this->Session->check("Auth.User.id")) {
+				
+			$this->Session->write("CanteenOrder.CanteenOrder.user_account_canteen_promo_code_id",1);
 			
 		} else {
 			
-			if($this->Session->check("Auth.User.id")) {
-				
-				$this->Session->write("CanteenOrder.CanteenOrder.user_account_canteen_promo_code_id",1);
-				
-			} else {
-				
-				$this->Session->write("CanteenOrder.CanteenOrder.user_account_canteen_promo_code_id",null);
-				
-			}
-			
+			$this->Session->write("CanteenOrder.CanteenOrder.user_account_canteen_promo_code_id",null);
 			
 		}
 		
 		$order = $this->Session->read("CanteenOrder");
 		
+		if(count($this->data)>0) {
+			
+			$order['ShippingAddress'] = $this->data['ShippingAddress'];
+			
+			$order['BillingAddress'] = $this->data['BillingAddress'];
+			
+		}
+		
 		$order['CanteenOrder']['currency_id'] = $this->getUserCurrency();
 		$geo_c = env("GEOIP_COUNTRY_CODE");
-		$order['UserAddress'][0]['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
+		$order['ShippingAddress']['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
 		
 		
 		$this->data = $this->CanteenOrder->calculateCartTotal($order);
@@ -74,16 +88,16 @@ class CanteenCartController extends CanteenAppController {
 			
 		if(isset($_GET['x']) && $this->isAdmin()) {
 			
-			$this->data['UserAddress'][0]['first_name'] = "John";
-			$this->data['UserAddress'][0]['last_name'] = "Testing";
-			$this->data['UserAddress'][0]['street'] = "11201 Otsego St";
-			$this->data['UserAddress'][0]['apt'] = "#107";
-			$this->data['UserAddress'][0]['city'] = "North Hollywood";
-			$this->data['UserAddress'][0]['state'] = "CA";
-			$this->data['UserAddress'][0]['country_code'] = "US";
-			$this->data['UserAddress'][0]['email'] = "john.hardy@me.com";
-			$this->data['UserAddress'][0]['phone'] = "888-888-8888";
-			$this->data['UserAddress'][0]['postal_code'] = "91601";
+			$this->data['ShippingAddress']['first_name'] = "John";
+			$this->data['ShippingAddress']['last_name'] = "Testing";
+			$this->data['ShippingAddress']['street'] = "11201 Otsego St";
+			$this->data['ShippingAddress']['apt'] = "#107";
+			$this->data['ShippingAddress']['city'] = "North Hollywood";
+			$this->data['ShippingAddress']['state'] = "CA";
+			$this->data['ShippingAddress']['country_code'] = "US";
+			$this->data['ShippingAddress']['email'] = "john.hardy@me.com";
+			$this->data['ShippingAddress']['phone'] = "888-888-8888";
+			$this->data['ShippingAddress']['postal_code'] = "91601";
 			
 			$this->data['CardData']['number'] = "4111111111111111";
 			$this->data['CardData']['exp_month'] = 2;
@@ -166,12 +180,16 @@ class CanteenCartController extends CanteenAppController {
 			
 			$order['CanteenOrder']['currency_id'] = $this->getUserCurrency();
 
-			$this->data = $this->CanteenOrder->calculateCartTotal($order);
+			if(count($this->data)>0) $order['ShippingAddress'] = $this->data['ShippingAddress'];
+			
+			
 			$this->data['CanteenOrder']['same_as_shipping_checkbox']=1;
 			$geo_c = env("GEOIP_COUNTRY_CODE");
 			$this->data['UserAddress'][0]['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
 			
 		}
+		
+		$this->data = $this->CanteenOrder->calculateCartTotal($t);
 		
 		$user_locale = (isset($_GET['locale'])) ? $_GET['locale']:"en_us";
 

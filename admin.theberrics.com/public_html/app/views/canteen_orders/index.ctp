@@ -111,17 +111,17 @@ border-radius: 10px;
 			?>
 			</td>
 			<td align='center'>
-				<?php if(isset($shipto[0]['UserAddress'])): ?>
-				<?php echo $shipto[0]['UserAddress']['first_name']; ?> <?php echo $shipto[0]['UserAddress']['last_name']; ?> 
-				(<?php echo $shipto[0]['UserAddress']['country_code']; ?>)<br />
-				<?php echo $shipto[0]['UserAddress']['email']; ?>
-				<?php endif; ?>
+				<?php echo $o['ShippingAddress']['first_name']; ?> <?php echo $o['ShippingAddress']['last_name']; ?> 
+				(<?php echo $o['ShippingAddress']['country_code']; ?>)
+				<br />
+				<?php echo $o['ShippingAddress']['email']; ?>
+				
 			</td>
 			<td align='center'>
-				<?php if(isset($billto[0]['UserAddress'])): ?>
-				<?php echo $billto[0]['UserAddress']['first_name']; ?> <?php echo $billto[0]['UserAddress']['last_name']; ?> 
-				(<?php echo $billto[0]['UserAddress']['country_code']; ?>)
-				<?php endif; ?>
+				
+				<?php echo $o['BillingAddress']['first_name']; ?> <?php echo $o['BillingAddress']['last_name']; ?> 
+				(<?php echo $o['BillingAddress']['country_code']; ?>)<br />
+				
 			</td>
 			<td>
 				<?php 

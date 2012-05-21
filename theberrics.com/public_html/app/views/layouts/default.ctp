@@ -26,7 +26,7 @@
 	
 	$pt = "The Berrics";
 	
-	$pt .=  (preg_match("/(canteen)/",$_SERVER['REQUEST_URI'])) ? "Canteen":"";
+	$pt .=  (preg_match("/(canteen)/",$_SERVER['REQUEST_URI'])) ? " Canteen":"";
 	
 	$pt .= " - ".$title_for_layout;
 

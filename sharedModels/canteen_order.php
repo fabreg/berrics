@@ -49,16 +49,24 @@ class CanteenOrder extends AppModel {
 			'dependent' => false,
 			
 		),
-		"UserAddress"=>array(
-			"conditions"=>array("UserAddress.model"=>"CanteenOrder"),
-			"foreignKey"=>"foreign_key"
-		),
 		"GatewayTransaction"=>array(
 			"conditions"=>array("GatewayTransaction.model"=>"CanteenOrder"),
 			"foreignKey"=>"foreign_key"
 		),
 		"EmailMessage"=>array(
 			"conditions"=>array("EmailMessage.model"=>"CanteenOrder"),
+			"foreignKey"=>"foreign_key"
+		)
+	);
+	public $hasOne = array(
+		"ShippingAddress"=>array(
+			"className"=>"UserAddress",
+			"conditions"=>array("ShippingAddress.address_type"=>"shipping","ShippingAddress.model"=>"CanteenOrder"),
+			"foreignKey"=>"foreign_key"
+		),
+		"BillingAddress"=>array(
+			"className"=>"UserAddress",
+			"conditions"=>array("BillingAddress.address_type"=>"billing","BillingAddress.model"=>"CanteenOrder"),
 			"foreignKey"=>"foreign_key"
 		)
 	);
@@ -73,6 +81,14 @@ class CanteenOrder extends AppModel {
 			
 		)
 	);
+	
+	public function setCardValidation() {
+		
+		$this->validate = array(
+			"cc_num"=>"cc"
+		);
+		
+	}
 	
 	/**
 	 * Taxable Country plus province codes
@@ -127,6 +143,13 @@ class CanteenOrder extends AppModel {
 	}
 	/***************/
 	
+	/**
+	 * Calculate a the cart and format it to be inserted into
+	 * the database
+	 * 
+	 * @param $CanteenOrder
+	 * @return $CanteenOrder
+	 */
 	public function calculateCartTotal($CanteenOrder = array()) {
 		
 		$items = $CanteenOrder['CanteenOrderItem'];
@@ -149,7 +172,7 @@ class CanteenOrder extends AppModel {
 		
 		$weight = array_sum($weights);
 		
-		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency($CanteenOrder['CanteenOrder']['currency_id'],"USD",CanteenShippingRecord::returnShippingRate($weight,$CanteenOrder['UserAddress'][0]['country_code'],$CanteenOrder['CanteenOrder']['shipping_method']));
+		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency($CanteenOrder['CanteenOrder']['currency_id'],"USD",CanteenShippingRecord::returnShippingRate($weight,$CanteenOrder['ShippingAddress']['country_code'],$CanteenOrder['CanteenOrder']['shipping_method']));
 		
 		//calculate promo codes
 		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);
@@ -157,14 +180,14 @@ class CanteenOrder extends AppModel {
 		//calculate tax off of taxable total
 		$taxRate = 0.00;
 		
-		$address = Set::extract("/UserAddress[address_type=shipping]",$CanteenOrder);
+		$address = $CanteenOrder['ShippingAddress'];
 		
 		if(
-			array_key_exists($address[0]['UserAddress']['country_code'],$this->taxZones) && 
-			array_key_exists($address[0]['UserAddress']['state'],$this->taxZones[$address[0]['UserAddress']['country_code']])
+			array_key_exists($address['country_code'],$this->taxZones) && 
+			array_key_exists($address['state'],$this->taxZones[$address['country_code']])
 		) {
 			
-			$taxRate = $this->taxZones[$address[0]['UserAddress']['country_code']][$address[0]['UserAddress']['state']];
+			$taxRate = $this->taxZones[$address['country_code']][$address['state']];
 			
 		}
 		
@@ -175,15 +198,18 @@ class CanteenOrder extends AppModel {
 														$CanteenOrder['CanteenOrder']['shipping_total'] + 
 														$CanteenOrder['CanteenOrder']['tax_total'];
 		
-		
 
-		
-		
-		
 		return $CanteenOrder;
 		
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param $CanteenOrder
+	 * @param $attempt_charge Boolean
+	 * @return $CanteenOrderId Int
+	 */
 	public function saveOnlineOrder($CanteenOrder = array(),$attempt_charge = false) {
 		
 		$this->create();
@@ -213,16 +239,19 @@ class CanteenOrder extends AppModel {
 		$order_id = $this->id;
 		
 		//save the shipping address
-		foreach($CanteenOrder['UserAddress'] as $a) {
-			
-			$a['model'] = "CanteenOrder";
-			$a['foreign_key'] = $order_id;
-			$this->UserAddress->create();
-			if(isset($a['id'])) $this->UserAddress->id = $a['id'];
-			$this->UserAddress->save($a);
-			
-		}
+		$this->ShippingAddress->create();
+		if(isset($CanteenOrder['ShippingAddress']['id'])) $this->ShippingAddress->id = $CanteenOrder['ShippingAddress']['id'];
+		$CanteenOrder['ShippingAddress']['model'] = "CanteenOrder";
+		$CanteenOrder['ShippingAddress']['foreign_key'] = $order_id;
+		$this->ShippingAddress->save($CanteenOrder['ShippingAddress']);
 		
+		$this->BillingAddress->create();
+		if(isset($CanteenOrder['BillingAddress']['id'])) $this->BillingAddress->id = $CanteenOrder['BillingAddress']['id'];
+		$CanteenOrder['BillingAddress']['model'] = "CanteenOrder";
+		$CanteenOrder['BillingAddress']['foreign_key'] = $order_id;
+		$this->BillingAddress->save($CanteenOrder['BillingAddress']);
+		
+
 		//save cart items
 		foreach($CanteenOrder['CanteenOrderItem'] as $item) {
 			
@@ -261,20 +290,8 @@ class CanteenOrder extends AppModel {
 			$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']==1
 		) {
 			
-			if(isset($CanteenOrder['UserAddress'][1]['id'])) {
-				
-				$bid = $CanteenOrder['UserAddress'][1]['id'];
-				$CanteenOrder['UserAddress'][1] = $CanteenOrder['UserAddress'][0];
-				$CanteenOrder['UserAddress'][1]['address_type'] = "billing";
-				$CanteenOrder['UserAddress'][1]['id'] = $bid;
-				
-			} else if(!isset($CanteenOrder['UserAddress'][1]['id'])) {
-				
-				$CanteenOrder['UserAddress'][1] = $CanteenOrder['UserAddress'][0];
-				$CanteenOrder['UserAddress'][1]['address_type'] = "billing";
-				
-			}
-			
+			$CanteenOrder['BillingAddress'] = $CanteenOrder['ShippingAddress'];
+			$CanteenOrder['BillingAddress']['address_type'] = "billing";
 		}
 		
 		
@@ -403,7 +420,8 @@ class CanteenOrder extends AppModel {
 				"ShippingCanteenPromoCode",
 				"PromotionCanteenPromoCode",
 				"UserAccountCanteenPromoCode",
-				"UserAddress",
+				"BillingAddress",
+				"ShippingAddress",
 				"CanteenOrderItem"=>array(
 					"ChildCanteenOrderItem"=>array(
 						"CanteenInventoryRecord"=>array("Warehouse"),

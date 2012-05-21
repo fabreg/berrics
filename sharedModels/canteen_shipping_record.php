@@ -237,13 +237,7 @@ class CanteenShippingRecord extends AppModel {
 		
 		//get the shipping address id
 		
-		$address = Set::extract("/UserAddress[address_type=shipping]",$order);
-		
-		if(!isset($address[0]['UserAdrress']['id'])) {
-			
-			//fuck
-			
-		}
+		$address = $order['ShippingAddress'];
 		
 		//let's get the warehouses in each order
 		$items = array();
@@ -267,7 +261,7 @@ class CanteenShippingRecord extends AppModel {
 				"canteen_order_id"=>$order['CanteenOrder']['id'],
 				"shipping_status"=>"PENDING",
 				"warehouse_id"=>$key,
-				"user_address_id"=>$address[0]['UserAddress']['id']
+				"user_address_id"=>$address['id']
 			));
 			
 			$ship_id = $this->id;

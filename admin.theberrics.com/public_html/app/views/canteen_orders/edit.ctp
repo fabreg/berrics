@@ -347,65 +347,8 @@ border-radius: 10px 10px 0px 0px;
 		<fieldset>
 			<legend>Addresses</legend>
 			<div>
-				<?php foreach($this->data['UserAddress'] as $v): ?>
-				<div class='address-div'>
-					<table cellspacing='0'>
-						<tr>
-							<td>Address Type</td>
-							<td><?php echo strtoupper($v['address_type']); ?></td>
-						</tr>
-						<tr>
-							<td>First Name</td>
-							<td><?php echo $v['first_name']; ?></td>
-						</tr>
-						<tr>
-							<td>Last Name</td>
-							<td><?php echo $v['last_name']; ?></td>
-						</tr>
-						<tr>
-							<td>Street</td>
-							<td><?php echo $v['street']; ?></td>
-						</tr>
-						<tr>
-							<td>Apt</td>
-							<td><?php echo $v['apt']; ?></td>
-						</tr>
-						<tr>
-							<td>City</td>
-							<td><?php echo $v['city']; ?></td>
-						</tr>
-						<tr>
-							<td>State/Province</td>
-							<td><?php echo $v['state']; ?></td>
-						</tr>
-						<tr>
-							<td>Postal</td>
-							<td><?php echo $v['postal_code']; ?></td>
-						</tr>
-						<tr>
-							<td>Country Code</td>
-							<td><?php echo $v['country_code']; ?></td>
-						</tr>
-						<tr>
-							<td>Phone</td>
-							<td><?php echo $v['phone']; ?></td>
-						</tr>
-						<tr>
-							<td>Email</td>
-							<td><?php echo $v['email']; ?></td>
-						</tr>
-						<tr>
-							<td>ID</td>
-							<td><?php echo $v['id']; ?></td>
-						</tr>
-						<tr>
-							<td colspan='2' class='actions'>
-								<a href='/user_addresses/edit/<?php echo $v['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>Edit</a>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<?php endforeach;?>
+				<?php echo $this->element("canteen_orders/address",array("address"=>$this->data['ShippingAddress'])) ;?>
+				<?php echo $this->element("canteen_orders/address",array("address"=>$this->data['BillingAddress'])) ;?>
 				<div style='clear:both;'></div>
 			</div>
 		</fieldset>
