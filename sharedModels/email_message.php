@@ -62,7 +62,7 @@ class EmailMessage extends AppModel {
 		
 		$this->save(array(
 			"subject"=>"The Berrics Canteen: Order Confirmation",
-			"to"=>$ship[0]['UserAddress']['email'],
+			"to"=>$CanteenOrder['ShippingAddress']['email'],
 			"from"=>"Do Not Reply <do.not.reply@theberrics.com>",
 			"send_as"=>"html",
 			"template"=>"canteen_order_conf",
@@ -114,7 +114,7 @@ class EmailMessage extends AppModel {
 		$d = array();
 		
 		$d['subject'] = "The Berrics Canteen: A note has been added to your order";
-		$d['to'] = $address[0]['UserAddress']['email'];
+		$d['to'] = $order['ShippingAddress']['email'];
 		$d['from'] = "Do Not Reply <do.not.reply@theberrics.com>";
 		$d['send_as'] = "html";
 		$d['template'] = "canteen_order_note_update";
@@ -141,7 +141,7 @@ class EmailMessage extends AppModel {
 		$d = array();
 		
 		$d['subject'] = "The Berrics Canteen: Your order has shipped";
-		$d['to'] = $record['UserAddress']['email'];
+		$d['to'] = $record['ShippingAddress']['email'];
 		$d['from'] = "Do Not Reply <do.not.reply@theberrics.com>";
 		$d['send_as'] = "html";
 		$d['template'] = "canteen_shipping_confirmation";
