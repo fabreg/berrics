@@ -23,7 +23,10 @@ class MailerShell extends Shell {
 		$emails = $this->EmailMessage->find("all",array(
 		
 			"conditions"=>array(
-				"EmailMessage.processed"=>NULL
+				"OR"=>array(
+					"EmailMessage.processed"=>NULL,
+					"EmailMessage.processed"=>0
+				)
 			),
 			"contain"=>array()
 		
