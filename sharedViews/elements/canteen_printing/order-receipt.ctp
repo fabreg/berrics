@@ -188,8 +188,8 @@ body {
 	<div style='clear:both;'></div>
 </div>
 <div class='addresses'>
-	<?php echo $this->element("canteen_printing/user-address",array("ua"=>$order['UserAddress'][0],"heading"=>"Ship To:")); ?>
-		<?php echo $this->element("canteen_printing/user-address",array("ua"=>$order['UserAddress'][1],"heading"=>"Bill To:")); ?>
+	<?php echo $this->element("canteen_printing/user-address",array("ua"=>$order['ShippingAddress'],"heading"=>"Ship To:")); ?>
+		<?php echo $this->element("canteen_printing/user-address",array("ua"=>$order['BillingAddress'],"heading"=>"Bill To:")); ?>
 	<div style='clear:both;'></div>
 </div>
 <div class='items'>

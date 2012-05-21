@@ -27,7 +27,7 @@ $l = Lang::returnSection("CommonFields",$user_locale);
 					<dl class='totals-list'>
 						<?php if($this->data['CanteenOrder']['discount_total']<0): ?>
 						<dt class='discount-total-label'>Discount...</dt>
-						<dd id='discount-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['discount_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='discount-total-dd'><?php echo number_format($this->data['CanteenOrder']['discount_total'],2); ?></dd>
 						<?php endif; ?>
 						<dt>Sub-Total..</dt>
 						<dd id='sub-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['sub_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
@@ -40,11 +40,12 @@ $l = Lang::returnSection("CommonFields",$user_locale);
 					</dl>
 				</div>
 				<div class='form'>
+					<div><?php echo $this->Session->flash(); ?></div>
 					<div class='container'>
 						<div class='container-top'>
 							<div class='heading'>
 								<h2><img src='/img/layout/canteen/cart/cart-lock-icon.png' border='0' />CHECKOUT</h2>
-								<div><?php echo $this->Session->flash(); ?></div>
+								
 							</div>
 							<div class='shipping'>
 								<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo strtoupper($l['shipaddress']); ?></h3>

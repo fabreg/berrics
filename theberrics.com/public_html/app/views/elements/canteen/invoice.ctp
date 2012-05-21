@@ -62,36 +62,36 @@ $billing = $order['BillingAddress'];
 					<div style='clear:both;'></div>
 				</div>
 				<div class='invoice-items'>
-								<table cellspacing='0'>
-									<tr>
-										<th width='90%' align='left' style='text-align:left; padding-left:10px;'>ITEMS</th>
-										<th>QUANTITY</th>
-									</tr>
-									<?php foreach($order['CanteenOrderItem'] as $parent): 
-											foreach($parent['ChildCanteenOrderItem'] as $item):
-									?>
-										
-									<tr>
-										<td>
-										<?php echo strtoupper($item['title']); ?> <span>By: <?php echo strtoupper($item['brand_label']); ?></span>
-										<?php if(!empty($item['sub_title'])) echo " <br /> ".strtoupper($item['sub_title']); ?>
-										
-										</td>
-										<td align='center'>
-											<?php echo $item['quantity']; ?>
-										</td>
-									</tr>
-									<?php 
-											endforeach;
-										endforeach; 
-									?>
-								</table>
+					<table cellspacing='0'>
+						<tr>
+							<th width='90%' align='left' style='text-align:left; padding-left:10px;'>ITEMS</th>
+							<th>QUANTITY</th>
+						</tr>
+						<?php foreach($order['CanteenOrderItem'] as $parent): 
+								foreach($parent['ChildCanteenOrderItem'] as $item):
+						?>
+							
+						<tr>
+							<td>
+							<?php echo strtoupper($item['title']); ?> <span>By: <?php echo strtoupper($item['brand_label']); ?></span>
+							<?php if(!empty($item['sub_title'])) echo " <br /> ".strtoupper($item['sub_title']); ?>
+							
+							</td>
+							<td align='center'>
+								<?php echo $item['quantity']; ?>
+							</td>
+						</tr>
+						<?php 
+								endforeach;
+							endforeach; 
+						?>
+					</table>
 				</div>
 				<div class='cart-totals'>
 					<dl class='totals-list'>
 						<?php if($order['CanteenOrder']['discount_total'] != 0): ?>
 						<dt>Discount...</dt>
-						<dd><?php echo $this->Number->currency($order['CanteenOrder']['discount_total'],$order['CanteenOrder']['currency_id']); ?></dd>
+						<dd><?php echo number_format($order['CanteenOrder']['discount_total'],2); ?></dd>
 						<?php endif; ?>
 						<dt>Sub-Total..</dt>
 						<dd><?php echo $this->Number->currency($order['CanteenOrder']['sub_total'],$order['CanteenOrder']['currency_id']); ?></dd>

@@ -84,7 +84,7 @@ class CanteenShippingRecord extends AppModel {
 		$z = array();
 		
 		//usa
-		$z[] = array(
+		$z['usa'] = array(
 			"countries"=>array(
 				"US"
 			),
@@ -93,9 +93,9 @@ class CanteenShippingRecord extends AppModel {
 					0=>19.95,
 					1=>7.49,
 					2=>8.95,
-					3=>10.49,
-					4=>11.95,
-					5=>13.49,
+					3=>11.95,
+					4=>13.49,
+					5=>14.95,
 					6=>14.95
 				),
 				"expedited"=>array(
@@ -112,7 +112,7 @@ class CanteenShippingRecord extends AppModel {
 		);
 		
 		//canada
-		$z[] = array(
+		$z['can'] = array(
 			"countries"=>array(
 				"CA"
 			),
@@ -143,6 +143,31 @@ class CanteenShippingRecord extends AppModel {
 		//uk
 		
 		//europe
+		$z['europe'] = array(
+			"countries"=>array(
+				"GB","ES"
+			),
+			"rates"=>array(
+				"standard"=>array(
+					0=>32.95,
+					1=>13.95,
+					2=>16.95,
+					3=>20.49,
+					4=>23.95,
+				),
+				"expedited"=>array(
+					0=>19.95,
+					1=>10.00,
+					2=>12.00,
+					3=>14.00,
+					4=>16.00,
+					5=>18.00,
+					6=>20.00
+				)
+				
+			)
+		);
+		
 		
 		//brazil
 		
@@ -151,13 +176,11 @@ class CanteenShippingRecord extends AppModel {
 			"countries"=>array(),
 			"rates"=>array(
 				"standard"=>array(
-					0=>19.95,
-					1=>14.00,
-					2=>15.00,
-					3=>16.00,
-					4=>17.00,
-					5=>18.00,
-					6=>19.00
+					0=>49.95,
+					1=>13.95,
+					2=>17.49,
+					3=>23.95,
+					4=>27.95
 				),
 				"expedited"=>array(
 					0=>39.95,

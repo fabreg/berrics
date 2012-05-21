@@ -35,6 +35,15 @@ echo $this->element("dashboard/tab-nav");
 	border:1px solid #e9e9e9;
 }
 </style>
+<script>
+function handleNoteReply() {
+
+	var ref = document.location.href;
+
+	document.location.href = ref+"?"+Math.floor(Math.random()*11);
+	
+}
+</script>
 <div class='index form'>
 	<div>
 		<div style='float:right; width:68%;'>
@@ -68,7 +77,7 @@ echo $this->element("dashboard/tab-nav");
 							<td><a href='/canteen_orders/edit/<?php echo $n['canteen_order_id']; ?>'><?php echo $n['canteen_order_id']; ?></a></td>
 							<td><?php echo nl2br($n['message']); ?></td>
 							<td class='actions'>
-								<a href='javascript:CanteenOrderNote.reply(<?php echo $n['id']; ?>);'>Quick Reply</a>
+								<a href='javascript:CanteenOrderNote.reply(<?php echo $n['id']; ?>,"handleNoteReply");'>Quick Reply</a>
 							</td>
 						</tr>
 						<?php endforeach; ?>

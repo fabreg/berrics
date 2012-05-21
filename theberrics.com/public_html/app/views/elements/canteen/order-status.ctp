@@ -143,21 +143,55 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 		ORDER NOTES
 		</div>
 		<div class='notes-form-div'>
-			<div class='order-notes-help'></div>
+			<div class='order-notes-help'>
+			<p>Do you have a question about your order? Use the form to the right to get in touch with us and we will get back to you promptly.</p>
+			</div>
 			<div class='order-notes-form'>
 				<?php 
 					echo $this->Form->create("CanteenOrderNote",array("url"=>$this->here));
 					echo $this->Form->input("action",array("value"=>"customer_note","type"=>"hidden"));
 					echo $this->Form->input("canteen_order_id",array("type"=>"hidden","value"=>$order['CanteenOrder']['id']));
-					echo $this->Form->input("message");
+					echo $this->Form->input("message",array("label"=>"Your Message"));
 					echo $this->Form->submit("Add Note");
 					echo $this->Form->end();
 				?>
 			</div>
 			<div style='clear:both;'></div>
-			
+		</div>
+		<div class='order-notes-container'>
+			<?php if(count($order['CanteenOrderNote'])>0): ?>
+				<?php foreach($order['CanteenOrderNote'] as $n): if($n['hidden'] == 1) continue; ?>
+				<div class='order-note'>
+					<table cellspacing='0'>
+						<tr>
+							<th></th>
+							<th>From</th>
+							<th>Message</th>
+						</tr>
+						<tr>
+							<td width='2%'></td>
+							<td width='25%' align='center' valign='middle'>
+								<?php if(isset($n['User']['id'])): ?>
+								<?php echo $n['User']['first_name']; ?>
+								<?php else: ?>
+								YOU
+								<?php endif; ?>
+								<div style='font-size:12px; font-style:italic;'>
+									<?php echo $this->Time->niceShort($n['created']); ?>
+								</div>
+							</td>
+							<td valign='top'>
+								<?php echo nl2br($n['message']); ?>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<div class='no-notes-div'>NO NOTES HAVE BEEN ATTACHED TO THIS ORDER</div>
+			<?php endif; ?>
 		</div>
 	</div>
 	
 </div>
-<?php print_r($order); ?>
+<?php //print_r($order); ?>
