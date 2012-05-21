@@ -32,7 +32,7 @@ class UspsApi {
 	
 	public function setFromAddress($from_address) {
 		
-		$from = array_merge($from_address,$this->from_address);
+		$from = array_merge($this->from_address,$from_address);
 
 		$this->from_address = $from;
 		
