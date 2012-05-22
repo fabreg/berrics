@@ -22,11 +22,11 @@ $(document).ready(function() {
 	
 	//init cart widget
 	CartWidget.docReady();
-	
+	DailyopsSlideShow.init();
 	//initTopNav();
 	initThumbHovers();
-	
 	initCanteenProductThumbs();
+	initMediaFileDiv();
 	
 	//auto compete data
 	$("#SearchTag").autocomplete({
@@ -38,15 +38,13 @@ $(document).ready(function() {
 	
 	$("#section-year-menu li").click(function() { 
 		
-		
 		var ref = $(this).find("a").attr("href");
 		
 		document.location.href = ref;
 		
-		
 	});
 	
-	initMediaFileDiv();
+	
 	
 	$(".dailyop-swf-file").each(function() { 
 		
@@ -78,20 +76,7 @@ $(document).ready(function() {
 		
 	}
 	
-	DailyopsSlideShow.init();
 	
-	//yn3 date math
-	var date = new Date("March 16, 2012");
-	var now = new Date();
-	var diff = date.getTime() - now.getTime();
-	var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-	
-	//younited nations 3 top banner
-	$("#yn3-top-top-banner").click(function() { 
-		
-		document.location.href = "/younited-nations-3"
-		
-	}).append("<div class='days'>"+days+"</div>");
 	
 });
 
@@ -675,14 +660,40 @@ function initCanteenProductThumbs() {
 
 			document.location.href = ref;
 			
-		});
+	});
 
-		$('.canteen-product-thumb a').click(function() { 
+	$('.canteen-product-thumb a').click(function() { 
 
-			return false;
+		return false;
 
-		});
+	});
 	
+	
+	//super thumb
+	$('.canteen-product-super-thumb').hover(
+			function() { 
+
+				$(this).find('.info').fadeIn();
+				
+			},
+			function() { 
+
+				$(this).find('.info').hide();
+				
+			}
+		).click(function() { 
+
+			var ref = $(this).find("a").attr("href");
+
+			document.location.href = ref;
+			
+	});
+
+	$('.canteen-product-super-thumb a').click(function() { 
+
+		return false;
+
+	});
 }
 
 

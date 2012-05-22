@@ -95,6 +95,36 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function toggle_featured($product_id = false) {
+		
+		//get the product
+		$p = $this->CanteenProduct->find("first",array(
+			"conditions"=>array(
+				"CanteenProduct.id"=>$product_id
+			),
+			"contain"=>array()
+		));
+		
+		$seed = 0;
+		
+		if($p['CanteenProduct']['featured'] != 1) {
+			
+			$seed = 1;
+			
+		}
+		
+		$this->CanteenProduct->create();
+		$this->CanteenProduct->id = $product_id;
+		$this->CanteenProduct->save(array(
+			"featured"=>$seed
+		));
+		
+		$url = base64_decode($this->params['named']['callback']);
+		
+		return $this->redirect($url);
+		
+	}
+	
 	
 	public function add() {
 		
@@ -565,4 +595,15 @@ class CanteenProductsController extends LocalAppController {
 		$this->set(compact("product"));
 		
 	}
+	
+	
+	public function copy_pricing($source_id,$dest_id) {
+		
+		
+		
+		
+	}
+	
+	
+	
 }

@@ -45,7 +45,7 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 					<?php 
 						foreach($products as $p):
 					?>
-						<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
+						<?php echo $this->element("canteen/product-super-thumb",array("product"=>$p)); ?>
 					<?php 
 						endforeach;
 					?>

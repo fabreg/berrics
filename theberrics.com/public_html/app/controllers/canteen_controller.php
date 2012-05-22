@@ -84,28 +84,40 @@ class CanteenController extends CanteenAppController {
 		
 		$category = $this->CanteenCategory->getSubcat(array(
 				"CanteenCategory.uri"=>$this->params['uri']
-			));
+		));
 		
 		$filters = $this->CanteenCategory->getProductFilters($category['CanteenCategory']['id']);
 		
 		$pcond = array(
 		
 					"CanteenProduct.active"=>1,
-					"CanteenProduct.featured"=>1,
 					"DATE(CanteenProduct.publish_date)<NOW()",
 					"CanteenProduct.canteen_category_id"=>$category['CanteenCategory']['id']
-		
 		);
+		
 		$meta_filters = array();
 		$brand_filters = array();
-	
+		$run_filters = false;
+		
 		if(isset($_GET['data'])) $this->data = $_GET['data'];
 		
 		if(count($this->data)>0) {
 			
+			if(isset($this->data['Brand'])) foreach($this->data['Brand'] as $b) if($b==1) $run_filters = true;
+			
+			if(isset($this->data['Meta'])) foreach($this->data['Meta'] as $b) if($b==1) $run_filters = true;
+			
+		}
+		
+		if($run_filters) {
+			
 			foreach($this->data['Brand'] as $k=>$v) if($v==1) $brand_filters[] = $k;
 			
 			foreach($this->data['Meta'] as $k=>$v) if($v==1) $meta_filters[] = $k;
+			
+		} else {
+			
+			$pcond['CanteenProduct.featured'] = 1;
 			
 		}
 		
@@ -136,7 +148,7 @@ class CanteenController extends CanteenAppController {
 			
 			$_p = $this->CanteenProduct->returnProduct(array(
 					"conditions"=>array("CanteenProduct.id"=>$id['CanteenProduct']['id'])
-			),$this->isAdmin(),false,array("no_related"=>true));
+			),$this->isAdmin());
 			
 			if(!$_p) continue;
 			

@@ -136,7 +136,6 @@ class CanteenCategory extends AppModel {
 						"conditions"=>array(
 							"CanteenProduct.active"=>1,
 							"DATE(CanteenProduct.publish_date) < NOW()",
-							"CanteenProduct.featured"=>1
 						),
 						"Meta"=>array("order"=>array("Meta.key"=>"ASC","Meta.val"=>"ASC")),
 						"Brand"

@@ -193,7 +193,6 @@ class UspsApi {
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$ret = curl_exec($curl);
 			curl_close($curl);
-			
 			return $ret;
 			
 	}

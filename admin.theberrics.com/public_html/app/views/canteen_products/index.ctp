@@ -97,17 +97,19 @@ function openDetails(id,ele) {
 			</td>
 			<td align='center' nowrap width='1%'>
 				<?php 
-				
+					
 					switch($p['active']) {
 					
 						case 1:
-							echo "<span style='color:green;'>YES</span>";
+							$txt =  "<span style='color:green;'>YES</span>";
 						break;
 						default:
-							echo "<span style='color:red;'>NO</span>";
+							$txt = "<span style='color:red;'>NO</span>";
 						break;
 					}
+					
 				?>
+				<?php echo $txt; ?>
 			</td>
 			<td align='center' nowrap width='1%'>
 				<?php 
@@ -115,13 +117,14 @@ function openDetails(id,ele) {
 					switch($p['featured']) {
 					
 						case 1:
-							echo "<span style='color:green;'>YES</span>";
+							$txt = "<span style='color:green;'>YES</span>";
 						break;
 						default:
-							echo "<span style='color:red;'>NO</span>";
+							$txt = "<span style='color:red;'>NO</span>";
 						break;
 					}
 				?>
+				<a href='/canteen_products/toggle_featured/<?php echo $p['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'><?php echo $txt; ?></a>
 			</td>
 			<td align='center' nowrap width='1%'>
 				<?php 
