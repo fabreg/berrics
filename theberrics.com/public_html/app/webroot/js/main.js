@@ -683,17 +683,13 @@ function initCanteenProductThumbs() {
 			}
 		).click(function() { 
 
-			var ref = $(this).find("a").attr("href");
+			var ref = $(this).find(".thumb-inner a").attr("href");
 
 			document.location.href = ref;
 			
 	});
 
-	$('.canteen-product-super-thumb a').click(function() { 
-
-		return false;
-
-	});
+	
 }
 
 
