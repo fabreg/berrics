@@ -35,6 +35,7 @@
 		</td>
 		<td class='actions'>
 			<a href='/canteen_products/edit/<?php echo $r['CanteenProduct']['id']; ?>'>Edit</a>
+			<a href='/canteen_products/copy_pricing/<?php echo $this->data['CanteenProduct']['id']; ?>/<?php echo $r['CanteenProduct']['id']; ?>' onclick="return confirm('Are you sure you want to copy the pricing from this product?'); ">Copy Pricing</a>
 		</td>
 	</tr>
 	<?php endforeach; ?>

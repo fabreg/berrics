@@ -5,7 +5,7 @@ class SplashRoute extends CakeRoute {
 	public function parse($url) {
 		
 		$params = parent::parse($url);
-''
+
 		if(empty($params)) {
 			
 			return false;

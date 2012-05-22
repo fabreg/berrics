@@ -599,7 +599,39 @@ class CanteenProductsController extends LocalAppController {
 	
 	public function copy_pricing($source_id,$dest_id) {
 		
+		$this->loadModel("CanteenProductPrice");
 		
+		//get the source products pricing
+		$sp = $this->CanteenProductPrice->find("all",array("conditions"=>array("CanteenProductPrice.id"=>$source_id)));
+		
+		foreach($sp as $p) {
+			
+			$chk = $this->CanteenProductPrice->find("first",array(
+				"conditions"=>array(
+					"CanteenProductPrice.currency_id"=>$p['CanteenProductPrice']['currency_id'],
+					"CanteenProductPrice.canteen_product_id"=>$dest_id		
+				)
+			
+			));
+			
+			$this->CanteenProductPrice->create();
+			
+			if(!empty($chk['CanteenProductPrice']['id'])) $this->CanteenProductPrice->id = $chk['CanteenProductPrice']['id'];
+			
+			$d = array(
+				"price"=>$p['CanteenProductPrice']['price'],
+				"currency_id"=>$p['CanteenProductPrice']['currency_id'],
+				"canteen_product_id"=>$dest_id
+			);
+			
+		}
+		
+		return $this->redirect("/canteen_products/edit/".$dest_id."#Pricing");
+		
+		
+	}
+	
+	public function copy_products($product_id) {
 		
 		
 	}
