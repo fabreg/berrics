@@ -7,10 +7,17 @@ $price = Set::extract("/CanteenProductPrice[currency_id={$user_currency_id}]",$p
 	<div class='info'>
 		<?php if(count($product['RelatedStyles'])): ?>
 			<div class='style-label'><?php echo strtoupper($product['CanteenProduct']['style_code_label']); ?></div>
+			<?php if(!empty($product['CanteenProduct']['style_code_image'])): ?>
+				<div class='style-code-image'>
+					<a href='/canteen/item/<?php echo $product['CanteenProduct']['uri']; ?>'>
+						<img border='0' src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $product['CanteenProduct']['style_code_image']; ?>&w=40&h=40&zc=1'/>
+					</a>
+				</div>
+			<?php endif; ?>
 			<?php foreach($product['RelatedStyles'] as $r): ?>
 				<div class='style-code-image'>
 					<a href='/canteen/item/<?php echo $r['CanteenProduct']['uri']; ?>'>
-						<img border='0' src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $r['CanteenProduct']['style_code_image']; ?>&w=50'/>
+						<img border='0' src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $r['CanteenProduct']['style_code_image']; ?>&w=40&h=40&zc=1'/>
 					</a>
 				</div>
 			<?php endforeach; ?>

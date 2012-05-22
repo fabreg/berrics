@@ -5,7 +5,7 @@ class SplashRoute extends CakeRoute {
 	public function parse($url) {
 		
 		$params = parent::parse($url);
-
+''
 		if(empty($params)) {
 			
 			return false;
@@ -36,10 +36,10 @@ class SplashRoute extends CakeRoute {
 
 		}
 		
-		if(in_array(date('Y-m-d'),array('2012-05-16','2012-05-17','2012-05-18','2012-05-19'))) {
+		if(in_array(date('Y-m-d'),array('2012-05-22'))) {
 			
 			$params['controller'] = "splash";
-			$params['action'] = "sls_kc";
+			$params['action'] = "weekendtage";
 			
 		} 
 

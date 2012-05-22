@@ -96,7 +96,7 @@ class CanteenShippingRecord extends AppModel {
 					3=>11.95,
 					4=>13.49,
 					5=>14.95,
-					6=>14.95
+					6=>15.95
 				),
 				"expedited"=>array(
 					0=>19.95,
@@ -145,7 +145,7 @@ class CanteenShippingRecord extends AppModel {
 		//europe
 		$z['europe'] = array(
 			"countries"=>array(
-				"GB","ES"
+				"GB","ES","UK"
 			),
 			"rates"=>array(
 				"standard"=>array(
