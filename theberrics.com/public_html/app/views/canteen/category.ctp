@@ -4,7 +4,7 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 
 ?>
 <style>
-.canteen-product-thumb {
+.canteen-product-thumb,.canteen-product-super-thumb {
 
 	float:left;
 	margin-left:3px;
