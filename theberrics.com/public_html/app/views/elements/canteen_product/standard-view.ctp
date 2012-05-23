@@ -130,7 +130,7 @@ function initOptionClick() {
 									<?php 
 			 
 										//echo $price['Currency']['symbol']." ".$price['price']; 
-										echo $this->Number->currency($price['price'],$user_currency_id);	
+										echo $this->Berrics->currency($price['price'],$user_currency_id);	
 										//echo $this->Store->formatMoney($price['price'],$user_currency_id);
 									?>
 								</div>

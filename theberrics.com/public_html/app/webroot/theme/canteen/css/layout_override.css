@@ -1184,16 +1184,16 @@ PRODUCT EXTRA INFO
 #canteen-cart #flashMessage {
 	
 	
-	background-color:red;
-	color:white;
+	
+	color:#722e25;
 	line-height:20px;
-	font-size:14px;
+	font-size:20px;
 	padding:5px;
 	border-radius:12px;
 	moz-border-radius:12px;	
 	text-align:center;
 	font-weight:bold;
-	font-family:'Arial';
+	font-family:'Courier';
 	width:80%;
 	margin:auto;
 

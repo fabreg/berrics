@@ -7,6 +7,10 @@ $shipping_codes = array(
 );
 $l = Lang::returnSection("CommonFields",$user_locale);
 
+$skip_currency_alert = true;
+
+$skip = array();
+
 ?>
 <?php echo $this->Form->create("CanteenOrder",array("url"=>$this->here,"id"=>"checkout-form")); ?>
 <div id='canteen-cart'>
@@ -30,13 +34,13 @@ $l = Lang::returnSection("CommonFields",$user_locale);
 						<dd id='discount-total-dd'><?php echo number_format($this->data['CanteenOrder']['discount_total'],2); ?></dd>
 						<?php endif; ?>
 						<dt>Sub-Total..</dt>
-						<dd id='sub-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['sub_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='sub-total-dd'><?php echo $this->Berrics->currency($this->data['CanteenOrder']['sub_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt id='tax-total-dt'>Sales-Tax..</dt>
-						<dd id='tax-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['tax_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='tax-total-dd'><?php echo $this->Berrics->currency($this->data['CanteenOrder']['tax_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt>Shipping...</dt>
-						<dd id='shipping-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['shipping_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='shipping-total-dd'><?php echo $this->Berrics->currency($this->data['CanteenOrder']['shipping_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 						<dt class='grand-total-label'>Total......</dt>
-						<dd id='grand-total-dd'><?php echo $this->Number->currency($this->data['CanteenOrder']['grand_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
+						<dd id='grand-total-dd'><?php echo $this->Berrics->currency($this->data['CanteenOrder']['grand_total'],$this->data['CanteenOrder']['currency_id']); ?></dd>
 					</dl>
 				</div>
 				<div class='form'>
@@ -62,8 +66,9 @@ $l = Lang::returnSection("CommonFields",$user_locale);
 								<div style='clear:both;'></div>
 								<div id='billing-form'><?php echo $this->element("checkout-forms/billing-address",array("index"=>1,"address_type"=>"billing")); ?></div>
 								<div id='grand-total'>
-									TOTAL: <span><?php echo $this->Number->currency($this->data['CanteenOrder']['grand_total'],$user_currency_id); ?></span>
+									TOTAL: <span><?php echo $this->Berrics->currency($this->data['CanteenOrder']['grand_total'],$user_currency_id); ?></span>
 								</div>
+								
 								<?php echo $this->Form->submit("COMPLETE ORDER"); ?>
 							</div>
 							<div style='clear:both;'></div>
@@ -88,7 +93,7 @@ echo $this->Form->end(); ?>
 <pre>
 <?php 
 
-print_r($this->params)
+//print_r($this->params)
 
 ?>
 </pre>

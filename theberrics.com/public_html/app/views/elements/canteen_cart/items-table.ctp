@@ -43,7 +43,7 @@
 						<div style='clear:both;'></div>
 					<?php endforeach; ?>
 				</td>
-				<td class='price'><?php echo $this->Number->currency($item['sub_total'],$user_currency_id); ?></td>
+				<td class='price'><?php echo $this->Berrics->currency($item['sub_total'],$user_currency_id); ?></td>
 			</tr>	
 			<?php endforeach; ?>
 			<?php if(!empty($this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name'])): ?>

@@ -40,6 +40,19 @@ class AdminHelper extends AppHelper {
 		
 	}
 	
+	public function quickTagEdit($Tags) {
+		
+		$str = '';
+		
+		foreach($Tags as $t) {
+			$str.="[";
+			$str .= $this->Html->link($t['name'],array("controller"=>"tags","action"=>"edit",$t['id']),array("target"=>"_blank"));
+			$str .="] ";
+		}
+		
+		return $str;
+		
+	}
 	
 }
 

@@ -29,7 +29,7 @@
 	$pt .=  (preg_match("/(canteen)/",$_SERVER['REQUEST_URI'])) ? " Canteen":"";
 	
 	$pt .= " - ".$title_for_layout;
-
+	echo $this->element("system/config-currency");
 ?>
 <!DOCTYPE html>
 <html>

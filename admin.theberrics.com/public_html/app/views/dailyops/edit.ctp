@@ -424,6 +424,11 @@ function handleVideoUpload() {
 		echo "<div style='padding:10px;'><input type='button' value='Check URI' id='check_uri_button' /></div>";
 		echo $this->Form->input("fb_like_uri_override",array("label"=>"FB Like URI Override (URI that will be used for Facebook) ** must start with a FORWARD SLASH / **"));
 		echo $this->Form->input('Tag',array("type"=>"text","value"=>$tag_str,"label"=>"Tags (Comma sperate each tag)"));
+		?>
+		<?php 
+			echo $this->Admin->quickTagEdit($this->data['Tag']);
+		?>
+	<?php 
 		echo $this->Form->submit("Update");
 	?>
 	</fieldset>

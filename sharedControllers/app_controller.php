@@ -26,7 +26,7 @@ class AppController extends Controller {
 	//public $cacheAction = "1 Minute";
 	###################################
 	
-	public $helpers = array("Html","Form","Session","Time","Thumb","Media","Text");
+	public $helpers = array("Html","Form","Session","Time","Thumb","Media","Text","Number");
 	
 	public $components = array("RequestHandler","Session","Auth");
 	
@@ -59,6 +59,7 @@ class AppController extends Controller {
 		if($this->Session->id()=='undefined') $this->Session->destroy();
 		
 	}
+
 	/**
 	 * Initialize the Authentication variables
 	 * @return void

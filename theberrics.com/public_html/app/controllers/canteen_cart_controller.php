@@ -322,19 +322,23 @@ class CanteenCartController extends CanteenAppController {
 		
 		$this->loadModel("CanteenOrder");
 		
+		$Currency = $this->data['CanteenOrder']['currency_id'];
+		
 		foreach($this->data as $k=>$v) {
 				
-				if($this->Session->check("CanteenOrder.{$k}")) {
-					
-					$this->data[$k] = array_merge($this->Session->read("CanteenOrder.{$k}"),$this->data[$k]);
-					
-				}
+			if($this->Session->check("CanteenOrder.{$k}")) {
+				
+				$this->data[$k] = array_merge($this->Session->read("CanteenOrder.{$k}"),$this->data[$k]);
+				
+			}
 				
 		}
 		
 		$this->data['CanteenOrderItem'] = $this->Session->read("CanteenOrder.CanteenOrderItem");
 		
 		$CanteenOrder = $this->CanteenOrder->formatOnlineOrderAddresses($this->data);
+		
+		$CanteenOrder['CanteenOrder']['currency_id'] = $Currency;
 		
 		$order = $this->CanteenOrder->calculateCartTotal($CanteenOrder);
 		

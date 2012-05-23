@@ -94,13 +94,13 @@ $billing = $order['BillingAddress'];
 						<dd><?php echo number_format($order['CanteenOrder']['discount_total'],2); ?></dd>
 						<?php endif; ?>
 						<dt>Sub-Total..</dt>
-						<dd><?php echo $this->Number->currency($order['CanteenOrder']['sub_total'],$order['CanteenOrder']['currency_id']); ?></dd>
+						<dd><?php echo $this->Berrics->currency($order['CanteenOrder']['sub_total'],$order['CanteenOrder']['currency_id']); ?></dd>
 						<dt>Tax........</dt>
-						<dd><?php echo $this->Number->currency($order['CanteenOrder']['tax_total'],$order['CanteenOrder']['currency_id']); ?></dd>
+						<dd><?php echo $this->Berrics->currency($order['CanteenOrder']['tax_total'],$order['CanteenOrder']['currency_id']); ?></dd>
 						<dt>Shipping...</dt>
-						<dd><?php echo $this->Number->currency($order['CanteenOrder']['shipping_total'],$order['CanteenOrder']['currency_id']); ?></dd>
+						<dd><?php echo $this->Berrics->currency($order['CanteenOrder']['shipping_total'],$order['CanteenOrder']['currency_id']); ?></dd>
 						<dt class='grand-total-label'>Total......</dt>
-						<dd class='grand-total'><?php echo $this->Number->currency($order['CanteenOrder']['grand_total'],$order['CanteenOrder']['currency_id']); ?> (<?php echo $order['CanteenOrder']['currency_id']; ?>)</dd>
+						<dd class='grand-total'><?php echo $this->Berrics->currency($order['CanteenOrder']['grand_total'],$order['CanteenOrder']['currency_id']); ?> (<?php echo $order['CanteenOrder']['currency_id']; ?>)</dd>
 					</dl>
 					<div style='clear:both;'></div>
 				</div>
