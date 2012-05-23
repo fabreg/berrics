@@ -9,16 +9,21 @@ class AccountController extends LocalAppController {
 	
 	public function beforeFilter() {
 		
+		$this->enforceSSL();
+		
 		parent::beforeFilter();
 		
 		$this->initPermissions();
 		
 		//for now, lock it down to the canteen
-		if($this->params['action'] != "canteen") {
+		$lock_down = array("canteen","canteen_order_status");
+		if(!in_array($this->params['action'],$lock_down)) {
 			
 			return $this->redirect("/account/canteen");
 			
 		}
+		
+		$this->theme = "account";
 		
 	}
 
@@ -30,7 +35,7 @@ class AccountController extends LocalAppController {
 	
 	public function canteen($order_hash = false) {
 		
-		$this->theme = "account";
+		
 		
 		//get all the users orders
 		
@@ -44,6 +49,30 @@ class AccountController extends LocalAppController {
 		));
 		
 		$this->set("orders",$orders);
+		
+	}
+	
+	public function canteen_order_status($hash) {
+		
+		$this->loadModel("CanteenOrder");
+		
+		$order_id = $this->CanteenOrder->find("first",array(
+			"conditions"=>array(
+				"CanteenOrder.hash"=>$hash
+			)
+		));
+		
+		if(empty($order_id['CanteenOrder']['id'])) {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
+		$order = $this->CanteenOrder->returnAdminOrder($order_id['CanteenOrder']['id'],array(
+			"with_shipping_items"=>true
+		));
+		
+		$this->set(compact("order"));
 		
 	}
 	

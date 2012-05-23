@@ -127,6 +127,13 @@ if(preg_match('/\/profiles/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
+//accounts
+if(preg_match('/\/account/',$_SERVER['REQUEST_URI'])) {
+	
+	Router::connect("/account/canteen/status/*",array("controller"=>"account","action"=>"canteen_order_status"));
+	
+}
+
 
 //the dailyops route. This route will define which controller "/dailyops" will use
 App::import("Lib","HomeRoute",array("file"=>"routes/HomeRoute.php"));

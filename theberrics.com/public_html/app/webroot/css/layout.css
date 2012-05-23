@@ -2478,6 +2478,17 @@ ORDER STATUS
 	
 }
 
+#order-status .shipping-records .items {
+	
+	padding:4px;
+	
+}
+#order-status .shipping-records .items .items-heading {
+
+		
+	
+}
+
 #order-status .notes-form-div {
 
 	padding:10px;		
@@ -2540,30 +2551,55 @@ padding:5px;
 	
 }
 
-#order-status .order-note table {
-	
-	
-width:100%;
-border:2px solid #666;
-border-left:none;
-border-top:none;
 
+/* canteen items table */
+
+
+.canteen-table-items  {
+	
+	color:black;
+	width:100%;
+	border:1px solid #999;
+	border-left:none;
+	border-top:none;
 }
-
-#order-status .order-note table th,
-#order-status .order-note table td {
-
-	border:2px solid #666;
+.canteen-table-items  th {
+	
+	background-image:url(/img/layout/canteen/order-conf-cart-items-header-bg.jpg);
+	font-size:10px;
+	font-weight:bold;
+	font-family:'Arial';
+	height:25px;
+	color:white;
+	text-align:center;
+	border:1px solid #999;
+	border-right:none;
 	border-bottom:none;
-	border-right:none;		
-	padding:4px;
+}
+
+.canteen-table-items  td {
+	
+	font-size:14px;
+	border:1px solid #999;
+	border-right:none;
+	border-bottom:none;
+	padding:5px;
+	font-family:'Courier';
 	
 	
 }
-#order-status .order-note table th {
+
+.canteen-table-items .actions {
+
 	
-	background-color:#525252;
-	color:#e9e9e9;
+	
+}
+
+.canteen-table-items .actions a {
+
+	font-weight:bold;	
+	text-decoration:none;
+	color:#333;
 	
 }
 

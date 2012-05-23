@@ -126,6 +126,24 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 						</div>
 					</div>
 					<div style='clear:both;'></div>
+					<!-- Items -->
+					<div class='items'>
+						<div class='items-heading'>Contents</div>
+						<table cellspacing='0' class='canteen-table-items'>
+							<tr>
+								<th></th>
+								<th>Item</th>
+								<th>Quantity</th>
+							</tr>
+							<?php foreach($v['CanteenOrderItem'] as $i): ?>
+							<tr>
+								<td width='2%'></td>
+								<td><?php echo $i['title']; ?>  BY: <?php echo $i['brand_label']; ?><br /><?php echo $i['sub_title']; ?></td>
+								<td width='10%' align='center' valign='middle'><?php echo $i['quantity']; ?></td>
+							</tr>
+							<?php endforeach; ?>
+						</table>
+					</div>	
 				</fieldset>
 			<?php 
 					endforeach;
@@ -148,7 +166,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 			</div>
 			<div class='order-notes-form'>
 				<?php 
-					echo $this->Form->create("CanteenOrderNote",array("url"=>$this->here));
+					echo $this->Form->create("CanteenOrderNote",array("url"=>"/canteen/order_note/".base64_encode($this->here)));
 					echo $this->Form->input("action",array("value"=>"customer_note","type"=>"hidden"));
 					echo $this->Form->input("canteen_order_id",array("type"=>"hidden","value"=>$order['CanteenOrder']['id']));
 					echo $this->Form->input("message",array("label"=>"Your Message"));
@@ -162,7 +180,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 			<?php if(count($order['CanteenOrderNote'])>0): ?>
 				<?php foreach($order['CanteenOrderNote'] as $n): if($n['hidden'] == 1) continue; ?>
 				<div class='order-note'>
-					<table cellspacing='0'>
+					<table cellspacing='0' class='canteen-table-items'>
 						<tr>
 							<th></th>
 							<th>From</th>

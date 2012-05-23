@@ -69,7 +69,7 @@ function shipChangeState() {
 		echo $this->Form->input("ShippingAddress.apt",array("label"=>$l['apt'],"error"=>false));
 		echo $this->Form->input("ShippingAddress.country_code",array("label"=>$l['country'],"options"=>Arr::countries(),"error"=>false));
 		echo $this->Form->input("ShippingAddress.state",array("label"=>$l['state'],"options"=>Arr::states(),"error"=>false,"div"=>array("id"=>"form-shipping-state-select-div")));
-		echo $this->Form->input("ShippingAddress.state-text",array("label"=>$l['state'],"div"=>array("id"=>"form-shipping-state-text-div")));
+		echo $this->Form->input("ShippingAddress.state-text",array("label"=>$l['state'],"name"=>"data[ShippingAddress][state]","div"=>array("id"=>"form-shipping-state-text-div")));
 		echo $this->Form->input("ShippingAddress.city",array("label"=>$l['city'],"error"=>false));
 		echo $this->Form->input("ShippingAddress.postal_code",array("label"=>$l['zip'],"error"=>false));
 		echo $this->Form->input("ShippingAddress.phone",array("label"=>$l['phonenum'],"error"=>false))

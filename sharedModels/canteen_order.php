@@ -406,13 +406,9 @@ class CanteenOrder extends AppModel {
 		
 	}
 	
-	public function returnAdminOrder($canteen_order_id = false) {
+	public function returnAdminOrder($canteen_order_id = false,$options = array()) {
 
-		$order = $this->find("first",array(
-			"conditions"=>array(
-				"CanteenOrder.id"=>$canteen_order_id
-			),
-			"contain"=>array(
+		$_contain = array(
 				"CanteenOrderNote"=>array("User"),
 				"CanteenShippingRecord"=>array("Warehouse"),
 				"Currency",
@@ -444,7 +440,22 @@ class CanteenOrder extends AppModel {
 					"GatewayAccount"
 				),
 				"EmailMessage"
-			)
+			);
+		
+		if(isset($options['with_shipping_items'])) {
+			
+			$_contain['CanteenShippingRecord'] = array(
+				"Warehouse",
+				"CanteenOrderItem"
+			);
+			
+		}
+			
+		$order = $this->find("first",array(
+			"conditions"=>array(
+				"CanteenOrder.id"=>$canteen_order_id
+			),
+			"contain"=>$_contain
 		));
 		
 		return $order;

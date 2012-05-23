@@ -343,6 +343,15 @@ class AppController extends Controller {
 		
 	}
 	
+	protected function enforceSSL() {
+		
+		if(!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) && !preg_match('/(dev)/',$_SERVER['SERVER_NAME'])) {
+			
+			return $this->redirect("https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+			
+		}
+	}
+	
 	public function flex_session_ping($session_id = false) {
 		
 		if($session_id) $this->Session->start($session_id);

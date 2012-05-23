@@ -295,7 +295,7 @@ class CanteenController extends CanteenAppController {
 			
 			$o = $this->CanteenOrder->find("first",array("contain"=>array(),"conditions"=>array("CanteenOrder.hash"=>$id)));
 			
-			$order = $this->CanteenOrder->returnAdminOrder(Set::classicExtract($o,"CanteenOrder.id"));
+			$order = $this->CanteenOrder->returnAdminOrder(Set::classicExtract($o,"CanteenOrder.id"),array("with_shipping_items"));
 			
 			if(isset($order['CanteenOrder']['id'])) {
 				
@@ -357,41 +357,52 @@ class CanteenController extends CanteenAppController {
 		
 	}
 	
-	private function order_note($callback = false) {
+	public function order_note($callback = false) {
 		
-		$this->loadModel("CanteenOrderNote");
-		
-		$this->CanteenOrderNote->setCustomerNoteValidation();
-		
-		$this->CanteenOrderNote->set($this->data);
-		
-		$validation = $this->CanteenOrderNote->validates();
-		
-		if($validation) {
+		if(count($this->data)>0) {
+			$this->loadModel("CanteenOrderNote");
 			
-			$this->CanteenOrderNote->addCustomerNote($this->data);
+			$this->CanteenOrderNote->setCustomerNoteValidation();
 			
-			$redir = $this->here;
+			$this->CanteenOrderNote->set($this->data);
 			
-			return $this->redirect($redir);
+			$validation = $this->CanteenOrderNote->validates();
 			
-		} else {
+			$cb = base64_decode($callback);
 			
-			if($callback) {
+			if($validation) {
 				
-				$this->Session->setFlash("There were errors in your note, please correct them");
+				$this->CanteenOrderNote->addCustomerNote($this->data);
 				
-				return $this->redirect(base64_decode($callback));
+				$redir = $this->here;
+				
+				return $this->redirect($cb);
 				
 			} else {
-
 				
-				return $this->cakeError("error404");	
-			
+				if($callback) {
+					
+					$this->Session->setFlash("There were errors in your note, please correct them");
+					
+					return $this->redirect($cb);
+					
+				} else {
+		
+					
+					return $this->cakeError("error404");	
+				
+					
+				}
 				
 			}
 			
+		} else {
+			
+			return $this->cakeError("error404");
+			
 		}
+		
+		
 		
 	}
 	
