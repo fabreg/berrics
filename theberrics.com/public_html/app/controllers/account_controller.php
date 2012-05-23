@@ -13,7 +13,12 @@ class AccountController extends LocalAppController {
 		
 		$this->initPermissions();
 		
-		$this->Auth->allow("*");
+		//for now, lock it down to the canteen
+		if($this->params['action'] != "canteen") {
+			
+			return $this->redirect("/account/canteen");
+			
+		}
 		
 	}
 
@@ -23,9 +28,9 @@ class AccountController extends LocalAppController {
 		
 	}
 	
-	public function canteen() {
+	public function canteen($order_hash = false) {
 		
-		$this->theme = "canteen";
+		$this->theme = "account";
 		
 		//get all the users orders
 		

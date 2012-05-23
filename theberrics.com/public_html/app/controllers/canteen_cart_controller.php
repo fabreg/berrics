@@ -19,6 +19,13 @@ class CanteenCartController extends CanteenAppController {
 			
 		if(count($this->data)>0) {
 			
+			if($this->Session->check("Auth.User.id")) {
+				
+				$this->data['CanteenOrder']['user_id'] = $this->Session->read("Auth.User.id");
+				
+			}
+			
+			
 			$order_id = $this->Session->read("CanteenOrder.CanteenOrder.id");
 			
 			$this->CanteenOrder->ShippingAddress->setOrderAddressValidation();
@@ -123,7 +130,6 @@ class CanteenCartController extends CanteenAppController {
 		if(count($this->data)>0) {
 			
 		
-			
 			$this->CanteenOrder->setOrderValidation();
 
 			$this->data = $this->CanteenOrder->calculateCartTotal($this->data);

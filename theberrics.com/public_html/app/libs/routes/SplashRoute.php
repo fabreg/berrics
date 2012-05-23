@@ -33,7 +33,6 @@ class SplashRoute extends CakeRoute {
 			$params['pass'][] = date("m");
 			$params['pass'][] = date("d");
 			
-
 		}
 		
 		if(in_array(date('Y-m-d'),array('2012-05-22'))) {
