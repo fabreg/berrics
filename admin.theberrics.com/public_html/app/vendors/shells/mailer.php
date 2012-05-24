@@ -29,7 +29,7 @@ class MailerShell extends Shell {
 				)
 			),
 			"contain"=>array()
-		
+			
 		));	
 
 		SysMsg::add(array(

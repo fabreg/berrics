@@ -55,7 +55,13 @@ function openDetails(id,ele) {
 			<?php echo $this->Form->input("brand_id",array("options"=>$brands,"empty"=>true)); ?>
 		</div>
 		<div style='clear:both;'></div>
-			
+			<div style='float:left;'>
+			<?php //echo $this->Form->input("active"); ?>
+		</div>
+		<div style='float:left;'>
+			<?php //echo $this->Form->input("featured"); ?>
+		</div>
+		<div style='clear:both;'></div>
 		<?php 
 			echo $this->Form->end("Run Filter");
 		?>
