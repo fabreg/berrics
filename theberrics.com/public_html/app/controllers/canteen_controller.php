@@ -18,6 +18,12 @@ class CanteenController extends CanteenAppController {
 		
 	}
 	
+	public function dump_server() {
+		
+		die(print_r($_SERVER));
+		
+	}
+	
 	public function index() {
 		
 		$this->loadModel("CanteenCategory");
