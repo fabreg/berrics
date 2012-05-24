@@ -77,9 +77,19 @@ var removeInventory = function(id) {
 		<td>
 			<?php if(count($o['CanteenProductInventory'])): ?>
 				<?php foreach($o['CanteenProductInventory'] as $inv): ?>
-					<div><strong>WH:</strong> <?php echo $inv['CanteenInventoryRecord']['Warehouse']['name']; ?> (#:<?php echo $inv['CanteenInventoryRecord']['foreign_key']; ?>) 
+					<div>
+						<?php if($inv['priority']): ?>
+						<span style='color:green;'>PRIORITY</span>
+						<?php endif; ?> 
 						<strong>QTY:</strong> <?php echo $inv['CanteenInventoryRecord']['quantity']; ?> 
-						[ <a href='javascript:removeInventory(<?php echo $inv['id']; ?>);'>Remove</a> | <a>Make Priority</a> ]
+						<strong>WH:</strong> <?php echo $inv['CanteenInventoryRecord']['Warehouse']['name']; ?>
+						 <strong>ITEM#:</strong> <?php echo $inv['CanteenInventoryRecord']['foreign_key']; ?>  
+						<strong>NAME: </strong><?php echo $inv['CanteenInventoryRecord']['name']; ?>
+						[ <a href='javascript:removeInventory(<?php echo $inv['id']; ?>);'>Remove</a> 
+						<?php if(!$inv['priority']): ?>
+							| <a href='/canteen_products/make_inventory_priority/<?php echo $o['id']; ?>/<?php echo $inv['id']; ?>/callback:<?php echo base64_encode($this->here."#Options & Inventory"); ?>'>Make Record Priority</a>
+						<?php endif; ?>
+						]
 						</div>
 				<?php endforeach; ?>
 			<?php else: ?>
@@ -87,6 +97,7 @@ var removeInventory = function(id) {
 			<?php endif; ?>
 			<div style='clear:both;'>
 				<a href='javascript:InventorySearch.openSearch("handleInventorySelect",<?php echo $o['id']; ?>);'>Attach Inventory</a>
+				<a href='/canteen_inventory_records/add/callback:<?php echo base64_encode($this->here."#Options & Inventory"); ?>/canteen_product_id:<?php echo $o['id']; ?>'>Create And Attach Inventory</a>
 			</div>
 		</td>
 		<td class='actions'>

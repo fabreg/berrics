@@ -33,10 +33,42 @@ class CanteenInventoryRecordsController extends LocalAppController {
 			$this->data['CanteenInventoryRecord']['allocated'] = 0;
 			if ($this->CanteenInventoryRecord->save($this->data)) {
 				$this->Session->setFlash(__('The canteen inventory record has been saved', true));
+				
+				if(isset($this->data['CanteenInventoryRecord']['canteen_product_id'])) {
+					
+					$this->CanteenInventoryRecord->CanteenProductInventory->create();
+					$this->CanteenInventoryRecord->CanteenProductInventory->save(array(
+						"canteen_inventory_record_id"=>$this->CanteenInventoryRecord->id,
+						"canteen_product_id"=>$this->data['CanteenInventoryRecord']['canteen_product_id']
+					));
+					
+					return $this->redirect(base64_decode($this->params['named']['callback']));
+					
+				}
+				
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The canteen inventory record could not be saved. Please, try again.', true));
 			}
+		}
+		
+		if(isset($this->params['named']['canteen_product_id'])) {
+			
+			$this->loadModel('CanteenProduct');
+			
+			$prod = $this->CanteenProduct->find("first",array(
+				"conditions"=>array(
+					"CanteenProduct.id"=>$this->params['named']['canteen_product_id']
+				),
+				"contain"=>array(
+					"ParentCanteenProduct"=>array(
+						"Brand"
+					)
+				)
+			));
+			
+			$this->data['CanteenInventoryRecord']['name'] = $prod['ParentCanteenProduct']['Brand']['name']." ".$prod['ParentCanteenProduct']['name']." ".$prod['ParentCanteenProduct']['sub_title']." ".$prod['CanteenProduct']['opt_label']." ".$prod['CanteenProduct']['opt_value'];
+			
 		}
 		
 		$warehouses = $this->CanteenInventoryRecord->Warehouse->find('list');

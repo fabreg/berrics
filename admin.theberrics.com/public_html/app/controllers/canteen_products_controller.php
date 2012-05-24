@@ -596,6 +596,22 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function make_inventory_priority($child_id,$prod_inv_id) {
+		
+		//clear out all the childs
+		$this->CanteenProduct->query(
+			"UPDATE canteen_product_inventories SET priority=0 WHERE canteen_product_id='{$child_id}'"
+		);
+		
+		//now update the new record as proiority
+		
+		$this->CanteenProduct->query(
+			"UPDATE canteen_product_inventories SET priority=1 WHERE canteen_product_id='{$child_id}' AND id='{$prod_inv_id}'"
+		);
+		
+		return $this->redirect(base64_decode($this->params['named']['callback']));
+		
+	}
 	
 	public function copy_pricing($source_id,$dest_id) {
 		
