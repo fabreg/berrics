@@ -459,6 +459,21 @@ class UsersController extends LocalAppController {
 		
 	}
 	
+	public function force_login($id) {
+		
+		$user = $this->User->find("first",array(
+			"conditions"=>array(
+				"User.id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		$this->Session->write("Auth.User",$user['User']);
+		
+		return $this->redirect("/users");
+		
+	}
+	
 
 }
 ?>
