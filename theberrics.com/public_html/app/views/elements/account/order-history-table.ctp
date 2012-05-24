@@ -13,7 +13,7 @@
 				<td align='center'><?php echo $this->Time->niceShort($o['CanteenOrder']['created']); ?></td>
 				<td align='center'><?php echo $this->Time->niceShort($o['CanteenOrder']['modified']); ?></td>
 				<td align='center'><?php echo $o['CanteenOrder']['id']; ?></td>
-				<td class='actions'><a href='/account/canteen/status/<?php echo $o['CanteenOrder']['hash']; ?>'>Check Status</a></td>
+				<td class='actions'><a href='/account/canteen/status/<?php echo $o['CanteenOrder']['hash']; ?>'>Check Status</a> | <a href='/canteen/printable/receipt/<?php echo $o['CanteenOrder']['hash']; ?>' target='_blank'>Print Receipt</a></td>
 			</tr>
 			<?php endforeach; ?>
 		</table>
