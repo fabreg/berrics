@@ -75,6 +75,7 @@ function openDetails(id,ele) {
 			<th><?php echo $this->Paginator->sort("display_weight"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort("style_code"); ?></th>
+			<th><?php echo $this->Paginator->sort("style_code_image"); ?></th>
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("Brand.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
@@ -136,6 +137,13 @@ function openDetails(id,ele) {
 			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
 			
 			<td align='center' nowrap width='1%' ><?php echo $p['style_code']; ?></td>
+			<td align='center' nowrap width='1%' >
+			<?php if(!empty($p['style_code_image'])): ?>
+			<img border='0' src='http://img.theberrics.com/i.php?src=/product-images/<?php echo $p['style_code_image']; ?>&w=50' />
+			<?php else: ?>
+			NO IMAGE
+			<?php endif; ?>
+			</td>
 			<td align='center' width='1%' nowrap ><?php echo $c['name']; ?></td>
 			<td align='center' width='1%' nowrap ><?php echo $b['name']; ?></td>
 			<td align='left' nowrap ><?php echo $p['name']; ?> - <?php echo $p['sub_title']; ?></td>

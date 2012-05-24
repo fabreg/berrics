@@ -58,6 +58,20 @@ class AppController extends Controller {
 		
 		if($this->Session->id()=='undefined') $this->Session->destroy();
 		
+		if(
+			(!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) && !preg_match('/(dev)/',$_SERVER['SERVER_NAME'])) || 
+			(preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR']))
+			) 
+		{
+			
+			$_SERVER['HTTPS'] = false;
+			
+		} else {
+			
+			$_SERVER['HTTPS'] = true;
+			
+		}
+		
 	}
 
 	/**
@@ -345,11 +359,15 @@ class AppController extends Controller {
 	
 	protected function enforceSSL() {
 		
-		if(!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) && !preg_match('/(dev)/',$_SERVER['SERVER_NAME'])) {
+		if(
+			(!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) && !preg_match('/(dev)/',$_SERVER['SERVER_NAME'])) || 
+			(preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR']))
+			) 
+		{
 			
 			return $this->redirect("https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 			
-		}
+		} 
 	}
 	
 	public function flex_session_ping($session_id = false) {

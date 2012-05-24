@@ -72,7 +72,7 @@ class MediaHelper extends AppHelper {
 		}
 		
 		$proto = 'http';
-		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
 			
 			$proto = 'https';
 			
@@ -219,12 +219,17 @@ class MediaHelper extends AppHelper {
 				
 		$proto = 'http';
 	
-		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
 			
 			$proto = 'https';
 			
 		}
 		echo $this->Html->image("{$proto}://img.theberrics.com/i.php?src=/berrics-icons/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
+		
+	}
+	
+	public function styleCodeImage($image,$opts = array()) {
+		
 		
 	}
 	
@@ -270,7 +275,7 @@ class MediaHelper extends AppHelper {
 		
 		$proto = 'http';
 		
-		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
 			
 			$proto = 'https';
 			
@@ -297,7 +302,7 @@ class MediaHelper extends AppHelper {
 			
 		$proto = 'http';
 		
-		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+			if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
 			
 			$proto = 'https';
 			
@@ -348,7 +353,7 @@ class MediaHelper extends AppHelper {
 		}
 		
 		$proto = 'http';
-		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
 			
 			$proto = 'https';
 			
@@ -411,7 +416,7 @@ class MediaHelper extends AppHelper {
 		}
 		
 		$proto = 'http';
-		if(preg_match('/^(https)/i',$_SERVER['SCRIPT_URI'])) {
+		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
 			
 			$proto = 'https';
 			
