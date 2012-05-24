@@ -79,7 +79,13 @@ class CanteenProductsController extends LocalAppController {
 				$this->params['named']['CanteenProduct.canteen_category_id'];
 				
 			}
-			
+			if(isset($this->params['named']['CanteenProduct.brand_id'])) {
+				
+				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.brand_id'] = 
+				$this->data['CanteenProduct']['brand_id'] = 
+				$this->params['named']['CanteenProduct.brand_id'];
+				
+			}
 			
 			
 		}
@@ -87,10 +93,12 @@ class CanteenProductsController extends LocalAppController {
 		//set some menus
 		
 		$canteenCategories = $this->CanteenProduct->CanteenCategory->treeList();
+		
+		$brands = $this->CanteenProduct->Brand->find("list");
 	
 		$products = $this->Paginate("CanteenProduct");
 		
-		$this->set(compact("products","canteenCategories"));
+		$this->set(compact("products","canteenCategories","brands"));
 		
 		
 	}

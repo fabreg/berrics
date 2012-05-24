@@ -47,7 +47,16 @@ function openDetails(id,ele) {
 		<?php 
 		
 			echo $this->Form->create("CanteenProduct",array("url"=>array("action"=>"filter")));
-			echo $this->Form->input("canteen_category_id",array("options"=>$canteenCategories,"empty"=>true));
+		?>
+		<div style='float:left;'>
+			<?php echo $this->Form->input("canteen_category_id",array("options"=>$canteenCategories,"empty"=>true)); ?>
+		</div>
+		<div style='float:left;'>
+			<?php echo $this->Form->input("brand_id",array("options"=>$brands,"empty"=>true)); ?>
+		</div>
+		<div style='clear:both;'></div>
+			
+		<?php 
 			echo $this->Form->end("Run Filter");
 		?>
 	</fieldset>
@@ -139,7 +148,7 @@ function openDetails(id,ele) {
 			<td align='center' nowrap width='1%' ><?php echo $p['style_code']; ?></td>
 			<td align='center' nowrap width='1%' >
 			<?php if(!empty($p['style_code_image'])): ?>
-			<img border='0' src='http://img.theberrics.com/i.php?src=/product-images/<?php echo $p['style_code_image']; ?>&w=50' />
+			<img border='0' src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $p['style_code_image']; ?>&w=50' />
 			<?php else: ?>
 			NO IMAGE
 			<?php endif; ?>
