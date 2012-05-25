@@ -22,6 +22,15 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 	);
 	
+	public $sessions = array(
+		'driver' => 'mysqli',
+		'persistent' => true,
+		'host' => '10.183.64.37',
+		'login' => 'john',
+		'password' => '19Berrics82',
+		'database' => 'theberrics',
+		'prefix' => '',
+	);
 	
 	public $traffic = array(
 		'driver' => 'mysqli',
@@ -70,7 +79,7 @@ class DATABASE_CONFIG {
 
 		if($uname == 'WEB2VM.THEBERRICS') {
 			
-			$this->default['host'] = $this->master['host'] = '127.0.0.1';
+			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
 			
 			$this->traffic['host'] = '50.56.68.47';
 			

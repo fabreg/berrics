@@ -290,21 +290,20 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
-	public function credit_totals($order_id = false) {
-		
-		if(!$order_id) return $this->cakeError("error404");
+	public function credit_order($id = false) {
 		
 		if(count($this->data)>0) {
 			
 			
+		} else {
+			
+			$this->data = $this->CanteenOrder->returnAdminOrder($id);
+			
 		}
 		
 		
-		$order = $this->CanteenOrder->returnAdminOrder($order_id);
-		
-		$this->set(compact("order"));
-		
 	}
+	
 	
 	public function credit_items($order_id) {
 		

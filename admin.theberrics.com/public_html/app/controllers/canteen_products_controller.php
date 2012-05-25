@@ -17,6 +17,7 @@ class CanteenProductsController extends LocalAppController {
 		
 	}	
 	
+
 	public function filter() {
 		
 		if(count($this->data)>0) {

@@ -206,7 +206,7 @@ border-radius: 10px 10px 0px 0px;
 						</a>
 					</li>
 					<li>
-						<a href='/canteen_orders/credit_totals/<?php echo $this->data['CanteenOrder']['id']; ?>'>
+						<a href='/canteen_orders/credit_order/<?php echo $this->data['CanteenOrder']['id']; ?>'>
 							Credit Order
 						</a>
 					</li>

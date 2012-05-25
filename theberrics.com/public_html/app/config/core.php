@@ -165,7 +165,7 @@
  *
  * 'Session.save' must be set to 'database' in order to utilize this constant.
  */
-	Configure::write('Session.database', 'master');
+	Configure::write('Session.database', 'sessions');
 
 /**
  * The name of CakePHP's session cookie.
