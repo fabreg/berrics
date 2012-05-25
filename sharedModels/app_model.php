@@ -46,8 +46,8 @@ class AppModel extends Model {
 	}
 	
 	public function save($data = null, $validate = true, $fieldList = array()) {
-
-		$this->useDbConfig = 'master';
+		
+		if($this->table!='cake_sessions') $this->useDbConfig = 'master';
 		
 		$success = parent::save($data,$validate,$fieldList);
 		
