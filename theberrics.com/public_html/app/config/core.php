@@ -175,7 +175,7 @@
  * characters."
  * @link http://php.net/session_name
  */
-	Configure::write('Session.cookie', 'theberrics');
+	Configure::write('Session.cookie', 'berrics');
 
 /**
  * Session time out time (in seconds).
