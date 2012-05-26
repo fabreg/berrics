@@ -81,20 +81,29 @@ class DailyopsController extends LocalAppController {
 	
 		}
 		
+		$token = "dailyops-".md5(serialize($conditions));
 		
-		$dailyops = $this->Dailyop->find("all",array(
+		if(($dailyops = Cache::read($token,"1min")) === false) {
+			
+			$dailyops = $this->Dailyop->find("all",array(
 		
-			"contain"=>array(
-				"User",
-				"Tag"=>array("User"),
-				"DailyopSection",
-				"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
-			),
-			"order"=>array("Dailyop.publish_date"=>"DESC"),
-			"limit"=>$limit,
-			"conditions"=>$conditions
+				"contain"=>array(
+					"User",
+					"Tag"=>array("User"),
+					"DailyopSection",
+					"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
+				),
+				"order"=>array("Dailyop.publish_date"=>"DESC"),
+				"limit"=>$limit,
+				"conditions"=>$conditions
+			
+			));
+
+			Cache::write($token,$dailyops,"1min");
+			
+		}
 		
-		));
+		
 		
 		
 		
@@ -196,48 +205,7 @@ class DailyopsController extends LocalAppController {
 			$this->theme = $_GET['wheelbite'];
 			
 		}
-		
-		
-		//get the additional yn3 posts
-		if(preg_match("/^(\/dailyops)/",$_SERVER['REQUEST_URI'])) {
-			
-			switch(date("Y-m-d")) {
-				
-				case "2012-04-20":
-				case "2012-04-26":
-				case "2012-04-27":
-				case "2012-05-03":
-				case "2012-05-04":
-					$dateSeed = strtotime("-2 Days");
-					
-					$dateArg = date("Y-m-d",$dateSeed);
-					
-					$yp = $this->Dailyop->find("all",array(
-						"conditions"=>array(
-							"Dailyop.active"=>1,
-							"Dailyop.hidden"=>0,
-							"Dailyop.dailyop_section_id"=>66,
-							"DATE(Dailyop.publish_date) < '{$dateArg}'"
-						),
-						"contain"=>array(),
-						"order"=>array("Dailyop.publish_date"=>"DESC")
-					));
-					
-					
-					foreach($yp as $v) {
-						
-						$yn3[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$v['Dailyop']['id']));
-						
-					}
-					
-					$this->set(compact("yn3"));
-					
-					break;
-				
-				
-			}
-			
-		}
+
 		
 
 	}
