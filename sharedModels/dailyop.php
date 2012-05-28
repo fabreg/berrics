@@ -71,20 +71,80 @@ class Dailyop extends AppModel {
 			
 		}
 		
-		$_contain = array(
+		/*
+		 * 		$_contain = array(
 			
 					"DailyopMediaItem"=>array(
-						"MediaFile",
+						"fields"=>array(
+							"id","media_file_id","display_weight","dailyop_id","featured"
+						),
+						"MediaFile"=>array(
+							"fields"=>array(
+								"id","media_type","file_video_still","limelight_file",
+								"preroll_label_override","postroll_label_override","preroll_label","postroll_label",
+								"preroll_tags","postroll_tags","file","url"
+							)
+						),
 						"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
 					),
-					"User",
-					"DailyopSection",
+					"User"=>array(
+						"fields"=>array(
+							"id","first_name","last_name","email","active"
+						)
+					),
+					"DailyopSection"=>array(
+						"fields"=>array(
+							"id","uri","name","active","icon_light_file","icon_dark_file"
+						)
+					),
 					"Tag"=>array(
+						"fields"=>array(
+							"name","id","slug"
+						),
 						"User"
 					),
 					"Meta",
 					"DailyopTextItem"=>array(
-						"MediaFile",
+						"MediaFile"=>array(
+							"fields"=>array(
+								"id","media_type","file_video_still","limelight_file",
+								"preroll_label_override","postroll_label_override","preroll_label","postroll_label",
+								"preroll_tags","postroll_tags","file","url"
+							)
+						),
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC")
+					),
+					"UnifiedStore"
+			
+				);
+			
+
+		 * 
+		 */
+		$_contain = array(
+			
+					"DailyopMediaItem"=>array(
+						
+						"MediaFile"=>array(
+	
+						),
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
+					),
+					"User"=>array(
+
+					),
+					"DailyopSection"=>array(
+
+					),
+					"Tag"=>array(
+
+						"User"
+					),
+					"Meta",
+					"DailyopTextItem"=>array(
+						"MediaFile"=>array(
+
+						),
 						"order"=>array("DailyopTextItem.display_weight"=>"ASC")
 					),
 					"UnifiedStore"
