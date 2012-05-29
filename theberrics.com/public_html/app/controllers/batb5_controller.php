@@ -50,7 +50,9 @@ class Batb5Controller extends DailyopsController {
 		$this->set(compact("event"));
 		
 		//set the featured matches attached to the event
-		$this->setFeaturedMatches($event);
+		//$this->setFeaturedMatches($event);
+		
+		$this->setFinalsVoting($event);
 		
 		//get and set the users profile
 		if($this->Session->check("Auth.User.id")) {
@@ -140,6 +142,82 @@ class Batb5Controller extends DailyopsController {
 		
 	}
 	
+	private function setFinalsVoting($event) {
+		
+		/*
+		 * FINALS MATCH ID'S
+		 * Final: 505
+		 * 3rd: 506
+		 */
+		$this->loadModel("User");
+		
+		$featured = array();
+		
+		$featured[] = $this->returnFeaturedMatch($event['BatbEvent']['featured_match1_id']);
+		
+		$featured[] = $this->returnFeaturedMatch($event['BatbEvent']['featured_match2_id']);
+		
+		//if both matches have a winner, then we're going to build the final two battles
+		
+		if(
+			!empty($featured[0]['BatbVote']['match_winner_user_id']) && 
+			!empty($featured[1]['BatbVote']['match_winner_user_id']) && 
+			$this->Session->check("Auth.User.id")
+		) {
+			
+			$winners = array(
+				$featured[0]['BatbVote']['match_winner_user_id'],
+				$featured[1]['BatbVote']['match_winner_user_id']
+			);
+			
+			$losers = array();
+			
+			$losers[] = (in_array($featured[0]['BatbMatch']['player1_user_id'],$winners)) ? $featured[0]['BatbMatch']['player2_user_id']:$featured[0]['BatbMatch']['player1_user_id'];
+			$losers[] = (in_array($featured[1]['BatbMatch']['player1_user_id'],$winners)) ? $featured[1]['BatbMatch']['player2_user_id']:$featured[1]['BatbMatch']['player1_user_id'];
+			
+			//third place
+			$featured[2] = $this->BatbVote->find("first",array(
+				"conditions"=>array(
+					"BatbVote.user_id"=>$this->Auth->user("id"),
+					"BatbVote.batb_match_id"=>506
+				),
+				"contain"=>array(
+					"BatbMatch"
+				)
+			));
+			
+			if(!isset($featured[2]['BatbVote']['batb_match_id'])) $featured[2]['BatbVote']['batb_match_id'] = $featured[2]['BatbMatch']['id'] = 506;
+			
+			$t1 = $this->User->returnUserProfile($losers[0]);
+			$t2 = $this->User->returnUserProfile($losers[1]);
+			$featured[2]["Player1User"] = $t1['User'];
+			$featured[2]["Player2User"] = $t2['User'];
+			
+			
+			//finals
+			$featured[3] = $this->BatbVote->find("first",array(
+				"conditions"=>array(
+					"BatbVote.user_id"=>$this->Auth->user("id"),
+					"BatbVote.batb_match_id"=>505
+				),
+				"contain"=>array(
+					"BatbMatch"
+				)
+			));
+			
+			if(!isset($featured[3]['BatbVote']['batb_match_id'])) $featured[3]['BatbVote']['batb_match_id'] = $featured[3]['BatbMatch']['id'] = 505;
+			
+			$t1 = $this->User->returnUserProfile($winners[0]);
+			$t2 = $this->User->returnUserProfile($winners[1]);
+			$featured[3]["Player1User"] = $t1['User'];
+			$featured[3]["Player2User"] = $t2['User'];
+			
+			
+			
+		}
+		//die(print_r($featured));
+		$this->set(compact("featured"));
+	}
 	
 	private function setFeaturedMatches($event) {
 		

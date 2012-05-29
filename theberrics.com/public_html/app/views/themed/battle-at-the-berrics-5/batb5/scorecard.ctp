@@ -51,7 +51,7 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 	
 	<div class='votes'>
 	<div style='height:15px;'></div>
-		<?php foreach($votes as $v): ?>
+		<?php foreach($votes as $v): if(in_array($v['BatbMatch']['id'],array(505,506))) continue; ?>
 			<?php 
 				$p1 = $v['BatbMatch']['Player1User'];
 				$p2 = $v['BatbMatch']['Player2User'];

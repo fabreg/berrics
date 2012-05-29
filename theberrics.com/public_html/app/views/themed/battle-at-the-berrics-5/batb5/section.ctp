@@ -101,8 +101,15 @@ $this->Html->script(array("section"),array("inline"=>false));
 	</div>
 	<div id='batb5-voting'>
 		<?php 
+		if(isset($featured[3])) {
+				
+				echo $this->element("voting-box",array("match"=>$featured[2],"battle_number"=>3));
+				echo $this->element("voting-box",array("match"=>$featured[3],"battle_number"=>4));
+				echo "<div style='clear:both; height:25px;'></div>";
+			}
 			echo $this->element("voting-box",array("match"=>$featured[0],"battle_number"=>1));
 			echo $this->element("voting-box",array("match"=>$featured[1],"battle_number"=>2));
+			
 		?>
 		<div style='clear:both;'></div>
 	</div>

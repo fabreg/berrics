@@ -155,7 +155,8 @@ background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
 	
 }
 
-#batb5-voting .voting-box:first-child {
+#batb5-voting .voting-box:first-child,
+#batb5-voting .voting-box:nth-child(4)  {
 	
 	float:left;	
 

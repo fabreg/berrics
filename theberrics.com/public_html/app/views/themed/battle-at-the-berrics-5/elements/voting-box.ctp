@@ -26,7 +26,7 @@ $letters_array = BatbMatch::winningLettersDrop();
 		
 		<div class='voting-form'>
 			<div class='vote-heading'>YOUR PREDICTION</div>
-			<?php if(in_array(strtoupper(date("D")),array("SAT","SUN","MON","TUE"))):  ?>
+			<?php if(in_array(strtoupper(date("D")),array("SAT","SUN","MON","TUE","WED","THU","FRI"))):  ?>
 			<div style='text-align:center; padding:5px;'>
 				<img border='0' src='/theme/battle-at-the-berrics-5/img/submissions-closed.jpg'/>
 			</div>
@@ -65,6 +65,16 @@ $letters_array = BatbMatch::winningLettersDrop();
 								$loser_handle = (!empty($loser['twitter_handle'])) ? $loser['twitter_handle']:strtoupper($loser['first_name'])." ".strtoupper($loser['last_name']);
 								
 								$tweet_text = " BATBV PREDICTION: {$winner_handle} over {$loser_handle}";
+								
+								switch($match['BatbMatch']['id']) {
+									
+									case 505:
+										$tweet_text = "CHAMPIONSHIP PREDICTION: {$winner_handle} over {$loser_handle}";
+									break;
+									case 506:
+										$tweet_text = "3rd PLACE PREDICTION: {$winner_handle} over {$loser_handle}";
+										break;
+								}
 								
 								$tq = array(
 										"original_referer"=>"http://theberrics.com/battle-at-the-berrics-5",
