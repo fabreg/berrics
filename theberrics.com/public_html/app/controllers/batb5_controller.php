@@ -341,6 +341,7 @@ class Batb5Controller extends DailyopsController {
 		//page title
 		$title_for_layout = "DC Shoes Presents: Battle At The Berrics 5 - ".$profile['User']['first_name']." ".$profile['User']['last_name'];
 		
+
 		//get all the users votes
 		$votes = $this->BatbVote->find("all",array(
 			"conditions"=>array(
