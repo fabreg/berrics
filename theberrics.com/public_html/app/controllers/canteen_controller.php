@@ -412,6 +412,21 @@ class CanteenController extends CanteenAppController {
 		
 	}
 	
+	public function brands() {
+		
+		$this->loadModel("Brand");
+		
+		$brands = $this->Brand->find("all",array(
+			"conditions"=>array(
+				"Brand.active"=>1,
+				"Brand.featured"=>1
+			),
+			"contain"=>array()
+		));
+		
+		$this->set(compact("brands"));
+		
+	}
 	
 	public function clear_session() {
 		
