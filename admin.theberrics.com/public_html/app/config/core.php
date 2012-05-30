@@ -312,10 +312,14 @@
  *
  */
 
-
-	require_once('../../../../sharedConfig/cache_config.php'); 	
-	/*
- 	Cache::config('1min', array(
+	//FORCE DEVSERVER!
+	if(php_uname('n')=='WEB2VM.THEBERRICS') {
+		
+		require_once('../../../../sharedConfig/cache_config.php'); 	
+	
+	} else {
+		
+		Cache::config('1min', array(
  		'engine' => 'File', //[required]
  		'duration'=> 60, //[optional]
  		'probability'=> 5000, //[optional]
@@ -387,5 +391,12 @@
   	 	'duration'=> '30 Day', //[optional]
 
  	));
+		
+	}
+	
+
+	
+	/*
+ 	
 
  	*/

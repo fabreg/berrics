@@ -48,7 +48,7 @@ if(php_uname('n')=='WEB2VM.THEBERRICS') {
 }
 
 
-if($_SERVER['DEVSERVER'] == 1) {
+if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 
 	App::build(array(
 	
