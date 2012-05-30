@@ -1,5 +1,5 @@
 <?php 
-
+$finals = false;
 $this->Html->css(array("section"),"stylesheet",array("inline"=>false));
 $this->Html->script(array("section"),array("inline"=>false));
 
@@ -101,7 +101,7 @@ $this->Html->script(array("section"),array("inline"=>false));
 	</div>
 	<div id='batb5-voting'>
 		<?php 
-		if(isset($featured[3])) {
+		if(isset($featured[3]) && $finals) {
 				
 				echo $this->element("voting-box",array("match"=>$featured[2],"battle_number"=>3));
 				echo $this->element("voting-box",array("match"=>$featured[3],"battle_number"=>4));
