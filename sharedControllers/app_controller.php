@@ -1,6 +1,5 @@
 <?php
 
-
 App::import("Vendor","FacebookApi",array("file"=>"facebook_api.php"));
 App::import("Vendor","Tools",array("file"=>"Tools.php"));
 App::import("Vendor","Arr",array("file"=>"arr.php"));

@@ -1,6 +1,5 @@
 <?php
 
-
 App::import("Vendor","BCAPI",array("file"=>"bc_api.php"));
 
 class LocalAppController extends AppController {
@@ -17,6 +16,8 @@ class LocalAppController extends AppController {
 		$this->Auth->deny("*");
 		
 		$this->set("user_locale","en_us");
+		
+		
 		
 	}
 	

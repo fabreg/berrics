@@ -313,8 +313,8 @@
  */
 
 
-	
-	
+	require_once('../../../../sharedConfig/cache_config.php'); 	
+	/*
  	Cache::config('1min', array(
  		'engine' => 'File', //[required]
  		'duration'=> 60, //[optional]
@@ -388,4 +388,4 @@
 
  	));
 
- 	
+ 	*/

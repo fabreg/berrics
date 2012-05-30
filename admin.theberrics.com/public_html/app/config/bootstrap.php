@@ -44,8 +44,9 @@
 if(php_uname('n')=='WEB2VM.THEBERRICS') {
 	
 	$_SERVER['DEVSERVER']=1;
-	
+
 }
+
 
 if($_SERVER['DEVSERVER'] == 1) {
 
