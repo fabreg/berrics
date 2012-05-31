@@ -71,14 +71,14 @@ body {
 #enter {
 
 	text-align:center;
-	display:none;
+	padding-top:15px;
 
 }
 
 #enter a {
 
 	color:#f0f0f0;
-	font-size:22px;
+	font-size:28px;
 	font-family:'Times New Roman';
 }
 
@@ -144,12 +144,12 @@ body {
 		</div>
 	</div>
 	<div style='text-align:center;'>
-		<img src='/img/splash/almost/almost-bot.png' border='0'/>
+		<a href='http://almostawebsite.com' target='_blank'><img src='/img/splash/almost/almost-bot.png' border='0'/></a>
 	</div>
 
 	<div style='clear:both; height:10px;'></div>
 
 <div style='text-align:center;' id="enter">
-<div><a href='/dailyops' style='color:black; font-size:22px;'>ENTER THE BERRICS</a></div>
+<div><a href='/dailyops' style='color:black;'>- ENTER THE BERRICS -</a></div>
 </div>
 </div>
