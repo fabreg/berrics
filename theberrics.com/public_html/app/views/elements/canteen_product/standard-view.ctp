@@ -270,5 +270,5 @@ function initOptionClick() {
 
 <?php 
 
-print_r($product)
+//print_r($product)
 ?>
