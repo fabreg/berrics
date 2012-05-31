@@ -152,7 +152,7 @@ border-radius: 10px 10px 0px 0px;
 	<fieldset>
 		<legend>General Info</legend>
 		<div>
-			<div style='float:left; width:40%;'>
+			<div style='float:left; width:35%;'>
 				<table cellspacing='0' class='big-table'>
 					<tr>
 						<td width='30%' align='right'>Order Status</td>
@@ -198,7 +198,7 @@ border-radius: 10px 10px 0px 0px;
 					</tr>
 				</table>
 			</div>
-			<div style='float:left; width:40%;'>
+			<div style='float:left; width:62%;'>
 				<ul class='actions'>
 					<li>
 						<a href='/canteen_orders/cancel_order/<?php echo $this->data['CanteenOrder']['id']; ?>' onclick='return confirm("Are you sure you want to cancel this order?"); '>
@@ -211,6 +211,91 @@ border-radius: 10px 10px 0px 0px;
 						</a>
 					</li>
 				</ul>
+				<div style='clear:both;'></div>
+				<h3>Transactions</h3>
+				<table cellspacing='0'>
+					<tr>
+						<th>Created/Modified</th>
+						<th>Gateway/Account</th>
+						<th>Approved</th>
+						<th>Currency</th>
+						<th>Type</th>
+						<th>Amount</th>
+						<th>Action</th>
+					</tr>
+					<?php 
+						$ttotal = 0;
+						foreach($this->data['GatewayTransaction'] as $t): 
+						
+						
+						
+						if($t['approved'] == 1) {
+							
+							switch(strtoupper($t['method'])) {
+								
+								case "CHARGE":
+								case "CAPTURE":
+									$ttotal += $t['amount'];
+								break;
+								case "REFUND":
+									$ttotal -= $t['amount'];
+								break;
+								
+							}
+							
+						}
+						
+					?>
+					<tr>
+						<td align='center'>
+						<?php echo $this->Time->niceShort($t['created']); ?>/<?php echo $this->Time->niceShort($t['modified']); ?>
+						</td>
+						<td align='center'>
+							<?php echo $t['GatewayAccount']['provider']; ?>/<?php echo $t['GatewayAccount']['name']; ?>
+						</td>
+						<td align='center'>
+							<?php
+							
+							switch($t['approved']) {
+								
+								case 1:
+									echo "<span style='color:green;'>Yes</span>";
+									break;
+								default:
+									echo "<span style='color:red;'>No</span>";
+									break;
+							}
+							
+							?>
+						</td>
+						<td align='center'>
+							<?php echo $t['currency_id']; ?>
+						</td>
+						<td align='center'>
+							<?php echo $t['method']; ?>
+						</td>
+						<td align='center'>
+							<?php echo number_format($t['amount'],2); ?>
+						</td>
+						<td class='actions'>
+							<?php 
+								if($t['approved']) {
+									
+									switch(strtoupper($t['method'])) {
+										
+										case "CHARGE":
+											echo "<a href='/canteen_orders/confirm_refund/{$t['id']}'>Refund</a>";
+											echo "<a>Charge</a>";
+										break;
+									}
+									
+								}
+							?>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</table>
+				<div style='padding:5px;'><strong>TOTAL CASH FLOW:</strong> <?php echo number_format($ttotal,2); ?></div>
 			</div>
 			<div style='clear:both;'></div>
 		</div>
@@ -219,6 +304,20 @@ border-radius: 10px 10px 0px 0px;
 	<fieldset>
 			<legend>Cart Items</legend>
 			<div>
+				<ul class='actions'>
+					<li>
+						<a href='/canteen_orders/cancel_order/<?php echo $this->data['CanteenOrder']['id']; ?>' onclick='return confirm("Are you sure you want to cancel this order?"); '>
+							Add Line Item
+						</a>
+					</li>
+					<li>
+						<a href='/canteen_orders/credit_order/<?php echo $this->data['CanteenOrder']['id']; ?>'>
+							Credit Order
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div>
 				<table cellspacing='0'>
 					<tr>
 						<th width='1%'>-</th>
@@ -226,9 +325,9 @@ border-radius: 10px 10px 0px 0px;
 						<th>InventoryRecord</th>
 						<th>ShippingRecord</th>
 						<th>Qty</th>
-						<th>Tax</th>
-						<th>Price</th>
+						
 						<th>Total</th>
+						
 					</tr>
 					<?php foreach($this->data['CanteenOrderItem'] as $item): ?>
 						
@@ -242,6 +341,8 @@ border-radius: 10px 10px 0px 0px;
 									<?php echo $this->Media->productThumb($child['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>40)); ?>
 								</div>
 								<?php echo $child['title']; ?> <?php if(!empty($child['sub_title'])) echo " <br /> ".$child['sub_title']; ?>
+								<br />
+								Price: <?php echo number_format($child['sub_total'],2); ?>
 							</td>
 							<td>
 							<?php if(isset($child['CanteenInventoryRecord']['id'])): ?>
@@ -277,8 +378,7 @@ border-radius: 10px 10px 0px 0px;
 								?>
 							</td>
 							<td align='center' width='1%' nowrap><?php echo $child['quantity']; ?></td>
-							<td align='center'>-</td>
-							<td align='center'>-</td>
+							
 							<td align='center'>-</td>
 						</tr>
 						<?php endforeach;?>
@@ -290,9 +390,9 @@ border-radius: 10px 10px 0px 0px;
 							<td align='center'>-</td>
 							<td align='center'>-</td>
 							<td align='right' nowrap><strong>Line Totals:</strong></td>
-							<td align='center'><?php echo number_format($item['tax_total'],2); ?></td>
-							<td align='center'><?php echo number_format($item['sub_total'],2); ?></td>
+						
 							<td align='center'><?php echo number_format($item['tax_total']+$item['sub_total'],2); ?></td>
+							
 						</tr>
 					<?php endforeach; ?>
 				</table>
@@ -356,52 +456,7 @@ border-radius: 10px 10px 0px 0px;
 		<fieldset>
 			<legend>Transactions</legend>
 			<div>
-				<table cellspacing='0'>
-					<tr>
-						<th>ID</th>
-						<th>Created/Modified</th>
-						<th>Gateway/Account</th>
-						<th>Approved</th>
-						<th>Currency</th>
-						<th>Type</th>
-						<th>Amount</th>
-					</tr>
-					<?php foreach($this->data['GatewayTransaction'] as $t): ?>
-					<tr>
-						<td align='center' width='1%' nowrap><?php echo $t['id']; ?></td>
-						<td align='center'>
-						<?php echo $this->Time->niceShort($t['created']); ?>/<?php echo $this->Time->niceShort($t['modified']); ?>
-						</td>
-						<td align='center'>
-							<?php echo $t['GatewayAccount']['provider']; ?>/<?php echo $t['GatewayAccount']['name']; ?>
-						</td>
-						<td align='center'>
-							<?php
-							
-							switch($t['approved']) {
-								
-								case 1:
-									echo "<span style='color:green;'>Yes</span>";
-									break;
-								default:
-									echo "<span style='color:red;'>No</span>";
-									break;
-							}
-							
-							?>
-						</td>
-						<td align='center'>
-							<?php echo $t['currency_id']; ?>
-						</td>
-						<td align='center'>
-							<?php echo $t['method']; ?>
-						</td>
-						<td align='center'>
-							<?php echo number_format($t['amount'],2); ?>
-						</td>
-					</tr>
-					<?php endforeach; ?>
-				</table>
+				
 			</div>
 		</fieldset>
 		<fieldset>
@@ -412,6 +467,7 @@ border-radius: 10px 10px 0px 0px;
 			<table cellspacing='0'>
 				<tr>
 					<th>ID</th>
+					<th>Type</th>
 					<th>STATUS</th>
 					<th>Created</th>
 					<th>From</th>
@@ -421,6 +477,13 @@ border-radius: 10px 10px 0px 0px;
 				<?php foreach($this->data['CanteenOrderNote'] as $note): ?>
 				<tr>
 					<td width='1%'><?php echo $note['id']; ?></td>
+					<td width='1%'>
+					<?php 
+						
+						echo strtoupper($note['note_type']); 	
+					
+					?>
+					</td>
 					<td width='1%' align='center'>
 					<?php 
 						

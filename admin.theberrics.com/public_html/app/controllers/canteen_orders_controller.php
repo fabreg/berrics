@@ -284,9 +284,50 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$order = $this->CanteenOrder->returnAdminOrder($order_id);
 		
-		$valid = array();
+		//cancel shipments and line items
+		foreach($order['CanteenShippingRecord'] as $s) {
+			
+			if($s['shipping_status'] != "canceled") $this->CanteenOrder->CanteenShippingRecord->cancelShipment($s['id']);
+			
+		}
+		
+		//refund transactions
+		foreach($order['GatewayTransaction'] as $t) {
+			
+			if($t['approved']!=1) continue;
+			
+			switch(strtoupper($t['method'])) {
+				
+				case "CHARGE":
+				case "CAPTURE":
+					$this->CanteenOrder->GatewayTransaction->refundTransaction($t);
+					break;
+				case "AUTH":
+					break;
+				
+			}
+			
+		}
+		
+		$this->CanteenOrder->create();
+		$this->CanteenOrder->id = $order['CanteenOrder']['id'];
+		$this->CanteenOrder->save(array(
+			"order_status"=>"canceled",
+			"tax_total"=>0,
+			"sub_total"=>0,
+			"grand_total"=>0,
+			"shipping_total"=>0
+		));
 		
 		
+		$this->CanteenOrder->CanteenOrderNote->addNote(array(
+		
+			"canteen_order_id"=>$order['CanteenOrder']['id'],
+			"user_id"=>$this->Auth->user("id"),
+			"note_type"=>"orderupdate",
+			"message"=>"Order has been canceled"
+		
+		));
 		
 	}
 	

@@ -637,6 +637,33 @@ public function dc_apr() {
 		
 	}
 	
+	public function yn3_posts() {
+		
+		//get all the yn3 posts
+		$this->loadModel("Dailyop");
+		
+		$posts = $this->Dailyop->find("all",array(
+			"conditions"=>array(
+				"Dailyop.active"=>1,
+				"Dailyop.dailyop_section_id"=>66
+			),
+			"contain"=>array()
+		));
+		
+		$total_posts = count($posts);
+		
+		$seed = mt_rand(0,$total_posts);
+		
+		$post_id = $posts[$seed]['Dailyop']['id'];
+		
+		$post = $this->Dailyop->returnPost(array(
+			"Dailyop.id"=>$post_id
+		));
+		
+		$this->set(compact("post"));
+		
+	}
+	
 }
 
 ?>

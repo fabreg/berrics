@@ -305,6 +305,32 @@ class CanteenShippingRecord extends AppModel {
 		
 	}
 	
+	public function cancelShipment($id) {
+		
+		$this->create();
+		
+		$this->id = $id;
+		
+		$this->save(array(
+			"shipping_status"=>"canceled"
+		));
+
+		$items = $this->CanteenOrderItem->find("all",array(
+			"conditions"=>array(
+				"CanteenOrderItem.canteen_shipping_record_id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		foreach($items as $item) {
+			
+			$this->CanteenOrderItem->cancelOrderItem($item['CanteenOrderItem']['id']);
+			
+		}
+
+		
+	}
+	
 	public function process_usps_shipment($id) {
 		
 		$record = $this->returnAdminRecord($id);

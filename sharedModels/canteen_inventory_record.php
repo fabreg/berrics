@@ -43,6 +43,11 @@ class CanteenInventoryRecord extends AppModel {
 	
 	public function returnAllocatedInventory($canteen_inventory_record_id = false,$qty=0) {
 		
+		if(!$canteen_inventory_record_id) return false;
+		
+		return $this->query(
+			"UPDATE canteen_inventory_records SET allocated=(allocated-{$qty}),quantity=(quantity+{$qty}) WHERE id='$canteen_inventory_record_id'"
+		);
 		
 		
 	}

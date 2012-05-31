@@ -1,5 +1,7 @@
 <?php 
 
+
+
 $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inline"=>false));
 
 ?>
@@ -38,7 +40,9 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 		<div style='clear:both;'></div>
 		</div>
 		-->
-		<div style='padding:5px; text-align:right;'><?php echo count($products); ?> Items</div>
+		<div style='padding:5px; text-align:left;'>
+		<h2><?php echo $category['Parent']['name']; ?> // <?php echo $category['CanteenCategory']['name']; ?></h2>
+		</div>
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>

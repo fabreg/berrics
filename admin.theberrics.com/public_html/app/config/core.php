@@ -313,7 +313,7 @@
  */
 
 	//FORCE DEVSERVER!
-	if(php_uname('n')=='WEB2VM.THEBERRICS') {
+	if(php_uname('n')=='WEB2VM.THEBERRICS----') {
 		
 		require_once('../../../../sharedConfig/cache_config.php'); 	
 	

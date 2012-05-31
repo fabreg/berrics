@@ -53,6 +53,29 @@ class CanteenOrderItem extends AppModel {
 		)
 	);
 	
+	public function cancelOrderItem($id) {
+		
+		//get the lin
+		
+		$item = $this->find("first",array(
+			"conditions"=>array(
+				"CanteenOrderItem.id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		$this->CanteenInventoryRecord->returnAllocatedInventory($item['CanteenOrderItem']['canteen_inventory_record_id'],$item['CanteenOrderItem']['quantity']);
+		
+		$this->create();
+		
+		$this->id = $item['CanteenOrderItem']['id'];
+		
+		$this->save(array(
+			"canteen_inventory_record"=>null,
+			"canteen_shipping_record_id"=>null
+		));
+		
+	}
 	
 	public function calculateCartItems($CanteenOrder = array()) {
 
