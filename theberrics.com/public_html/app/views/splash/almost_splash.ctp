@@ -136,7 +136,7 @@ body {
 
 <div id='gc-trailer'>
 	<div style='text-align:center;'>
-		<img src='/img/splash/almost/almost-top.jpg' border='0'/>
+		<a href='http://itunes.apple.com/us/movie/5-incher-almost-skateboard/id520345411' target='_blank'><img src='/img/splash/almost/almost-top.jpg' border='0'/></a>
 	</div>
 	<div style='text-align:center;' class='post-container'>
 		<div id='post'>
@@ -144,7 +144,7 @@ body {
 		</div>
 	</div>
 	<div style='text-align:center;'>
-		<a href='http://almostawebsite.com' target='_blank'><img src='/img/splash/almost/almost-bot.png' border='0'/></a>
+		<a href='http://itunes.apple.com/us/movie/5-incher-almost-skateboard/id520345411' target='_blank'><img src='/img/splash/almost/almost-bot.png' border='0'/></a>
 	</div>
 
 	<div style='clear:both; height:10px;'></div>
