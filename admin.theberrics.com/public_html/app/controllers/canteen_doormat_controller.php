@@ -17,6 +17,12 @@ class CanteenDoormatController extends LocalAppController {
 	
 	public function index() {
 		
+		$this->paginate['CanteenDoormat'] = array(
+			"contain"=>array(
+				"MediaFile"
+			)
+		);
+		
 		$doormats = $this->paginate("CanteenDoormat");
 
 		$this->set(compact("doormats"));

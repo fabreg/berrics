@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 				$("#doormat .main-window").cycle(i);
 
+			}).css({
+				"opacity":.4
 			});
 
 			if(i==0) {
@@ -26,13 +28,25 @@ $(document).ready(function() {
 		after:function(currSlideElement, nextSlideElement, options, forwardFlag) {
 
 			$('.crumb-element').removeClass("crumb-border").css({
-				'opacity':.6
+				'opacity':.4
 			});
 			$('.crumb-element[index='+$(nextSlideElement).attr('index')+']').addClass('crumb-border').css({
 				'opacity':1
 			});
 			
 		}
+	});
+
+	$('.doormat').click(function() { 
+
+		var l = $(this).attr('link');
+
+		if(l.length>0) {
+
+			document.location.href = l;
+
+		}
+		
 	});
 	
 });
@@ -45,7 +59,7 @@ $(document).ready(function() {
 	height:472px;
 	width:1050px;
 	background-repeat:no-repeat;
-
+	margin-bottom:15px;
 }
 
 .main-window {
@@ -59,11 +73,12 @@ $(document).ready(function() {
 }
 .crumbs {
 
-	width:230px;
+	width:240px;
 	float:right;
 	margin-top:40px;
 	margin-right:40px;
 	text-align:right;
+	border-left:dotted 2px #666;
 }
 
 .crumb-element {
@@ -71,6 +86,7 @@ $(document).ready(function() {
 	border-color:transparent;
 	width:220px;
 	margin-bottom:8px;
+	float:right;
 }
 
 .crumb-element img {
@@ -92,6 +108,36 @@ $(document).ready(function() {
 	float:left;
 	margin-left:3px;
 	margin-bottom:3px;
+}
+
+.brands {
+
+	background-image:url(/img/layout/canteen/home/brands-bg.jpg);
+	height:257px;
+
+}
+
+.brands .inner {
+
+	padding:12px;
+	
+
+}
+
+.brands .inner .heading {
+
+	text-align:center;
+	font-family:'Courier';
+	color:#666;
+	letter-spacing:3px;
+	font-size:22px;
+	padding:5px;
+}
+
+.brands .brand {
+
+	float:left;
+	margin-right:10px;
 }
 
 </style>
@@ -135,7 +181,25 @@ $(document).ready(function() {
 		</div>
 		<div style='clear:both;'></div>
 	</div>
+	<div class='brands'>
+		<div class='inner'>
+			<div class='heading'>FEATURED BRANDS</div>
+			<div>
+				<?php foreach($brands as $v): ?>
+				<div class='brand'>
+					<a>
+						<?php echo $this->Media->brandLogoThumb(array(
+							"Brand"=>$v['Brand'],
+							"h"=>180,
+							"canteen"=>true
+						)); ?>
+					</a>
+				</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
 </div>
 <?php 
-print_r($new_products);
+//print_r($new_products);
 ?>

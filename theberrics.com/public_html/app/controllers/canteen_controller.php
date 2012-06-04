@@ -29,7 +29,7 @@ class CanteenController extends CanteenAppController {
 		$this->loadModel("CanteenCategory");
 		$this->loadModel("CanteenProduct");
 		$this->loadModel("CanteenDoormat");
-		
+		$this->loadModel("Brand");
 		
 		$doormats = $this->CanteenDoormat->find("all",array(
 			"conditions"=>array(
@@ -42,7 +42,17 @@ class CanteenController extends CanteenAppController {
 		//get the latest products
 		$new_products = $this->CanteenProduct->returnNewProducts();
 		
-		$this->set(compact("doormats","new_products"));
+		//get the featured brands
+		
+		$brands = $this->Brand->find("all",array(
+			"conditions"=>array(
+				"Brand.featured"=>1,
+				"Brand.active"=>1
+			),
+			"contain"=>array()
+		));
+		
+		$this->set(compact("doormats","new_products","brands"));
 		
 	}
 	

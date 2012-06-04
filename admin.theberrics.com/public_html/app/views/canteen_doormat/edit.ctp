@@ -1,3 +1,10 @@
+<?php 
+
+$drop = array();
+
+for($i=1;$i<=99;$i++) $drop[$i] = $i;
+
+?>
 <div class='form'>
 	<fieldset>
 		<legend>Edit Doormat Entry: <?php echo $this->data['CanteenDoormat']['id']; ?></legend>
@@ -5,6 +12,7 @@
 			<?php 
 			echo $this->Form->create("CanteenDoormat",array("url"=>$this->here));
 			echo $this->Form->input("id");
+			echo $this->Form->input("display_weight",array("options"=>$drop));
 			echo $this->Form->input("active");
 			echo $this->Form->input("click_url");
 			?>

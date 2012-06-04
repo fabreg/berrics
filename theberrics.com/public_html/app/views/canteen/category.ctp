@@ -13,24 +13,28 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 	margin-bottom:3px;
 }
 
+.reset-link {
+
+	text-align:center;
+	padding:3px;
+	
+}
+
+.reset-link a {
+
+	font-size:16px;
+	color:#999;
+
+}
+
 </style>
 <div style='height:15px;'></div>
 <div id='canteen-category'>
-	<!-- 
-	<div>
-		<div id='canteen-crumb'>
-			<div class='left'></div>
-			<div class='right'></div>
-			<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
-		</div>
-		<div style='clear:both;'></div>
-	</div>
-	-->
 	<div class='products'>
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>
-				<h2><?php echo $category['Parent']['name']; ?> // <?php echo $category['CanteenCategory']['name']; ?></h2>
+				<h2 style='color:#666; margin-top:-10px; margin-bottom:8px;'><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h2>
 					<?php 
 						foreach($products as $p):
 					?>
@@ -53,6 +57,11 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 		<div class='inner'>
 			<?php echo $this->Form->create("CanteenProduct",array("url"=>$this->here,"id"=>"filter-form")); ?>
 			<div class='filter-menu'>
+				<?php if(count($_GET['data'])>0): ?>
+				<div class='reset-link'>
+					<a href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
+				</div>
+				<?php endif;?>
 				<div class='filter-heading'> // BRANDS</div>
 				<div class='filter-options'>
 					<?php 

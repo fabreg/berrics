@@ -128,6 +128,7 @@ class CanteenCategory extends AppModel {
 		if(($filters = Cache::read($cache_token,"1min")) === false) {
 			
 			$data = $this->find("first",array(
+				"fields"=>array("CanteenCategory.id"),
 				"conditions"=>array(
 					"CanteenCategory.id"=>$canteen_category_id
 				),
@@ -137,7 +138,7 @@ class CanteenCategory extends AppModel {
 							"CanteenProduct.active"=>1,
 							"DATE(CanteenProduct.publish_date) < NOW()",
 						),
-						"Meta"=>array("order"=>array("Meta.key"=>"ASC","Meta.val"=>"ASC")),
+						"Meta"=>array("order"=>array("Meta.val"=>"ASC")),
 						"Brand"
 					)
 				)
@@ -151,6 +152,12 @@ class CanteenCategory extends AppModel {
 				
 				foreach($p['Meta'] as $m) $filters['Meta'][strtolower($m['key'])][$m['id']] = $m['val'];
 				
+			}
+			
+			foreach($filters['Meta'] as $k=>$v) {
+				
+				//$s = Set::sort($v,"{n}.{s}","asc");
+				//$filters['Meta'][$k] = $s;
 			}
 			
 			//$filters['Meta'] = Set::sort($filters['Meta'],"{s}.{n}.{s}","asc");

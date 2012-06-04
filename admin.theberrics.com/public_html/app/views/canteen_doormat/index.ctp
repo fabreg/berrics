@@ -15,10 +15,18 @@
 		?>
 		<tr>
 			<td><?php echo $d['id']; ?></td>
-			<td><?php echo $d['active']; ?></td>
-			<td><?php echo $d['created']; ?></td>
-			<td><?php echo $d['display_weight']; ?></td>
-			<td>Media</td>
+			<td align='center'><?php echo $d['active']; ?></td>
+			<td align='center'><?php echo $d['created']; ?></td>
+			<td align='center'><?php echo $d['display_weight']; ?></td>
+			<td align='center'>
+				<?php if(empty($d['Media']['id'])): ?>
+				<?php echo $this->Media->mediaThumb(array(
+					"MediaFile"=>$doormat['MediaFile'],
+					"w"=>120
+				)); ?>
+				<?php endif; ?>
+				&nbsp;
+			</td>
 			<td class='actions'>
 				<a href='/canteen_doormat/edit/<?php Echo $d['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
 			</td>
