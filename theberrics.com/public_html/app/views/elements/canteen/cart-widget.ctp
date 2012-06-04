@@ -2,11 +2,13 @@
 		<div class='header-img'></div>
 		<div class='account'>
 			<?php if(!$this->Session->check("Auth.User.id")): ?>
-			<a href='' rel='cart-login' callback='<?php echo base64_encode("/account"); ?>'>Login To Your Account</a>
+			<a href='' rel='cart-login' callback='<?php echo base64_encode("/account"); ?>'>Sign In</a>
 			<?php else: ?>
 			<a href='/account/canteen'>My Account</a> | <a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a>
 			<?php endif; ?>
+			 | <a>Order Status</a>
 		</div>
+		<div style='clear:both;'></div>
 		<div class='cart-items'>
 			<div class='item-count'>
 				<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>

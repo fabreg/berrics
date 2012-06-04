@@ -666,6 +666,8 @@ class CanteenProductsController extends LocalAppController {
 				"canteen_product_id"=>$dest_id
 			);
 			
+			$this->CanteenProduct->save($d);
+			
 		}
 		
 		return $this->redirect("/canteen_products/edit/".$dest_id."#Pricing");

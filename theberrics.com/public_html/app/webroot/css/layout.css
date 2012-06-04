@@ -67,7 +67,7 @@ TOP BANNER
 #top-widget {
 
 	position:absolute;
-	width:318px;
+	width:300px;
 	height:95px;	
 	right:0px;
 	top:5px;
@@ -1995,7 +1995,7 @@ CANTEEN CART WIDGET THING
 	position:absolute;
 	top:0px;
 	right:15px;
-	width:221px;
+	width:300px;
 	font-size:14px;
 	color:#666;
 	font-family:'Courier';
@@ -2006,7 +2006,8 @@ CANTEEN CART WIDGET THING
 	
 	height:32px;
 	background-image:url(/img/layout/canteen/cart/cart-widget-header.jpg);
-	
+	background-repeat:no-repeat;
+	background-position:top right;
 }
 
 #canteen-cart-widget .account {
@@ -2014,6 +2015,7 @@ CANTEEN CART WIDGET THING
 	padding-top:5px;
 	padding-bottom:5px;
 	text-align:right;
+	float:right;
 }
 
 #canteen-cart-widget .cart-items {
@@ -2023,7 +2025,7 @@ CANTEEN CART WIDGET THING
 	border-left:none;
 	padding-top:5px;
 	padding-bottom:5px;
-	
+	float:right;
 }
 
 #canteen-cart-widget .cart-items .cart-icon {
