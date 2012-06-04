@@ -9,7 +9,6 @@ class AdminHelper extends AppHelper {
 		
 		return $this->Html->link("Attach Media",array("controller"=>"media_files","action"=>"attach_media",$model,$key,$val,base64_encode($post_back)));
 		
-		
 	}
 	
 	public function monthlyReportLink($opt = array()) {

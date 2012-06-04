@@ -300,6 +300,30 @@ class CanteenProduct extends AppModel {
 		return $a;
 	}
 	
+	public function returnNewProducts($limit = 6,$categories = false) {
+		
+		$ids = $this->find("all",array(
+			"fields"=>array(
+				"CanteenProduct.id"
+			),
+			"conditions"=>array(
+				"CanteenProduct.parent_canteen_product_id"=>NULL,
+				"CanteenProduct.active"=>1,
+				"CanteenProduct.featured"=>1,
+				"CanteenProduct.brand_id"=>3
+			),
+			"contain"=>array(),
+			"order"=>array("CanteenProduct.publish_date"=>"DESC"),
+			"limit"=>$limit
+		));
+		
+		$products = array();
+		
+		foreach($ids as $v) $products[] = $this->returnProduct(array("conditions"=>array("CanteenProduct.id"=>$v['CanteenProduct']['id'])));
+		
+		return $products;
+		
+	}
 
 	
 }

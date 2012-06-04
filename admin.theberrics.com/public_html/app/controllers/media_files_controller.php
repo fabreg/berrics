@@ -830,6 +830,16 @@ class MediaFilesController extends LocalAppController {
 					
 					));
 					
+				} else if($m == "CanteenDoormat") {
+
+					$this->{$m}->id = $this->data['AttachMedia']['val'];
+					
+					$this->{$m}->save(array(
+					
+						"media_file_id"=>$item
+					
+					));
+					
 				} else {
 					
 					$this->{$m}->save(array(

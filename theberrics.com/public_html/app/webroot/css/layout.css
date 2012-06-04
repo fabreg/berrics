@@ -2643,3 +2643,110 @@ padding:5px;
 	float:right;
 	
 }
+
+
+/*
+	CANTEEN PRODUCT  SUPER THUMB
+*/
+.canteen-product-super-thumb {
+	
+	width:253px;
+	height:324px;
+	position:relative;
+	cursor:pointer;
+	float:left;
+	background-image:url(/img/layout/canteen/product-thumb-borders.png);
+}	
+
+.canteen-product-super-thumb a {
+
+	text-decoration:none;
+
+}
+
+.canteen-product-super-thumb img {
+
+	display:block;
+	border:none;
+	margin-top:6px;
+	margin-left:6px;
+}
+
+.canteen-product-super-thumb .info {
+
+	display:none;
+	height:240px;
+	width:240px;
+	position:absolute;
+	top:6px;
+	left:6px;
+	background-image:url(/img/layout/white-clear-px.png);
+	text-shadow: 2px 2px 2px #000000;
+	filter: dropshadow(color=#000000, offx=2, offy=2);
+
+}
+
+.canteen-product-super-thumb .info .style-label {
+	
+	font-family:'Arial';
+	font-size:12px;
+	padding:5px;	
+	
+}
+
+.canteen-product-super-thumb .info .style-code-image {
+	
+	
+	margin:5px;
+	border:1px solid #000;
+	float:left;	
+	width:40px;
+	
+}
+
+.canteen-product-super-thumb .info .style-code-image img {
+
+	padding:0px;
+	margin:0px;
+	display:block;
+		
+}
+
+
+.canteen-product-super-thumb .brand {
+	
+	font-size:11px;
+	color:#999;
+	font-family:'Arial';
+	text-indent:4px;
+	margin-top:5px;
+        
+}
+
+.canteen-product-super-thumb  .name {
+	
+	font-size:17px;
+	font-family:'Courier';
+	letter-spacing:.5px;
+	text-indent:4px;
+	color:#333;
+}
+
+.canteen-product-super-thumb .sub-title {
+
+	font-size:14px;
+	font-family:'Courier';
+	text-indent:4px;	
+	font-style:italic;
+	color:#333;
+}
+
+.canteen-product-super-thumb .price {
+	
+	text-align:right;	
+	padding-right:5px;
+	font-family:'Courier';
+	font-size:20px;
+	color:#333;
+	
+}

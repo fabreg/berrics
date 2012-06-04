@@ -27,25 +27,10 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 	</div>
 	-->
 	<div class='products'>
-		<!-- 
-		<div>
-		<div id='canteen-crumb'>
-			<div class='left'></div>
-			<div class='right'></div>
-			<div class='center'><h1><?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?></h1></div>
-		</div>
-		<div class='total-items'>
-			<?php echo count($products); ?> Items
-		</div>
-		<div style='clear:both;'></div>
-		</div>
-		-->
-		<div style='padding:5px; text-align:left;'>
-		<h2><?php echo $category['Parent']['name']; ?> // <?php echo $category['CanteenCategory']['name']; ?></h2>
-		</div>
 		<div class='container'>
 			<div class='container-top'>
 				<div class='inner'>
+				<h2><?php echo $category['Parent']['name']; ?> // <?php echo $category['CanteenCategory']['name']; ?></h2>
 					<?php 
 						foreach($products as $p):
 					?>
@@ -57,6 +42,7 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 				</div>
 			</div>
 		</div>
+		<div class='bottom'></div>
 	</div>
 	<div class='sorting'>
 		<div class='heading'>
@@ -88,11 +74,10 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 			<?php endforeach; ?>
 			<?php echo $this->Form->end(); ?>
 		</div>
+		<div>
+			<img src='/img/layout/canteen/category/filter-bg-bottom.jpg' border='0'/>
+		</div>
 	</div>
 	<div style='clear:both;'></div>
-	<div class='bottom'>
-		<div class='left'></div>
-		<div class='right'></div>
-		<div style='clear:both;'></div>
-	</div>
+
 </div>

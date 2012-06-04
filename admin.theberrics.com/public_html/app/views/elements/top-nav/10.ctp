@@ -259,6 +259,13 @@
 				</li>
 			</ul>
 			<ul class='sub-nav-list' style='width:200px; float:left; left:125px;'>
+				<li class='li-sub-nav-header'>Homepage</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_doormat'>Manage Doormat</a>
+				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_doormat/add'>Add New Doormat</a>
+				</li>
 				<li class='li-sub-nav-header'>Products</li>
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_products'>Manage Products</a>

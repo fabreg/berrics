@@ -177,6 +177,10 @@ border-radius: 10px 10px 0px 0px;
 						?></td>
 					</tr>
 					<tr>
+						<td width='30%' align='right'>Tax Rate</td>
+						<td><?php echo $this->data['CanteenOrder']['tax_rate']; ?></td>
+					</tr>
+					<tr>
 						<td width='30%' align='right'>Discount Total</td>
 						<td><?php echo $this->Number->currency($this->data['CanteenOrder']['discount_total'],$this->data['Currency']['id']); ?></td>
 					</tr>
@@ -207,7 +211,7 @@ border-radius: 10px 10px 0px 0px;
 					</li>
 					<li>
 						<a href='/canteen_orders/credit_order/<?php echo $this->data['CanteenOrder']['id']; ?>'>
-							Credit Order
+							Credit Shipping
 						</a>
 					</li>
 				</ul>
@@ -284,7 +288,7 @@ border-radius: 10px 10px 0px 0px;
 									switch(strtoupper($t['method'])) {
 										
 										case "CHARGE":
-											echo "<a href='/canteen_orders/confirm_refund/{$t['id']}'>Refund</a>";
+											echo "<a href='/canteen_orders/refund_transaction/{$t['id']}'>Refund</a>";
 											echo "<a>Charge</a>";
 										break;
 									}

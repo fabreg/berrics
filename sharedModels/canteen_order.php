@@ -178,7 +178,7 @@ class CanteenOrder extends AppModel {
 		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);
 		
 		//calculate tax off of taxable total
-		$taxRate = 0.00;
+		$CanteenOrder['CanteenOrder']['tax_rate'] = 0.00;
 		
 		$address = $CanteenOrder['ShippingAddress'];
 		
@@ -187,11 +187,11 @@ class CanteenOrder extends AppModel {
 			array_key_exists($address['state'],$this->taxZones[$address['country_code']])
 		) {
 			
-			$taxRate = $this->taxZones[$address['country_code']][$address['state']];
+			$CanteenOrder['CanteenOrder']['tax_rate'] = $this->taxZones[$address['country_code']][$address['state']];
 			
 		}
 		
-		$CanteenOrder['CanteenOrder']['tax_total'] = ($taxRate/100)*$CanteenOrder['CanteenOrder']['taxable_total'];
+		$CanteenOrder['CanteenOrder']['tax_total'] = ($CanteenOrder['CanteenOrder']['tax_rate']/100)*$CanteenOrder['CanteenOrder']['taxable_total'];
 		
 		#grand_total
 		$CanteenOrder['CanteenOrder']['grand_total'] =  $CanteenOrder['CanteenOrder']['sub_total'] + 

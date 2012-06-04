@@ -278,6 +278,23 @@ class CanteenOrdersController extends LocalAppController {
 
 	}
 	
+	public function refund_transaction($trans_id) {
+		
+		$this->loadModel("GatewayTransaction");
+		
+		$transaction = $this->GatewayTransaction->find("first",array(
+			"conditions"=>array(
+				"GatewayTransaction.id"=>$trans_id
+			),
+			"contain"=>array()
+		));
+		
+		$order = $this->CanteenOrder->returnAdminOrder($transaction['GatewayTransaction']['foreign_key']);
+		
+		$this->set(compact("order","transaction"));
+		
+	}
+	
 	public function cancel_order($order_id,$override = false) {
 		
 		if(!$order_id) return $this->cakeError("error404");
@@ -316,7 +333,8 @@ class CanteenOrdersController extends LocalAppController {
 			"tax_total"=>0,
 			"sub_total"=>0,
 			"grand_total"=>0,
-			"shipping_total"=>0
+			"shipping_total"=>0,
+			"discount_total"=>0
 		));
 		
 		
