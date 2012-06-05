@@ -21,7 +21,7 @@ $(document).ready(function() {
 	<ul>
 		<li><a href='/dashboard/'>Dailyops</a></li>
 		<li><a href='/dashboard/canteen'>Canteen Dashboard</a></li>
-		<li><a href='/dashboard/yn3_stats'>YN3 Stats</a></li>
+		
 	</ul>
 	<div style='clear:both;'></div>
 </div>

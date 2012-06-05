@@ -138,6 +138,7 @@ $(document).ready(function() {
 
 	float:left;
 	margin-right:10px;
+	margin-left:10px;
 }
 
 </style>
@@ -163,6 +164,7 @@ $(document).ready(function() {
 			<div class='container'>
 				<div class='container-top'>
 					<div class='inner'>
+						<h2>NEW ARRIVALS</h2>
 					<?php foreach($new_products as $p) {
 						
 						echo $this->element("canteen/product-super-thumb",array("product"=>$p));

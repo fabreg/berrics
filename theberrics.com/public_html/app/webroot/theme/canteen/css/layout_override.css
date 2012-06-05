@@ -536,10 +536,10 @@ border-bottom:1px solid #333;
 }
 
 #product-standard-view .product-info .pricing .price {
-	width:110px;
+	width:140px;
 	border:1px solid #999;
 	padding:6px;
-	font-size:23px;
+	font-size:28px;
 	font-family:'Courier';
 	color:#333;
 }
@@ -1581,6 +1581,11 @@ PRODUCT EXTRA INFO
 	background-image:url(/img/layout/canteen/category/prod-cat-bottom.jpg);
 	background-repeat:no-repeat;
 	height:80px;
+}
+.products h2 {
+	
+color:#666; margin-top:-10px; margin-bottom:8px;	
+	
 }
 
 #canteen-category .sorting {
