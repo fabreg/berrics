@@ -644,7 +644,7 @@ class CanteenProductsController extends LocalAppController {
 		$this->loadModel("CanteenProductPrice");
 		
 		//get the source products pricing
-		$sp = $this->CanteenProductPrice->find("all",array("conditions"=>array("CanteenProductPrice.id"=>$source_id)));
+		$sp = $this->CanteenProductPrice->find("all",array("conditions"=>array("CanteenProductPrice.canteen_product_id"=>$source_id)));
 		
 		foreach($sp as $p) {
 			
@@ -666,7 +666,7 @@ class CanteenProductsController extends LocalAppController {
 				"canteen_product_id"=>$dest_id
 			);
 			
-			$this->CanteenProduct->save($d);
+			$this->CanteenProductPrice->save($d);
 			
 		}
 		

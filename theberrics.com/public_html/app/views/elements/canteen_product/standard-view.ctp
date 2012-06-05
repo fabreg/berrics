@@ -2,7 +2,7 @@
 
 App::import("Vendor","UpsApi",array("file"=>"UpsApi.php"));
 
-$this->set("title_for_layout",$product['CanteenProduct']['name']." By:".$product['Brand']['name']);
+$this->set("title_for_layout",$product['CanteenProduct']['name']." - ".$product['CanteenProduct']['sub_title']." - By ".$product['Brand']['name']);
 
 $this->set("meta_d",$product['CanteenProduct']['description']);
 

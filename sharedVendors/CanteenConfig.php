@@ -25,8 +25,7 @@ class CanteenConfig {
 					"EUR"=>array("AD","AT","BE","CY","EE","FI","FR","DE","GR","IE","IT","LU","MT","MC","ME","NL","PT","SM","SK","SI","ES","VA"),
 					"CAD"=>array("CA"),
 					"AUD"=>array("AU"),
-					"BRL"=>array("BR"),
-					"JPY"=>array("JP")
+					"BRL"=>array("BR")
 				),
 				"gateway_account_id"=>1,
 				"tax_regions"=>array(
