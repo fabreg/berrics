@@ -1,6 +1,6 @@
 <ul>
 	<li class='li-button'><?php echo $this->Html->link("Home","/"); ?></li>
-	<?php /* ?>
+	
 	<li class='li-button'><?php echo $this->Html->link("Reports",array("controller"=>"traffic_reports","action"=>"monthly")); ?>
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-header'>Traffic</li>
@@ -45,7 +45,7 @@
 			</li>
 		</ul>
 	</li>
-	<?php */ ?>
+	
 	<li class='li-button'>
 		<?php echo $this->Html->link("System",array("controller"=>"websites","action"=>"index")); ?>
 		<ul class='sub-nav-list'>

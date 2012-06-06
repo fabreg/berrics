@@ -566,6 +566,22 @@ steven0892@hotmail.com,tristanruff781@yahoo.com,vtechugotech@yahoo.com,abbiec.so
 		
 	}
 	
+	public function test_ftp() {
+		
+		$ftp = ftp_connect('64.206.163.162');
+		
+		if(ftp_login($ftp,"ctweb","c@nt33N")) {
+			
+			die("connected");
+			
+		} else {
+			
+			die("not connected");
+			
+		}
+		
+	}
+	
 }
 
 

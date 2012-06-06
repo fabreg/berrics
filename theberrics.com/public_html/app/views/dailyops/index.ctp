@@ -36,9 +36,9 @@ foreach($dailyops as $k=>$dop):
 		
 		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style=''>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
 		
-		echo "<div style='text-align:center; padding-bottom:3px;'><a href='/battle-at-the-berrics-5'><img border='0' src='/theme/battle-at-the-berrics-5/img/week13-winner.jpg' /></a></div>";
+		echo "<div style='text-align:center; padding-bottom:3px;'><a href='/battle-at-the-berrics-5'><img border='0' src='/theme/battle-at-the-berrics-5/img/week14-winner.jpg' /></a></div>";
 		
-		//echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_kalis.jpg'/></a></div>";
+		echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_prod.jpg'/></a></div>";
 		
 		
 	}
