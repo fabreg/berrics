@@ -1,5 +1,5 @@
 <?php 
-$finals = false;
+$finals = true;
 $this->Html->css(array("section"),"stylesheet",array("inline"=>false));
 $this->Html->script(array("section"),array("inline"=>false));
 
