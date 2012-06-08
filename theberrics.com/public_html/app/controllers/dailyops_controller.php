@@ -83,23 +83,30 @@ class DailyopsController extends LocalAppController {
 		
 		$token = "dailyops-".md5(serialize($conditions));
 		
-		if(($dailyops = Cache::read($token,"1min")) === false) {
+		if(($p_ids = Cache::read($token,"1min")) === false) {
 			
-			$dailyops = $this->Dailyop->find("all",array(
+			$p_ids = $this->Dailyop->find("all",array(
 		
 				"contain"=>array(
-					"User",
-					"Tag"=>array("User"),
-					"DailyopSection",
-					"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
 				),
 				"order"=>array("Dailyop.publish_date"=>"DESC"),
 				"limit"=>$limit,
-				"conditions"=>$conditions
+				"conditions"=>$conditions,
+				"fields"=>array("Dailyop.id")
 			
 			));
 
-			Cache::write($token,$dailyops,"1min");
+			Cache::write($token,$p_ids,"1min");
+			
+		}
+		
+		$dailyops = array();
+		
+		foreach($p_ids as $v) {
+			
+			$dailyops[] = $this->Dailyop->returnPost(array(
+				"Dailyop.id"=>$v['Dailyop']['id']
+			));
 			
 		}
 		
@@ -132,7 +139,7 @@ class DailyopsController extends LocalAppController {
 						
 					)
 
-				));
+			));
 			
 		
 			foreach($yd as $d) $dailyops[] = $d;
@@ -482,23 +489,32 @@ class DailyopsController extends LocalAppController {
 	public function rss() {
 		
 		//get the pots
+		$token = "dailyops_rss";
 		
-		$posts = $this->Dailyop->find("all",array(
+		if(($posts = Cache::read($token,"1min")) == false) {
+			
+			$posts = $this->Dailyop->find("all",array(
+	
+				"contain"=>array(
+					"User",
+					"Tag",
+					"DailyopSection",
+					"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
+				),
+				"order"=>array("Dailyop.publish_date"=>"DESC"),
+				"limit"=>50,
+				"conditions"=>array(
+					"Dailyop.active"=>1,
+					"Dailyop.publish_date < NOW()"
+				)
+			
+			));
 
-			"contain"=>array(
-				"User",
-				"Tag",
-				"DailyopSection",
-				"DailyopMediaItem"=>array("MediaFile","order"=>array("DailyopMediaItem.display_weight"=>"ASC"),"limit"=>1)
-			),
-			"order"=>array("Dailyop.publish_date"=>"DESC"),
-			"limit"=>50,
-			"conditions"=>array(
-				"Dailyop.active"=>1,
-				"Dailyop.publish_date < NOW()"
-			)
+			Cache::write($token,$posts,"1min");
+			
+		}
 		
-		));
+		
 		
 		
 		$title_for_feed = "The DailyOps - The Berrics";

@@ -1,5 +1,14 @@
 <?php
 
+//shutdown the site
+
+if($_SERVER['REQUEST_URI'] != '/' && date("Y-m-d") == "2012-06-08" && date('G')>=16) {
+	header("HTTP/1.0 302 Moved Temporarily");
+	header('Location:/');
+	die();
+}
+
+
 if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 	header('Location: http://img.theberrics.com/images'.$_SERVER['REQUEST_URI']);

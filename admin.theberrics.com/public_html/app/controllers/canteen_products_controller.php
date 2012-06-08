@@ -680,6 +680,11 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function ljg_products() {
+		
+		
+		
+	}
 	
 	
 }

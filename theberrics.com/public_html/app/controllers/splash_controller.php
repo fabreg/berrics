@@ -156,13 +156,28 @@ class SplashController extends LocalAppController {
 		
 		if(($pics = Cache::read($token,"30sec")) === false) {
 			
+			$pics = array();
 			
 			$i = InstagramApi::berricsInstance();
 			
-			$pics = $i->instagram->getUserRecent(InstagramApi::$berrics_id);
+			$p = $i->instagram->getUserRecent(InstagramApi::$berrics_id);
 			
-			$pics = json_decode($pics);
+			$p = json_decode($p);
 			
+			foreach($p->data as $k=>$v) {
+				
+				$month = date("m",$v->created_time);
+				
+				$day = date("d",$v->created_time);
+				
+				if($month>=6 && $day>=7) {
+					
+					$pics[] = $v;
+					
+				}
+				
+			}
+		
 			Cache::write($token,$pics,"30sec");
 			
 		}
