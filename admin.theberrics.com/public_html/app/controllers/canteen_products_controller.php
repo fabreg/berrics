@@ -6,6 +6,25 @@ class CanteenProductsController extends LocalAppController {
 	
 	private $updateHash = "";
 	
+	private $ljg_products_schema = array(
+
+				'Company Number',
+				'UPC Code',
+				'Product Code',
+				'Description',
+				'Division Code',
+				'Division Desc',
+				'Color Code',
+				'Color Desc',
+				'Size Type',
+				'Size',
+				'Price',
+				'Weight',
+				'Long Desc',
+				'Technical Desc'
+		
+	);
+	
 	public function beforeFilter() {
 		
 		App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
@@ -680,9 +699,58 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
-	public function ljg_products() {
+	public function ljg_products($canteen_product_id = false,$filter = false) {
 		
 		
+		
+		$canteen_product = $this->CanteenProduct->returnAdminProduct($canteen_product_id);
+		
+		$ljg_products = $this->parse_ljg_products_file();
+		
+		$schema = $this->ljg_products_schema;
+		
+		$this->set(compact("ljg_products","schema","canteen_product","filter"));
+		
+		
+	}
+	
+	public function create_ljg_inventory() {
+		
+		die(print_r($this->data));
+		
+	}
+	
+	private function parse_ljg_products_file() {
+		
+		$ljg_products = array();
+		
+		//products file
+		$products_file = WWW_ROOT."lajolla/15_CTWEB_product.txt";
+		
+		$products_string = file_get_contents($products_file);
+		
+		$products_csv_array = explode("\n",$products_string);
+		
+		array_pop($products_csv_array);
+		
+		foreach($products_csv_array as $v) {
+			
+			$row = explode("\t",$v);
+			
+			array_pop($row);
+			
+			if($ljg_products[] = array_combine($this->ljg_products_schema,$row)) {
+				
+				
+			} else {
+				
+				die(pr($row));
+				
+			}
+			
+		}
+		
+		return $ljg_products;
 		
 	}
 	

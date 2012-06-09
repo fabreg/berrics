@@ -1236,6 +1236,43 @@ class TesterController extends LocalAppController {
 	}
 	
 	
+	public function add_sizes() {
+		
+		$this->loadModel("CanteenProduct");
+		
+		$cat = 11;
+		
+		//get all the products in tshirts
+		$products = $this->CanteenProduct->find('all',array(
+			"conditions"=>array(
+				"CanteenProduct.parent_canteen_product_id"=>NULL,
+				"CanteenProduct.canteen_category_id"=>array(11,17,18,19)
+			),
+			"contain"=>array()
+		));
+		
+		foreach($products as $v) {
+			
+			$d = array(
+				"parent_canteen_product_id"=>$v['CanteenProduct']['id'],
+				"deleted"=>0,
+				"active"=>1,
+				"opt_label"=>"Size",
+				"opt_value"=>"XXL",
+				"display_weight"=>5
+			);
+			
+			$this->CanteenProduct->create();
+			
+			$this->CanteenProduct->save($d);
+
+			
+		}
+		
+		die();
+		
+	}
+	
 }
 
 

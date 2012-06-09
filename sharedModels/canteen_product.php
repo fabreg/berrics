@@ -72,7 +72,8 @@ class CanteenProduct extends AppModel {
 				"CanteenProductInventory"=>array(
 					"CanteenInventoryRecord"
 				),
-				"Meta"
+				"Meta",
+				"Brand"
 			)
 		
 		));
@@ -269,7 +270,7 @@ class CanteenProduct extends AppModel {
 		$id = $data['CanteenProduct']['id'];
 		
 		//sizes
-		$s = array("S","M","L","XL");
+		$s = array("S","M","L","XL","XXL");
 		
 		foreach($s as $k=>$v) {
 			

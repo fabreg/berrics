@@ -1,7 +1,7 @@
 <ul>
 	<li class='li-button'><?php echo $this->Html->link("Home","/"); ?></li>
 	
-	<li class='li-button'><?php echo $this->Html->link("Reports",array("controller"=>"traffic_reports","action"=>"monthly")); ?>
+	<li class='li-button'><?php echo $this->Html->link("Reports","#"); ?>
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-header'>Traffic</li>
 			<li class='li-sub-nav-button'>
@@ -47,7 +47,7 @@
 	</li>
 	
 	<li class='li-button'>
-		<?php echo $this->Html->link("System",array("controller"=>"websites","action"=>"index")); ?>
+		<?php echo $this->Html->link("System","#"); ?>
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("System Messages",array("controller"=>"system_messages","action"=>"index")); ?>
@@ -99,7 +99,7 @@
 		</ul>
 	</li>
 	<li class='li-button'>
-		<?php echo $this->Html->link("Users",array("controller"=>"users","action"=>"index")); ?>
+		<?php echo $this->Html->link("Users","#"); ?>
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("View Users",array("controller"=>"users","action"=>"index")); ?>
@@ -129,7 +129,7 @@
 	
 	
 	<li class='li-button'>
-		<?php echo $this->Html->link("MediaFiles",array("controller"=>"media_files","action"=>"index")); ?>
+		<?php echo $this->Html->link("MediaFiles","#"); ?>
 		<ul class='sub-nav-list'>
 			<li class='li-sub-nav-button'>
 				<?php echo $this->Html->link("View Media Files",array("controller"=>"media_files","action"=>"index")); ?>
