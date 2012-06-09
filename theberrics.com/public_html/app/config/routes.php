@@ -1,12 +1,5 @@
 <?php
 
-//shutdown the site
-
-if($_SERVER['REQUEST_URI'] != '/') {
-	header("HTTP/1.0 302 Moved Temporarily");
-	header('Location:/');
-	die();
-}
 
 
 if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
