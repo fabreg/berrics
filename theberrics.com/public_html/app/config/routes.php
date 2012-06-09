@@ -2,7 +2,7 @@
 
 //shutdown the site
 
-if($_SERVER['REQUEST_URI'] != '/' && date("Y-m-d") == "2012-06-08" && date('G')>=18) {
+if($_SERVER['REQUEST_URI'] != '/') {
 	header("HTTP/1.0 302 Moved Temporarily");
 	header('Location:/');
 	die();

@@ -63,7 +63,7 @@ class DailyopsController extends LocalAppController {
 			
 			$home_page = true;
 			$batb_mode = false;
-			if(in_array(date("Y-m-d"),array("2012-05-28","2012-05-26"))) { 
+			if(in_array(date("Y-m-d"),array("2012-06-09","2012-05-26"))) { 
 				
 				$batb_mode = true;
 				
