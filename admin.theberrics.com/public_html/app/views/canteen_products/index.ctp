@@ -168,7 +168,9 @@ function openDetails(id,ele) {
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>' target='_blank'>Edit In New Window</a>
 				<a target='_blank' href='http://dev.theberrics.com/canteen/item/<?php echo $p['uri']; ?>'>Dev Link</a>
 				<a href='javascript:return false;' class='quick-inv' canteen_product_id='<?php echo $p['id']; ?>'>Quick View: Options & Inv</a>
-				<a href='/canteen_products/ljg_products/<?php echo $p['id']; ?>/1'>Attach & Create LGJ Inventory</a>
+				<?php if(!$p['ljg_inv'] && $p['brand_id']==3): ?>
+				<a href='/canteen_products/ljg_products/<?php echo $p['id']; ?>/1/callback:<?php echo base64_encode($this->here); ?>'>Attach & Create LGJ Inventory</a>
+				<?php endif; ?>
 			</td>
 		</tr>
 		<?php 

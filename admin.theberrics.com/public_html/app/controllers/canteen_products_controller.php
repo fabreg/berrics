@@ -716,7 +716,74 @@ class CanteenProductsController extends LocalAppController {
 	
 	public function create_ljg_inventory() {
 		
-		die(print_r($this->data));
+		$this->loadModel("CanteenProductInventory");
+		$this->loadModel("CanteenInventoryRecord");
+		
+		$product_id = $this->data['LjgInventory']['canteen_product_id'];
+		
+		$ljg_products = $this->parse_ljg_products_file();
+		
+		$keys = $this->data['index'];
+		
+		$inv_items = array();
+		
+		foreach($keys as $v) {
+			
+			$inv_items[] = $ljg_products[$v];
+			
+		}
+		
+		foreach($inv_items as $v) {
+			
+			$size = $v['Size'];
+			$upc = $v['UPC Code'];
+			
+			$p = $this->CanteenProduct->find("first",array(
+				"conditions"=>array(
+					'CanteenProduct.parent_canteen_product_id'=>$product_id,
+					'CanteenProduct.opt_value'=>$size
+				),
+				"contain"=>array(
+					"ParentCanteenProduct"=>array(
+						"Brand"
+					)
+				)
+			));
+			
+			if(!empty($p['CanteenProduct']['id'])) {
+				
+				$record_name = $p['ParentCanteenProduct']['Brand']['name']." ".$p['ParentCanteenProduct']['name']." ".$p['ParentCanteenProduct']['sub_title']." ".$p['CanteenProduct']['opt_label']." ".$p['CanteenProduct']['opt_value'];
+				
+				$this->CanteenInventoryRecord->create();
+				$this->CanteenInventoryRecord->save(array(
+					"name"=>$record_name,
+					"warehouse_id"=>2,
+					"foreign_key"=>$upc
+				));
+				
+				$record_id = $this->CanteenInventoryRecord->id;
+				$this->CanteenProductInventory->create();
+				$this->CanteenProductInventory->save(array(
+					"canteen_product_id"=>$p['CanteenProduct']['id'],
+					"canteen_inventory_record_id"=>$record_id,
+					"priority"=>1
+				));
+				
+			}
+			
+		}
+		
+		$this->CanteenProduct->create();
+		
+		$this->CanteenProduct->id = $product_id;
+		
+		$this->CanteenProduct->save(array(
+			"ljg_inv"=>1
+		));
+		
+		return $this->redirect(base64_decode($this->data['LjgInventory']['callback']));
+		
+		//die(pr($inv_items));
 		
 	}
 	

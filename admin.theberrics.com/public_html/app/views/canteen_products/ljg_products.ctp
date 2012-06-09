@@ -39,6 +39,7 @@ $(document).ready(function() {
 	<?php echo $this->Form->create("LjgInventory",array("id"=>"inv-form","url"=>"/canteen_products/create_ljg_inventory")); ?>
 	<?php 
 		echo $this->Form->input("canteen_product_id",array("type"=>"hidden","value"=>$canteen_product['CanteenProduct']['id']));
+		echo $this->Form->input("callback",array("type"=>"hidden","value"=>$this->params['named']['callback']));
 	?>
 	<h2>La Jolla Products File</h2>
 	<h3><?php echo $canteen_product['Brand']['name']; ?> - <?php echo $canteen_product['CanteenProduct']['name']; ?> - <?php echo $canteen_product['CanteenProduct']['sub_title']; ?></h3>
