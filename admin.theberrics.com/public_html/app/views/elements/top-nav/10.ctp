@@ -259,6 +259,9 @@
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_inventory_records/add'>Create Inventory Record</a>
 				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_products/view_ljg_products'>View LJG Products</a>
+				</li>
 			</ul>
 			<ul class='sub-nav-list' style='width:200px; float:left; left:125px;'>
 				<li class='li-sub-nav-header'>Homepage</li>

@@ -787,12 +787,23 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function view_ljg_products() {
+		
+		$ljg_products = $this->parse_ljg_products_file();
+		
+		$schema = $this->ljg_products_schema;
+		
+		$this->set(compact("ljg_products","schema"));
+		
+		
+	}
+	
 	private function parse_ljg_products_file() {
 		
 		$ljg_products = array();
 		
 		//products file
-		$products_file = WWW_ROOT."lajolla/15_CTWEB_product.txt";
+		$products_file = "/home/sites/lajolla/product.txt";
 		
 		$products_string = file_get_contents($products_file);
 		

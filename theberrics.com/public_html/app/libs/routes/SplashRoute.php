@@ -20,6 +20,8 @@ class SplashRoute extends CakeRoute {
 			
 		}
 		
+		$news = false;
+		
 		//$news = true;
 		
 		$params['controller'] = "splash";
