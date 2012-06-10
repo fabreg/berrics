@@ -14,7 +14,50 @@ class CanteenInventoryRecordsController extends LocalAppController {
 		
 	}
 	
+	public function search() {
+		
+		if(count($this->data)>0) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"search"=>true
+				);
+				
+				
+				foreach($this->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						$url[$k.".".$kk]=urlencode($vv);
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+		
+
+		
+		
+	}
+	
 	function index() {
+		
+		if(isset($this->params['named']['search'])) {
+			
+			if(isset($this->params['named']['CanteenInventoryRecord.name'])) {
+				
+				$this->paginate['conditions']['CanteenInventoryRecord.name LIKE'] = "%".str_replace(" ","%",$this->params['named']['CanteenInventoryRecord.name'])."%";
+				
+				$this->data['CanteenInventoryRecord']['name'] = $this->params['named']['CanteenInventoryRecord.name'];
+				
+			}
+			
+		}
+		
 		$this->CanteenInventoryRecord->recursive = 0;
 		$this->set('canteenInventoryRecords', $this->paginate());
 	}

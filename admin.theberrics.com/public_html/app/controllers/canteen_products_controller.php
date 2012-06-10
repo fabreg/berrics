@@ -255,6 +255,20 @@ class CanteenProductsController extends LocalAppController {
 				
 			}
 			
+			if(isset($this->data['AddCommonPantsOptions'])) {
+				
+				$this->CanteenProduct->addCommonPantsOptions($this->data);
+				
+				$this->updateHash = "#Options %26 Inventory";
+				
+			}
+			if(isset($this->data['AddCommonHatOptions'])) {
+				
+				$this->CanteenProduct->addCommonHatOptions($this->data);
+				
+				$this->updateHash = "#Options %26 Inventory";
+				
+			}
 			
 			
 			if(isset($this->data['AddNewImage'])) {

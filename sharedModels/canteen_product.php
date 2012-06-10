@@ -289,6 +289,52 @@ class CanteenProduct extends AppModel {
 		
 	}
 	
+	public function addCommonPantsOptions($data = array()) {
+		
+		$id = $data['CanteenProduct']['id'];
+		
+		//sizes
+		$s = array(26,28,30,32,34,36,38,40);
+		
+		foreach($s as $k=>$v) {
+			
+			$this->create();
+			$this->save(array(
+				"parent_canteen_product_id"=>$id,
+				"active"=>1,
+				"delete"=>0,
+				"opt_label"=>"Size",
+				"opt_value"=>$v,
+				"display_weight"=>($k+1)
+			));
+			
+		}
+		
+	}
+	
+	public function addCommonHatOptions($data = array()) {
+		
+		$id = $data['CanteenProduct']['id'];
+		
+		//sizes
+		$s = array("XS","XS/S","S/M","M/L","L/XL","XL");
+		
+		foreach($s as $k=>$v) {
+			
+			$this->create();
+			$this->save(array(
+				"parent_canteen_product_id"=>$id,
+				"active"=>1,
+				"delete"=>0,
+				"opt_label"=>"Size",
+				"opt_value"=>$v,
+				"display_weight"=>($k+1)
+			));
+			
+		}
+		
+	}
+	
 	public static function merchTemplates() {
 		
 		$a = array(

@@ -12,7 +12,7 @@ class CanteenConfig {
 			$a = array(
 		
 				"store_name"=>"The Canteen",
-				"realtime_inventory"=>false,
+				"realtime_inventory"=>true,
 				"global_discount"=>false,
 				"global_discount_rate"=>"0",
 				"global_discount_type"=>false, //CAN BE 'flat' or 'percent'

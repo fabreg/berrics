@@ -1,5 +1,15 @@
 <div class="canteenInventoryRecords index">
 	<h2><?php __('Canteen Inventory Records');?></h2>
+	<div class='form'>
+		<fieldset>
+			<legend>Search</legend>
+			<?php 
+				echo $this->Form->create("CanteenInventoryRecord",array("url"=>"/canteen_inventory_records/search"));
+				echo $this->Form->input("name");
+				echo $this->Form->end("Search")
+			?>
+		</fieldset>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(

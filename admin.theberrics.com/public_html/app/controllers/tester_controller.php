@@ -1225,13 +1225,11 @@ class TesterController extends LocalAppController {
 	
 	public function test_inv() {
 		
-		$this->loadModel("CanteenShippingRecord");
-		
 	
+		$this->loadModel("CanteenInventoryRecord");
 		
-		$this->CanteenShippingRecord->createShipment(55104651);
+		$this->CanteenInventoryRecord->import_ljg_inventory();
 		
-		//$this->CanteenInventoryRecord->allocateInventory(3,1);
 		
 	}
 	
@@ -1271,6 +1269,13 @@ class TesterController extends LocalAppController {
 		
 		die();
 		
+	}
+	
+	public function test_shipment() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+		$this->CanteenShippingRecord->process_pending_lajolla();
 	}
 	
 }
