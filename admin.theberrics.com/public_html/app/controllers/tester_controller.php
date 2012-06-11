@@ -1274,6 +1274,16 @@ class TesterController extends LocalAppController {
 		
 	}
 	
+	public function xe() {
+		
+		$this->loadModel("Currency");
+		
+		//$this->Currency->save_xe_currency_file();
+		
+		$this->Currency->parse_xe_file();
+		
+	}
+	
 	public function test_shipment() {
 		
 		$this->loadModel("CanteenShippingRecord");

@@ -110,10 +110,6 @@ class DailyopsController extends LocalAppController {
 			
 		}
 		
-		
-		
-		
-		
 		if($home_page && count($dailyops)<5 && !$batb_mode) {
 			
 			//let's get yesterdays posts

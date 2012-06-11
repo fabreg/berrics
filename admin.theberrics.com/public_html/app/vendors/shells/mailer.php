@@ -24,7 +24,7 @@ class MailerShell extends Shell {
 		
 			"conditions"=>array(
 				"OR"=>array(
-					"EmailMessage.processed"=>NULL,
+					"EmailMessage.processed IS"=>NULL,
 					"EmailMessage.processed"=>0
 				)
 			),

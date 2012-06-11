@@ -35,6 +35,53 @@ class Currency extends AppModel {
 		),
 	);
 	
+	public function save_xe_currency_file() {
+		
+		$url  = 'http://www.xe.com/dfs/datafeed2.cgi?theberricsllc';
+	 
+	    $ch = curl_init($url);
+	    
+	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	 
+	    $file_str = curl_exec($ch);
+	 
+	    curl_close($ch);
+
+		$handle = fopen("/tmp/currency.xml","w");
+		
+		fwrite($handle,$file_str);
+		
+		fclose($handle);
+		
+		SysMsg::add(array(
+			"title"=>"Downloaded XE currency XML file",
+			"category"=>"CurrencyUpdate",
+			"from"=>"Currency",
+			"message"=>$file_str
+		));
+		
+	}
+	
+	public function parse_xe_file() {
+		
+		$str = file_get_contents("/tmp/currency.xml");
+		
+		$xml = simplexml_load_string($str);
+		
+		foreach($xml->currency as $v) {
+			
+			$this->create();
+			
+			$this->id = strtoupper($v->csymbol);
+			
+			$this->save(array(
+				"rate"=>$v->crate,
+				"inverse"=>$v->cinverse
+			));
+
+		}
+	
+	}
 	
 	
 	public function convertCurrency($to = "USD",$from = "USD", $amount = 0.00) {
