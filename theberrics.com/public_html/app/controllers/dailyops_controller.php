@@ -120,7 +120,13 @@ class DailyopsController extends LocalAppController {
 			//$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));
 			
 			//let's get the next post day based on a post that is in scope
-			$dateCond = $this->Dailyop->getNextDate($dateIn,true);
+			$dateCond = "DATE(Dailyop.publish_date) = ".$this->Dailyop->getNextDate($dateIn,true);
+			
+			if(date("Y-m-d")=="2012-06-11") {
+				
+				$dateCond = "DATE(Dailyop.publish_date) BETWEEN '2012-06-09' AND '2012-06-10'";
+				
+			}
 			
 			$yd = $this->Dailyop->find("all",array(
 				
@@ -132,7 +138,7 @@ class DailyopsController extends LocalAppController {
 					),
 					"order"=>array("Dailyop.publish_date"=>"DESC"),
 					"conditions"=>array(
-						"DATE(Dailyop.publish_date) = '{$dateCond}'",
+						$dateCond,
 						"Dailyop.publish_date < NOW()",
 						"Dailyop.active"=>1,
 						"Dailyop.hidden"=>0
