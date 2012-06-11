@@ -99,7 +99,7 @@ class CanteenShippingRecord extends AppModel {
 	
 	private $ljg_ftp = array(
 		"ip"=>"64.206.163.163",
-		"login"=>"CTWEB",
+		"login"=>"ctweb",
 		"pass"=>"c@nt33N"
 	);
 	
