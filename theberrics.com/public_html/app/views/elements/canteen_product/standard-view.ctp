@@ -6,7 +6,7 @@ $this->set("title_for_layout",$product['CanteenProduct']['name']." - ".$product[
 
 $this->set("meta_d",$product['CanteenProduct']['description']);
 
-$in_stock = true;
+$in_stock = false;
 
 ?>
 <script>
@@ -81,7 +81,7 @@ function initOptionClick() {
 
 	if($("#product-standard-view .product-options .option").length<=1) {
 
-		$("#product-standard-view .product-options").hide();
+		//$("#product-standard-view .product-options").hide();
 		
 	}
 	
@@ -225,7 +225,7 @@ function initOptionClick() {
 						<div class='submit-button'>
 							<?php 
 								
-								if(count(Set::classicExtract($product,"ChildCanteenProduct"))>0):
+								if(count(Set::extract("/ChildCanteenProduct/CanteenProductInventory/CanteenInventoryRecord[quantity>0]",$product))>0):
 								echo $this->Form->submit("Add to Cart"); 
 								else:
 							?>
