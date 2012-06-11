@@ -774,6 +774,8 @@ class CanteenShippingRecord extends AppModel {
 			
 			ftp_chdir($conn,"r");
 			
+			ftp_pasv($conn,true);
+			
 			ftp_put($conn,$record['LjgFile']['file_name'],"/tmp/".$record['LjgFile']['file_name'],FTP_BINARY);
 			
 			ftp_close($conn);
