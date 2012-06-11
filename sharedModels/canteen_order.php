@@ -298,17 +298,7 @@ class CanteenOrder extends AppModel {
 		return $CanteenOrder;
 		
 	}
-	
-	public function saveNewOrder($CanteenOrder) {
-		
-		
-	}
-	
-	public function updateOrder($CanteenOrder) {
-		
-		
-		
-	}
+
 	
 	/**
 	 * 
@@ -320,8 +310,18 @@ class CanteenOrder extends AppModel {
 		
 		$gateway_id = CanteenConfig::get("gateway_account_id");
 		
+		$possible_fraud = false;
 		
 		$trans = GatewayTransactionVO::formatCanteenOrder($CanteenOrder);
+		//check geo country
+		
+		if($_SERVER['GEOIP_COUNTRY_CODE']!=$CanteenOrder['BillingAddress']['country_code']) {
+			
+			$method = "auth";
+			
+			$possible_fraud = true;
+			
+		}
 		
 		$res = $this->GatewayTransaction->GatewayAccount->run($method,$gateway_id,$trans);
 		
@@ -366,6 +366,16 @@ class CanteenOrder extends AppModel {
 			
 			//queue order email
 			$this->EmailMessage->canteenOrderConfirmation($CanteenOrder);
+			
+			if($possible_fraud) {
+				
+				$this->CanteenOrderNote->addHiddenNote(array(
+					"canteen_order_id"=>$CanteenOrder['CanteenOrder']['id'],
+					"message"=>"Possible Fraud. Confirm Order With Customer"
+				));
+				
+			}
+			
 		}
 		
 		return $res;
@@ -535,6 +545,18 @@ class CanteenOrder extends AppModel {
 		}
 		
 		return array_merge($result,array("Transactions"=>$transTotals,"LineItems"=>$lineTotals));
+		
+	}
+	
+	public function updateOrderStatus($canteen_order_id=false,$status="") {
+		
+		$this->create();
+		
+		$this->id = $canteen_order_id;
+		
+		$this->save(array(
+			"order_status"=>$status
+		));
 		
 	}
 	

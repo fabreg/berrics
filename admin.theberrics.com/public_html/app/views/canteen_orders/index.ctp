@@ -83,7 +83,7 @@ border-radius: 10px;
 			<th>Shipments</th>
 			<th>ShipTo</th>
 			<th>BillTo</th>
-			<th>BalanceTest</th>
+			
 			<th><?php echo $this->Paginator->sort("currency_id"); ?></th>
 			<th><?php echo $this->Paginator->sort("grand_total"); ?></th>
 			
@@ -123,13 +123,7 @@ border-radius: 10px;
 				(<?php echo $o['BillingAddress']['country_code']; ?>)<br />
 				
 			</td>
-			<td>
-				<?php 
-					if(!$o['balance']['transaction_test']) echo "<div>{$o['balance']['transaction_msg']}</div>";
-					if(!$o['balance']['line_item_test']) echo "<div>Line Item Totals Do Not Match Order SubTotal+TaxTotal</div>";
-					if(!$o['balance']['transaction_test']) echo "<div>Transaction Totals Do Not Match Order Totals</div>";
-				?>
-			</td>
+
 			<td width='1%' nowrap align='center'><?php echo $o['CanteenOrder']['currency_id']; ?></td>
 			<td width='1%' nowrap align='center'><?php echo number_format($o['CanteenOrder']['grand_total'],2); ?></td>
 			

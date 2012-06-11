@@ -229,7 +229,7 @@ function initOptionClick() {
 								echo $this->Form->submit("Add to Cart"); 
 								else:
 							?>
-							<span style='color:red;'>NEED OUT OF STOCK BUTTON!</span>
+							<span style='color:red;'>OUT OF STOCK</span>
 							<?php endif; ?>
 						</div>
 						<div class='zuckerberg-shoutout'>

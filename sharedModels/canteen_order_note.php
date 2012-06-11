@@ -44,6 +44,16 @@ class CanteenOrderNote extends AppModel {
 		)
 	);
 	
+	public function addHiddenNote($data) {
+		
+		$data['hidden'] = 1;
+		
+		$this->create();
+		
+		$this->save($data);
+		
+	}
+	
 	public function addNote($data) {
 		
 		$this->create();

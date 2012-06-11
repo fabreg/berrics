@@ -169,7 +169,7 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$orders = $this->Paginate("CanteenOrder");
 		
-		foreach($orders as $k=>$v) $orders[$k]['balance'] = $this->CanteenOrder->validateOrderBalance($v);
+		//foreach($orders as $k=>$v) $orders[$k]['balance'] = $this->CanteenOrder->validateOrderBalance($v);
 		
 		$this->set(compact("orders"));
 		
@@ -292,6 +292,51 @@ class CanteenOrdersController extends LocalAppController {
 		$order = $this->CanteenOrder->returnAdminOrder($transaction['GatewayTransaction']['foreign_key']);
 		
 		$this->set(compact("order","transaction"));
+		
+	}
+	
+	public function capture_order($transaction_id) {
+		
+		//get the transaction
+		$this->loadModel("GatewayTransaction");
+		
+		$trans = $this->GatewayTransaction->find("first",array(
+			"conditions"=>array(
+				"GatewayTransaction.id"=>$transaction_id
+			),
+			"contain"=>array()
+		));
+		
+		
+		if(!empty($trans['GatewayTransaction']['id'])) {
+			
+			$res = $this->GatewayTransaction->captureTransaction($trans['GatewayTransaction']);
+			
+			if($res) {
+				
+				$this->CanteenOrder->updateOrderStatus($trans['GatewayTransaction']['foreign_key'],"approved");
+				
+				$this->CanteenOrder->processOrderInventory($trans['GatewayTransaction']['foreign_key']);
+				$this->CanteenOrder->CanteenShippingRecord->createShipment($trans['GatewayTransaction']['foreign_key']);
+				
+				$this->Session->setFlash("Order capture successfully");
+				
+				
+				
+			} else {
+				
+				$this->Session->setFlash("Declined");
+				
+			}
+			
+			return $this->redirect("/canteen_orders/edit/".$trans['GatewayTransaction']['foreign_key']);
+			
+		} else {
+			
+			die("No transaction found");
+			
+		}
+		
 		
 	}
 	

@@ -288,9 +288,17 @@ border-radius: 10px 10px 0px 0px;
 									switch(strtoupper($t['method'])) {
 										
 										case "CHARGE":
+										case "CAPTURE":
 											echo "<a href='/canteen_orders/refund_transaction/{$t['id']}'>Refund</a>";
 											echo "<a>Charge</a>";
 										break;
+										case "AUTH":
+											if($t['amount']>0) {
+												
+												echo "<a href='/canteen_orders/capture_order/{$t['id']}'>CAPTURE</a>";
+												
+											}
+											
 									}
 									
 								}
