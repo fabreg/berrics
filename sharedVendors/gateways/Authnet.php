@@ -195,8 +195,8 @@ class Authnet extends GatewayBase {
 			"profileTransAuthCapture"=>array(
 		
 				"amount"=>$this->get("transaction.amount"),
-				"customerProfileId"=>$this->get("user_billing_profile.acc_op1"),
-				"customerPaymentProfileId"=>$this->get("user_billing_profile.acc_op2"),
+				"customerProfileId"=>$this->get("transaction.acc_op1"),
+				"customerPaymentProfileId"=>$this->get("transaction.acc_op2"),
 				"order"=>array(
 					"invoiceNumber"=>$this->get("transaction.foreign_key"),
 					"description"=>$this->get("transaction.model").":".$this->get("transaction.foreign_key")

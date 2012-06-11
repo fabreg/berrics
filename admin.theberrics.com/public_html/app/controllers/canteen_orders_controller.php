@@ -278,6 +278,58 @@ class CanteenOrdersController extends LocalAppController {
 
 	}
 	
+	public function remove_item($child_id) {
+		
+		$item = $this->CanteenOrder->CanteenOrderItem->find("first",array(
+			"conditions"=>array(
+				"CanteenOrderItem.id"=>$child_id
+			),
+			"contain"=>array()
+		));
+		
+		$this->CanteenOrder->CanteenOrderItem->delete($item['CanteenOrderItem']['id']);
+		sleep(2);
+		//check to see if the parent row still has items, if it doesn't then fuckin delte it
+		
+		$line = $this->CanteenOrder->CanteenOrderItem->find("first",array(
+			"conditions"=>array(
+				"CanteenOrderItem.id"=>$item['CanteenOrderItem']['parent_id']
+			),
+			"contain"=>array(
+				"ChildCanteenOrderItem"
+			)
+		));
+		
+		if(count($line['ChildCanteenOrderItem'])<=0) {
+			
+			$this->CanteenOrder->CanteenOrderItem->delete($item['CanteenOrderItem']['id']);
+			
+		} else {
+			
+			//recalc the line total
+			
+			$new_line_total = 0;
+			
+			foreach($line['ChildCanteenOrderItem'] as $v) {
+				
+				$new_line_total += $v['sub_total'];
+				
+			}
+			
+			$this->CanteenOrder->CanteenOrderItem->create();
+			
+			$this->CanteenOrder->CanteenOrderItem->id = $line['CanteenOrderItem']['id'];
+			
+			$this->CanteenOrder->CanteenOrderItem->save(array(
+				"sub_total"=>$new_line_total
+			));
+			
+		}
+		
+		return $this->redirect("/canteen_orders/edit/".$line['CanteenOrderItem']['canteen_order_id']);
+		
+	}
+	
 	public function refund_transaction($trans_id) {
 		
 		$this->loadModel("GatewayTransaction");
@@ -362,7 +414,12 @@ class CanteenOrdersController extends LocalAppController {
 				
 				case "CHARGE":
 				case "CAPTURE":
-					$this->CanteenOrder->GatewayTransaction->refundTransaction($t);
+					$res = $this->CanteenOrder->GatewayTransaction->refundTransaction($t);
+					if(!$res) {
+						
+						$this->CanteenOrder->GatewayTransaction->voidTransaction($t);
+						
+					}
 					break;
 				case "AUTH":
 					break;
@@ -391,6 +448,8 @@ class CanteenOrdersController extends LocalAppController {
 			"message"=>"Order has been canceled"
 		
 		));
+		
+		return $this->redirect("/canteen_orders/edit/".$order_id);
 		
 	}
 	

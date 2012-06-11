@@ -1226,10 +1226,13 @@ class TesterController extends LocalAppController {
 	public function test_inv() {
 		
 	
-		$this->loadModel("CanteenInventoryRecord");
+		$this->loadModel("CanteenShippingRecord");
 		
-		$this->CanteenInventoryRecord->import_ljg_inventory();
+		$file_id = $this->CanteenShippingRecord->ljg_process_pending();
 		
+		$this->CanteenShippingRecord->ljg_create_orders_file($file_id);
+		
+		$$this->CanteenShippingRecord->ljg_ftp_file($file_id);
 		
 	}
 	

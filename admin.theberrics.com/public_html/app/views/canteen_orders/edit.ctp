@@ -152,7 +152,7 @@ border-radius: 10px 10px 0px 0px;
 	<fieldset>
 		<legend>General Info</legend>
 		<div>
-			<div style='float:left; width:35%;'>
+			<div style='float:left; width:30%;'>
 				<table cellspacing='0' class='big-table'>
 					<tr>
 						<td width='30%' align='right'>Order Status</td>
@@ -202,7 +202,7 @@ border-radius: 10px 10px 0px 0px;
 					</tr>
 				</table>
 			</div>
-			<div style='float:left; width:62%;'>
+			<div style='float:left; width:68%;'>
 				<ul class='actions'>
 					<li>
 						<a href='/canteen_orders/cancel_order/<?php echo $this->data['CanteenOrder']['id']; ?>' onclick='return confirm("Are you sure you want to cancel this order?"); '>
@@ -282,6 +282,7 @@ border-radius: 10px 10px 0px 0px;
 							<?php echo number_format($t['amount'],2); ?>
 						</td>
 						<td class='actions'>
+							<a title='<?php echo $t['gateway_response']; ?>'>MSG</a>
 							<?php 
 								if($t['approved']) {
 									
@@ -355,6 +356,8 @@ border-radius: 10px 10px 0px 0px;
 								<?php echo $child['title']; ?> <?php if(!empty($child['sub_title'])) echo " <br /> ".$child['sub_title']; ?>
 								<br />
 								Price: <?php echo number_format($child['sub_total'],2); ?>
+								<br />
+								<a href='/canteen_orders/remove_item/<?php echo $child['id']; ?>' onclick='return confirm("Are you sure you want to remove this item?"); '>Remove Item</a>
 							</td>
 							<td>
 							<?php if(isset($child['CanteenInventoryRecord']['id'])): ?>
@@ -465,12 +468,6 @@ border-radius: 10px 10px 0px 0px;
 			</div>
 		</fieldset>
 		
-		<fieldset>
-			<legend>Transactions</legend>
-			<div>
-				
-			</div>
-		</fieldset>
 		<fieldset>
 			<legend>Order Notes</legend>
 			<?php 

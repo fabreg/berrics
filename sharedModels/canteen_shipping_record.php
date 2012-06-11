@@ -97,6 +97,11 @@ class CanteenShippingRecord extends AppModel {
 			'MailingListStatus'
 	);
 	
+	private $ljg_ftp = array(
+		"ip"=>"64.206.163.163",
+		"login"=>"CTWEB",
+		"pass"=>"c@nt33N"
+	);
 	
 	public function save($data = array()) {
 		
@@ -598,7 +603,7 @@ class CanteenShippingRecord extends AppModel {
 	}
 	
 	
-	public function process_lajolla_record($id = false) {
+	public function ljg_process_record($id = false) {
 		
 		$schema = $this->lajolla_schema;
 		
@@ -621,7 +626,7 @@ class CanteenShippingRecord extends AppModel {
 						$shipment[$k][$v] = $record['CanteenShippingRecord']['id'];
 						break;
 					case "OrderDate":
-						$shipment[$k][$v] = $record['CanteenShippingRecord']['created'];
+						$shipment[$k][$v] = date("Y-m-d",strtotime($record['CanteenShippingRecord']['created']));
 						break;
 					case "Line":
 						$shipment[$k][$v] = $item['id'];
@@ -683,7 +688,7 @@ class CanteenShippingRecord extends AppModel {
 		
 	}
 	
-	public function process_pending_lajolla() {
+	public function ljg_process_pending() {
 		
 		$file = "";
 		
@@ -698,7 +703,7 @@ class CanteenShippingRecord extends AppModel {
 		
 		foreach($ids as $v) {
 			
-			$lines = $this->process_lajolla_record($v['CanteenShippingRecord']['id']);
+			$lines = $this->ljg_process_record($v['CanteenShippingRecord']['id']);
 			
 			if(!empty($lines)) {
 				
@@ -717,6 +722,77 @@ class CanteenShippingRecord extends AppModel {
 		$ljg_file->save(array(
 			"data"=>$file
 		));
+		
+		return $ljg_file->id;
+		
+	}
+	
+	public function ljg_create_orders_file($id) {
+		
+		$ljg_file = ClassRegistry::init("LjgFile");
+		
+		$record = $ljg_file->findById($id);
+		
+		$file_name = "OrderExport_".date("YmdHis").".txt";
+		
+		$fhandle = fopen("/tmp/".$file_name,"w");
+		
+		if(!fwrite($fhandle,$record['LjgFile']['data'])) {
+
+			SysMsg::add(array(
+				"category"=>"LjgOrderFile",
+				"from"=>"CanteenOrderItem",
+				"message"=>"Fucking Failed",
+			));
+
+			return false;
+			
+		} 
+		
+		$ljg_file->create();
+		
+		$ljg_file->id = $id;
+		
+		$ljg_file->save(array(
+			"processed"=>1,
+			"file_name"=>$file_name
+		));
+		
+		return $file_name;
+		
+	}
+	
+	public function ljg_ftp_file($id) {
+		
+		$ljg_file = ClassRegistry::init("LjgFile");
+		
+		$record = $ljg_file->findById($id);
+		
+		$conn = ftp_connect($this->ljg_ftp['ip']);
+		
+		if(ftp_login($conn,$this->ljg_ftp['login'],$this->ljg_ftp['pass'])) {
+			
+			ftp_put($conn,$record['LjgFile']['file_name'],"/tmp/".$record['LjgFile']['file_name'],FTP_BINARY);
+			
+			ftp_close($conn);
+			
+			SysMsg::add(array(
+				"category"=>"LjgOrderFile",
+				"from"=>"CanteenShippingRecord",
+				"message"=>"Uploaded: ".$record['LjgFile']['file_name'],
+				"title"=>"Uploaded: ".$record['LjgFile']['file_name']
+			));
+			
+		} else {
+			
+			SysMsg::add(array(
+				"category"=>"LjgOrderFile",
+				"from"=>"CanteenShippingRecord",
+				"message"=>"Error Connecting to FTP",
+				"title"=>"Error Connecting to FTP"
+			));
+			
+		}
 		
 	}
 	
