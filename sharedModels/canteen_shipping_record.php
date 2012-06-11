@@ -772,7 +772,7 @@ class CanteenShippingRecord extends AppModel {
 		
 		if(ftp_login($conn,$this->ljg_ftp['login'],$this->ljg_ftp['pass'])) {
 			
-			ftp_put($conn,$record['LjgFile']['file_name'],"/tmp/".$record['LjgFile']['file_name'],FTP_BINARY);
+			ftp_put($conn,$record['LjgFile']['file_name'],"/tmp/".$record['LjgFile']['file_name'],FTP_ASCII);
 			
 			ftp_close($conn);
 			
