@@ -11,6 +11,12 @@ $(document).ready(function() {
 		
 	});
 
+	$("#RefundIncludeShipping,#RefundIncludeSalesTax").change(function() { 
+
+		calcRefund();
+		
+	});
+
 	
 });
 
@@ -35,7 +41,7 @@ function calcRefund() {
 	} else {
 
 		var tax = 0;
-		
+		var shipping = 0;
 		if($("#RefundIncludeSalesTax").attr("checked")) {
 
 			var rate = (tax_rate/100);
@@ -53,14 +59,14 @@ function calcRefund() {
 			
 		}
 
-		if($("#RefundRefundShipping").attr("checked")) {
+		if($("#RefundIncludeShipping").attr("checked")) {
 
-			
+			shipping = shipping_total;
 			
 		}
 		
 		$("#RefundRefundTotal").val(val);
-		$('.amount-to-refund').html(Number(val)+Number(tax));
+		$('.amount-to-refund').html(Number(val)+Number(tax)+Number(shipping));
 		
 	}
 	
@@ -79,18 +85,17 @@ function calcRefund() {
 		<fieldset>
 			<legend>Enter Details</legend>
 			<?php 
-				echo $this->Form->create("Refund",array());
+				echo $this->Form->create("Refund",array("url"=>$this->here));
 				
 				echo $this->Form->input("include_sales_tax",array("type"=>"checkbox","checked"=>true));
 				
-				echo $this->Form->input("refund_shipping",array("type"=>"checkbox"));
+				echo $this->Form->input("include_shipping",array("type"=>"checkbox"));
 				echo $this->Form->input("amount",array("label"=>"Amount (* Cannot exceed sub total )"));
 			?>
 			<div  style='color:red; font-weight:bold; font-size:22px;'>
 			Refund Total: <span class='amount-to-refund'></span>
 			</div>
 			<?php 
-				echo $this->Form->input("refund_tax",array("type"=>"hidden"));
 				echo $this->Form->input("refund_total",array("type"=>"hidden"));
 				echo $this->Form->input("transaction_id",array("type"=>"hidden","value"=>$transaction['GatewayTransaction']['id']));
 				echo $this->Form->end("Process Refund");

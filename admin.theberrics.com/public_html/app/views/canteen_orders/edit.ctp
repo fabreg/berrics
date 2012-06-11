@@ -209,11 +209,7 @@ border-radius: 10px 10px 0px 0px;
 							Cancel Order
 						</a>
 					</li>
-					<li>
-						<a href='/canteen_orders/credit_order/<?php echo $this->data['CanteenOrder']['id']; ?>'>
-							Credit Shipping
-						</a>
-					</li>
+					
 				</ul>
 				<div style='clear:both;'></div>
 				<h3>Transactions</h3>
@@ -323,13 +319,10 @@ border-radius: 10px 10px 0px 0px;
 							Add Line Item
 						</a>
 					</li>
-					<li>
-						<a href='/canteen_orders/credit_order/<?php echo $this->data['CanteenOrder']['id']; ?>'>
-							Credit Order
-						</a>
-					</li>
+				
 				</ul>
 			</div>
+			<div  style='clear:both;'></div>
 			<div>
 				<table cellspacing='0'>
 					<tr>

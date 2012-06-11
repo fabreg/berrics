@@ -56,6 +56,11 @@ function setBatchCommand(cmd) {
 				<?php 
 					echo $this->Form->create("CanteenShippingRecord",array("url"=>"/canteen_shipping_records/search"));
 				?>
+				<div>
+					<?php 
+						echo $this->Form->input("id",array("label"=>"Shipment ID","type"=>"text"));
+					?>
+				</div>
 				<div style='float:left;'>
 					<?php 
 						echo $this->Form->input("warehouse_id",array("options"=>$whSelect,"empty"=>true));

@@ -345,6 +345,58 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$this->set(compact("order","transaction"));
 		
+		
+		if(count($this->data)>0) {
+			
+			$amount = $this->data['Refund']['amount'];
+			
+			$tax = 0;
+			
+			$shipping = 0;
+			
+			if($this->data['Refund']['include_sales_tax'] == 1) {
+				
+				$rate = $order['CanteenOrder']['tax_rate'];
+				
+				$tax = ($rate/100)*$amount;
+				
+			}
+			
+			if($this->data['Refund']['include_shipping']) {
+				
+				$shipping = $order['CanteenOrder']['shipping_total'];
+				
+			}
+			
+			$amount_to_refund = ($amount+$tax+$shipping);
+			
+			$res = $this->GatewayTransaction->refundTransaction($transaction['GatewayTransaction'],$amount_to_refund);
+			
+			if($res) {
+				
+				$this->CanteenOrder->create();
+				
+				$this->CanteenOrder->id = $order['CanteenOrder']['id'];
+				
+				$this->CanteenOrder->save(array(
+					"sub_total"=>$order['CanteenOrder']['sub_total']-$amount,
+					"tax_total"=>$order['CanteenOrder']['tax_total'] - $tax,
+					"shipping_total"=>$order['CanteenOrder']['shipping_total']-$shipping,
+					"grand_total"=>$order['CanteenOrder']['grand_total'] - $amount_to_refund
+				));
+				
+				$this->Session->setFlash("Refund was successful");
+				
+			} else {
+				
+				$this->Session->setFlash("There was an error refunding the transaction");
+				
+			}
+			
+			return $this->redirect("/canteen_orders/edit/".$order['CanteenOrder']['id']);
+			
+		}
+		
 	}
 	
 	public function capture_order($transaction_id) {

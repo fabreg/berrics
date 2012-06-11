@@ -53,7 +53,7 @@ class DFPAPI {
 			  $user->LogDefaults();
 			
 			  // Get the CompanyService.
-			  $companyService = $user->GetCompanyService('v201104');
+			  $companyService = $user->GetCompanyService('v201108');
 			
 			  // Set defaults for page and statement.
 			  $page = new CompanyPage();
@@ -126,7 +126,7 @@ class DFPAPI {
 			  $user->LogDefaults();
 			
 			  // Get the OrderService.
-			  $orderService = $user->GetOrderService('v201104');
+			  $orderService = $user->GetOrderService('v201108');
 			
 			  // Set the ID of the advertiser (company) to get orders for.
 			  $advertiserId = (float) $id;
@@ -197,7 +197,7 @@ class DFPAPI {
 			  $user->LogDefaults();
 			
 			  // Get the ReportService.
-			  $reportService = $user->GetReportService('v201104');
+			  $reportService = $user->GetReportService('v201108');
 			
 			  // Create report job.
 			  $reportJob = new ReportJob();
@@ -240,7 +240,7 @@ class DFPAPI {
 		  $user->LogDefaults();
 		
 		  // Get the ReportService.
-		  $reportService = $user->GetReportService('v201104');
+		  $reportService = $user->GetReportService('v201108');
 		
 		  // Set the ID of the completed report.
 		  $reportJobId = (float) $id;
@@ -296,7 +296,7 @@ class DFPAPI {
 				  $user->LogDefaults();
 				
 				  // Get the CreativeService.
-				  $creativeService = $user->GetCreativeService('v201104');
+				  $creativeService = $user->GetCreativeService('v201108');
 				
 				  // Set the ID of the creative to get.
 				  $creativeId = (float) $id;
@@ -356,7 +356,7 @@ class DFPAPI {
 		  // Set the ID of the completed report.
 		  $reportJobId = (float) $id;
 		  
-		  $reportService = $user->GetReportService('v201104');
+		  $reportService = $user->GetReportService('v201108');
 		
 		  $reportJob = $reportService->getReportJob($reportJobId);
 		  

@@ -620,7 +620,7 @@ class CanteenShippingRecord extends AppModel {
 				switch($v) {
 					
 					case "Company Number":
-						$shipment[$k][$v] = 15;
+						$shipment[$k][$v] = '15';
 						break;
 					case "OrderNumber":
 						$shipment[$k][$v] = $record['CanteenShippingRecord']['id'];
@@ -733,7 +733,7 @@ class CanteenShippingRecord extends AppModel {
 		
 		$record = $ljg_file->findById($id);
 		
-		$file_name = "OrderExport_".date("YmdHis").".txt";
+		$file_name = "15_CTWEB_order_".time().".txt";
 		
 		$fhandle = fopen("/tmp/".$file_name,"w");
 		
@@ -772,7 +772,9 @@ class CanteenShippingRecord extends AppModel {
 		
 		if(ftp_login($conn,$this->ljg_ftp['login'],$this->ljg_ftp['pass'])) {
 			
-			ftp_put($conn,$record['LjgFile']['file_name'],"/tmp/".$record['LjgFile']['file_name'],FTP_ASCII);
+			ftp_chdir($conn,"r");
+			
+			ftp_put($conn,$record['LjgFile']['file_name'],"/tmp/".$record['LjgFile']['file_name'],FTP_BINARY);
 			
 			ftp_close($conn);
 			

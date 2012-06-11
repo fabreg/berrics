@@ -772,7 +772,9 @@ class CanteenProductsController extends LocalAppController {
 				$this->CanteenInventoryRecord->save(array(
 					"name"=>$record_name,
 					"warehouse_id"=>2,
-					"foreign_key"=>$upc
+					"foreign_key"=>$upc,
+					"quantity"=>0,
+					"allocated"=>0
 				));
 				
 				$record_id = $this->CanteenInventoryRecord->id;

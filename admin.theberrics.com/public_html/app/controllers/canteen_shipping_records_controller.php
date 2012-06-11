@@ -80,9 +80,11 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 		if(isset($this->params['named']['s'])) {
 			
-			if(isset($this->params['named']['CanteenShippingRecord.shipping_status'])) {
+			if(isset($this->params['named']['CanteenShippingRecord.id'])) {
 				
-				$this->paginate['CanteenShippingRecord']['conditions']['CanteenShippingRecord.shipping_status'] = $this->params['named']['CanteenShippingRecord.shipping_status'];
+				$this->paginate['CanteenShippingRecord']['conditions']['CanteenShippingRecord.id LIKE'] = "%".str_replace(" ","%",$this->params['named']['CanteenShippingRecord.id'])."%";
+				
+				$this->data['CanteenShippingRecord']['id'] = $this->params['named']['CanteenShippingRecord.id'];
 				
 			}
 			

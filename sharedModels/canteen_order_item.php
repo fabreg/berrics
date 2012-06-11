@@ -273,7 +273,7 @@ class CanteenOrderItem extends AppModel {
 		if(!empty($item['CanteenOrderItem']['canteen_inventory_record_id'])) {
 			
 			$this->query(
-				"UPDATE canteen_inventory_records SET allocated = (allocated-{$qty_on_order}) WHERE id = '{$item['CanteenOrderItem']['canteen_inventory_record_id']}'"
+				"UPDATE canteen_inventory_records SET allocated = ((allocated+0)-{$qty_on_order}) WHERE id = '{$item['CanteenOrderItem']['canteen_inventory_record_id']}'"
 			);
 			
 			$this->create();

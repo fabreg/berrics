@@ -35,7 +35,9 @@ unset($csr);
 								
 							}
 						break;
-						
+						case "UPS":
+							echo "<a href='http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums={$record['CanteenShippingRecord']['tracking_number']}'>UPS: {$record['CanteenShippingRecord']['tracking_number']}</a>";
+						break;
 					}
 				
 				?>	
