@@ -91,7 +91,8 @@ border-radius: 10px 10px 0px 0px;
 }
 </style>
 <div class='form index'>
-<h2>Editing Product ID: <?php echo $this->data['CanteenProduct']['id']; ?></h2>
+<h2><?php echo $this->data['CanteenProduct']['name']; ?> - <?php echo $this->data['CanteenProduct']['sub_title']; ?></h2>
+<h3>Editing Product ID: <?php echo $this->data['CanteenProduct']['id']; ?></h3>
 <?php 
 	echo $this->Form->create("CanteenProduct",array("enctype"=>"multipart/form-data","id"=>"CanteenProductEditForm"));
 	echo $this->Form->input("id");
