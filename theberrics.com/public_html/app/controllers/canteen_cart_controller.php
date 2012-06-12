@@ -7,8 +7,14 @@ class CanteenCartController extends CanteenAppController {
 	
 	public function beforeFilter() {
 		
-		parent::beforeFilter();
+		if($this->params['action'] == "index") {
+			
+			$this->enforce_ssl = true;
+			
+		}
 		
+		parent::beforeFilter();
+
 		$this->initPermissions();
 		
 		$this->Auth->allow("*");

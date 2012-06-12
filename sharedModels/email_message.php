@@ -36,7 +36,8 @@ class EmailMessage extends AppModel {
 				"serialized_data"=>serialize($args[1]),
 				"to"=>$args[1]['CanteenOrder']['email'],
 				"subject"=>$subject,
-				"app_name"=>"Canteen"
+				"app_name"=>"Canteen",
+				"processed"=>0
 			);
 			
 			$this->create();
@@ -69,7 +70,8 @@ class EmailMessage extends AppModel {
 			"app_name"=>"Canteen",
 			"serialized_data"=>serialize(array("CanteenOrder"=>$CanteenOrder['CanteenOrder'])),
 			"model"=>"CanteenOrder",
-			"foreign_key"=>$CanteenOrder['CanteenOrder']['id']
+			"foreign_key"=>$CanteenOrder['CanteenOrder']['id'],
+			"processed"=>0
 		));
 	}
 	

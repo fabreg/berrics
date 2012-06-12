@@ -8,8 +8,8 @@ class AccountController extends LocalAppController {
 	public $uses = array();
 	
 	public function beforeFilter() {
-		
-		$this->enforceSSL();
+
+		$this->enforce_ssl = true;
 		
 		parent::beforeFilter();
 		

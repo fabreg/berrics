@@ -16,6 +16,8 @@ class LocalAppController extends AppController {
 	
 	public $theme = "website";
 	
+	public $enforce_ssl = false;
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
@@ -29,6 +31,17 @@ class LocalAppController extends AppController {
 		$this->setFeaturedPost();
 		
 		$this->getUserCurrency();
+		
+		if($this->enforce_ssl && !$_SERVER['HTTPS']) {
+			
+			return $this->enforceSSL();
+			
+		} else {
+			
+			$this->releaseSSL();
+			
+		}
+		
 		
 	}
 	
@@ -107,6 +120,43 @@ class LocalAppController extends AppController {
 		return $def;
 		
 	}
+	
+	protected function enforceSSL() {
+		
+		/*
+		 * 
+		 * if(
+			(!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) && !preg_match('/(dev)/',$_SERVER['SERVER_NAME'])) || 
+			(preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR']))
+			) 
+		 * 
+		 */
+		
+		if(
+			!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) || 
+			preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR'])
+			) 
+		{
+			
+			return $this->redirect("https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+			
+		}
+		
+	}
+	
+	protected function releaseSSL() {
+		
+		if(
+			preg_match('/^(https)/',$_SERVER['SCRIPT_URI'])
+			) 
+		{
+			
+			return $this->redirect("http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+			
+		}
+		
+	}
+	
 	
 }
 
