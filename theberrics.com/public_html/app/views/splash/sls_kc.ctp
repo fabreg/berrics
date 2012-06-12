@@ -7,7 +7,7 @@ $this->set(compact("title_for_layout"));
 $today = date("d");
 
 $qual = 27;
-$finals = 19;
+$finals = 15;
 
 $days_to_qual = $qual - $today;
 $days_to_finals = $finals - $today;
@@ -36,7 +36,7 @@ if($days_to_finals >=1) {
 
 body {
 	background-color:#000;
-	background-image:url(/img/splash/sls-kc/bg.jpg);
+	background-image:url(/img/splash/sls-ca/bg.jpg);
 }
 #main-thing {
 
@@ -74,16 +74,16 @@ body {
 <div id='main-thing'>
 	<div class='top-content'>
 		<div class='days'><?php echo $days_to_finals; ?></div>
-		<img border='0' src='/img/splash/sls-kc/top.jpg' />
+		<img border='0' src='/img/splash/sls-ca/top.jpg' />
 	</div>
 	<div>
 		<a href='http://streetleague.com' target='_blank'>
-			<img border='0' src='/img/splash/sls-kc/sls-link.jpg' />
+			<img border='0' src='/img/splash/sls-ca/link.jpg' />
 		</a>
 	</div>
 		<div>
 		<a href='/dailyops' >
-			<img border='0' src='/img/splash/sls-kc/enter-link.jpg' />
+			<img border='0' src='/img/splash/sls-ca/enter.jpg' />
 		</a>
 	</div>
 </div>
