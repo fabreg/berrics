@@ -98,6 +98,8 @@ class EmailMessage extends AppModel {
 		
 		unset($email['EmailMessage']['id'],$email['EmailMessage']['processed'],$email['EmailMessage']['created'],$email['EmailMessage']['modified']);
 		
+		$email['EmailMessage']['processed'] = 0;
+		
 		$this->create();
 		
 		return $this->save($email['EmailMessage']);
@@ -122,6 +124,7 @@ class EmailMessage extends AppModel {
 		$d['template'] = "canteen_order_note_update";
 		$d['model'] = "CanteenOrder";
 		$d['foreign_key'] = $canteen_order_id;
+		$d['processed'] = 0;
 		
 		$d['serialized_data'] = serialize(array(
 			"reply_id"=>$reply_id,
@@ -149,6 +152,7 @@ class EmailMessage extends AppModel {
 		$d['template'] = "canteen_shipping_confirmation";
 		$d['model'] = "CanteenOrder";
 		$d['foreign_key'] = $record['CanteenShippingRecord']['canteen_order_id'];
+		$d['processed'] = 0;
 		
 		$d['serialized_data'] = serialize(array(
 			"canteen_shipping_record_id"=>$canteen_shipping_record_id
