@@ -622,11 +622,23 @@ class CanteenShippingRecord extends AppModel {
 					case "Company Number":
 						$shipment[$k][$v] = '15';
 						break;
+					case "FCCustomerID":
+						$shipment[$k][$v] = 'CTWEB';
+						break;
+					case "PONumber":
+						$shipment[$k][$v] = $record['CanteenShippingRecord']['canteen_order_id'];
+						break;
+					case "ShipDate":
+						$shipment[$k][$v] = date("m/d/Y");
+						break;
+					case "CancelDate":
+						$shipment[$k][$v] = date("m/d/Y",strtotime("+5 Days"));
+						break;
 					case "OrderNumber":
 						$shipment[$k][$v] = $record['CanteenShippingRecord']['id'];
 						break;
 					case "OrderDate":
-						$shipment[$k][$v] = date("Y-m-d",strtotime($record['CanteenShippingRecord']['created']));
+						$shipment[$k][$v] = date("m/d/Y",strtotime($record['CanteenShippingRecord']['created']));
 						break;
 					case "Line":
 						$shipment[$k][$v] = $item['id'];

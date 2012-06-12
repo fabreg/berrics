@@ -48,6 +48,16 @@ function openDetails(id,ele) {
 		
 			echo $this->Form->create("CanteenProduct",array("url"=>array("action"=>"filter")));
 		?>
+		<div style='width:450px;'>
+			<?php 
+				echo $this->Form->input("name");
+			?>
+		</div>
+		<div style='width:450px;'>
+			<?php 
+				echo $this->Form->input("sub_title");
+			?>
+		</div>
 		<div style='float:left;'>
 			<?php echo $this->Form->input("canteen_category_id",array("options"=>$canteenCategories,"empty"=>true)); ?>
 		</div>

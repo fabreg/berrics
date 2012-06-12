@@ -1232,7 +1232,7 @@ class TesterController extends LocalAppController {
 		
 		$this->CanteenShippingRecord->ljg_create_orders_file($file_id);
 		
-		$this->CanteenShippingRecord->ljg_ftp_file($file_id);
+		//$this->CanteenShippingRecord->ljg_ftp_file($file_id);
 		
 	}
 	

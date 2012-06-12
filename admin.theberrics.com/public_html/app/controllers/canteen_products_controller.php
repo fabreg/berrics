@@ -106,6 +106,19 @@ class CanteenProductsController extends LocalAppController {
 				$this->params['named']['CanteenProduct.brand_id'];
 				
 			}
+			
+			if(isset($this->params['named']['CanteenProduct.name'])) {
+				
+				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.name LIKE'] = "%".str_replace(" ","%",$this->params['named']['CanteenProduct.name'])."%";
+				$this->data['CanteenProduct']['name'] = $this->params['named']['CanteenProduct.name'];
+				
+			}
+			if(isset($this->params['named']['CanteenProduct.sub_title'])) {
+				
+				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.sub_title LIKE'] = "%".str_replace(" ","%",$this->params['named']['CanteenProduct.sub_title'])."%";
+				$this->data['CanteenProduct']['sub_title'] = $this->params['named']['CanteenProduct.sub_title'];
+				
+			}
 			if(isset($this->params['named']['CanteenProduct.active'])) {
 				
 				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.active'] = 
