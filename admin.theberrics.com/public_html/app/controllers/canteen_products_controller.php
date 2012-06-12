@@ -183,6 +183,36 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function toggle_active($product_id = false) {
+		
+		//get the product
+		$p = $this->CanteenProduct->find("first",array(
+			"conditions"=>array(
+				"CanteenProduct.id"=>$product_id
+			),
+			"contain"=>array()
+		));
+		
+		$seed = 0;
+		
+		if($p['CanteenProduct']['active'] != 1) {
+			
+			$seed = 1;
+			
+		}
+		
+		$this->CanteenProduct->create();
+		$this->CanteenProduct->id = $product_id;
+		$this->CanteenProduct->save(array(
+			"active"=>$seed
+		));
+		
+		$url = base64_decode($this->params['named']['callback']);
+		
+		return $this->redirect($url);
+		
+	}
+	
 	
 	public function add() {
 		

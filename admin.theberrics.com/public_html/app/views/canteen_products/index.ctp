@@ -135,7 +135,7 @@ function openDetails(id,ele) {
 					}
 					
 				?>
-				<?php echo $txt; ?>
+				<a href='/canteen_products/toggle_active/<?php echo $p['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'><?php echo $txt; ?></a>
 			</td>
 			<td align='center' nowrap width='1%'>
 				<?php 

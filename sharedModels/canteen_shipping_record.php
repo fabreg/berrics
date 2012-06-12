@@ -773,6 +773,17 @@ class CanteenShippingRecord extends AppModel {
 		return $file_name;
 		
 	}
+	private function ljg_ftp_login() {
+		
+		$conn = ftp_connect($this->ljg_ftp['ip']);
+		
+		ftp_login($conn,$this->ljg_ftp['user'],$this->ljg_ftp['pass']);
+		
+		ftp_pasv($conn,true);
+		
+		return $conn;
+		
+	}
 	
 	public function ljg_ftp_file($id) {
 		
