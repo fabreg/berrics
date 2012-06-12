@@ -110,20 +110,14 @@ class DailyopsController extends LocalAppController {
 			
 		}
 		
-		if($home_page && count($dailyops)<5 && !$batb_mode) {
+		if($home_page && count($dailyops)<3 && !$batb_mode) {
 			
 			//let's get yesterdays posts
 			//$yesterday = date("Y-m-d",strtotime("-2 Day",strtotime($dateIn)));
 			
 			//let's get the next post day based on a post that is in scope
-			$dateCond = "DATE(Dailyop.publish_date) = ".$this->Dailyop->getNextDate($dateIn,true);
-			
-			if(date("Y-m-d")=="2012-06-11") {
-				
-				$dateCond = "DATE(Dailyop.publish_date) BETWEEN '2012-06-09' AND '2012-06-10'";
-				
-			}
-			
+			$dateCond = "DATE(Dailyop.publish_date) = '".$this->Dailyop->getNextDate($dateIn,true)."'";
+
 			$yd = $this->Dailyop->find("all",array(
 				
 					"contain"=>array(
@@ -149,7 +143,7 @@ class DailyopsController extends LocalAppController {
 		}
 		if(count($dailyops)<=0) {
 			
-			return $this->cakeError("error404");
+			//return $this->cakeError("error404");
 			
 		}
 		
