@@ -1,3 +1,10 @@
+<?php 
+
+$currencies = CanteenConfig::get("currencies");
+
+$currencies = array_combine($currencies,$currencies);
+
+?>
 <script>
 
 $(document).ready(function() { 
@@ -64,6 +71,9 @@ function openDetails(id,ele) {
 		<div style='float:left;'>
 			<?php echo $this->Form->input("brand_id",array("options"=>$brands,"empty"=>true)); ?>
 		</div>
+		<div style='float:left;'>
+			<?php echo $this->Form->input("CanteenProductPrice.currency_id",array("options"=>$currencies,"empty"=>true)); ?>
+		</div>
 		<div style='clear:both;'></div>
 			<div style='float:left;'>
 			<?php //echo $this->Form->input("active"); ?>
@@ -104,6 +114,7 @@ function openDetails(id,ele) {
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("Brand.name"); ?></th>
 			<th><?php echo $this->Paginator->sort("name"); ?></th>
+			<th>Price</th>
 			<th>-</th>
 		</tr>
 		<?php 
@@ -172,6 +183,7 @@ function openDetails(id,ele) {
 			<td align='center' width='1%' nowrap ><?php echo $c['name']; ?></td>
 			<td align='center' width='1%' nowrap ><?php echo $b['name']; ?></td>
 			<td align='left' nowrap ><?php echo $p['name']; ?> - <?php echo $p['sub_title']; ?></td>
+			<td><?php echo $prod['CanteenProductPrice'][0]['price']; ?></td>
 			
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>

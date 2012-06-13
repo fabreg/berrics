@@ -20,6 +20,8 @@ class CanteenProductsController extends LocalAppController {
 				'Size',
 				'Price',
 				'Weight',
+				"New?",
+				"new2?",
 				'Long Desc',
 				'Technical Desc'
 		
@@ -79,7 +81,12 @@ class CanteenProductsController extends LocalAppController {
 					),
 					"limit"=>1
 				),
-				"Brand"
+				"Brand",
+				"CanteenProductPrice"=>array(
+					"conditions"=>array(
+						"CanteenProductPrice.currency_id"=>"USD"
+					)
+				)
 			),
 			"conditions"=>array(
 				
@@ -131,6 +138,15 @@ class CanteenProductsController extends LocalAppController {
 				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.featured'] = 
 				$this->data['CanteenProduct']['featured'] = 
 				$this->params['named']['CanteenProduct.featured'];
+				
+			}
+			
+			if(isset($this->params['named']['CanteenProductPrice.currency_id'])) {
+				
+				$this->paginate['CanteenProduct']['contain']['CanteenProductPrice']['conditions']['CanteenProductPrice.currency_id'] = $this->params['named']['CanteenProductPrice.currency_id'];
+				
+				$this->data['CanteenProductPrice']['currency_id'] = $this->params['named']['CanteenProductPrice.currency_id'];
+				
 				
 			}
 			
@@ -866,22 +882,26 @@ class CanteenProductsController extends LocalAppController {
 		
 		$products_string = file_get_contents($products_file);
 		
+		$products_string = trim($products_string);
+		
 		$products_csv_array = explode("\n",$products_string);
 		
-		array_pop($products_csv_array);
+		
 		
 		foreach($products_csv_array as $v) {
 			
+			$v = trim($v);
+			
 			$row = explode("\t",$v);
 			
-			array_pop($row);
 			
-			if($ljg_products[] = array_combine($this->ljg_products_schema,$row)) {
+			
+			if($ljg_products[] = @array_combine($this->ljg_products_schema,$row)) {
 				
 				
 			} else {
 				
-				die(pr($row));
+				continue 1;
 				
 			}
 			
