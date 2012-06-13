@@ -275,7 +275,7 @@ class CanteenController extends CanteenAppController {
 			
 			$o = $this->CanteenOrder->find("first",array("contain"=>array(),"conditions"=>array("CanteenOrder.hash"=>$id)));
 			
-			$order = $this->CanteenOrder->returnAdminOrder(Set::classicExtract($o,"CanteenOrder.id"),array("with_shipping_items"));
+			$order = $this->CanteenOrder->returnAdminOrder(Set::classicExtract($o,"CanteenOrder.id"),array("with_shipping_items"=>true));
 			
 			if(isset($order['CanteenOrder']['id'])) {
 				
@@ -381,6 +381,12 @@ class CanteenController extends CanteenAppController {
 			return $this->cakeError("error404");
 			
 		}
+		
+		
+		
+	}
+	
+	public function support() {
 		
 		
 		
