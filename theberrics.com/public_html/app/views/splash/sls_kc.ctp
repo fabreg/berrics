@@ -73,8 +73,8 @@ body {
 </style>
 <div id='main-thing'>
 	<div class='top-content'>
-		<div class='days'><?php echo $days_to_finals; ?></div>
-		<img border='0' src='/img/splash/sls-ca/top.jpg' />
+		
+		<img border='0' src='/img/splash/sls-ca/top-1.jpg' />
 	</div>
 	<div>
 		<a href='http://streetleague.com' target='_blank'>
