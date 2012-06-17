@@ -21,6 +21,12 @@ class CanteenCartController extends CanteenAppController {
 		
 	}
 	
+	public function debugger() {
+		
+		die(print_r($_SERVER));
+		
+	}
+	
 	public function index() {
 			
 		if(count($this->data)>0) {

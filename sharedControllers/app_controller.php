@@ -63,11 +63,11 @@ class AppController extends Controller {
 			) 
 		{
 			
-			$_SERVER['HTTPS'] = true;
+			$_SERVER['HTTPS'] = 1;
 			
 		} else {
 			
-			$_SERVER['HTTPS'] = false;
+			$_SERVER['HTTPS'] = 0;
 			
 		}
 		

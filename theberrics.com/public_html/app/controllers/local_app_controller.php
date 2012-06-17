@@ -32,13 +32,13 @@ class LocalAppController extends AppController {
 		
 		$this->getUserCurrency();
 		
-		if($this->enforce_ssl && $_SERVER['HTTPS']==false) {
+		if($this->enforce_ssl==true && $_SERVER['HTTPS']==false) {
 			
-			return $this->enforceSSL();
+			//$this->enforceSSL();
 			
 		} else {
 			
-			$this->releaseSSL();
+			//$this->releaseSSL();
 			
 		}
 		
@@ -147,7 +147,7 @@ class LocalAppController extends AppController {
 	protected function releaseSSL() {
 		
 		if(
-			preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) || $_SERVER['HTTPS']==true
+			preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) || $_SERVER['HTTPS']==1
 			) 
 		{
 			
