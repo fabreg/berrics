@@ -59,7 +59,7 @@ class AppController extends Controller {
 		
 		if(
 			preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) || 
-			(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR']))
+			(isset($_SERVER['REDIRECT_REDIRECT_HTTP_SCHEME']) && $_SERVER['REDIRECT_REDIRECT_HTTP_SCHEME']=="https")
 			) 
 		{
 			
