@@ -36,7 +36,7 @@ class LocalAppController extends AppController {
 			
 			$this->enforceSSL();
 			
-		} else {
+		} elseif($this->enforce_ssl==false && $_SERVER['HTTPS']==1) {
 			
 			$this->releaseSSL();
 			
