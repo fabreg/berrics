@@ -7,7 +7,7 @@ class CanteenCartController extends CanteenAppController {
 	
 	public function beforeFilter() {
 		
-		if($this->params['action'] == "index") {
+		if(in_array($this->params['action'],array("index","debugger"))) {
 			
 			$this->enforce_ssl = true;
 			
