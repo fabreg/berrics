@@ -134,7 +134,7 @@ class LocalAppController extends AppController {
 		
 		if(
 			!preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) || 
-			preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR'])
+			!preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR'])
 			) 
 		{
 			
