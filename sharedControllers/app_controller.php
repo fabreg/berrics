@@ -58,7 +58,7 @@ class AppController extends Controller {
 		if($this->Session->id()=='undefined') $this->Session->destroy();
 		
 		if(
-			(preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) && !preg_match('/(dev)/',$_SERVER['SERVER_NAME'])) || 
+			preg_match('/^(https)/',$_SERVER['SCRIPT_URI']) || 
 			(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && preg_match('/(127\.0\.0\.1)/',$_SERVER['HTTP_X_FORWARDED_FOR']))
 			) 
 		{

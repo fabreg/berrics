@@ -32,7 +32,7 @@ class LocalAppController extends AppController {
 		
 		$this->getUserCurrency();
 		
-		if($this->enforce_ssl && !$_SERVER['HTTPS']) {
+		if($this->enforce_ssl && $_SERVER['HTTPS']==false) {
 			
 			return $this->enforceSSL();
 			
