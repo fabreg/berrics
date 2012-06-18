@@ -2,9 +2,9 @@
 	<div style='width:728px; float:left;'>
 		<?php 
 		
-			
+			$support_content = $this->element("canteen/canteen-support");
 		
-			echo $this->element("paper1"); 
+			echo $this->element("paper1",array("content"=>$support_content)); 
 			
 		?>
 	</div>

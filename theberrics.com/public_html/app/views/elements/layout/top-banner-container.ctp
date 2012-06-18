@@ -2,7 +2,7 @@
 				
 					<?php if(strtoupper(date("D"))=="SUN"): 
 					
-						$at_link = "/news";
+						$at_link = "/";
 
 						if(isset($this->params['date_in'])) {
 							
@@ -26,7 +26,7 @@
 							?>
 					</div>
 						<div id='top-widget'>
-							<?php if($this->theme == "canteen"): ?>
+							<?php if(preg_match('/(WEB2VM|WEB1)/',php_uname('n'))): ?>
 								<?php echo $this->element("canteen/cart-widget"); ?>
 							<?php else: ?>
 							

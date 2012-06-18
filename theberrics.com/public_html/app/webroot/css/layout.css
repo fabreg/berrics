@@ -2005,9 +2005,7 @@ CANTEEN CART WIDGET THING
 #canteen-cart-widget .header-img {
 	
 	height:32px;
-	background-image:url(/img/layout/canteen/cart/cart-widget-header.jpg);
-	background-repeat:no-repeat;
-	background-position:top right;
+	text-align:right;
 }
 
 #canteen-cart-widget .account {
@@ -2018,7 +2016,7 @@ CANTEEN CART WIDGET THING
 	float:right;
 }
 
-#canteen-cart-widget .cart-items {
+#canteen-cart-widget .cart-items {	
 	
 	border:1px dashed #666;
 	border-right:none;
@@ -2026,6 +2024,7 @@ CANTEEN CART WIDGET THING
 	padding-top:5px;
 	padding-bottom:5px;
 	float:right;
+	width:290px;
 }
 
 #canteen-cart-widget .cart-items .cart-icon {
@@ -2067,6 +2066,12 @@ CANTEEN CART WIDGET THING
 		text-align:center;
 		font-size:13px;
 		margin-left:8px;
+}
+
+#canteen-cart-widget .phone-number {
+	
+	font-size:18px;	
+	
 }
 
 
@@ -2752,3 +2757,24 @@ padding:5px;
 	color:#333;
 	
 }
+
+/*
+ CANTEEN SUPPORT PAGE
+*/
+
+#canteen-support {
+	
+	
+}
+
+#canteen-support .heading {
+
+	padding:5px;
+	text-align:center;
+	border-bottom:2px dotted #666;	
+	color:#666;
+	font-size:24px;
+	
+}
+
+
