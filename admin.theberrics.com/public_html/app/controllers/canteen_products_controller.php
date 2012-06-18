@@ -409,6 +409,7 @@ class CanteenProductsController extends LocalAppController {
 			$this->data = $product;
 		}
 		
+		$this->data['ValidateMessage'] = $this->CanteenProduct->validateProduct($this->data);
 		
 		$this->canteenProductSelects();
 		

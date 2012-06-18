@@ -127,6 +127,18 @@ border-radius: 10px 10px 0px 0px;
 		<legend>Meta Data</legend>
 		<?php echo $this->element("canteen_product/meta-data"); ?>
 	</fieldset>
+	<?php if(count($this->data['ValidateMessage'])>0): ?>
+	<fieldset>
+		<legend>Errors</legend>
+		<div>
+			<ul>
+				<?php foreach($this->data['ValidateMessage'] as $v): ?>
+				<li><?php echo $v; ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</fieldset>
+	<?php endif; ?>
 	<!-- 
 	<fieldset>
 		<legend>Warehouse Info</legend>

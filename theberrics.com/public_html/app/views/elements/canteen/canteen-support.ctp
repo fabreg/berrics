@@ -10,6 +10,12 @@
 	</div>
 	<div class='order-status-content'>
 		<div>
+			<p>
+				To check the status or your order, please use the form below.<br />
+				* If you ordered through your Berrics Unified Account, you're can see view your order history by clicking <a href='/account/canteen'>here</a>
+			</p>
+		</div>
+		<div>
 			<?php 
 				echo $this->Form->create("CanteenOrderStatus",array("url"=>$this->here));
 			?>

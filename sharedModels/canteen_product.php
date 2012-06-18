@@ -374,6 +374,20 @@ class CanteenProduct extends AppModel {
 		
 	}
 	
+	private function checkDupeUrl($CanteenProduct) {
+		
+		$chk = $this->find("count",array(
+			"conditions"=>array(
+				"CanteenProduct.id !="=>$CanteenProduct['CanteenProduct']['id'],
+				"CanteenProduct.uri"=>$CanteenProduct['CanteenProduct']['uri']
+			),
+			"contain"
+		));
+		
+		return $chk;
+		
+	}
+	
 	public function validateProduct($CanteenProduct) {
 		
 		$mgs = array();
@@ -391,6 +405,23 @@ class CanteenProduct extends AppModel {
 			if($p['price']<=0) $msg[] = "{$p['currency_id']} Missing Price";
 			
 		}
+		
+		//check for at least one meta tag
+		if(count($CanteenProduct['Meta'])<=0) $msg[] = "Missing Meta Tags";
+		
+		//check for a style/swatch image
+		if(empty($CanteenProduct['CanteenProduct']['style_code_image'])) $msg[] = "Missing Style Code Image";
+		
+		//check for style code
+		if(empty($CanteenProduct['CanteenProduct']['style_code'])) $msg[] = "Missing Style Code";
+		
+		//check for tags
+		if(count($CanteenProduct['Tag'])<=0) $msg[] = "Missing Tags";
+		
+		//check for duplicate URL
+		
+		//check for description
+		if(empty($CanteenProduct['CanteenProduct']['description'])) $msg[] = "Missing Description";
 		
 		return $msg;
 	}
