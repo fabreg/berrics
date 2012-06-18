@@ -1289,6 +1289,69 @@ class TesterController extends LocalAppController {
 		$this->loadModel("CanteenShippingRecord");
 		
 		$this->CanteenShippingRecord->process_pending_lajolla();
+		
+	}
+	
+	public function get_prod_price() {
+		
+		$this->loadModel("CanteenProduct");
+		
+		$product = $this->CanteenProduct->returnProduct(array(
+			"conditions"=>array("CanteenProduct.id"=>1000289)
+		));
+		
+		echo "array(";
+		
+		foreach($product['CanteenProductPrice'] as $p) {
+			
+			echo "'{$p['currency_id']}'=>{$p['price']},";
+			
+		}
+		
+		echo ");";
+		
+		die();
+		
+	}
+	
+	public function fix_product_prices() {
+		
+		$this->loadModel("CanteenProduct");
+		$this->loadModel("CanteenProductPrice");
+		
+		
+		$str = "1000070,1000075,1000080,1000121,1000126,1000131,1000136,1000141,1000146,1000151,1000156,1000161,1000166,1000171,1000176,1000181,1000186,1000191,1000199,1000204,1000209,1000214,1000219,1000224,1000229,1000234,1000239,1000244,1000249,1000254,1000259,1000264,1000274,1000279,1000284,1000289,1000294,1000299,1000304,1000309,1000314,1000334,1000339,1000344";
+		
+		$prices = array('USD'=>24.95,'GBP'=>15.95,'EUR'=>19.95,'CAD'=>24.95,'AUD'=>24.95,'BRL'=>52.95);
+		
+		$products = $this->CanteenProduct->find("all",array(
+			"conditions"=>array(
+				"CanteenProduct.id IN ({$str})"
+			),
+			"contain"=>array(
+				"CanteenProductPrice"
+			)
+		));
+		
+		foreach($products as $p) {
+			
+			foreach($p['CanteenProductPrice'] as $price) {
+				
+				$this->CanteenProductPrice->create();
+				
+				$this->CanteenProductPrice->id = $price['id'];
+				
+				$this->CanteenProductPrice->save(
+					array(
+						"price"=>$prices[$price['currency_id']]
+					)
+				);
+				
+			}
+			
+		}
+		
+		
 	}
 	
 }

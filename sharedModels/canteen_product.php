@@ -93,6 +93,8 @@ class CanteenProduct extends AppModel {
 		
 		$p['RelatedStyles'] = $r;
 		
+		unset($r);
+		
 		return $p;
 		
 	}
@@ -370,6 +372,27 @@ class CanteenProduct extends AppModel {
 		
 		return $products;
 		
+	}
+	
+	public function validateProduct($CanteenProduct) {
+		
+		$mgs = array();
+		
+		//check if there are any images
+		if(count($CanteenProduct['CanteenProductImage'])<=0) {
+			
+			$msg[] = "There are no images";
+			
+		}
+		
+		//check to see if there are any zero prices
+		foreach($CanteenProduct['CanteenProductPrice'] as $p) {
+			
+			if($p['price']<=0) $msg[] = "{$p['currency_id']} Missing Price";
+			
+		}
+		
+		return $msg;
 	}
 
 	

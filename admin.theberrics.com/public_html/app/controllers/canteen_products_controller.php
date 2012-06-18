@@ -772,6 +772,57 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function validate_products() {
+		
+		if(count($this->data)>0) {
+			
+			$conditions = array(
+				"CanteenProduct.parent_canteen_product_id"=>NULL
+			);
+			
+			$conditions['CanteenProduct.active'] = $this->data['CanteenProduct']['active'];
+			
+			if(!empty($this->data['CanteenProduct']['canteen_category_id'])) {
+				
+				$conditions['CanteenProduct.canteen_category_id'] = $this->data['CanteenProduct']['canteen_category_id'];
+				
+			}
+			
+			$p_ids = $this->CanteenProduct->find("all",array(
+				"fields"=>array(
+					"CanteenProduct.id"
+				),
+				"conditions"=>$conditions,
+				"contain"=>array(),
+			));
+			
+			$products = array();
+			
+			foreach($p_ids as $v) {
+				
+				$prod = $this->CanteenProduct->returnAdminProduct($v['CanteenProduct']['id']);
+				
+				$msg = $this->CanteenProduct->validateProduct($prod);
+				
+				if(count($msg)>0) {
+					
+					$prod['ValidateMessage'] = $msg;
+					
+					$products[] = $prod;
+					
+				}
+				
+			}
+			
+			unset($prod);
+			
+			$this->set(compact("products"));
+		}
+
+		$this->canteenProductSelects();
+		
+	}
+	
 	public function ljg_products($canteen_product_id = false,$filter = false) {
 		
 		

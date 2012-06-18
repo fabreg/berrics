@@ -278,6 +278,9 @@
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_products/add'>Create new product</a>
 				</li>
+				<li class='li-sub-nav-button'>
+					<a href='/canteen_products/validate_products'>Validate Products</a>
+				</li>
 				<li class='li-sub-nav-header'>Categories</li>
 				<li class='li-sub-nav-button'>
 					<a href='/canteen_categories'>Manage Categories</a>
