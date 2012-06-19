@@ -249,7 +249,7 @@ function initOptionClick() {
 								
 								$img = $img[0]['CanteenProductImage'];
 								
-								echo $this->Media->productThumb($img,array("w"=>485),array("img"=>$img['file_name'])); 
+								echo $this->Media->productThumb($img,array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$img['file_name'])); 
 								
 							?>
 						</div>
