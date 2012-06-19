@@ -109,7 +109,7 @@ function openDetails(id,ele) {
 			<th><?php echo $this->Paginator->sort("featured"); ?></th>
 			<th><?php echo $this->Paginator->sort("display_weight"); ?></th>
 			<th><?php echo $this->Paginator->sort("modified"); ?></th>
-			<th><?php echo $this->Paginator->sort("published_date"); ?></th>
+			<th><?php echo $this->Paginator->sort("publish_date"); ?></th>
 			<th><?php echo $this->Paginator->sort("style_code"); ?></th>
 			<th><?php echo $this->Paginator->sort("style_code_image"); ?></th>
 			<th><?php echo $this->Paginator->sort("CanteenCategory.name"); ?></th>
@@ -172,7 +172,7 @@ function openDetails(id,ele) {
 				?>
 			</td>
 			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['modified']); ?></td>
-			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['published_date']); ?></td>
+			<td align='center' width='1%' nowrap><?php echo $this->Time->niceShort($p['publish_date']); ?></td>
 			<td align='center' nowrap width='1%' ><?php echo $p['style_code']; ?></td>
 			<td align='center' nowrap width='1%' >
 			<?php if(!empty($p['style_code_image'])): ?>
