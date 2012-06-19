@@ -15,7 +15,13 @@ $(document).ready(function() {
 			$(this).removeClass("over");
 		}
 	);
+	$("#canteen-navbar ul li ul li").click(function() { 
 
+		var ref = $(this).find("a").attr("href");
+
+		document.location.href=ref;
+		
+	});
 	
 });
 </script>

@@ -49,41 +49,48 @@ $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inl
 		<div class='bottom'></div>
 	</div>
 	<div class='sorting'>
-		<div class='heading'>
+		<div class='wrapper'>
+			<div class='heading'>
+				<div class='inner'>
+					FILTER PRODUCTS
+				</div>
+			</div>
 			<div class='inner'>
-				FILTER PRODUCTS
+				<?php echo $this->Form->create("CanteenProduct",array("url"=>$this->here,"id"=>"filter-form")); ?>
+				<div class='filter-menu'>
+					<?php if(count($_GET['data'])>0): ?>
+					<div class='reset-link'>
+						<a href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
+					</div>
+					<?php endif;?>
+					<div class='filter-heading'> // BRANDS</div>
+					<div class='filter-options'>
+						<?php 
+	
+							foreach($filters['Brand'] as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>$b['name']));
+	 			
+						?>
+					</div>
+				</div>
+				<?php foreach($filters['Meta'] as $k=>$v): ?>
+				<div class='filter-menu'>
+					<div class='filter-heading'> // <?php echo strtoupper($k); ?></div>
+					<?php if(count($_GET['data'])>0): ?>
+					<div class='reset-link'>
+						<a href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
+					</div>
+					<?php endif;?>
+					<div class='filter-options'>
+						<?php 
+							foreach($v as $key=>$val) echo $this->Form->input("Meta.{$key}",array("type"=>"checkbox","label"=>ucfirst($val)));
+						?>
+					</div>
+				</div>
+				<?php endforeach; ?>
+				<?php echo $this->Form->end(); ?>
 			</div>
 		</div>
-		<div class='inner'>
-			<?php echo $this->Form->create("CanteenProduct",array("url"=>$this->here,"id"=>"filter-form")); ?>
-			<div class='filter-menu'>
-				<?php if(count($_GET['data'])>0): ?>
-				<div class='reset-link'>
-					<a href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
-				</div>
-				<?php endif;?>
-				<div class='filter-heading'> // BRANDS</div>
-				<div class='filter-options'>
-					<?php 
-
-						foreach($filters['Brand'] as $b) echo $this->Form->input("Brand.{$b['id']}",array("type"=>"checkbox","label"=>$b['name']));
- 			
-					?>
-				</div>
-			</div>
-			<?php foreach($filters['Meta'] as $k=>$v): ?>
-			<div class='filter-menu'>
-				<div class='filter-heading'> // <?php echo strtoupper($k); ?></div>
-				<div class='filter-options'>
-					<?php 
-						foreach($v as $key=>$val) echo $this->Form->input("Meta.{$key}",array("type"=>"checkbox","label"=>$val));
-					?>
-				</div>
-			</div>
-			<?php endforeach; ?>
-			<?php echo $this->Form->end(); ?>
-		</div>
-		<div>
+		<div style='margin-top:-15px; padding-left:1px;'>
 			<img src='/img/layout/canteen/category/filter-bg-bottom.jpg' border='0'/>
 		</div>
 	</div>

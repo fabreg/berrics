@@ -1,6 +1,7 @@
 <div class='order-history-div'>
 	<div class='heading'>CANTEEN ORDER HISTORY</div>
 	<div class='order-table'>
+		<?php if(count($orders)>0): ?>
 		<table cellspacing='0' class='canteen-table-items'>
 			<tr>
 				<th>Order Date</th>
@@ -17,5 +18,8 @@
 			</tr>
 			<?php endforeach; ?>
 		</table>
+		<?php else: ?>
+		<div style='text-align:center; padding:10px; color:#333;'>No order were found</div>
+		<?php endif; ?>
 	</div>	
 </div>

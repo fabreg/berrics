@@ -1586,6 +1586,7 @@ PRODUCT EXTRA INFO
 	
 color:#666; margin-top:-10px; margin-bottom:8px;	
 font-size:22px;
+font-weight:normal;
 }
 
 #canteen-category .sorting {
@@ -1593,9 +1594,15 @@ font-size:22px;
 	float:right;
 	width: 231px;
 	color:#666;
-	background-image:url(/img/layout/canteen/category/filter-bg.jpg);
+	
 	background-repeat:repeat-y;
 	background-position:right 20px;
+}
+
+#canteen-category .sorting .wrapper {
+	
+background-image:url(/img/layout/canteen/category/filter-bg.jpg);	
+	
 }
 
 #canteen-category .sorting .inner {

@@ -11,7 +11,7 @@ class CanteenPromoCode extends AppModel {
 	public function applyPromoCode($CanteenOrder) {
 		
 		//set all the promo codes on the order
-		
+		$currency = ClassRegistry::init("Currency");
 		
 		#User Account Promo Code
 		if(

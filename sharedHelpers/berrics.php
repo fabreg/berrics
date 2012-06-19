@@ -35,7 +35,9 @@ class BerricsHelper extends AppHelper {
 		$this->Number->addFormat("CAD",array(
 			"before"=>"$","after"=>" ","escape"=>false
 		));
-			
+		$this->Number->addFormat("BRL",array(
+			"before"=>"BRL ","after"=>" ","escape"=>false,"decimals"=>","
+		));
 	}
 	
 	public function currency($c,$n) {

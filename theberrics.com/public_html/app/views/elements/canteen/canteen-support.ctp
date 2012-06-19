@@ -12,7 +12,7 @@
 		<div>
 			<p>
 				To check the status or your order, please use the form below.<br />
-				* If you ordered through your Berrics Unified Account, you're can see view your order history by clicking <a href='/account/canteen'>here</a>
+				<span style='font-size:12px; font-style:italic;'>* If you ordered through your Berrics Account, you can view your order history by clicking <a href='/account/canteen'>here</a></span>
 			</p>
 		</div>
 		<div>
@@ -20,7 +20,7 @@
 				echo $this->Form->create("CanteenOrderStatus",array("url"=>$this->here));
 			?>
 			<div>
-				<?php echo $this->Form->input("email"); ?>
+				<?php echo $this->Form->input("email_address"); ?>
 			</div>
 			<div>
 				<?php echo $this->Form->input("postal_code")?>

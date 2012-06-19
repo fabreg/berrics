@@ -29,6 +29,9 @@ $skip = array();
 			<div class='checkout'>
 				<div class='totals'>
 					<dl class='totals-list'>
+						<?php if($this->data['CanteenOrder']['currency_id']!="USD"): ?>
+						<div style='font-size:12px; font-style:italic; text-align:center;'>Amounts shown are in <?php echo $this->data['CanteenOrder']['currency_id']; ?></div>
+						<?php endif; ?>
 						<?php if($this->data['CanteenOrder']['discount_total']<0): ?>
 						<dt class='discount-total-label'>Discount...</dt>
 						<dd id='discount-total-dd'><?php echo number_format($this->data['CanteenOrder']['discount_total'],2); ?></dd>
