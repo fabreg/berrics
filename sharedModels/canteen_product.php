@@ -186,7 +186,8 @@ class CanteenProduct extends AppModel {
 							"CanteenProduct.style_code"=>$prod['CanteenProduct']['style_code'],
 							"NOT"=>array(
 								"CanteenProduct.id"=>array($prod['CanteenProduct']['id'])
-							)	
+							),
+							"CanteenProduct.active"=>1	
 						
 						)),
 						$isAdmin,
