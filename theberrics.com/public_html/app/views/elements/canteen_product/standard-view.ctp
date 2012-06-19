@@ -43,7 +43,7 @@ function initProductThumbs() {
 
 		var src = $(this).attr("img");
 
-		$(".product-img .main-image img").attr("src","http://img.theberrics.com/i.php?w=485&src=/product-img/"+src);
+		$(".product-img .main-image img").attr("src","http://img.theberrics.com/i.php?w=485&h=485&zc=1&src=/product-img/"+src);
 
 		$("#product-standard-view .thumbs .img-thumb").attr("selected",0).css({"opacity":.5});
 
