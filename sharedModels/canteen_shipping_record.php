@@ -97,6 +97,27 @@ class CanteenShippingRecord extends AppModel {
 			'MailingListStatus'
 	);
 	
+	private $lajolla_tracking_schema = array(
+			'Company Number',
+			'FCInvoice',
+			'WebOrder',
+			'TrackingNumber',
+			'Status',
+			'InvoiceAmount',
+			'FreightAmount',
+			'TaxAmount',
+			'MerchAmount',
+			'UPC Code',
+			'ProductCode',
+			'Color',
+			'Size Type',
+			'Size',
+			'QtyShipped',
+			'NetPrice',
+			'AmtShipped',
+			'Type'
+	);
+	
 	private $ljg_ftp = array(
 		"ip"=>"64.206.163.163",
 		"login"=>"ctweb",
@@ -736,6 +757,17 @@ class CanteenShippingRecord extends AppModel {
 		));
 		
 		return $ljg_file->id;
+		
+	}
+	
+	public function ljg_get_tracking_files() {
+		
+		$LjgTrackingFile = ClassRegistry::init("LjgTrackingFile");
+		
+		//connect
+		$ftp = ftp_connect("127.0.0.1");
+		
+		
 		
 	}
 	
