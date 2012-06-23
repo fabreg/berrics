@@ -41,10 +41,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 				return $this->redirect($url);
 				
 		}
-		
 
-		
-		
 	}
 	
 	private function setSelects() {

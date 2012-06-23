@@ -711,6 +711,22 @@ public function dc_apr() {
 		
 	}
 	
+	public function quik() {
+		
+		$this->layout = "empty";
+		
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>5363
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 }
 
 ?>
