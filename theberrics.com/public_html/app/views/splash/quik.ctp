@@ -98,7 +98,7 @@ body {
 #enter a {
 
 	color:#999;
-	font-size:36px;
+	font-size:32px;
 	font-family:'Arial';
 	font-weight:normal;
 }
@@ -167,6 +167,6 @@ body {
 	</div>
 
 <div style='text-align:center;' id="enter">
-<div><a href='/dailyops' style=''>ENTER THE BERRICS</a></div>
+<div><a href='/dailyops' style=''><img border='0' src='/img/splash/quik/enter-link.png'/></a></div>
 </div>
 </div>
