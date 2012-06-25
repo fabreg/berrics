@@ -148,7 +148,7 @@ body {
 
 .d-post-bit .buttons {
 
-	width:200px;
+	width:150px;
 	margin:auto;
 
 }
