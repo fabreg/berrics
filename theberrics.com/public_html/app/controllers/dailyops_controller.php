@@ -309,11 +309,6 @@ class DailyopsController extends LocalAppController {
 		
 		
 		//let's get the media item we want to show on facebook
-		if(isset($entry['DailyopMediaItem'][0]['MediaFile'])) {
-			
-			//$this->setFacebookMetaImg($entry['DailyopMediaItem'][0]['MediaFile']);
-			
-		}
 		
 		$this->setFacebookMetaData($entry);
 		
