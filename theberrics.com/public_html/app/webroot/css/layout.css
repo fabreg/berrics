@@ -856,6 +856,11 @@ DAILY OPS
     float:left;
     margin-top:4px;
 }
+.d-post-bit .footer .socialize .tumblr {
+    
+    float:left; 
+    margin-right:3px;
+}
 .d-post-bit .footer .socialize .twitter {
     
     float:left; 

@@ -43,37 +43,8 @@
 	<meta property="og:url" content="http://theberrics.com<?php echo $_SERVER['REQUEST_URI']; ?>">
 	<meta property="og:title" content="<?php echo $pt; ?>">
 	<meta property="og:type" content="website">
-	<script type='text/javascript'>
-		var swfPlayer = "/swf/BerricsPlayer.swf";
-	</script>
-	<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript"></script>
-	
-	<?php
-		echo $fb_meta_img;
-		echo $rss_feed;
-		//echo $this->Html->meta('icon');
-		
-		echo $this->Html->script(array(
-		
-			"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
-			"https://platform.twitter.com/widgets.js",
-			"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
-			"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
-			"/js/jquery.scrollTo",
-			"jquery.swfobject",
-			"jquery.client",
-			"main"
-		
-		));
-	?>
+	<?php echo $this->element("layout/html-head-scripts"); ?>
 	<?php 
-		echo $this->Html->css(array(
-			"main",
-			"layout",
-			"layout_override",
-			"vader/jquery-ui-1.8.11.custom"
-		),"stylesheet");
-		
 		echo $scripts_for_layout;
 	?>
 	<?php if(isset($_GET['t']) && $_GET['t'] == 1): ?>
@@ -83,13 +54,7 @@
 <body>
 <!-- We Like Zuckerberg -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 <!-- Zuckerberg Likes Us -->
 	<div id='main-container'>
 		<?php echo $this->element("layout/top-banner-container"); ?>

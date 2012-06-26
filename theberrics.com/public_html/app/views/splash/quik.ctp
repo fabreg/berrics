@@ -1,24 +1,7 @@
 <?php
-		$this->Html->script(array(
 		
-			"http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js",
-			"http://connect.facebook.net/en_US/all.js#xfbml=1",
-			"http://platform.twitter.com/widgets.js",
-			"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js",
-			"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
-			"/js/jquery.scrollTo",
-			"jquery.swfobject",
-			"jquery.client",
-			"/js/main.js"
-		
-		),array("inline"=>false));
-		$this->Html->css(array(
-			"main",
-			"layout",
-			"layout_override",
-			"vader/jquery-ui-1.8.11.custom"
-		
-		),"stylesheet",array("inline"=>false));
+		echo $this->element("layout/html-head-scripts");
+
 		$this->set("title_for_layout","The Berrics - QUIK");
 ?>
 <script>
@@ -148,7 +131,7 @@ body {
 
 .d-post-bit .buttons {
 
-	width:160px;
+	width:210px;
 	margin:auto;
 
 }
