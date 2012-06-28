@@ -18,7 +18,7 @@ class ImgServer {
 		
 		switch($uname) {
 			
-			case "WEB2VM.THEBERRICS":
+			case "WEB2VM":
 				$this->sftp = new Net_SFTP('50.56.79.100');
 			break;
 			default:
