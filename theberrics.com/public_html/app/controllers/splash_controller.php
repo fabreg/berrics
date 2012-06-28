@@ -727,6 +727,12 @@ public function dc_apr() {
 		
 	}
 	
+	public function adidas_lucas() {
+		
+		
+		
+	}
+	
 }
 
 ?>
