@@ -733,6 +733,22 @@ public function dc_apr() {
 		
 	}
 	
+	public function cons_kenny() {
+		
+		$this->layout = "empty";
+		
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+			"Dailyop.id"=>5403
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 }
 
 ?>
