@@ -2,7 +2,7 @@
 		
 		echo $this->element("layout/html-head-scripts");
 
-		$this->set("title_for_layout","The Berrics - Converse Presents The KA-ONE");
+		$this->set("title_for_layout","The Berrics - Converse Presents The KA One Vulc");
 ?>
 <script>
 
@@ -148,6 +148,11 @@ body {
 	<div id='post'>
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
+	<div style='padding:5px; text-align:center;'>
+			<a href='http://www.converse.com/skateboarding' target='_blank'>
+				<img border='0' src='/img/splash/cons/converse-splash-logo.png' alt='Converse'/>
+			</a>
+		</div>
 	<div style='clear:both;'>
 
 	</div>
