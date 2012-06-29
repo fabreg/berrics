@@ -578,6 +578,47 @@ class CanteenOrder extends AppModel {
 		
 	}
 	
+	public function locate_orders($email,$postal_code) {
+		
+		$UserAddress = ClassRegistry::init("UserAddress");
+		
+		$addresses = $UserAddress->find("all",array(
+			"fields"=>array("UserAddress.foreign_key"),
+			"conditions"=>array(
+				"UserAddress.email"=>$email,
+				"UserAddress.postal_code"=>$postal_code,
+				"UserAddress.model"=>"CanteenOrder"
+			),
+			"contain"=>array()
+		));
+		
+		if(count($addresses)<=0) {
+			
+			return array();
+			
+		}
+		
+		$order_ids = Set::extract("/UserAddress/foreign_key",$addresses);
+		
+		$orders = $this->find("all",array(
+			"fields"=>array(
+				"CanteenOrder.id",
+				"CanteenOrder.created",
+				"CanteenOrder.order_status",
+				"CanteenOrder.hash"
+			),
+			"conditions"=>array(
+				"CanteenOrder.id"=>$order_ids
+			),
+			"contain"=>array(),
+			"limit"=>5,
+			"order"=>array("CanteenOrder.created"=>"DESC")
+		));
+		
+		return $orders;
+		
+	}
+	
 	
 	
 	

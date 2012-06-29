@@ -582,6 +582,16 @@ steven0892@hotmail.com,tristanruff781@yahoo.com,vtechugotech@yahoo.com,abbiec.so
 		
 	}
 	
+	public function test_download() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+		$this->CanteenShippingRecord->ljg_get_tracking_files();
+		
+		die();
+		
+	}
+	
 }
 
 

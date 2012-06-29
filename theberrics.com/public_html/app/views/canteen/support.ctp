@@ -1,3 +1,8 @@
+<?php 
+
+$this->Html->script(array("jquery.form"),array("inline"=>false));
+
+?>
 <div>
 	<div style='width:728px; float:left;'>
 		<?php 

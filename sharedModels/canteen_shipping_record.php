@@ -767,6 +767,50 @@ class CanteenShippingRecord extends AppModel {
 		//connect
 		$ftp = ftp_connect("127.0.0.1");
 		
+		ftp_login($ftp,"john","artosari");
+		
+		ftp_chdir($ftp,"s");
+		
+		$list = ftp_nlist($ftp,".");
+		
+		foreach($list as $f) {
+			
+			if(!preg_match("/^(orderstatus_15)/",$f)) {
+				
+				continue;
+				
+			}
+			
+			$chk = $LjgTrackingFile->find("count",array(
+				"conditions"=>array(
+					"file_name"=>$f
+				)
+			));
+			if($chk<=0) {
+				
+				ftp_get($ftp,"/tmp/ljgtracking/".$f,$f,FTP_BINARY);
+				
+				$LjgTrackingFile->create();
+				
+				$LjgTrackingFile->save(array(
+					"file_name"=>$f,
+					"downloaded"=>1
+				));
+				
+			}
+			
+			
+			
+		}
+		
+		//die(print_r($list));
+		
+	}
+	
+	public function ljg_process_tracking_files() {
+		
+		$LjgTrackingFile = ClassRegistry::init("LjgTrackingFile");
+		
 		
 		
 	}

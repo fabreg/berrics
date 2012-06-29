@@ -388,7 +388,18 @@ class CanteenController extends CanteenAppController {
 	
 	public function support() {
 		
-		
+		if($this->RequestHandler->isAjax()) {
+			
+			$this->loadModel("CanteenOrder");
+			
+			//find the order
+			$orders = $this->CanteenOrder->locate_orders($this->data['CanteenOrderStatus']['email'],$this->data['CanteenOrderStatus']['postal_code']);
+			
+			$this->set(compact("orders"));
+			
+			return $this->render("/elements/canteen-support-order-table");
+			
+		}
 		
 	}
 	

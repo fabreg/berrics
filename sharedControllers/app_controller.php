@@ -47,7 +47,7 @@ class AppController extends Controller {
 		);
 		
 		//put the current URL in the session
-		if(!in_array(strtolower($this->params['controller']),array("login","img","media"))) {
+		if(!in_array(strtolower($this->params['controller']),array("login","img","media")) || ($this->RequestHandle->isAjax())) {
 			
 			$this->Session->write("here",$_SERVER['REQUEST_URI']);
 			

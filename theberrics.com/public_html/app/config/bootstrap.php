@@ -43,7 +43,7 @@
 //FORCE DEVSERVER!
 
 
-if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
+if(preg_match('/(WEB2VM)/i',php_uname("n"))) {
 	App::build(array(
 	
 		"models"=>array("/home/sites/berrics.dev/sharedModels/"),

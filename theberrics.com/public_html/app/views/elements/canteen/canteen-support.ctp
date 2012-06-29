@@ -1,3 +1,27 @@
+<script>
+
+$(document).ready(function() { 
+
+
+	 $('#order-status-form').ajaxForm({
+
+		"success":function(d) {
+
+		 	$("#order-status-results").html(d);
+		 
+	 	},
+	 	"beforeSubmit":function() { 
+
+			$("#order-status-results").html("Locating Orders....");
+			
+		 }
+			
+	});
+	
+});
+
+
+</script>
 <div id='canteen-support'>
 	<div class='heading'>
 		QUESTIONS
@@ -17,18 +41,24 @@
 		</div>
 		<div>
 			<?php 
-				echo $this->Form->create("CanteenOrderStatus",array("url"=>$this->here));
+				echo $this->Form->create("CanteenOrderStatus",array("url"=>$this->here,"id"=>"order-status-form"));
 			?>
 			<div>
-				<?php echo $this->Form->input("email_address"); ?>
+				<?php echo $this->Form->input("email",array("label"=>"Email Address")); ?>
 			</div>
 			<div>
 				<?php echo $this->Form->input("postal_code")?>
 			</div>
 			<div style='clear:both;'></div>
+			<div style='text-align:center;'>
+				<?php echo $this->Form->submit("Lookup Your Order"); ?>
+			</div>
 			<?php 
 				echo $this->Form->end();
 			?>
 		</div>
+	</div>
+	<div id='order-status-results'>
+	
 	</div>
 </div>
