@@ -19,11 +19,11 @@ $(document).ready(function() {
 	},1500);
 
 
-	posPost();
+	//posPost();
 
 	$(window).resize(function() { 
 
-		posPost();
+		//posPost();
 
 	});
 	
