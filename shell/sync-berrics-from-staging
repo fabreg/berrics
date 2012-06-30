@@ -60,6 +60,5 @@ rsync -vaz --delete --exclude-from /home/sites/berrics.staging/shell/exclude.txt
 ssh root@web28 '/home/sites/berrics/shell/clear-cache-self; /home/sites/berrics/shell/chmod-self;';
 ssh root@web28 '/sbin/service httpd start';
 
-
 #FLUSH THE MEMCACHE SERVER
 ssh root@cacheserver 'echo "flush_all" | nc 127.0.0.1 11211';
