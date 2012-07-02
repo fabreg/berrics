@@ -215,7 +215,7 @@
 			handleVideoPlay:function(context) {
 			
 				var data = $.data(context);
-				
+			
 				clearInterval(data.options.BufferInterval);
 				data.options.BufferInterval = false;
 				
