@@ -236,6 +236,27 @@ class MediaController extends LocalAppController {
 		
 	}
 	
+	public function request_html_video($id) {
+		
+		$this->loadModel("MediaFile");
+		
+		$video = $this->MediaFile->find("first",array(
+			"conditions"=>array(
+				"MediaFile.id"=>$id
+			),
+			"contain"=>array()
+		));
+		
+		$this->insertMediaHit($id);
+		
+		$video['MediaFile']['limelight_file'] = $this->limelight_uri.$video['MediaFile']['limelight_file'];
+		
+		$video['MediaFile'] = MediaFile::formatVideoAdUrls($video['MediaFile']);
+		
+		die(json_encode($video));
+		
+	}
+	
 	private function insertMediaHit($id) {
 		
 		

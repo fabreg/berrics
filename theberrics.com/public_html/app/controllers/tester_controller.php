@@ -17,6 +17,18 @@ class TesterController extends LocalAppController {
 		
 	}
 	
+	public function test_html5() {
+		
+		$this->loadModel("Dailyop");
+		
+		//shane BC
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>2520));
+		
+		$this->set(compact("post"));
+		
+	}
+	
+	
 	
 	public function index() {
 		
