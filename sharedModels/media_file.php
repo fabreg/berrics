@@ -151,6 +151,58 @@ class MediaFile extends AppModel {
 		
 	}
 	
+	public static function formatVastUrls($MediaFile) {
+		
+		$m = $MediaFile;
+		
+		$vast_url = "http://pubads.g.doubleclick.net/gampad/ads?sz=700x394&iu=%2F5885%2F#LABEL#&ciu_szs=&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]";
+		$preroll = false;
+		$postroll = false;
+		
+		//preroll stuff
+		if(!empty($m['preroll_label'])) {
+			
+			$m['preroll'] = str_replace("#LABEL#",$m['preroll_label'],$vast_url);
+			$preroll = true;
+		}
+		
+		if(!empty($m['preroll_label_override'])) {
+			
+			$m['preroll'] = str_replace("#LABEL#",$m['preroll_label_override'],$vast_url);
+			$preroll = true;
+		}
+		
+		//post roll stuff
+		if(!empty($m['postroll_label'])) {
+			
+			$m['postroll'] = str_replace("#LABEL#",$m['postroll_label'],$vast_url);
+			$postroll = true;
+		}
+		
+		if(!empty($m['postroll_label_override'])) {
+			
+			$m['postroll'] = str_replace("#LABEL#",$m['postroll_label_override'],$vast_url);
+			$postroll = true;
+		}
+		//$preroll = false;
+		if(!$preroll) {
+			
+			$m['preroll'] = '';
+			
+		} 
+		
+		if(!$postroll) {
+			
+			$m['postroll'] = '';
+			
+		} 
+		
+		$m['preroll'] = str_replace("#TAGS#",$m['preroll_tags'],$m['preroll']);
+		$m['postroll'] = str_replace("#TAGS#",$m['postroll_tags'],$m['postroll']);
+		
+		return $m;
+	}
+	
 	
 	public static function returnSecureUrl($MediaFile = array(),$ttl = 30) {
 		
