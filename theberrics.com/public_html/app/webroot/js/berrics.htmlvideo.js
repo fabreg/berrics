@@ -27,7 +27,8 @@
 						"PlayAction":"PreRoll",
 						"PreRoll":null,
 						"PostRoll":null,
-						"DailyopId":3786
+						"DailyopId":3786,
+						"BufferInterval":false
 						
 						
 					},options)
@@ -126,9 +127,35 @@
 					
 				}
 			},
+			handleBuffer:function(context) {
+				
+				var data = $.data(context);
+				
+				var video = data.target.find("video");
+				
+				var duration = video.get(0).duration;
+				
+				var buffer_end = video.get(0).buffered.end(0);
+				
+				var percentBuffered = Math.ceil((buffer_end * 100) / duration);
+				
+				console.log("Percent Buffered: "+percentBuffered);
+				
+			},
 			handleVideoPlay:function(context) {
 			
 				var data = $.data(context);
+				
+				data.target.html(methods.returnHtml(context));
+				
+				clearInterval(data.options.BufferInterval);
+				
+				data.options.BufferInterval = setInterval(function() { 
+					
+					methods.handleBuffer(context);
+					
+				},500)
+				
 				
 				switch(data.options.PlayAction) {
 				
@@ -146,14 +173,22 @@
 						break;
 					case "PostRoll":
 						break;
+					case "Exit":
+						
+							methods.realtedVideoScreen(context);
+							
+						break;
 					case "Video":
 					default:
 						
-						console.log("HTML5 Video Action");
-					
+						console.log("HTML5 Video Action: Clear All Event");
+				
 						console.log(data);
 						
 						var video = data.target.find("video");
+						
+						video.unbind();
+						video.html('').attr({"src":null});
 						
 						var video_element = $(video).get(0);
 						
@@ -164,6 +199,16 @@
 						});
 						
 						video_element.play();
+						
+						video.bind(
+							'ended',function() {
+							
+								console.log('Video Ended');
+								methods.handleVideoEnd(context);
+								
+							}
+						);
+					
 						
 						break;
 				}
@@ -181,12 +226,18 @@
 						
 						data.options.PlayAction = "Video";
 						
-						methods.handleVideoPlay(context);
+						break;
+						
+					case "Video":
+						
+						data.options.PlayAction = "Exit";
+						
 						
 						break;
-				
 				}
-					
+				
+
+				methods.handleVideoPlay(context);
 				
 			},
 			videoRequestComplete:function(context) { 
@@ -199,11 +250,6 @@
 				console.log("Html5 Video Player");
 				
 				var data = $.data(context);
-				
-				data.target.html(methods.returnHtml(context));
-				
-				console.log("Target HTML");
-		    	console.log(data.target.html());
 				
 		    	methods.handleVideoPlay(context);
 				
@@ -314,6 +360,40 @@
 					});
 				 
 				 console.log(adsLoader);
+				
+			},
+			realtedVideoScreen:function(context) {
+				
+				var data = $.data(context);
+				
+				$.ajax({
+					
+					"url":"/dailyops/related/"+data.options.DailyopId,
+					"success":function(d) {
+						
+						var ele = data.target;
+					
+						$(ele).html(d);
+						
+						$(ele).find(".icon").css({"opacity":.5});
+						
+						methods.destroy(context);
+						
+						//make the replay button clickable
+						
+						format_berricsRelatedVideoScreen();
+					}
+					
+				});
+				
+			},
+			destroy:function(context) { 
+				
+				var data = $.data(context);
+				
+				clearInterval(data.options.BufferInterval);
+				
+				$.removeData(context);
 				
 			}
 			
