@@ -202,6 +202,7 @@ class MediaController extends LocalAppController {
 			
 			));
 			
+			$video['MediaFile'] = MediaFile::formatVideoAdUrls($video['MediaFile']);
 			
 			$data += $video;
 			
