@@ -4,6 +4,7 @@
 	var methods = {
 			
 			VAST_TEST_URL:"http://pubads.g.doubleclick.net/gampad/ads?sz=700x394&iu=%2F5885%2Fvast_pre&ciu_szs=&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=%5Breferrer_url%5D&correlator=%5Btimestamp%5D",
+			VPRE001:"http://pubads.g.doubleclick.net/gampad/ads?sz=700x394&iu=%2F5885%2FVPRE001&ciu_szs=&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]",
 			LIMELIGHT_URL: "http://berrics.vo.llnwd.net/o45/",
 			init:function(options) {
 				
@@ -28,7 +29,8 @@
 						"PreRoll":null,
 						"PostRoll":null,
 						"DailyopId":3786,
-						"BufferInterval":false
+						"BufferInterval":false,
+						"GoogleAdsManager":false,
 						
 						
 					},options)
@@ -146,15 +148,18 @@
 			
 				var data = $.data(context);
 				
-				data.target.html(methods.returnHtml(context));
-				
 				clearInterval(data.options.BufferInterval);
 				
-				data.options.BufferInterval = setInterval(function() { 
+				if(data.options.PlayAction!='Exit') {
 					
-					methods.handleBuffer(context);
+					data.options.BufferInterval = setInterval(function() { 
+						
+						methods.handleBuffer(context);
+						
+					},500);
 					
-				},500)
+				}
+				
 				
 				
 				switch(data.options.PlayAction) {
@@ -200,14 +205,19 @@
 						
 						video_element.play();
 						
-						video.bind(
-							'ended',function() {
+						video.bind('loadstart',function() { 
 							
-								console.log('Video Ended');
-								methods.handleVideoEnd(context);
-								
-							}
-						);
+							video.bind('ended',function() {
+									
+									console.log('Video Ended');
+									methods.handleVideoEnd(context);
+									
+								}
+							);
+							
+						});
+						
+						
 					
 						
 						break;
@@ -219,6 +229,16 @@
 			handleVideoEnd:function(context) {
 				
 				var data = $.data(context);
+				
+				if(data.options.GoogleAdsManager) {
+					
+					console.log("GoogleAdsManager Set! Try and unload and remove it");
+					data.options.GoogleAdsManager.unload();
+					data.options.GoogleAdsManager = false;
+					
+					
+				}
+				
 				
 				switch(data.options.PlayAction) {
 				
@@ -236,7 +256,8 @@
 						break;
 				}
 				
-
+				
+				
 				methods.handleVideoPlay(context);
 				
 			},
@@ -250,6 +271,8 @@
 				console.log("Html5 Video Player");
 				
 				var data = $.data(context);
+				
+				data.target.html(methods.returnHtml(context));
 				
 		    	methods.handleVideoPlay(context);
 				
@@ -322,12 +345,12 @@
 				    google.ima.AdsLoadedEvent.Type.ADS_LOADED,
 				    function(e) {
 				    	
-				    	var adsManager = e.getAdsManager();
+				    	data.options.GoogleAdsManager = e.getAdsManager();
 				    	
 				    	console.log("Google Adsmanager Start");
 				    	
 				    	//handle the end of the ad
-				    	adsManager.addEventListener(
+				    	data.options.GoogleAdsManager.addEventListener(
 				    			 google.ima.AdEvent.Type.COMPLETE,
 				    			function(ee) {
 				    				
@@ -339,7 +362,7 @@
 				    	);
 				    	
 				    	//bootstrap that bitch
-				    	adsManager.play(data.target.find("video").get(0));
+				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0));
 				    	
 				    	
 				    	
@@ -373,12 +396,12 @@
 						
 						var ele = data.target;
 					
+						methods.destroy(context);
+						
 						$(ele).html(d);
 						
 						$(ele).find(".icon").css({"opacity":.5});
-						
-						methods.destroy(context);
-						
+
 						//make the replay button clickable
 						
 						format_berricsRelatedVideoScreen();
