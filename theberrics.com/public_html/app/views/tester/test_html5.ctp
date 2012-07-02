@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("berrics.htmlvideo"),array("inline"=>false));
+//$this->Html->script(array("berrics.htmlvideo"),array("inline"=>false));
 
 ?>
 <script>
@@ -26,6 +26,16 @@ $(document).ready(function() {
 <?php 
 	$video = $post['DailyopMediaItem'][0]['MediaFile'];
 ?>
+
+<div id="post">
+<?php 
+
+	echo $this->element("dailyops/post-bit",array("dop"=>$post));
+
+?>
+</div>
+
+
 <div class='video-test' id="randomid">
 
 </div>

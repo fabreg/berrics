@@ -148,7 +148,8 @@ class BerricsHelper extends AppHelper {
 		$opts = array(
 		
 			"link_to_post"=>1,
-			"link"=>$link
+			"link"=>$link,
+			"id"=>"dailyop-".time()
 		
 		);
 		
