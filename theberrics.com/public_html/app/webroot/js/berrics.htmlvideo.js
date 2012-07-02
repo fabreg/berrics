@@ -53,9 +53,9 @@
 					
 					mobile = true;
 					
-					if(/(iPad)/ig.test(navigator.userAgent)) {
+					if(/(iPad|android)/ig.test(navigator.userAgent)) {
 						
-						mobile = false;
+						//mobile = false;
 						
 					}
 					
@@ -66,6 +66,7 @@
 					console.log("Going for flash");
 					
 					data.options.Playback="FLASH";
+					
 					
 				} else {
 					
@@ -88,7 +89,7 @@
 				data.target.click(function() { 
 					
 					methods.requestVideoData(context);
-					
+					methods.removeHover(context);
 				});
 				methods.createHover(context);
 				
@@ -191,7 +192,11 @@
 				});
 				
 			},
-			removeHover:function(context) { },
+			removeHover:function(context) {
+				
+				
+				
+			},
 			handleBuffer:function(context) {
 				
 				var data = $.data(context);
@@ -265,6 +270,7 @@
 							
 							"src":methods.LIMELIGHT_URL + data.options.ServerData.MediaFile.limelight_file,
 							"controls":true
+							
 						});
 						
 						video_element.play();
@@ -332,13 +338,7 @@
 				var data = $.data(context);
 				
 				data.target.html(methods.returnHtml(context));
-				
-				data.target.find("video").attr({
-					
-					"poster":"http://img.theberrics.com/i.php?w="+data.options.VideoWidth+"&h="+data.options.VideoHeight+"&src=/video/stills/"+data.options.ServerData.MediaFile.file_video_still
-					
-				});
-				
+
 		    	methods.handleVideoPlay(context);
 				
 			},
@@ -427,7 +427,7 @@
 				    	);
 				    	
 				    	//play the ad
-				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0),{restoreContentState:false});
+				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0));
 			
 				    },
 				    false);
