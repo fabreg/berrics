@@ -361,8 +361,9 @@
 				    			false
 				    	);
 				    	
+				    	
 				    	//bootstrap that bitch
-				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0));
+				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0),{restoreContentState:false});
 				    	
 				    	
 				    	
