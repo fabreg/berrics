@@ -31,15 +31,66 @@
 						"DailyopId":3786,
 						"BufferInterval":false,
 						"GoogleAdsManager":false,
+						"Playback":"FLASH"
 						
 						
 					},options)
 					
 				});
 
-				methods.requestVideoData($this);
+				methods.determinePlayback($this);
 				
 				return this;
+				
+			},
+			determinePlayback:function(context) {
+				
+				var data = $.data(context);
+
+				var mobile = false;
+				
+				if(/(mobile)/ig.test(navigator.userAgent)) {
+					
+					mobile = true;
+					
+					if(/(iPad)/ig.test(navigator.userAgent)) {
+						
+						mobile = false;
+						
+					}
+					
+				}
+				
+				if(Modernizr.video.h264.length<=0 && !mobile) {
+					
+					console.log("Going for flash");
+					
+					data.options.Playback="FLASH";
+					
+				} else {
+					
+					console.log("Going for html5");
+					
+						data.options.Playback="HTML";
+					
+					if(mobile) {
+						
+						//determined to be a mobile device || start the request to bootstrap any advertising
+						
+						methods.requestVideoData(context);
+						return;
+						
+					} 
+					
+				}
+				
+				//setup the hovers and clicks
+				data.target.click(function() { 
+					
+					methods.requestVideoData(context);
+					
+				});
+				methods.createHover(context);
 				
 			},
 			returnHtml:function(context) {
@@ -73,12 +124,6 @@
 				return div;
 				
 			},
-			startBufferTimer:function() { },
-			handleTimer:function(context) {
-				
-				
-				
-			},
 			requestVideoData:function(context) {
 				
 				var data = $.data(context);
@@ -88,20 +133,14 @@
 					"dataType":"JSON",
 					"url":"/media/json_video_service",
 					"success":function(d) {
-						
-						data.options['ServerData'] = d;
+						data.options.ServerData = d;
 						methods.bootstrapVideo(context);
-						
 					},
 					"data":{
-						
 						"data":{
-						
-							"json":JSON.stringify({
-							
+							"json":JSON.stringify({	
 								"media_file_id":data.options.MediaFileId,
-								"dailyop_id":data.options.DailyopId
-							
+								"dailyop_id":data.options.DailyopId	
 							})
 						
 						}
@@ -116,19 +155,43 @@
 				
 				var data = $.data(context);
 				
-				if(Modernizr.video.h264.length<=0) {
-					
-					console.log("H264 Not Supported: Flash Video Fallback");
-					
-					methods.flashFallBack(context);
-					
-				} else {
-					
-					methods.html5VideoPlayer(context);
-					
-					
+				data.target.unbind('click');
+				
+				
+				
+				switch(data.options.Playback) {
+				
+					case "HTML":
+						methods.html5VideoPlayer(context);
+						break;
+					default:
+							console.log("Flash fallback");
+						methods.flashFallBack(context);
+						break;
+				
 				}
+				
 			},
+			createHover:function(context) { 
+				
+				var data = $.data(context);
+				data.target.find('.overlay').css({
+    				
+    				"opacity":.6
+    				
+    			});
+				data.target.hover(function() { 
+					
+					data.target.find('.overlay').fadeIn();
+					
+				},function() {
+					
+					data.target.find('.overlay').fadeOut();
+					
+				});
+				
+			},
+			removeHover:function(context) { },
 			handleBuffer:function(context) {
 				
 				var data = $.data(context);
@@ -149,6 +212,7 @@
 				var data = $.data(context);
 				
 				clearInterval(data.options.BufferInterval);
+				data.options.BufferInterval = false;
 				
 				if(data.options.PlayAction!='Exit') {
 					
@@ -261,11 +325,6 @@
 				methods.handleVideoPlay(context);
 				
 			},
-			videoRequestComplete:function(context) { 
-
-				methods.handleVideoPlay(context);
-				
-			},
 			html5VideoPlayer:function(context) {
 
 				console.log("Html5 Video Player");
@@ -274,6 +333,12 @@
 				
 				data.target.html(methods.returnHtml(context));
 				
+				data.target.find("video").attr({
+					
+					"poster":"http://img.theberrics.com/i.php?w="+data.options.VideoWidth+"&h="+data.options.VideoHeight+"&src=/video/stills/"+data.options.ServerData.MediaFile.file_video_still
+					
+				});
+				
 		    	methods.handleVideoPlay(context);
 				
 			},
@@ -281,6 +346,8 @@
 					
 					var data = $.data(context);
 				
+					
+					
 					var e = data.target;
 					$(e).unbind("click");
 					
@@ -307,8 +374,6 @@
 					}
 					
 					fparams.override_data = escape(JSON.stringify(data.options.ServerData));
-					
-					console.log(escape(JSON.stringify(data.options.ServerData)));
 					
 					var xiSwfUrlStr = "/swf/expressInstall.swf";
 					var swfVersionStr = "0.0.0";
@@ -361,12 +426,9 @@
 				    			false
 				    	);
 				    	
-				    	
-				    	//bootstrap that bitch
+				    	//play the ad
 				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0),{restoreContentState:false});
-				    	
-				    	
-				    	
+			
 				    },
 				    false);
 				adsLoader.addEventListener(

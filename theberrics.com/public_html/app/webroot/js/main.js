@@ -376,7 +376,14 @@ function initMediaFileDiv() {
 
 	$('div[media_file][media_type="bcove"]').each(function() {
 		
-
+			$(this).BerricsHtmlVideo({
+				
+				"MediaFileId":$(this).attr("media_file_id"),
+				"DailyopId":$(this).attr("dailyop_id")
+				
+			});
+			
+			/*
     		var media_type = $(this).attr("media_type");
     		var media_file_id = $(this).attr("media_file_id");
     		var pre = $(this).attr("pre");
@@ -438,7 +445,7 @@ function initMediaFileDiv() {
     			
     			
     		}
-       		
+       		*/
 	});
 	
 	//init EMOTW 

@@ -35,6 +35,7 @@
 			"jquery.form",
 			"jquery.ba-bbq",
 			"jquery.berrics.login",
+			"berrics.htmlvideo",
 			"main"
 		
 		));
