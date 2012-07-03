@@ -410,9 +410,9 @@
 						legacy_preroll:data.options.ServerData["MediaFile"]["preroll"],
 						legacy_postroll:data.options.ServerData["MediaFile"]["postroll"],
 						server:window.location.hostname,
-						preroll_server:'LEGACY',
-						postroll_server:'LEGACY',
-						loader:'/swf/player/BerricsPlayerFallback.swf?rev=John1.7'
+						preroll_server:'GOOGLE',
+						postroll_server:'GOOGLE',
+						loader:'/swf/player/BerricsPlayerFallback.swf?rev=John1.13'
 							
 					};
 					
@@ -487,10 +487,37 @@
 				    	console.log("Google Video Ad Error: ");
 				    	console.log(e.getError());
 				    	
+				    	if(data.options.PlayAction=="PreRoll") {
+				    		
+				    		data.options.PlayAction="Video";
+				    		
+				    	} else {
+				    	
+				    		data.options.PlayAction = "Exit";
+				    		
+				    	}
+				    	
+				    	return methods.handleVideoPlay(context);
+				    	
+				    	
 				    },
 				    false);
+				
+				var ad_url;
+				
+				switch(data.options.PlayAction) {
+					
+					case "PreRoll":
+						ad_url = data.options.ServerData.MediaFile.preroll;
+						break;
+					case "PostRoll":
+						ad_url = data.options.ServerData.MediaFile.postroll;
+						break;
+				
+				}
+				console.log(ad_url);
 				 adsLoader.requestAds({
-					  adTagUrl: methods.VAST_TEST_URL,
+					  adTagUrl: ad_url,
 					  adType: "video"
 					});
 				 
