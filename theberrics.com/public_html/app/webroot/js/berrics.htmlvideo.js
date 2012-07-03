@@ -38,11 +38,35 @@
 					
 				});
 
-				methods.determinePlayback($this);
-				
+				//methods.determinePlayback($this);
+				methods.initBrowser($this);
 				return this;
 				
 			},
+			initBrowser:function(context) { 
+				
+				var data = $.data(context);	
+				
+				console.log("INIT BROWSER");
+				
+				if(/(probably)/ig.test(Modernizr.video.h264)) {
+				
+					console.log("USE H264");
+					data.options.Playback = "HTML";
+					
+				} else {
+					
+					console.log("USE FLASH")
+					data.options.Playback = "FLASH";
+					
+				}
+				
+				console.log(Modernizr.video);
+				
+				methods.initDiv(context);
+				
+			},
+			initMobile:function(context) { },
 			determinePlayback:function(context) {
 				
 				var data = $.data(context);
@@ -134,8 +158,23 @@
 					"dataType":"JSON",
 					"url":"/media/json_video_service",
 					"success":function(d) {
+					
 						data.options.ServerData = d;
-						methods.bootstrapVideo(context);
+						
+						switch(data.options.Playback) {
+						case "FLASH":
+							methods.flashFallBack(context);
+							break;
+						case "HTML":
+							methods.html5VideoPlayer(context);
+							break;
+						default:
+								console.log("BerricsHtmlVideo.requestVideoData AJAX CALLBACK could not find a valid playback type");
+							break;
+						}
+						//methods.bootstrapVideo(context);
+						
+						
 					},
 					"data":{
 						"data":{
@@ -173,7 +212,7 @@
 				}
 				
 			},
-			createHover:function(context) { 
+			initDiv:function(context) { 
 				
 				var data = $.data(context);
 				data.target.find('.overlay').css({
@@ -190,6 +229,16 @@
 					data.target.find('.overlay').fadeOut();
 					
 				});
+				data.target.click(function() { 
+					
+					methods.requestVideoData(context);
+					data.target.unbind('click');
+					
+				});
+			},
+			createHover:function(context) { 
+				
+				
 				
 			},
 			removeHover:function(context) {
