@@ -127,7 +127,7 @@ body {
 
 <div style='text-align:center;' id="enter">
 <div style='padding-top:15px;'>
-<a>
+<a href='http://us.levi.com/shop/index.jsp?categoryId=13158492&cp=3146842.4305630' target="_blank">
 <img src='/img/splash/levis/logos.png' border='0'/>
 </a>
 </div>
