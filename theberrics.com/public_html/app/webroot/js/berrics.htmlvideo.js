@@ -67,57 +67,7 @@
 				
 			},
 			initMobile:function(context) { },
-			determinePlayback:function(context) {
-				
-				var data = $.data(context);
-
-				var mobile = false;
-				
-				if(/(mobile)/ig.test(navigator.userAgent)) {
-					
-					mobile = true;
-					
-					if(/(iPad|android)/ig.test(navigator.userAgent)) {
-						
-						//mobile = false;
-						
-					}
-					
-				}
-				
-				if(Modernizr.video.h264.length<=0 && !mobile) {
-					
-					console.log("Going for flash");
-					
-					data.options.Playback="FLASH";
-					
-					
-				} else {
-					
-					console.log("Going for html5");
-					
-						data.options.Playback="HTML";
-					
-					if(mobile) {
-						
-						//determined to be a mobile device || start the request to bootstrap any advertising
-						
-						methods.requestVideoData(context);
-						return;
-						
-					} 
-					
-				}
-				
-				//setup the hovers and clicks
-				data.target.click(function() { 
-					
-					methods.requestVideoData(context);
-					methods.removeHover(context);
-				});
-				methods.createHover(context);
-				
-			},
+			
 			returnHtml:function(context) {
 				
 				var data = $.data(context);
@@ -236,13 +186,59 @@
 					
 				});
 			},
+			initVideoEvents:function(context) { 
+				
+				var data = $.data(context);
+				
+				var video = data.target.find("video");
+				
+				video.bind('loadstart',function() { 
+					
+					if(!data.options.GoogleAdsManager) {
+						
+						video.bind('ended',function() {
+							
+							console.log('OG Video End event');
+							//methods.handleVideoEnd(context);
+								
+							}
+						);
+						
+					}
+					
+					
+				}).bind('timeupdate',function() {
+					
+					methods.handleTimer(context);
+					
+				});
+				
+			},
 			createHover:function(context) { 
 				
 				
 				
 			},
-			removeHover:function(context) {
+			handleTimer:function(context) { 
 				
+				var data = $.data(context);
+				
+				var video = data.target.find("video");
+				
+				var duration = video.get(0).duration;
+				
+				var ve = video.get(0);
+				
+				if(ve.currentTime>=duration) { 
+				
+					console.log("Handle Timer Firing End Event");
+					
+					return methods.handleVideoEnd(context);
+					
+					
+				}
+				
+				//video.get(0).addEventListener('') 
 				
 				
 			},
@@ -254,9 +250,26 @@
 				
 				var duration = video.get(0).duration;
 				
-				var buffer_end = video.get(0).buffered.end(0);
+				try {
+					
+					var buffer_end = video.get(0).buffered.end(0);
+					
+				} catch(e) {
+					
+					console.log("Handle Buffer: get buffer error");
+					console.log(e);
+					
+				}
+				
 				
 				var percentBuffered = Math.ceil((buffer_end * 100) / duration);
+				
+				if(percentBuffered >= 100) {
+					
+					clearInterval(data.options.BufferInterval);ddddddddd
+					console.log("Buffer Interval Completed");
+					
+				}
 				
 				console.log("Percent Buffered: "+percentBuffered);
 				
@@ -275,9 +288,10 @@
 						methods.handleBuffer(context);
 						
 					},500);
-					
+				
 				}
 				
+				methods.initVideoEvents(context);
 				
 				
 				switch(data.options.PlayAction) {
@@ -310,7 +324,6 @@
 						
 						var video = data.target.find("video");
 						
-						video.unbind();
 						video.html('').attr({"src":null});
 						
 						var video_element = $(video).get(0);
@@ -323,21 +336,6 @@
 						});
 						
 						video_element.play();
-						
-						video.bind('loadstart',function() { 
-							
-							video.bind('ended',function() {
-									
-									console.log('Video Ended');
-									methods.handleVideoEnd(context);
-									
-								}
-							);
-							
-						});
-						
-						
-					
 						
 						break;
 				}
@@ -394,9 +392,7 @@
 			flashFallBack:function(context) {
 					
 					var data = $.data(context);
-				
-					
-					
+
 					var e = data.target;
 					$(e).unbind("click");
 					
@@ -469,7 +465,8 @@
 				    			function(ee) {
 				    				
 				    				console.log("Ad Completed Playing");
-				    				methods.handleVideoEnd(context);
+				    				//methods.handleVideoEnd(context);
+				    				
 				    				
 				    			},
 				    			false
@@ -553,7 +550,14 @@
 				
 				var data = $.data(context);
 				
-				clearInterval(data.options.BufferInterval);
+				try {
+					
+					clearInterval(data.options.BufferInterval);
+					data.options.BufferInterval = false;
+				}
+				catch(e) {
+					
+				}
 				
 				$.removeData(context);
 				
