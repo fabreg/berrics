@@ -30,6 +30,7 @@
 						"PostRoll":null,
 						"DailyopId":3786,
 						"BufferInterval":false,
+						"ControlsTimeout":false,
 						"GoogleAdsManager":false,
 						"Playback":"FLASH"
 						
@@ -72,20 +73,32 @@
 				
 				var data = $.data(context);
 				
-				var div = $("<div class='berrics-html-video-div' />").append("<video />");
+				var div = $("<div class='berrics-html-video-div' />")
+								.append("<div class='click-element'/>")
+								.append("<div class='pause-overlay' />")
+								.append("<video />")
+								.append(
+										$("<div class='controls' />")
+										.append(
+												$("<div class='inner' />")
+												.append("<input type='button' value='' class='playpause-button'/>")
+												.append(
+														$("<div class='slider' />")
+														.append("<div class='play-marker'/>")
+														.append("<div class='buffer-bar'/>")
+														.append("<div class='duration-bar'/>")
+												)
+												.append("<input type='text' disabled='disabled' value='' class='duration'/>")
+												.append("<input type='button' value='' class='fullscreen-button'/>")
+												.append("<div class='slowmotion-button'/>")
+								)
+							);
+							
 				
-				var controls = $("<div class='controls' />").
-								append("<div class='inner' />").find('.inner').
-								append("<div class='slider' />").
-								append("<div />");
 				
-				$(div).append(controls);
 				
-				$(div).css({
-					
-					"position":"realtive"
-					
-				}).find("video").css({
+			
+				$(div).find("video").css({
 					
 					"background-color":"#000"
 					
@@ -189,29 +202,105 @@
 			initVideoEvents:function(context) { 
 				
 				var data = $.data(context);
-				
 				var video = data.target.find("video");
+				var click_element = data.target.find('.click-element');
+				var pause_overlay = data.target.find('.pause-overlay');
+				
+				video.unbind();
+				pause_overlay.unbind().css({"opacity":.4}).hide();
+				click_element.unbind().hide();
 				
 				video.bind('loadstart',function() { 
 					
-					if(!data.options.GoogleAdsManager) {
-						
-						video.bind('ended',function() {
-							
-							console.log('OG Video End event');
-							//methods.handleVideoEnd(context);
-								
-							}
-						);
-						
-					}
 					
 					
 				}).bind('timeupdate',function() {
 					
 					methods.handleTimer(context);
 					
+				}).bind("pause",function() { 
+					
+					console.log("Video Pause Event");
+					console.log(video.get(0).paused);
+					//show the pause overlay
+					
+					data.target.find(".pause-overlay").show();
+					
+				}).bind('play',function() { 
+					
+					console.log("Play Event Fired")
+					
 				});
+				
+				//bind the other elements
+				
+				//the main controls hover
+				data.target.unbind('mousemove').bind('mousemove',function(e) {
+					
+					data.target.find('.controls').fadeIn('fast');
+					clearTimeout(data.options.ControlsTimeout);
+					data.options.ControlsTimeout = setTimeout(function() { 
+						
+						data.target.find('.controls').fadeOut();
+						
+					},1750);
+					
+				});
+				
+				
+				//pause overlay
+				pause_overlay.click(function() { 
+					
+					console.log("Pause overlay click");
+					pause_overlay.hide();
+					video.get(0).play();
+					
+					
+				});
+				
+				//playbutton
+				data.target.find('.playpause-button').unbind().click(function() { 
+					
+					console.log("Play-Pause button clicked");
+					
+					methods.togglePause(context);
+					
+					
+					
+				});
+				
+				//fullscreen
+				data.target.find(".fullscreen-button").unbind().click(function() { 
+					
+					methods.toggleFullscreen(context);
+					
+				});
+				
+				
+				
+			},
+			toggleFullscreen:function(context) { 
+				
+				var data = $.data(context);
+				var video = data.target.find("video");
+			
+				
+			},
+			togglePause:function(context) {
+				
+				var data = $.data(context);
+				var video = data.target.find("video");
+				
+				if(video.get(0).paused == false) {
+				
+					video.get(0).pause();
+					
+				} else {
+					
+					video.get(0).play();
+					
+				}
+				
 				
 			},
 			createHover:function(context) { 
@@ -222,19 +311,56 @@
 			handleTimer:function(context) { 
 				
 				var data = $.data(context);
-				
 				var video = data.target.find("video");
 				
-				var duration = video.get(0).duration;
-				
 				var ve = video.get(0);
+				var duration = ve.duration;
+				var ct = ve.currentTime;
+				var percentPlayed = (ct * 100) / duration;
+				var sliderPixel = Math.ceil((percentPlayed * 5));
+
+
+				// lets setup the timeline timer
+
+				var total_min = Math.floor(duration / 60);
+
+				var total_seconds = Math.floor(duration
+						- (total_min * 60));
+
+				var played_min = 0;
+
+				if (ct >= 59) {
+
+					played_min = Math.floor(ct / 60);
+
+				}
+
+				var played_seconds = ct;
+
+				played_seconds = Math.floor(ct - (played_min * 60));
+
+				// clean up the seconds
+
+				if (played_seconds < 10) {
+
+					played_seconds = "0" + played_seconds;
+
+				}
+
+				if (total_seconds < 10) {
+
+					total_seconds = "0" + total_seconds;
+
+				}
 				
-				if(ve.currentTime>=duration) { 
+				
+				data.target.find('.controls .duration').val(played_min+":"+played_seconds+" / "+total_min+":"+total_seconds);
+				
+				if(ct>=duration) { 
 				
 					console.log("Handle Timer Firing End Event");
 					
 					return methods.handleVideoEnd(context);
-					
 					
 				}
 				
@@ -245,9 +371,7 @@
 			handleBuffer:function(context) {
 				
 				var data = $.data(context);
-				
 				var video = data.target.find("video");
-				
 				var duration = video.get(0).duration;
 				
 				try {
@@ -266,12 +390,12 @@
 				
 				if(percentBuffered >= 100) {
 					
-					clearInterval(data.options.BufferInterval);ddddddddd
+					clearInterval(data.options.BufferInterval);
 					console.log("Buffer Interval Completed");
 					
 				}
 				
-				console.log("Percent Buffered: "+percentBuffered);
+				//console.log("Percent Buffered: "+percentBuffered);
 				
 			},
 			handleVideoPlay:function(context) {
@@ -318,10 +442,6 @@
 					case "Video":
 					default:
 						
-						console.log("HTML5 Video Action: Clear All Event");
-				
-						console.log(data);
-						
 						var video = data.target.find("video");
 						
 						video.html('').attr({"src":null});
@@ -331,7 +451,7 @@
 						video.attr({
 							
 							"src":methods.LIMELIGHT_URL + data.options.ServerData.MediaFile.limelight_file,
-							"controls":true
+							"controls":false
 							
 						});
 						
@@ -451,6 +571,7 @@
 				
 				var data = $.data(context);
 				var adsLoader = new google.ima.AdsLoader();
+				
 				adsLoader.addEventListener(
 				    google.ima.AdsLoadedEvent.Type.ADS_LOADED,
 				    function(e) {
@@ -465,12 +586,13 @@
 				    			function(ee) {
 				    				
 				    				console.log("Ad Completed Playing");
-				    				//methods.handleVideoEnd(context);
-				    				
-				    				
+				    		
 				    			},
 				    			false
 				    	);
+				    	
+				    	//configure the click element
+				    	data.options.GoogleAdsManager.setClickTrackingElement(data.target.find(".click-element").show().get(0));
 				    	
 				    	//play the ad
 				    	data.options.GoogleAdsManager.play(data.target.find("video").get(0));
