@@ -44,6 +44,7 @@
 		echo $this->Html->css(array(
 			"main",
 			"layout",
+			"BerricsHtmlVideo",
 			"layout_override",
 			"vader/jquery-ui-1.8.11.custom"
 		),"stylesheet");
