@@ -81,7 +81,10 @@
 										$("<div class='controls' />")
 										.append(
 												$("<div class='inner' />")
-												.append("<input type='button' value='' class='playpause-button'/>")
+												.append(
+														$("<div class='button' />")
+														.append("<input type='button' value='' class='playpause-button'/>")
+												)
 												.append(
 														$("<div class='slider' />")
 														.append("<div class='play-marker'/>")
@@ -89,7 +92,10 @@
 														.append("<div class='duration-bar'/>")
 												)
 												.append("<input type='text' disabled='disabled' value='' class='duration'/>")
-												.append("<input type='button' value='' class='fullscreen-button'/>")
+												.append(
+														$("<div class='button' />")
+														.append("<input type='button' value='' class='fullscreen-button'/>")
+												)
 												.append("<div class='slowmotion-button'/>")
 								)
 							);
@@ -225,11 +231,13 @@
 					//show the pause overlay
 					
 					data.target.find(".pause-overlay").show();
+					data.target.find('.playpause-button').removeClass('button-state-play').addClass('button-state-pause');
 					
 				}).bind('play',function() { 
 					
 					console.log("Play Event Fired")
-					
+					data.target.find('.playpause-button').addClass('button-state-play').removeClass('button-state-pause');
+
 				});
 				
 				//bind the other elements
@@ -246,6 +254,7 @@
 					},1750);
 					
 				});
+				
 				
 				
 				//pause overlay
@@ -269,12 +278,28 @@
 					
 				});
 				
+				
+				
 				//fullscreen
 				data.target.find(".fullscreen-button").unbind().click(function() { 
 					
 					methods.toggleFullscreen(context);
 					
 				});
+				
+				//hovers
+				data.target.find('.button').hover(
+						function(e) {						
+							
+							$(e.currentTarget).addClass('button-hover');
+							
+						},
+						function(e) { 
+							
+							//$(e.currentTarget).removeClass('button-hover');
+							
+						}
+				);
 				
 				
 				
@@ -421,6 +446,8 @@
 				switch(data.options.PlayAction) {
 				
 					case "PreRoll":
+						data.options.PlayAction = "Video";
+						return methods.handleVideoPlay(context);
 						if(data.options.ServerData.MediaFile.preroll === null || data.options.ServerData.MediaFile.preroll.strlen<=0) {
 							
 							console.log("Pre Roll Not Found. Change Action and re-run Method");
