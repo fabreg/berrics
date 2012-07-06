@@ -9,7 +9,7 @@ switch(date("Y-m-d")) {
 		$tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509.2;sz=1x1;ord=[timestamp]?";
 		$click_thru = "http://ad.doubleclick.net/clk;251260568;83376872;s";
 		break;
-	case "2012-07-07":
+	case "2012-07-06":
 		$click_thru = "http://ad.doubleclick.net/clk;251260568;83376897;z";
 		$tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509.11;sz=1x1;ord=[timestamp]?";
 		break;

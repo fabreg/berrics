@@ -48,7 +48,7 @@ class SplashRoute extends CakeRoute {
 			
 			case "2012-07-03":
 			case "2012-07-05":
-			case "2012-07-17":
+			case "2012-07-06":
 				$params['controller'] = "splash";
 				$params['action'] = "adidas_lucas";
 			break;
