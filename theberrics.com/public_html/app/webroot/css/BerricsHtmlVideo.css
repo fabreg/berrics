@@ -2,7 +2,7 @@
 
 .berrics-html-video-div {
 
-	position:realtive;
+	position:relative;
 
 }
 
@@ -59,6 +59,17 @@
 	
 }
 
+.berrics-html-video-div .controls .button {
+	
+	
+}
+
+.berrics-html-video-div .controls .button-hover {
+	
+	background-color:transparent;
+	
+}
+
 .berrics-html-video-div .controls .playpause-button {
 	
 	position:absolute;
@@ -66,8 +77,22 @@
 	left:0px;
 	width:35px;
 	height:35px;
-	background-color:red;
+	background-color:transparent;
 	border:none;
+	
+}
+
+.berrics-html-video-div .controls .button-state-play {
+	
+	background-color:green;
+	
+}
+
+
+
+.berrics-html-video-div .controls .button-state-pause {
+	
+	background-color:#ccc;
 	
 }
 
@@ -94,6 +119,15 @@
 	border:none;
 	
 }
+
+.berrics-html-video-div .controls .button-state-fullscreen-active {
+	
+}
+
+.berrics-html-video-div .controls .button-state-fullscreen-notactive {
+	
+}
+
 
 
 
