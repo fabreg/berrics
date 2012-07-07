@@ -53,6 +53,8 @@ class LocalAppController extends AppController {
 		
 		if(!isset($_SERVER['GEOIP_REGION_NAME'])) $_SERVER['GEOIP_REGION_NAME'] = "California";
 		
+		if(!isset($_GET['geoip_override']))  $_SERVER['GEOIP_COUNTRY_CODE'] = $_GET['geoip_override'];
+		
 	}
 	
 	public function setCanteenCategories() {

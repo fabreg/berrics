@@ -754,6 +754,14 @@ public function dc_apr() {
 		
 		$this->layout = "empty";
 		
+		if($_SERVER['GEOIP_COUNTRY_CODE'] == "US") {
+			
+			$this->beforeRender();
+			return $this->render("levis-nl");
+			
+		}
+		
+		
 		$this->loadModel("Dailyop");
 		
 		$post = $this->Dailyop->returnPost(array(
