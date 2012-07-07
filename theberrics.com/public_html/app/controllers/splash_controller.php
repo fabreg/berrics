@@ -754,7 +754,7 @@ public function dc_apr() {
 		
 		$this->layout = "empty";
 		
-		if($_SERVER['GEOIP_COUNTRY_CODE'] == "US") {
+		if(in_array($_SERVER['GEOIP_COUNTRY_CODE'],array("NL","DE","BE"))) {
 			
 			$this->beforeRender();
 			return $this->render("levis-nl");
