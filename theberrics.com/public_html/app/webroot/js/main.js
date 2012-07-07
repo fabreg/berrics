@@ -299,7 +299,6 @@ function initThumbHovers() {
 
 var berricsRelatedVideoScreen = function(media_file_id, dailyop_id) {
 	
-	
 	$.ajax({
 		
 		"url":"/dailyops/related/"+dailyop_id,

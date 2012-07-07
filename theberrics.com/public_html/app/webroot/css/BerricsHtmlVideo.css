@@ -25,6 +25,30 @@
 	
 	
 }
+.berrics-html-video-div .controls .playpause-button {
+	
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:35px;
+	height:35px;
+	background-color:transparent;
+	border:none;
+	
+}
+.berrics-html-video-div .controls {
+
+	z-index:900;
+	height:35px;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	background-color:#333;
+	position:absolute;	
+	display:none;
+	
+	
+}
 .berrics-html-video-div .pause-overlay {
 	
 	z-index:1100;
@@ -36,19 +60,6 @@
 	height:100%;
 	background-color:pink;
 	cursor:pointer;
-	
-}
-
-.berrics-html-video-div .controls {
-
-	z-index:900;
-	height:35px;
-	bottom:0px;
-	left:0px;
-	width:100%;
-	background-color:#333;
-	position:absolute;	
-	display:none;
 	
 }
 
@@ -66,19 +77,7 @@
 
 .berrics-html-video-div .controls .button-hover {
 	
-	background-color:transparent;
-	
-}
-
-.berrics-html-video-div .controls .playpause-button {
-	
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:35px;
-	height:35px;
-	background-color:transparent;
-	border:none;
+	background-color:pink;
 	
 }
 
@@ -121,6 +120,8 @@
 }
 
 .berrics-html-video-div .controls .button-state-fullscreen-active {
+	
+	
 	
 }
 

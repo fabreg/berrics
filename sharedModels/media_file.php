@@ -21,8 +21,6 @@ class MediaFile extends AppModel {
 	var $belongsTo = array(
 		"Website"
 	);
-	
-	
 
 	var $hasMany = array(
 		
