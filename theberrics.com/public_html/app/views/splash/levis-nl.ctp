@@ -1,3 +1,8 @@
+<?php 
+
+$this->set("title_for_layout","The Berrics");
+
+?>
 <style>
 
 body {
