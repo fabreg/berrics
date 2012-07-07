@@ -82,7 +82,7 @@
 										.append(
 												$("<div class='inner' />")
 												.append(
-														$("<div class='button' />")
+														$("<div class='button playpause-div' />")
 														.append("<input type='button' value='' class='playpause-button'/>")
 												)
 												.append(
@@ -93,7 +93,7 @@
 												)
 												.append("<input type='text' disabled='disabled' value='' class='duration'/>")
 												.append(
-														$("<div class='button' />")
+														$("<div class='button fullscreen-div' />")
 														.append("<input type='button' value='' class='fullscreen-button'/>")
 												)
 												.append("<div class='slowmotion-button'/>")
@@ -217,9 +217,7 @@
 				click_element.unbind().hide();
 				
 				video.bind('loadstart',function() { 
-					
-					
-					
+					//stub
 				}).bind('timeupdate',function() {
 					
 					methods.handleTimer(context);
@@ -296,7 +294,7 @@
 						},
 						function(e) { 
 							
-							//$(e.currentTarget).removeClass('button-hover');
+							$(e.currentTarget).removeClass('button-hover');
 							
 						}
 				);
