@@ -2,13 +2,13 @@
 #exit 0;
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
+echo "Compressing CSS Files......"
 #COMPRESS THEME CSS FILES
 for F in $(find ${DIR}/../theberrics.com/public_html/app/webroot -iname '*.css' ! -iname '*.min.css'); 
 do
-	echo "FILENAME: "$F;
+	#echo "FILENAME: "$F;
 	NEW_FILE=${F/.css/.min.css};
-	echo "NEW FILE: "$NEW_FILE;
+	#echo "NEW FILE: "$NEW_FILE;
 	
 	
 	if [[ -e $NEW_FILE ]]; then
@@ -25,7 +25,5 @@ do
 	fi
 	
 done
-git status; 
-echo "Press enter to continue";
-read hello;
-echo $hello;
+echo "CSS Compression Completed"
+
