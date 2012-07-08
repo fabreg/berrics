@@ -1,0 +1,8 @@
+#!/usr/bin/php
+<?php
+$cdir =  dirname(__FILE__);
+`java -jar $cdir/yuicompressor-2.4.7.jar -help`;
+
+
+?>
+

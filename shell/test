@@ -4,7 +4,8 @@ THEME_DIR=$(dirname $0)'/../';
 for F in $(find ../theberrics.com -iname '*.css'); 
 do
 	echo $F;
-	echo "FUCK";
+	NEW_FILE=${F/.css/.min.css};
+	echo $NEW_FILE;
 done
 
 
