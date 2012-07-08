@@ -12,15 +12,16 @@ do
 	
 	
 	if [[ -e $NEW_FILE ]]; then
-		echo "FILE EXISTS DELETE IT: "$NEW_FILE;
+		#echo -n "FILE EXISTS DELETE IT: "$NEW_FILE;
 		rm $NEW_FILE;
 	fi
 	
 	#CREATE THE FILE
-	java -jar ${DIR}/yuicompressor-2.4.7.jar -v --type css -o ${NEW_FILE} ${F};
-	echo "NEW MIN FILE CREATED: "$NEW_FILE;
+	java -jar ${DIR}/yuicompressor-2.4.7.jar --type css -o ${NEW_FILE} ${F};
+	
 	
 	if [[ -e $NEW_FILE ]]; then
+		echo "NEW MIN FILE CREATED: "$NEW_FILE;
 		git add ${NEW_FILE}
 	fi
 	
@@ -37,16 +38,19 @@ do
 	
 	
 	if [[ -e $NEW_FILE ]]; then
-		echo "FILE EXISTS DELETE IT: "$NEW_FILE;
+		#echo -n "FILE EXISTS DELETE IT: "$NEW_FILE;
 		rm $NEW_FILE;
 	fi
 	
 	#CREATE THE FILE
-	java -jar ${DIR}/yuicompressor-2.4.7.jar -v --type js --nomunge --preserve-semi -o ${NEW_FILE} ${F};
-	echo "NEW MIN FILE CREATED: "$NEW_FILE;
+	java -jar ${DIR}/yuicompressor-2.4.7.jar --type js --nomunge --preserve-semi -o ${NEW_FILE} ${F};
+
 	
 	if [[ -e $NEW_FILE ]]; then
+		echo "NEW MIN FILE CREATED: "$NEW_FILE;
 		git add ${NEW_FILE}
 	fi
 	
 done
+echo "Completed JS Compression"
+echo "";
