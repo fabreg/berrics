@@ -1,12 +1,31 @@
 #!/bin/bash
-THEME_DIR=$(dirname $0)'/../';
+#exit 0;
 
-for F in $(find ../theberrics.com -iname '*.css'); 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#COMPRESS THEME CSS FILES
+for F in $(find ${DIR}/../theberrics.com/public_html/app/webroot -iname '*.css' ! -iname '*.min.css'); 
 do
-	echo $F;
+	echo "FILENAME: "$F;
 	NEW_FILE=${F/.css/.min.css};
-	echo $NEW_FILE;
+	echo "NEW FILE: "$NEW_FILE;
+	
+	
+	if [[ -e $NEW_FILE ]]; then
+		echo "FILE EXISTS DELETE IT: "$NEW_FILE;
+		rm $NEW_FILE;
+	fi
+	
+	#CREATE THE FILE
+	java -jar ${DIR}/yuicompressor-2.4.7.jar -v --type css -o ${NEW_FILE} ${F};
+	echo "NEW MIN FILE CREATED: "$NEW_FILE;
+	
+	if [[ -e $NEW_FILE ]]; then
+		git add ${NEW_FILE}
+	fi
+	
 done
-
-
-echo $THEME_DIR;
+git status; 
+echo "Press enter to continue";
+read hello;
+echo $hello;

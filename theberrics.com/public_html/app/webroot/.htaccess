@@ -255,18 +255,21 @@
     
 ### END BERRICS URL FIXES
 
+	##REWRITE CSS FILES TO MIN.CSS FILES IF APPLICABLE
+	#RewriteCond %{HTTP_HOST} !^dev\.
+	RewriteCond %{REQUEST_FILENAME} !\.min\.css$
+	RewriteCond %{REQUEST_FILENAME} \.css$
+	#Rewrite to **.min.css
+	RewriteRule ^(.*)(\.css)$ $1.min.css [QSA]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+	#File not found, revert it back!
+	RewriteRule ^(.*)(\.min\.css)$ $1.css [QSA]
 
     ## FILES
     
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    
-    #RewriteCond %{REQUEST_URI} !(.*)/$
-	#RewriteCond %{REQUEST_FILENAME} (testing\.html)
-	#RewriteRule (.*) http://testing.com/$1/ [L,R=301]
-
-    # final img redirect
-	#RewriteRule ^(img\/)(.*) http://img.theberrics.com/images/img/$2 [R,L]
     
     ## ALL TO INDEX
     RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
