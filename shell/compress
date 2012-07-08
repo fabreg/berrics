@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+# directories of the JS and CSS files
+CSS_DIR='../theberrics.com/public_html/app/webroot/css'
+JS_DIR='../theberrics.com/public_html/app/webroot/js'
+
+#these are the paths to the final combined files that you want to have in the end
+CSS_COMBINED_FILE="$CSS_DIR/combined.css"
+JS_COMBINED_FILE="$JS_DIR/combined.js"
+
+# These files are your CSS and JS files you want to combine together
+JS_FILES=( main.js )
+CSS_FILES=( main.css layout.css )
+
+# ----- Do not edit past this line -----
+CSS_TEMP="$CSS_DIR/_combined.css"
+JS_TEMP="$JS_DIR/_combined.js"
+
+#clear the files
+> $CSS_COMBINED_FILE
+> $JS_COMBINED_FILE
+
+#run thru the JS files
+for F in ${JS_FILES[@]}; do
+  cat "$JS_DIR/$F" >> $JS_TEMP
+done
+
+#run thru the CSS files
+for F in ${CSS_FILES[@]}; do
+  cat "$CSS_DIR/$F" >> $CSS_TEMP
+done
+
+#compress it
+
+java -jar yuicompressor-2.4.7.jar -o $JS_COMBINED_FILE --nomunge --preserve-semi --type js $JS_TEMP;
+java -jar yuicompressor-2.4.7.jar -o $CSS_COMBINED_FILE --type css $CSS_TEMP;
+
+
+#./jsmin < $JS_TEMP > $JS_COMBINED_FILE
+#./csstidy $CSS_TEMP $CSS_COMBINED_FILE
+
+#remove the temp files
+rm $JS_TEMP
+rm $CSS_TEMP
+
+#add the file to the git base
+#git add $CSS_COMBINED_FILE
+#git add $JS_COMBINED_FILE
+
+

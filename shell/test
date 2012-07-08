@@ -1,0 +1,11 @@
+#!/bin/bash
+THEME_DIR=$(dirname $0)'/../';
+
+for F in $(find ../theberrics.com -iname '*.css'); 
+do
+	echo $F;
+	echo "FUCK";
+done
+
+
+echo $THEME_DIR;
