@@ -3,7 +3,19 @@
 .berrics-html-video-div {
 
 	position:relative;
+	height:396px;
+}
 
+/*
+* INIT BACKGROUND IMAGE SPRITE
+*/
+.berrics-html-video-div .controls,
+.berrics-html-video-div .controls div,
+.berrics-html-video-div .controls input {
+
+	background-image:url(/img/layout/player/controls-sprite.png);
+	background-position:5000px 5000px;
+	background-repeat:no-repeat;
 }
 
 .berrics-html-video-div .video {
@@ -25,30 +37,55 @@
 	
 	
 }
-.berrics-html-video-div .controls .playpause-button {
-	
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:35px;
-	height:35px;
-	background-color:transparent;
-	border:none;
-	
-}
 .berrics-html-video-div .controls {
 
 	z-index:900;
-	height:35px;
+	height:30px;
 	bottom:0px;
 	left:0px;
 	width:100%;
-	background-color:#333;
 	position:absolute;	
+	background-repeat:repeat-x;
+	background-position:0px -319px;
 	display:none;
 	
+}
+.berrics-html-video-div .controls .playpause-div {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:30px;
+	height:30px;
+	padding:0;
+	margin:0;
+	display:block;
+}
+.berrics-html-video-div .controls .playpause-button {
+	
+	background-color:transparent;
+	border:0;
+	width:30px;
+	height:30px;
+	margin:0;
+	padding:0;
+	display:block;
+}
+
+.berrics-html-video-div .controls .button-state-play {
+	
+	background-position:1px -158px;
 	
 }
+
+
+
+.berrics-html-video-div .controls .button-state-pause {
+	
+	background-position:1px -50px;
+	
+}
+
+
 .berrics-html-video-div .pause-overlay {
 	
 	z-index:1100;
@@ -77,23 +114,10 @@
 
 .berrics-html-video-div .controls .button-hover {
 	
-	background-color:pink;
+	background-color:#333;
 	
 }
 
-.berrics-html-video-div .controls .button-state-play {
-	
-	background-color:green;
-	
-}
-
-
-
-.berrics-html-video-div .controls .button-state-pause {
-	
-	background-color:#ccc;
-	
-}
 
 .berrics-html-video-div .controls .duration {
 
@@ -112,8 +136,8 @@
 	position:absolute;
 	top:0px;
 	right:0px;
-	width:35px;
-	height:35px;
+	width:30px;
+	height:30px;
 	background-color:red;
 	border:none;
 	

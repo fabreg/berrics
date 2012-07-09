@@ -104,7 +104,7 @@
 				
 				
 			
-				$(div).find("video").css({
+				$(div).find("video,.berrics-html-video-div").css({
 					
 					"background-color":"#000"
 					
