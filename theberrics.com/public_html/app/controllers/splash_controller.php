@@ -195,6 +195,14 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	
+	public function sls_12_az() {
+		
+		
+		
+		
+	}
+	
 	public function westchester() {
 		
 		
