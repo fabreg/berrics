@@ -256,7 +256,7 @@
 ### END BERRICS URL FIXES
 
 	##REWRITE CSS/JS FILES TO MIN.** FILES IF APPLICABLE
-	#RewriteCond %{HTTP_HOST} !^dev\.
+	RewriteCond %{HTTP_HOST} !^dev\.
 	RewriteCond %{REQUEST_FILENAME} !\.min(\.css|\.js)$
 	RewriteCond %{REQUEST_FILENAME} (\.css|\.js)$
 	#Rewrite to **.min.**
