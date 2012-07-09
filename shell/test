@@ -1,5 +1,10 @@
 #!/bin/bash
-#exit 0;
+
+#FILES=$(git diff --cached --name-status)
+#CSS_FILES=Array;
+
+#echo $FILES;
+#exit 1;
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo "Compressing CSS Files......"
