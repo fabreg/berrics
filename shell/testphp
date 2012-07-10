@@ -3,7 +3,7 @@
 
 $cdir =  dirname(__FILE__);
 
-echo $cdir;
+//echo $cdir;
 echo "\n";
 echo "\n";
 
@@ -17,6 +17,8 @@ foreach($files as $file) {
 	
 	$f = explode("\t",$file);
 	
+	//dont want deleted files
+	if(strtoupper($f[0])=="D") continue;
 	//gotta be css or js
 	if(!preg_match('/(\.js|\.css)$/i',$f[1]))  continue;
 	//don't want an alrady minified file and only want webroot
