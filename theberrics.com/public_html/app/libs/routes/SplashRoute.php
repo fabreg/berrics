@@ -20,13 +20,27 @@ class SplashRoute extends CakeRoute {
 			
 		}
 		
-		//$news = false;
-		
-		//$news = true;
-		
 		$params['controller'] = "splash";
-		$params['action'] = "levis";
 		
+
+		
+		switch(date("Y-m-d")) {
+			
+			case "2012-07-09":
+				$params['action'] = "cons_kenny";
+				break;
+
+			case "2012-07-10":
+				$params['action'] = "quik";
+				break;
+
+			default:
+				$params['action'] = "index";
+				break;
+			
+		}
+		
+	
 		if($news) {
 			
 			$params['controller'] = "newsv2";
@@ -34,27 +48,6 @@ class SplashRoute extends CakeRoute {
 			$params['pass'][] = date("Y");
 			$params['pass'][] = date("m");
 			$params['pass'][] = date("d");
-			
-		}
-		
-		if(in_array(date('Y-m-d'),array('2012-07-09'))) {
-			
-			$params['controller'] = "splash";
-			$params['action'] = "cons_kenny";
-			
-		} 
-		
-		switch(date("Y-m-d")) {
-			
-			case "2012-07-03":
-			case "2012-07-05":
-			//case "2012-07-06":
-				$params['controller'] = "splash";
-				$params['action'] = "adidas_lucas";
-			break;
-			case "2012-07-04":
-				$params['action'] = "levis";
-			break;
 			
 		}
 		
