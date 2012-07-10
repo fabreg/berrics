@@ -115,6 +115,28 @@
 	background-position:0px -79px;
 }
 
+.berrics-html-video-div .controls .slowmo-div {
+	position:absolute;
+	top:0px;
+	left:90px;
+	width:30px;
+	height:30px;
+	padding:0;
+	margin:0;
+	display:block;
+}
+.berrics-html-video-div .controls .slowmo-button {
+	
+	background-color:transparent;
+	border:0;
+	width:30px;
+	height:30px;
+	margin:0;
+	padding:0;
+	display:block;
+	background-position:2px -131px;
+}
+
 .berrics-html-video-div .controls .button-state-play {
 	
 	background-position:2px -159px;
@@ -233,6 +255,14 @@
 	position:absolute;	
 	display:none;
 	top:-8px;
+	
+}
+
+.berrics-html-video-div .controls .bubble .time {
+	
+	text-align: center;
+	font-size: 11px;
+	color: #333;
 	
 }
 
