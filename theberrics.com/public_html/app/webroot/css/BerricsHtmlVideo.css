@@ -53,7 +53,7 @@
 .berrics-html-video-div .controls .playpause-div {
 	position:absolute;
 	top:0px;
-	left:0px;
+	left:30px;
 	width:30px;
 	height:30px;
 	padding:0;
@@ -71,9 +71,53 @@
 	display:block;
 }
 
+.berrics-html-video-div .controls .seekback-div {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:30px;
+	height:30px;
+	padding:0;
+	margin:0;
+	display:block;
+}
+.berrics-html-video-div .controls .seekback-button {
+	
+	background-color:transparent;
+	border:0;
+	width:30px;
+	height:30px;
+	margin:0;
+	padding:0;
+	display:block;
+	background-position:3px -23px;
+}
+
+.berrics-html-video-div .controls .seekforward-div {
+	position:absolute;
+	top:0px;
+	left:60px;
+	width:30px;
+	height:30px;
+	padding:0;
+	margin:0;
+	display:block;
+}
+.berrics-html-video-div .controls .seekforward-button {
+	
+	background-color:transparent;
+	border:0;
+	width:30px;
+	height:30px;
+	margin:0;
+	padding:0;
+	display:block;
+	background-position:0px -79px;
+}
+
 .berrics-html-video-div .controls .button-state-play {
 	
-	background-position:1px -158px;
+	background-position:2px -159px;
 	
 }
 
@@ -81,7 +125,7 @@
 
 .berrics-html-video-div .controls .button-state-pause {
 	
-	background-position:1px -50px;
+	background-position:2px -50px;
 	
 }
 
@@ -109,6 +153,7 @@
 
 .berrics-html-video-div .controls .button {
 	
+	cursor:pointer;
 	
 }
 
@@ -122,13 +167,15 @@
 .berrics-html-video-div .controls .duration {
 
 	position:absolute;
-	top:10px;
-	left:37px;
-	background-color:transparent;
+	top:9px;
+	right:37px;
+	background-color:red;
 	font-size:11px;
 	color:#fff;
 	border:none;
-		
+	width:70px;
+	text-align:center;
+	
 }
 
 .berrics-html-video-div .controls .fullscreen-button {
@@ -155,5 +202,16 @@
 
 
 
+.berrics-html-video-div .controls .tracking {
 
+	position:absolute;
+	left:105px;
+	right:140px;
+	top:12px;
+	height:8px;
+	background-position:0px -310px;
+	background-repeat:repeat-x;
+	
+	
+}
 

@@ -86,7 +86,15 @@
 														.append("<input type='button' value='' class='playpause-button'/>")
 												)
 												.append(
-														$("<div class='slider' />")
+														$("<div class='button seekback-div' />")
+														.append("<input type='button' value='' class='seekback-button'/>")	
+												)
+												.append(
+														$("<div class='button seekforward-div' />")
+														.append("<input type='button' value='' class='seekforward-button'/>")	
+												)
+												.append(
+														$("<div class='tracking' />")
 														.append("<div class='play-marker'/>")
 														.append("<div class='buffer-bar'/>")
 														.append("<div class='duration-bar'/>")
@@ -251,6 +259,10 @@
 						
 					},1750);
 					
+				}).resize(function() { 
+					
+					methods.handleResize(context);
+					
 				});
 				
 				
@@ -327,6 +339,15 @@
 				
 			},
 			createHover:function(context) { 
+				
+				
+				
+			},
+			handleResize:function(context) { 
+				
+				var data = $.data(context);
+				
+				//get the left and right shim
 				
 				
 				
@@ -444,8 +465,11 @@
 				switch(data.options.PlayAction) {
 				
 					case "PreRoll":
-						data.options.PlayAction = "Video";
-						return methods.handleVideoPlay(context);
+						
+						//data.options.PlayAction = "Video";
+						//return methods.handleVideoPlay(context);
+						
+						
 						if(data.options.ServerData.MediaFile.preroll === null || data.options.ServerData.MediaFile.preroll.strlen<=0) {
 							
 							console.log("Pre Roll Not Found. Change Action and re-run Method");
