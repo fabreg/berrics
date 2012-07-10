@@ -1,5 +1,5 @@
 (function($) {
-	
+	var bs ={'t':'s'};
 	var globalMethods = {
 		
 		controlsHtml:"<div class='controls'>"

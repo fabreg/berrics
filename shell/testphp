@@ -1,8 +1,55 @@
 #!/usr/bin/php
 <?php
-$cdir =  dirname(__FILE__);
-`java -jar $cdir/yuicompressor-2.4.7.jar -help`;
 
+$cdir =  dirname(__FILE__);
+
+echo $cdir;
+echo "\n";
+echo "\n";
+
+$msg = array();
+
+$diffFiles =`git diff --cached --name-status`;
+
+$files = explode("\n",trim($diffFiles));
+
+foreach($files as $file) {
+	
+	$f = explode("\t",$file);
+	
+	//gotta be css or js
+	if(!preg_match('/(\.js|\.css)$/i',$f[1]))  continue;
+	//don't want an alrady minified file and only want webroot
+	if(preg_match('/(\.min)/i',$f[1]))  continue;
+	//only want stuff in webroot
+	if(!preg_match('/\/webroot/',$f[1])) continue;
+	
+	
+	$newFileName = preg_replace('/(\.js|\.css)$/',".min$1",$f[1]);
+	$msg[] = $f[1]." => ".$newFileName;
+	
+	switch(strtolower(pathinfo($f[1],PATHINFO_EXTENSION))) {
+		
+		case "css":
+			echo `java -jar $cdir/yuicompressor-2.4.7.jar --type css -o $newFileName $f[1];`;
+		break;
+		case "js":
+			echo `java -jar $cdir/yuicompressor-2.4.7.jar --type js --nomunge --preserve-semi -o $newFileName $f[1];`;
+		break;
+		
+	}
+	
+	echo `git add $newFileName`;
+}
+
+if(count($msg)>0) {
+	
+	echo implode($msg,"\n");
+	echo "\n\n";
+} else {
+	
+	echo "No Files To Compress \n\n";
+	
+}
 
 ?>
-
