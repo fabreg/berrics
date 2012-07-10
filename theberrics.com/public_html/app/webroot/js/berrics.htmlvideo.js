@@ -82,23 +82,27 @@
 										.append(
 												$("<div class='inner' />")
 												.append(
-														$("<div class='button playpause-div' />")
+														$("<div class='button playpause-div'/>")
 														.append("<input type='button' value='' class='playpause-button'/>")
 												)
 												.append(
-														$("<div class='button seekback-div' />")
+														$("<div class='button seekback-div'/>")
 														.append("<input type='button' value='' class='seekback-button'/>")	
 												)
 												.append(
-														$("<div class='button seekforward-div' />")
+														$("<div class='button seekforward-div'/>")
 														.append("<input type='button' value='' class='seekforward-button'/>")	
 												)
 												.append(
-														$("<div class='tracking' />")
-														.append("<div class='play-marker'/>")
-														.append("<div class='buffer-bar'/>")
-														.append("<div class='duration-bar'/>")
-												)
+														$("<div class='tracking' />").append(
+															$("<div class='inner' />")
+																.append("<div class='play-marker'/>")
+																.append("<div class='time-bar'/>")
+																.append("<div class='buffer-bar'/>")
+																.append("<div class='duration-bar'/>")
+															)
+														)
+														
 												.append("<input type='text' disabled='disabled' value='' class='duration'/>")
 												.append(
 														$("<div class='button fullscreen-div' />")
@@ -397,8 +401,9 @@
 
 				}
 				
-				
 				data.target.find('.controls .duration').val(played_min+":"+played_seconds+" / "+total_min+":"+total_seconds);
+				
+				data.target.find(".time-bar").css({"width":percentPlayed+"%"});
 				
 				if(ct>=duration) { 
 				
@@ -432,11 +437,14 @@
 				
 				var percentBuffered = Math.ceil((buffer_end * 100) / duration);
 				
+				
+				$(data.target).find('.buffer-bar').css({"width":percentBuffered+"%"});
+				
 				if(percentBuffered >= 100) {
 					
 					clearInterval(data.options.BufferInterval);
 					console.log("Buffer Interval Completed");
-					
+					$(data.target).find('.buffer-bar').css({"width":"100%"});
 				}
 				
 				//console.log("Percent Buffered: "+percentBuffered);
@@ -466,8 +474,8 @@
 				
 					case "PreRoll":
 						
-						//data.options.PlayAction = "Video";
-						//return methods.handleVideoPlay(context);
+						data.options.PlayAction = "Video";
+						return methods.handleVideoPlay(context);
 						
 						
 						if(data.options.ServerData.MediaFile.preroll === null || data.options.ServerData.MediaFile.preroll.strlen<=0) {

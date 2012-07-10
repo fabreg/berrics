@@ -154,7 +154,8 @@
 .berrics-html-video-div .controls .button {
 	
 	cursor:pointer;
-	
+	-webkit-border-radius: 4px;
+	border-radius: 4px;	
 }
 
 .berrics-html-video-div .controls .button-hover {
@@ -207,11 +208,48 @@
 	position:absolute;
 	left:105px;
 	right:140px;
-	top:12px;
+	top:11px;
 	height:8px;
 	background-position:0px -310px;
 	background-repeat:repeat-x;
-	
+	-webkit-border-radius: 2px;
+	border-radius: 2px;	
 	
 }
+
+.berrics-html-video-div .controls .tracking .inner {
+	
+	position:relative;
+
+	
+}
+.berrics-html-video-div .controls .tracking .buffer-bar {
+	
+	width:0px;
+	height:8px;
+	top:0px;
+	left:0px;
+	position:absolute;
+	background-position:0px -299px;
+	background-repeat:repeat-x;	
+	-webkit-border-radius: 2px;
+	border-radius: 2px;	
+	z-index:920;
+	
+}
+
+.berrics-html-video-div .controls .tracking .time-bar {
+	
+	width:0px;
+	height:8px;
+	top:0px;
+	left:0px;
+	position:absolute;
+	background-position:0px -289px;
+	background-repeat:repeat-x;	
+	-webkit-border-radius: 2px;
+	border-radius: 2px;	
+	z-index:930;
+}
+
 
