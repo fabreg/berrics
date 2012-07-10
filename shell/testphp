@@ -46,6 +46,7 @@ foreach($files as $file) {
 
 if(count($msg)>0) {
 	
+	echo count($msg)." Files Compressed\n\n";
 	echo implode($msg,"\n");
 	echo "\n\n";
 } else {
