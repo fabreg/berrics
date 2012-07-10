@@ -398,6 +398,27 @@
 				
 				});
 				
+				//seek back
+				data.target.find('.slowmo-button').unbind().click(function() {
+				
+					var video = data.target.find('video');
+					var ve = video.get(0);
+					var rate = 1;
+					
+					switch(ve.playbackRate) {
+					
+						case 1:
+							rate = .3;
+						break;
+						
+					}
+					
+					ve.playbackRate = rate;
+					
+					
+				
+				});
+				
 				
 				//tracking bar bubble
 				data.target.find('.tracking').unbind()
@@ -600,8 +621,8 @@
 				
 					case "PreRoll":
 						
-						data.options.PlayAction = "Video";
-						return methods.handleVideoPlay(context);
+						//data.options.PlayAction = "Video";
+						//return methods.handleVideoPlay(context);
 						
 						
 						if(data.options.ServerData.MediaFile.preroll === null || data.options.ServerData.MediaFile.preroll.strlen<=0) {
