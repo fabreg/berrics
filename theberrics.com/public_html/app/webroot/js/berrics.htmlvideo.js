@@ -82,6 +82,10 @@
 										.append(
 												$("<div class='inner' />")
 												.append(
+													$("<div class='bubble'/>")
+													.append("<div class='time'/>")
+												)
+												.append(
 														$("<div class='button playpause-div'/>")
 														.append("<input type='button' value='' class='playpause-button'/>")
 												)
@@ -96,6 +100,7 @@
 												.append(
 														$("<div class='tracking' />").append(
 															$("<div class='inner' />")
+																
 																.append("<div class='play-marker'/>")
 																.append("<div class='time-bar'/>")
 																.append("<div class='buffer-bar'/>")
@@ -301,6 +306,26 @@
 					
 				});
 				
+				//tracking bar bubble
+				data.target.find('.tracking').unbind()
+				.bind('mousemove',function(e) { 
+				
+					var o = data.target.find('.controls').offset();
+					
+				
+					data.target.find('.bubble').show().css({
+						
+						"left":((e.pageX - o.left)-(data.target.find('.bubble').width()/2))+"px"
+						
+					});
+					
+				})
+				.bind('mouseout',function() { 
+					
+					data.target.find('.bubble').hide();
+					
+				});
+				
 				//hovers
 				data.target.find('.button').hover(
 						function(e) {						
@@ -401,7 +426,7 @@
 
 				}
 				
-				data.target.find('.controls .duration').val(played_min+":"+played_seconds+" / "+total_min+":"+total_seconds);
+				data.target.find('.controls .duration').val(played_min+":"+played_seconds+" | "+total_min+":"+total_seconds);
 				
 				data.target.find(".time-bar").css({"width":percentPlayed+"%"});
 				

@@ -170,7 +170,8 @@
 	position:absolute;
 	top:9px;
 	right:37px;
-	background-color:red;
+	font-weight:bold;
+	background-color:transparent;
 	font-size:11px;
 	color:#fff;
 	border:none;
@@ -206,8 +207,8 @@
 .berrics-html-video-div .controls .tracking {
 
 	position:absolute;
-	left:105px;
-	right:140px;
+	left:135px;
+	right:180px;
 	top:11px;
 	height:8px;
 	background-position:0px -310px;
@@ -223,6 +224,18 @@
 
 	
 }
+
+.berrics-html-video-div .controls .bubble {
+
+	background-position:1px -196px;
+	height:18px;
+	width:39px;
+	position:absolute;	
+	display:none;
+	top:-8px;
+	
+}
+
 .berrics-html-video-div .controls .tracking .buffer-bar {
 	
 	width:0px;
