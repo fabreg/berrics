@@ -3,8 +3,17 @@
 .berrics-html-video-div {
 
 	position:relative;
-	height:396px;
+	
 }
+
+.berrics-html-video-div video {
+	
+	
+	height:100%;
+	width:100%;
+	
+}
+
 
 /*
 * INIT BACKGROUND IMAGE SPRITE
