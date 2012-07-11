@@ -313,7 +313,7 @@
  */
 
 	//FORCE DEVSERVER!
-	if(php_uname('n')=='WEB2VM.THEBERRICS----') {
+	if(preg_match('/(WEB2VM)/',php_uname('n'))) {
 		
 		require_once('../../../../sharedConfig/cache_config.php'); 	
 	
@@ -365,6 +365,7 @@
  			   'engine' => 'File',
                'duration'=> 3600,
                'probability'=> 10000,
+               'prefix'=>md5($_SERVER['DOCUMENT_ROOT'])
 			 	
  	 ));
 
