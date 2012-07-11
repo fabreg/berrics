@@ -67,12 +67,7 @@
 			return this;
 		}
 
-		if(fullScreenStatus()){
-			// if we are already in fullscreen, exit
-			cancelFullScreen();
-			return this;
-		}
-
+		
 		// You can potentially pas two arguments a color
 		// for the background and a callback function
 
@@ -97,7 +92,17 @@
 		})
 			.insertBefore(elem)
 			.append(elem);
-
+		
+		if(fullScreenStatus()){
+			// if we are already in fullscreen, exit
+			
+			cancelFullScreen();
+			options.callback(false);
+			return this;
+			
+		}
+		
+		
 		// You can use the .fullScreen class to
 		// apply styling to your element
 		elem.addClass( options.fullscreenClass );
