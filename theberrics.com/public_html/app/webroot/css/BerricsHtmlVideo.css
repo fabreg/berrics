@@ -295,4 +295,14 @@
 	
 }
 
+.berrics-html-video-div .controls .tracking .play-marker {
+	
+	position: absolute;
+	background-position:6px -255px;
+	height: 28px;
+	width: 28px;
+	z-index:940;
+	
+}
+
 
