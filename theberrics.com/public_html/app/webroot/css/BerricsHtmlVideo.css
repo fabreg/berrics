@@ -3,7 +3,7 @@
 .berrics-html-video-div {
 
 	position:relative;
-	
+	font-family: 'Arial';
 }
 
 .berrics-html-video-div video {
@@ -25,6 +25,7 @@
 	background-image:url(/img/layout/player/controls-sprite.png);
 	background-position:5000px 5000px;
 	background-repeat:no-repeat;
+	cursor: pointer;
 }
 
 .berrics-html-video-div .video {
@@ -218,21 +219,10 @@
 	right:0px;
 	width:30px;
 	height:30px;
-	background-color:red;
+	background-position: 0px -222px;
 	border:none;
-	
+	background-color: transparent;
 }
-
-.berrics-html-video-div .controls .button-state-fullscreen-active {
-	
-	
-	
-}
-
-.berrics-html-video-div .controls .button-state-fullscreen-notactive {
-	
-}
-
 
 
 .berrics-html-video-div .controls .tracking {

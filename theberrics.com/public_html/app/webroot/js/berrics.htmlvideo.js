@@ -298,7 +298,17 @@
 					
 					console.log("Play-Pause button clicked");
 					
-					methods.togglePause(context);
+					if(video.get(0).playbackRate!=1) {
+					
+						video.get(0).playbackRate = 1;
+					
+					} else {
+					
+						methods.togglePause(context);
+						
+					}
+					
+					
 					
 					
 					
@@ -345,7 +355,7 @@
 					switch(ve.playbackRate) {
 					
 						case 1:
-							rate = .3;
+							rate = .25;
 						break;
 						
 					}
@@ -363,17 +373,36 @@
 				
 					var duration = video.get(0).duration;
 					var time = video.get(0).currentTime;
-					var o = data.target.find('.controls').offset();
-					var xPos = (e.pageX - o.left);
-					var wBar = data.target.find('.bubble').width();
+					//conrols offset to body
+					var cO = data.target.find('.controls').offset();
+					//tracking offset to body
+					var bO = data.target.find('.controls .tracking').offset();
+					//mouse position relative to tracking bar
+					var tPos = (e.pageX - bO.left);
+					//mouse position realtive to controls
+					var xPos = (e.pageX - cO.left);
+					//bubble message width
+					var wBubble = data.target.find('.bubble').width();
+					//tracking bar width
+					var wBar = data.target.find('.controls .tracking').width();
+					//percentage of mouse position in tracking bar
+					var bPercent = Math.ceil((tPos/wBar)*100);
+					//percentage of the duration of the video
+					var tPercent = (duration/100);
 					
 					
 					
-					data.target.find('.bubble .time').html(xPos);
-				
+					data.target.find('.bubble .time').html(methods.formatVideoTime(bPercent*tPercent));
+					
+					data.target.find('.controls .tracking').unbind('click').click(function() { 
+					
+						data.target.find('video').get(0).currentTime = bPercent*tPercent;
+						
+					});
+					
 					data.target.find('.bubble').show().css({
 						
-						"left":(xPos-(wBar/2))+"px"
+						"left":(xPos-(wBubble/2))+"px"
 						
 					});
 					
@@ -381,11 +410,13 @@
 				.bind('mouseout',function() { 
 					
 					data.target.find('.bubble').hide();
+					data.target.find('.controls .tracking').unbind('click');
 					
 				});
 				
+				
 				//hovers
-				data.target.find('.button').hover(
+				data.target.find('.button').unbind().hover(
 						function(e) {						
 							
 							$(e.currentTarget).addClass('button-hover');
@@ -409,11 +440,7 @@
 				data.target.fullScreen({
 				
 					"callback":function(isFullScreen) {
-					
-						data.target.find('video').get(0).play();
-						data.target.find('.pause-overlay').hide();
-						
-						
+											
 						if(isFullScreen) {
 						
 							data.target.find('.berrics-html-video-div').css({
@@ -433,6 +460,12 @@
 							});
 							
 						}
+						
+						
+						data.target.find('video').get(0).play();
+						data.target.find('.pause-overlay').hide();
+							
+						
 					
 					}
 				
@@ -470,6 +503,16 @@
 				
 				
 			},
+			formatVideoTime:function(seconds) {
+			
+				var min = Math.floor(seconds / 60);
+				var sec = Math.floor(seconds - (min * 60));
+				
+				if(sec<10) sec = "0" + sec;
+				
+				return min+":"+sec;
+				
+			},
 			handleTimer:function(context) { 
 				
 				var data = $.data(context);
@@ -481,41 +524,8 @@
 				var percentPlayed = (ct * 100) / duration;
 				var sliderPixel = Math.ceil((percentPlayed * 5));
 
-
-				// lets setup the timeline timer
-
-				var total_min = Math.floor(duration / 60);
-
-				var total_seconds = Math.floor(duration
-						- (total_min * 60));
-
-				var played_min = 0;
-
-				if (ct >= 59) {
-
-					played_min = Math.floor(ct / 60);
-
-				}
-
-				var played_seconds = ct;
-
-				played_seconds = Math.floor(ct - (played_min * 60));
-
-				// clean up the seconds
-
-				if (played_seconds < 10) {
-
-					played_seconds = "0" + played_seconds;
-
-				}
-
-				if (total_seconds < 10) {
-
-					total_seconds = "0" + total_seconds;
-
-				}
 				
-				data.target.find('.controls .duration').val(played_min+":"+played_seconds+" | "+total_min+":"+total_seconds);
+				data.target.find('.controls .duration').val(methods.formatVideoTime(ct)+" | "+methods.formatVideoTime(duration));
 				
 				data.target.find(".time-bar").css({"width":percentPlayed+"%"});
 				
