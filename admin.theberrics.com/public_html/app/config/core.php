@@ -313,7 +313,7 @@
  */
 
 	//FORCE DEVSERVER!
-	if(preg_match('/(WEB2VM)/',php_uname('n'))) {
+	if(preg_match('/(WEB2VM|WEB1)/',php_uname('n'))) {
 		
 		require_once('../../../../sharedConfig/cache_config.php'); 	
 	
