@@ -432,6 +432,7 @@
 				
 				
 			},
+	
 			toggleFullscreen:function(context) { 
 				
 				var data = $.data(context);
@@ -522,12 +523,21 @@
 				var duration = ve.duration;
 				var ct = ve.currentTime;
 				var percentPlayed = (ct * 100) / duration;
-				var sliderPixel = Math.ceil((percentPlayed * 5));
+				var sliderPixel = Math.ceil((percentPlayed * (data.target.find('.tracking').width()/100)));
 
+				//console.log("Slider Pixel: "+sliderPixel);
 				
 				data.target.find('.controls .duration').val(methods.formatVideoTime(ct)+" | "+methods.formatVideoTime(duration));
 				
 				data.target.find(".time-bar").css({"width":percentPlayed+"%"});
+				
+				data.target.find('.tracking .play-marker').css({
+					
+					"left":(sliderPixel-(14))+"px",
+					"top":(0-14)/2+"px"
+					
+				});
+				
 				
 				if(ct>=duration) { 
 				
