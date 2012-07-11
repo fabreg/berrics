@@ -33,6 +33,7 @@
 			"jquery.swfobject",
 			"jquery.client",
 			"jquery.form",
+			'jquery.fullscreen',
 			"berrics.htmlvideo",
 			"main"
 		
