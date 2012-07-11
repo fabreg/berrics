@@ -201,14 +201,15 @@
 
 	position:absolute;
 	top:9px;
-	right:37px;
+	right:85px;
 	font-weight:bold;
 	background-color:transparent;
 	font-size:11px;
-	color:#fff;
+	color:#999;
 	border:none;
 	width:70px;
 	text-align:center;
+	
 	
 }
 
@@ -228,7 +229,7 @@
 .berrics-html-video-div .controls .tracking {
 
 	position:absolute;
-	left:135px;
+	left:130px;
 	right:180px;
 	top:11px;
 	height:8px;
@@ -261,7 +262,8 @@
 	
 	text-align: center;
 	font-size: 11px;
-	color: #333;
+	color: #666;
+	font-weight: bold;
 	
 }
 
@@ -298,11 +300,26 @@
 .berrics-html-video-div .controls .tracking .play-marker {
 	
 	position: absolute;
-	background-position:6px -255px;
-	height: 28px;
-	width: 28px;
+	top: 0px;
+	left: 0px;
+	background-position:13px -266px;
+	height: 14px;
+	width: 14px;
 	z-index:940;
 	
+}
+
+.berrics-html-video-div .volume-div {
+	
+	
+	
+}
+
+
+.berrics-html-video-div .volume-div .volume-button {
+	
+	margin-right: 10px;
+	width: 30px;
 }
 
 

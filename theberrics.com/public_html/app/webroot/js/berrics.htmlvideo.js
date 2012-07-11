@@ -118,7 +118,15 @@
 														$("<div class='button fullscreen-div' />")
 														.append("<input type='button' value='' class='fullscreen-button'/>")
 												)
-												.append("<div class='slowmotion-button'/>")
+												.append(
+														$("<div class='button volume-div' />")
+														.append("<div class='volume-button' level='0' />")
+														.append("<div class='volume-button' level='20' />")
+														.append("<div class='volume-button' level='40' />")
+														.append("<div class='volume-button' level='60' />")
+														.append("<div class='volume-button' level='80' />")
+														.append("<div class='volume-button' level='100' />")
+												)
 								)
 							);
 							
@@ -259,8 +267,12 @@
 					
 					console.log("Play Event Fired")
 					data.target.find('.playpause-button').addClass('button-state-play').removeClass('button-state-pause');
+					data.target.find(".pause-overlay").hide();
 
 				});
+				
+				
+				data.target.find('.berrics-html-video-div').unbind().bind('contextmenu',function() {return false;});
 				
 				//bind the other elements
 				
@@ -442,24 +454,23 @@
 				
 					"callback":function(isFullScreen) {
 											
-						if(isFullScreen) {
+						if(!isFullScreen) {
 						
-							data.target.find('.berrics-html-video-div').css({
-							
-								"width":"100%",
-								"height":"100%"
-								
-							});
-						
-						} else {
-							
 							data.target.find(".berrics-html-video-div").css({
 								
 								"width":data.options.VideoWidth+"px",
 								"height":data.options.VideoHeight+"px"
 								
 							});
+						
+						} else {
 							
+							data.target.find('.berrics-html-video-div').css({
+							
+								"width":"100%",
+								"height":"100%"
+								
+							});
 						}
 						
 						
@@ -531,12 +542,6 @@
 				
 				data.target.find(".time-bar").css({"width":percentPlayed+"%"});
 				
-				data.target.find('.tracking .play-marker').css({
-					
-					"left":(sliderPixel-(14))+"px",
-					"top":(0-14)/2+"px"
-					
-				});
 				
 				
 				if(ct>=duration) { 
