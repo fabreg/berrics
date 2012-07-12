@@ -353,5 +353,26 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 	}
 	
+	public function lajolla_tracking_files() {
+	
+		$this->loadModel("LjgTrackingFile");
+		
+		$this->paginate['LjgTrackingFile'] = array(
+			"conditions"=>array(
+			
+			),
+			"order"=>array(
+				"LjgTrackingFile.id"=>"DESC"
+			),
+			"limit"=>100
+		);
+		
+		$files = $this->paginate("LjgTrackingFile");
+		
+		$this->set(compact("files"));
+				
+	
+	}
+	
 	
 }
