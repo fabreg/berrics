@@ -47,7 +47,7 @@ class LocalAppController extends AppController {
 	
 	private function fixGeoIp() {
 		
-		if(!isset($_SERVER['GEOIP_COUNTRY_CODE'])) $_SERVER['GEOIP_COUNTRY_CODE'] = "US";
+		if(!isset($_SERVER['GEOIP_COUNTRY_CODE']) || empty($_SERVER['GEOIP_COUNTRY_CODE'])) $_SERVER['GEOIP_COUNTRY_CODE'] = "US";
 		
 		if(!isset($_SERVER['GEOIP_POSTAL_CODE']))  $_SERVER['GEOIP_POSTAL_CODE'] = '';
 		

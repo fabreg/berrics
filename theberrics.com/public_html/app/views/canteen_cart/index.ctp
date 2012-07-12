@@ -96,7 +96,7 @@ echo $this->Form->end(); ?>
 <pre>
 <?php 
 
-//print_r($this->params)
+print_r($this->Session->read());
 
 ?>
 </pre>

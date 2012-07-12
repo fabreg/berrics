@@ -48,6 +48,14 @@ class CanteenCartController extends CanteenAppController {
 			
 			if($this->CanteenOrder->ShippingAddress->validates() && $this->CardData->validates()) {
 				
+				//check to see if we have a canteen order id in the session, if so then set it
+				if($this->Session->check("CanteenOrder.CanteenOrder.id")) $this->data['CanteenOrder']['id'] = $this->Session->read("CanteenOrder.CanteenOrder.id");
+				//check to see if we have the shipping address ID
+				if($this->Session->check("CanteenOrder.ShippingAddress.id")) $this->data['ShippingAddress']['id'] = $this->Session->read("CanteenOrder.ShippingAddress.id");
+				//check to see if there is a billing address
+				if($this->Session->check("CanteenOrder.BillingAddress.id")) $this->data['BillingAddress']['id'] = $this->Session->read("CanteenOrder.BillingAddress.id");
+				
+				
 				//merge the form data with existing session data
 				foreach($this->data as $k=>$v) {
 					
@@ -65,7 +73,11 @@ class CanteenCartController extends CanteenAppController {
 				
 				if(($order_id = $this->CanteenOrder->saveOnlineOrder($this->data,true))) {
 					
+					$_SERVER['FORECMASTER'] = 1;
 					$this->Session->write("CanteenOrder",$this->CanteenOrder->returnAdminOrder($order_id));
+					$_SERVER['FORCEMASTER'] = 0;
+					
+					//die(print_r($this->Session->read()));
 					
 					return $this->process($this->data);
 					

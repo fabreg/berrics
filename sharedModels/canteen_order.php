@@ -221,12 +221,7 @@ class CanteenOrder extends AppModel {
 		//format addresses 
 		$CanteenOrder = $this->formatOnlineOrderAddresses($CanteenOrder);
 		
-		
-		if(!isset($CanteenOrder['CanteenOrder']['id'])) { //new order
-			
-			
-			
-		} else { //we are updating an order
+		if(isset($CanteenOrder['CanteenOrder']['id'])) {
 			
 			$this->id = $CanteenOrder['CanteenOrder']['id'];
 			
@@ -320,7 +315,7 @@ class CanteenOrder extends AppModel {
 			$method = "auth";
 			
 			$possible_fraud = true;
-			
+
 		}
 		
 		$res = $this->GatewayTransaction->GatewayAccount->run($method,$gateway_id,$trans);
