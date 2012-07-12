@@ -963,5 +963,15 @@ class CanteenProductsController extends LocalAppController {
 		
 	}
 	
+	public function import_lajolla_inventory_file() {
+	
+		$this->loadModel("CanteenInventoryRecord");
+		
+		$this->CanteenInventoryRecord->import_ljg_inventory();
+	
+	
+	}
+	
+	
 	
 }
