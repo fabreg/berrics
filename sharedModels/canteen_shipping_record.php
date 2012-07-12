@@ -788,7 +788,7 @@ class CanteenShippingRecord extends AppModel {
 			));
 			if($chk<=0) {
 				
-				ftp_get($ftp,"/tmp/ljgtracking/".$f,$f,FTP_BINARY);
+				ftp_get($ftp,"/home/sites/lajolla/tracking/".$f,$f,FTP_BINARY);
 				
 				$LjgTrackingFile->create();
 				
@@ -796,6 +796,8 @@ class CanteenShippingRecord extends AppModel {
 					"file_name"=>$f,
 					"downloaded"=>1
 				));
+				
+				
 				
 			}
 			
@@ -811,6 +813,16 @@ class CanteenShippingRecord extends AppModel {
 		
 		$LjgTrackingFile = ClassRegistry::init("LjgTrackingFile");
 		
+		$pending = $LjgTrackingFile->find("all",array(
+		
+			"conditions"=>array(
+				"LjgTrackingFile.processed"=>0,
+				"LjgTrackingFile.downloaded"=>1
+			)
+		
+		));
+		
+		die(print_r($pending));
 		
 		
 	}

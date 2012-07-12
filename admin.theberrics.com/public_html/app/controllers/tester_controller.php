@@ -1354,7 +1354,24 @@ class TesterController extends LocalAppController {
 		
 	}
 	
+	public function test_lajolla_tracking() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+		//$this->CanteenShippingRecord->ljg_get_tracking_files();
+		
+		$this->CanteenShippingRecord->ljg_process_tracking_files();
+		
+	}
+
+
+
+
+
+
+
+
+
+
+	
 }
-
-
-?>
