@@ -133,7 +133,7 @@ function handleNoteReply() {
 						</div>
 						<div style='float:right; width:44%;'>
 							<div style='font-size:60px; font-weight:bold; text-align:center;'>
-								<a href='/canteen_shipping_records/index/s:1/CanteenShippingRecord.shipping_status:processing'><?php echo $total; ?></a>
+								<a href='/canteen_orders/index'><?php echo $total; ?></a>
 							</div>
 						</div>
 						<div style='clear:both;'></div>
