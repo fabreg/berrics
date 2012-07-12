@@ -810,7 +810,35 @@ class CanteenShippingRecord extends AppModel {
 	public function ljg_process_tracking_files() {
 		
 		$LjgTrackingFile = ClassRegistry::init("LjgTrackingFile");
+
+		$pending = $LjgTrackingFile->find("all",array(
 		
+			"conditions"=>array(
+				"LjgTrackingFile.processed"=>0,
+				"LjgTrackingFile.downloaded"=>1
+			)
+		
+		));
+		
+		$file_str = "";
+		
+		$lines = array();
+		
+		foreach($pending as $p) {
+		
+			$file = file_get_contents("/home/sites/lajolla/tracking/".$p['LjgTrackingFile']['file_name']);
+			
+			
+			$lines = array_merge($lines,explode("\n", $file));
+			
+		
+		}
+				
+		
+		die(print_r($lines));
+		//die(print_r($file_str));
+		die(print_r($pending));
+
 		
 		
 	}
@@ -897,6 +925,8 @@ class CanteenShippingRecord extends AppModel {
 			
 		}
 		
+		
+		
 	}
 	
 	public function update_shipping_status($id,$status = "pending") {
@@ -917,7 +947,6 @@ class CanteenShippingRecord extends AppModel {
 		
 		//should we checkout inventory?
 		if($process_inventory) {
-			
 			
 			foreach($record['CanteenOrderItem'] as $i) {
 				
