@@ -1,6 +1,6 @@
 <div id='canteen-cart-widget'>
 		<div class='header-img'>
-			<a href='/canteen' title='The Berrics Canteen'><img border='0' src='/img/layout/canteen/cart/cart-widget-header.jpg' /></a>
+			<a href='/canteen' title='The Berrics Canteen'><img border='0' src='/img/layout/canteen/cart/cart-widget-heading.jpg' /></a>
 		</div>
 		<div class='account'>
 			<?php if(!$this->Session->check("Auth.User.id")): ?>
