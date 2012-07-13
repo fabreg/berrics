@@ -152,6 +152,7 @@ class CanteenOrder extends AppModel {
 		
 		$items = $CanteenOrder['CanteenOrderItem'];
 		
+		#zero it out
 		$CanteenOrder['CanteenOrder']['sub_total'] 		= 0;
 		$CanteenOrder['CanteenOrder']['grand_total'] 	= 0;
 		$CanteenOrder['CanteenOrder']['shipping_total'] = 0;
@@ -159,6 +160,7 @@ class CanteenOrder extends AppModel {
 		$CanteenOrder['CanteenOrder']['discount_total'] = 0;
 		
 		//die(print_r($CanteenOrder));
+		#the method says it all
 		$CanteenOrder = $this->CanteenOrderItem->calculateCartItems($CanteenOrder);
 		
 		//calculate the order totals
@@ -174,10 +176,10 @@ class CanteenOrder extends AppModel {
 		
 		$CanteenOrder['CanteenOrder']['shipping_total'] = $this->Currency->convertCurrency("USD",$CanteenOrder['CanteenOrder']['currency_id'],$shp_total);
 		
-		//calculate promo codes
+		#calculate promo codes
 		$CanteenOrder = $this->CanteenPromoCode->applyPromoCode($CanteenOrder);
 		
-		//calculate tax off of taxable total
+		#calculate tax off of taxable total
 		$CanteenOrder['CanteenOrder']['tax_rate'] = 0.00;
 		
 		$address = $CanteenOrder['ShippingAddress'];
@@ -226,7 +228,7 @@ class CanteenOrder extends AppModel {
 			$this->id = $CanteenOrder['CanteenOrder']['id'];
 			
 		}
-		
+
 		$CanteenOrder = $this->calculateCartTotal($CanteenOrder);
 		
 		if(!$this->save($CanteenOrder['CanteenOrder'])) throw new Exception("Unable to save order!");
@@ -236,14 +238,16 @@ class CanteenOrder extends AppModel {
 		//save the shipping address
 		$this->ShippingAddress->create();
 		if(isset($CanteenOrder['ShippingAddress']['id'])) $this->ShippingAddress->id = $CanteenOrder['ShippingAddress']['id'];
-		$CanteenOrder['ShippingAddress']['model'] = "CanteenOrder";
 		$CanteenOrder['ShippingAddress']['foreign_key'] = $order_id;
+		$CanteenOrder['ShippingAddress']['address_type'] = "shipping";
 		$this->ShippingAddress->save($CanteenOrder['ShippingAddress']);
+		
+		//die(print_r($this->ShippingAddress->findById(49)));
 		
 		$this->BillingAddress->create();
 		if(isset($CanteenOrder['BillingAddress']['id'])) $this->BillingAddress->id = $CanteenOrder['BillingAddress']['id'];
-		$CanteenOrder['BillingAddress']['model'] = "CanteenOrder";
 		$CanteenOrder['BillingAddress']['foreign_key'] = $order_id;
+		$CanteenOrder['BillingAddress']['address_type'] = "billing";
 		$this->BillingAddress->save($CanteenOrder['BillingAddress']);
 		
 
@@ -284,11 +288,14 @@ class CanteenOrder extends AppModel {
 		if(isset($CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']) && 
 			$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']==1
 		) {
-			
-			$CanteenOrder['BillingAddress'] = $CanteenOrder['ShippingAddress'];
+			$ba = $CanteenOrder['ShippingAddress'];
+			unset($ba['id']);
+			$CanteenOrder['BillingAddress'] = $ba;
 			$CanteenOrder['BillingAddress']['address_type'] = "billing";
 		}
 		
+		$CanteenOrder['BillingAddress']['model'] = 
+		$CanteenOrder['ShippingAddress']['model'] = "CanteenOrder";
 		
 		return $CanteenOrder;
 		
@@ -414,7 +421,10 @@ class CanteenOrder extends AppModel {
 	public function returnAdminOrder($canteen_order_id = false,$options = array()) {
 
 		$_contain = array(
-				"CanteenOrderNote"=>array("User"),
+				"CanteenOrderNote"=>array(
+					"User",
+					"order"=>array("CanteenOrderNote.id"=>"DESC")
+				),
 				"CanteenShippingRecord"=>array("Warehouse"),
 				"Currency",
 				"CanteenPromoCode",	

@@ -28,5 +28,5 @@ class UserAddress extends AppModel {
 		
 	}
 	
-	
+
 }

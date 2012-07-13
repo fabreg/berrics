@@ -362,7 +362,7 @@ class CanteenController extends CanteenAppController {
 				
 				if($callback) {
 					
-					$this->Session->setFlash("There were errors in your note, please correct them");
+					$this->Session->setFlash("ERROR: Your message must be at least 8 characters.");
 					
 					return $this->redirect($cb);
 					

@@ -161,6 +161,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 		ORDER NOTES
 		</div>
 		<div class='notes-form-div'>
+			<div style='text-align:center; font-weight:bold; color:red; font-size:14px; font-style:italic; '><?php echo $this->Session->flash(); ?></div>
 			<div class='order-notes-help'>
 			<p>Do you have a question about your order? Use the form to the right to get in touch with us and we will get back to you promptly.</p>
 			</div>

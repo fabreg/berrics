@@ -11,7 +11,7 @@
 			<div class='item-count'>
 				<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>
 			</div>
-			<span class='phone-number'>&nbsp;&nbsp;877-235-0490</span> <div class='cart-link'><a href='/canteen/cart'>View Cart</a></div>
+			<span class='phone-number'>&nbsp;&nbsp;<!-- 877-235-0490 --></span> <div class='cart-link'><a href='/canteen/cart'>View Cart</a></div>
 			<div class='cart-icon'></div>
 			<div style='clear:both;'></div>
 		</div>
