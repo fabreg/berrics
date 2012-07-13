@@ -35,7 +35,7 @@ class DATABASE_CONFIG {
 	public $traffic = array(
 		'driver' => 'mysqli',
 		'persistent' => true,
-		'host' => '10.181.80.72',
+		'host' => '10.183.65.132',//10.181.80.72
 		'login' => 'john',
 		'password' => '19Berrics82',
 		'database' => 'theberrics_traffic',
