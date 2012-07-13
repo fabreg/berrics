@@ -82,8 +82,8 @@ class CanteenOrderNote extends AppModel {
 		
 		$this->validate = array(
 			"message"=>array(
-				"rule"=>array("minLength",10),
-				"message"=>"Your message must be at least 10 characters"
+				"rule"=>array("minLength",8),
+				"message"=>"Your message must be at least 8 characters"
 			)
 		);
 		
