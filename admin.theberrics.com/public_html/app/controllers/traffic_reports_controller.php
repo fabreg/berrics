@@ -33,7 +33,18 @@ class TrafficReportsController extends LocalAppController {
 	
 	public function monthly() {
 		
+			
 		$this->loadStuff();
+		
+		$domainList = $this->DimDomain->selectList();
+		$this->set(compact("domainList"));
+		
+		if(count($this->data)<=0) {
+			
+			return;
+			
+		}
+	
 
 		$sql_filter = '';
 		$year = false;
@@ -214,14 +225,13 @@ class TrafficReportsController extends LocalAppController {
 		
 		//build some select lists
 		
-		$domainList = $this->DimDomain->selectList();
 		
 		//$allMonths = $this->DimDate->monthSelectList();
 		
 		
 		$allYears = array();
 		
-		$this->set(compact("report","unq","domainList","berra"));
+		$this->set(compact("report","unq","berra"));
 	
 	}
 	

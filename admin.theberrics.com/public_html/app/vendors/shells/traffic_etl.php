@@ -50,7 +50,7 @@ class TrafficEtlShell extends Shell {
 		$this->hr();
 		
 		$this->build_dimensions($date,$hour);
-		
+		$this->out("Fact Page Views");
 		$this->populateFactPageViews($date,$hour);
 		$this->out("Completed ETL for: ".$date." ".$hour);
 		SysMsg::add(array(
@@ -70,9 +70,13 @@ class TrafficEtlShell extends Shell {
 		}
 		
 		//populate the dimensions
+		$this->out("Dim Domains");
 		$this->populateDimDomains($date,$hour);
+		$this->out("Dim Locations");
 		$this->populateDimLocations($date,$hour);
+		$this->out("Dim Dates");
 		$this->populateDimDates($date);
+		$this->out("Dim Requests");
 		$this->populateDimRequests($date,$hour);
 
 	}
