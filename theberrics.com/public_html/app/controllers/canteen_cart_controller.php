@@ -7,7 +7,13 @@ class CanteenCartController extends CanteenAppController {
 	
 	public function beforeFilter() {
 		
-		if(in_array($this->params['action'],array("index","debugger","calc_cart"))) {
+		if(in_array($this->params['action'],
+				array(
+						"index",
+						"debugger",
+						"calc_cart",
+						"invoice"
+		))) {
 			
 			$this->enforce_ssl = true;
 			
@@ -49,13 +55,17 @@ class CanteenCartController extends CanteenAppController {
 			if($this->CanteenOrder->ShippingAddress->validates() && $this->CardData->validates()) {
 				
 				//check to see if we have a canteen order id in the session, if so then set it
-				if($this->Session->check("CanteenOrder.CanteenOrder.id")) $this->data['CanteenOrder']['id'] = $this->Session->read("CanteenOrder.CanteenOrder.id");
+				if($this->Session->check("CanteenOrder.CanteenOrder.id")) 
+							$this->data['CanteenOrder']['id']    = $this->Session->read("CanteenOrder.CanteenOrder.id");
+							
 				//check to see if we have the shipping address ID
-				if($this->Session->check("CanteenOrder.ShippingAddress.id")) $this->data['ShippingAddress']['id'] = $this->Session->read("CanteenOrder.ShippingAddress.id");
+				if($this->Session->check("CanteenOrder.ShippingAddress.id")) 
+							$this->data['ShippingAddress']['id'] = $this->Session->read("CanteenOrder.ShippingAddress.id");
+							
 				//check to see if there is a billing address
-				if($this->Session->check("CanteenOrder.BillingAddress.id")) $this->data['BillingAddress']['id'] = $this->Session->read("CanteenOrder.BillingAddress.id");
-				
-				
+				if($this->Session->check("CanteenOrder.BillingAddress.id")) 
+							$this->data['BillingAddress']['id']  = $this->Session->read("CanteenOrder.BillingAddress.id");
+
 				//merge the form data with existing session data
 				foreach($this->data as $k=>$v) {
 					
@@ -108,7 +118,8 @@ class CanteenCartController extends CanteenAppController {
 			
 			$order['ShippingAddress'] = $this->data['ShippingAddress'];
 			
-			$order['BillingAddress'] = $this->data['BillingAddress'];
+			$order['BillingAddress']  = $this->data['BillingAddress'];
+
 			
 		}
 		
@@ -123,22 +134,24 @@ class CanteenCartController extends CanteenAppController {
 			
 		if(isset($_GET['x']) && $this->isAdmin()) {
 			
-			$this->data['ShippingAddress']['first_name'] = "John";
-			$this->data['ShippingAddress']['last_name'] = "Testing";
-			$this->data['ShippingAddress']['street'] = "11201 Otsego St";
-			$this->data['ShippingAddress']['apt'] = "#107";
-			$this->data['ShippingAddress']['city'] = "North Hollywood";
-			$this->data['ShippingAddress']['state'] = "CA";
+			$this->data['ShippingAddress']['first_name']   = "John";
+			$this->data['ShippingAddress']['last_name']    = "Testing";
+			$this->data['ShippingAddress']['street']       = "11201 Otsego St";
+			$this->data['ShippingAddress']['apt']          = "#107";
+			$this->data['ShippingAddress']['city']         = "North Hollywood";
+			$this->data['ShippingAddress']['state']        = "CA";
 			$this->data['ShippingAddress']['country_code'] = "US";
-			$this->data['ShippingAddress']['email'] = "john.hardy@me.com";
-			$this->data['ShippingAddress']['phone'] = "888-888-8888";
-			$this->data['ShippingAddress']['postal_code'] = "91601";
+			$this->data['ShippingAddress']['email']        = "john.hardy@me.com";
+			$this->data['ShippingAddress']['phone']        = "888-888-8888";
+			$this->data['ShippingAddress']['postal_code']  = "91601";
+
 			
-			$this->data['CardData']['number'] = "4111111111111111";
+			$this->data['CardData']['number']    = "4111111111111111";
 			$this->data['CardData']['exp_month'] = 2;
-			$this->data['CardData']['exp_year'] = 13;
-			$this->data['CardData']['code'] = 123;
+			$this->data['CardData']['exp_year']  = 13;
+			$this->data['CardData']['code']      = 123;
 			
+
 		}
 		
 		
@@ -174,12 +187,13 @@ class CanteenCartController extends CanteenAppController {
 					if($this->data['CanteenOrder']['same_as_shipping_checkbox']==1) {
 						
 						$this->data['CanteenOrder']['bill_first_name'] = $this->data['CanteenOrder']['first_name'];
-						$this->data['CanteenOrder']['bill_last_name'] = $this->data['CanteenOrder']['last_name'];
-						$this->data['CanteenOrder']['bill_address'] = $this->data['CanteenOrder']['street_address']." ".$this->data['CanteenOrder']['apt'];
-						$this->data['CanteenOrder']['bill_city']= $this->data['CanteenOrder']['city'];
-						$this->data['CanteenOrder']['bill_state']= $this->data['CanteenOrder']['state'];
-						$this->data['CanteenOrder']['bill_postal']= $this->data['CanteenOrder']['postal'];
-						$this->data['CanteenOrder']['bill_country']= $this->data['CanteenOrder']['country'];
+						$this->data['CanteenOrder']['bill_last_name']  = $this->data['CanteenOrder']['last_name'];
+						$this->data['CanteenOrder']['bill_address']    = $this->data['CanteenOrder']['street_address']." ".$this->data['CanteenOrder']['apt'];
+						$this->data['CanteenOrder']['bill_city']       = $this->data['CanteenOrder']['city'];
+						$this->data['CanteenOrder']['bill_state']      = $this->data['CanteenOrder']['state'];
+						$this->data['CanteenOrder']['bill_postal']     = $this->data['CanteenOrder']['postal'];
+						$this->data['CanteenOrder']['bill_country']    = $this->data['CanteenOrder']['country'];
+
 						
 					}
 					

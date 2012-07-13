@@ -414,7 +414,10 @@ class CanteenOrder extends AppModel {
 	public function returnAdminOrder($canteen_order_id = false,$options = array()) {
 
 		$_contain = array(
-				"CanteenOrderNote"=>array("User"),
+				"CanteenOrderNote"=>array(
+					"User",
+					"order"=>array("CanteenOrderNote.id"=>"DESC")
+				),
 				"CanteenShippingRecord"=>array("Warehouse"),
 				"Currency",
 				"CanteenPromoCode",	

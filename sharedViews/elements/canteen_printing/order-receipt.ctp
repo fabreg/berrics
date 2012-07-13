@@ -154,15 +154,15 @@ body {
 	
 }
 </style>
+
 <div class='order-receipt'>
 <div class='header'>
 	<div class='canteen-info'>
 		<h1>The Berrics Canteen</h1>
 		<div>
-			<div>123 Fake St</div>
-			<div>Fake City</div>
-			<div>Fake Number</div>
-			<div>Fake Email</div>
+			<div>2121 E. 7th Place  #115</div>
+			<div>Los Angeles, CA 90021</div>
+			<div>canteen@theberrics.com</div>
 		</div>
 	</div>
 	<div class='order-info'>
