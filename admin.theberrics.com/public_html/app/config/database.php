@@ -81,7 +81,7 @@ class DATABASE_CONFIG {
 			
 			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
 			
-			$this->traffic['host'] = '50.56.68.47';
+			$this->traffic['host'] = '50.57.129.17';
 			
 		}	
 
