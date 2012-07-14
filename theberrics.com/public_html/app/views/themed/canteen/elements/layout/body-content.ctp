@@ -35,7 +35,7 @@ $(document).ready(function() {
 			<?php endforeach; ?>
 		</ul>
 	</li>
-	<li>//</li>
+	<li> | </li>
 	<?php endforeach; ?>
 </ul>
 </div>

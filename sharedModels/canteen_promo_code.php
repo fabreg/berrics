@@ -28,11 +28,32 @@ class CanteenPromoCode extends AppModel {
 			
 			));
 			
-			if(isset($uap['CanteenPromoCode']['id'])) $CanteenOrder['CanteenOrder']['UserAccountCanteenPromoCode'] = $uap['CanteenPromoCode'];
+			if(isset($uap['CanteenPromoCode']['id'])) $CanteenOrder['UserAccountCanteenPromoCode'] = $uap['CanteenPromoCode'];
 			
 		}
 		
 		#Shipping Promo Code
+		if(
+			env('GEOIP_COUNTRY_CODE') == "US" && 
+			$CanteenOrder['CanteenOrder']['sub_total'] > 85
+		) {
+			
+			$CanteenOrder['CanteenOrder']['shipping_total'] = 0.00;
+			$CanteenOrder['CanteenOrder']['shipping_canteen_promo_code_id'] = 2;
+			
+			//get the promo code
+			
+			$code = $this->find("first",array(
+				"contain"=>array(),
+				"conditions"=>array(
+					"CanteenPromoCode.id"=>2		
+				)		
+					
+			));
+			
+			$CanteenOrder['ShippingCanteenPromoCode'] = $code['CanteenPromoCode'];
+			
+		}
 		
 		#Promotion Promo Code
 		

@@ -183,6 +183,7 @@ $(document).ready(function() {
 		</div>
 		<div style='clear:both;'></div>
 	</div>
+	<?php /* ?>
 	<div class='brands'>
 		<div class='inner'>
 			<div class='heading'>FEATURED BRANDS</div>
@@ -201,6 +202,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
+	<?php */ ?>
 </div>
 <?php 
 //print_r($new_products);

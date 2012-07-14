@@ -819,6 +819,8 @@ class CanteenShippingRecord extends AppModel {
 		
 		$lines = explode("\r",trim($file_str));
 		
+		
+		
 		die(print_r($lines));
 		
 	}
