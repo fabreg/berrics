@@ -63,9 +63,9 @@ class CanteenPromoCode extends AppModel {
 		
 		$discount = 0;
 		
-		if(isset($CanteenOrder['CanteenOrder']['UserAccountCanteenPromoCode']['rate'])) {
+		if(isset($CanteenOrder['UserAccountCanteenPromoCode']['rate'])) {
 			
-			$discount += ($CanteenOrder['CanteenOrder']['UserAccountCanteenPromoCode']['rate']/100)*$CanteenOrder['CanteenOrder']['sub_total'];
+			$discount += ($CanteenOrder['UserAccountCanteenPromoCode']['rate']/100)*$CanteenOrder['CanteenOrder']['sub_total'];
 			
 		}
 		

@@ -346,7 +346,8 @@ class CanteenCartController extends CanteenAppController {
 			break;
 			case "DECLINED":
 				$this->Session->setFlash("Order Has Been Declined");
-				return $this->redirect("/canteen/cart");
+				//return $this->index();
+				return $this->redirect("https://".env("HTTP_HOST")."/canteen/cart");
 			break;
 			case "APPROVED":
 			case "AUTHORIZED":
