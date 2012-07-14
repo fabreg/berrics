@@ -374,5 +374,26 @@ class CanteenShippingRecordsController extends LocalAppController {
 	
 	}
 	
+	public function view_lajolla_tracking_file($file_id) {
+		
+		$this->loadModel("LjgTrackingFile");
+		
+		$file = $this->LjgTrackingFile->findById($file_id);
+		
+		$str = file_get_contents("/home/sites/lajolla/".$file['LjgTrackingFile']['file_name']);
+		
+		die("<pre>{$str}</pre>");
+		
+	}
+	
+	public function process_tracking_file($file_id) {
+		
+		$this->loadModel("LjgTrackingFile");
+		
+		//$file = $this->LjgTrackingFile->findById($file_id);
+		
+		$this->CanteenShippingRecord->ljg_process_tracking_file($file_id);
+		
+	}
 	
 }

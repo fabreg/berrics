@@ -946,8 +946,6 @@ class CanteenProductsController extends LocalAppController {
 			
 			$row = explode("\t",$v);
 			
-			
-			
 			if($ljg_products[] = @array_combine($this->ljg_products_schema,$row)) {
 				
 				

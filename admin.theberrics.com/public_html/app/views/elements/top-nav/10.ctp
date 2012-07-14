@@ -247,6 +247,9 @@
 					<a href='/canteen_shipping_records/checkout_shipments'>Checkout Shipments</a>
 				</li>
 				<li class='li-sub-nav-button'>
+					<a href='/canteen_shipping_records/lajolla_tracking_files'>LJG Tracking Files</a>
+				</li>
+				<li class='li-sub-nav-button'>
 					<a href='/canteen_shipping_records/usps_rate_calculator'>Calculate USPS Rates</a>
 				</li>
 				<li class='li-sub-nav-header'>Warehouses / Inventory</li>

@@ -1358,9 +1358,9 @@ class TesterController extends LocalAppController {
 		
 		$this->loadModel("CanteenShippingRecord");
 		
-		//$this->CanteenShippingRecord->ljg_get_tracking_files();
+		$this->CanteenShippingRecord->ljg_get_tracking_files();
 		
-		$this->CanteenShippingRecord->ljg_process_tracking_files();
+		//$this->CanteenShippingRecord->ljg_process_tracking_files();
 		
 	}
 
