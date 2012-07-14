@@ -15,6 +15,8 @@ class MailerShell extends Shell {
 		$this->controller =& new Controller();
 		$this->Email->initialize($this->controller);
 		
+		
+		
 	}
 	
 	public function process_queue() {
@@ -51,11 +53,11 @@ class MailerShell extends Shell {
 			$this->Email->sendAs = $e['send_as'];
 			$this->Email->template = $e['template'];
 			$this->Email->smtpOptions = array(
-												'port'=>'465',
+												'port'=>'2525',
 												'timeout'=>'30',
-												'host' => 'ssl://smtp.gmail.com',
+												'host' => 'smtp.com',
 												'username'=>'do.not.reply@theberrics.com',
-												'password'=>'19Berrics82',
+												'password'=>'artosari',
 			);
 			
 			
