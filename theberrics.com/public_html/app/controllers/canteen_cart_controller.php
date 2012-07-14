@@ -83,9 +83,9 @@ class CanteenCartController extends CanteenAppController {
 				
 				if(($order_id = $this->CanteenOrder->saveOnlineOrder($this->data,true))) {
 					
-					$_SERVER['FORECMASTER'] = 1;
+					
 					$this->Session->write("CanteenOrder",$this->CanteenOrder->returnAdminOrder($order_id));
-					$_SERVER['FORCEMASTER'] = 0;
+					
 					
 					//die(print_r($this->Session->read()));
 					
