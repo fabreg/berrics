@@ -1393,23 +1393,24 @@ class TesterController extends LocalAppController {
 		foreach($emails as $msg) {
 	
 			$e = $msg['EmailMessage'];
-	
+			//die(print_r($e));
 			$this->Email->reset();
-			$this->Email->to = $e['to'];
+			$this->Email->to = "john.c.hardy@gmail.com";
 			$this->Email->from = $e['from'];
 			$this->Email->subject=$e['subject'];
-			$this->Email->cc = explode(",",$e['cc']);
+			//$this->Email->cc = explode(",",$e['cc']);
 			$this->Email->bcc = $e['bcc'];
 			$this->Email->sendAs = $e['send_as'];
 			$this->Email->template = $e['template'];
 			$this->Email->smtpOptions = array(
-					'port'=>'2525',
+					'port'=>'25',
 					'timeout'=>'30',
 					'host' => 'smtp.com',
 					'username'=>'do.not.reply@theberrics.com',
 					'password'=>'artosari',
 			);
-	
+			
+			$this->Email->delivery = 'smtp';
 	
 			$this->set(compact("msg"));
 	
@@ -1421,7 +1422,9 @@ class TesterController extends LocalAppController {
 				$success++;
 	
 			} else {
-	
+				//print_r($this->Email);
+				
+				die($this->Email->smtpError);
 				SysMsg::add(array(
 						"category"=>"Emailer",
 						"from"=>"MailerShell",

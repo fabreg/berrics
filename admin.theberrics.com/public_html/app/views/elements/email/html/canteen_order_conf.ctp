@@ -64,32 +64,31 @@ Should you have a question or to check the status of your order, please use the 
 	</tr>
 	<?php endif; ?>
 </table>
-<h4>Totals</h4>
 <table cellspacing='0' cellpadding='5' align='right'>
 	<?php if($o['CanteenOrder']['discount_total']!=0): ?>
 	<tr>
-		<td width='120' nowrap align='right'>Discount Total</td>
+		<td width='120' nowrap align='right'><strong>Discount Total</strong></td>
 		<td style='border-bottom:1px solid #000;'><?php echo $o['CanteenOrder']['discount_total']; ?></td>
 	</tr>
 	<?php endif; ?>
 	<tr>
-		<td width='80' nowrap align='right'>Sub Total</td>
+		<td width='80' nowrap align='right'><strong>Sub Total</strong></td>
 		<td style='border-bottom:1px solid #000;'><?php echo $o['CanteenOrder']['sub_total']; ?></td>
 	</tr>
 	<tr>
-		<td width='80' nowrap align='right'>Tax Total</td>
+		<td width='80' nowrap align='right'><strong>Tax Total</strong></td>
 		<td style='border-bottom:1px solid #000;'><?php echo $o['CanteenOrder']['tax_total']; ?></td>
 	</tr>
 	<tr>
-		<td width='80' nowrap align='right'>Shipping</td>
+		<td width='80' nowrap align='right'><strong>Shipping</strong></td>
 		<td style='border-bottom:1px solid #000;'><?php echo $o['CanteenOrder']['shipping_total']; ?></td>
 	</tr>
 	<tr>
-		<td width='80' nowrap align='right'>Total</td>
+		<td width='80' nowrap align='right'><strong>Total</strong></td>
 		<td style='border-bottom:1px solid #000;' nowrap width='150'><?php echo $o['CanteenOrder']['grand_total']; ?> (<?php echo $o['CanteenOrder']['currency_id']; ?>)</td>
 	</tr>
 </table>
-<div style='padding:20px; clear:both;'>
+<div style='padding:20px; clear:both; text-align:center;'>
 	<a href='http://dev.theberrics.com/canteen/printable/receipt/<?php echo $o['CanteenOrder']['hash']; ?>'>
 		Click here for a printer friendly receipt
 	</a>

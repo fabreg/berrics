@@ -15,8 +15,6 @@ class MailerShell extends Shell {
 		$this->controller =& new Controller();
 		$this->Email->initialize($this->controller);
 		
-		
-		
 	}
 	
 	public function process_queue() {
@@ -48,10 +46,11 @@ class MailerShell extends Shell {
 			$this->Email->to = $e['to'];
 			$this->Email->from = $e['from'];
 			$this->Email->subject=$e['subject'];
-			$this->Email->cc = explode(",",$e['cc']);
+			//$this->Email->cc = explode(",",$e['cc']);
 			$this->Email->bcc = $e['bcc'];
 			$this->Email->sendAs = $e['send_as'];
 			$this->Email->template = $e['template'];
+			$this->Email->delivery = 'smtp';
 			$this->Email->smtpOptions = array(
 												'port'=>'2525',
 												'timeout'=>'30',

@@ -65,7 +65,7 @@
                'duration'=> 3600,
                'probability'=> 10000,
 			 	"servers"=>$memcache_server,
-			 	"prefix"=>md5($_SERVER['DOCUMENT_ROOT'])
+			 	"prefix"=>md5($_SERVER['DOCUMENT_ROOT'])."_"
  	 ));
 
 	Cache::config('default', array(
