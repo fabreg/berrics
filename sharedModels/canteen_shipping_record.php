@@ -809,38 +809,19 @@ class CanteenShippingRecord extends AppModel {
 		
 	}
 	
-	public function ljg_process_tracking_files() {
+	public function ljg_process_tracking_file($file_id) {
 		
 		$LjgTrackingFile = ClassRegistry::init("LjgTrackingFile");
 		
-		$pending = $LjgTrackingFile->find("all",array(
+		$file = $LjgTrackingFile->findById($file_id);
 		
-			"conditions"=>array(
-				"LjgTrackingFile.processed"=>0,
-				"LjgTrackingFile.downloaded"=>1
-			)
+		$file_str = file_get_contents("/home/sites/lajolla/".$file['LjgTrackingFile']['file_name']);
 		
-		));
+		$lines = explode("\r",trim($file_str));
 		
-		$file_str = "";
 		
-		$lines = array();
-		
-		foreach($pending as $p) {
-		
-			$file = file_get_contents("/home/sites/lajolla/tracking/".$p['LjgTrackingFile']['file_name']);
-			
-			
-			$lines = array_merge($lines,explode("\n", $file));
-			
-		
-		}
-				
 		
 		die(print_r($lines));
-		//die(print_r($file_str));
-		die(print_r($pending));
-		
 		
 	}
 	

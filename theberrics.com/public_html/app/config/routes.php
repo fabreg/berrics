@@ -9,8 +9,8 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
-if($_SERVER['SCRIPT_URL'] == "/") {
-
+if($_GET['url'] == "/") {
+	
 	App::import("Lib","SplashRoute",array("file"=>"routes/SplashRoute.php"));
 	
 	Router::connect(

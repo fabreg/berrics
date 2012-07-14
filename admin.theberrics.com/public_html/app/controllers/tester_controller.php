@@ -6,6 +6,7 @@ class TesterController extends LocalAppController {
 	
 	public $uses = array();
 	
+	public $components = array("Email");
 	
 	public function beforeFilter() {
 
@@ -1358,12 +1359,94 @@ class TesterController extends LocalAppController {
 		
 		$this->loadModel("CanteenShippingRecord");
 		
-		//$this->CanteenShippingRecord->ljg_get_tracking_files();
+		$this->CanteenShippingRecord->ljg_get_tracking_files();
 		
-		$this->CanteenShippingRecord->ljg_process_tracking_files();
+		//$this->CanteenShippingRecord->ljg_process_tracking_files();
 		
 	}
 
+	
+	
+	public function process_queue() {
+	
+		$this->loadModel("EmailMessage");
+		
+		//grab 50 emails
+		$emails = $this->EmailMessage->find("all",array(
+	
+				"conditions"=>array(
+						"EmailMessage.processed"=>0
+				),
+				"contain"=>array()
+					
+		));
+	
+		SysMsg::add(array(
+				"category"=>"Emailer",
+				"from"=>"MailerShell",
+				"crontab"=>1,
+				"title"=>"Emails to processes: ".count($emails)
+		));
+	
+		$success = 0;
+	
+		foreach($emails as $msg) {
+	
+			$e = $msg['EmailMessage'];
+			//die(print_r($e));
+			$this->Email->reset();
+			$this->Email->to = "john.c.hardy@gmail.com";
+			$this->Email->from = $e['from'];
+			$this->Email->subject=$e['subject'];
+			//$this->Email->cc = explode(",",$e['cc']);
+			$this->Email->bcc = $e['bcc'];
+			$this->Email->sendAs = $e['send_as'];
+			$this->Email->template = $e['template'];
+			$this->Email->smtpOptions = array(
+					'port'=>'25',
+					'timeout'=>'30',
+					'host' => 'smtp.com',
+					'username'=>'do.not.reply@theberrics.com',
+					'password'=>'artosari',
+			);
+			
+			$this->Email->delivery = 'smtp';
+	
+			$this->set(compact("msg"));
+	
+			if($this->Email->send()) {
+	
+				$this->EmailMessage->create();
+				$this->EmailMessage->id = $e['id'];
+				$this->EmailMessage->save(array("processed"=>1,"sent_date"=>"NOW()"));
+				$success++;
+	
+			} else {
+				//print_r($this->Email);
+				
+				die($this->Email->smtpError);
+				SysMsg::add(array(
+						"category"=>"Emailer",
+						"from"=>"MailerShell",
+						"crontab"=>1,
+						"title"=>"Email Failure - Message ID: {$e['id']}"
+						));
+	
+			}
+	
+		}
+	
+		SysMsg::add(array(
+				"category"=>"Emailer",
+				"from"=>"MailerShell",
+				"crontab"=>1,
+				"title"=>"Email Send Results: Success ({$success}) Total (".count($emails).")"
+				));
+	
+	
+	
+	
+	}
 
 
 

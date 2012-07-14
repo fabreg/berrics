@@ -46,16 +46,29 @@
 				<td class='price'><?php echo $this->Berrics->currency($item['sub_total'],$user_currency_id); ?></td>
 			</tr>	
 			<?php endforeach; ?>
-			<?php if(!empty($this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name'])): ?>
+			<?php if(!empty($this->data['UserAccountCanteenPromoCode']['name'])): ?>
 			<tr>
 				<td>
 					
 				</td>
 				<td colspan='2' valign='center'>
 					<div style='float:left; margin-left:5px; margin-right:5px;'>
-					<?php echo $this->Media->promoCodeIcon($this->data['CanteenOrder']['UserAccountCanteenPromoCode'],array("w"=>45,"h"=>45)); ?>
+					<?php echo $this->Media->promoCodeIcon($this->data['UserAccountCanteenPromoCode'],array("w"=>45,"h"=>45)); ?>
 					</div>
-					<?php echo $this->data['CanteenOrder']['UserAccountCanteenPromoCode']['name']; ?>
+					<?php echo $this->data['UserAccountCanteenPromoCode']['name']; ?>
+				</td>
+			</tr>
+			<?php endif;?>
+			<?php if(!empty($this->data['ShippingCanteenPromoCode']['name'])): ?>
+			<tr>
+				<td>
+					
+				</td>
+				<td colspan='2' valign='center'>
+					<div style='float:left; margin-left:5px; margin-right:5px;'>
+					<?php echo $this->Media->promoCodeIcon($this->data['ShippingCanteenPromoCode'],array("w"=>45,"h"=>45)); ?>
+					</div>
+					<?php echo $this->data['ShippingCanteenPromoCode']['name']; ?>
 				</td>
 			</tr>
 			<?php endif;?>
