@@ -84,10 +84,12 @@ body {
 		
 		<img border='0' src='/img/splash/sls-12-az/top.jpg' />
 	</div>
+	<!-- 
 	<div id='counter'>
 	
 		<div class='days'><?php echo $days_to_finals; ?></div>
 	</div>
+	 -->
 	<div>
 		<a href='http://streetleague.com' target='_blank'>
 			<img border='0' src='/img/splash/sls-12-az/bottom.jpg' />
