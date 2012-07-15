@@ -1,6 +1,6 @@
 <div id='top-banner-container'>
 				
-					<?php if(strtoupper(date("D"))=="SUN"): 
+					<?php if(strtoupper(date("D"))=="SUN--"): 
 					
 						$at_link = "/";
 

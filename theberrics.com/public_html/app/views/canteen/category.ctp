@@ -4,6 +4,8 @@
 
 $this->Html->script(array("jquery.form","jquery.lazyload","category"),array("inline"=>false));
 
+$this->set("title_for_layout",strtoupper($category['Parent']['name'])." // ".strtoupper($category['CanteenCategory']['name']));
+
 ?>
 <style>
 .canteen-product-thumb,.canteen-product-super-thumb {
