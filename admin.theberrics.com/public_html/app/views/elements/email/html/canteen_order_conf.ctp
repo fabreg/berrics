@@ -63,6 +63,13 @@ Should you have a question or to check the status of your order, please use the 
 		</td>
 	</tr>
 	<?php endif; ?>
+	<?php if(!empty($o['ShippingCanteenPromoCode']['name'])): ?>
+	<tr>
+		<td colspan='2'>
+			<?php echo $o['ShippingCanteenPromoCode']['name']; ?>
+		</td>
+	</tr>
+	<?php endif; ?>
 </table>
 <table cellspacing='0' cellpadding='5' align='right'>
 	<?php if($o['CanteenOrder']['discount_total']!=0): ?>
