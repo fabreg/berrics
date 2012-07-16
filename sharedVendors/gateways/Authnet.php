@@ -6,7 +6,7 @@ class Authnet extends GatewayBase {
 	private $x_tran_key = false;
 	private $x_version = 3.1;
 	private $url = '';
-	private $test_url = "https://test.authorize.net/gateway/transact.dll";
+	private $test_url = "https://secure.authorize.net/gateway/transact.dll";
 	private $cim_url = "https://apitest.authorize.net/soap/v1/Service.asmx?wsdl";
 	private $cim_test_url = "https://apitest.authorize.net/soap/v1/Service.asmx?wsdl";
 	
@@ -15,7 +15,13 @@ class Authnet extends GatewayBase {
 		$this->x_login = $this->get("gateway_account.api_op1");
 		$this->x_tran_key = $this->get("gateway_account.api_op2");
 		
-		$this->test_url = "https://secure.authorize.net/gateway/transact.dll";
+		if(preg_match('/(WEB2VM|WEB1)/',php_uname("n"))) {
+			
+			$this->test_url = "https://test.authorize.net/gateway/transact.dll";
+			
+		}
+		
+		
 		
 	}
 	
