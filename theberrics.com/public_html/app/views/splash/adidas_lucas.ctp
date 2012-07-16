@@ -5,13 +5,13 @@ $tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509;sz=1x
 
 switch(date("Y-m-d")) {
 	
-	case "2012-07-05":
-		$tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509.2;sz=1x1;ord=[timestamp]?";
-		$click_thru = "http://ad.doubleclick.net/clk;251260568;83376872;s";
+	case "2012-07-16":
+		$tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509.12;sz=1x1;ord=[timestamp]?";
+		$click_thru = "http://ad.doubleclick.net/clk;251260568;83948672;v";
 		break;
-	case "2012-07-06":
-		$click_thru = "http://ad.doubleclick.net/clk;251260568;83376897;z";
-		$tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509.11;sz=1x1;ord=[timestamp]?";
+	case "2012-07-17":
+		$click_thru = "http://ad.doubleclick.net/clk;251260568;83948676;z";
+		$tracking = "http://ad.doubleclick.net/ad/N5865.236219.THEBERRICS/B6085509.13;sz=1x1;ord=[timestamp]?";
 		break;
 }
 

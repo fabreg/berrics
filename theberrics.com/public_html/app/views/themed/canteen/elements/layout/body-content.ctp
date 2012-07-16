@@ -27,6 +27,8 @@ $(document).ready(function() {
 </script>
 <div id='canteen-navbar'>
 <ul>
+	<li><a href='/canteen' style='text-decoration:none;'>HOME</a></li>
+	<li> | </li>
 	<?php foreach($main_canteen_categories as $cat): ?>
 	<li><a><?php echo strtoupper($cat['name']); ?></a>
 		<ul>
