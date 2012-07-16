@@ -158,6 +158,7 @@ class CanteenOrder extends AppModel {
 		$CanteenOrder['CanteenOrder']['shipping_total'] = 0;
 		$CanteenOrder['CanteenOrder']['tax_total'] 		= 0;
 		$CanteenOrder['CanteenOrder']['discount_total'] = 0;
+		$CanteenOrder['CanteenOrder']['taxable_total']	= 0;
 		
 		//die(print_r($CanteenOrder));
 		#the method says it all

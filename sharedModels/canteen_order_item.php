@@ -118,7 +118,7 @@ class CanteenOrderItem extends AppModel {
 		} else {
 			
 			//clear the value of the line item
-			$CanteenOrderItem['sub_total'] = $CanteenOrderItem['tax_total'] = 0;
+			$CanteenOrderItem['sub_total'] = $CanteenOrderItem['tax_total'] =  $CanteenOrderItem['taxable_total'] = 0;
 			
 			//loop through the child rows
 			foreach($ChildItems as $key=>$child) {

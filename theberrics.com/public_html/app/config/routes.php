@@ -35,7 +35,7 @@ Router::connect("/dailyopspost.php",array("controller"=>"dailyops","action"=>"le
 if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI']) && isset($_SERVER['DEVSERVER'])) {
 	
 	Router::connect("/canteen/:uri",
-					array("controller"=>"canteen","action"=>"category"),
+					array("controller"=>"canteen_category","action"=>"index"),
 					array(
 						"uri"=>"[a-z\-_0-9]{3,}.html"
 					)
