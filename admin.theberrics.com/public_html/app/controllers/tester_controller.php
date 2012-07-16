@@ -1451,6 +1451,7 @@ class TesterController extends LocalAppController {
 	public function test_lajolla() {
 		
 		
+		$this->loadModel("CanteenShippingRecord");
 		
 		$this->CanteenShippingRecord->ljg_ftp_file(8);
 		
