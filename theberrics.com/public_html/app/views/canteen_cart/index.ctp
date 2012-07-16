@@ -97,7 +97,7 @@ echo $this->Form->end(); ?>
 <?php 
 
 echo "Country: ".env("GEOIP_COUNTRY_CODE");
-print_r($this->data);
+//print_r($this->data);
 //print_r($this->Session->read());
 
 ?>
