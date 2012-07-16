@@ -1447,6 +1447,18 @@ class TesterController extends LocalAppController {
 	
 	
 	}
+	
+	public function test_lajolla() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+		$id = $this->CanteenShippingRecord->ljg_process_pending();
+		
+		$this->CanteenShippingRecord->ljg_create_orders_file($id);
+		
+		$this->CanteenShippingRecord->ljg_ftp_file();
+		
+	}
 
 
 
