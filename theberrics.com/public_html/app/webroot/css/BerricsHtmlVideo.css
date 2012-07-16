@@ -144,7 +144,23 @@
 	margin:0;
 	padding:0;
 	display:block;
+	
+}
+
+
+.berrics-html-video-div .controls .button-state-slowmo-active {
+	
+	background-position:20px -131px;
+	
+}
+
+
+
+.berrics-html-video-div .controls .button-state-slowmo {
+	
+
 	background-position:2px -131px;
+	
 }
 
 .berrics-html-video-div .controls .button-state-play {
@@ -205,7 +221,7 @@
 	font-weight:bold;
 	background-color:transparent;
 	font-size:11px;
-	color:#999;
+	color:#ccc;
 	border:none;
 	width:70px;
 	text-align:center;
@@ -213,17 +229,25 @@
 	
 }
 
-.berrics-html-video-div .controls .fullscreen-button {
-
+.berrics-html-video-div .controls .fullscreen-div {
+	
+	background-position: 2px -222px;
 	position:absolute;
 	top:0px;
 	right:0px;
 	width:30px;
 	height:30px;
-	background-position: 0px -222px;
+}
+
+.berrics-html-video-div .controls .fullscreen-button {
+
+
+		width:30px;
+	height:30px;
 	border:none;
 	background-color: transparent;
 }
+
 
 
 .berrics-html-video-div .controls .tracking {

@@ -99,7 +99,7 @@
 														.append("<input type='button' value='' class='seekforward-button'/>")	
 												)
 												.append(
-														$("<div class='button slowmo-div'/>")
+														$("<div class='button slowmo-div  button-state-slowmo'/>")
 														.append("<input type='button' value='' class='slowmo-button'/>")	
 												)
 												.append(
@@ -319,11 +319,7 @@
 						methods.togglePause(context);
 						
 					}
-					
-					
-					
-					
-					
+
 				});
 				
 				
@@ -374,7 +370,15 @@
 					
 					ve.playbackRate = rate;
 					
-					
+					if(rate==1) {
+
+						data.target.find('.slowmo-div').addClass('.button-state-slowmo').removeClass('.button-state-slowmo-active');
+
+					} else {
+
+						data.target.find('.slowmo-div').removeClass('.button-state-slowmo').addClass('.button-state-slowmo-active');
+						
+					}
 				
 				});
 				
@@ -551,6 +555,8 @@
 					return methods.handleVideoEnd(context);
 					
 				}
+				
+				
 				
 				//video.get(0).addEventListener('') 
 				
