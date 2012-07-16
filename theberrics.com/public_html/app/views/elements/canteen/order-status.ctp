@@ -63,7 +63,17 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 					<div class='order-bit'>
 						<div class='label'>STATUS</div>
 						<div class='value'>
-							<?php echo strtoupper($v['shipping_status']); ?>
+							<?php 
+								$shipping_color = "";
+								switch(strtoupper($v['shipping_status'])) {
+									
+									case "SHIPPED":
+										$shipping_color = "color:green; font-weight:bold;";
+									break;
+									
+								}
+							?>
+							<span style='<?php echo $shipping_color; ?>'><?php echo strtoupper($v['shipping_status']); ?></span>
 						</div>
 					</div>
 					<div class='order-bit'>
@@ -95,7 +105,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 						<div class='value'>
 							<?php
 							
-								if(!empty($v['shipment_number'])) {
+								if(!empty($v['shipment_number']) || !empty($v['tracking_number'])) {
 									
 									switch(strtoupper($v['carrier_name'])) {
 							
@@ -103,14 +113,18 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 
 												if(!empty($v['tracking_number'])) {
 					
-													echo "<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['tracking_number']}'>{$v['tracking_number']}</a>";
+													echo "<a target='_blank' href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['tracking_number']}'>{$v['tracking_number']}</a>";
 													
 												} else {
 													
-													echo "<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['shipment_number']}'>{$v['shipment_number']}</a>";
+													echo "<a  target='_blank' href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['shipment_number']}'>{$v['shipment_number']}</a>";
 													
 												}
 												
+											break;
+											
+											case "UPS":
+												echo "<a  target='_blank' href='http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums={$v['tracking_number']}'>UPS: {$v['tracking_number']}</a>";
 											break;
 							
 									}
