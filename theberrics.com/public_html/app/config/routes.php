@@ -32,7 +32,7 @@ Router::connect("/preview/*",array("controller"=>"splash","action"=>"preview"));
 Router::connect("/dailyopspost.php",array("controller"=>"dailyops","action"=>"legacy"));
 
 //the canteen
-if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI']) && isset($_SERVER['DEVSERVER'])) {
+if(preg_match('/^(\/canteen)/i',$_SERVER['REQUEST_URI'])) {
 	
 	Router::connect("/canteen/:uri",
 					array("controller"=>"canteen_category","action"=>"index"),

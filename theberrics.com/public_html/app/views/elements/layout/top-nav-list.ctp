@@ -94,7 +94,7 @@
 	<li class='nav-button'>
 		<?php 
 		
-		$canteen_link = "http://theberricscanteen.com";
+		$canteen_link = "/canteen";
 		
 		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 			

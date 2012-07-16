@@ -90,9 +90,7 @@ function initOptionClick() {
 </script>
 <div style='height:30px;'>
 <h2></h2>
-<?php if($this->Session->check("is_admin")): ?>
-	<a href='http://admin.theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>' target='_blank'>Edit</a>
-<?php endif; ?>
+
 </div>
 <div id='product-standard-view'>
 		<div class='container'>
@@ -271,6 +269,6 @@ function initOptionClick() {
 <pre>
 <?php 
 
-print_r($product)
+//print_r($product)
 ?>
 </pre>

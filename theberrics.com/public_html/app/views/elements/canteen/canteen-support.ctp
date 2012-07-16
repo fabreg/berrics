@@ -27,7 +27,12 @@ $(document).ready(function() {
 		QUESTIONS
 	</div>
 	<div class='questions-content'>
-	
+		<p style='color:#333; text-align:center;'>Do you have a question? Please email us using the address below.</p>
+		<div style='text-align:center; padding:10px;'>
+			<a href='mailto:canteen@theberrics.com'>
+				<img border='0' src='/img/layout/canteen/canteen-email.png'/>
+			</a>
+		</div>
 	</div>
 	<div class='heading'>
 		ORDER STATUS

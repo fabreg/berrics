@@ -60,6 +60,7 @@ $(document).ready(function() {
 	width:1050px;
 	background-repeat:no-repeat;
 	margin-bottom:15px;
+	cursor:pointer;
 }
 
 .main-window {
