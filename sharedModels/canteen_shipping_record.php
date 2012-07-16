@@ -924,7 +924,7 @@ class CanteenShippingRecord extends AppModel {
 		
 		$conn = ftp_connect($this->ljg_ftp['ip']);
 		
-		ftp_login($conn,$this->ljg_ftp['user'],$this->ljg_ftp['pass']);
+		ftp_login($conn,$this->ljg_ftp['login'],$this->ljg_ftp['pass']);
 		
 		ftp_pasv($conn,true);
 		
