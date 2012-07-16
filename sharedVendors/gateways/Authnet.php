@@ -15,7 +15,7 @@ class Authnet extends GatewayBase {
 		$this->x_login = $this->get("gateway_account.api_op1");
 		$this->x_tran_key = $this->get("gateway_account.api_op2");
 		
-		//$this->test_url = "https://secure.authorize.net/gateway/transact.dll";
+		$this->test_url = "https://secure.authorize.net/gateway/transact.dll";
 		
 	}
 	
