@@ -61,7 +61,6 @@ $skip = array();
 							</div>
 							<div class='billing'>
 								<h3>PAYMENT INFORMATION <img border='0' src='/img/layout/canteen/cart/card-icons.png' style='margin-top:-16px;'></h3>
-								
 								<?php echo $this->element("checkout-forms/cc-form"); ?>
 								<?php 
 									echo $this->Form->input("same_as_shipping_checkbox",array("type"=>"checkbox","label"=>"Billing Address Same As Shipping",'id'=>'same-as-shipping-check',"div"=>array("id"=>"same-as-shipping-div")));

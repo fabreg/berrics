@@ -380,7 +380,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 		$file = $this->LjgTrackingFile->findById($file_id);
 		
-		$str = file_get_contents("/home/sites/lajolla/".$file['LjgTrackingFile']['file_name']);
+		$str = file_get_contents("/home/sites/lajolla/tracking/".$file['LjgTrackingFile']['file_name']);
 		
 		die("<pre>{$str}</pre>");
 		
@@ -388,7 +388,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 	
 	public function process_tracking_file($file_id) {
 		
-		$this->loadModel("LjgTrackingFile");
+		//$this->loadModel("LjgTrackingFile");
 		
 		//$file = $this->LjgTrackingFile->findById($file_id);
 		

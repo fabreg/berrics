@@ -765,9 +765,19 @@ class CanteenShippingRecord extends AppModel {
 		$LjgTrackingFile = ClassRegistry::init("LjgTrackingFile");
 		
 		//connect
-		$ftp = ftp_connect("127.0.0.1");
 		
-		ftp_login($ftp,"john","artosari");
+		if(preg_match('/(WEB2VM)/',php_uname("n"))) {
+			
+			$ftp = ftp_connect("127.0.0.1");
+			
+			ftp_login($ftp,"john","artosari");
+			
+		} else {
+			
+			$ftp = $this->ljg_ftp_login();
+			
+		}
+		
 		
 		ftp_chdir($ftp,"s");
 		
@@ -815,13 +825,64 @@ class CanteenShippingRecord extends AppModel {
 		
 		$file = $LjgTrackingFile->findById($file_id);
 		
-		$file_str = file_get_contents("/home/sites/lajolla/".$file['LjgTrackingFile']['file_name']);
+		$file_str = file_get_contents("/home/sites/lajolla/tracking/".$file['LjgTrackingFile']['file_name']);
 		
 		$lines = explode("\r",trim($file_str));
 		
+		$tracking_records = array();
 		
+		foreach($lines as $line) {
+			
+			$line = explode("\t",$line);
+			
+			//die("Scema:".count($this->lajolla_tracking_schema)." Line: ".count($line));
+			
+			if($t = @array_combine($this->lajolla_tracking_schema,$line)) {
+				
+				$tracking_records[] = $t;
+				
+			}
+			
+		}
 		
-		die(print_r($lines));
+		//check each tracking record
+		foreach($tracking_records as $r) {
+			
+			$chk = $this->returnAdminRecord($r['WebOrder']);
+			
+			if(strtolower($chk['CanteenShippingRecord']['shipping_status']) != "processing") continue;
+			
+			//update the record with the tracking number and carrier
+			$this->create();
+			$this->id = $chk['CanteenShippingRecord']['id'];
+			
+			$carrier = "UPS";
+			
+			if(!preg_match('/^1Z/',$r['TrackingNumber'])) {
+				
+				$carrier = "USPS";
+				
+			}
+			
+			$udata = array(
+				"carrier_name"=>$carrier,
+				"tracking_number"=>$r['TrackingNumber']		
+			);
+			
+			$this->save($udata);
+			
+			$record = $this->returnAdminRecord($chk['CanteenShippingRecord']['id']);
+			
+			$this->checkout_shipment($record,true,true);
+			
+		}
+		
+		//update the tracking file record as processed
+		$LjgTrackingFile->create();
+		$LjgTrackingFile->id = $file_id;
+		$LjgTrackingFile->save(array(
+			"processed"=>1		
+		));
 		
 	}
 	
@@ -943,7 +1004,7 @@ class CanteenShippingRecord extends AppModel {
 		//send customer email
 		if($send_email) {
 			
-			$this->loadModel("EmailMessage");
+			//$this->loadModel("EmailMessage");
 			
 			$this->CanteenOrder->EmailMessage->sendCanteenShippingConfirmation($record['CanteenShippingRecord']['id']);
 			

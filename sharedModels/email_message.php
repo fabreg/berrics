@@ -146,7 +146,7 @@ class EmailMessage extends AppModel {
 		$d = array();
 		
 		$d['subject'] = "The Berrics Canteen: Your order has shipped";
-		$d['to'] = $record['ShippingAddress']['email'];
+		$d['to'] = $record['UserAddress']['email'];
 		$d['from'] = "Do Not Reply <do.not.reply@theberrics.com>";
 		$d['send_as'] = "html";
 		$d['template'] = "canteen_shipping_confirmation";

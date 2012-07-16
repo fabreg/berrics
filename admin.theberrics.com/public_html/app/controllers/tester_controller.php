@@ -18,7 +18,7 @@ class TesterController extends LocalAppController {
 		
 		if(!isset($_SERVER['DEVSERVER'])) {
 			
-			die(":=)");
+			//die(":=)");
 			
 		}
 		
