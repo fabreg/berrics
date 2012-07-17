@@ -236,6 +236,7 @@ class CanteenShippingRecord extends AppModel {
 					2=>16.95,
 					3=>20.49,
 					4=>23.95,
+					5=>29.95,
 				),
 				"expedited"=>array(
 					0=>19.95,
@@ -262,7 +263,9 @@ class CanteenShippingRecord extends AppModel {
 					1=>13.95,
 					2=>17.49,
 					3=>23.95,
-					4=>27.95
+					4=>27.95,
+					5=>31.95,
+					6=>34.95
 				),
 				"expedited"=>array(
 					0=>39.95,
