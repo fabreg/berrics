@@ -1453,7 +1453,11 @@ class TesterController extends LocalAppController {
 		
 		$this->loadModel("CanteenShippingRecord");
 		
-		$this->CanteenShippingRecord->ljg_ftp_file(8);
+		$pending = $this->CanteenShippingRecord->ljg_process_pending();
+		
+		$this->CanteenShippingRecord->ljg_create_orders_file($pending);
+		
+		$this->CanteenShippingRecord->ljg_ftp_file($pending);
 		
 	}
 
