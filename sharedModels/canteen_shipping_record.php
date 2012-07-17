@@ -698,7 +698,13 @@ class CanteenShippingRecord extends AppModel {
 						$shipment[$k][$v] = $record['UserAddress']['email'];
 						break;
 					case "ShipMethod":
-						$shipment[$k][$v] = "UPG";
+						$method = "UPG";
+						if(strtoupper($record['UserAddress']['country_code']) != "US") {
+							
+							$method = "UPI4";
+							
+						}
+						$shipment[$k][$v] = $method;
 						break;
 					default:
 						$shipment[$k][$v] = "";
