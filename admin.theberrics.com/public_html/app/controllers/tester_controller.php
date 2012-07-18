@@ -1460,7 +1460,81 @@ class TesterController extends LocalAppController {
 		$this->CanteenShippingRecord->ljg_ftp_file($pending);
 		
 	}
+	
+	public function test_bq() {
+		
+		App::import("Vendor","BigQueryApi",array("file"=>"BigQueryApi.php"));
+		
+		$bq = new BigQueryApi();
+		
+		$bq->tables->fudge();
+		
+	}
+	
+	public function test_goog() {
+		
+		$accessToken = '{"access_token":"ya29.AHES6ZQ9yjVf6xdFjpiLZsfqQIAxDOkm95MMv33GHySZlYNRpsgPrA","token_type":"Bearer","expires_in":3600,"refresh_token":"1\/-qDO6Ug3qj_xnlCqMdhJ0N0zD8QxpZFBI5tFhJtOark","created":1342628689}';
+		
+		
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/apiClient.php"));
+		App::import("Vendor","GoogleBigqueryApi",array("file"=>"google-api-php-client/src/contrib/apiBigqueryService.php"));
+		
+		$apiClient = new apiClient();
+		$apiClient->setApplicationName("Testing App");
+		$apiClient->setClientId("632632109626-oi3e0cvvkbur75r1fe4cg80dbuk4sjds@developer.gserviceaccount.com");
+		$apiClient->setClientSecret("dhWNmyamq9LPLfMpWStQbmww");
+		$apiClient->setRedirectUri("http://".$_SERVER['HTTP_HOST']."/tester/goog_callback");
+		$apiClient->setScopes(array(
+					'https://www.googleapis.com/auth/bigquery'
+		));
+		$apiClient->setApprovalPrompt("auto");
+		
+		$apiClient->setAccessToken($accessToken);
+		
+		$bq = new apiBigqueryService($apiClient);
+		
+		die(pr($bq->jobs->getQueryResults("theberrics.com:site-reports","job_d6238b593ead456f9c8cffa0c1ea2e56")));
+		
+		die(pr($bq->jobs->get("theberrics.com:site-reports","job_d6238b593ead456f9c8cffa0c1ea2e56")));
+		
+		
+	}
 
+	public function goog_callback() {
+		
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/apiClient.php"));
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/contrib/apiBigqueryService.php"));
+		
+		$apiClient = new apiClient();
+		$apiClient->setApplicationName("Testing App");
+		$apiClient->setClientId("632632109626-oi3e0cvvkbur75r1fe4cg80dbuk4sjds@developer.gserviceaccount.com");
+		$apiClient->setClientSecret("dhWNmyamq9LPLfMpWStQbmww");
+		$apiClient->setRedirectUri("http://".$_SERVER['HTTP_HOST']."/tester/goog_callback");
+		$apiClient->setScopes(array(
+				'https://www.googleapis.com/auth/bigquery'
+		));
+		$apiClient->authenticate();
+		
+		die($apiClient->getAccessToken());
+		
+	}
+	
+	public function test_service() {
+		
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/apiClient.php"));
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/contrib/apiBigqueryService.php"));
+		
+		$apiClient = new apiClient();
+		$apiClient->setApplicationName("Testing App");
+		$apiClient->setClientId("632632109626-oi3e0cvvkbur75r1fe4cg80dbuk4sjds@developer.gserviceaccount.com");
+		$apiClient->setClientSecret("dhWNmyamq9LPLfMpWStQbmww");
+		$apiClient->setRedirectUri("http://".$_SERVER['HTTP_HOST']."/tester/goog_callback");
+		$apiClient->setScopes(array(
+				'https://www.googleapis.com/auth/bigquery'
+		));
+		$apiClient->authenticate();
+		
+	}
 
 
 

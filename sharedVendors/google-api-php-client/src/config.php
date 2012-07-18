@@ -25,9 +25,9 @@ $apiConfig = array(
     'application_name' => '',
 
     // OAuth2 Settings, you can get these keys at https://code.google.com/apis/console
-    'oauth2_client_id' => '',
+    'oauth2_client_id' => '632632109626.apps.googleusercontent.com',
     'oauth2_client_secret' => '',
-    'oauth2_redirect_uri' => '',
+    'oauth2_redirect_uri' => 'http://dev.admin.theberrics.com/tester/goog_callback',
 
     // The developer key, you get this at https://code.google.com/apis/console
     'developer_key' => 'AIzaSyDyrdvYDtyf8SGTgz4MeXdqy1K6tvAkq_4',
