@@ -71,6 +71,11 @@
 			
 				foreach($row as $k=>$v) $row[$k] = preg_replace("/[',]/","",$v);
 				
+				//date string
+				$row[] = $row[5]."-".$row[4]."-".$row[3];
+				//date hour string
+				$row[] = $row[5]."-".$row[4]."-".$row[3]." ".$row[2].":00:00";
+				
 				$str = implode(",",$row)."\n";
 				
 				file_put_contents("/tmp/{$start}-{$end}.csv", $str,FILE_APPEND);
