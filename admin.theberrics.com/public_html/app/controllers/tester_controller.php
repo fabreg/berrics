@@ -1552,6 +1552,15 @@ class TesterController extends LocalAppController {
 	}
 
 
+	public function goog_etl() {
+		
+		$this->loadModel("FactPageView");
+
+		$data = $this->FactPageView->makeGoogCsv('2011-06-20');
+		
+		die(pr($data));
+		
+	}
 
 
 

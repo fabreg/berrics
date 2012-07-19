@@ -95,7 +95,7 @@ Should you have a question or to check the status of your order, please use the 
 	</tr>
 </table>
 <div style='padding:20px; clear:both; text-align:center;'>
-	<a href='http://dev.theberrics.com/canteen/printable/receipt/<?php echo $o['CanteenOrder']['hash']; ?>'>
+	<a href='http://theberrics.com/canteen/printable/receipt/<?php echo $o['CanteenOrder']['hash']; ?>'>
 		Click here for a printer friendly receipt
 	</a>
 </div>
