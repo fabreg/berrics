@@ -6,7 +6,6 @@ $co = ClassRegistry::init("CanteenOrder");
 
 $o = $co->returnAdminOrder($oo['CanteenOrder']['id']);
 
-
 ?>
 <div>
 <p>

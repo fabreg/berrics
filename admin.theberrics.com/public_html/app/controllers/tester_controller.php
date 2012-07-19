@@ -1467,7 +1467,22 @@ class TesterController extends LocalAppController {
 		
 		$bq = new BigQueryApi();
 		
-		$bq->tables->fudge();
+		$res = $bq->jobs()->getQueryResults($bq->berrics_reports, 'job_1d5288b809be4f539eafbb303ef5b675');
+		
+		die(pr($res));
+		
+		
+		$job = $bq->addJobQuery(
+				"select count(*) as total,country_code,region
+				from traffic.pageviews
+				where country_code='US'
+				group by country_code,region
+				order by total DESC"
+				);
+		
+		pr($job);
+		
+		die();
 		
 	}
 	
