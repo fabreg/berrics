@@ -14,13 +14,28 @@
 		
 	}
 	
+	$ops = getopt(
+		"",
+		array(
+			"start:",
+			"end:",
+			"limit:",
+			"total:"
+		)
+	);
+	
+	if(empty($ops['start'])) die("You have to specify a start pos: --start \n");
+	if(empty($ops['total'])) die("You have to specify total number to processes: --total \n");
+
+	
 	$page = 0;
 	$date = '2011-06-20';
 	$loop = true;
 	$numrows = 0;
-	$limit = 100000;
-	$start = 0;
-	$end = 5000000;
+	$limit = (isset($ops['limit']) && !empty($ops['limit'])) ? $ops['limit']:100000;
+	$start = (isset($ops['start']) && !empty($ops['start'])) ? $ops['start']:0;
+	$total = (isset($ops['total']) && !empty($ops['total'])) ? $ops['total']:5000000;
+	$end = $start + $total;
 	
 	while($loop) {
 		
