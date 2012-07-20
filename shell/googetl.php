@@ -70,11 +70,11 @@
 			while($row = $test->fetch_row()) {
 			
 				foreach($row as $k=>$v) $row[$k] = preg_replace("/[',]/","",$v);
-				
+				$day = (strlen($row[3])==1) ? "0".$row[3]:$row[3];
 				//date string
-				$row[] = $row[5]."-".$row[4]."-".$row[3];
+				$row[] = $row[5]."-".$row[4]."-".$day;
 				//date hour string
-				$row[] = $row[5]."-".$row[4]."-".$row[3]." ".$row[2].":00:00";
+				$row[] = $row[5]."-".$row[4]."-".$day." ".$row[2].":00:00";
 				//time stamp
 				$row[] = strtotime($row[10]);
 				
