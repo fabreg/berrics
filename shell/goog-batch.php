@@ -3,11 +3,11 @@
 
 	$dir = dirname(__FILE__);
 	
-	$total = 90;
+	$total = 190;
 
 	$count = 1;
 
-	$total_rows = 2000000;
+	$total_rows = 1000000;
 	
 	$start = 1;
 	
