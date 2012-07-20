@@ -98,6 +98,8 @@
 			
 			$loop = false;
 			
+			`/tmp/$start-$end.csv`;
+			
 			continue;
 			
 		}
