@@ -7,13 +7,13 @@
 
 	$count = 1;
 
-	$total_rows = 3000000;
+	$total_rows = 2000000;
 	
 	$start = 1;
 	
 	while($count<=$total) {
 		
-		echo system("$dir/googetl.php --total=$total_rows --start=$start --limit=2000000");
+		echo system("$dir/googetl.php --total=$total_rows --start=$start");
 		
 		$count++;
 		$start += $total_rows;
