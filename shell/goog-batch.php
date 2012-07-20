@@ -3,7 +3,7 @@
 
 	$dir = dirname(__FILE__);
 	
-	$total = 60;
+	$total = 90;
 
 	$count = 1;
 
