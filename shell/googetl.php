@@ -100,7 +100,7 @@
 			
 			$loop = false;
 			
-			`/tmp/$start-$end.csv`;
+			`gzip /tmp/$start-$end.csv`;
 			
 			continue;
 			
