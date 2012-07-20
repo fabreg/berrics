@@ -75,6 +75,8 @@
 				$row[] = $row[5]."-".$row[4]."-".$row[3];
 				//date hour string
 				$row[] = $row[5]."-".$row[4]."-".$row[3]." ".$row[2].":00:00";
+				//time stamp
+				$row[] = strtotime($row[7]);
 				
 				$str = implode(",",$row)."\n";
 				
