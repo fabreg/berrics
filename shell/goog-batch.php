@@ -3,13 +3,13 @@
 
 	$dir = dirname(__FILE__);
 	
-	$total = 42;
+	$total = 60;
 
 	$count = 1;
 
 	$total_rows = 3000000;
 	
-	$start = 46000000;
+	$start = 1;
 	
 	while($count<=$total) {
 		
