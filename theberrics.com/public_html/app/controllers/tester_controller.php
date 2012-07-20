@@ -604,6 +604,18 @@ steven0892@hotmail.com,tristanruff781@yahoo.com,vtechugotech@yahoo.com,abbiec.so
 		
 	}
 	
+	public function test_shipping() {
+		
+		$this->loadModel("CanteenShippingRecord");
+		
+		
+		$v = $this->CanteenShippingRecord->returnShippingRate(1,'FR');
+		
+		die($v);
+		
+		
+	}
+	
 }
 
 
