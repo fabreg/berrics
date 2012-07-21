@@ -29,5 +29,5 @@
 		?>
 	</table>
 <?php else: ?>
-<h2 style='text-align:center; padding:15px;'>No Orders Where Found</h2>
+<h2 style='text-align:center; padding:15px;'>No Orders Were Found</h2>
 <?php endif; ?>
