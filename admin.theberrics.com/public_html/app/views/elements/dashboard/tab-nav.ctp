@@ -21,6 +21,7 @@ $(document).ready(function() {
 	<ul>
 		<li><a href='/dashboard/'>Dailyops</a></li>
 		<li><a href='/dashboard/canteen'>Canteen Dashboard</a></li>
+		<li><a href='/dashboard/reports'>Reports Dashboard</a></li>
 		
 	</ul>
 	<div style='clear:both;'></div>

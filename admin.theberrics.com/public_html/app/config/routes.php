@@ -33,4 +33,7 @@
 	//Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 	Router::connect("/theberrics.ics",array("controller"=>"dashboard","action"=>"cal"));
+	
+	Router::connect("/dashboard/reports",array("controller"=>"report_dashboard"));
+	Router::connect("/dashboard/reports/*",array("controller"=>"report_dashboard"));
 ?>
