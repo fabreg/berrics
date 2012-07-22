@@ -95,8 +95,22 @@ class BigQueryApi {
 		
 		$job->setConfiguration($jobConfig);
 		
+		//additional job options
+		$jobOps = array();
+		if(isset($opts['jobId'])) { 
+			
+			$jobOps['jobId'] = $opts['jobId'];
+			
+		} else { 
+			
+			$jobOps['jobId'] = $command."_".md5(microtime());
+			
+		}
+		
+		$jobOps['productId'] = $this->berrics_reports;
+		
 		//make job test
-		$job_id = $this->jobs()->insert($job,array("projectId"=>$this->berrics_reports));
+		$job_id = $this->jobs()->insert($job,$jobOps);
 		
 		return $job_id;
 		
