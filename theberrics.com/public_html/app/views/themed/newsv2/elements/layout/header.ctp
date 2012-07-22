@@ -1,4 +1,4 @@
-<?php if($_SERVER['SCRIPT_URL'] != "/"): ?>
+<?php if($_SERVER['REQUEST_URI'] != "/"): ?>
 	<?php 
 		$this->theme = "web";
 		echo $this->element("layout/header"); 
