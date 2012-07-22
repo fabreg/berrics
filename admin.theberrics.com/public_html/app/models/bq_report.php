@@ -7,4 +7,11 @@ class BqReport extends AppModel {
 			"User"
 			);
 	
+	
+	
+	public function queueReport($data) {
+		
+		
+	}
+	
 }

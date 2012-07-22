@@ -484,6 +484,32 @@ MEDIA AJAX WINDOW THING
 }
 
 
+/*
+report window overlay
+
+*/
+
+.report-overlay {
+		
+	height:100%;
+	width:100%;
+	background-image:url(/img/blk-px.png);
+}
+
+.report-overlay .overlay-wrapper {
+	
+	
+	
+}
+
+.report-overlay .overlay-content {
+	
+	
+
+}
+
+
+
 
 
 

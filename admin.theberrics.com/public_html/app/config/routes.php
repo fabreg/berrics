@@ -34,6 +34,6 @@
 
 	Router::connect("/theberrics.ics",array("controller"=>"dashboard","action"=>"cal"));
 	
-	Router::connect("/dashboard/reports",array("controller"=>"report_dashboard"));
-	Router::connect("/dashboard/reports/*",array("controller"=>"report_dashboard"));
+	Router::connect("/dashboard/reports",array("plugin"=>"bq_reports","controller"=>"dashboard"));
+	Router::connect("/dashboard/reports/*",array("plugin"=>"bq_reports"));
 ?>

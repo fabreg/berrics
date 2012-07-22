@@ -33,7 +33,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	if(isset($_GET['t']) && $_GET['t'] == 1 || $_SERVER['DEVSERVER'] == 1) {
+	if(isset($_GET['t']) && $_GET['t'] == 1 || isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) {
 		
 		Configure::write('debug', 2);
 		
@@ -44,7 +44,7 @@
 	}
 	
 	ini_set("session.cookie_domain",".theberrics.com");
-	
+	require_once(dirname(__FILE__).'/../../../../sharedConfig/core.php');
 	
 /**
  * CakePHP Log Level:
@@ -315,7 +315,7 @@
 	//FORCE DEVSERVER!
 	if(preg_match('/(WEB2VM|WEB1---)/',php_uname('n'))) {
 		
-		require_once('../../../../sharedConfig/cache_config.php'); 	
+		require_once(dirname(__FILE__).'/../../../../sharedConfig/cache_config.php'); 	
 	
 	} else {
 		

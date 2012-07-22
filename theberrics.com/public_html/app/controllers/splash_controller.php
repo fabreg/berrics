@@ -757,6 +757,22 @@ public function dc_apr() {
 		
 	}
 	
+	public function dc_mikey() {
+		
+		$this->layout = "empty";
+		
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+				"Dailyop.id"=>5514
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	public function levis() {
 		
 		
