@@ -46,6 +46,23 @@ class BigQueryApi {
 		
 	}
 	
+	public function processTemplate($data) {
+		
+		$jobs = array();
+		
+		switch($data['template']) {
+			
+			case "traffic-overview":
+				$jobs[] = $this->addJob("distinct-visitors",$data);
+				break;
+			
+		}
+		
+		$data['bq_jobs'] = json_encode($jobs);
+		
+		return $data;
+		
+	}
 	
 	public function addJobQuery($query) {
 		
@@ -65,9 +82,19 @@ class BigQueryApi {
 		
 		#setup query for the job to run
 		$qr = new JobConfigurationQuery();
-		
+
 		switch(strtolower($command)) {
 			
+			case "distinct-visitors":
+				$qr->setQuery(
+					"select count(distinct(session)) as total,date_str
+					from traffic.pageviews
+					where ts > {$opts['ts_start']} AND ts < {$opts['ts_end']}
+					group by date_str
+					order by date_str ASC
+					"
+				);
+				break;
 			case 'distinct_by_country':
 				$qr->setQuery(
 					"select count(distinct(session)) as total,country_code 
@@ -93,25 +120,31 @@ class BigQueryApi {
 		
 		$jobConfig->setQuery($qr);
 		
-		$job->setConfiguration($jobConfig);
+		$jobRef = new JobReference();
+		
 		
 		//additional job options
 		$jobOps = array();
-		if(isset($opts['jobId'])) { 
+		if(isset($opts['job_id'])) { 
 			
-			$jobOps['jobId'] = $opts['jobId'];
+			$jobRef->setJobId($opts['jobId']);
 			
 		} else { 
 			
-			$jobOps['jobId'] = $command."_".md5(microtime());
+			$jobRef->setJobId($command."_".md5(microtime()));
 			
 		}
+
+		$jobRef->setProjectId($this->berrics_reports);
+		$jobOps['projectId'] = $this->berrics_reports;
 		
-		$jobOps['productId'] = $this->berrics_reports;
+		$job->setJobReference($jobRef);
 		
+		$job->setConfiguration($jobConfig);
+
 		//make job test
 		$job_id = $this->jobs()->insert($job,$jobOps);
-		
+		//die($job_id);
 		return $job_id;
 		
 	}

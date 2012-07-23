@@ -180,7 +180,7 @@ $(document).ready(function() {
 		<div style='float:right;'>
 			<img border='0' src='/img/layout/canteen/home/free-shipping-banner.jpg' />
 			<br /><br />
-			<img border='0' src='/img/layout/canteen/home/giving-back-banner.jpg' />
+			<img border='0' src='/img/layout/canteen/home/Shipping_Worldwide.jpg' />
 		</div>
 		<div style='clear:both;'></div>
 	</div>

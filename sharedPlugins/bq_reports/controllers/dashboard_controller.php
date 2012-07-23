@@ -14,6 +14,20 @@ class DashboardController extends BqReportsAppController {
 	
 	public function index() {
 			
+		
+		
+	}
+	
+	public function generate($screen) {
+		
+		$this->render("/elements/".$screen);
+		
+	}
+	
+	public function process() {
+		
+		$this->BqReport->processReportRequest($this->data['BqReport']);
+		
 	}
 	
 	

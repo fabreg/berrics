@@ -494,17 +494,32 @@ report window overlay
 	height:100%;
 	width:100%;
 	background-image:url(/img/blk-px.png);
+	position:absolute;
+	top:0px;
+	left:0px;
+	
 }
 
 .report-overlay .overlay-wrapper {
 	
-	
+		
+	width:650px;
+	margin:auto;
+	min-height:250px;
+	background-color:white;
 	
 }
 
+.report-overlay .close-overlay {
+	
+	text-align:right;
+	padding:5px;
+	cursor:pointer;
+}
+
 .report-overlay .overlay-content {
-	
-	
+
+	padding:10px;
 
 }
 

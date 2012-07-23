@@ -360,7 +360,8 @@ class CanteenProduct extends AppModel {
 				"CanteenProduct.parent_canteen_product_id"=>NULL,
 				"CanteenProduct.active"=>1,
 				"CanteenProduct.featured"=>1,
-				"CanteenProduct.brand_id"=>3
+				"CanteenProduct.brand_id"=>3,
+				"CanteenProduct.publish_date < NOW()"
 			),
 			"contain"=>array(),
 			"order"=>array("CanteenProduct.publish_date"=>"DESC"),

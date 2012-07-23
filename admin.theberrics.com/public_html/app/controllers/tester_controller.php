@@ -1460,31 +1460,7 @@ class TesterController extends LocalAppController {
 		$this->CanteenShippingRecord->ljg_ftp_file($pending);
 		
 	}
-	
-	public function test_bq() {
-		
-		App::import("Vendor","BigQueryApi",array("file"=>"BigQueryApi.php"));
-		
-		$bq = new BigQueryApi();
-		
-		$res = $bq->jobs()->getQueryResults($bq->berrics_reports, 'job_1d5288b809be4f539eafbb303ef5b675');
-		
-		die(pr($res));
-		
-		
-		$job = $bq->addJobQuery(
-				"select count(*) as total,country_code,region
-				from traffic.pageviews
-				where country_code='US'
-				group by country_code,region
-				order by total DESC"
-				);
-		
-		pr($job);
-		
-		die();
-		
-	}
+
 	
 	public function test_goog() {
 		
@@ -1551,17 +1527,16 @@ class TesterController extends LocalAppController {
 		
 	}
 
-
-	public function goog_etl() {
+	public function test_bq() {
 		
-		$this->loadModel("FactPageView");
-
-		$data = $this->FactPageView->makeGoogCsv('2011-06-20');
+		App::import("Vendor","BigQueryApi",array("file"=>"BigQueryApi.php"));
 		
-		die(pr($data));
+		$bq = new BigQueryApi();
+		
+		$bq->addJob();
+		
 		
 	}
-
 
 
 
