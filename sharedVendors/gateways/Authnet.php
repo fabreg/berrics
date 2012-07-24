@@ -15,7 +15,7 @@ class Authnet extends GatewayBase {
 		$this->x_login = $this->get("gateway_account.api_op1");
 		$this->x_tran_key = $this->get("gateway_account.api_op2");
 		
-		if(preg_match('/(WEB2VM|WEB1)/',php_uname("n"))) {
+		if(preg_match('/(WEB2VM)/',php_uname("n"))) {
 			
 			$this->test_url = "https://test.authorize.net/gateway/transact.dll";
 			
