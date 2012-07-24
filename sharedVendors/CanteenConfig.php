@@ -39,11 +39,7 @@ class CanteenConfig {
 				
 			);
 			
-			if(preg_match('/(WEB2VM)/',php_uname("n"))) {
-				
-				$a['gateway_account_id'] = 1;
-				
-			}
+
 			
 			self::$_config = $a;
 		}
