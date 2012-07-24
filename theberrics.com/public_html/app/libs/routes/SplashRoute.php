@@ -45,7 +45,7 @@ class SplashRoute extends CakeRoute {
 				$params['action'] = "dc_mikey";
 				break;
 			default:
-				$params['action'] = "quik";
+				$params['action'] = "index";
 				break;
 			
 		}
