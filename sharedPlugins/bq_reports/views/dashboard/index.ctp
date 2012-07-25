@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 	Report.init();
 
-	handleIndexLink('<?php echo $this->Html->url(array("plugin"=>"bg_reports","action"=>"ajax_index","controller"=>"dashboard")); ?>');
+	handleIndexLink('<?php echo $this->Html->url(array("plugin"=>"bq_reports","action"=>"ajax_index","controller"=>"dashboard")); ?>');
 	
 });
 
@@ -19,6 +19,8 @@ $(document).ready(function() {
 
 function handleIndexLink(href) {
 
+	console.log(href);
+	
 	$('#ajax-index').html('Loading Reports ..... ');
 	
 	var o = {
@@ -96,7 +98,7 @@ var Report = {
 
 </script>
 <div class='index'>
-	<div style='float:left; width:35%;'>
+	<div style='float:left; width:40%;'>
 		<fieldset id='report-menu'>
 			<legend>Generate A Report</legend>
 			<div>
@@ -112,6 +114,6 @@ var Report = {
 		
 		</div>
 	</div>
-	<div style='float:right; width:64%;'></div>
+	<div style='float:right; width:59%;'></div>
 	<div style='clear:both;'></div>
 </div>

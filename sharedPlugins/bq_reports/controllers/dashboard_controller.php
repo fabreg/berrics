@@ -20,6 +20,14 @@ class DashboardController extends BqReportsAppController {
 	
 	public function ajax_index() {
 		
+		$this->paginate['BqReport'] = array(
+
+			"limit"=>20,
+			"order"=>array("BqReport.created"=>"DESC"),
+			"contain"=>array("User")
+				
+		);
+		
 		$data = $this->paginate("BqReport");
 		
 		$this->set(compact("data"));
@@ -33,6 +41,8 @@ class DashboardController extends BqReportsAppController {
 	}
 	
 	public function process() {
+		
+		$this->data['BqReport']['user_id'] = $this->Auth->user("id");
 		
 		$this->BqReport->processReportRequest($this->data['BqReport']);
 		
