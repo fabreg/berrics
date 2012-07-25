@@ -27,8 +27,13 @@ class BqReport extends AppModel {
 		
 		//start the the jobs
 		
-		$bq->processTemplate($data);
+		$data = $bq->processTemplate($data);
 		
+		$data['bq_status'] = "processng";
+		
+		$this->create();
+		
+		$this->save($data);
 		
 	}
 	

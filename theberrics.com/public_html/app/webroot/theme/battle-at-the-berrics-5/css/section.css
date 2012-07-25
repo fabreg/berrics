@@ -66,7 +66,7 @@
 
 #batb5-bracket .bracket-bg {
 	
-background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg.jpg);
+background-image:url(/theme/battle-at-the-berrics-5/img/bracket-icon-bg-new.jpg);
 	
 	background-repeat:no-repeat;
 	
@@ -334,8 +334,8 @@ VOTING BUTTONS
 #downloads {
 
 	position:absolute;
-	top:385px;
-	left:440px;
+	top:410px;
+	left:390px;
 	text-align:center;	
 	color:#333;
 	font-size:14px;
@@ -766,8 +766,15 @@ VOTING BUTTONS
 }
 /* MikeMo Capaldi VS Davis Torgerson */
 .match_0_1 {
-	display:none;
-	top:0px;
-	left:300px;
 	
+	top:0px;
+	left:445px;
+	top:330px;
+	text-align:center;
+}
+
+.match_0_1 .spacer {
+	
+	height:40px;
+
 }

@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 	Report.init();
 
+	handleIndexLink('<?php echo $this->Html->url(array("plugin"=>"bg_reports","action"=>"ajax_index","controller"=>"dashboard")); ?>');
 	
 });
 
@@ -18,8 +19,15 @@ $(document).ready(function() {
 
 function handleIndexLink(href) {
 
+	$('#ajax-index').html('Loading Reports ..... ');
 	
-	
+	var o = {
+				"url":href,
+				"success":function(d) { 
+					$('#ajax-index').html(d);
+				}
+			};
+	$.ajax(o);
 }
 
 var Report = {
@@ -96,6 +104,7 @@ var Report = {
 					<li>
 						<?php echo $this->Html->link("Traffic Overview",array("action"=>"generate","traffic-overview")); ?>
 					</li>
+					
 				</ul>
 			</div>
 		</fieldset>

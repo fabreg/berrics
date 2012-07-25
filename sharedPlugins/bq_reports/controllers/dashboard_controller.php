@@ -18,6 +18,14 @@ class DashboardController extends BqReportsAppController {
 		
 	}
 	
+	public function ajax_index() {
+		
+		$data = $this->paginate("BqReport");
+		
+		$this->set(compact("data"));
+		
+	}
+	
 	public function generate($screen) {
 		
 		$this->render("/elements/".$screen);

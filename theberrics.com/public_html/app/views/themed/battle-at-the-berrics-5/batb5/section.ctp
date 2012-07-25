@@ -56,9 +56,9 @@ $this->Html->script(array("section"),array("inline"=>false));
 				<?php endforeach; ?>
 			<?php endforeach; ?>
 			<div id='downloads'>
-				<strong>DOWNLOADS</strong>
+				
 				<div class='links'>
-					<a href='http://static.theberrics.com/batb5/BATB5_RULES.pdf' target='_blank'>RULES</a> | <a href='http://static.theberrics.com/batb5/BATBV_bracket.pdf' target='_blank'>BRACKET</a>
+				<strong>DOWNLOADS:</strong>	<a href='http://static.theberrics.com/batb5/BATB5_RULES.pdf' target='_blank'>RULES</a> | <a href='http://static.theberrics.com/batb5/BATBV_bracket.pdf' target='_blank'>BRACKET</a>
 				</div>
 			</div>
 		</div>
