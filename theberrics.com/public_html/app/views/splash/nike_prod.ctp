@@ -57,7 +57,7 @@ body {
 		
 }
 
-#berricsVideo4fe4cfc1-fb44-4ecb-bf05-09a7323849cf img {
+#berricsVideo50119444-6130-48f5-a485-6a22323849cf img {
 
 	display:none;
 
@@ -153,7 +153,9 @@ body {
 
 <div style='text-align:center;' id="enter">
 <div>
-	<img border='0' src='/img/splash/nike-prod/shoe.png' />
+	<a href='http://skateeverydamnday.nikeskateboarding.com/' target='_blank'>
+		<img border='0' src='/img/splash/nike-prod/shoe.png' />
+	</a>
 </div>
 
 <div><a href='/dailyops' style=''><img border='0' src='/img/splash/nike-prod/enter.png'/></a></div>
