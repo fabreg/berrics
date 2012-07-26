@@ -153,7 +153,7 @@ body {
 
 <div style='text-align:center;' id="enter">
 <div>
-	<a href='http://skateeverydamnday.nikeskateboarding.com/' target='_blank'>
+	<a href='http://store.nike.com/us/en_us/?l=shop,pdp,ctr-inline/cid-1/pid-605838/pgid-572245' target='_blank'>
 		<img border='0' src='/img/splash/nike-prod/shoe.png' />
 	</a>
 </div>
