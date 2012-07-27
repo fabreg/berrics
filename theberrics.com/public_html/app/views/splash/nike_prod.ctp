@@ -48,12 +48,8 @@ function posPost() {
 <style>
 body {
 
-		background: url(/img/splash/nike-prod/bg.jpg) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-		background-color:#ccc;
+		background:#cc9966 url(/img/splash/nike-prod/bg.jpg) no-repeat center top;
+		
 		
 }
 
@@ -153,7 +149,7 @@ body {
 
 <div style='text-align:center;' id="enter">
 <div>
-	<a href='http://store.nike.com/us/en_us/?l=shop,pdp,ctr-inline/cid-1/pid-605838/pgid-572245' target='_blank'>
+	<a href='http://clk.atdmt.com/AVE/go/407242974/direct/01/' target='_blank'>
 		<img border='0' src='/img/splash/nike-prod/shoe.png' />
 	</a>
 </div>
@@ -161,3 +157,4 @@ body {
 <div><a href='/dailyops' style=''><img border='0' src='/img/splash/nike-prod/enter.png'/></a></div>
 </div>
 </div>
+<img src='http://view.atdmt.com/AVE/view/407242974/direct/01/' width='1' height='1' border='0'/>
