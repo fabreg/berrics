@@ -161,18 +161,22 @@ function setBatchCommand(cmd) {
 			<td style='font-size:14px; font-weight:bold;'><?php echo $w['name']; ?></td>
 			<td><?php echo $s['carrier_name']; ?></td>
 			<td>
-				<?php 
-				
-				$tnum = $s['tracking_number'];
-				
-				if(empty($s['tracking_number'])) {
-					
-					$tnum = $s['shipment_number'];
-					
-				}
-				
-				?>
-				<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<?php echo $tnum; ?>' target='_blank'><?php echo $tnum; ?></a>
+				<?php if(strtoupper($s['carrier_name']) == "USPS"): ?>
+						<?php 
+						
+						$tnum = $s['tracking_number'];
+						
+						if(empty($s['tracking_number'])) {
+							
+							$tnum = $s['shipment_number'];
+							
+						}
+						
+						?>
+						<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<?php echo $tnum; ?>' target='_blank'><?php echo $tnum; ?></a>
+				<?php elseif(strtoupper($s['carrier_name'])=="UPS"): ?>
+						<a  target='_blank' href='http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=<?php echo $s['tracking_number']; ?>'><?php echo $s['tracking_number']; ?></a>
+				<?php endif; ?>
 			</td>
 			<td class='actions'>
 				<a href='/canteen_shipping_records/edit/<?php echo $s['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>Edit</a>
