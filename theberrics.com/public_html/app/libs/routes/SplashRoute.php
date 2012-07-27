@@ -45,7 +45,7 @@ class SplashRoute extends CakeRoute {
 				$params['action'] = "nike_prod";
 				break;
 			default:
-				$params['action'] = "index";
+				$params['action'] = "dc_mikey";
 				break;
 			
 		}
