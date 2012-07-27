@@ -49,7 +49,7 @@ function posPost() {
 body {
 
 		background:#cc9966 url(/img/splash/nike-prod/bg.jpg) no-repeat center top;
-		
+		background-size:cover;
 		
 }
 
