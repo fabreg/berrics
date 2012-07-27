@@ -3,7 +3,29 @@
   var methods = {
 		  
 		  
-		  
+		init:function(options) {
+		
+			$(this).data("BerricsLogin",$.extend(options,{}));
+			
+		},
+		openWindow:function() {
+		
+			var data = $.data("BerricsLogin");
+			
+			var div = $("<div id='BerricsLogin'/>").
+							append("<div class='wrapper' />").
+								append("<div class='content'/>");
+			
+			$('body').append(div);
+			
+		},
+		handleWindowResize:function() { 
+			
+			
+		},
+		closeWindow:function() {}
+	
+	
 		  
   };
 
