@@ -2,15 +2,33 @@
 
 #BerricsLogin {
 	
-	position:absolute;
+	position:fixed;
 	z-index:9999;
 	width:100%;
 	height:100%;
-	background-color:#999;
+background-color:#000;
+	top:0px;
+	left:0px;
+	display:none;
+	overflow:auto;
+	
 }
 
 #BerricsLogin .wrapper {
 	
 	position:relative;
+
+	min-height:500px;
+	padding-top:500px;
+	background-image:url(/img/login/bg.png);
+	background-repeat:no-repeat;
+	background-position:center top;
+}
+
+#BerricsLogin .content {
+	
+	width:400px;
+	margin:auto;
+	
 	
 }

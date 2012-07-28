@@ -17,6 +17,8 @@ class LoginController extends IdentityAppController {
 		
 		$this->Auth->allow("*");
 		
+		
+		
 	}
 	
 	public function index() {
@@ -134,5 +136,32 @@ class LoginController extends IdentityAppController {
 		$this->Session->write("Auth.User",$this->userAccount['User']);
 		
 	}
+	
+	/*
+	 * LOGIN SCREEN STUFF
+	 */
+	
+	
+	public function ajax_login_screen() {
+		
+		
+		
+	}
+	
+	public function ajax_register_screen() {
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

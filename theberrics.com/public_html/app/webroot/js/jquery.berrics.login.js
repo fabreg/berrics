@@ -9,27 +9,125 @@
 			
 		},
 		openWindow:function() {
-		
-			var data = $.data("BerricsLogin");
+				
 			
-			var div = $("<div id='BerricsLogin'/>").
-							append("<div class='wrapper' />").
-								append("<div class='content'/>");
+			var opt = $.extend({
+				
+				"screen":"noscreen"
+				
+			},arguments[0]);
+
+			var chk = $("#BerricsLogin");
 			
-			$('body').append(div);
+			if(chk.length<=0) {
+				
+				var div = $("<div id='BerricsLogin'/>").
+							append(
+									$("<div class='wrapper' />").append("<div class='content'/>")
+									
+							);
+								
+					
+					$('body').append(div);
+					
+					
+					
+					div.fadeIn('normal',function() { 
+						
+						methods[opt['screen']].apply(this,Array.prototype.slice.call( arguments, 1 ));
+						
+					});
+					
+					methods.handleWindowResize();
+					
+					
+					
+			} else {
+				
+				methods[opt.screen].apply(this,Array.prototype.slice.call( arguments, 1 ));
+				
+			}
+
 			
 		},
 		handleWindowResize:function() { 
 			
+			$('body,html').css({
+				
+				"overflow":"hidden"
+				
+			});
 			
 		},
-		closeWindow:function() {}
+		closeWindow:function() {
+			
+			$('#BerricsLogin').fadeOut('normal',function() {
+				
+				$('#BerricsLogin').remove();
+				$('body,html').css({
+					
+					
+					"overflow":"auto"
+					
+				});
+				
+			});
+			
+		},
+		nomethod:function() {
+			
+			console.log("No Method Found");
+			
+		},
+		loginScreen:function() {
+			
+			methods.loadAjaxContent({
+				
+				"url":"/identity/login/ajax_login_screen",
+				
+				
+			})
+			
+		},
+		registerScreen:function() { 
+			
+			methods.loadAjaxContent({
+				
+				"url":"/identity/login/ajax_register_screen",
+				
+				
+			})
+			
+		},
+		loadAjaxContent:function(opts) {
+			
+			var o = $.extend({
+				
+				"success":function(d) {
+					
+					$("#BerricsLogin .content").html(d).fadeIn();
+					o.callback.apply(this,[]);
+					
+				},
+				"callback":function() {}
+				
+			},opts);
+			
+			$("#BerricsLogin .content").fadeOut("normal",function() { 
+				
+				$.ajax(o)
+				
+				
+			});
+			
+			
+		}
 	
 	
 		  
   };
 
-  $.fn.BerricsLogin = function( method ) {
+  $.BerricsLogin = function( method ) {
     
     if ( methods[method] ) {
       return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
