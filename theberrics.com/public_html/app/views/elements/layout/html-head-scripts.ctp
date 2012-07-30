@@ -29,6 +29,7 @@
 			"/js/jquery.scrollTo",
 			"jquery.swfobject",
 			"jquery.client",
+			"jquery.form",
 			"main"
 		
 		));

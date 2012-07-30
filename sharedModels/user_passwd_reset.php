@@ -43,4 +43,41 @@ class UserPasswdReset extends AppModel {
 		
 	}
 	
+	public function setPasswordValidation() {
+		
+		$this->validate = array(
+				
+					"passwd"=>array(
+							
+								"not_empty"=>array(
+											"rule"=>"",
+											"message"=>"Your password must be at least 6 characters"
+										),
+								"must_match"=>array(
+											"rule"=>array("passwordMatch"),
+											"message"=>"Your passwords do not match"
+										)
+							
+							)
+				
+				);
+		
+	}
+	
+	public function passwordMatch() {
+		
+		$data = $this->data;
+		
+		if(isset($data['UserPasswdReset'])) $data = $data['UserPasswdReset'];
+		
+		if($data['passwd'] != $data['passwd_confirm']) {
+			
+			return false;
+			
+		}
+		
+		return true;
+		
+	}
+	
 }

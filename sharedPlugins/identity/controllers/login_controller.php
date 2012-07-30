@@ -214,6 +214,8 @@ class LoginController extends IdentityAppController {
 		
 		$this->loadModel("UserPasswdReset");
 		
+		
+		
 		$record = $this->UserPasswdReset->find("first",array(
 					"conditions"=>array(
 								"UserPasswdReset.hash"=>$hash,
@@ -222,6 +224,30 @@ class LoginController extends IdentityAppController {
 				));
 		
 		if(empty($record['User']['id'])) return $this->cakeError("error404");
+		
+		if(count($this->data)>0) {
+				
+			if($this->data['User']['passwd'] == $this->data['User']['passwd_confirm']) {
+					
+				$this->loadModel("User");
+				
+				$this->User->create();
+				
+				$this->User->id = $record['User']['id'];
+				
+				$this->User->save(array("passwd"=>$this->Auth->password($this->data['User']['passwd'])));
+				
+				$this->UserPasswdReset->create();
+				
+				$this->UserPasswdReset->id = $record['UserPasswdReset']['id'];
+				
+				$this->UserPasswdReset->save(array("active"=>0));
+				
+				$record['UserPasswdReset']['active'] = 0;
+				
+			}
+				
+		}
 		
 		$this->set(compact("record"));
 		

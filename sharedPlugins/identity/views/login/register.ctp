@@ -19,8 +19,8 @@ $(document).ready(function() {
 				echo $this->Form->input("User.first_name");
 				echo $this->Form->input("User.last_name");
 				echo $this->Form->input("User.email");
-				echo $this->Form->input("User.email_confirm");
-				
+				echo $this->Form->input("passwd",array("label"=>"Password"));
+				echo $this->Form->input("passwd_confirm",array("label"=>"Confirm Password","type"=>"password"));
 			?>
 		</fieldset>
 	</div>

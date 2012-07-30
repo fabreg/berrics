@@ -22,15 +22,25 @@
 			if(chk.length<=0) {
 				
 				var div = $("<div id='BerricsLogin'/>").
+							
 							append(
-									$("<div class='wrapper' />").append("<div class='content'/>")
+									$("<div class='wrapper' />").
+										append(
+											"<div class='loading' />"
+										).
+										append(
+											$("<div  class='close-div'/>").append(
+													"<div class='close-button'/>"
+											)
+										).
+										append("<div class='content'/>")
 									
 							);
 								
 					
 					$('body').append(div);
 					
-					
+					$("#BerricsLogin .close-button").click(function() { methods.closeWindow();  });
 					
 					div.fadeIn('normal',function() { 
 						
@@ -100,12 +110,40 @@
 		},
 		loadAjaxContent:function(opts) {
 			
+			methods.showLoading();
+			
 			var o = $.extend({
 				
 				"success":function(d) {
 					
+					methods.hideLoading();
+					
 					$("#BerricsLogin .content").html(d).fadeIn();
+					
+					$("#BerricsLogin .content a[rel!=no-ajax]").click(function(e) { 
+						
+						methods.loadAjaxContent({
+							
+							"url":$(e.target).attr("href")
+							
+						});
+						
+						return false;
+						
+					});
+					
+					
+					//
+					
 					o.callback.apply(this,[]);
+					//format all links to use this method
+					$("#BerricsLogin .content form").each(function(e) { 
+						
+						methods.initForms(this);
+						
+					});
+					
+					
 					
 				},
 				"callback":function() {}
@@ -114,12 +152,71 @@
 			
 			$("#BerricsLogin .content").fadeOut("normal",function() { 
 				
-				$.ajax(o)
+				$.ajax(o);
 				
 				
 			});
 			
 			
+		},
+		showLoading:function() {
+			
+			$("#BerricsLogin .wrapper").css({
+				
+				"background-image":"url(/img/layout/ajax-loader.gif)"
+				
+			});
+			
+		},
+		hideLoading:function() { 
+			
+			$("#BerricsLogin .wrapper").css({
+				
+				"background-image":"none"
+			});
+			
+		},
+		initForms:function(e) {
+			
+			$(e).ajaxForm({
+				
+				"success":function(d) {
+					
+					methods.hideLoading();
+					
+					$('#BerricsLogin .content').html(d).fadeIn();
+					
+					$("#BerricsLogin .content form").each(function(e) { 
+						
+						methods.initForms(this);
+						
+					});
+					
+					$("#BerricsLogin .content a[rel!=no-ajax]").click(function(e) { 
+						
+						methods.loadAjaxContent({
+							
+							"url":$(e.target).attr("href")
+							
+						});
+						
+						return false;
+						
+					});
+					
+					
+				},
+				'beforeSubmit':function() {
+					
+					methods.showLoading();
+					
+					$('#BerricsLogin .content').fadeOut();
+					
+					return true;
+					
+				}
+				
+			});
 		}
 	
 	
