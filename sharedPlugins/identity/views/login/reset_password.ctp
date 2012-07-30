@@ -2,7 +2,7 @@
 	
 	<div>
 		<?php echo $this->Session->flash(); ?>
-		<p>Enter your email address below to reset your password. You will receive an email within a few minutes with further instructions</p>
+		<p>Enter your email address below to reset your password</p>
 	</div>
 	<div>
 		<?php 

@@ -43,6 +43,17 @@ class UserPasswdReset extends AppModel {
 		
 	}
 	
+	public function setEmailValidation() {
+		
+		$this->validate = array(
+					"email"=>array(
+						"rule"=>"email",
+						"message"=>"Please correct your email address"		
+					)
+				);
+		
+	}
+	
 	public function setPasswordValidation() {
 		
 		$this->validate = array(

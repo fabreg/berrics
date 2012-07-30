@@ -19,7 +19,7 @@
 	position:relative;
 	min-height:500px;
 	padding-top:100px;
-	width:400px;
+	width:500px;
 	margin:auto;
 	background-repeat:no-repeat;
 	background-position:center center;
@@ -56,3 +56,36 @@
 	top:0px;
 	left:0px;
 }
+
+
+
+#identity-register {
+	
+	
+	
+}
+
+#identity-register .input {
+	
+	
+	
+}
+
+
+#identity-register .input input {
+	
+	font-size:18px;
+	padding:3px;
+	
+}
+
+#identity-register .input label {
+	
+	display:block;
+	clear:both;
+	padding:3px;
+	
+}
+
+
+

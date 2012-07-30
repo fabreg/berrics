@@ -182,6 +182,8 @@ class LoginController extends IdentityAppController {
 			
 		}
 		
+		$this->data['User']['passwd'] = $this->data['User']['passwd_confirm'] = "";
+		
 		
 	}
 	
@@ -193,6 +195,7 @@ class LoginController extends IdentityAppController {
 			$this->loadModel("UserPasswdReset");
 			
 			if(
+				(!empty($this->data['User']['email'])) && 
 				($user = $this->UserPasswdReset->process_reset_reqeust($this->data['User']['email']))
 			) {
 				

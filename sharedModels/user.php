@@ -453,10 +453,6 @@ class User extends AppModel {
 					"email_check"=>array(
 						"rule"=>"email",
 						"message"=>"Please correct your email address"		
-					),
-					"confirm_check"=>array(
-						"rule"=>array("confirmEmail"),
-						"message"=>"Emails do not match"		
 					)
 				);
 		
