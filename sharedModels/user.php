@@ -437,28 +437,75 @@ class User extends AppModel {
 		
 	}
 	
+	public function setRegistrationValidation() {
+		
+		$v['first_name'] = array(
+					"rule"=>"notEmpty",
+					"message"=>"First name cannot be empty"
+				);
+		
+		$v['last_name'] = array(
+				"rule"=>"notEmpty",
+				"message"=>"Last name cannot be empty"
+		);
+		
+		$v['email'] = array(
+					"email_check"=>array(
+						"rule"=>"email",
+						"message"=>"Please correct your email address"		
+					),
+					"confirm_check"=>array(
+						"rule"=>array("confirmEmail"),
+						"message"=>"Emails do not match"		
+					)
+				);
+		
+		
+		$this->validate = $v;
+		
+	}
 	
+	public function processUserFormRegistration($data) {
+		
+		
+		
+	}
 	
+	public function checkDupeEmail($email) {
+		
+		$chk = $this->find("first",array(
+					"conditions"=>array(
+						"User.email"=>$email		
+					),
+					"contain"=>array()
+				));
+		
+		if(!empty($chk['User']['id'])) {
+			
+			return $chk;
+			
+		} else {
+			
+			return false;
+			
+		}
+		
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public function confirmEmail($check) {
+		
+		$data = $this->data;
+		
+		if(isset($data['User'])) $data = $data['User'];
+		
+		if($data['email'] == $data['email_confirm']) {
+			
+			return false;
+			
+		} 
+		
+		return false;
+		
+	}
 
 }

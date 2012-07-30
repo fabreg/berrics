@@ -167,5 +167,33 @@ class EmailMessage extends AppModel {
 		
 	}
 	
+	public function queueUserPasswdReset($UserPasswdReset) {
+		
+		if(isset($UserPasswdReset['UserPasswdReset'])) 
+				$UserPasswdReset = $UserPasswdReset['UserPasswdReset'];
+		
+		$user = ClassRegistry::init("User");
+		
+		$User = $user->returnUserProfile($UserPasswdReset['user_id']);
+		
+		unset($user);
+		
+		$this->create();
+		
+		return $this->save(array(
+					"subject"=>"The Berrics - Password Reset",
+					"to"=>$User['User']['email'],
+					"from"=>"Do Not Reply <do.not.reply@theberrics.com>",
+					"send_as"=>"html",
+					"model"=>"User",
+					"foreign_key"=>$UserPasswdReset['user_id'],
+					"processed"=>0,
+					"serialized_data"=>$UserPasswdReset['id'],
+					"template"=>"user_passwd_reset_request"
+				));
+		
+		
+	}
+	
 	
 }

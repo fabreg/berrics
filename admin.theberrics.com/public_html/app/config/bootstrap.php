@@ -41,7 +41,7 @@
  *
  */
 //FORCE DEVSERVER!
-if(php_uname('n')=='WEB2VM.THEBERRICS') {
+if(preg_match('/(WEB2VM)/',php_uname('n'))) {
 	
 	$_SERVER['DEVSERVER']=1;
 

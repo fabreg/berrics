@@ -17,14 +17,30 @@ class LoginController extends IdentityAppController {
 		
 		$this->Auth->allow("*");
 		
-		
-		
 	}
 	
 	public function index() {
 		
 		
+		
 	}
+	
+	public function logout($callback = false) {
+	
+		$this->Auth->logout();
+	
+		$uri = "/";
+	
+		if($callback) {
+				
+			$uri = base64_decode($callback);
+				
+		}
+	
+		return $this->redirect($uri);
+	
+	}
+	
 
 	public function batb_login() {
 		
@@ -32,21 +48,7 @@ class LoginController extends IdentityAppController {
 		
 	}
 	
-	public function logout($callback = false) {
-		
-		$this->Auth->logout();
-		
-		$uri = "/";
-		
-		if($callback) {
-			
-			$uri = base64_decode($callback);
-			
-		}
-		
-		return $this->redirect($uri);
-		
-	}
+	
 	
 	public function send_to_facebook($callback_after = false) {
 		
@@ -126,7 +128,11 @@ class LoginController extends IdentityAppController {
 		
 		$login = $this->Auth->login($this->data);
 
-		return $this->redirect("/");
+		$goto = "/";
+		
+		if($this->Session->check("here")) $goto = $this->Session->read("here");
+		
+		return $this->redirect($goto);
 		
 		
 	}
@@ -154,8 +160,72 @@ class LoginController extends IdentityAppController {
 		
 	}
 	
+	public function form() {
+		
+		
+		
+	}
+	
+	public function register() {
+		
+		if(count($this->data)>0) {
+			
+			$this->User->setRegistrationValidation();
+			
+			$this->User->set($this->data);
+			
+			if($this->User->validates()) {
+				
+				//die(print_r($this->User->invalidFields()));
+				
+			}
+			
+		}
+		
+		
+	}
 	
 	
+	public function reset_password() {
+		
+		if(count($this->data)>0) {
+			
+			$this->loadModel("UserPasswdReset");
+			
+			if(
+				($user = $this->UserPasswdReset->process_reset_reqeust($this->data['User']['email']))
+			) {
+				
+				$this->Session->setFlash("An email has been sent to you with a link to reset your password. It may take a few minutes to reach your inbox");
+				
+			} else {
+				
+				$this->Session->setFlash("Unable to locate an active account");
+				
+			}
+			
+		}
+		
+	}
+	
+	public function password_reset($user_id=false,$hash=false) {
+		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
+		$this->loadModel("UserPasswdReset");
+		
+		$record = $this->UserPasswdReset->find("first",array(
+					"conditions"=>array(
+								"UserPasswdReset.hash"=>$hash,
+								"UserPasswdReset.user_id"=>$user_id
+							)
+				));
+		
+		if(empty($record['User']['id'])) return $this->cakeError("error404");
+		
+		$this->set(compact("record"));
+		
+	}
 	
 	
 	

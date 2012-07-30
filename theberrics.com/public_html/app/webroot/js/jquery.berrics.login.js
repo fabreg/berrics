@@ -83,7 +83,7 @@
 			
 			methods.loadAjaxContent({
 				
-				"url":"/identity/login/ajax_login_screen",
+				"url":"/identity/login/form",
 				
 				
 			})
@@ -93,10 +93,9 @@
 			
 			methods.loadAjaxContent({
 				
-				"url":"/identity/login/ajax_register_screen",
+				"url":"/identity/login/register",
 				
-				
-			})
+			});
 			
 		},
 		loadAjaxContent:function(opts) {

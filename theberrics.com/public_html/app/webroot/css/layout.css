@@ -2847,5 +2847,33 @@ padding:5px;
 }
 	
 
+#identity-register {
+	
+	
+	
+}
+
+#identity-register .input {
+	
+	
+	
+}
+
+
+#identity-register .input input {
+	
+	font-size:18px;
+	padding:3px;
+	
+}
+
+#identity-register .input label {
+	
+	display:block;
+	clear:both;
+	padding:3px;
+	
+}
+
 
 
