@@ -219,6 +219,13 @@
 			<li class='li-sub-nav-button'>
 				<a href='/bangyoself_events/add'>Create new event</a>
 			</li>
+			<li class='li-sub-nav-header'>Media Hunt Events</li>
+			<li class='li-sub-nav-button'>
+				<a href='/mediahunt_events'>Manage Events</a>
+			</li>
+			<li class='li-sub-nav-button'>
+				<a href='/mediahunt_events/add'>Create new event</a>
+			</li>
 		</ul>
 	</li>
 	<li class='li-button'><a href='#' target='_blank'>Canteen</a>
