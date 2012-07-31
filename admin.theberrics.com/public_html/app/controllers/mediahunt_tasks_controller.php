@@ -1,8 +1,19 @@
 <?php
-class MediahuntTasksController extends AppController {
+
+App::import("Controller","LocalApp");
+
+class MediahuntTasksController extends LocalAppController {
 
 	var $name = 'MediahuntTasks';
 
+	public function beforeFilter() {
+		
+		parent::beforeFilter();
+		
+		$this->initPermissions();
+		
+	}
+	
 	function index() {
 		$this->MediahuntTask->recursive = 0;
 		$this->set('mediahuntTasks', $this->paginate());

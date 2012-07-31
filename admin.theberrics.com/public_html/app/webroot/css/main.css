@@ -102,6 +102,14 @@ div.index .actions a {
 	float:left;
 }
 
+div.index .actions li {
+	
+	list-style:none;
+	float:left;
+	margin-left:3px;
+	
+}
+
 div.index .paging {
 
 	padding:3px;
