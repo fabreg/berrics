@@ -1,15 +1,15 @@
 <div class='index'>
-	<fieldset>
-		<legend>MediaHunt Event</legend>
-		<div style='width:50%; float:left;'>
-			<table cellspacing='0'>
-				<tr>
-					<td width='20%'></td>
-					<td></td>
-				</tr>
-			</table>
+	<h2>
+		Event: <?php echo $mediahuntEvent['MediahuntEvent']['name']; ?>
+	</h2>
+	<div>
+		<div style='float:left; width:49%;'>
+		<h3>Recently Submitted</h3>
 		</div>
-		<div style='clear:both;'></div>
-	</fieldset>
-	<h2>Tasks</h2>
+		<div style='float:right; width:49%;'>
+			<h3>Tasks</h3>
+		</div>
+		<div style='clear:both'></div>
+	</div>
+	
 </div>
