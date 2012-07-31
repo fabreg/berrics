@@ -76,7 +76,7 @@
 	
 	font-size:18px;
 	padding:3px;
-	
+	width:90%;
 }
 
 #identity-register .input label {
@@ -86,6 +86,20 @@
 	padding:3px;
 	
 }
+
+#identity-register .input-pairs {
+	
+	
+	
+}
+
+#identity-register .input-pairs .input {
+	
+	float:left;
+	width:49%;
+	
+}
+
 
 
 

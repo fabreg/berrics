@@ -29,10 +29,10 @@ $(document).ready(function() {
 	<div class='email-login'>
 		<div class='inner'>
 			<?php 
-			
-				echo $this->Form->create("User",array("url"=>array("action"=>"email_login","controller"=>"login")));
+				echo $this->Session->flash();
+				echo $this->Form->create("User",array("url"=>$this->here));
 				echo $this->Form->input("email");
-				echo $this->Form->input("passwd",array("label"=>"Password"));
+				echo $this->Form->input("passwd",array("label"=>"Password","value"=>""));
 				echo $this->Form->end("Login");
 				
 			?>

@@ -162,7 +162,62 @@ class LoginController extends IdentityAppController {
 	
 	public function form() {
 		
-		
+		if(count($this->data)>0) {
+			
+			if($this->Auth->login($this->data)) {
+				
+				$user = $this->Auth->user();
+				
+				if($user['User']['email_verified'] != 1) {
+					print_r(array(
+								"plugin"=>"identity",
+								"controller"=>"login",
+								"action"=>"email_not_verified",
+								$user['User']['id'],
+								$user['User']['hash']
+							));
+					return $this->redirect(array(
+								"plugin"=>"identity",
+								"controller"=>"login",
+								"action"=>"email_not_verified",
+								$user['User']['id'],
+								$user['User']['hash']
+							));
+					
+					
+				} else {
+					
+					$callback = $this->Session->read("here");
+					
+					if(empty($callback)) {
+							
+						$callback = "/";
+							
+					}
+					
+					if($this->RequestHandler->isAjax()) {
+							
+						die("<script>document.location.href='{$callback}';</script>");
+							
+					} else {
+					
+						return $this->redirect($callback);
+							
+					}
+					
+				}
+				
+				
+				
+				
+			} else {
+				
+				$this->Session->setFlash("Unable to login. Please try again.");
+				
+			}
+			
+			
+		}
 		
 	}
 	
@@ -253,6 +308,25 @@ class LoginController extends IdentityAppController {
 		}
 		
 		$this->set(compact("record"));
+		
+	}
+	
+	public function email_not_verified($user_id = false,$hash = false) {
+		
+		$user = $this->User->find("first",array(
+					"conditions"=>array(
+								"User.id"=>$user_id,
+								"User.hash"=>$hash
+							),
+					"contain"=>array()
+				));
+		die(print_r($user));
+		$this->set(compact("user"));
+		
+	}
+	
+	public function resend_verification() {
+		
 		
 	}
 	
