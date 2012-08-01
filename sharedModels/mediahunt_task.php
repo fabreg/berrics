@@ -36,7 +36,7 @@ class MediahuntTask extends AppModel {
 		
 		if(isset($data['MediahuntTask'])) $data = $data['MediahuntTask'];
 		
-		if(!empty($data['id'])) $data['id'] = $this->genId();
+		if(empty($data['id'])) $data['id'] = $this->genId();
 		
 		$this->data['MediahuntTask'] = $data;
 		
@@ -48,7 +48,7 @@ class MediahuntTask extends AppModel {
 	
 		$id = mt_rand(10000000,99999999);
 	
-		$chk = $this->find("count",array("conditions"=>array("CanteenOrder.id"=>$id)));
+		$chk = $this->find("count",array("conditions"=>array("MediahuntTask.id"=>$id)));
 	
 		if($chk>0) {
 				

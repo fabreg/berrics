@@ -32,7 +32,11 @@ class MediahuntTasksController extends LocalAppController {
 			$this->MediahuntTask->create();
 			if ($this->MediahuntTask->save($this->data)) {
 				$this->Session->setFlash(__('The mediahunt task has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$redir = array('action' => 'index');
+				
+				if(isset($this->params['named']['callback'])) $redir = base64_decode($this->params['named']['callback']);
+				
+				$this->redirect($redir);
 			} else {
 				$this->Session->setFlash(__('The mediahunt task could not be saved. Please, try again.', true));
 			}
@@ -49,7 +53,11 @@ class MediahuntTasksController extends LocalAppController {
 		if (!empty($this->data)) {
 			if ($this->MediahuntTask->save($this->data)) {
 				$this->Session->setFlash(__('The mediahunt task has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$redir = array('action' => 'index');
+				
+				if(isset($this->params['named']['callback'])) $redir = base64_decode($this->params['named']['callback']);
+				
+				$this->redirect($redir);
 			} else {
 				$this->Session->setFlash(__('The mediahunt task could not be saved. Please, try again.', true));
 			}

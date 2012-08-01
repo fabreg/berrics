@@ -21,7 +21,13 @@ class MediahuntMediaItemsController extends AppController {
 			$this->MediahuntMediaItem->create();
 			if ($this->MediahuntMediaItem->save($this->data)) {
 				$this->Session->setFlash(__('The mediahunt media item has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				
+				$redir = array('action' => 'index');
+				
+				if(isset($this->params['named']['callback'])) $redir = base64_decode($this->params['named']['callback']);
+				
+				$this->redirect($redir);
+				
 			} else {
 				$this->Session->setFlash(__('The mediahunt media item could not be saved. Please, try again.', true));
 			}
@@ -39,7 +45,11 @@ class MediahuntMediaItemsController extends AppController {
 		if (!empty($this->data)) {
 			if ($this->MediahuntMediaItem->save($this->data)) {
 				$this->Session->setFlash(__('The mediahunt media item has been saved', true));
-				$this->redirect(array('action' => 'index'));
+				$redir = array('action' => 'index');
+				
+				if(isset($this->params['named']['callback'])) $redir = base64_decode($this->params['named']['callback']);
+				
+				$this->redirect($redir);
 			} else {
 				$this->Session->setFlash(__('The mediahunt media item could not be saved. Please, try again.', true));
 			}

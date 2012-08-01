@@ -25,6 +25,9 @@ class MediahuntEventsController extends LocalAppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->set('mediahuntEvent', $this->MediahuntEvent->read(null, $id));
+		
+		$this->list_tasks($id);
+		
 	}
 
 	function add() {
@@ -69,4 +72,24 @@ class MediahuntEventsController extends LocalAppController {
 		$this->Session->setFlash(__('Mediahunt event was not deleted', true));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	
+	public function list_tasks($event_id = false) {
+		
+		$this->loadModel("MediahuntTask");
+		
+		$tasks = $this->MediahuntTask->find("all",array(
+					"conditions"=>array(
+								"MediahuntTask.mediahunt_event_id"=>$event_id
+							),
+					"contain"=>array(),
+					"order"=>array(
+								"MediahuntTask.sort_order"=>"ASC"
+							)
+				));
+		
+		$this->set(compact("tasks"));
+		
+	}
+	
 }
