@@ -72,7 +72,8 @@ class DailyopSection extends AppModel {
 			"theotis"=>"31 Days Of Theotis",
 			"berrics_records"=>"For The Record",
 			"sls_voting"=>"Street League Voting",
-			"yn3_voting"=>"YOUnited Nations 3 Voting"
+			"yn3_voting"=>"YOUnited Nations 3 Voting",
+			"levis"=>"Levis 511 Contest"
 		
 			
 		);
