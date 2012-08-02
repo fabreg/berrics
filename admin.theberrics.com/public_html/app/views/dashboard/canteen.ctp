@@ -78,6 +78,7 @@ function handleNoteReply() {
 							<td><?php echo nl2br($n['message']); ?></td>
 							<td class='actions'>
 								<a href='javascript:CanteenOrderNote.reply(<?php echo $n['id']; ?>,"handleNoteReply");'>Quick Reply</a>
+								<a href='/canteen_orders/skip_message/<?php echo $n['id']; ?>'>Skip Message</a>
 							</td>
 						</tr>
 						<?php endforeach; ?>

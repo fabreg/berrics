@@ -41,6 +41,7 @@ $tag_str = implode(",",$tag_array);
 		
 		
 		echo $this->Form->input('id');
+		echo $this->Form->input("email_verified");
 		echo $this->Form->input("first_name");
 		echo $this->Form->input("last_name");
 		echo $this->Form->input("email");

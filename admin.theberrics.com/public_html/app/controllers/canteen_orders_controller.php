@@ -526,4 +526,30 @@ class CanteenOrdersController extends LocalAppController {
 		
 	}
 	
+	public function skip_message($id = false) {
+		
+		$this->loadModel("CanteenOrderNote");
+		
+		$this->CanteenOrderNote->create();
+		
+		$this->CanteenOrderNote->id = $id;
+		
+		$this->CanteenOrderNote->save(array(
+					"note_status"=>'SKIPPED'
+				));	
+		
+		return $this->redirect("/dashboard/canteen");
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

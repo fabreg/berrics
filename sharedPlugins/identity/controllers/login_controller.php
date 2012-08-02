@@ -169,13 +169,7 @@ class LoginController extends IdentityAppController {
 				$user = $this->Auth->user();
 				
 				if($user['User']['email_verified'] != 1) {
-					print_r(array(
-								"plugin"=>"identity",
-								"controller"=>"login",
-								"action"=>"email_not_verified",
-								$user['User']['id'],
-								$user['User']['hash']
-							));
+					
 					return $this->redirect(array(
 								"plugin"=>"identity",
 								"controller"=>"login",

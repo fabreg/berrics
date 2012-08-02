@@ -6,13 +6,17 @@ class DailyopsController extends LocalAppController {
 	
 	//public $cacheAction = "1 Minute";
 	
-	public function beforeFilter() {
+	public function beforeFilter($skipInit = false) {
 		
 		parent::beforeFilter();
 		
-		$this->initPermissions();
-		
-		$this->Auth->allow("*");
+		if(!$skipInit) {
+
+			$this->initPermissions();
+			
+			$this->Auth->allow("*");
+			
+		}
 		
 	}
 	

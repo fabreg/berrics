@@ -92,7 +92,7 @@ class DailyopSection extends AppModel {
 			if(isset($_SERVER['DEVSERVER'])) {
 				$cond = array();
 				$cond['OR'] = array(
-					"DailyopSection.id"=>array(75),
+					"DailyopSection.id"=>array(77),
 					"DailyopSection.active"=>1
 				);
 				

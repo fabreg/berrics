@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+
+/*
+POPUP WINDOW
+*/
+#LevisOverlay {
+	
+	position:fixed;
+	height:100%;
+	width:100%;
+	background-image:url(/img/layout/blk-px.png);
+	z-index:9999;
+	top:0px;
+	left:0px;
+	display:none;
+}
+
+#LevisOverlay .wrapper {
+	
+	
+	
+}
+
+#LevisOverlay .content {
+	
+	
+	
+}
+
+#LevisOverlay .close-div {
+	
+	
+	
+}
+
+#LevisOverlay .close-div .close-button {
+	
+	float:right;
+	width:25px;
+	height:25px;
+	background-color:red;
+	cursor:pointer;
+	
+}
