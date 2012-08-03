@@ -8,14 +8,8 @@
 			$(this).data("BerricsLogin",$.extend(options,{}));
 			
 		},
-		openWindow:function() {
+		openWindow:function(url) {
 				
-			
-			var opt = $.extend({
-				
-				"screen":"noscreen"
-				
-			},arguments[0]);
 
 			var chk = $("#BerricsLogin");
 			
@@ -44,7 +38,12 @@
 					
 					div.fadeIn('normal',function() { 
 						
-						methods[opt['screen']].apply(this,Array.prototype.slice.call( arguments, 1 ));
+						methods.loadAjaxContent({
+							
+							"url":url,
+							
+							
+						})
 						
 					});
 					
@@ -54,7 +53,12 @@
 					
 			} else {
 				
-				methods[opt.screen].apply(this,Array.prototype.slice.call( arguments, 1 ));
+				methods.loadAjaxContent({
+					
+					"url":url,
+					
+					
+				})
 				
 			}
 

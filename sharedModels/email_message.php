@@ -195,5 +195,24 @@ class EmailMessage extends AppModel {
 		
 	}
 	
+	public function userEmailConfirmation($User) {
+		
+		
+		$this->create();
+		
+		return $this->save(array(
+				"subject"=>"The Berrics - Account Confirmation",
+				"to"=>$User['email'],
+				"from"=>"Do Not Reply <do.not.reply@theberrics.com>",
+				"send_as"=>"html",
+				"model"=>"User",
+				"foreign_key"=>$User['id'],
+				"processed"=>0,
+				"serialized_data"=>$User['id'],
+				"template"=>"account_confirmation"
+		));
+		
+	}
+	
 	
 }

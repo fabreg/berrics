@@ -463,7 +463,49 @@ class User extends AppModel {
 	
 	public function processUserFormRegistration($data) {
 		
+		//does the email already exist?
+		$chk = $this->find("first",array(
+					"conditions"=>array(
+								"User.email"=>$data['User']['email']
+							),
+					"contain"=>array()
+				));
 		
+		if(isset($chk['User']['email_verified']) && $chk['User']['email_verified']==1) {
+			
+			return false;
+			
+		}
+		
+		$this->create();
+		
+		if(!empty($chk['User']['id'])) {
+			
+			$this->id = $chk['User']['id'];
+			
+		}
+		
+		$this->save($data['User']);
+
+		$profile = $this->ensure_user_profile($this->id);
+		
+		$this->UserProfile->create();
+		
+		$this->UserProfile->id = $profile['UserProfile']['id'];
+		
+		$this->UserProfile->save($data['UserProfile']);
+		
+		$up = $this->userUserProfile(array(
+					"User.id"=>$this->id
+				));
+		
+		//queue up confirmation email
+		
+		$email = ClassRegistry::init("EmailMessage");
+		
+		$email->userEmailConfirmation($up['User']);
+		
+		return $up;
 		
 	}
 	

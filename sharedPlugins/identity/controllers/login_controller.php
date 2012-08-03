@@ -170,14 +170,9 @@ class LoginController extends IdentityAppController {
 				
 				if($user['User']['email_verified'] != 1) {
 					
-					return $this->redirect(array(
-								"plugin"=>"identity",
-								"controller"=>"login",
-								"action"=>"email_not_verified",
-								$user['User']['id'],
-								$user['User']['hash']
-							));
-					
+					$res = array(
+								"url"=>"/identity/login/email_not_verified"
+							);
 					
 				} else {
 					
@@ -189,29 +184,21 @@ class LoginController extends IdentityAppController {
 							
 					}
 					
-					if($this->RequestHandler->isAjax()) {
-							
-						die("<script>document.location.href='{$callback}';</script>");
-							
-					} else {
-					
-						return $this->redirect($callback);
-							
-					}
+					$res = array("url"=>$callback);
 					
 				}
-				
-				
-				
-				
+
 			} else {
 				
-				$this->Session->setFlash("Unable to login. Please try again.");
+				$res = array("error"=>"Unable to login. Please try again");
 				
 			}
-			
+
+			die(json_encode($res));
 			
 		}
+		
+		
 		
 	}
 	
@@ -225,7 +212,7 @@ class LoginController extends IdentityAppController {
 			
 			if($this->User->validates()) {
 				
-				//die(print_r($this->User->invalidFields()));
+				$this->User->processUserFormRegistration($this->data);
 				
 			}
 			
@@ -314,7 +301,7 @@ class LoginController extends IdentityAppController {
 							),
 					"contain"=>array()
 				));
-		die(print_r($user));
+		
 		$this->set(compact("user"));
 		
 	}

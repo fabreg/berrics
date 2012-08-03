@@ -1,20 +1,24 @@
 <script>
 $(document).ready(function() { 
+	$("#identity-form").ajaxForm({
 
+		"success":function(d) {
 
-	<?php if($this->params['isAjax']): ?>
-	$("a[rel=register-link]").click(function() { 
+			if(d.error) {
 
-		$.BerricsLogin('openWindow',{
-			"screen":'registerScreen'	
-		});
+				alert(d.error);
+				
+			} else {
 
-		return false;
-		
+				alert(d.url);
+				
+			}
+
+		},
+		"type":"json",
+		"url":"/identity/login/form"
+
 	});
-	<?php endif; ?>
-
-	
 });
 </script>
 <div id='identity-form'>
@@ -30,7 +34,7 @@ $(document).ready(function() {
 		<div class='inner'>
 			<?php 
 				echo $this->Session->flash();
-				echo $this->Form->create("User",array("url"=>$this->here));
+				echo $this->Form->create("User",array("url"=>"/identity/login/form","rel"=>"no-ajax"));
 				echo $this->Form->input("email");
 				echo $this->Form->input("passwd",array("label"=>"Password","value"=>""));
 				echo $this->Form->end("Login");

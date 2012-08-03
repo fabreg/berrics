@@ -42,3 +42,13 @@ POPUP WINDOW
 	cursor:pointer;
 	
 }
+
+#LevisOverlay #identity-form,
+#LevisOverlay #identity-register,
+#LevisOverlay #identity-password-reset,
+#LevisOverlay #identity-reset-password {
+	
+	width:400px;
+	margin:auto;
+	
+}

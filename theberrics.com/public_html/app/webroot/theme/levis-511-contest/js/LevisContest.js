@@ -60,7 +60,7 @@
 						
 						$('#LevisOverlay .content').html(d).fadeIn();
 						
-						$("#LevisOverlay .content form").each(function(e) { 
+						$("#LevisOverlay .content form[rel!='no-ajax']").each(function(e) { 
 							
 							methods.initForms(this);
 							
@@ -98,6 +98,8 @@
 				
 			});
   			
+  			document.location.hash = "";
+  			
   		},
   		openUrl:function(url) {
   			
@@ -116,7 +118,7 @@
 					return false;
 					
 				});
-				$("#LevisOverlay .content form").each(function(e) { 
+				$("#LevisOverlay .content form[rel!='no-ajax']").each(function(e) { 
 					
 					methods.initForms(this);
 					

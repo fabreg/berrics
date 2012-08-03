@@ -1,5 +1,5 @@
 <?php if($record['UserPasswdReset']['active']==1): ?>
-<div>
+<div id='identity-password-reset'>
 <?php 
 
 echo $this->Form->create("User",array("url"=>$this->here));
