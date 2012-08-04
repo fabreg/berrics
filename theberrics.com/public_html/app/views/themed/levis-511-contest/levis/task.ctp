@@ -1,3 +1,8 @@
+<?php 
+
+$this->Html->script(array(),array("inline"=>false));
+
+?>
 <script type='text/javascript'>
 $(document).ready(function() { 
 
@@ -24,7 +29,7 @@ $(document).ready(function() {
 .instagram-thumb {
 
 	float:left;
-	margin:5px;
+	margin:20px;
 
 }
 

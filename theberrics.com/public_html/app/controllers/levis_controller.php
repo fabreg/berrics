@@ -7,7 +7,17 @@ class LevisController extends DailyopsController {
 	
 	public $uses = array("MediahuntEvent","MediahuntTask","MediahuntMediaItem");
 	
+	private $event_id = 2;
+	
 	public function beforeFilter() {
+		
+		if(isset($_GET['xid']) && strlen($_GET['xid'])>10) {
+		
+			Configure::write('Session.cookie','berricsupload');
+			
+			$this->Session->start($_GET['xid']);
+			
+		}
 		
 		parent::beforeFilter(true);
 		
@@ -31,6 +41,8 @@ class LevisController extends DailyopsController {
 		}
 		
 		
+		
+		
 	}
 	
 	public function section() {
@@ -38,7 +50,7 @@ class LevisController extends DailyopsController {
 		//get all the tasks
 		$tasks = $this->MediahuntTask->find("all",array(
 					"conditions"=>array(
-						"MediahuntTask.mediahunt_event_id"=>2		
+						"MediahuntTask.mediahunt_event_id"=>$this->event_id		
 					),
 					"contain"=>array()
 				));
@@ -70,15 +82,30 @@ class LevisController extends DailyopsController {
 		
 		if(!empty($instagram_token)) {
 			
-			App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+			$cache_token = "instagram_feed-".md5($instagram_token);
 			
-			$i = InstagramApi::userInstance($instagram_token);
-			
-			$instagram_images = json_decode($i->instagram->getUserRecent($this->Auth->user("instagram_account_num")));
+			if(($instagram_images = Cache::read($cache_token,"1min")) === false) {
+				
+				App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+					
+				$i = InstagramApi::userInstance($instagram_token);
+					
+				$instagram_images = json_decode($i->instagram->getUserRecent($this->Auth->user("instagram_account_num")));
+					
+				Cache::write($cache_token,$instagram_images,"1min");
+				
+			}
 			
 			$this->set(compact("instagram_images"));
 			
 		}
+		
+	}
+	
+	private function instagram_image_request($params) {
+		
+		
+		
 		
 	}
 	

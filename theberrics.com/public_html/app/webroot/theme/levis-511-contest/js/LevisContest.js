@@ -136,7 +136,14 @@
   					
   					403:function(d) {
   						
-  						methods.openUrl("/identity/login/form");
+  						methods.handleClose();
+  						document.location.hash="login=1";
+  						
+  					},
+  					404:function() {
+  						
+  						alert("Whoa, we couldn't find that page?");
+  						methods.handleClose();
   						
   					}
   					

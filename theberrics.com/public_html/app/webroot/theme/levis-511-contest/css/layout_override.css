@@ -30,7 +30,8 @@ POPUP WINDOW
 
 #LevisOverlay .close-div {
 	
-	
+	clear:both;
+	height:25px;
 	
 }
 
