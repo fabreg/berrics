@@ -10,6 +10,7 @@
 		},
 		openWindow:function(url) {
 				
+			if(!url) url = "/identity/login/form";
 
 			var chk = $("#BerricsLogin");
 			

@@ -25,7 +25,7 @@
 				 //bind the UI
 				 $("#LevisOverlay .close-button").click(function() { 
 					 
-					 methods.handleClose();
+					 document.location.hash='';
 					 
 				 });
 				 
@@ -98,7 +98,6 @@
 				
 			});
   			
-  			document.location.hash = "";
   			
   		},
   		openUrl:function(url) {

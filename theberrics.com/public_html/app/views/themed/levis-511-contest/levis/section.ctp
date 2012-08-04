@@ -1,11 +1,13 @@
 <?php 
 
-$this->Html->script(array("jquery.hashchange","LevisContest","jquery.berrics.login"),array("inline"=>false));
+$this->Html->script(array("LevisContest","jquery.ba-bbq","jquery.berrics.login"),array("inline"=>false));
 
 ?>
 <script>
 $(document).ready(function() { 
 
+	var use_base = true;
+	
 	$('#test-button').click(function() { 
 
 		$.LevisContest('openWindow',{
@@ -18,27 +20,52 @@ $(document).ready(function() {
 
 		var ref = $(this).attr("href");
 
-		document.location.hash = "#!"+ref
+		if(use_base) ref = Base64.encode(ref);
+		
+		var state = {};
+
+		state['levis'] = ref;
+
+		$.bbq.pushState(state);
+
+		//document.location.hash = "#!"+ref
 		
 		return false;
 		
 	});
 
-	$(window).hashchange(function(e) { 
+	$(window).bind('hashchange',function(e) { 
 
-		var hash = document.location.hash;
+		var levis = $.bbq.getState('levis') || '';
 
-		if(!hash.match(/#!/)) return;
+		if(use_base && levis.length>0) levis = Base64.decode(levis);
+
+		if(levis.length>0 && levis.match(/^(\/levis)/)) {
+			$.LevisContest('openWindow',{
+				'url':levis
+			});
+		} else {
+
+			$.LevisContest('handleClose');
+			$.bbq.removeState("levis");
+			
+		}
+
+		var login = $.bbq.getState("login") || '';
+
+		if(login.length>0 && login == 1) {
+
+			$.LevisContest('handleClose');
+			$.bbq.removeState("levis");
+
+			$.BerricsLogin('openWindow');
+			
+		}
 		
-		hash = hash.replace(/#!/,'');
-
-		$.LevisContest('openWindow',{
-			'url':hash
-		});
-
+		
 	});
 
-	$(window).hashchange();
+	$(window).trigger('hashchange');
 
 	$("#test-login").click(function() { 
 

@@ -26,7 +26,7 @@ class LevisController extends DailyopsController {
 		//force from hash pushing shit
 		if(!in_array($this->params['action'],array("section","view")) && !$this->RequestHandler->isAjax()) {
 			
-			$this->redirect("/".$this->params['section']."#!".$_GET['url']);
+			$this->redirect("/".$this->params['section']."#levis=".base64_encode("/".$_GET['url']));
 			
 		}
 		
@@ -54,7 +54,17 @@ class LevisController extends DailyopsController {
 		
 	}
 	
-	public function task() {
+	public function task($id = false) {
+		
+		//get the task
+		$task = $this->MediahuntTask->find("first",array(
+					"conditions"=>array(
+						"MediahuntTask.id"=>$id		
+					),
+					"contain"=>array()
+				));
+		
+		$this->set(compact("task"));
 		
 		$instagram_token = $this->Auth->user("instagram_oauth_token");
 		
