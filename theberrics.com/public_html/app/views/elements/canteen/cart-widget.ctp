@@ -1,10 +1,21 @@
+<?php 
+
+$logout_link = "/dailyops";
+
+if(!preg_match('/(login)/',$this->here)) {
+	
+	$logout_link = $this->here;
+	
+}
+
+?>
 <div id='canteen-cart-widget'>
 		<div class='header-img'>
 			<a href='/canteen' title='The Berrics Canteen'><img border='0' src='/img/layout/canteen/cart/cart-widget-heading.jpg' /></a>
 		</div>
 		<div class='account'>
 			<?php if(!$this->Session->check("Auth.User.id")): ?>
-			<a href='' rel='cart-login' callback='<?php echo base64_encode("/account"); ?>'>Sign In</a><?php else: ?><a href='/account/canteen'>My Account</a>|<a href='/identity/login/logout/<?php echo base64_encode($this->here); ?>'>Logout</a><?php endif; ?>|<a href='/canteen/support' title='The Berrics Canteen Support: Check The Status Of Your Order Or Ask A Question'>Customer Service</a>
+			<a href='' rel='cart-login' callback='<?php echo base64_encode("/account"); ?>'>Sign In</a><?php else: ?><a href='/account/canteen'>My Account</a>|<a href='/identity/login/logout/<?php echo base64_encode($logout_link); ?>'>Logout</a><?php endif; ?>|<a href='/canteen/support' title='The Berrics Canteen Support: Check The Status Of Your Order Or Ask A Question'>Customer Service</a>
 		</div>
 		<div style='clear:both;'></div>
 		<div class='cart-items'>

@@ -1,24 +1,35 @@
 <script>
 $(document).ready(function() { 
-	$("#identity-form").ajaxForm({
+	$("#identity-form form").ajaxForm({
 
 		"success":function(d) {
+			console.log(d);
 
-			if(d.error) {
+			$("#identity-form form input[type=submit]").attr("disabled",false);
 
-				alert(d.error);
-				
+			if(d['url']) {
+
+				document.location.href = d['url'];
+
 			} else {
 
-				alert(d.url);
-				
+				alert(d['error']);
+					
 			}
-
+			
 		},
-		"type":"json",
-		"url":"/identity/login/form"
+		"beforeSubmit":function() { 
 
+			$("#identity-form form input[type=submit]").attr("disabled",true);
+	
+			return true;
+		},
+		"type":"post",
+		"dataType":"json"
 	});
+
+	$("#UserEmail").get(0).focus;
+	
 });
 </script>
 <div id='identity-form'>

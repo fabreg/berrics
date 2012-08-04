@@ -38,12 +38,7 @@
 					
 					div.fadeIn('normal',function() { 
 						
-						methods.loadAjaxContent({
-							
-							"url":url,
-							
-							
-						})
+						methods.loadAjaxContent(url);
 						
 					});
 					
@@ -53,12 +48,7 @@
 					
 			} else {
 				
-				methods.loadAjaxContent({
-					
-					"url":url,
-					
-					
-				})
+				methods.loadAjaxContent(url);
 				
 			}
 
@@ -88,71 +78,40 @@
 			});
 			
 		},
-		nomethod:function() {
-			
-			console.log("No Method Found");
-			
-		},
-		loginScreen:function() {
-			
-			methods.loadAjaxContent({
-				
-				"url":"/identity/login/form",
-				
-				
-			})
-			
-		},
-		registerScreen:function() { 
-			
-			methods.loadAjaxContent({
-				
-				"url":"/identity/login/register",
-				
-			});
-			
-		},
-		loadAjaxContent:function(opts) {
+		loadAjaxContent:function(uri) {
 			
 			methods.showLoading();
 			
-			var o = $.extend({
-				
-				"success":function(d) {
+			var o = {
 					
-					methods.hideLoading();
-					
-					$("#BerricsLogin .content").html(d).fadeIn();
-					
-					$("#BerricsLogin .content a[rel!=no-ajax]").click(function(e) { 
+					"success":function(d) {
 						
-						methods.loadAjaxContent({
+						methods.hideLoading();
+						
+						$("#BerricsLogin .content").html(d).fadeIn();
+						
+						$("#BerricsLogin .content a[rel!=no-ajax]").click(function(e) { 
 							
-							"url":$(e.target).attr("href")
+							methods.loadAjaxContent($(e.target).attr("href"));
+							
+							return false;
+							
+						});
+									
+			
+						//format all links to use this method
+						$("#BerricsLogin .content form[rel!='no-ajax']").each(function(e) { 
+							
+							methods.initForms(this);
 							
 						});
 						
-						return false;
 						
-					});
-					
-					
-					//
-					
-					o.callback.apply(this,[]);
-					//format all links to use this method
-					$("#BerricsLogin .content form").each(function(e) { 
 						
-						methods.initForms(this);
-						
-					});
+					},
+					"url":uri
 					
-					
-					
-				},
-				"callback":function() {}
-				
-			},opts);
+				};
 			
 			$("#BerricsLogin .content").fadeOut("normal",function() { 
 				

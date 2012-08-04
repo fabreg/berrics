@@ -77,12 +77,28 @@ class User extends AppModel {
 		"Tag"
 	);
 	
-	public function returnUserProfile($id = false) {
+	public function beforeSave() {
+		
+		parent::beforeSave();
+
+		
+		
+		if(empty($this->id)) {
+			
+			$this->data[$this->name]['account_hash'] = md5(time().mt_rand(999,9999));
+			
+		}
+		
+		return true;
+		
+	}
+	
+	public function returnUserProfile($id = false,$noCache=false) {
 		
 		
 		$token = "user-profile-".$id;
 		
-		if(($profile = Cache::read($token,"1min")) === false) {
+		if($noCache || ($profile = Cache::read($token,"1min")) === false) {
 			
 			$profile = $this->find("first",array(
 				"conditions"=>array(
@@ -295,9 +311,7 @@ class User extends AppModel {
 		
 					"rule"=>"email",
 					"message"=>"Please double check that you email address is correct"	
-			
-				
-		
+					
 			),
 			"first_name"=>array(
 			
@@ -455,14 +469,23 @@ class User extends AppModel {
 						"message"=>"Please correct your email address"		
 					)
 				);
-		
+		$v['new_passwd'] = array(
+					"must_match"=>array(
+							"rule"=>"passwordMatch",
+							"message"=>"Your passwords did not match"
+					),
+					"min_length"=>array(
+								"rule"=>array("minLength",6),
+								"message"=>"Password must be at least 6 characters"
+							)
+				);
 		
 		$this->validate = $v;
 		
 	}
 	
 	public function processUserFormRegistration($data) {
-		
+
 		//does the email already exist?
 		$chk = $this->find("first",array(
 					"conditions"=>array(
@@ -483,6 +506,10 @@ class User extends AppModel {
 			
 			$this->id = $chk['User']['id'];
 			
+		} else {
+			
+			$data['User']['user_group_id'] = 60;
+			
 		}
 		
 		$this->save($data['User']);
@@ -495,15 +522,16 @@ class User extends AppModel {
 		
 		$this->UserProfile->save($data['UserProfile']);
 		
-		$up = $this->userUserProfile(array(
-					"User.id"=>$this->id
-				));
+		$up = $this->returnUserProfile($this->id,true);
 		
 		//queue up confirmation email
-		
-		$email = ClassRegistry::init("EmailMessage");
-		
-		$email->userEmailConfirmation($up['User']);
+		if($up['User']['email_verified'] != 1) {
+			
+			$email = ClassRegistry::init("EmailMessage");
+			
+			$email->userEmailConfirmation($up['User']);
+			
+		}
 		
 		return $up;
 		
@@ -546,4 +574,21 @@ class User extends AppModel {
 		
 	}
 
+	public function passwordMatch() {
+	
+		$data = $this->data;
+		
+		if(isset($data['User'])) $data = $data['User'];
+	
+		if($data['new_passwd'] != $data['new_passwd_confirm']) {
+				
+			return false;
+				
+		}
+	
+		return true;
+	
+	}
+	
+	
 }

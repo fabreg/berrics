@@ -59,7 +59,12 @@ TEST
 				<?php echo $task['MediahuntTask']['details']; ?>
 			</div>
 			<div>
-				<a href='/<?php echo $this->params['section']; ?>/upload_image/<?php echo $task['MediahuntTask']['id']; ?>' rel='ajax-link'>Add A Photo</a>
+				<?php if($this->Session->check("Auth.User.id")): ?>
+					<a href='/<?php echo $this->params['section']; ?>/upload_image/<?php echo $task['MediahuntTask']['id']; ?>' rel='ajax-link'>Add A Photo</a>
+				<?php else: ?>
+					<input type='button' value='login' id='test-login' />
+				<?php endif; ?>
+				
 			</div>
 		</div>
 		<?php endforeach; ?>

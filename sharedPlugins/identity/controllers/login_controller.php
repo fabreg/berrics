@@ -166,28 +166,27 @@ class LoginController extends IdentityAppController {
 			
 			if($this->Auth->login($this->data)) {
 				
-				$user = $this->Auth->user();
+				$user = $this->Session->read("Auth.User");
 				
-				if($user['User']['email_verified'] != 1) {
+				if($user['email_verified']!=1) {
 					
-					$res = array(
-								"url"=>"/identity/login/email_not_verified"
-							);
+					$callback = "/identity/login/email_not_verified/".$user['id']."/".$user['account_hash'];
 					
 				} else {
 					
 					$callback = $this->Session->read("here");
-					
+						
 					if(empty($callback)) {
-							
+					
 						$callback = "/";
-							
+					
 					}
 					
-					$res = array("url"=>$callback);
-					
 				}
-
+				
+				$res = array("url"=>$callback);
+				
+				
 			} else {
 				
 				$res = array("error"=>"Unable to login. Please try again");
@@ -212,17 +211,33 @@ class LoginController extends IdentityAppController {
 			
 			if($this->User->validates()) {
 				
-				$this->User->processUserFormRegistration($this->data);
+				$this->data['User']['passwd'] = $this->Auth->password($this->data['User']['new_passwd']);
+				
+				$res = $this->User->processUserFormRegistration($this->data);
+				
+				if(!$res) { //this indicates the email address is registered and verified
+					
+					$this->Session->setFlash("This email address has already been registered and verified");
+					
+				} else { //email has been sent, tell them to confirm
+					
+					$this->redirect(array(
+							
+								"plugin"=>"identity",
+								"action"=>"registration_success",
+								"controller"=>"login",
+								$res['User']['id'],
+								$res['User']['account_hash']
+							
+							));
+					
+				}
 				
 			}
 			
 		}
 		
-		$this->data['User']['passwd'] = $this->data['User']['passwd_confirm'] = "";
-		
-		
 	}
-	
 	
 	public function reset_password() {
 		
@@ -235,7 +250,7 @@ class LoginController extends IdentityAppController {
 				($user = $this->UserPasswdReset->process_reset_reqeust($this->data['User']['email']))
 			) {
 				
-				$this->Session->setFlash("An email has been sent to you with a link to reset your password. It may take a few minutes to reach your inbox");
+				$this->Session->setFlash("An email has been sent to you with a link to reset your password. It may take a few minutes to reach you. Also check your junk email folder and approve theberrics.com for future emails.");
 				
 			} else {
 				
@@ -294,23 +309,136 @@ class LoginController extends IdentityAppController {
 	
 	public function email_not_verified($user_id = false,$hash = false) {
 		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
 		$user = $this->User->find("first",array(
 					"conditions"=>array(
 								"User.id"=>$user_id,
-								"User.hash"=>$hash
+								"User.account_hash"=>$hash
 							),
 					"contain"=>array()
 				));
+		if(empty($user['User']['id'])) {
+				
+			return $this->cakeError("error404");
+				
+		}
+		$this->set(compact("user"));
+		
+	}
+	
+	public function resend_verification($user_id=false,$hash=false) {
+		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
+		$this->loadModel("EmailMessage");
+		
+		$user = $this->User->find("first",array(
+				"conditions"=>array(
+						"User.id"=>$user_id,
+						"User.account_hash"=>$hash
+				),
+				"contain"=>array()
+		));
+		
+		if(empty($user['User']['id'])) {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
+		$this->EmailMessage->userEmailConfirmation($user['User']);
+		
+		return $this->redirect("/identity/login/confirmation_resent/".$user['User']['id']."/".$user['User']['account_hash']);
+		
+	}
+	
+	
+	public function verification_resent($user_id=false,$hash=false) {
+		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
+		$user = $this->User->find("first",array(
+				"conditions"=>array(
+						"User.id"=>$user_id,
+						"User.account_hash"=>$hash
+				),
+				"contain"=>array()
+		));
+		
+		if(empty($user['User']['id'])) {
+				
+			return $this->cakeError("error404");
+				
+		}
 		
 		$this->set(compact("user"));
 		
 	}
 	
-	public function resend_verification() {
+	public function verify_account($user_id = false,$hash = false) {
+		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
+		$user = $this->User->find("first",array(
+				"conditions"=>array(
+						"User.id"=>$user_id,
+						"User.account_hash"=>$hash
+				),
+				"contain"=>array()
+		));
+		
+		if(empty($user['User']['id'])) {
+			
+			return $this->cakeError("error404");
+		
+		}
+		
+		$this->User->create();
+		
+		$this->User->id = $user['User']['id'];
+		
+		$this->User->Save(array("email_verified"=>1));
+		
+		$this->Auth->login($user);
+		
+		return $this->redirect(array(
+					"plugin"=>"identity",
+					"controller"=>"login",
+					"action"=>"verify_success"
+				));
+		
+	}
+	
+	public function verify_success() {
+		
 		
 		
 	}
 	
+	
+	public function registration_success($user_id = false,$hash = false) {
+		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
+		$user = $this->User->find("first",array(
+				"conditions"=>array(
+						"User.id"=>$user_id,
+						"User.account_hash"=>$hash
+				),
+				"contain"=>array()
+		));
+		
+		if(empty($user['User']['id'])) {
+			
+			return $this->cakeError("error404");
+		
+		}
+		
+		$this->set(compact("user"));
+		
+		
+	}
 	
 	
 	

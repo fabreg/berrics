@@ -1,11 +1,7 @@
 <script>
 $(document).ready(function() { 
 
-	<?php if($this->params['isAjax']): ?>
-
-	<?php else: ?>
 	
-	<?php endif; ?>
 	
 });
 </script>
@@ -27,8 +23,8 @@ $(document).ready(function() {
 			<div class='input-pairs'>
 					
 				<?php 
-					echo $this->Form->input("passwd",array("label"=>"Password"));
-					echo $this->Form->input("passwd_confirm",array("label"=>"Confirm Password","type"=>"password"));
+					echo $this->Form->input("new_passwd",array("label"=>"Password"));
+					echo $this->Form->input("new_passwd_confirm",array("label"=>"Confirm Password","type"=>"password"));
 				?>
 				<div style='clear:both;'></div>
 			</div>
