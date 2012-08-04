@@ -10,10 +10,11 @@ class InstagramApi {
         'client_id' => '6043dfac97d04a55a4f7b400994c302d',
         'client_secret' => '928a9fc2a9af4e579eb00a33a1370b2c',
         'grant_type' => 'authorization_code',
-        'redirect_uri' => 'http://dev.theberrics.com/tester/callback'
+        'redirect_uri' => 'http://dev.theberrics.com/identity/login/handle_instagram_callback'
      );
      
      public static $berrics_access_token = '5828832.6043dfa.02175a8a5986444eb0ca3d3e2d0652d5';
+     									
      										
      public static $berrics_id = '5828832';
      
@@ -50,6 +51,14 @@ class InstagramApi {
      	
      	return self::$instance;
      	
+     	
+     }
+     
+     public static function userInstance($token) {
+     	
+     	self::instance()->instagram->setAccessToken($token);
+     	
+     	return self::$instance;
      	
      }
      

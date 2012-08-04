@@ -124,6 +124,68 @@ class LoginController extends IdentityAppController {
 		
 	}
 	
+	public function send_to_instagram($callback_after = false) {
+		
+		if(!$this->Session->check("Auth.User.id")) {
+			
+			return $this->cakeError("error404");
+			
+		}
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+		
+		if($callback_after) {
+			
+			$this->Session->write("Instagram.login_callback",base64_decode($callback_after));
+			
+		}
+		
+		$i = InstagramApi::instance();
+		
+		$i->instagram->openAuthorizationUrl();
+		
+		
+	}
+	
+	public function handle_instagram_callback() {
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+	
+		$i = InstagramApi::instance();
+		
+		$currentUser = $i->instagram->getCurrentUser();
+		
+		$accessToken = $i->instagram->getAccessToken();
+		
+		$ud = array(
+					"instagram_oauth_token"=>$accessToken,
+					"instagram_handle"=>$currentUser->username,
+					"instagram_account_num"=>$currentUser->id
+				);
+		
+		$this->User->create();
+		
+		$this->User->id = $this->Session->read("Auth.User.id");
+		
+		$this->User->save($ud);
+		
+		$user = $this->User->returnUserProfile($this->Session->read("Auth.User.id"),true);
+		
+		$this->Session->write("Auth.User",$user['User']);
+		
+		$callback = "/";
+		
+		if($this->Session->check("Instagram.login_callback")) {
+				
+			$callback = $this->Session->read("Instagram.login_callback");
+			$this->Session->delete("Instagram.login_callback");
+				
+		}
+		
+		$this->redirect($callback);
+		
+	}
+	
 	public function email_login() {
 		
 		$login = $this->Auth->login($this->data);
@@ -170,6 +232,7 @@ class LoginController extends IdentityAppController {
 				
 				if($user['email_verified']!=1) {
 					
+					$this->Session->delete("Auth");
 					$callback = "/identity/login/email_not_verified/".$user['id']."/".$user['account_hash'];
 					
 				} else {

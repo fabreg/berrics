@@ -13,16 +13,14 @@ class LevisController extends DailyopsController {
 		
 		$this->Auth->allow("*");
 		
-		$this->Auth->deny("upload_image");
+		$this->Auth->deny("task");
 		
 		$this->Auth->loginAction['action'] = "form";
 		
 		$this->initPermissions();
 		
 		$this->theme = "levis-511-contest";
-		
-		$this->Session->write("here",$this->here);
-		
+
 		//die(print_r($this->Auth));
 		
 		//force from hash pushing shit
@@ -31,6 +29,7 @@ class LevisController extends DailyopsController {
 			$this->redirect("/".$this->params['section']."#!".$_GET['url']);
 			
 		}
+		
 		
 	}
 	
@@ -55,9 +54,21 @@ class LevisController extends DailyopsController {
 		
 	}
 	
-	public function upload_image() {
+	public function task() {
 		
-	
+		$instagram_token = $this->Auth->user("instagram_oauth_token");
+		
+		if(!empty($instagram_token)) {
+			
+			App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+			
+			$i = InstagramApi::userInstance($instagram_token);
+			
+			$instagram_images = json_decode($i->instagram->getUserRecent($this->Auth->user("instagram_account_num")));
+			
+			$this->set(compact("instagram_images"));
+			
+		}
 		
 	}
 	

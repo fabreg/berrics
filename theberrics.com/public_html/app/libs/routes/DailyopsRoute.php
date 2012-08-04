@@ -73,7 +73,6 @@ class DailyopsRoute extends CakeRoute {
 				
 			}
 			
-			
 			return $params;
 	
 		}

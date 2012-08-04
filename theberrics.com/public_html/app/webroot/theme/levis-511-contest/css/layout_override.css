@@ -13,6 +13,7 @@ POPUP WINDOW
 	top:0px;
 	left:0px;
 	display:none;
+	overflow:auto;
 }
 
 #LevisOverlay .wrapper {
@@ -40,15 +41,5 @@ POPUP WINDOW
 	height:25px;
 	background-color:red;
 	cursor:pointer;
-	
-}
-
-#LevisOverlay #identity-form,
-#LevisOverlay #identity-register,
-#LevisOverlay #identity-password-reset,
-#LevisOverlay #identity-reset-password {
-	
-	width:400px;
-	margin:auto;
 	
 }

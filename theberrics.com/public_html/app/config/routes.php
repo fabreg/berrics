@@ -168,7 +168,7 @@ Router::connect("/:section/:uri/*",
 	
 		"routeClass"=>"DailyopsRoute",
 		"section"=>"[a-z0-9\-]{3,}",
-		"uri"=>"[a-zA-Z0-9\.\-_]{5,}"
+		"uri"=>"[a-zA-Z0-9\.\-_]{4,}"
 		
 	)
 );
