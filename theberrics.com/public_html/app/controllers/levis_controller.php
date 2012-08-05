@@ -23,7 +23,7 @@ class LevisController extends DailyopsController {
 		
 		$this->Auth->allow("*");
 		
-		$this->Auth->deny("task");
+		$this->Auth->deny("tasks");
 		
 		$this->Auth->loginAction['action'] = "form";
 		
@@ -66,7 +66,7 @@ class LevisController extends DailyopsController {
 		
 	}
 	
-	public function task($id = false) {
+	public function tasks($id = false) {
 		
 		//get the task
 		$task = $this->MediahuntTask->find("first",array(

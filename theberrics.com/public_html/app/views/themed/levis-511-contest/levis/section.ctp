@@ -87,7 +87,7 @@ TEST
 			</div>
 			<div>
 				<?php if($this->Session->check("Auth.User.id")): ?>
-					<a href='/<?php echo $this->params['section']; ?>/task/<?php echo $task['MediahuntTask']['id']; ?>' rel='ajax-link'>Add A Photo</a>
+					<a href='/<?php echo $this->params['section']; ?>/tasks/<?php echo $task['MediahuntTask']['id']; ?>' rel='ajax-link'>Add A Photo</a>
 				<?php else: ?>
 					<input type='button' value='login' id='test-login' />
 				<?php endif; ?>
