@@ -23,7 +23,7 @@ class LevisController extends DailyopsController {
 		
 		$this->Auth->allow("*");
 		
-		$this->Auth->deny("tasks");
+		$this->Auth->deny("tasks","handle_upload");
 		
 		$this->Auth->loginAction['action'] = "form";
 		
@@ -73,7 +73,13 @@ class LevisController extends DailyopsController {
 					"conditions"=>array(
 						"MediahuntTask.id"=>$id		
 					),
-					"contain"=>array()
+					"contain"=>array(
+						"MediahuntMediaItem"=>array(
+							"conditions"=>array(
+								"MediahuntMediaItem.user_id"=>$this->Auth->user("id")		
+							)		
+						)			
+					)
 				));
 		
 		$this->set(compact("task"));
@@ -104,6 +110,17 @@ class LevisController extends DailyopsController {
 	
 	private function instagram_image_request($params) {
 		
+		
+		
+		
+	}
+	
+	public function handle_upload() {
+		
+		
+	}
+	
+	public function handle_add_instagram() {
 		
 		
 		

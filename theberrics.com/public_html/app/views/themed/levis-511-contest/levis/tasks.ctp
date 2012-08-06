@@ -40,6 +40,11 @@ $(document).ready(function() {
 </div>
 <div>
 	STANDARD UPLOADING STUFF GOES HERE
+	<?php if(isset($task['MediahuntMediaItem']['id'])): ?>
+		MEDIA ITEM ELEMENT
+	<?php else: ?><a>
+		MEDIA ITEM FORM
+	<?php endif; ?></a>
 </div>
 <div>
 	<?php if(isset($instagram_images)): ?>

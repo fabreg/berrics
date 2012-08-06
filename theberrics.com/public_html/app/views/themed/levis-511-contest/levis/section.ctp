@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 	});
 
-	$("#levis-511-section a").click(function() { 
+	$("#levis-511-section a[rel!='no-ajax']").click(function() { 
 
 		var ref = $(this).attr("href");
 
@@ -86,12 +86,21 @@ TEST
 				<?php echo $task['MediahuntTask']['details']; ?>
 			</div>
 			<div>
-				<?php if($this->Session->check("Auth.User.id")): ?>
-					<a href='/<?php echo $this->params['section']; ?>/tasks/<?php echo $task['MediahuntTask']['id']; ?>' rel='ajax-link'>Add A Photo</a>
-				<?php else: ?>
-					<input type='button' value='login' id='test-login' />
-				<?php endif; ?>
+				<?php 
+					
+					if($this->Session->check("Auth.User.id")) {
+						
+						$lnk = "/{$this->params['section']}/tasks/{$task['MediahuntTask']['id']}";
+						$rel = "";
+						
+					} else {
+						
+						$lnk = "#login=1";
+						$rel = "no-ajax";
+					}
 				
+				?>
+				<a href='<?php echo $lnk; ?>' rel='<?php echo $rel; ?>'>Add A Photo</a>	
 			</div>
 		</div>
 		<?php endforeach; ?>
