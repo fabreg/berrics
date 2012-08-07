@@ -1,25 +1,22 @@
 <style>
+#BerricsLogin .wrapper {
 
-#identity-email-not-verified {
-	
-	font-family:'Courier';
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	padding:10px;
-	border:1px solid #666;
-	background-color:#333;
-	
+	width:600px;
+
 }
 
 </style>
-<div id='identity-email-not-verified'>
+<div id='identity-email-not-verified' class='identity-container'>
+<div class='heading'>
+	YO' EMAIL IS NOT VERIFIED
+</div>
 <p>
 <?php echo $user['User']['first_name']; ?>,
 </p>
 <p>
 Your email address has not been verified.
 </p>
-<p>
+<div class='resend-link'>
 <?php 
 
 $str = "Click here to have your verificaton email resent to {$user['User']['email']}";
@@ -33,6 +30,6 @@ echo $this->Html->link($str,array(
 						));
 
 ?>
-</p>
+</div>
 
 </div>

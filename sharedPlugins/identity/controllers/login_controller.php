@@ -520,6 +520,29 @@ class LoginController extends IdentityAppController {
 		
 	}
 	
+	public function confirmation_resent($user_id = false,$hash = false) {
+		
+		if(!$user_id || !$hash) return $this->cakeError("error404");
+		
+		$user = $this->User->find("first",array(
+				"conditions"=>array(
+						"User.id"=>$user_id,
+						"User.account_hash"=>$hash
+				),
+				"contain"=>array()
+		));
+		
+		if(empty($user['User']['id'])) {
+				
+			return $this->cakeError("error404");
+		
+		}
+		
+		$this->set(compact("user"));
+		
+		
+	}
+	
 	
 	
 	

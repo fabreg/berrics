@@ -8,11 +8,12 @@ $good = array(
 		
 			"I suck",
 			"I suck really bad",
+			"I have my moments",
+			"I'm aight, I'm aight!",
 			"Koston Steeze",
 			"I'm sponsored, OF COURSE I KILL IT!",
 			"My video part will be on youtube soon and you'll see",
 			
-		
 		);
 
 ?>
