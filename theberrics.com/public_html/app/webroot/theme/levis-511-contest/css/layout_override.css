@@ -53,7 +53,7 @@ SECTION
 #levis-511-section .task-column {
 	
 	
-	width:728px;
+	width:740px;
 	float:right;
 	
 }
@@ -63,5 +63,11 @@ SECTION
 	width:49%;
 	float:left;
 	
+	
+}
+#levis-511-section .heading {
+	
+	background-image:url(/theme/levis-511-contest/img/list-top.jpg);
+	height:188px;
 	
 }

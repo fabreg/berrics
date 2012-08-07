@@ -47,23 +47,15 @@ $(document).ready(function() {
 			});
 			
 		} else {
-			
-			$.LevisContest('handleClose');
-			$.bbq.removeState("levis");
-			
+
+			if($("#LevisOverlay").length>0) {
+
+				$.LevisContest('handleClose');
+				$.bbq.removeState("levis");
+				
+			}
+
 		}
-
-		var login = $.bbq.getState("login") || '';
-
-		if(login.length>0 && login == 1) {
-
-			$.LevisContest('handleClose');
-			$.bbq.removeState("levis");
-
-			$.BerricsLogin('openWindow');
-			
-		}
-		
 		
 	});
 
@@ -77,8 +69,6 @@ $(document).ready(function() {
 	
 });
 </script>
-TEST
-<input type='button' value='testing' id='test-button' />
 <div id='levis-511-section'>
 
 	<div class='profile-column'>
@@ -90,7 +80,8 @@ TEST
 			<?php endif; ?>
 		</div>
 	</div>
-		<div class='task-column'>
+	<div class='task-column'>
+		<div class='heading'></div>
 		<?php foreach($tasks as $task): ?>
 		<div class='task'>
 			<?php echo $task['MediahuntTask']['name']; ?>
