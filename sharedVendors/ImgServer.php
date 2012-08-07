@@ -229,6 +229,37 @@ class ImgServer {
 		//$this->close();
 		
 	}
+	
+	public function upload_tmp_file($file_name,$file_path) {
+		
+		if(!self::$connected) {
+			$this->connect();
+		}
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/tmp");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		return $file_name;
+		
+	}
+	
+	public function move_tmp_file($file_name,$new_path) {
+		
+		if(!self::$connected) {
+			$this->connect();
+		}
+		
+		$base_path = "/home/sites/berrics.static/img.theberrics.com/public_html/";
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/tmp");
+		
+		$new_path = $base_path.$new_path;
+		
+		$this->sftp->rename($file_name,$new_path."/".$file_name);
+		
+		
+	}
 
 	
 	

@@ -2115,6 +2115,7 @@ CANTEEN CART WIDGET THING
 	box-shadow:1px 1px 6px 1px #000000;
 	filter: progid:DXImageTransform.Microsoft.Shadow(strength=1, direction=135, color='#000000');
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(strength=1, Direction=135, Color='#000000')";
+	
 }
 
 #login-overlay-box h1 {
@@ -2882,15 +2883,18 @@ padding:5px;
 	
 
 	position:relative;
+	display:none;
 }
 
 #BerricsLogin .close-button {
 	
-	height:20px;
-	width:20px;
-	background-color:red;
-	float:right;
+	height:35px;
+	width:35px;
+	background-image:url(/img/layout/login/close-button.png);
 	cursor:pointer;
+	position:absolute;
+	left:-15px;
+	top:-15px;
 	
 }
 
@@ -2906,46 +2910,220 @@ padding:5px;
 
 
 
+
+.identity-container {
+	
+	border:3px solid #333;
+	background-color:#000;
+	color:#666;
+	
+}
+
+.identity-container  .heading {
+	
+	border-bottom:2px dotted #333;
+	font-size:36px;
+	text-align:center;
+	color:#666;
+	line-height:50px;
+	height:50px;
+	width:94%;
+	margin:auto;
+	
+}
+
+
+#identity-form {
+	
+	
+	
+}
+
+#identity-form .social-connect-buttons {
+	
+	text-align:center;
+	padding:10px;
+	padding-bottom:0px;
+	
+	
+}
+
+#identity-form .or-div {
+	
+	text-align:center;
+	font-style:italic;
+	margin-bottom:5px;
+	
+}
+#identity-form .email-login {
+	
+	width:300px;
+	margin:auto;
+	
+}
+#identity-form .email-login label {
+	
+	width:115px;
+	text-align:left;
+	display:block;
+	float:left;
+	color:#cccccc;
+	font-style:italic;
+	
+}
+
+#identity-form .email-login .reset-password-link {
+	
+	width:175px;
+	float:right;
+	font-size:14px;
+	font-style:italic;
+	
+}
+
+#identity-form .email-login .reset-password-link a {
+	
+	color:#666;
+	
+}
+
+#identity-form .email-login .submit {
+	
+	text-align:right;
+	clear:both;
+	padding-top:8px;
+}
+
+#identity-form .email-login .text input,
+#identity-form .email-login .password input
+ {
+	
+	width:175px;
+	
+	
+}
+
+
+#identity-form .email-login .submit input {
+	
+	border:none;
+	background-color:#666666;
+	font-family:'Times New Roman';
+	color:#e9e9e9;
+	padding:5px;
+	font-size:14px;
+	
+}
+#identity-form .register-link {
+	
+	text-align:center;
+	height:35px;
+	line-height:35px;
+	border:2px dotted #333;
+	border-left:none;
+	border-right:none;
+	width:94%;
+	margin:auto;
+	margin-bottom:10px;
+	margin-top:10px;
+	font-style:italic;
+	font-size:16px;
+	
+}
+
+#identity-form .register-link a {
+	
+	color:#ccc;
+	
+}
+
+#identity-form #flashMessage {
+	
+	padding:5px;
+	color:white;
+	text-align:center;
+	background-color:#510814;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	
+}
+
 #identity-register {
 	
-	
-	
-}
-
-#identity-register .input {
-	
-	
+		
 	
 }
 
-
-#identity-register .input input {
+#identity-register .required-fields {
 	
-	font-size:18px;
-	padding:3px;
-	width:90%;
-}
-
-#identity-register .input label {
-	
-	display:block;
-	clear:both;
-	padding:3px;
-	
-}
-
-#identity-register .input-pairs {
-	
-	
-	
-}
-
-#identity-register .input-pairs .input {
-	
-	float:left;
 	width:49%;
+	float:left;
+	border-right:2px solid #333;
+}
+
+#identity-register .optional-fields {
+	
+	width:49%;
+	float:right;
 	
 }
+
+#identity-register .text,
+#identity-register .password
+ {
+	
+	margin-top:3px;
+	margin-bottom:3px;
+	
+}
+
+#identity-register .text input,
+#identity-register .password input
+ {
+	
+	width:175px;
+}
+
+#identity-register label {
+	
+	width:150px;
+	display:block;
+	float:left;
+	font-size:16px;
+	text-indent:5px;
+	font-style:italic;
+	color:#ccc;
+}
+
+#identity-register .form-heading {
+	
+	text-align:center;
+	padding:4px;
+	font-style:italic;
+	
+}
+
+#identity-register .error-message {
+	
+	
+	color:#921126;
+	font-size:12px;
+	font-family:'Arial';
+	height:14px;
+	line-height:14px;
+	font-weight:bold;
+	padding:2px;
+	
+}
+
+
+
+
+
+
+
+
+
 
 
 	

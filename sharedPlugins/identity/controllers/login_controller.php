@@ -160,7 +160,8 @@ class LoginController extends IdentityAppController {
 		$ud = array(
 					"instagram_oauth_token"=>$accessToken,
 					"instagram_handle"=>$currentUser->username,
-					"instagram_account_num"=>$currentUser->id
+					"instagram_account_num"=>$currentUser->id,
+					"instagram_profile_image"=>$currentUser->profile_image
 				);
 		
 		$this->User->create();
@@ -281,6 +282,15 @@ class LoginController extends IdentityAppController {
 				if(!$res) { //this indicates the email address is registered and verified
 					
 					$this->Session->setFlash("This email address has already been registered and verified");
+					$this->redirect(array(
+								
+							"plugin"=>"identity",
+							"action"=>"form",
+							"controller"=>"login",
+							$res['User']['id'],
+							$res['User']['account_hash']
+								
+					));
 					
 				} else { //email has been sent, tell them to confirm
 					

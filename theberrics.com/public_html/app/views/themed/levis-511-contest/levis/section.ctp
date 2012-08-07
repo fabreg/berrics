@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->script(array("LevisContest","jquery.ba-bbq","jquery.berrics.login"),array("inline"=>false));
+$this->Html->script(array("LevisContest","jquery.uploadify-3.1"),array("inline"=>false));
 
 ?>
 <script>
@@ -40,12 +40,14 @@ $(document).ready(function() {
 
 		if(use_base && levis.length>0) levis = Base64.decode(levis);
 
-		if(levis.length>0 && levis.match(/^(\/levis)/)) {
+		if(levis.length>0 && levis.match(/(levis)/)) {
+			
 			$.LevisContest('openWindow',{
 				'url':levis
 			});
+			
 		} else {
-
+			
 			$.LevisContest('handleClose');
 			$.bbq.removeState("levis");
 			
@@ -78,9 +80,19 @@ $(document).ready(function() {
 TEST
 <input type='button' value='testing' id='test-button' />
 <div id='levis-511-section'>
-	<div class='task-column'>
-		<?php foreach($tasks as $task): ?>
+
+	<div class='profile-column'>
 		<div>
+			<?php if($this->Session->check("Auth.User.id")): ?>
+			
+			<?php else: ?>
+			<input type='button' value='login' id='test-login' />
+			<?php endif; ?>
+		</div>
+	</div>
+		<div class='task-column'>
+		<?php foreach($tasks as $task): ?>
+		<div class='task'>
 			<?php echo $task['MediahuntTask']['name']; ?>
 			<div>
 				<?php echo $task['MediahuntTask']['details']; ?>
@@ -95,7 +107,7 @@ TEST
 						
 					} else {
 						
-						$lnk = "#login=1";
+						$lnk = "#BerricsLogin=1";
 						$rel = "no-ajax";
 					}
 				
@@ -105,15 +117,6 @@ TEST
 		</div>
 		<?php endforeach; ?>
 		<div style='clear:both;'></div>
-	</div>
-	<div class='profile-column'>
-		<div>
-			<?php if($this->Session->check("Auth.User.id")): ?>
-			
-			<?php else: ?>
-			<input type='button' value='login' id='test-login' />
-			<?php endif; ?>
-		</div>
 	</div>
 	<div style='clear:both;'></div>
 </div>

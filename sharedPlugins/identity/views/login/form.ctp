@@ -32,36 +32,50 @@ $(document).ready(function() {
 	
 });
 </script>
-<div id='identity-form'>
-	<div>
-		<h2>Sign in to The Berrics</h2>
+<style type='text/css'>
+#BerricsLogin .wrapper {
+
+	width:680px;
+	
+
+}
+</style>
+<div id='identity-form' class='identity-container'>
+	<div class='heading'>
+		SIGN IN TO THE BERRICS
 	</div>
-	<div>
+	<div class='social-connect-buttons'>
 		<a href='/identity/login/send_to_facebook' rel='no-ajax'>
-			<img border='0' src='/img/login/facebook.png' />
+			<img border='0' src='/img/layout/login/fb-connect-grey.png' />
 		</a>
+	</div>
+	<div class='or-div'>
+		-or-
 	</div>
 	<div class='email-login'>
 		<div class='inner'>
 			<?php 
 				echo $this->Session->flash();
 				echo $this->Form->create("User",array("url"=>"/identity/login/form","rel"=>"no-ajax"));
-				echo $this->Form->input("email");
-				echo $this->Form->input("passwd",array("label"=>"Password","value"=>""));
-				echo $this->Form->end("Login");
+				echo $this->Form->input("email",array("label"=>"Email Address:"));
+				echo $this->Form->input("passwd",array("label"=>"Password:","value"=>""));
+			?>
+			<div class='reset-password-link'>
+						<a href='/identity/login/reset_password'>Forgot Your Password?</a>
+			</div>
+			<?php echo $this->Form->submit("SIGN IN"); ?>
+			<?php	
+			
+				echo $this->Form->end();
 				
 			?>
 		</div>
 	</div>
-	<div>
-		OR
-	</div>
-	<div>
-		<a href='/identity/login/register' rel='register-link'>
-			Click Here to register an account
+
+	<div class='register-link'>
+		Not Registered? <a href='/identity/login/register' rel='register-link'>
+			Click Here To Create An Account
 		</a>
 	</div>
-	<div>
-		<a href='/identity/login/reset_password'>Click here if you forgor your password</a>
-	</div>
+	
 </div>

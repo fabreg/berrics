@@ -44,3 +44,24 @@ POPUP WINDOW
 	cursor:pointer;
 	
 }
+
+
+/*
+SECTION
+*/
+
+#levis-511-section .task-column {
+	
+	
+	width:728px;
+	float:right;
+	
+}
+
+#levis-511-section .task {
+	
+	width:49%;
+	float:left;
+	
+	
+}

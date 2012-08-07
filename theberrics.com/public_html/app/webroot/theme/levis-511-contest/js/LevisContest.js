@@ -106,22 +106,26 @@
   		
   			var suc = function(d) {
   				
-  				$('#LevisOverlay .content').html(d).fadeIn('normal',function() { methods.hideLoading(); });
+  				 if ( d.error)  alert(d.error);
+
+  				$('#LevisOverlay .content').html(d).fadeIn('normal',function() { methods.hideLoading(); });	
+  				
+				$("#LevisOverlay .content a[rel!='no-ajax']").click(function(e) {
 					
-				$("#LevisOverlay .content a[rel!='no-ajax']").click(function(e) { 
-					
-					var ref = $(e.target).attr("href");
+					var ref = $(this).attr("href");
 					
 					methods.openUrl(ref);
 					
-					return false;
-					
 				});
-				$("#LevisOverlay .content form[rel!='no-ajax']").each(function(e) { 
+  				
+				$("#LevisOverlay").find("form[rel!='no-ajax']").each(function(e) { 
 					
 					methods.initForms(this);
 					
 				});
+				
+				
+				
   			}
   			
   			var o = {

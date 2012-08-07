@@ -30,6 +30,8 @@
 			"jquery.swfobject",
 			"jquery.client",
 			"jquery.form",
+			"jquery.ba-bbq",
+			"jquery.berrics.login",
 			"main"
 		
 		));

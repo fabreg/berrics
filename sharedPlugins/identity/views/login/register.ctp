@@ -5,35 +5,33 @@ $(document).ready(function() {
 	
 });
 </script>
-<div id='identity-register'>
+<style>
+#BerricsLogin .wrapper {
+
+	width:750px;
+	
+
+}
+</style>
+<div id='identity-register' class='identity-container'>
+<div class='heading'>
+	THE BERRICS REGISTRATION FORM
+</div>
+<?php echo $this->Session->flash(); ?>
 <?php echo $this->Form->create("User",array("url"=>$this->here,"id"=>"identity-register-form")); ?>
-	<div>
-		<fieldset>
-			<legend>Required Information</legend>
-			<div class='input-pairs'>
-				<?php 
+	<div class='required-fields'>
+		<div class='form-heading'>Required Information</div>
+		<?php 
 					echo $this->Form->input("User.first_name");
 					echo $this->Form->input("User.last_name");
-				?>
-				<div style='clear:both;'></div>
-			</div>
-			<?php 
-				echo $this->Form->input("User.email");
-			?>
-			<div class='input-pairs'>
-					
-				<?php 
+					echo $this->Form->input("User.email");
 					echo $this->Form->input("new_passwd",array("label"=>"Password"));
 					echo $this->Form->input("new_passwd_confirm",array("label"=>"Confirm Password","type"=>"password"));
-				?>
-				<div style='clear:both;'></div>
-			</div>
-		</fieldset>
+		?>
 	</div>
-	<div>
-		<fieldset>
-			<legend>Optional Information</legend>
-			<?php 
+	<div class='optional-fields'>
+		<div class='form-heading'>Optional Information</div>
+		<?php 
 				
 				echo $this->Form->input("UserProfile.stance");
 				echo $this->Form->input("UserProfile.year_skating");
@@ -41,7 +39,7 @@ $(document).ready(function() {
 				echo $this->Form->input("UserProfile.shoe_size")			
 			
 			?>
-		</fieldset>
 	</div>
+	<div style='clear:both;'></div>
 <?php echo $this->Form->end("Register Account"); ?>
 </div>

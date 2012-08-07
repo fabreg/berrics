@@ -73,9 +73,29 @@ $(document).ready(function() {
 			
 		}
 		
-		
 	}
 	
+	//bbq!!!
+	$(window).bind('hashchange',function() { 
+		
+		var BerricsLogin = $.bbq.getState("BerricsLogin") || '';
+		
+		if(BerricsLogin.length>0) {
+			
+			if(BerricsLogin == 1) BerricsLogin = '';
+			
+			$.BerricsLogin('openWindow',BerricsLogin);
+			
+		} else {
+			
+			$.BerricsLogin('closeWindow');
+			
+			$.bbq.removeState("BerricsLogin");
+			
+		}
+		
+		
+	});
 	
 	
 });

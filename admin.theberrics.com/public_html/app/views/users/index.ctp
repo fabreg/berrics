@@ -87,9 +87,9 @@ $(document).ready(function() {
 	<table cellpadding="0" cellspacing="0">
 	<tr>	
 			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort("email_verified"); ?></th>
 			<th><?php echo $this->Paginator->sort("last_name"); ?></th>
 			<th><?php echo $this->Paginator->sort("first_name"); ?></th>
-			
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort("email"); ?></th>
@@ -108,7 +108,10 @@ $(document).ready(function() {
 	?>
 	<tr<?php echo $class;?>>
 		<td style='font-size:10px;'><?php echo $user['User']['id']; ?>&nbsp;</td>
-				<td><?php echo $user['User']['last_name']; ?></td>
+		
+		<td><?php echo $user['User']['email_verified']; ?></td>
+		
+		<td><?php echo $user['User']['last_name']; ?></td>
 		<td><?php echo $user['User']['first_name']; ?></td>
 		
 		<td><?php echo $this->Time->niceShort($user['User']['created']); ?>&nbsp;</td>

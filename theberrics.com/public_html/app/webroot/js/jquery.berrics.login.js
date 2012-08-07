@@ -10,7 +10,7 @@
 		},
 		openWindow:function(url) {
 				
-			if(!url) url = "/identity/login/form";
+			if(!url || url.length<=0) url = "/identity/login/form";
 
 			var chk = $("#BerricsLogin");
 			
@@ -45,14 +45,23 @@
 					
 					methods.handleWindowResize();
 					
-					
-					
 			} else {
 				
 				methods.loadAjaxContent(url);
 				
 			}
+			
+			$(document).bind('keyup.berricsLogin',function(e){
 
+			    if(e.keyCode === 27) {
+
+			    	 methods.closeWindow();
+			    	
+			    }
+			      
+
+			});
+			
 			
 		},
 		handleWindowResize:function() { 
@@ -66,6 +75,8 @@
 		},
 		closeWindow:function() {
 			
+			if($("#BerricsLogin").length<=0) return;
+			
 			$('#BerricsLogin').fadeOut('normal',function() {
 				
 				$('#BerricsLogin').remove();
@@ -78,10 +89,16 @@
 				
 			});
 			
+			$(document).unbind('.berricsLogin');
+			
+			document.location.hash = "";
+			
 		},
 		loadAjaxContent:function(uri) {
 			
 			methods.showLoading();
+			
+			$.bbq.pushState({"BerricsLogin":uri});
 			
 			var o = {
 					
@@ -89,7 +106,11 @@
 						
 						methods.hideLoading();
 						
-						$("#BerricsLogin .content").html(d).fadeIn();
+						$("#BerricsLogin .content").html(d).fadeIn("normal",function() { 
+							
+							methods.showCloseDiv();
+							
+						});
 						
 						$("#BerricsLogin .content a[rel!=no-ajax]").click(function(e) { 
 							
@@ -113,7 +134,7 @@
 					"url":uri
 					
 				};
-			
+			methods.hideCloseDiv();
 			$("#BerricsLogin .content").fadeOut("normal",function() { 
 				
 				$.ajax(o);
@@ -148,7 +169,11 @@
 					
 					methods.hideLoading();
 					
-					$('#BerricsLogin .content').html(d).fadeIn();
+					$('#BerricsLogin .content').html(d).fadeIn("normal",function() { 
+						
+						methods.showCloseDiv();
+						
+					});
 					
 					$("#BerricsLogin .content form").each(function(e) { 
 						
@@ -173,7 +198,7 @@
 				'beforeSubmit':function() {
 					
 					methods.showLoading();
-					
+					methods.hideCloseDiv();
 					$('#BerricsLogin .content').fadeOut();
 					
 					return true;
@@ -181,6 +206,16 @@
 				}
 				
 			});
+		},
+		showCloseDiv:function() { 
+			
+			$("#BerricsLogin .close-div").show();
+			
+		},
+		hideCloseDiv:function() { 
+			
+			$("#BerricsLogin .close-div").hide();
+			
 		}
 	
 	
