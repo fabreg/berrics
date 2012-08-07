@@ -521,6 +521,8 @@ class User extends AppModel {
 
 		$profile = $this->ensure_user_profile($this->id);
 		
+		$data['UserProfile']['city'] = $data['User']['city'];
+		
 		$this->UserProfile->create();
 		
 		$this->UserProfile->id = $profile['UserProfile']['id'];

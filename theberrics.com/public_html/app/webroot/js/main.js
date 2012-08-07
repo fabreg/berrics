@@ -88,9 +88,13 @@ $(document).ready(function() {
 			
 		} else {
 			
-			$.BerricsLogin('closeWindow');
+			if($("#BerricsLogin").length>0) {
+				$.BerricsLogin('closeWindow');
+				
+				$.bbq.removeState("BerricsLogin");
+				
+			}
 			
-			$.bbq.removeState("BerricsLogin");
 			
 		}
 		
