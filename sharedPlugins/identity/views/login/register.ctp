@@ -1,3 +1,10 @@
+<?php 
+
+$year_drop = array();
+
+for($i=2012;$i>=1975;$i--) $year_drop[$i]=$i;
+
+?>
 <script>
 $(document).ready(function() { 
 
@@ -25,21 +32,23 @@ $(document).ready(function() {
 					echo $this->Form->input("User.first_name");
 					echo $this->Form->input("User.last_name");
 					echo $this->Form->input("User.email");
-					echo $this->Form->input("new_passwd",array("label"=>"Password"));
+					echo $this->Form->input("new_passwd",array("label"=>"Password","type"=>"password"));
 					echo $this->Form->input("new_passwd_confirm",array("label"=>"Confirm Password","type"=>"password"));
+					echo $this->Form->input("country",array("options"=>Arr::countries()));
+					echo $this->Form->input("city");
 		?>
 	</div>
 	<div class='optional-fields'>
-		<div class='form-heading'>Optional Information</div>
+		<div class='form-heading'>Optional Skate Information</div>
 		<?php 
 				
-				echo $this->Form->input("UserProfile.stance");
-				echo $this->Form->input("UserProfile.year_skating");
+				echo $this->Form->input("UserProfile.stance",array("options"=>User::stanceSelect()));
+				echo $this->Form->input("UserProfile.year_skating",array("label"=>"When Did You Start","options"=>$year_drop,"empty"=>true));
 				echo $this->Form->input("UserProfile.shirt_size");
 				echo $this->Form->input("UserProfile.shoe_size")			
 			
 			?>
 	</div>
 	<div style='clear:both;'></div>
-<?php echo $this->Form->end("Register Account"); ?>
+<?php echo $this->Form->end("REGISTER ACCOUNT"); ?>
 </div>

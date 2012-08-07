@@ -353,16 +353,19 @@ class LoginController extends IdentityAppController {
 		if(empty($record['User']['id'])) return $this->cakeError("error404");
 		
 		if(count($this->data)>0) {
+			
+			if(
+					strlen($this->data['User']['new_passwd']) >=6 && 
+					($this->data['User']['new_passwd'] == $this->data['User']['passwd_confirm'])
+					) {
 				
-			if($this->data['User']['passwd'] == $this->data['User']['passwd_confirm']) {
-					
 				$this->loadModel("User");
 				
 				$this->User->create();
 				
 				$this->User->id = $record['User']['id'];
 				
-				$this->User->save(array("passwd"=>$this->Auth->password($this->data['User']['passwd'])));
+				$this->User->save(array("passwd"=>$this->Auth->password($this->data['User']['new_passwd'])));
 				
 				$this->UserPasswdReset->create();
 				
@@ -372,6 +375,10 @@ class LoginController extends IdentityAppController {
 				
 				$record['UserPasswdReset']['active'] = 0;
 				
+			} else {
+			
+				$this->Session->setFlash("Please make sure your passwords match and that your password is at least 6 characters.");
+				$this->data['User'] = array();
 			}
 				
 		}

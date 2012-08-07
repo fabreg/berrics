@@ -344,6 +344,7 @@ class Arr {
 	public static function countries() {
 		
 		$a = array(
+				"US"=>"United States",
 				"AF"=>"Afghanistan",
 				"AX"=>"Aland Islands",
 				"AL"=>"Albania",
@@ -576,7 +577,7 @@ class Arr {
 				"UA"=>"Ukraine",
 				"AE"=>"United Arab Emirates",
 				"GB"=>"United Kingdom",
-				"US"=>"United States",
+				
 				"UM"=>"United States Minor Outlying Islands",
 				"UY"=>"Uruguay",
 				"UZ"=>"Uzbekistan",

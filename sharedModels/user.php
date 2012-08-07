@@ -479,7 +479,12 @@ class User extends AppModel {
 								"message"=>"Password must be at least 6 characters"
 							)
 				);
-		
+		$v['city'] = array(
+				
+					"rule"=>"notEmpty",
+					"message"=>'Please enter your city'
+				
+				);
 		$this->validate = $v;
 		
 	}

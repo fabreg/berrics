@@ -1,13 +1,41 @@
+<style>
+#BerricsLogin .wrapper {
 
-<div>
+	width:700px;
+
+}
+</style>
+<script>
+
+$(document).ready(function() { 
+
+
+	$("#identity-register-success #login-button").bind("click",function(e) { 
+
+		$.BerricsLogin('openWindow',"/identity/login/form");
+		
+	});
+	
+	
+});
+
+
+</script>
+<div id='identity-register-success' class='identity-container'>
+<div class='heading'>
+	CHECK YO' EMAIL
+</div>
 <p>
-<?php echo $user['User']['first_name']; ?>,
+<?php echo ucfirst($user['User']['first_name']); ?>,
 </p>
 <p>
-&nbsp;&nbsp;Your account has been registered successfully but there's one more thing. We have sent a verification email to <strong><?php echo $user['User']['email']?></strong>
-Click the link in that email to verify your account. 
+&nbsp;&nbsp;A verification email has been sent to: <strong><?php echo $user['User']['email']?></strong>
 </p>
 <p>
-** You should receive the email in the next minute or two. Also check your junk email folder and add theberrics.com to your safe list for future correspondence.
+Please allow a few minutes for it to reach you. Also, check your junk email folder 
+and then add theberrics.com to your safe listfor future correspondence.
 </p>
+<div class='login-button'>
+	<input type='button' value='CLICK HERE TO SIGN IN' id='login-button'/>
+</div>
 </div>

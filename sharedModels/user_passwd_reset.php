@@ -61,7 +61,7 @@ class UserPasswdReset extends AppModel {
 					"passwd"=>array(
 							
 								"not_empty"=>array(
-											"rule"=>"",
+											"rule"=>array("minLength",6),
 											"message"=>"Your password must be at least 6 characters"
 										),
 								"must_match"=>array(
