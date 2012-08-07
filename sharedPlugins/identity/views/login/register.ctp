@@ -57,7 +57,7 @@ $(document).ready(function() {
 				echo $this->Form->input("UserProfile.year_skating",array("label"=>"When Did You Start","options"=>$year_drop,"empty"=>true));
 				echo $this->Form->input("UserProfile.shirt_size");
 				echo $this->Form->input("UserProfile.shoe_size");
-				echo $this->Form->input("UserProfile.are_you_good",array("options"=>$good,"label"=>"Are you good?"));			
+				echo $this->Form->input("UserProfile.are_you_good",array("options"=>$good,"label"=>"Are you good?","empty"=>true));			
 			
 			?>
 	</div>
