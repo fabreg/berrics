@@ -4,6 +4,17 @@ $year_drop = array();
 
 for($i=2012;$i>=1975;$i--) $year_drop[$i]=$i;
 
+$good = array(
+		
+			"I suck",
+			"I suck really bad",
+			"Koston Steeze",
+			"I'm sponsored, OF COURSE I KILL IT!",
+			"My video part will be on youtube soon and you'll see",
+			
+		
+		);
+
 ?>
 <script>
 $(document).ready(function() { 
@@ -45,7 +56,8 @@ $(document).ready(function() {
 				echo $this->Form->input("UserProfile.stance",array("options"=>User::stanceSelect()));
 				echo $this->Form->input("UserProfile.year_skating",array("label"=>"When Did You Start","options"=>$year_drop,"empty"=>true));
 				echo $this->Form->input("UserProfile.shirt_size");
-				echo $this->Form->input("UserProfile.shoe_size")			
+				echo $this->Form->input("UserProfile.shoe_size");
+				echo $this->Form->input("UserProfile.are_you_good",array("options"=>$good,"label"=>"Are you good?"));			
 			
 			?>
 	</div>
