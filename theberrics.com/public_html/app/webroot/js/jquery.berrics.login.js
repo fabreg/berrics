@@ -131,7 +131,17 @@
 						
 						
 					},
-					"url":uri
+					"url":uri,
+					statusCode:{
+						
+						404:function() {
+							
+							alert("Whoops, we couldn't find that page");
+							methods.closeWindow();
+							
+						}
+						
+					}
 					
 				};
 			methods.hideCloseDiv();
