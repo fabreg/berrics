@@ -223,7 +223,7 @@ class LoginController extends IdentityAppController {
 		
 	}
 	
-	public function form() {
+	public function form($cb = false) {
 		
 		if(count($this->data)>0) {
 			
@@ -258,6 +258,12 @@ class LoginController extends IdentityAppController {
 			}
 
 			die(json_encode($res));
+			
+		}
+		
+		if($cb) {
+			
+			$this->Session->write("here",base64_decode($cb));
 			
 		}
 		

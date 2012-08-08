@@ -23,7 +23,7 @@ class LevisController extends DailyopsController {
 		
 		$this->Auth->allow("*");
 		
-		$this->Auth->deny("tasks","handle_upload");
+		$this->Auth->deny("tasks","handle_upload","attach_instagram");
 		
 		$this->Auth->loginAction['action'] = "form";
 		
@@ -43,8 +43,18 @@ class LevisController extends DailyopsController {
 			
 		}
 		
+		if($this->params['action'] == "image") {
+			
+			$this->setImage($this->params['pass'][0]);
+			
+		}
 		
 		
+	}
+	
+	private function setImage($id) {
+		
+		$this->params['action'] = "section";
 		
 	}
 	
@@ -145,37 +155,27 @@ class LevisController extends DailyopsController {
 	public function handle_submit() {
 		
 		if(count($this->data)>0) {
-				
-			
 			
 			$this->data['MediahuntMediaItem']['user_id'] = $this->Auth->user("id");
 			
 			$this->data['MediahuntMediaItem']['approved'] = 0;
 			
-			if(!empty($this->data['MediahuntMediaItem']['instagram_id'])) {
-				
-				
-				
-			} else {
-				
-				App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
 				
 				$i = ImgServer::instance();
 				
 				$i->move_tmp_file($this->data['MediahuntMediaItem']['file_name'],"mediahunt-media");
-				
-			}
 			
 			$this->MediahuntMediaItem->create();
 				
 			$this->MediahuntMediaItem->save($this->data);
 			
-			$this->Session->setFlash("Image has been entered successfully");
+			//$this->Session->setFlash("Image has been entered successfully");
 				
 			$this->redirect(array(
 						"controller"=>$this->params['section'],
-						"action"=>"tasks",
-						$this->data['MediahuntMediaItem']['mediahunt_task_id']	
+						"action"=>"image",
+						$this->MediahuntMediaItem->id
 					
 					));
 			
@@ -240,6 +240,46 @@ class LevisController extends DailyopsController {
 		
 	}
 	
+	public function attach_instagram($id = false) {
+		
+		$data = array(
+			"status"=>false		
+		);
+		
+		$instagram_token = $this->Auth->user("instagram_oauth_token");
+		
+		if(empty($instagram_token) || !$id) die(json_encode($data));
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+			
+		$i = InstagramApi::userInstance($instagram_token);
+		
+		$image = $i->instagram->getMedia($id);
+		
+		$image = json_decode($image,true);
+		
+		//get the image
+		
+		$f_image = file_get_contents($image['data']['images']['standard_resolution']['url']);
+		
+		$image_name = md5(time().mt_rand(999,9999)).".jpg";
+		
+		file_put_contents(TMP.$image_name, $f_image);
+		
+		App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+		
+		$imgs = ImgServer::instance();
+		
+		$imgs->upload_tmp_file($image_name,TMP.$image_name);
+		
+		$data['status'] = true;
+		$data['image'] = $image;
+		$data['file_name'] = $image_name;
+		
+		die(json_encode($data));
+		
+		
+	}
 	
 	
 	

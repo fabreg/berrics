@@ -18,7 +18,13 @@ if(!$pub) $tc = "task-unpublished";
 ?>
 <div class='task <?php echo $tc; ?>'>
 	<div class='top'>
-		<div class='checkbox'></div>
+		<div class='checkbox'>
+			<?php if(empty($m['id'])): ?>
+				<img border='0' src='/theme/levis-511-contest/img/checkbox.png' />
+			<?php else: ?>
+				<img border='0' src='/theme/levis-511-contest/img/checkbox-checked.png' />
+			<?php endif; ?>
+		</div>
 		<div class='number'>#<?php echo $task['MediahuntTask']['sort_order']; ?></div>
 		<div style='clear:both;'></div>
 	</div>
@@ -74,7 +80,7 @@ if(!$pub) $tc = "task-unpublished";
 				
 			} else {
 				
-				$lnk = "#BerricsLogin=1";
+				$lnk = "#BerricsLogin=/identity/login/form/".urlencode(base64_encode("/".$this->params['section']."/tasks/".$t['id']));
 				$rel = "no-ajax";
 			}
 		

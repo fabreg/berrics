@@ -1,5 +1,7 @@
 <?php 
 	echo $this->Html->css(array("uploadify.css"),"stylesheet");
+
+	
 ?>
 <script type='text/javascript'>
 $(document).ready(function() { 
@@ -19,8 +21,6 @@ $(document).ready(function() {
 	        		var data = eval("("+d+")");
 
 					$("#MediahuntMediaItemFileName").val(data.file_name);
-
-
 
 					showTmpThumb(data.file_name);
 					removeFormOverlay();
@@ -46,9 +46,33 @@ $(document).ready(function() {
 
 		var id = $(this).attr("instagram_id");
 
-		alert(id);
+		attachInstagram(id);
 
 	});
+
+	$("#levis-form").submit(function() { 
+
+		var img = $("#levis-form #MediahuntMediaItemFileName").val();
+
+		if(img.length<=0) {
+
+			alert("Please select an image to submit your entry");
+			
+			return false
+
+		}
+
+		return true;
+
+	});
+
+<?php
+if(!empty($mediaItem['MediahuntMediaItem']['id'])) {
+	
+	echo "$.LevisContest('handleClose');";
+	
+}
+?>
 	
 });
 
@@ -80,6 +104,40 @@ function removeFormOverlay() {
 	$('.levis-upload-overlay').remove();
 	
 }
+
+function attachInstagram(id) {
+
+	showFormOverlay();
+	
+	var o = {
+
+
+				"url":"/<?php echo $this->params['section']; ?>/attach_instagram/"+id,
+				"dataType":"json",
+				"success":function(d) { 
+
+					if(d.status==true) {
+
+						$("#MediahuntMediaItemInstagramId").val(id);
+						$("#MediahuntMediaItemInstagramData").val(JSON.stringify(d.image));
+						$("#MediahuntMediaItemFileName").val(d.file_name);
+						showTmpThumb(d.file_name);
+						
+						
+					} else {
+
+						alert("Whoops, we were unable to attach your instagram photo, please try again");
+						
+					}
+					removeFormOverlay();
+
+				}
+
+			}
+
+	$.ajax(o);
+	
+}
 </script>
 <style>
 
@@ -97,12 +155,7 @@ function removeFormOverlay() {
 	position:relative;
 	border:4px solid #333;
 }
-.instagram-thumb {
 
-	float:left;
-	margin:20px;
-
-}
 #fileQueue {
 	
 	displauy:none;
@@ -123,11 +176,17 @@ function removeFormOverlay() {
 }
 #SwfUpload {
 
-	width:100px;
-	height:100px;
+	float:right;
 	
 
 }
+.instagram-connect {
+
+	float:right;
+	margin-left:10px;
+
+}
+
 .uploadify-button {
         background-color: transparent;
         border: none;
@@ -152,14 +211,16 @@ function removeFormOverlay() {
 .upload-form .left {
 
 	float:left;
-
+	margin-top:8px;
+	margin-left:8px;
 }
 
 .upload-form .right {
 
 	float:right;
 	width:330px;
-
+	margin-top:8px;
+	margin-right:8px;
 }
 
 .upload-form .upload-preview {
@@ -176,6 +237,72 @@ function removeFormOverlay() {
 
 }
 
+.upload-form .task-name {
+	font-family:'Arial';
+	color:#cc0033;
+	font-weight:bold;
+
+}
+.upload-form .task-details {
+	font-family:'Arial';
+	color:#cc0033;
+	font-style:italic;
+	font-size:14px;
+
+}
+.form-buttons {
+
+	margin-top:8px;
+
+}
+
+.form-buttons .left {
+
+	width:345px;
+	float:left;
+
+}
+
+.form-buttons .right {
+
+	width:330px;
+	float:right;
+	text-align:center;
+
+}
+
+.form-buttons .right .submit input {
+
+	width:283px;
+	height:43px;
+	border:none;
+	background-color:transparent;
+	background-image:url(/theme/levis-511-contest/img/submit-button.png);
+	text-index:-10000px;
+}
+
+.instagram-container {
+
+	border-top:4px solid #333;
+font-family:'Arial';
+	color:#cc0033;
+}
+
+.instagram-thumb {
+
+	border:2px solid #cc0033;
+	float:left;
+	margin:17px;
+}
+
+.instagram-thumb img {
+
+	display:block;
+	padding:0px;
+	margin:0px;
+
+}
+
 </style>
 <div id='levis-task'>
 
@@ -185,97 +312,66 @@ function removeFormOverlay() {
 	</div>
 	<div class='right'>
 		<img src='/theme/levis-511-contest/img/rules-top.jpg' border='0' />
-		<div class='task-info'>
+		<div class='task-name'>
 			<?php echo $task['MediahuntTask']['name']; ?>
+		</div>
+		<div class='task-details'>
+			<?php echo $task['MediahuntTask']['details']; ?>
 		</div>
 	</div>
 	<div style='clear:both;'></div>
 </div>
 <div class='form-buttons'>
 	<div class='left'>
+		
+		<?php if(!$instagram_images): ?>
+		<?php 
+			$instagram_link = $this->Html->url(array(
+						"plugin"=>"identity",
+						"controller"=>"login",
+						"action"=>"send_to_instagram",
+						base64_encode($this->here)
+					),array("rel"=>"no-ajax"));
+		?>
+		<div class='instagram-connect'>
+		<a href='<?php echo $instagram_link; ?>' rel='no-ajax'><img border='0' src='/theme/levis-511-contest/img/instagram-button.png' /></a>
+		</div>
+		<?php endif; ?>
 		<?php echo $this->Form->input("image_file",array("type"=>"file","div"=>array("id"=>"SwfUpload"),"label"=>false)); ?>
+		
 	</div>
 	<div class='right'>
 		<?php 
 		
-			echo $this->Form->create("MediahuntMediaItem",array("url"=>array("action"=>"handle_submit","controller"=>$this->params['section']),"rel"=>"no-ajax")); 
+			echo $this->Form->create("MediahuntMediaItem",array("url"=>array("action"=>"handle_submit","controller"=>$this->params['section']),"rel"=>"no-ajax","id"=>"levis-form")); 
 			echo $this->Form->input("file_name",array("type"=>"hidden"));
 			echo $this->Form->input("mediahunt_task_id",array("value"=>$task['MediahuntTask']['id'],"type"=>"hidden"));
 			echo $this->Form->input("instagram_id",array("type"=>"hidden"));
-			echo $this->Form->submit("Submit Entry");
+			echo $this->Form->input("instagram_data",array("type"=>"hidden"));
+			echo $this->Form->submit(" ");
 			echo $this->Form->end();
 		?>
 	</div>
 	<div style='clear:both;'></div>
-</div>
-
-<?php echo $this->Session->flash(); ?>
-<div class='task-heading'>
-	<strong> TASK: </strong> 
-</div>
-<div id='upload-form-div'>
-	STANDARD UPLOADING STUFF GOES HERE
-	<?php if(isset($task['MediahuntMediaItem']['id'])): ?>
-		MEDIA ITEM ELEMENT
-	<?php else: ?>
-		
-		<div class='img-thumb'>
-			
-		</div>
-		<div class='form-fields'>
-			<?php 
-			
-			
-				
-				
-			?>
-		</div>
-		<div style='clear:both;'></div>
-		<div>
-			<?php 
-				
-				echo $this->Form->button("Reset Form",array("id"=>"reset-form")); 
-			?>
-		</div>
-		<?php
-			
-			
-		?>
-		
-	<?php endif; ?>
 	<div id='fileQueue'></div>
 </div>
-<div>
-<?php 
-		echo $this->Html->link("Instagram Connect",array(
-					"plugin"=>"identity",
-					"controller"=>"login",
-					"action"=>"send_to_instagram",
-					base64_encode($this->here)
-				),array("rel"=>"no-ajax"));
-	?>
-	<?php if(isset($instagram_images)): ?>
-	<div class='instagram-heading'>Instagram: <strong>@<?php echo $this->Session->read("Auth.User.instagram_handle"); ?></strong></div>
-	<div class='instagram-thumbs'>
-		<?php foreach($instagram_images->data as $img): ?>
-		<div style='float:left' class='instagram-thumb' instagram_id='<?php echo $img->id; ?>'>
-			<img src='<?php echo $img->images->thumbnail->url; ?>' border='0' height='75' width='75' />
+	<div class='instagram-container'>
+
+		<?php if(isset($instagram_images)): ?>
+		<div class='instagram-heading'>Choose a photo from Instagram: <strong>@<?php echo $this->Session->read("Auth.User.instagram_handle"); ?></strong></div>
+		<div class='instagram-thumbs'>
+			<?php foreach($instagram_images->data as $img): ?>
+			<div style='float:left' class='instagram-thumb' instagram_id='<?php echo $img->id; ?>'>
+				<img src='<?php echo $img->images->thumbnail->url; ?>' border='0' height='100' width='100' />
+			</div>
+			<?php endforeach; ?>
+			<div style='clear:both;'></div>
+			<?php //print_r($instagram_images); ?>
 		</div>
-		<?php endforeach; ?>
-		<div style='clear:both;'></div>
-		<?php //print_r($instagram_images); ?>
+		<?php else: ?>
+		
+		<?php endif; ?>
 	</div>
-	<?php else: ?>
-	<?php 
-		echo $this->Html->link("Instagram Connect",array(
-					"plugin"=>"identity",
-					"controller"=>"login",
-					"action"=>"send_to_instagram",
-					base64_encode($this->here)
-				),array("rel"=>"no-ajax"));
-	?>
-	<?php endif; ?>
-</div>
 </div>
 <?php 
 print_r($task);

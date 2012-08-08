@@ -20,4 +20,36 @@ class MediahuntMediaItem extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	public function beforeSave() {
+	
+		$data = $this->data;
+	
+		if(isset($data['MediahuntMediaItem'])) $data = $data['MediahuntMediaItem'];
+	
+		if(empty($data['id'])) $data['id'] = $this->genId();
+	
+		$this->data['MediahuntMediaItem'] = $data;
+	
+		return true;
+	
+	}
+	
+	private function genId() {
+	
+		$id = mt_rand(10000000,99999999);
+	
+		$chk = $this->find("count",array("conditions"=>array("MediahuntMediaItem.id"=>$id)));
+	
+		if($chk>0) {
+	
+			return $this->genId();
+	
+		}
+	
+		return $id;
+	
+	}
+	
+	
 }
