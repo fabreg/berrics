@@ -85,16 +85,17 @@ function removeFormOverlay() {
 
 #LevisOverlay .wrapper {
 	
-	width:650px;
+	width:728px;
 	margin:auto;
 
 }
 
 #levis-task {
 
-	background-color:#333;
+	background-color:#000;
 	padding:5px;
 	position:relative;
+	border:4px solid #333;
 }
 .instagram-thumb {
 
@@ -147,11 +148,50 @@ function removeFormOverlay() {
 	width:300px;
 
 }
+
+.upload-form .left {
+
+	float:left;
+
+}
+
+.upload-form .right {
+
+	float:right;
+	width:330px;
+
+}
+
+.upload-form .upload-preview {
+
+	background-image:url(/theme/levis-511-contest/img/upload-preview-bg.png);
+	height:242px;
+	width:345px;
+	
+}
+
 </style>
 <div id='levis-task'>
+
+<div class='upload-form'>
+	<div class='left'>
+		<div class='upload-preview'></div>
+	</div>
+	<div class='right'>
+		<img src='/theme/levis-511-contest/img/rules-top.jpg' border='0' />
+		<div class='task-info'>
+			<?php echo $task['MediahuntTask']['name']; ?>
+		</div>
+	</div>
+	<div style='clear:both;'></div>
+</div>
+<div class='form-buttons'>
+
+</div>
+
 <?php echo $this->Session->flash(); ?>
 <div class='task-heading'>
-	<strong> TASK: </strong> <?php echo $task['MediahuntTask']['name']; ?>
+	<strong> TASK: </strong> 
 </div>
 <div id='upload-form-div'>
 	STANDARD UPLOADING STUFF GOES HERE

@@ -84,16 +84,13 @@ SECTION
 	font-size:14px;
 	
 }
-#levis-511-section .task .checkbox {
+
+#levis-511-section .task-complete {
 	
-	float:left;
-	width:17px;
-	height:26px;
-	background-image:url(/theme/levis-511-contest/img/checkbox.png);
-	background-repeat:no-repeat;
-	background-position:left bottom;
+	color:#000;
 	
 }
+
 
 #levis-511-section .task .thumb {
 	
@@ -101,6 +98,16 @@ SECTION
 	width:30px;
 	height:30px;
 	background-color:black;
+	
+	
+}
+
+#levis-511-section .task .thumb img {
+	
+	display:block;
+	margin:0px;
+	padding:0px;
+	border:1px solid #000;
 }
 
 
@@ -143,16 +150,28 @@ SECTION
 	
 }
 
+#levis-511-section .task .checkbox {
+	
+	float:left;
+	width:17px;
+	height:26px;
+	background-image:url(/theme/levis-511-contest/img/checkbox.png);
+	background-repeat:no-repeat;
+	background-position:left bottom;
+	
+}
+
 #levis-511-section .top {
 	
-	
+	height:26px;
+	padding-bottom:5px;
 	
 }
 
 #levis-511-section .top .number {
 	
 	font-weight:bold;
-	
+	line-height:40px;
 }
 
 

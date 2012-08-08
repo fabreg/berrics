@@ -7,14 +7,11 @@ $this->Html->script(array("LevisContest","jquery.uploadify-3.1"),array("inline"=
 $(document).ready(function() { 
 
 	var use_base = true;
-	
-	$('#test-button').click(function() { 
 
-		$.LevisContest('openWindow',{
-			'url':"/levis-511/upload_image"
+
+	$(".task-unpublished").css({
+			opacity:.5
 		});
-
-	});
 
 	$("#levis-511-section a[rel!='no-ajax']").click(function() { 
 
@@ -61,11 +58,7 @@ $(document).ready(function() {
 
 	$(window).trigger('hashchange');
 
-	$("#test-login").click(function() { 
-
-		$.BerricsLogin('openWindow',"/identity/login/form");
-
-	});
+	
 	
 });
 </script>
@@ -76,52 +69,22 @@ $(document).ready(function() {
 			<?php if($this->Session->check("Auth.User.id")): ?>
 			
 			<?php else: ?>
-			<input type='button' value='login' id='test-login' />
+				<input type='button' value='login' id='test-login' />
 			<?php endif; ?>
 		</div>
 	</div>
 	<div class='task-column'>
 		<div class='heading'></div>
 		<?php foreach($tasks as $task): ?>
-		<div class='task'>
-			<div class='top'>
-				<div class='checkbox'></div>
-				<div class='number'>#<?php echo $task['MediahuntTask']['sort_order']; ?></div>
-				<div style='clear:both;'></div>
-			</div>
-			<div class='body'>
-				<div class='thumb'></div>
-				<div class='info'>
-					<div class='title'>
-						<?php echo $task['MediahuntTask']['name']; ?>
-					</div>
-					<div class='details'>
-						<?php echo $task['MediahuntTask']['details']; ?>
-					</div>
-				</div>
-				<div style='clear:both;'></div>
-			</div>
-			<div class='options'>
-				<?php 
-					
-					if($this->Session->check("Auth.User.id")) {
-						
-						$lnk = "/{$this->params['section']}/tasks/{$task['MediahuntTask']['id']}";
-						$rel = "";
-						
-					} else {
-						
-						$lnk = "#BerricsLogin=1";
-						$rel = "no-ajax";
-					}
-				
-				?>
-				<a href='<?php echo $lnk; ?>' rel='<?php echo $rel; ?>'>Add A Photo</a>	
-			</div>
-		</div>
+			<?php echo $this->element("task",array("task"=>$task)); ?>
 		<?php endforeach; ?>
 		<div style='clear:both;'></div>
 		<div class='bottom'></div>
 	</div>
 	<div style='clear:both;'></div>
 </div>
+<pre>
+<?php 
+print_r($tasks);
+?>
+</pre>

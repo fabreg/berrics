@@ -50,23 +50,34 @@ class LevisController extends DailyopsController {
 	
 	public function section() {
 		
+		$contain = array();
+		
+		if($this->Session->check("Auth.User.id")) {
+				
+			//get the uses completed tasks
+			$contain = array(
+						"MediahuntMediaItem"=>array(
+							"conditions"=>array(
+								"MediahuntMediaItem.user_id"=>$this->Session->read("Auth.User.id")		
+							)		
+						)
+					);	
+			
+		}
+		
 		//get all the tasks
 		$tasks = $this->MediahuntTask->find("all",array(
 					"conditions"=>array(
 						"MediahuntTask.active"=>1,
-						"MediahuntTask.mediahunt_event_id"=>$this->event_id,
-						"DATE(MediahuntTask.publish_date)<NOW()"		
+						"MediahuntTask.mediahunt_event_id"=>$this->event_id
 					),
-					"contain"=>array()
+					"contain"=>$contain,
+					"order"=>array(
+						"MediahuntTask.sort_order"=>"ASC"		
+					)
 				));
 		
-		$completed = array();
 		
-		if($this->Session->check("Auth.User.id")) {
-			
-			//get the uses completed tasks
-			
-		}
 		
 		$this->set(compact("tasks"));
 		
