@@ -295,6 +295,8 @@ font-family:'Arial';
 	border:2px solid #cc0033;
 	float:left;
 	margin:17px;
+	cursor:pointer;
+	
 }
 
 .instagram-thumb img {
