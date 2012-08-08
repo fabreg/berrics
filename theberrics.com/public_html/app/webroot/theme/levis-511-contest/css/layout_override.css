@@ -55,7 +55,7 @@ SECTION
 	
 	width:740px;
 	float:right;
-	
+	background-image:url(/theme/levis-511-contest/img/list-bg.jpg);
 }
 
 #levis-511-section .task {
@@ -68,6 +68,6 @@ SECTION
 #levis-511-section .heading {
 	
 	background-image:url(/theme/levis-511-contest/img/list-top.jpg);
-	height:188px;
+	height:166px;
 	
 }

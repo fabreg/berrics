@@ -15,7 +15,7 @@ if(!preg_match('/(login)/',$this->here)) {
 		</div>
 		<div class='account'>
 			<?php if(!$this->Session->check("Auth.User.id")): ?>
-			<a href='' rel='cart-login' callback='<?php echo base64_encode("/account"); ?>'>Sign In</a><?php else: ?><a href='/account/canteen'>My Account</a>|<a href='/identity/login/logout/<?php echo base64_encode($logout_link); ?>'>Logout</a><?php endif; ?>|<a href='/canteen/support' title='The Berrics Canteen Support: Check The Status Of Your Order Or Ask A Question'>Customer Service</a>
+			<a href='#BerricsLogin=1'>Sign In</a><?php else: ?><a href='/account/canteen'>My Account</a>|<a href='/identity/login/logout/<?php echo base64_encode($logout_link); ?>'>Logout</a><?php endif; ?>|<a href='/canteen/support' title='The Berrics Canteen Support: Check The Status Of Your Order Or Ask A Question'>Customer Service</a>
 		</div>
 		<div style='clear:both;'></div>
 		<div class='cart-items'>
