@@ -65,9 +65,90 @@ SECTION
 	
 	
 }
-#levis-511-section .heading {
+#levis-511-section .task-column .heading {
 	
 	background-image:url(/theme/levis-511-contest/img/list-top.jpg);
 	height:166px;
 	
 }
+
+#levis-511-section .task-column .bottom {
+	
+	background-image:url(/theme/levis-511-contest/img/list-bottom.jpg);
+	height:44px;
+	
+}
+
+#levis-511-section .task {
+	
+	font-family:'Arial';
+	
+}
+#levis-511-section .task .checkbox {
+	
+	float:left;
+	width:17px;
+	height:26px;
+	background-image:url(/theme/levis-511-contest/img/checkbox.png);
+	background-repeat:no-repeat;
+	background-position:left bottom;
+	
+}
+
+#levis-511-section .task .thumb {
+	
+	float:left;
+	width:30px;
+	height:30px;
+	background-color:black;
+}
+
+#levis-511-section .task .info {
+	
+	float:right;
+	
+	
+}
+
+
+#levis-511-section .task .title {
+	
+	
+	
+}
+
+#levis-511-section .task .details {
+	
+	
+	
+}
+
+
+#levis-511-section .task .options {
+	
+	clear:both;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -84,11 +84,23 @@ $(document).ready(function() {
 		<div class='heading'></div>
 		<?php foreach($tasks as $task): ?>
 		<div class='task'>
-			<?php echo $task['MediahuntTask']['name']; ?>
-			<div>
-				<?php echo $task['MediahuntTask']['details']; ?>
+			<div class='top'>
+				<div class='checkbox'></div>
+				<div class='number'></div>
+				<div style='clear:both;'></div>
 			</div>
-			<div>
+			<div class='body'>
+				<div class='thumb'></div>
+				<div class='info'>
+					<div class='title'>
+						<?php echo $task['MediahuntTask']['name']; ?>
+					</div>
+					<div class='details'>
+						<?php echo $task['MediahuntTask']['details']; ?>
+					</div>
+				</div>
+			</div>
+			<div class='options'>
 				<?php 
 					
 					if($this->Session->check("Auth.User.id")) {
@@ -108,6 +120,7 @@ $(document).ready(function() {
 		</div>
 		<?php endforeach; ?>
 		<div style='clear:both;'></div>
+		<div class='bottom'></div>
 	</div>
 	<div style='clear:both;'></div>
 </div>
