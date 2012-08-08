@@ -85,6 +85,12 @@ SECTION
 	
 }
 
+#levis-511-section .task a {
+	
+	color:#000;
+	
+}
+
 #levis-511-section .task-complete {
 	
 	color:#000;
@@ -98,7 +104,6 @@ SECTION
 	width:30px;
 	height:30px;
 	background-color:black;
-	
 	
 }
 

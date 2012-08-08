@@ -5,15 +5,15 @@
 $(document).ready(function() { 
 
 	
-	$("#MediahuntMediaItemImageFile").uploadify({
+	$("#image_file").uploadify({
 			
 				'swf'      : '/swf/uploadify.swf',
 	        	'uploader' : '/levis-511/handle_upload?xid=<?php echo $this->Session->id(); ?>',
 	        	"fileTypeExts":"*.gif; *.jpg; *.jpeg; *.png",
 	        	"debug":true,
-	        	"buttonImage":"/theme/levis-511-contest/img/select-an-image.jpg",
-	        	"height":"100",
-	        	"width":"100",
+	        	"buttonImage":"/theme/levis-511-contest/img/upload-button.png",
+	        	"height":"37",
+	        	"width":"161",
 	        	"onUploadSuccess":function(f,d,r) {
 
 	        		var data = eval("("+d+")");
@@ -54,14 +54,14 @@ $(document).ready(function() {
 
 function showTmpThumb(file) {
 
-	var url = "http://img.theberrics.com/i.php?src=/tmp/"+file+"&w=100&h=100&zc=1";
+	var url = "http://img.theberrics.com/i.php?src=/tmp/"+file+"&w=337&h=234&zc=0";
 
 	var img = $("<img />").attr({
 			"src":url,
 			"border":"0"
 		});
 
-	$("#SwfUpload").html(img);
+	$(".upload-preview .inner").html(img);
 	
 }
 
@@ -167,7 +167,13 @@ function removeFormOverlay() {
 	background-image:url(/theme/levis-511-contest/img/upload-preview-bg.png);
 	height:242px;
 	width:345px;
+	text-align:center;
+}
+
+.upload-form .upload-preview .inner {
 	
+	padding:4px;
+
 }
 
 </style>
@@ -175,7 +181,7 @@ function removeFormOverlay() {
 
 <div class='upload-form'>
 	<div class='left'>
-		<div class='upload-preview'></div>
+		<div class='upload-preview'><div class='inner'></div></div>
 	</div>
 	<div class='right'>
 		<img src='/theme/levis-511-contest/img/rules-top.jpg' border='0' />
@@ -186,7 +192,21 @@ function removeFormOverlay() {
 	<div style='clear:both;'></div>
 </div>
 <div class='form-buttons'>
-
+	<div class='left'>
+		<?php echo $this->Form->input("image_file",array("type"=>"file","div"=>array("id"=>"SwfUpload"),"label"=>false)); ?>
+	</div>
+	<div class='right'>
+		<?php 
+		
+			echo $this->Form->create("MediahuntMediaItem",array("url"=>array("action"=>"handle_submit","controller"=>$this->params['section']),"rel"=>"no-ajax")); 
+			echo $this->Form->input("file_name",array("type"=>"hidden"));
+			echo $this->Form->input("mediahunt_task_id",array("value"=>$task['MediahuntTask']['id'],"type"=>"hidden"));
+			echo $this->Form->input("instagram_id",array("type"=>"hidden"));
+			echo $this->Form->submit("Submit Entry");
+			echo $this->Form->end();
+		?>
+	</div>
+	<div style='clear:both;'></div>
 </div>
 
 <?php echo $this->Session->flash(); ?>
@@ -198,32 +218,27 @@ function removeFormOverlay() {
 	<?php if(isset($task['MediahuntMediaItem']['id'])): ?>
 		MEDIA ITEM ELEMENT
 	<?php else: ?>
-		<?php 
 		
-			echo $this->Form->create("MediahuntMediaItem",array("url"=>array("action"=>"handle_submit","controller"=>$this->params['section']),"rel"=>"no-ajax")); 
-		?>
 		<div class='img-thumb'>
-			<?php echo $this->Form->input("image_file",array("type"=>"file","div"=>array("id"=>"SwfUpload"),"label"=>false)); ?>
+			
 		</div>
 		<div class='form-fields'>
 			<?php 
 			
 			
 				
-				echo $this->Form->input("file_name",array("type"=>"hidden"));
-				echo $this->Form->input("mediahunt_task_id",array("value"=>$task['MediahuntTask']['id'],"type"=>"hidden"));
-				echo $this->Form->input("instagram_id",array("type"=>"hidden"));
+				
 			?>
 		</div>
 		<div style='clear:both;'></div>
 		<div>
 			<?php 
-				echo $this->Form->submit("Submit Entry");
+				
 				echo $this->Form->button("Reset Form",array("id"=>"reset-form")); 
 			?>
 		</div>
 		<?php
-			echo $this->Form->end();
+			
 			
 		?>
 		
