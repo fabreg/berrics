@@ -21,6 +21,8 @@ $(document).ready(function() {
 	        		var data = eval("("+d+")");
 
 					$("#MediahuntMediaItemFileName").val(data.file_name);
+					$("#MediahuntMediaItemInstagramId").val('');
+					$("#MediahuntMediaItemInstagramData").val('');
 
 					showTmpThumb(data.file_name);
 					removeFormOverlay();
