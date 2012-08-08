@@ -165,8 +165,24 @@
   			
   			
   		},
-  		showLoading:function() {},
-  		hideLoading:function() {}
+  		showLoading:function() {
+  			
+  			$("#LevisOverlay .wrapper").css({
+				
+				"background-image":"url(/img/layout/ajax-loader.gif)"
+				
+			});
+  			
+  		},
+  		hideLoading:function() {
+  			
+  			$("#LevisOverlay .wrapper").css({
+				
+				"background-image":"none"
+				
+			});
+  			
+  		}
   		
 	
 		  

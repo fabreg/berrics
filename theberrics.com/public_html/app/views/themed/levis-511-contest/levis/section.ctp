@@ -86,7 +86,7 @@ $(document).ready(function() {
 		<div class='task'>
 			<div class='top'>
 				<div class='checkbox'></div>
-				<div class='number'></div>
+				<div class='number'>#<?php echo $task['MediahuntTask']['sort_order']; ?></div>
 				<div style='clear:both;'></div>
 			</div>
 			<div class='body'>
@@ -99,6 +99,7 @@ $(document).ready(function() {
 						<?php echo $task['MediahuntTask']['details']; ?>
 					</div>
 				</div>
+				<div style='clear:both;'></div>
 			</div>
 			<div class='options'>
 				<?php 

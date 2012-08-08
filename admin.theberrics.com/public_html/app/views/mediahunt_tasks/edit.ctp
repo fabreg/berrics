@@ -1,3 +1,13 @@
+<script>
+$(document).ready(function() {
+
+
+	$( "#MediahuntTaskPublishDate").datepicker({
+		"dateFormat":"yy-mm-dd"
+	});
+	
+});
+</script>
 <?php 
 
 $sort = array();
@@ -12,6 +22,7 @@ for($i=1;$i<=99;$i++) $sort[$i] = $i;
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('active');
+		echo $this->Form->input("publish_date",array("type"=>"text"));
 		echo $this->Form->input('sort_order',array("options"=>$sort));
 		echo $this->Form->input('name');
 		echo $this->Form->input('details');

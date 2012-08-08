@@ -19,7 +19,9 @@ POPUP WINDOW
 #LevisOverlay .wrapper {
 	
 	
-	
+	background-repeat:no-repeat;
+	background-position:center center;
+	height:100%;
 }
 
 #LevisOverlay .content {
@@ -58,13 +60,6 @@ SECTION
 	background-image:url(/theme/levis-511-contest/img/list-bg.jpg);
 }
 
-#levis-511-section .task {
-	
-	width:49%;
-	float:left;
-	
-	
-}
 #levis-511-section .task-column .heading {
 	
 	background-image:url(/theme/levis-511-contest/img/list-top.jpg);
@@ -82,6 +77,11 @@ SECTION
 #levis-511-section .task {
 	
 	font-family:'Arial';
+	color:#cc0033;
+	width:345px;
+	float:left;
+	margin-left:10px;
+	font-size:14px;
 	
 }
 #levis-511-section .task .checkbox {
@@ -103,9 +103,21 @@ SECTION
 	background-color:black;
 }
 
+
+#levis-511-section .task .body {
+	
+	border:2px solid #000;
+	border-left:none;
+	border-right:none;
+	padding-top:4px;
+	padding-bottom:4px;
+	
+}
+
 #levis-511-section .task .info {
 	
-	float:right;
+	float:left;
+	margin-left:5px;
 	
 	
 }
@@ -113,13 +125,14 @@ SECTION
 
 #levis-511-section .task .title {
 	
+	font-weight:bold;
 	
 	
 }
 
 #levis-511-section .task .details {
 	
-	
+	font-style:italic;
 	
 }
 
@@ -129,6 +142,19 @@ SECTION
 	clear:both;
 	
 }
+
+#levis-511-section .top {
+	
+	
+	
+}
+
+#levis-511-section .top .number {
+	
+	font-weight:bold;
+	
+}
+
 
 
 

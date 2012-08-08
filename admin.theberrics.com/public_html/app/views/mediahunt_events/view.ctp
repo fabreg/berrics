@@ -21,6 +21,7 @@
 					<tr>
 						<th width='1%'>SortOrder</th>
 						<th>Name</th>
+						<th>Publish Date</th>
 						<th width='1%'>Active</th>
 						<th>-</th>
 					</tr>
@@ -31,6 +32,9 @@
 						<div style='font-style:italic;'>
 							<strong>Details:</strong> <?php echo $task['MediahuntTask']['details']; ?>
 						</div>
+						</td>
+						<td align='center'>
+							<?php echo $this->Time->niceShort($task['MediahuntTask']['publish_date']); ?>
 						</td>
 						<td align='center'>
 							<?php 
