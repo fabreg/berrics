@@ -69,7 +69,7 @@ SECTION
 
 #levis-511-section .task-column .bottom {
 	
-	background-image:url(/theme/levis-511-contest/img/list-bottom.jpg);
+	background-image:url(/theme/levis-511-contest/img/list-bottom.png);
 	height:44px;
 	
 }
@@ -179,10 +179,47 @@ SECTION
 	line-height:40px;
 }
 
+#levis-511-section .image-view {
+	
+	padding:10px;
+	color:#cc0033;
+	font-family:'Arial';
+}
+
+#levis-511-section .image-view .image-file {
+	
+	float:left;
+	width:320px;
+	text-align:center;
+}
+
+#levis-511-section .image-view .image-file img {
+	
+	border:3px solid #cc0033;
+	
+}
+
+#levis-511-section .image-view .image-user {
+	
+	
+	
+}
 
 
+#levis-511-section .image-view .image-task {
+	
+	font-size:20px;
+	font-weight:bold;
+	
+}
 
-
+#levis-511-section .image-view .image-task span,
+#levis-511-section .image-view .image-user span
+ {
+	
+	color:#333;
+	font-weight:bold;
+}
 
 
 

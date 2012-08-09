@@ -60,7 +60,7 @@ if(!$pub) $tc = "task-unpublished";
 						
 					} else {
 						
-						echo $this->Time->niceShort($t['publish_date']);
+						echo date('F jS',strtotime($task['MediahuntTask']['created']));
 						
 					}
 				

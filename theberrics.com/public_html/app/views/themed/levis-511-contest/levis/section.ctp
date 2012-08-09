@@ -75,6 +75,21 @@ $(document).ready(function() {
 	</div>
 	<div class='task-column'>
 		<div class='heading'></div>
+		<?php if(isset($image) && !empty($image)): ?>
+			<div class='image-view'>
+				<div class='image-file'>
+					<img border='0' src='http://img.theberrics.com/i.php?src=/mediahunt-media/<?php echo $image['MediahuntMediaItem']['file_name']; ?>&w=275' />
+				</div>
+				<div class='image-user'>
+					<div class='image-task'><span>TASK: </span><?php echo $image['MediahuntTask']['name']; ?></div>
+					<div class='image-user'><span>Photo By: </span><?php echo $image['User']['first_name']; ?> <?php echo $image['User']['last_name']; ?></div>
+					<?php if($image['MediahuntMediaItem']['instagram_id']): ?>
+					<div>Instagram: </div>
+					<?php endif; ?>
+				</div>
+				<div style='clear:both;'></div>
+			</div>
+		<?php endif; ?>
 		<?php foreach($tasks as $task): ?>
 			<?php echo $this->element("task",array("task"=>$task)); ?>
 		<?php endforeach; ?>

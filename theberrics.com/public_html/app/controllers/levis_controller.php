@@ -56,6 +56,20 @@ class LevisController extends DailyopsController {
 		
 		$this->params['action'] = "section";
 		
+		$image = $this->MediahuntMediaItem->find("first",array(
+				
+					"conditions"=>array(
+								"MediahuntMediaItem.id"=>$id
+							),
+					"contain"=>array(
+						"User",
+						"MediahuntTask"		
+					)	
+				
+				));
+		
+		$this->set(compact("image"));
+		
 	}
 	
 	public function section() {

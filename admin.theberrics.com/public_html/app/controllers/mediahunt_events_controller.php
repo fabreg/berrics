@@ -27,6 +27,7 @@ class MediahuntEventsController extends LocalAppController {
 		$this->set('mediahuntEvent', $this->MediahuntEvent->read(null, $id));
 		
 		$this->list_tasks($id);
+		$this->list_pending_uploads($id);
 		
 	}
 
@@ -73,6 +74,26 @@ class MediahuntEventsController extends LocalAppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
+	public function list_pending_uploads($event_id = false) {
+		
+		$this->loadModel("MediahuntMediaItem");
+		
+		$uploads = $this->MediahuntMediaItem->find("all",array(
+					"conditions"=>array(
+						"MediahuntMediaItem.approved"=>0		
+					),
+					"order"=>array(
+						"MediahuntMediaItem.created"=>"DESC"		
+					),
+					"contain"=>array(
+						"MediahuntTask",
+						"User"		
+					)
+				));
+		
+		$this->set(compact("uploads"));
+		
+	}
 	
 	public function list_tasks($event_id = false) {
 		

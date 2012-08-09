@@ -62,6 +62,42 @@
 		</div>
 		<div style='float:left; width:49%;'>	
 			<h3>Recently Submitted</h3>
+			<table cellspacing='0'>
+				<tr>
+					<th>Image</th>
+					<th>Date</th>
+					<th>Task</th>
+					<th>User</th>
+					<th>-</th>
+				</tr>
+				<?php foreach($uploads as $u): 
+					$m = $u['MediahuntMediaItem'];
+					$t = $u['MediahuntTask'];
+					$u = $u['User'];
+				?>
+				<tr>
+					<td>
+						<a href='http://img.theberrics.com/mediahunt-media/<?php echo $m['file_name']; ?>' target='_blank'>
+							<img src='http://img.theberrics.com/i.php?src=/mediahunt-media/<?php echo $m['file_name']; ?>&h=75&w=75' border='0'/>
+						</a>
+					</td>
+					<td>
+						<?php echo $this->Time->niceShort($m['created']); ?>
+					</td>
+					<td>
+						<?php echo $t['name'];  ?>
+					</td>
+					<td>
+						<?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?> 
+						<span style='font-style:italic;'><a href='/users/edit/<?php echo $u['id']; ?>' target='_blank'>Edit</a></span>
+					</td>
+					<td class='actions'>
+						<a>Approve</a>
+						<a>Reject</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
 		</div>
 	
 		<div style='clear:both'></div>
