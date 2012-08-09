@@ -136,8 +136,3 @@ $(document).ready(function() {
 	</div>
 	<div style='clear:both;'></div>
 </div>
-<pre>
-<?php 
-print_r($ig_data);
-?>
-</pre>
