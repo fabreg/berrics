@@ -28,6 +28,7 @@ POPUP WINDOW
 	background-repeat:no-repeat;
 	background-position:center center;
 	height:100%;
+	padding-top:40px;
 }
 
 #LevisOverlay .content {
@@ -39,17 +40,19 @@ POPUP WINDOW
 #LevisOverlay .close-div {
 	
 	clear:both;
-	height:25px;
-	
+	position:relative;
+	z-index:90010;
 }
 
 #LevisOverlay .close-div .close-button {
 	
-	float:right;
-	width:25px;
-	height:25px;
-	background-color:red;
+	width:35px;
+	height:35px;
+	background-image:url(/theme/levis-511-contest/img/close-button.png);
 	cursor:pointer;
+	position:absolute;
+	left:-15px;
+	top:-15px;
 	
 }
 

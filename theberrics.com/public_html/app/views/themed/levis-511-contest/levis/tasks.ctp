@@ -397,7 +397,7 @@ input[type=submit] {
 	</div>
 </div>
 <?php 
-print_r($task);
-print_r($mediaItem);
-print_r($instagram_images);
+//print_r($task);
+//print_r($mediaItem);
+//print_r($instagram_images);
 ?>
