@@ -13,7 +13,7 @@ $(document).ready(function() {
 			opacity:.5
 		});
 
-	$('.post-bit a').each(function( { 
+	$('.post-bit a').each(function() { 
 
 		$(this).attr("rel","no-ajax");
 

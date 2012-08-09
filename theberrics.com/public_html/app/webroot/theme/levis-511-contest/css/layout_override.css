@@ -300,6 +300,27 @@ SECTION
 }
 
 
+#levis-511-section .d-post-bit .title {
+	
+	display:none;
+	
+}
+
+#levis-511-section .d-post-bit .container,
+#levis-511-section .d-post-bit .container-top,
+#levis-511-section .d-post-bit .bottom {
+	
+		background-image:none;
+	
+}
+
+#levis-511-section .d-post-bit .bottom {
+	
+	height:30px;
+	min-height:30px;
+	
+}
+
 
 
 

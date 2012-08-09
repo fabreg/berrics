@@ -141,7 +141,7 @@
   					403:function(d) {
   						
   						methods.handleClose();
-  						document.location.hash="login=1";
+  						document.location.hash="BerricsLogin=1";
   						
   					},
   					404:function() {
