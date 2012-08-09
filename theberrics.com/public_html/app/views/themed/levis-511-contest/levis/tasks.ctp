@@ -12,7 +12,7 @@ $(document).ready(function() {
 				'swf'      : '/swf/uploadify.swf',
 	        	'uploader' : '/levis-511/handle_upload?xid=<?php echo $this->Session->id(); ?>',
 	        	"fileTypeExts":"*.gif; *.jpg; *.jpeg; *.png",
-	        	"debug":true,
+	        	"debug":false,
 	        	"buttonImage":"/theme/levis-511-contest/img/upload-button.png",
 	        	"height":"37",
 	        	"width":"161",
