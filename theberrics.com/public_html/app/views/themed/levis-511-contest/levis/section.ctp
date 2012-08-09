@@ -77,12 +77,14 @@ $(document).ready(function() {
 		<div class='line-break'>
 			
 		</div>
+		<?php if(!$this->Session->check("Auth.User.id")): ?>
 		<div>
-			<img src='/theme/levis-511-contest/img/signin.png' border='0' />
+			<a href='#BerricsLogin=1'  rel='no-ajax' ><img src='/theme/levis-511-contest/img/signin.png' border='0'/></a>
 		</div>
 		<div class='line-break'>
 			
 		</div>
+		<?php endif; ?>
 		<div class='text'>
 			<div class='heading'>Heading:</div>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien tortor, tincidunt sit amet mattis ac, volutpat et ligula. In non dui sed diam suscipit porta ut vestibulum libero. Cras velit velit, vehicula nec pellentesque quis, vehicula tempor diam. Sed at semper purus. Vivamus vestibulum nulla eu quam hendrerit hendrerit faucibus ipsum mollis. Suspendisse potenti. Praesent nisi dui, luctus in dictum nec, laoreet ullamcorper velit. Etiam quis fermentum arcu. Duis facilisis ante vel nunc aliquet posuere. Phasellus vel felis felis, nec imperdiet sem.</p>
@@ -93,7 +95,7 @@ $(document).ready(function() {
 		</div>
 		<div style='height:15px;'></div>
 		<div>
-			<img src='/theme/levis-511-contest/img/banner2.png' />
+			<a href='/<?php echo $this->params['section']; ?>/project-511.html' rel='no-ajax'><img src='/theme/levis-511-contest/img/banner2.png' border='0' /></a>
 		</div>
 		<div class='line-break'>
 			

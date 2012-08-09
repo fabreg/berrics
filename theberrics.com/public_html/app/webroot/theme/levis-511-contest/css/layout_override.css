@@ -300,7 +300,8 @@ SECTION
 }
 
 
-#levis-511-section .d-post-bit .title {
+#levis-511-section .d-post-bit .title,
+#levis-511-section .d-post-bit .date-info {
 	
 	display:none;
 	
@@ -308,7 +309,8 @@ SECTION
 
 #levis-511-section .d-post-bit .container,
 #levis-511-section .d-post-bit .container-top,
-#levis-511-section .d-post-bit .bottom {
+#levis-511-section .d-post-bit .bottom
+ {
 	
 		background-image:none;
 	
