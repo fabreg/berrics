@@ -61,6 +61,42 @@ POPUP WINDOW
 SECTION
 */
 
+#levis-511-section .profile-column {
+	
+	width:310px;
+	float:left;
+	
+	
+}
+
+#levis-511-section .profile-column .text {
+	
+	font-family:'Arial';
+	font-size:14px;
+	
+}
+
+#levis-511-section .profile-column .text .heading {
+	
+	color:#cc0033;
+	font-weight:bold;
+	
+}
+
+#levis-511-section .profile-column .text p {
+	
+	color:#fff;
+	
+}
+
+#levis-511-section .profile-column .line-break {
+	
+	background-image:url(/theme/levis-511-contest/img/line-break.png);
+	height:14px;
+	background-repeat:no-repeat;
+	
+}
+
 #levis-511-section .task-column {
 	
 	

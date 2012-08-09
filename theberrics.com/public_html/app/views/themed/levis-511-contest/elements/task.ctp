@@ -8,7 +8,7 @@ $tc = "";
 
 $pub = true;
 
-if(strtotime($t['publish_date'])>strtotime(date("Y-m-d"))) $pub=false;
+if(time()<strtotime($task['MediahuntTask']['publish_date'])) $pub=false;
 
 if(isset($m['id']) && !empty($m['id'])) $tc = "task-complete";
 
@@ -60,7 +60,7 @@ if(!$pub) $tc = "task-unpublished";
 						
 					} else {
 						
-						echo date('F jS',strtotime($task['MediahuntTask']['created']));
+						echo date('F jS',strtotime($task['MediahuntTask']['publish_date']));
 						
 					}
 				
