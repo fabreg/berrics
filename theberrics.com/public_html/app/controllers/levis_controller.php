@@ -49,6 +49,22 @@ class LevisController extends DailyopsController {
 			
 		}
 		
+		if($this->params['action'] == "view") {
+			
+			$this->setPost($this->params['uri']);
+			
+		}
+		
+		
+	}
+	
+	private function setPost($uri) {
+		
+		$post = $this->Dailyop->returnPost(array("DailyopSection.uri"=>$this->params['section'],"Dailyop.uri"=>$this->params['uri']));
+		
+		$this->set(compact("post"));
+		
+		$this->params['action'] = "section";
 		
 	}
 	

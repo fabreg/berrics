@@ -13,6 +13,12 @@ $(document).ready(function() {
 			opacity:.5
 		});
 
+	$('.post-bit a').each(function( { 
+
+		$(this).attr("rel","no-ajax");
+
+	});
+
 	$("#levis-511-section a[rel!='no-ajax']").click(function() { 
 
 		var ref = $(this).attr("href");
@@ -99,6 +105,14 @@ $(document).ready(function() {
 	</div>
 	<div class='task-column'>
 		<div class='heading'></div>
+		<?php 
+			if(isset($post)) {
+				
+				echo $this->element("dailyops/post-bit",array("dop"=>$post));
+				
+			} 
+			
+		?>
 		<?php 
 			if(isset($image) && !empty($image)): 
 			 $ig_data = json_decode($image['MediahuntMediaItem']['instagram_data'],true);
