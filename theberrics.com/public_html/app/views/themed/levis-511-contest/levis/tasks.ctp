@@ -93,9 +93,9 @@ function showTmpThumb(file) {
 
 function showFormOverlay(msg) {
 
-	var div = $("<div class='levis-upload-overlay'/>").append("<div class='form-msg'/>");
+	var div = $("<div class='levis-upload-overlay'/>").append("<div class='inner'/>");
 
-	$("#levis-upload-overlay .form-msg").html(msg);
+	//$("#levis-upload-overlay .form-msg").html(msg);
 	
 	$("#levis-task").append(div);
 	
@@ -171,11 +171,25 @@ function attachInstagram(id) {
 	position:absolute;
 	height:100%;
 	width:100%;
-	background-color:red;
+	background-image:url(/img/layout/blk-px.png);
 	top:0px;
 	left:0px;
-	
+	z-index:9001
 }
+
+.levis-upload-overlay .inner {
+
+	background-image:url(/img/layout/ajax-loader.gif);
+	background-position:center center;
+	height:100%;
+	width:100%;
+	position:absolute;
+		top:0px;
+	left:0px;
+	z-index:9002;
+	background-repeat:no-repeat;
+}
+
 #SwfUpload {
 
 	float:right;
@@ -304,6 +318,11 @@ font-family:'Arial';
 	display:block;
 	padding:0px;
 	margin:0px;
+
+}
+input[type=submit] {
+
+	cursor:pointer;
 
 }
 

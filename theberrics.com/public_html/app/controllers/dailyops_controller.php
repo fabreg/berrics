@@ -259,21 +259,29 @@ class DailyopsController extends LocalAppController {
 		
 	}
 	
-	protected function setFacebookMetaImg($mediaFile) {
+	protected function setFacebookMetaImg($mediaFile=false,$img_str = false) {
 		
-		$img = '';
-		
-		switch($mediaFile['media_type']) {
+		if($mediaFile) {
 			
-			case "bcove":
-				$img = "/video/stills/".$mediaFile['file_video_still'];
-			break;
-			default:
-				$img = "/images/".$mediaFile['file'];
-			break;
-		}
+			$img = '';
+			
+			switch($mediaFile['media_type']) {
+				
+				case "bcove":
+					$img = "/video/stills/".$mediaFile['file_video_still'];
+				break;
+				default:
+					$img = "/images/".$mediaFile['file'];
+				break;
+			}
+			
+			$img = "http://img.theberrics.com".$img;
 		
-		$img = "http://img.theberrics.com".$img;
+		} elseif($img_str) {
+			
+			$img = $img_str;
+			
+		}
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
 		

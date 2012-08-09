@@ -70,7 +70,8 @@ if(!$pub) $tc = "task-unpublished";
 		<div style='clear:both;'></div>
 	</div>
 	<div class='options'>
-	<?php if(!isset($m['id'])): ?>
+	<?php if(!$pub): ?>
+	<?php elseif(!isset($m['id'])): ?>
 		<?php 
 			
 			if($this->Session->check("Auth.User.id")) {
@@ -85,9 +86,13 @@ if(!$pub) $tc = "task-unpublished";
 			}
 		
 		?>
-		<a href='<?php echo $lnk; ?>' rel='<?php echo $rel; ?>'>Add A Photo</a>	
+		<a href='<?php echo $lnk; ?>' rel='<?php echo $rel; ?>'>
+			<img border='0' src='/theme/levis-511-contest/img/add-photo.png' />
+		</a>	
 	<?php else: ?>
-		<a href=''>View Your Image</a>
+		<a href='/<?php echo $this->params['section']; ?>/image/<?php echo $m['id']; ?>' rel='no-ajax'>
+			<img border='0' src='/theme/levis-511-contest/img/view-photo.png' />
+		</a>
 	<?php endif; ?>
 	</div>
 </div>

@@ -1,5 +1,11 @@
 @CHARSET "UTF-8";
 
+body {
+	
+	background-image:none;
+	background-color:#000;
+}
+
 /*
 POPUP WINDOW
 */
@@ -152,7 +158,7 @@ SECTION
 #levis-511-section .task .options {
 	
 	clear:both;
-	
+	text-align:right;
 }
 
 #levis-511-section .task .checkbox {
@@ -213,15 +219,46 @@ SECTION
 	
 }
 
+#levis-511-section .image-view .image-instagram-link {
+	
+	
+	
+}
+
+#levis-511-section .image-view .image-instagram-link a {
+	
+	color:#cc0033;
+	font-size:14px;
+}
+
 #levis-511-section .image-view .image-task span,
-#levis-511-section .image-view .image-user span
+#levis-511-section .image-view .image-user span,
+#levis-511-section .image-view .image-instagram-link span
  {
 	
 	color:#333;
 	font-weight:bold;
 }
 
+#levis-511-section .image-view .share-buttons {
+	
+	padding-top:8px;
+	position:relative;
+}
 
+#levis-511-section .image-view .share-buttons .twitter {
+	
+	float:left;
+	margin-right:5px;
+	
+}
+
+#levis-511-section .image-view .share-buttons .facebook {
+	
+	position:absolute;
+	left:390px;
+	
+}
 
 
 
