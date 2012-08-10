@@ -20,6 +20,7 @@ $(document).ready(function() {
 <div id='dashboard-tab-nav'>
 	<ul>
 		<li><a href='/dashboard/'>Dailyops</a></li>
+		<li><a href='/mediahunt_events/view/2'>Picutre Perfect Contest</a></li>
 		<li><a href='/dashboard/canteen'>Canteen Dashboard</a></li>
 		<li><a href='/dashboard/reports'>Reports Dashboard</a></li>
 		
