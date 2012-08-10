@@ -56,6 +56,15 @@ class CanteenInventoryRecordsController extends LocalAppController {
 				
 			}
 			
+			if(isset($this->params['named']['CanteenInventoryRecord.foreign_key'])) {
+			
+				$this->paginate['conditions']['CanteenInventoryRecord.foreign_key LIKE'] = "%".str_replace(" ","%",$this->params['named']['CanteenInventoryRecord.foreign_key'])."%";
+			
+				$this->data['CanteenInventoryRecord']['foreign_key'] = $this->params['named']['CanteenInventoryRecord.foreign_key'];
+			
+			}
+			
+			
 		}
 		
 		$this->CanteenInventoryRecord->recursive = 0;

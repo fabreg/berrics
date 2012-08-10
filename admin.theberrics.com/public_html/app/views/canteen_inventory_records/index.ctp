@@ -6,6 +6,7 @@
 			<?php 
 				echo $this->Form->create("CanteenInventoryRecord",array("url"=>"/canteen_inventory_records/search"));
 				echo $this->Form->input("name");
+				echo $this->Form->input("foreign_key");
 				echo $this->Form->end("Search")
 			?>
 		</fieldset>
