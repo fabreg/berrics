@@ -260,6 +260,18 @@ class ImgServer {
 		
 		
 	}
+	
+	public function delete_file($file) {
+		
+		if(!self::$connected) {
+			$this->connect();
+		}
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html");
+		
+		$this->sftp->delete($file);
+		
+	}
 
 	
 	

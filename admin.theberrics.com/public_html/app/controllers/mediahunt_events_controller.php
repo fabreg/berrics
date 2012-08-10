@@ -95,6 +95,30 @@ class MediahuntEventsController extends LocalAppController {
 		
 	}
 	
+	public function reject_file($id) {
+		
+		$file = $this->MediahuntMediaItem->find("first",array("conditions"=>array("MediahuntMediaItem.id"=>$id),"contain"=>array("MediahuntTask")));
+		
+		$this->MediahuntMediaItem->delete($id);
+		
+		App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+		
+		$i = ImgServer::instance();
+		
+		$i->delete_file("mediahunt-media/".$file['MediahuntMediaItem']['file_name']);
+		
+		$cb = "/mediahunt_events/view/".$file['MediahuntTask']['mediahunt_event_id'];
+		
+		if(isset($this->params['callback'])) {
+			
+			$cb = base64_decode($this->params['callback']);
+			
+		}
+		
+		$this->redirect($cb);
+		
+	}
+	
 	public function list_tasks($event_id = false) {
 		
 		$this->loadModel("MediahuntTask");

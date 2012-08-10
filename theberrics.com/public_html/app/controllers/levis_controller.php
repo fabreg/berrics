@@ -33,7 +33,7 @@ class LevisController extends DailyopsController {
 
 		//die(print_r($this->Auth));
 		
-		//force from hash pushing shit
+		//force hash pushing shit
 		if(
 				in_array($this->params['action'],array("tasks")) && !$this->RequestHandler->isAjax()
 				 	
@@ -43,22 +43,24 @@ class LevisController extends DailyopsController {
 			
 		}
 		
+		//catch an image call, set the data
 		if($this->params['action'] == "image") {
 			
 			$this->setImage($this->params['pass'][0]);
 			
 		}
 		
+		//catch the view call, set the data
 		if($this->params['action'] == "view") {
 			
-			$this->setPost($this->params['uri']);
+			$this->setPost();
 			
 		}
 		
 		
 	}
 	
-	private function setPost($uri) {
+	private function setPost() {
 		
 		$post = $this->Dailyop->returnPost(array("DailyopSection.uri"=>$this->params['section'],"Dailyop.uri"=>$this->params['uri']));
 		
