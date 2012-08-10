@@ -52,7 +52,16 @@
 						</td>
 						<td class='actions'>
 							<?php 
+								
 								echo $this->Html->link("Edit",array("controller"=>"mediahunt_tasks","action"=>"edit",$task['MediahuntTask']['id'],"callback"=>base64_encode($this->here))); 
+								
+								echo $this->Html->link("View Entries",array(
+																		"controller"=>"mediahunt_media_items",
+																		"action"=>"index",
+																		"search"=>1,
+																		"MediahuntMediaItem.mediahunt_task_id"=>$task['MediahuntTask']['id']
+																		),array("target"=>"_blank"));
+								
 							?>
 						</td>
 					</tr>
@@ -92,8 +101,8 @@
 						<span style='font-style:italic;'><a href='/users/edit/<?php echo $u['id']; ?>' target='_blank'>Edit</a></span>
 					</td>
 					<td class='actions'>
-						<a>Approve</a>
-						<a>Reject</a>
+						<?php echo $this->Html->link("Approve",array("controller"=>"mediahunt_media_items","action"=>"approve",$m['id'],"callback"=>base64_encode($this->here))); ?>
+						<?php echo $this->Html->link("Shit Can",array("controller"=>"mediahunt_media_items","action"=>"delete",$m['id'],"callback"=>base64_encode($this->here))); ?>
 					</td>
 				</tr>
 				<?php endforeach; ?>

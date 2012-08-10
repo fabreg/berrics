@@ -2,6 +2,19 @@
 
 $this->Html->script(array("LevisContest","jquery.uploadify-3.1"),array("inline"=>false));
 
+$total_tasks = count($tasks);
+
+$total_completed = 0;
+
+if($this->Session->check("Auth.User.id")) {
+	
+	$comp_check = Set::extract("/MediahuntMediaItem/id",$tasks);
+	
+	$total_completed = count($comp_check);
+	
+}
+
+
 ?>
 <script>
 $(document).ready(function() { 
@@ -106,7 +119,9 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<div class='task-column'>
-		<div class='heading'></div>
+		<div class='heading'>
+			<div class='count'><?php echo $total_completed; ?> OF <?php echo $total_tasks; ?></div>
+		</div>
 		<?php 
 			if(isset($post)) {
 				
