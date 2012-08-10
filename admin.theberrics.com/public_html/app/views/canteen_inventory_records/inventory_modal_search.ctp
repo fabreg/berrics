@@ -26,6 +26,7 @@ $(document).ready(function() {
 			<?php 
 				echo $this->Form->create("CanteenInventoryRecord",array("url"=>"/canteen_inventory_records/inventory_modal_search_results"));
 				echo $this->Form->input("name");
+				echo $this->Form->input("foreign_key");
 				echo $this->Form->end("Search");
 			?>
 		</div>

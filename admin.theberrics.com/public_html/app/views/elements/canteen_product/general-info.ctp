@@ -48,6 +48,7 @@ $(document).ready(function() {
 				echo $this->Form->input("allow_discount");
 				echo $this->Form->input("featured");
 				echo $this->Form->input("digital_item");
+				echo $this->Form->input("ljg_inv");
 			?>
 			<div style='clear:both;'></div>
 		</div>

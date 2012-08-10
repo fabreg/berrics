@@ -172,9 +172,25 @@ class CanteenInventoryRecordsController extends LocalAppController {
 		
 		if(count($this->data)) {
 			
-			$str = "%".str_replace(" ","%",$this->data['CanteenInventoryRecord']['name'])."%";
 			
-			$this->paginate['CanteenInventoryRecord']['conditions']['CanteenInventoryRecord.name LIKE'] = $str;
+			if(!empty($this->data['CanteenInventoryRecord']['name'])) {
+				
+				$str = "%".str_replace(" ","%",$this->data['CanteenInventoryRecord']['name'])."%";
+					
+				$this->paginate['CanteenInventoryRecord']['conditions']['CanteenInventoryRecord.name LIKE'] = $str;
+				
+			}
+			
+			if(!empty($this->data['CanteenInventoryRecord']['foreign_key'])) {
+				
+				$str = "%".str_replace(" ","%",$this->data['CanteenInventoryRecord']['foreign_key'])."%";
+					
+				$this->paginate['CanteenInventoryRecord']['conditions']['CanteenInventoryRecord.foreign_key LIKE'] = $str;
+				
+			}
+			
+			
+			
 			$this->paginate['CanteenInventoryRecord']['contain'][] = "Warehouse";
 			$records = $this->paginate("CanteenInventoryRecord");
 			
