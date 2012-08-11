@@ -104,7 +104,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div>
-			<a href='/<?php echo $this->params['section']; ?>/sixth-and-mill.html'>
+			<a href='/<?php echo $this->params['section']; ?>/sixth-and-mill.html' rel='no-ajax'>
 				<img src='/theme/levis-511-contest/img/banner1.png' border='0' />
 			</a>
 		</div>
