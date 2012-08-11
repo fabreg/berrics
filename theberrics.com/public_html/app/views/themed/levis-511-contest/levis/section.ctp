@@ -103,14 +103,14 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 </p>
 			
 		</div>
-		<div style='height:10px;'></div>
+		<div style='height:5px;'></div>
 		<div class='text'>
 			<div class='heading'>GRAND PRIZE:</div>
 			<p>
 			All expense paid trip to Los Angeles for private sessions at Nike's Sixth & Mill and The Berrics. The winner will also receive the entire Levi's 511 Skateboard Collection.
 			<p>			
 		</div>
-		<div style='height:10px;'></div>
+		<div style='height:5px;'></div>
 		<div class='text'>
 			<div class='heading'>ADDITIONAL PRIZES:</div>
 			<p>
@@ -123,7 +123,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 				<img src='/theme/levis-511-contest/img/banner1.png' border='0' />
 			</a>
 		</div>
-		<div style='height:10px;'></div>
+
 		<div>
 			<a href='' rel='no-ajax'>
 				<img src='/theme/levis-511-contest/img/PP_Berrics.jpg' border='0' />
