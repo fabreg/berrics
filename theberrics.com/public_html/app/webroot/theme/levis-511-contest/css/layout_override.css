@@ -214,6 +214,7 @@ SECTION
 	
 	clear:both;
 	text-align:right;
+	min-height:28px;
 }
 
 #levis-511-section .task .checkbox {
