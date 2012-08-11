@@ -125,7 +125,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 		</div>
 <div style='height:10px;'></div>
 		<div>
-			<a href='' rel='no-ajax'>
+			<a href='/<?php echo $this->params['section']; ?>/a-photographic-scavenger-hunt.html' rel='no-ajax'>
 				<img src='/theme/levis-511-contest/img/PP_Berrics.jpg' border='0' />
 			</a>
 		</div>
