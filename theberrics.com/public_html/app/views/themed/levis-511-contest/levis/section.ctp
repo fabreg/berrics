@@ -99,8 +99,9 @@ $(document).ready(function() {
 		<div class='text'>
 			<div class='heading'>RULES:</div>
 			<p>
-We will be releasing a new photo challenge every day for 20 days. Go on the hunt and try to complete the photo challenges daily but if you miss some along the way, don't worry. You can sign in anytime and catch up on past challenges at any point during the contest. Once all 20 photo challenges have been announced, you'll have a week to complete the checklist before we close the contest. After that, we'll pick a winner based on the total completion of the checklist and overall creativity of your photos. So get creative, interpret the challenges however you see fit, and have fun with them.			
-</p>
+
+			Picture Perfect is a daily photo challenge anyone can win. It doesn't matter if you skate like PRod or look like Honey Boo Boo Child. Every day, for 20 days, is a new challenge. You can use your phone, your ipad or your old Polaroid camera, it doesn't matter. And if you miss a day, it's okay, you can sign in anytime and catch up. The idea is to just complete the checklist before the contest is over. When it's all said and done we'll pick a winner. But you have to complete the list in order to qualify. The challenges are there for you to interpret however you see fit. Some challenges will be easy, some will be hard, some won't make sense and some will, so get creative, have fun, but most importantly, WIN this grand prize!!!
+			</p>
 			
 		</div>
 		<div style='height:5px;'></div>
