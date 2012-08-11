@@ -181,7 +181,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 		<?php foreach($tasks as $task): ?>
 			<?php echo $this->element("task",array("task"=>$task)); ?>
 		<?php endforeach; ?>
-		<div style='clear:both; height:15px;'></div>
+		<div style='clear:both; height:35px;'></div>
 		<div class='bottom'></div>
 	</div>
 	<div style='clear:both;'></div>
