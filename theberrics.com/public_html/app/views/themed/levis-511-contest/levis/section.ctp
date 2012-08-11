@@ -134,9 +134,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 		<div>
 			<a href='/<?php echo $this->params['section']; ?>/project-511.html' rel='no-ajax'><img src='/theme/levis-511-contest/img/banner2.png' border='0' /></a>
 		</div>
-		<div class='line-break'>
-			
-		</div>
+
 
 	</div>
 	<div class='task-column'>
