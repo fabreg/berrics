@@ -123,7 +123,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 				<img src='/theme/levis-511-contest/img/banner1.png' border='0' />
 			</a>
 		</div>
-
+<div style='height:10px;'></div>
 		<div>
 			<a href='' rel='no-ajax'>
 				<img src='/theme/levis-511-contest/img/PP_Berrics.jpg' border='0' />
@@ -134,7 +134,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 		<div>
 			<a href='/<?php echo $this->params['section']; ?>/project-511.html' rel='no-ajax'><img src='/theme/levis-511-contest/img/banner2.png' border='0' /></a>
 		</div>
-
+		<div class='line-break'></div>
 
 	</div>
 	<div class='task-column'>
@@ -181,7 +181,7 @@ We will be releasing a new photo challenge every day for 20 days. Go on the hunt
 		<?php foreach($tasks as $task): ?>
 			<?php echo $this->element("task",array("task"=>$task)); ?>
 		<?php endforeach; ?>
-		<div style='clear:both;'></div>
+		<div style='clear:both; height:15px;'></div>
 		<div class='bottom'></div>
 	</div>
 	<div style='clear:both;'></div>
