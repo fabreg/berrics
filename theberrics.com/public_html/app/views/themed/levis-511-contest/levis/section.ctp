@@ -139,7 +139,7 @@ $(document).ready(function() {
 					<img border='0' src='http://img.theberrics.com/i.php?src=/mediahunt-media/<?php echo $image['MediahuntMediaItem']['file_name']; ?>&w=275' />
 				</div>
 				<div class='image-user'>
-					<div class='image-task'><span>TASK: </span><?php echo $image['MediahuntTask']['name']; ?></div>
+					<div class='image-task'><span>CHALLENGE: </span><?php echo $image['MediahuntTask']['name']; ?></div>
 					<div class='image-user'><span>Photo By: </span><?php echo $image['User']['first_name']; ?> <?php echo $image['User']['last_name']; ?></div>
 					<?php if($image['MediahuntMediaItem']['instagram_id']): ?>
 					<div class='image-instagram-link'><span>Instagram:</span> <a rel='no-ajax' href='<?php echo $ig_data['data']['link']; ?>' target='_blank'><?php echo $ig_data['data']['link']; ?></a></div>
