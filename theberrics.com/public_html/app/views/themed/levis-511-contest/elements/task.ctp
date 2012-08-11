@@ -71,6 +71,7 @@ if(!$pub) $tc = "task-unpublished";
 	</div>
 	<div class='options'>
 	<?php if(!$pub): ?>
+		<img border='0' src='/theme/levis-511-contest/img/upload-photo.png' />
 	<?php elseif(!isset($m['id'])): ?>
 		<?php 
 			
