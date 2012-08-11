@@ -353,7 +353,7 @@ font-family:'Arial';
 			<?php echo $task['MediahuntTask']['name']; ?>
 		</div>
 		<div class='task-details'>
-			<?php echo $task['MediahuntTask']['details']; ?>
+			<?php echo $task['MediahuntTask']['details']; ?>&nbsp;
 		</div>
 	</div>
 	<div style='clear:both;'></div>

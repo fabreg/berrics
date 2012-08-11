@@ -104,7 +104,9 @@ $(document).ready(function() {
 		</div>
 		
 		<div>
-			<img src='/theme/levis-511-contest/img/banner1.png' />
+			<a href='/<?php echo $this->params['section']; ?>/sixth-and-mill.html'>
+				<img src='/theme/levis-511-contest/img/banner1.png' border='0' />
+			</a>
 		</div>
 		<div style='height:15px;'></div>
 		<div>
