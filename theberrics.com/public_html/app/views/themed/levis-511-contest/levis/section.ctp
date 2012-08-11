@@ -120,7 +120,7 @@ $(document).ready(function() {
 	</div>
 	<div class='task-column'>
 		<div class='heading'>
-			<div class='count'><?php echo $total_completed; ?> OF <?php echo $total_tasks; ?></div>
+			<div class='count'><span style='color:#cc0033;'><?php echo $total_completed; ?></span> OF <?php echo $total_tasks; ?></div>
 		</div>
 		<?php 
 			if(isset($post)) {
