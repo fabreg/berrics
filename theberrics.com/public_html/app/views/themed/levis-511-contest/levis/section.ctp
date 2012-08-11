@@ -94,31 +94,50 @@ $(document).ready(function() {
 		<div>
 			<a href='#BerricsLogin=1'  rel='no-ajax' ><img src='/theme/levis-511-contest/img/signin.png' border='0'/></a>
 		</div>
-		<div class='line-break'>
-			
-		</div>
+		<div class='line-break'></div>
 		<?php endif; ?>
 		<div class='text'>
-			<div class='heading'>Heading:</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien tortor, tincidunt sit amet mattis ac, volutpat et ligula. In non dui sed diam suscipit porta ut vestibulum libero. Cras velit velit, vehicula nec pellentesque quis, vehicula tempor diam. Sed at semper purus. Vivamus vestibulum nulla eu quam hendrerit hendrerit faucibus ipsum mollis. Suspendisse potenti. Praesent nisi dui, luctus in dictum nec, laoreet ullamcorper velit. Etiam quis fermentum arcu. Duis facilisis ante vel nunc aliquet posuere. Phasellus vel felis felis, nec imperdiet sem.</p>
+			<div class='heading'>RULES:</div>
+			<p>
+We will be releasing a new photo challenge every day for 20 days. Go on the hunt and try to complete the photo challenges daily but if you miss some along the way, don't worry. You can sign in anytime and catch up on past challenges at any point during the contest. Once all 20 photo challenges have been announced, you'll have a week to complete the checklist before we close the contest. After that, we'll pick a winner based on the total completion of the checklist and overall creativity of your photos. So get creative, interpret the challenges however you see fit, and have fun with them.			
+</p>
+			
 		</div>
-		
+		<div style='height:10px;'></div>
+		<div class='text'>
+			<div class='heading'>GRAND PRIZE:</div>
+			<p>
+			All expense paid trip to Los Angeles for private sessions at Nike's Sixth & Mill and The Berrics. The winner will also receive the entire Levi's 511 Skateboard Collection.
+			<p>			
+		</div>
+		<div style='height:10px;'></div>
+		<div class='text'>
+			<div class='heading'>ADDITIONAL PRIZES:</div>
+			<p>
+				We'll be giving out some stuff along the way to those who submit the most creative, or funny, or beautiful, or entertaining photos. Basically, if you get us talking about your photo at the office, we'll send you some free stuff!
+			</p>			
+		</div>
+		<div style='height:10px;'></div>
 		<div>
 			<a href='/<?php echo $this->params['section']; ?>/sixth-and-mill.html' rel='no-ajax'>
 				<img src='/theme/levis-511-contest/img/banner1.png' border='0' />
 			</a>
 		</div>
-		<div style='height:15px;'></div>
+		<div style='height:10px;'></div>
+		<div>
+			<a href='' rel='no-ajax'>
+				<img src='/theme/levis-511-contest/img/PP_Berrics.jpg' border='0' />
+			</a>
+		</div>
+		
+		<div style='height:10px;'></div>
 		<div>
 			<a href='/<?php echo $this->params['section']; ?>/project-511.html' rel='no-ajax'><img src='/theme/levis-511-contest/img/banner2.png' border='0' /></a>
 		</div>
 		<div class='line-break'>
 			
 		</div>
-		<div class='text'>
-			<div class='heading'>Winners?:</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sapien tortor, tincidunt sit amet mattis ac, volutpat et ligula. In non dui sed diam suscipit porta ut vestibulum libero. Cras velit velit, vehicula nec pellentesque quis, vehicula tempor diam. Sed at semper purus. Vivamus vestibulum nulla eu quam hendrerit hendrerit faucibus ipsum mollis. Suspendisse potenti. Praesent nisi dui, luctus in dictum nec, laoreet ullamcorper velit. Etiam quis fermentum arcu. Duis facilisis ante vel nunc aliquet posuere. Phasellus vel felis felis, nec imperdiet sem.</p>
-		</div>
+
 	</div>
 	<div class='task-column'>
 		<div class='heading'>
