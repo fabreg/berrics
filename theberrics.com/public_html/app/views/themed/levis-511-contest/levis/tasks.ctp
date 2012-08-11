@@ -255,15 +255,18 @@ function attachInstagram(id) {
 
 .upload-form .task-name {
 	font-family:'Arial';
-	color:#cc0033;
+	color:#fff;
 	font-weight:bold;
-
+	margin-top:10px;
+	
 }
 .upload-form .task-details {
 	font-family:'Arial';
-	color:#cc0033;
+	color:#fff;
 	font-style:italic;
 	font-size:14px;
+	border-bottom:1px dashed #7c001b;
+	padding-bottom:8px;
 
 }
 .form-buttons {
@@ -326,6 +329,14 @@ input[type=submit] {
 
 }
 
+.task-sort-order {
+	padding-top:4px;
+	color:#cc0033;
+	font-weight:bold;
+border-top:1px dashed #7c001b;
+font-family:'Arial';
+}
+
 </style>
 <div id='levis-task'>
 
@@ -334,7 +345,10 @@ input[type=submit] {
 		<div class='upload-preview'><div class='inner'></div></div>
 	</div>
 	<div class='right'>
-		<img src='/theme/levis-511-contest/img/rules-top.jpg' border='0' />
+		<div style='text-align:center;'><img src='/theme/levis-511-contest/img/upload-logo.png' border='0' /></div>
+		<div class='task-sort-order'>
+			Photo Challenge #<?php echo $task['MediahuntTask']['sort_order']; ?>
+		</div>
 		<div class='task-name'>
 			<?php echo $task['MediahuntTask']['name']; ?>
 		</div>

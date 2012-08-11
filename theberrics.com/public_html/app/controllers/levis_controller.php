@@ -57,6 +57,8 @@ class LevisController extends DailyopsController {
 			
 		}
 		
+		$this->set("title_for_layout","Levis & Nike Present - Picture Perfect: A Photographic Scavenger Hunt ");
+		
 		
 	}
 	

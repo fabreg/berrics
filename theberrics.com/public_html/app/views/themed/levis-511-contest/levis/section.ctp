@@ -85,7 +85,7 @@ $(document).ready(function() {
 
 	<div class='profile-column'>
 		<div>
-			<img src='/theme/levis-511-contest/img/rules-top.png' border='0' />
+			<img src='/theme/levis-511-contest/img/rules-top.jpg' border='0' />
 		</div>
 		<div class='line-break'>
 			
