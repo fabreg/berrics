@@ -83,7 +83,7 @@ var removeInventory = function(id) {
 						<?php endif; ?> 
 						<strong>QTY:</strong> <?php echo $inv['CanteenInventoryRecord']['quantity']; ?> 
 						<strong>WH:</strong> <?php echo $inv['CanteenInventoryRecord']['Warehouse']['name']; ?>
-						 <strong>ITEM#:</strong> <?php echo $inv['CanteenInventoryRecord']['foreign_key']; ?>  
+						 <strong>ITEM#:</strong> <?php echo (empty($inv['CanteenInventoryRecord']['foreign_key'])) ? $inv['CanteenInventoryRecord']['foreign_key']:"<span style='color:red; font-size:20px;'>NO ITEM NUMBER!!</span>"; ?>  
 						<strong>NAME: </strong><?php echo $inv['CanteenInventoryRecord']['name']; ?>
 						[ <a href='javascript:removeInventory(<?php echo $inv['id']; ?>);'>Remove</a> 
 						<?php if(!$inv['priority']): ?>

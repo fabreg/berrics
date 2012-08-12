@@ -425,6 +425,20 @@ class CanteenProduct extends AppModel {
 		//check for description
 		if(empty($CanteenProduct['CanteenProduct']['description'])) $msg[] = "Missing Description";
 		
+		foreach($CanteenProduct['ChildCanteenProduct'] as $c) {
+			
+			if(isset($c['CanteenInventoryRecord'][0]['id'])) {
+				
+				if(empty($c['CanteenInventoryRecord'][0]['foreign_key'])) {
+					
+					$msg[] = "Linked inventory is missing foreign key!";
+					
+				}
+				
+			}
+			
+		}
+		
 		return $msg;
 	}
 

@@ -809,6 +809,22 @@ public function dc_apr() {
 	
 	}
 	
+	public function raining_hesh() {
+		
+		$this->layout = "empty";
+		
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+				"Dailyop.id"=>5363
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	
 	
 }

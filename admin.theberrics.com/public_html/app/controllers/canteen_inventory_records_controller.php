@@ -83,6 +83,29 @@ class CanteenInventoryRecordsController extends LocalAppController {
 		if (!empty($this->data)) {
 			$this->CanteenInventoryRecord->create();
 			$this->data['CanteenInventoryRecord']['allocated'] = 0;
+			
+			$chk = $this->CanteenInventoryRecord->find("first",array(
+					
+						"conditions"=>array(
+							"OR"=>array(
+								"CanteenInventoryRecord.name"=>$this->data['CanteenInventoryRecord']['name'],
+								"CanteenInventoryRecord.foreign_key"=>$this->data['CanteenInventoryRecord']['foreign_key']
+							),
+							"CanteenInventoryRecord.warehouse_id"=>$this->data['CanteenInventoryRecord']['warehouse_id']
+								
+						),
+						"contain"=>array(),		
+				
+					
+					));
+			if(isset($chk['CanteenInventoryRecord']['id'])) {
+				
+				die("YUP");
+				
+				$this->CanteenInventoryRecord->id = $chk['CanteenInventoryRecord']['id'];
+				
+			}
+			
 			if ($this->CanteenInventoryRecord->save($this->data)) {
 				$this->Session->setFlash(__('The canteen inventory record has been saved', true));
 				
