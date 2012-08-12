@@ -2,7 +2,7 @@
 		
 		echo $this->element("layout/html-head-scripts");
 
-		$this->set("title_for_layout","The Berrics - QUIK");
+		$this->set("title_for_layout","The Berrics - #RAININGHESH");
 ?>
 <script>
 
