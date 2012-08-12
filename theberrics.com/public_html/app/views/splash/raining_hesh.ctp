@@ -155,7 +155,7 @@ body {
 	</div>
 
 <div style='text-align:center;' id="enter">
-<div><a href='/dailyops' style=''><img border='0' src='/img/splash/hesh/hesh.png'/></a></div>
+<div><a href='http://skullcandy.com' target='_blank' style=''><img border='0' src='/img/splash/hesh/hesh.png'/></a></div>
 <div><a href='/dailyops' style=''><img border='0' src='/img/splash/hesh/enter.png'/></a></div>
 </div>
 </div>
