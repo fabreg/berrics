@@ -10,7 +10,7 @@ $(document).ready(function() {
 	$("#image_file").uploadify({
 			
 				'swf'      : '/swf/uploadify.swf',
-	        	'uploader' : '/levis-511/handle_upload?xid=<?php echo $this->Session->id(); ?>',
+	        	'uploader' : '/levis-nike-picture-perfect/handle_upload?xid=<?php echo $this->Session->id(); ?>',
 	        	"fileTypeExts":"*.gif; *.jpg; *.jpeg; *.png",
 	        	"debug":false,
 	        	"buttonImage":"/theme/levis-511-contest/img/upload-button.png",

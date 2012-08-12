@@ -23,7 +23,7 @@ class LevisController extends DailyopsController {
 		
 		$this->Auth->allow("*");
 		
-		$this->Auth->deny("tasks","handle_upload","attach_instagram");
+		$this->Auth->deny("tasks","attach_instagram","handle_upload");
 		
 		$this->Auth->loginAction['action'] = "form";
 		
