@@ -1538,7 +1538,36 @@ class TesterController extends LocalAppController {
 		
 	}
 
+	public function run_inventory() {
+		
+		$this->loadModel("CanteenProduct");
+		
+		$plist = $this->CanteenProduct->find("all",array(
+					"conditions"=>array(
 
+						"CanteenProduct.parent_canteen_product_id"=>null
+							
+					),
+					"contain"=>array(),
+					"fields"=>array(
+						"CanteenProduct.id"		
+					)
+				));
+		
+		$pids = Set::extract("/CanteenProduct/id",$plist);
+		
+		$products = array();
+		
+		foreach($pids as $id) {
+			
+			$products[] = $this->CanteenProduct->returnAdminProduct($id);
+			
+		}
+		$this->set(compact("products"));
+		//die(pr($products));
+		
+		
+	}
 
 
 
