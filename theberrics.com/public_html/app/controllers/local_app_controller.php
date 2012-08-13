@@ -20,6 +20,26 @@ class LocalAppController extends AppController {
 	
 	public function beforeFilter() {
 		
+		
+		//do a splash page check
+		
+		if(!in_array($this->params['controller'],array("splash","newsv2"))) {
+			
+			if(!$this->Session->check("visited_splash")) {
+				
+				
+				header("Location:/");
+				die();
+				
+			}
+			
+		} else {
+			
+			$this->Session->write("visited_splash",1);
+			
+		}
+		
+		
 		parent::beforeFilter();
 		
 		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) $this->fixGeoIp();
