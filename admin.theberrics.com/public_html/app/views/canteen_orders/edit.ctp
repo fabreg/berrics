@@ -340,7 +340,7 @@ border-radius: 10px 10px 0px 0px;
 						<?php foreach($item['ChildCanteenOrderItem'] as $child): ?>
 						<tr style='background-color:#f0f0f0;'>
 							<td>
-								&nbsp;
+								<a href='/canteen_orders/edit_line_item/<?php echo $item['id']; ?>'>Edit Line</a>
 							</td>
 							<td>
 								<div style='float:left; margin:4px;'>

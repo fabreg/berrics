@@ -543,7 +543,35 @@ class CanteenOrdersController extends LocalAppController {
 	}
 	
 	
-	
+	public function edit_line_item($id) {
+		
+		$this->loadModel("CanteenOrderItem");
+		$this->loadModel("CanteenProduct");
+		
+		$line_item = $this->CanteenOrderItem->find("first",array(
+				
+						"conditions"=>array(
+							"CanteenOrderItem.id"=>$id		
+						),
+						"contain"=>array(
+							"ChildCanteenOrderItem"=>Array(
+								"CanteenProduct"=>array(
+									"ParentCanteenProduct"=>array(
+										"CanteenProductImage"		
+									),
+											
+								),
+								"CanteenInventoryRecord"		
+							)		
+						)
+				
+				));
+		
+		$this->data = $line_item;
+		
+		$this->CanteenProduct->superProductDropdown();
+		
+	}
 	
 	
 	

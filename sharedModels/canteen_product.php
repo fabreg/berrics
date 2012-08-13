@@ -441,6 +441,30 @@ class CanteenProduct extends AppModel {
 		
 		return $msg;
 	}
+	
+	public function superProductDropdown() {
+		
+		$parents = $this->find("all",array(
+					"conditions"=>array(
+						"CanteenProduct.parent_canteen_product_id"=>null			
+					),
+					"contain"=>array(
+								
+					)
+				));
+		
+		$drop = array();
+		
+		foreach($parents as $p) {
+			
+			$key = $p['CanteenProduct']['name']." - ".$p['CanteenProduct']['sub_title'];
+			
+			$drop[] = array();
+			
+		}
+		
+		
+	}
 
 	
 }

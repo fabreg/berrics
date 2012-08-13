@@ -108,7 +108,9 @@ $(document).ready(function() {
 		<div class='text'>
 			<div class='heading'>GRAND PRIZE:</div>
 			<p>
-			All expense paid trip to Los Angeles for private sessions at Nike's Sixth & Mill and The Berrics. The winner will also receive the entire Levi's 511 Skateboard Collection.
+			
+	All expense paid trip to Los Angeles for private sessions at Nike's Sixth & Mill and The Berrics. The winner will also receive product from the Levi's 511 Skateboard Collection.
+			
 			<p>			
 		</div>
 		<div style='height:5px;'></div>
