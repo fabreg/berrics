@@ -610,7 +610,8 @@ class CanteenOrdersController extends LocalAppController {
 				
 				$shipment = array(
 					"warehouse_id"=>$inv_wh_id,
-					"canteen_order_id"=>$order['CanteenOrder']['id']		
+					"canteen_order_id"=>$order['CanteenOrder']['id'],
+					"shipping_status"=>"pending"		
 				);
 				
 				$this->CanteenOrder->CanteenShippingRecord->create();
