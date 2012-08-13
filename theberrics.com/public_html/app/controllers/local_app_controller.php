@@ -23,19 +23,23 @@ class LocalAppController extends AppController {
 		
 		//do a splash page check
 		
-		if(!in_array($this->params['controller'],array("splash","newsv2"))) {
+		if(date("Y-m-d")=='2012-08-13') {
 			
-			if(!$this->Session->check("visited_splash")) {
-				
-				
-				header("Location:/");
-				die();
-				
+			if(!in_array($this->params['controller'],array("splash"))) {
+					
+				if(!$this->Session->check("visited_splash")) {
+			
+			
+					header("Location:/");
+					die();
+			
+				}
+					
+			} else {
+					
+				$this->Session->write("visited_splash",1);
+					
 			}
-			
-		} else {
-			
-			$this->Session->write("visited_splash",1);
 			
 		}
 		

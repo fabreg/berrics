@@ -60,7 +60,7 @@ body {
 		
 }
 
-#berricsVideo4fe4cfc1-fb44-4ecb-bf05-09a7323849cf img {
+#berricsVideo502875a3-eb7c-4d92-920d-5d2d323849cf img {
 
 	display:none;
 
