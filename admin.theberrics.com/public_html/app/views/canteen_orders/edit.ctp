@@ -205,6 +205,11 @@ border-radius: 10px 10px 0px 0px;
 			<div style='float:left; width:68%;'>
 				<ul class='actions'>
 					<li>
+						<a href='http://theberrics.com/canteen/order/<?php echo $this->data['CanteenOrder']['hash']; ?>' target='_blank'>
+							Order Status Link
+						</a>
+					</li>
+					<li>
 						<a href='/canteen_orders/cancel_order/<?php echo $this->data['CanteenOrder']['id']; ?>' onclick='return confirm("Are you sure you want to cancel this order?"); '>
 							Cancel Order
 						</a>
