@@ -157,7 +157,9 @@ body {
 <div style='text-align:center;' id="enter">
 <?php if(in_array(date("d"),array(13,14))): ?>
 <div style='text-align:center;'>
+	<a href='http://theberrics.com/skullcandy-team-berrics-westchester-august-14-2012.html'>
 	<img border='0' src='/img/splash/hesh/<?php echo date('d'); ?>.png' />
+	</a>
 </div>
 <?php endif; ?>
 <div><a href='http://skullcandy.com' target='_blank' style=''><img border='0' src='/img/splash/hesh/hesh.png'/></a></div>
