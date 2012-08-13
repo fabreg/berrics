@@ -569,7 +569,89 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$this->data = $line_item;
 		
-		$this->CanteenProduct->superProductDropdown();
+		$productDrop = $this->CanteenProduct->superProductDropdown();
+		
+	//	die(print_r($productDrop));
+		
+		$this->set(compact("productDrop"));
+		
+	}
+	
+	public function attach_product($order_id) {
+		
+		$this->loadModel("CanteenProduct");
+		
+		$order = $this->CanteenOrder->returnAdminOrder($order_id);
+		
+		if(count($this->data)>0) {
+			
+			//get the item that is being attached
+			
+			$item = $this->CanteenProduct->returnChildProduct($this->data['CanteenOrderItem']['canteen_product_id']);
+			
+			//get the inventory record
+			
+			$inv = $item['CanteenProductInventory'][0]['CanteenInventoryRecord'];
+			
+			$inv_wh_id = $inv['Warehouse']['id'];
+			
+			//check to see if there is a pending shipment from the same warehouse, 
+			//if not, then we will die and tell them to create a new shipment
+			
+			$shp_check = Set::extract("/CanteenShippingRecord[shipping_status=pending]",$order);
+			
+			$shp_check = Set::extract("/CanteenShippingRecord[warehouse_id={$inv_wh_id}]",$shp_check);
+			
+			if(count($shp_check)>0) {
+				
+				$shipment = $shp_check[0];
+				
+			} else {
+				
+				$shipment = array(
+					"warehouse_id"=>$inv_wh_id,
+					"canteen_order_id"=>$order['CanteenOrder']['id']		
+				);
+				
+				$this->CanteenOrder->CanteenShippingRecord->create();
+				
+				$this->CanteenOrder->CanteenShippingRecord->save($shipment);
+				
+				$shipment = array(
+							"CanteenShippingRecord"=>$shipment
+							);
+				
+				$shipment['CanteenShippingRecord']['id'] = $this->CanteenOrder->CanteenShippingRecord->id;
+				
+			}
+			
+			$this->CanteenOrder->CanteenOrderItem->create();
+			$this->CanteenOrder->CanteenOrderItem->save(array("canteen_order_id"=>$order['CanteenOrder']['id']));
+			
+			$parent_id = $this->CanteenOrder->CanteenOrderItem->id;
+			
+			$this->CanteenOrder->CanteenOrderItem->create();
+			
+			$this->CanteenOrder->CanteenOrderItem->save(array(
+
+				"title"=>$item['ParentCanteenProduct']['name']." - ".$item['ParentCanteenProduct']['sub_title'],
+				"sub_title"=>$item['CanteenProduct']['opt_label']."=".$item['CanteenProduct']['opt_value'],
+				"canteen_shipping_record_id"=>$shipment['CanteenShippingRecord']['id'],
+				"canteen_product_id"=>$item['CanteenProduct']['id'],
+				"parent_id"=>$parent_id,
+				"canteen_inventory_record_id"=>$inv['id'],
+				"quantity"=>1
+					
+			));
+			
+			return $this->redirect(base64_decode($this->params['named']['callback']));
+			
+		}
+		
+		
+		$productDrop = $this->CanteenProduct->superProductDropdown();
+		
+		$this->set(compact("productDrop"));
 		
 	}
 	

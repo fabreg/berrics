@@ -43,7 +43,10 @@
 				<td>
 				<?php echo $this->Form->input("ChildCanteenOrderItem.{$k}.brand_label"); ?>
 				</td>
-				<td>Linked Product</td>
+				<td>
+					Linked Product
+					<?php echo $this->Form->input("ChildCanteenOrderItem.{$k}.new_product_id",array("options"=>$productDrop)); ?>
+				</td>
 				<td>Linked Inventory Record</td>
 				<td>Linked Shipment</td>
 			</tr>

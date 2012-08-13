@@ -37,6 +37,26 @@ class CanteenProduct extends AppModel {
 	
 	);
 	
+	public function returnChildProduct($id) {
+		
+		$product = $this->find("first",array(
+					"conditions"=>array(
+						"CanteenProduct.id"=>$id		
+					),
+					"contain"=>array(
+						"ParentCanteenProduct"=>array(
+							"Brand"		
+						),
+						"CanteenProductInventory"=>array(
+							"CanteenInventoryRecord"=>array(
+								"Warehouse"		
+							)		
+						)	
+					)
+				));
+		return $product;
+	}
+	
 	public function returnAdminProduct($id) {
 		
 		$p = $this->find("first",array(
@@ -449,7 +469,11 @@ class CanteenProduct extends AppModel {
 						"CanteenProduct.parent_canteen_product_id"=>null			
 					),
 					"contain"=>array(
-								
+						"CanteenCategory"
+					),
+					"order"=>array(
+						"CanteenCategory.name"=>"ASC",
+						"CanteenProduct.name"=>"ASC"		
 					)
 				));
 		
@@ -457,12 +481,27 @@ class CanteenProduct extends AppModel {
 		
 		foreach($parents as $p) {
 			
-			$key = $p['CanteenProduct']['name']." - ".$p['CanteenProduct']['sub_title'];
+			$key = "".$p['CanteenCategory']['name']." ".$p['CanteenProduct']['name']." - ".$p['CanteenProduct']['sub_title'];
 			
-			$drop[] = array();
+			
+			$c = $this->find("all",array(
+						"conditions"=>array(
+							"CanteenProduct.parent_canteen_product_id"=>$p['CanteenProduct']['id']		
+						),
+						"contain"=>array()
+					));
+			
+			foreach($c as $k=>$v) {
+				
+				$drop[$key][$v['CanteenProduct']['id']] = $p['CanteenProduct']['name']." - ".$p['CanteenProduct']['sub_title']." [".$v['CanteenProduct']['opt_label']." = ".$v['CanteenProduct']['opt_value']."]";
+				
+			}
+			
+			
 			
 		}
 		
+		return $drop;
 		
 	}
 

@@ -209,7 +209,9 @@ border-radius: 10px 10px 0px 0px;
 							Cancel Order
 						</a>
 					</li>
-					
+					<li>
+						<a href='/canteen_shipping_records/add/canteen_order_id:<?php echo $this->data['CanteenOrder']['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>Create and Attach New Shipment</a>
+					</li>
 				</ul>
 				<div style='clear:both;'></div>
 				<h3>Transactions</h3>
@@ -315,9 +317,7 @@ border-radius: 10px 10px 0px 0px;
 			<div>
 				<ul class='actions'>
 					<li>
-						<a href='/canteen_orders/cancel_order/<?php echo $this->data['CanteenOrder']['id']; ?>' onclick='return confirm("Are you sure you want to cancel this order?"); '>
-							Add Line Item
-						</a>
+						<a href='/canteen_orders/attach_product/<?php echo $this->data['CanteenOrder']['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>Attach Product</a>
 					</li>
 				
 				</ul>

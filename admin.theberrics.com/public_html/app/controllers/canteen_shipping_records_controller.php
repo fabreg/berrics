@@ -128,6 +128,39 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 	}
 	
+	public function add() {
+		
+		
+		
+		if(count($this->data)>0) {
+			
+			$this->CanteenShippingRecord->create();
+			
+			$this->CanteenShippingRecord->save($this->data);
+			
+			$r = "/canteen_shipping_records";
+			
+			if(isset($this->params['named']['callback'])) {
+				
+				$r = base64_decode($this->params['named']['callback']);
+				
+			}
+			
+			return $this->redirect($r);
+			
+		}
+		
+		
+		if(isset($this->params['named']['canteen_order_id'])) {
+			
+			$this->data['CanteenShippingRecord']['canteen_order_id'] = $this->params['named']['canteen_order_id'];
+			
+		}
+		
+		$this->setSelects();
+		
+	}
+	
 	public function print_record($id) {
 		
 		$this->set("record",$this->CanteenShippingRecord->returnAdminRecord($id));
