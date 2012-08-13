@@ -61,7 +61,7 @@ class SplashRoute extends CakeRoute {
 				$params['action'] = "raining_hesh";
 				break;
 			default:
-				$params['action'] = "dc_mikey";
+				$params['action'] = "raining_hesh";
 				break;
 			
 		}
