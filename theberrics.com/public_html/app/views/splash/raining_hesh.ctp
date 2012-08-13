@@ -155,6 +155,11 @@ body {
 	</div>
 
 <div style='text-align:center;' id="enter">
+<?php if(in_array(date("d"),array(13,14))): ?>
+<div style='text-align:center;'>
+	<img border='0' src='/img/splash/hesh/<?php echo date('d'); ?>.png' />
+</div>
+<?php endif; ?>
 <div><a href='http://skullcandy.com' target='_blank' style=''><img border='0' src='/img/splash/hesh/hesh.png'/></a></div>
 <div><a href='/dailyops' style=''><img border='0' src='/img/splash/hesh/enter.png'/></a></div>
 </div>
