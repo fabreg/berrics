@@ -38,7 +38,6 @@
 			'jquery.fullscreen',
 			"berrics.htmlvideo",
 			"main"
-		
 		));
 	?>
 	<?php 
