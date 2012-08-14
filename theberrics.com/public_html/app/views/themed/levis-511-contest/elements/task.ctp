@@ -52,7 +52,7 @@ if(!$pub) $tc = "task-unpublished";
 				?>
 			</div>
 			<div class='details'>
-				<?php 
+				&nbsp;<?php 
 				
 					if($pub) {
 						
