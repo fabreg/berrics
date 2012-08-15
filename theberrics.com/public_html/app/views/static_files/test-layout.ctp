@@ -71,8 +71,9 @@ $this->set(compact("title_for_layout","meta_k","meta_d"));
 		    <div class="span4">4</div>
 		  </div>
 		  <div class="row show-grid">
+		  	<div class="span8">8</div>
 		    <div class="span4">4</div>
-		    <div class="span8">8</div>
+		    
 		  </div>
 		  <div class="row show-grid">
 		    <div class="span6">6</div>

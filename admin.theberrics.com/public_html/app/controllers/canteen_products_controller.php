@@ -1000,6 +1000,32 @@ class CanteenProductsController extends LocalAppController {
 	
 	}
 	
+	public function copy_product($id) {
+		
+		$product = $this->CanteenProduct->returnAdminProduct($id);
+		
+		//prepare CanteenProduct
+		unset(
+				$product['CanteenProduct']['id'],
+				$product['CanteenProduct']['modified'],
+				$product['CanteenProduct']['created']
+		);
+		//prepare ChildCanteenProduct
+		foreach($product['ChildCanteenProduct'] as $k=>$v) {
+			
+			unset(
+					$product['ChildCanteenProduct'][$k]['id'],
+					$product['ChildCanteenProduct'][$k]['modified'],
+					$product['ChildCanteenProduct'][$k]['created']
+			);
+			
+		}
+		
+		die(pr($product));
+		
+		
+	}
+	
 	
 	
 }
