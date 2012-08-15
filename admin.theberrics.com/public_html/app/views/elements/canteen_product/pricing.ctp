@@ -52,6 +52,7 @@ $(document).ready(function() {
 			echo $this->Form->input("CanteenProductPrice.{$k}.price",array("label"=>$price['Currency']['name']));
 			echo $this->Form->input("CanteenProductPrice.{$k}.id");
 		}
+		echo $this->Form->input("auto_calc_currencies",array("type"=>"checkbox"));
 		echo $this->Form->submit("Update Pricing");
 	?>
 	</div>
