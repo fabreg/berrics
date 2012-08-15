@@ -364,6 +364,36 @@ class CanteenProductsController extends LocalAppController {
 				
 			}
 			
+			//check if auto currency is checked
+			
+			if($this->data['CanteenProduct']['auto_calc_currencies'] == 1) {
+				
+				//get the USD price
+				$usd_price = Set::extract("/CanteenProductPrice[currency_id=USD]/price",$this->data);
+				
+				if(is_numeric($usd_price[0])) {
+					
+					foreach($this->data['CanteenProductPrice'] as $k=>$p) {
+						
+						if($p['currency_id'] == "USD") continue;
+						
+						
+						
+						$converted = $this->CanteenProduct->CanteenProductPrice->Currency->convertCurrency("USD",$p['currency_id'],$usd_price[0]);
+						
+						//round up!
+						$converted = ceil($converted);
+						
+						$converted -= .05;
+						
+						$this->data['CanteenProductPrice'][$k]['price'] = $converted;
+						
+					}
+					
+				}
+				
+			}
+			
 			$this->CanteenProduct->saveAll($this->data);
 			
 			
