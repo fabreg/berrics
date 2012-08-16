@@ -1936,6 +1936,7 @@ COMMANDER (BATCOM / UN / RECRUIT)
 	margin:5px;	
 
 }
+/*FEATURED POST*/
 
 
 #featured-post {
@@ -1987,6 +1988,7 @@ COMMANDER (BATCOM / UN / RECRUIT)
 	font-style:italic;	
 	font-size:14px;
 }
+
 
 
 /*
@@ -2846,6 +2848,35 @@ padding:5px;
 	font-size:16px;	
 	
 }
+
+
+/*
+featured canteen item
+*/
+
+#featured-canteen-product {
+	
+	background-image:url(/img/layout/featured-canteen-product.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	height:387px;
+	width:297px;
+	
+}
+
+#featured-canteen-product .inner {
+	
+	padding-top:38px;
+	width:253px;
+	margin:auto;
+}
+
+#featured-canteen-product .inner .canteen-product-super-thumb  .price {
+	
+	color:#e9e9e9;
+	
+}
+
 	
 
 #BerricsLogin {

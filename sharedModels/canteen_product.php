@@ -504,6 +504,40 @@ class CanteenProduct extends AppModel {
 		return $drop;
 		
 	}
+	
+	public function returnRandomProduct() {
+		
+		$token = "random_canteen_product";
+		
+		if(($product = Cache::read($token,"1min")) === false) {
+			$pid = $this->find("first",array(
+					"fields"=>array(
+							"CanteenProduct.id"
+					),
+					"conditions"=>array(
+							"CanteenProduct.publish_date<NOW()",
+							"CanteenProduct.active"=>1,
+							"CanteenProduct.parent_canteen_product_id"=>null
+					),
+					"contain"=>array(),
+					"order"=>"rand()"
+			));
+				
+			$product = $this->returnProduct(array(
+					"conditions"=>array("CanteenProduct.id"=>$pid['CanteenProduct']['id'])
+			));
+			
+			
+			
+			Cache::write($token,$product,"1min");
+			
+		}
+		
+		//die(print_r($product));
+		
+		return $product;
+		
+	}
 
 	
 }

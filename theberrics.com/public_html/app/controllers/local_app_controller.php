@@ -56,6 +56,8 @@ class LocalAppController extends AppController {
 		
 		$this->getUserCurrency();
 		
+		$this->setCanteenProduct();
+		
 		if($this->enforce_ssl==true && ($_SERVER['HTTPS']!=1)) {
 			
 			$this->enforceSSL();
@@ -111,6 +113,16 @@ class LocalAppController extends AppController {
 		));
 		
 		$this->set(compact("featured_post"));
+		
+	}
+	
+	public function setCanteenProduct() {
+		
+		$this->loadModel("CanteenProduct");
+		
+		$home_random_product = $this->CanteenProduct->returnRandomProduct();
+		
+		$this->set(compact("home_random_product"));
 		
 	}
 	
