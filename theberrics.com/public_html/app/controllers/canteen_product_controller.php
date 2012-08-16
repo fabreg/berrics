@@ -19,7 +19,7 @@ class CanteenProductController extends CanteenAppController {
 		
 		$product = $this->CanteenProduct->returnProduct(array("conditions"=>array(
 			"CanteenProduct.uri"=>$uri
-		)));
+		)),$this->isAdmin());
 		
 		
 		$this->set(compact("product"));
