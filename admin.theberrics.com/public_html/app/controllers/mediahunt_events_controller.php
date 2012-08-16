@@ -88,7 +88,8 @@ class MediahuntEventsController extends LocalAppController {
 					"contain"=>array(
 						"MediahuntTask",
 						"User"		
-					)
+					),
+					"limit"=>50
 				));
 		
 		$this->set(compact("uploads"));
@@ -122,6 +123,8 @@ class MediahuntEventsController extends LocalAppController {
 	public function list_tasks($event_id = false) {
 		
 		$this->loadModel("MediahuntTask");
+		$this->loadModel("MediahuntMediaItem");
+		
 		
 		$tasks = $this->MediahuntTask->find("all",array(
 					"conditions"=>array(
@@ -132,6 +135,18 @@ class MediahuntEventsController extends LocalAppController {
 								"MediahuntTask.sort_order"=>"ASC"
 							)
 				));
+		
+		foreach($tasks as $k=>$v) {
+			
+			$c = $this->MediahuntMediaItem->find("count",array(
+					
+						"conditions"=>array(
+							"MediahuntMediaItem.mediahunt_task_id"=>$v['MediahuntTask']['id']		
+						)
+					));
+			$tasks[$k]['MediahuntEvent']['UploadCount'] = $c;
+			
+		}
 		
 		$this->set(compact("tasks"));
 		

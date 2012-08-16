@@ -23,6 +23,7 @@
 						<th>Name</th>
 						<th>Publish Date</th>
 						<th width='1%'>Active</th>
+						<th>UploadCount</th>
 						<th>-</th>
 					</tr>
 					<?php foreach($tasks as $task): ?>
@@ -50,6 +51,7 @@
 								}
 							?>
 						</td>
+						<td><?php echo $task['MediahuntEvent']['UploadCount']; ?></td>
 						<td class='actions'>
 							<?php 
 								
