@@ -39,6 +39,7 @@
 			
 			<th><?php echo $this->Paginator->sort('rank');?></th>
 			<th><?php echo $this->Paginator->sort('mediahunt_task_id');?></th>
+			<th>LINK</th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -76,7 +77,9 @@
 			?>
 		</td>
 		<td><?php echo $t['name']; ?></td>
-		
+		<td>
+			LEVIS PAGE LINK: <a href='http://theberrics.com/levis-nike-picture-perfect/image/<?php echo $mi['id']; ?>'>CLICK</a><br />
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link("Approve",array("action"=>"approve",$mi['id'],"callback"=>base64_encode($this->here))); ?>
 			<?php echo $this->Html->link("Shit Can",array("action"=>"delete",$mi['id'],"callback"=>base64_encode($this->here))); ?>

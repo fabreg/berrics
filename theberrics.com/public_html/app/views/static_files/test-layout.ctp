@@ -20,7 +20,7 @@ $this->set(compact("title_for_layout","meta_k","meta_d"));
 <!DOCTYPE html>
 <html>
 <head>
-	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php 
 	
 		echo $this->Html->css(array("bootstrap"));
@@ -48,6 +48,29 @@ $this->set(compact("title_for_layout","meta_k","meta_d"));
   margin-bottom: 20px;
 }
 	</style>
+<script>
+
+$(document).ready(function() { 
+
+
+	$(window).bind("resize",function() {
+
+		$("div[class^=span]").each(function() { 
+
+			var w = $(this).width();
+
+			$(this).html(w);
+
+		});
+
+
+	});
+
+	
+});
+
+	
+</script>
 </head>
 <body>
 	<div class='container'>
