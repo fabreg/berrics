@@ -26,7 +26,7 @@ function openDetails(id,ele) {
 
 	var div = $(ele).parent().parent();
 
-	var $newDiv = $("<tr ><td colspan='11' inv='"+id+"' style='padding:0px;' align='right'>Loading</td></tr>");
+	var $newDiv = $("<tr ><td colspan='13' inv='"+id+"' style='padding:0px;' align='right'>Loading</td></tr>");
 	
 	$(div).after($newDiv);
 
