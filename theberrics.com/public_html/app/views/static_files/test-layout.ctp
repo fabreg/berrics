@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 	$(window).bind("resize",function() {
 
-		$("div[class^=span]").each(function() { 
+		$(".container:eq(0) div[class^=span]").each(function() { 
 
 			var w = $(this).width();
 
@@ -105,6 +105,41 @@ $(document).ready(function() {
 		  <div class="row show-grid">
 		    <div class="span12">12</div>
 		  </div>
+	</div>
+	<div class='container'>
+		<div class='row-fluid'>
+			<div class='span8'>
+				<ul class='thumbnails'>
+					<li class='span12'>
+						<img src="http://img.theberrics.com/i.php?src=/video/stills/502d5547-a998-4d70-922f-551a323849cf.jpg&amp;zc=0&amp;h=400&amp;w=700" border="0" alt="">
+					</li>
+				</ul>
+			</div>
+			<div class='span4'>
+				<ul class='thumbnails'>
+					<li class='span12'>
+										
+				<script type="text/javascript">
+				  var ord = window.ord || Math.floor(Math.random() * 1e16);
+				  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N5885/adj/dailyops_p1_lo;sz=300x250;tile=3;ord=' + ord + '?"><\/script>');
+				</script>
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='span8'>
+				<ul class='thumbnails'>
+					<li class='span12'>
+						<script>
+						  var ord = window.ord || Math.floor(Math.random() * 1e16);
+						  document.write('<script type="text/javascript" src="https://ad.doubleclick.net/N5885/adj/dailyops_p1;sz=728x90;tile=1;ord=' + ord + '?"><\/script>');
+						</script>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
