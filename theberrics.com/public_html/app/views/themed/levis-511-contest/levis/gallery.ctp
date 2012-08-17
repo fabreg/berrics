@@ -23,7 +23,7 @@ function popImage(id) {
 		'url':'/levis-nike-picture-perfect/image/'+id,
 		'success':function(d) {
 
-			$('.image-view').html(d);
+			$('#LevisGallery .image-view').html(d);
 			removeFormOverlay();
 
 		}
