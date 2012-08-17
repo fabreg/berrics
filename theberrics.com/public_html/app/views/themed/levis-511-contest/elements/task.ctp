@@ -70,6 +70,7 @@ if(!$pub) $tc = "task-unpublished";
 		<div style='clear:both;'></div>
 	</div>
 	<div class='options'>
+
 	<?php if(!$pub): ?>
 		<img border='0' src='/theme/levis-511-contest/img/upload-photo.png' />
 	<?php elseif(!isset($m['id'])): ?>
@@ -94,6 +95,9 @@ if(!$pub) $tc = "task-unpublished";
 		<a href='/<?php echo $this->params['section']; ?>/image/<?php echo $m['id']; ?>' rel='no-ajax'>
 			<img border='0' src='/theme/levis-511-contest/img/view-photo.png' />
 		</a>
+	<?php endif; ?>
+		<?php if($t['media_count']>0): ?>
+	<a href='/<?php echo $this->params['section']; ?>/gallery/mediahunt_task_id:<?php echo $t['id']; ?>'><img src='/theme/levis-511-contest/img/view-entries.png' border='0' /></a>
 	<?php endif; ?>
 	</div>
 </div>

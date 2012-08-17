@@ -35,7 +35,7 @@ class LevisController extends DailyopsController {
 		
 		//force hash pushing shit
 		if(
-				in_array($this->params['action'],array("tasks")) && !$this->RequestHandler->isAjax()
+				in_array($this->params['action'],array("tasks","gallery")) && !$this->RequestHandler->isAjax()
 				 	
 		) {
 			
@@ -74,7 +74,7 @@ class LevisController extends DailyopsController {
 	
 	private function setImage($id) {
 		
-		$this->params['action'] = "section";
+		if(!$this->RequestHandler->isAjax()) $this->params['action'] = "section";
 		
 		$image = $this->MediahuntMediaItem->find("first",array(
 				
@@ -96,6 +96,12 @@ class LevisController extends DailyopsController {
 		
 		$this->setFacebookMetaImg(false,$facebook_img);
 		
+		
+	}
+	
+	public function image() {
+		
+		$this->render('/elements/gallery-item');
 		
 	}
 	
@@ -128,7 +134,18 @@ class LevisController extends DailyopsController {
 					)
 				));
 		
-		
+		foreach($tasks as $k=>$v) {
+			
+			$c = $this->MediahuntMediaItem->find("count",array(
+						"conditions"=>array(
+							"MediahuntMediaItem.approved"=>1,
+							"MediahuntMediaItem.mediahunt_task_id"=>$v['MediahuntTask']['id']		
+						)
+					));
+			
+			$tasks[$k]['MediahuntTask']['media_count'] = $c;
+			
+		}
 		
 		$this->set(compact("tasks"));
 		
@@ -258,6 +275,33 @@ class LevisController extends DailyopsController {
 		
 		die(json_encode($data));
 		
+		
+	}
+	
+	public function gallery() {
+		
+		$task_id = $this->params['named']['mediahunt_task_id'];
+		
+		$this->paginate['MediahuntMediaItem'] = array(
+						"order"=>array("MediahuntMediaItem.rank"=>"ASC"),
+						"conditions"=>array(
+							"MediahuntMediaItem.mediahunt_task_id"=>$task_id,
+							"MediahuntMediaItem.approved"=>1		
+						),
+						"contain"=>array(
+							"User",
+							"MediahuntTask"		
+						),
+						"limit"=>21		
+					);
+		
+		
+		$images = $this->paginate("MediahuntMediaItem");
+		
+		
+		$id = $images[0]['MediahuntMediaItem']['id'];
+		
+		$this->set(compact("images","id"));
 		
 	}
 	

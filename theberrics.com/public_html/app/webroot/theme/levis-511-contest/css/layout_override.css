@@ -217,6 +217,12 @@ SECTION
 	
 }
 
+#levis-511-section .task .options a {
+	
+	text-decoration:none;
+	
+}
+
 #levis-511-section .task .checkbox {
 	
 	float:left;

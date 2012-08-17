@@ -7,6 +7,8 @@
 			 
 			 var open = true;
 			 
+			 if($("#LevisOverlay").length>0) open = false;
+			 
 			 if(open) {
 				 
 				 var div = $("<div id='LevisOverlay' />");
@@ -113,8 +115,19 @@
 				$("#LevisOverlay .content a[rel!='no-ajax']").click(function(e) {
 					
 					var ref = $(this).attr("href");
+
+					if(use_base) ref = Base64.encode(ref);
 					
-					methods.openUrl(ref);
+					var state = {};
+
+					state['levis'] = ref;
+
+					$.bbq.pushState(state);
+
+					//document.location.hash = "#!"+ref
+					
+					return false;
+					
 					
 				});
   				
@@ -182,7 +195,12 @@
 				
 			});
   			
-  		}
+  		},
+  		openGallery:function() {
+  			
+  			
+  		},
+  		
   		
 	
 		  

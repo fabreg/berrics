@@ -65,6 +65,7 @@
 																		),array("target"=>"_blank"));
 								
 							?>
+							<a target='_blank' href='http://theberrics.com/levis-nike-picture-perfect/gallery/<?php echo $task['MediahuntTask']['id']; ?>'>Gallery View ( There needs to be approved images for it to work )</a>
 						</td>
 					</tr>
 					<?php endforeach; ?>
