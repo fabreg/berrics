@@ -233,6 +233,9 @@ border:3px solid #cc0033;
 		
 	</div>
 	<div class='items'>
+		<div style='text-align:center; font-style:italic; font-size:10px;'>
+			** Only Approved Images Are Shown ** <br /> ** If your image is not being displayed its either pending appoval or has been disqualified **
+		</div>
 		<div class='paging'>
 		<?php echo $this->Paginator->prev('< PREVIOUS', array(), null, array('class'=>'disabled'));?>
 	  	<?php echo $this->Paginator->numbers(array(
