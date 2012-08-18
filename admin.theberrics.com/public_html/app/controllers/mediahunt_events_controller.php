@@ -146,6 +146,16 @@ class MediahuntEventsController extends LocalAppController {
 					));
 			$tasks[$k]['MediahuntEvent']['UploadCount'] = $c;
 			
+			//get the approved
+			
+			$ap = $this->MediahuntMediaItem->find("count",array(
+					
+						"conditions"=>array(
+							"MediahuntMediaItem.mediahunt_task_id"=>$v['MediahuntTask']['id'],
+							"MediahuntMediaItem.approved"=>1		
+						)
+					));
+			$tasks[$k]['MediahuntEvent']['UploadApproved'] = $ap;
 		}
 		
 		$this->set(compact("tasks"));

@@ -51,7 +51,7 @@
 								}
 							?>
 						</td>
-						<td><?php echo $task['MediahuntEvent']['UploadCount']; ?></td>
+						<td>A:<?php echo $task['MediahuntEvent']['UploadApproved']; ?>/T:<?php echo $task['MediahuntEvent']['UploadCount']; ?></td>
 						<td class='actions'>
 							<?php 
 								
