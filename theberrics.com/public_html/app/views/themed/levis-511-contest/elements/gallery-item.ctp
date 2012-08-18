@@ -28,7 +28,7 @@ $ig_data = json_decode($m['instagram_data'],true);
 				<?php endif; ?>
 				<?php if($m['rank']>0): ?>
 				<div class='label'>Rank:</div>
-				<div class='value'><?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?></div>
+				<div class='value'><?php echo $m['rank']; ?></div>
 				<?php endif; ?>
 			</div>
 		</div>
