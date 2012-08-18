@@ -27,7 +27,7 @@ class MediahuntMediaItem extends AppModel {
 	
 		if(isset($data['MediahuntMediaItem'])) $data = $data['MediahuntMediaItem'];
 	
-		if(empty($data['id'])) { 
+		if(empty($this->id)) { 
 			
 			$data['id'] = $this->genId(); 
 			$data['rank'] = 99999;
