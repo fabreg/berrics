@@ -25,7 +25,14 @@ if(!$pub) $tc = "task-unpublished";
 				<img border='0' src='/theme/levis-511-contest/img/checkbox-checked.png' />
 			<?php endif; ?>
 		</div>
-		<div class='number'>#<?php echo $task['MediahuntTask']['sort_order']; ?></div>
+		<div class='number'>#<?php echo $task['MediahuntTask']['sort_order']; ?><?php if(!empty($m['id'])): ?>
+			<?php if($m['approved']): ?>
+			<span style='color:green; font-weight:bold; font-size:12px;'>APPROVED</span>
+			<?php else: ?>
+			<span style='color:red; font-weight:bold; font-size:12px;'>PENDING APPROVAL</span>
+			<?php endif; ?>
+		<?php endif; ?></div>
+		
 		<div style='clear:both;'></div>
 	</div>
 	<div class='body'>
