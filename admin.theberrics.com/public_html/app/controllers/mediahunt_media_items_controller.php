@@ -55,7 +55,10 @@ class MediahuntMediaItemsController extends LocalAppController {
 						"User",
 						"MediahuntTask"
 							
-					)
+					),
+					"order"=>array(
+							"MediahuntMediaItem.created"=>"DESC"	
+						)
 				
 				);
 		

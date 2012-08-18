@@ -6,7 +6,7 @@
 			<legend>Filter</legend>
 			<?php 
 				echo $this->Form->create("MediahuntMediaItem",array("url"=>array("action"=>"search")));
-				echo $this->Form->input("approved");
+				echo $this->Form->input("approved",array("options"=>array(0=>"Un-Approved",1=>"Approved"),"empty"=>true));
 				echo $this->Form->input("mediahunt_task_id",array("options"=>$mediahuntTaskSelect,"empty"=>true));
 				echo $this->Form->end("Filter Results");
 			?>
