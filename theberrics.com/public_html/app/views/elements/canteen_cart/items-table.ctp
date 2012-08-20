@@ -72,6 +72,20 @@
 				</td>
 			</tr>
 			<?php endif;?>
+			
+			<?php if(!empty($this->data['PromotionCanteenPromoCode']['name'])): ?>
+			<tr>
+				<td>
+					
+				</td>
+				<td colspan='2' valign='center'>
+					<div style='float:left; margin-left:5px; margin-right:5px;'>
+					<?php echo $this->Media->promoCodeIcon($this->data['PromotionCanteenPromoCode'],array("w"=>45,"h"=>45)); ?>
+					</div>
+					<?php echo $this->data['PromotionCanteenPromoCode']['name']; ?>
+				</td>
+			</tr>
+			<?php endif;?>
 		</tbody>
 	</table>	
 </div>

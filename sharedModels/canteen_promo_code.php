@@ -56,6 +56,25 @@ class CanteenPromoCode extends AppModel {
 		}
 		
 		#Promotion Promo Code
+		//check to see if there are more than three items
+		if(count($CanteenOrder['CanteenOrderItem'])>=3) {
+			
+			$CanteenOrder['UserAccountCanteenPromoCode'] = null;
+			
+			$uap = $this->find("first",array(
+						
+					"conditions"=>array(
+							"CanteenPromoCode.id"=>3
+					),
+					"contain"=>array()
+						
+			));
+				
+			if(isset($uap['CanteenPromoCode']['id'])) $CanteenOrder['PromotionCanteenPromoCode'] = $uap['CanteenPromoCode'];
+			
+			
+			
+		}
 		
 		#Standard Promo Code
 		
@@ -68,6 +87,13 @@ class CanteenPromoCode extends AppModel {
 			$discount += ($CanteenOrder['UserAccountCanteenPromoCode']['rate']/100)*$CanteenOrder['CanteenOrder']['sub_total'];
 			
 		}
+		
+		if(isset($CanteenOrder['PromotionCanteenPromoCode']['rate'])) {
+				
+			$discount += ($CanteenOrder['PromotionCanteenPromoCode']['rate']/100)*$CanteenOrder['CanteenOrder']['sub_total'];
+				
+		}
+		
 		
 		if($discount>0) $discount = "-".$discount;
 			

@@ -266,6 +266,9 @@ function initOptionClick() {
 		</div>
 		<div class='container-bottom'></div>
 </div>
+<?php if($this->Session->read("is_admin")==1): ?>
+<a href='http://admin.theberrics.com/canteen_products/edit/<?php Echo $product['CanteenProduct']['id']; ?>' target='_blank'>Edit</a>
+<?php endif; ?>
 <pre>
 <?php 
 
