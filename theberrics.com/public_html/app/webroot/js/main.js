@@ -738,7 +738,7 @@ var DailyopsSlideShow = {
 		$(".dailyop_media_item[slide_show=1]").each(function() { 
 			
 			$(this).click(function() { DailyopsSlideShow.loadNext(this); });
-			
+		
 		});
 	
 		},
@@ -794,6 +794,11 @@ var DailyopsSlideShow = {
 						
 					}
 
+					
+				},
+				statusCode:{
+					
+					404:function() { alert("404"); }
 					
 				}
 				

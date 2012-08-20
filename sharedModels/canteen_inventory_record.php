@@ -65,14 +65,20 @@ class CanteenInventoryRecord extends AppModel {
 	
 	public function import_ljg_inventory() {
 		
+		set_time_limit(0);
+		
 		//file
 		$file = "/home/sites/lajolla/inventory.txt";
 		
-		$file_str = file_get_contents($file);
+		//$file_str = file_get_contents($file);
 		
-		$file_str = trim($file_str);
+		//$file_str = trim($file_str);
 		
-		$csv_rows = explode("\n",$file_str);
+		$csv_rows = $file_str = file($file);
+		
+		//$csv_rows = explode("\n",$file_str);
+		
+		//die(pr(count($csv_rows)));
 		
 		$counter = 0;
 		
@@ -82,19 +88,18 @@ class CanteenInventoryRecord extends AppModel {
 			
 			$cols = array_combine($this->ljg_inv_schema,explode("\t",$str));
 			
+			if(empty($cols['UPC Code'])) continue;
+			
 			$record = $this->findByForeignKey($cols['UPC Code']);
 			
 			if(!empty($record['CanteenInventoryRecord']['id'])) {
 				
-				if($this->updateAll(
-					array(
-						"quantity"=>($cols['Quantity']-$record['CanteenInventoryRecord']['allocated'])
-					),//fields
-					array(
-						"id"=>$record['CanteenInventoryRecord']['id']
-					) //conditions
-				)) $counter++;
-				
+				$uq =$cols['Quantity']-$record['CanteenInventoryRecord']['allocated'];
+				$s = "update canteen_inventory_records set
+						quantity = $uq 
+					WHERE id = {$record['CanteenInventoryRecord']['id']} LIMIT 1;";
+				echo $s;
+				echo "\n"; $counter++;
 			}
 			
 		}

@@ -112,7 +112,7 @@ class CanteenCategoryController extends CanteenAppController {
 					"conditions"=>$pcond,
 					"contain"=>array(),
 					"order"=>array(
-							"CanteenProduct.display_weight"=>"ASC"
+							"CanteenProduct.publish_date"=>"DESC"
 					)
 			));
 				
