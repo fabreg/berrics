@@ -47,7 +47,6 @@ body {
 
 .top-content {
 
-6
 	position:relative;
 	
 
