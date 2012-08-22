@@ -203,6 +203,13 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	public function sls_championship() {
+	
+	
+	
+	
+	}
+	
 	public function westchester() {
 		
 		
