@@ -1,6 +1,6 @@
 <?php 
 
-$title_for_layout = "The Berrics - STREET LEAGUE SKATEBOARDING: ARIZONA";
+$title_for_layout = "The Berrics - STREET LEAGUE SKATEBOARDING CHAMPIONSHIP";
 
 $this->set(compact("title_for_layout"));
 
