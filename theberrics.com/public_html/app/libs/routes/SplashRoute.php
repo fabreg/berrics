@@ -55,6 +55,10 @@ class SplashRoute extends CakeRoute {
 			case "2012-08-21":
 				$params['action'] = "raining_hesh";
 				break;
+			case '2012-08-26':
+				$params['action'] = "sls_championship";
+				$news = false;
+				break;
 			default:
 				$params['action'] = "sls_championship";
 				break;

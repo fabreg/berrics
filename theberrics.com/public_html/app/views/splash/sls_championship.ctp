@@ -84,10 +84,7 @@ body {
 		<img border='0' src='/img/splash/sls-championship/top.jpg' />
 	</div>
 	
-	<div id='counter'>
-	
-		<div class='days'><?php echo $days_to_finals; ?></div>
-	</div>
+
 	
 	<div>
 		
