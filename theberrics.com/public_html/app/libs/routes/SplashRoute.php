@@ -63,7 +63,7 @@ class SplashRoute extends CakeRoute {
 					$params['action'] = "index";
 					break;
 			default:
-				$params['action'] = "sls_championship";
+				$params['action'] = "index";
 				break;
 			
 		}
