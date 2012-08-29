@@ -19,8 +19,8 @@ if($user):
 
 <div id='contest'>
 CONGRATULATIONS<br /><br />
-YOU HAVE BEEN ENTERED IN THE MIKEY DRAWING <br />
-If you are selected. We will send an email to the address listed below on August 16th 2012 with further details<br /><br />
+YOU HAVE BEEN ENTERED IN THE FELIPE DRAWING <br />
+If you are selected. We will send an email to the address listed below on September 1st 2012 with further details<br /><br />
 <?php echo $user['User']['email']; ?> <br /><br />
 <a href='/dailyops'>Back to the Daily Ops</a>
 </div>
