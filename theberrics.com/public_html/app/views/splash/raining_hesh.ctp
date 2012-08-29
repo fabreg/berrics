@@ -51,7 +51,7 @@ $bg = $bg.".jpg";
 <style>
 body {
 
-		background: url(/img/splash/hesh/<?php echo $bg; ?>) no-repeat center center fixed;
+		background: url(/img/splash/hesh/2.jpg) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
