@@ -184,11 +184,13 @@ class TesterController extends LocalAppController {
 			users `User`
 			LEFT JOIN user_profiles `UserProfile` ON UserProfile.user_id = User.id
 			WHERE User.id IN (
-			SELECT user_id FROM user_contest_entries where user_contest_id = 15
+			SELECT user_id FROM user_contest_entries where user_contest_id = 16
 			) AND UserProfile.geo_region_name = 'California'
 			ORDER BY RAND() LIMIT 50;
 			"
 		);
+		
+		//die(print_r(count($q)));
 
 		foreach($q as $v) {
 			
