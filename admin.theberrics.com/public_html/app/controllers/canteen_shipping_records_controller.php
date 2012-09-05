@@ -429,4 +429,14 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 	}
 	
+	public function checkout_shipment($id = false,$cb) {
+		
+		$record = $this->CanteenShippingRecord->findById($id);
+		
+		$this->CanteenShippingRecord->checkout_shipment($record,true,true);
+		
+		return $this->redirect(base64_decode($cb));
+		
+	}
+	
 }

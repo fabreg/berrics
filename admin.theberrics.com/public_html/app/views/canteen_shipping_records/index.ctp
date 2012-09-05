@@ -186,6 +186,7 @@ function setBatchCommand(cmd) {
 				<?php if(strtoupper($s['shipping_status'])=="PROCESSING"): ?>
 					<a href='/canteen_shipping_records/process_usps_shipment/<?php echo $s['id']; ?>/calback:<?php echo base64_encode($this->here); ?>' onclick='return confirm("Are you sure you want to regenerate this shipment");' >Regenerate USPS Shipment</a>
 					<a href='/canteen_shipping_records/usps_combo_label/<?php echo $s['id']; ?>/calback:<?php echo base64_encode($this->here); ?>' >Print USPS Combo Label</a>
+					<a href='/canteen_shipping_records/checkout_shipment/<?php echo $s['id']; ?>/<?php echo base64_encode($this->here); ?>'>Checkout Shipment</a>
 				<?php endif; ?>
 				
 			</td>
