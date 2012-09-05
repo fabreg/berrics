@@ -197,4 +197,75 @@ class MediahuntMediaItemsController extends LocalAppController {
 		
 	}
 	
+	public function view_completed() {
+		
+		//get all the ids of the completed in order
+		$count = $this->MediahuntMediaItem->query("select count(*) as `total`,user_id from 
+													mediahunt_media_items
+													group by user_id
+													order by total desc");
+		
+		
+		foreach($count as $k=>$v) {
+			
+			if($v[0]['total']<20) unset($count[$k]);
+			
+		}
+		
+		$uids = Set::extract("/mediahunt_media_items/user_id",$count);
+
+		$this->loadModel("User");
+		
+		$users = $this->User->find("all",array(
+					"conditions"=>array(
+						"User.id"=>$uids	
+					),
+					"contain"=>array(
+						"UserProfile"		
+					)
+				));
+		
+		$this->set(compact("users"));
+		
+	}
+	
+	public function view_user($id) {
+		
+		//get the user
+		$this->loadModel("User");
+		
+		$user = $this->User->returnUserProfile($id,true);
+		
+		$items = $this->MediahuntMediaItem->find("all",array(
+					"conditions"=>array(
+						"MediahuntMediaItem.user_id"=>$id		
+					),
+					"contain"=>array(
+
+						"MediahuntTask"
+							
+					)
+				));
+		
+		$this->set(compact("items","user"));
+		
+	}
+	
+	public function mark_winner($user_profile_id,$key,$cb) {
+		
+		$this->loadModel("UserProfile");
+		
+		$this->UserProfile->create();
+		
+		$this->UserProfile->id = $user_profile_id;
+		
+		$this->UserProfile->save(array(
+					"mediahunt_winner"=>$key
+				));
+		
+		
+		return $this->redirect(base64_decode($cb));
+		
+	}
+	
 }

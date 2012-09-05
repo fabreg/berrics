@@ -9,6 +9,9 @@
 			<li>
 				<a href='/mediahunt_tasks/add/mediahunt_event_id:<?php echo $mediahuntEvent['MediahuntEvent']['id']; ?>/callback:<?php echo base64_encode($this->here); ?>'>Add New Task</a>
 			</li>
+			<li>
+				<a href='/mediahunt_media_items/view_completed'>View Completed</a>
+			</li>
 		</ul>
 		<div style='clear:both;'></div>
 		</fieldset>
