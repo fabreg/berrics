@@ -95,9 +95,13 @@ if(!$pub) $tc = "task-unpublished";
 			}
 		
 		?>
+		<?php 
+		/*
 		<a href='<?php echo $lnk; ?>' rel='<?php echo $rel; ?>'>
 			<img border='0' src='/theme/levis-511-contest/img/upload-photo.png' />
-		</a>	
+		</a>
+		*/	
+		?>
 	<?php else: ?>
 		<a href='/<?php echo $this->params['section']; ?>/image/<?php echo $m['id']; ?>' rel='no-ajax'>
 			<img border='0' src='/theme/levis-511-contest/img/view-photo.png' />
