@@ -234,6 +234,8 @@ class MediahuntMediaItemsController extends LocalAppController {
 		//get the user
 		$this->loadModel("User");
 		
+		$this->User->ensure_user_profile($id);
+		
 		$user = $this->User->returnUserProfile($id,true);
 		
 		$items = $this->MediahuntMediaItem->find("all",array(
