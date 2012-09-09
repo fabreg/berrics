@@ -263,7 +263,7 @@ class MediahuntMediaItemsController extends LocalAppController {
 					"mediahunt_winner"=>$key
 				));
 		
-		
+		return $this->redirect("/mediahunt_media_items/view_completed");
 		return $this->redirect(base64_decode($cb));
 		
 	}
