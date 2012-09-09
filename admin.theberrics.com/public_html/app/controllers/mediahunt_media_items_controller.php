@@ -225,6 +225,12 @@ class MediahuntMediaItemsController extends LocalAppController {
 					)
 				));
 		
+		foreach($users as $k=>$v) {
+			
+			if($v['UserProfile']['mediahunt_winner'] != 1) unset($users[$k]);
+			
+		}
+		
 		$this->set(compact("users"));
 		
 	}
