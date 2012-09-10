@@ -425,6 +425,8 @@ class CanteenShippingRecord extends AppModel {
 		
 		if($record['UserAddress']['country_code'] == "US") {
 			
+		
+			
 			$record = $this->process_usps_dom($record);
 			
 		} else {
@@ -452,6 +454,9 @@ class CanteenShippingRecord extends AppModel {
 			
 		}
 		
+		$weight = .4;
+		
+		
 		$record['CanteenShippingRecord']['weight'] = $record['UserAddress']['weight'] = $weight;
 		
 		$record['UserAddress']['weight_oz'] = floor($record['UserAddress']['weight'] * 16);
@@ -463,6 +468,8 @@ class CanteenShippingRecord extends AppModel {
 		
 		
 		$res = $u->ship_delcon($record['UserAddress']);
+		
+		
 		
 		//parse xml response
 		$xml = simplexml_load_string($res);
