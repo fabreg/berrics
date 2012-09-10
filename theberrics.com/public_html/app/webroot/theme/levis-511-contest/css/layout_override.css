@@ -348,6 +348,20 @@ SECTION
 	
 }
 
+#levis-511-section  .winner {
+	
+	text-align:center;
+	color:#000;
+	font-size:32px;
+	font-family:'Arial';
+}
+
+#levis-511-section  .winner .name {
+	
+	font-size:48px;
+	font-weight:bold;
+}
+
 
 
 

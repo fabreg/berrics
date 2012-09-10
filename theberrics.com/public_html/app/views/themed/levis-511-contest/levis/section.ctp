@@ -153,6 +153,12 @@ $(document).ready(function() {
 			} 
 			
 		?>
+		<div  class='winner'>
+			Congratulations to our winner:
+			<div class='name'>
+				Mark Fricker
+			</div>
+		</div>
 		<?php 
 			if(isset($image) && !empty($image)): 
 

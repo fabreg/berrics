@@ -82,6 +82,12 @@ class CanteenInventoryRecord extends AppModel {
 		
 		$counter = 0;
 		
+		$this->query(
+				"update canteen_inventory_records set quantity=0 where warehouse_id=2"
+				);
+		
+		sleep(3);
+		
 		foreach($csv_rows as $v) {
 				
 			$str = trim($v);

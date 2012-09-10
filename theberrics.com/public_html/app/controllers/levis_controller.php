@@ -9,6 +9,8 @@ class LevisController extends DailyopsController {
 	
 	private $event_id = 2;
 	
+	private $winner_id = '4d790f4c-4194-46d0-b6f8-6d510ab55011';
+	
 	public function beforeFilter() {
 		
 		if((isset($_GET['xid']) && strlen($_GET['xid'])>10) && in_array($this->params['action'],array("handle_upload"))) {
@@ -112,16 +114,16 @@ class LevisController extends DailyopsController {
 		if($this->Session->check("Auth.User.id")) {
 				
 			//get the uses completed tasks
-			$contain = array(
-						"MediahuntMediaItem"=>array(
-							"conditions"=>array(
-								"MediahuntMediaItem.user_id"=>$this->Session->read("Auth.User.id")		
-							)		
-						)
-					);	
+			
 			
 		}
-		
+		$contain = array(
+				"MediahuntMediaItem"=>array(
+						"conditions"=>array(
+								"MediahuntMediaItem.user_id"=>$this->winner_id
+						)
+				)
+		);
 		//get all the tasks
 		$tasks = $this->MediahuntTask->find("all",array(
 					"conditions"=>array(
