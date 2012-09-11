@@ -454,9 +454,6 @@ class CanteenShippingRecord extends AppModel {
 			
 		}
 		
-		$weight = .4;
-		
-		
 		$record['CanteenShippingRecord']['weight'] = $record['UserAddress']['weight'] = $weight;
 		
 		$record['UserAddress']['weight_oz'] = floor($record['UserAddress']['weight'] * 16);
