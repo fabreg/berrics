@@ -26,42 +26,9 @@ class SplashRoute extends CakeRoute {
 		
 		switch(date("Y-m-d")) {
 			
-			case "2012-07-09":
-				$params['action'] = "cons_kenny";
+			case "2012-09-17":
+				$params['action'] = "dc_felipe";
 				break;
-
-			case "2012-07-10":
-				$params['action'] = "quik";
-				break;
-			case "2012-07-16":
-			case "2012-07-17":
-				$params['action'] = "adidas_lucas";
-				
-			break;
-			case "2012-07-21": //ronald creager
-				$params['action'] = "index";
-			break;
-			case "2012-07-27": //nike prod
-				$params['action'] = "nike_prod";
-				break;
-			case "2012-08-01":
-			case "2012-08-02":
-				$params['action'] = "index";
-				break;
-			case "2012-08-03":
-			case "2012-08-04":
-					$params['action'] = "levis";
-					break;
-			case "2012-08-21":
-				$params['action'] = "raining_hesh";
-				break;
-			case '2012-08-26':
-				$params['action'] = "sls_championship";
-				$news = false;
-				break;
-			case '2012-08-27':
-					$params['action'] = "index";
-					break;
 			default:
 				$params['action'] = "index";
 				break;
