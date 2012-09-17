@@ -850,6 +850,22 @@ public function dc_apr() {
 		
 	}
 	
+	public function lrg_gallo() {
+		
+		$this->layout = "empty";
+		
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+				"Dailyop.id"=>5883
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	
 	
 }
