@@ -486,6 +486,24 @@ class SplashController extends LocalAppController {
 		
 	}
 	
+	
+	public function dc_felipe() {
+	
+		$this->layout = "empty";
+	
+		$this->loadModel("Dailyop");
+	
+		$post = $this->Dailyop->returnPost(array(
+	
+				"Dailyop.id"=>5879
+	
+		),1);
+	
+		$this->set(compact("post"));
+	
+	
+	}
+	
 	public function lrg() {
 		
 		$this->layout = "empty";
