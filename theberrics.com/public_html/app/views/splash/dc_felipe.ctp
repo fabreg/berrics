@@ -22,7 +22,7 @@ $(document).ready(function() {
 <style>
 body {
 
-	background-image:url(/img/splash/dc-felipe/top.jpg);
+	background-image:url(/img/splash/dc-felipe/new-top.jpg);
 	background-repeat:no-repeat;
 	background-position:center top;
 	background-color:#fff;
@@ -42,7 +42,7 @@ body {
 
 	padding-top:2px;
 	text-align:center;
-	margin-top:505px;
+	margin-top:390px;
 }
 #enter {
 
