@@ -487,15 +487,20 @@ class SplashController extends LocalAppController {
 	}
 	
 	
-	public function dc_felipe() {
+	public function dc_felipe($part = 1) {
 	
 		$this->layout = "empty";
 	
 		$this->loadModel("Dailyop");
 	
+		$posts = array(
+				1=>5879,
+				2=>5897
+				);
+		
 		$post = $this->Dailyop->returnPost(array(
 	
-				"Dailyop.id"=>5879
+				"Dailyop.id"=>$posts[$part]
 	
 		),1);
 	

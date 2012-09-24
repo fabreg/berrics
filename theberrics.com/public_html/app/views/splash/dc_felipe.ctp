@@ -1,5 +1,7 @@
 <?php
 		
+$part = (!isset($this->params['pass'][0])) ? 1:$this->params['pass'][0];
+
 echo $this->element("layout/html-head-scripts");
 
 $this->set("title_for_layout","The Berrics - DC: REDISCOVER HOME");
@@ -22,14 +24,15 @@ $(document).ready(function() {
 <style>
 body {
 
-	background-image:url(/img/splash/dc-felipe/new-top.jpg);
+	background-image:url(/img/splash/dc-felipe/bg-<?php echo $part; ?>.jpg);
 	background-repeat:no-repeat;
 	background-position:center top;
 	background-color:#fff;
 	
 }
 
-#berricsVideo50569e14-2080-489c-b7f6-2514323849cf img {
+#berricsVideo50569e14-2080-489c-b7f6-2514323849cf img,
+#berricsVideo505fe55a-b658-4c20-ba30-0f00323849cf img {
 
 	display:none;
 
