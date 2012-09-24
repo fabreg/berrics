@@ -45,7 +45,7 @@ body {
 
 	padding-top:2px;
 	text-align:center;
-	margin-top:390px;
+	margin-top:290px;
 }
 #enter {
 
