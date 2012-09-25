@@ -100,6 +100,8 @@ class TrafficEtlShell extends Shell {
 		
 		while($loop) {
 			
+			$this->PageView->getDatasource()->connect();
+			
 			$pageViews = $this->PageView->find("all",array(
 		
 				"conditions"=>array(
@@ -353,6 +355,8 @@ class TrafficEtlShell extends Shell {
 		$requests = $this->PageView->query(
 			"select distinct(script_url),domain_name FROM page_views where created < '{$date} {$hour}'"
 		);
+		
+		$this->out("Total Requests:".count($requests));
 		
 		//die(pr($requests));
 		
