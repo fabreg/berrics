@@ -37,7 +37,16 @@ class SplashRoute extends CakeRoute {
 					$params['action'] = "lrg_gallo";
 					break;
 			default:
-				$params['action'] = "index";
+				if(time()%2) {
+					
+					$params['action'] = "dc_felipe";
+					$params['pass'][0]=2;
+					
+				} else {
+					
+					$params['action'] = "lrg_gallo";
+					
+				}
 				break;
 			
 		}
