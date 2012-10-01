@@ -495,7 +495,8 @@ class SplashController extends LocalAppController {
 	
 		$posts = array(
 				1=>5879,
-				2=>5897
+				2=>5897,
+				3=>5949
 				);
 		
 		$post = $this->Dailyop->returnPost(array(
