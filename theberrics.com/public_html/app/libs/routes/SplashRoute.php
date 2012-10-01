@@ -26,7 +26,7 @@ class SplashRoute extends CakeRoute {
 		
 		switch(date("Y-m-d")) {
 			
-			case "2012-10-01":
+			case "2012-10-01_":
 				$params['action'] = "dc_felipe";
 				$params['pass'][0]=3;
 				
