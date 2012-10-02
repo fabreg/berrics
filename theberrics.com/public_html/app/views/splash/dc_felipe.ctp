@@ -33,7 +33,7 @@ body {
 
 #berricsVideo50569e14-2080-489c-b7f6-2514323849cf img,
 #berricsVideo505fe55a-b658-4c20-ba30-0f00323849cf img,
-#berricsVideo50697af9-f71c-4455-9004-3fbf323849cf {
+#berricsVideo50697af9-f71c-4455-9004-3fbf323849cf img {
 
 	display:none;
 
