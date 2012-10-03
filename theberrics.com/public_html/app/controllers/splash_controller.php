@@ -872,6 +872,22 @@ public function dc_apr() {
 		
 	}
 	
+	public function cosmic() {
+		
+		$this->layout = "empty";
+		
+		$this->loadModel("Dailyop");
+		
+		$post = $this->Dailyop->returnPost(array(
+		
+				"Dailyop.id"=>5952
+		
+		),1);
+		
+		$this->set(compact("post"));
+		
+	}
+	
 	
 	
 }
