@@ -889,5 +889,21 @@ public function dc_apr() {
 	}
 	
 	
+	public function disclosure() {
+	
+		$this->layout = "empty";
+	
+		$this->loadModel("Dailyop");
+	//5988
+		$post = $this->Dailyop->returnPost(array(
+	
+				"Dailyop.id"=>5988
+	
+		),1);
+	
+		$this->set(compact("post"));
+	
+	}
+	
 	
 }
