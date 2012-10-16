@@ -919,6 +919,21 @@ public function dc_apr() {
 	
 		$this->set(compact("post"));
 	}
+
+	public function life()
+	{
+		$this->layout = "empty";
+	
+		$this->loadModel("Dailyop");
+
+		$post = $this->Dailyop->returnPost(array(
+	
+				"Dailyop.id"=>6039
+	
+		),1);
+	
+		$this->set(compact("post"));
+	}
 	
 	
 }
