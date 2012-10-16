@@ -22,7 +22,7 @@ body {
 
 width:730px;
 margin:auto;
-padding-top: 65px;
+padding-top: 55px;
 }
 
 
