@@ -240,7 +240,13 @@ class User extends AppModel {
 			"fields"=>array("User.id","User.first_name","User.last_name","User.email"),
 			"order"=>array("User.last_name"=>"ASC"),
 			"contain"=>array(),
-			"conditions"=>array("User.user_group_id"=>array(10,40,50))
+			"conditions"=>array(
+				"OR"=>array(
+					"User.user_group_id"=>array(10),
+					"User.pro_skater"=>1,
+					"User.am_skater"=>1
+				)	
+			)
 		));
 		
 		$select = array();
