@@ -38,7 +38,7 @@ class SplashRoute extends CakeRoute {
 			break;
 			default:
 				$pages = array(
-					"dc_felipe",
+					"dc_youth",
 					"cosmic",
 					"lrg_gallo",
 					"raining_hesh"
