@@ -269,7 +269,7 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$this->set(compact("order"));
 		
-		$this->render("/elements/canteen_printing/order-receipt");
+		$this->render("/Elements/canteen_printing/order-receipt");
 		
 	}
 	
