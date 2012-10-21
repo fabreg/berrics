@@ -1,0 +1,113 @@
+@CHARSET "UTF-8";
+
+#catalog-wrapper {
+
+	
+	
+}
+
+#catalog {
+
+	width:950px;
+	margin:auto;
+	
+}
+
+#catalog-heading {
+
+	text-align:center;
+
+	marign:auto;
+	padding-top:15px;	
+	padding-bottom:15px;
+}
+
+#catalog-heading img {
+	
+		-moz-box-shadow: 0px 0px 6px #000000;
+-webkit-box-shadow: 0px 0px 6px #000000;
+box-shadow: 0px 0px 6px #000000;
+cursor:pointer;	
+	
+}
+
+#tile-view-wrapper {
+	
+	background-repeat:no-repeat;
+	background-position: center center;
+	background-color:black;	
+	background-image:url(/img/layout/ajax-loader.gif);
+	
+}
+
+#catalog #tile-view {
+	width:100%;
+	height:612px;	
+	position:relative;
+	background-position:center center;
+	background-repeat:no-repeat;
+	margin-bottom:5px;
+	-moz-box-shadow: 0px 0px 6px #000000;
+	-webkit-box-shadow: 0px 0px 6px #000000;
+	box-shadow: 0px 0px 6px #000000;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	
+}
+
+#tile-view .right-arrow {
+
+	background-image:url(/theme/catalog/img/right-arrow-normal.png);
+	background-repeat:no-repeat;
+	background-position:right top;
+	height:100%;
+	width:49%;
+	float:right;
+	cursor:pointer;
+}
+
+#tile-view .right-arrow-over {
+	
+	background-image:url(/theme/catalog/img/right-arrow-over.png);
+	
+}
+
+#tile-view .disabled {
+	
+	background-image:url(/theme/catalog/img/disabled.jpg);
+	
+}
+
+
+#tile-view .left-arrow {
+
+	background-image:url(/theme/catalog/img/left-arrow-normal.png);
+	background-repeat:no-repeat;
+	background-position:left top;
+	height:100%;
+	width:49%;
+	float:left;
+	cursor:pointer;
+}
+
+#tile-view .left-arrow-over {
+	
+	background-image:url(/theme/catalog/img/left-arrow-over.png);
+	
+}
+
+
+#catalog #thumb-grid {
+	
+	
+}
+
+#catalog #thumb-grid .page-thumb {
+	
+	float:left;
+	margin:5px;
+		-moz-box-shadow: 0px 0px 6px #000000;
+-webkit-box-shadow: 0px 0px 6px #000000;
+box-shadow: 0px 0px 6px #000000;
+cursor:pointer;
+	
+}

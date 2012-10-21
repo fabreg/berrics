@@ -1,0 +1,27 @@
+#!/usr/bin/php
+<?php
+
+$cdir = dirname(__FILE__);
+
+
+$path = $cdir."/../shared/site_views/Themed/";
+
+$scan = scandir($path);
+
+
+foreach($scan as $d) {
+
+	if(is_dir($path.$d."/elements")) {
+	
+		$tp = $path.$d;
+		
+		echo `mv $tp/elements $tp/Elements`;
+	
+	}
+
+
+}
+
+
+
+?>

@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+body {
+
+	background-image:url(/theme/xmas-2011/img/xmas-bg.jpg);
+	
+
+}
+
+#header #main-icon {
+	
+	top:-50px;
+	left:-35px;
+}

@@ -1,0 +1,280 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+ ## FIX FRONT END URL'S
+   	# FUCK WWW
+   	RewriteCond %{HTTP_HOST} ^www.theberrics.com$ [NC]
+   	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
+   	
+   	RewriteCond %{HTTP_HOST} ^(www\.)?myberrics\.com [NC]
+   	RewriteCond %{HTTP_HOST} ^(www\.)?theberricscanteen\.com [NC]
+	RewriteRule ^(.*)$ http://theberrics.com/$1 [R=301,L]
+	
+	##FIX TSHIRT  INDESICIVNESS
+	RewriteRule ^(apparel) /t-shirts [R=301,L]
+	
+	#NO TRAILING SLASHES ON DIRECTORY CALLS
+	RewriteRule ^(.+[^/])/$ http://%{HTTP_HOST}/$1 [R=301,L]
+    	
+	#REDIRECT WEBMAIL
+	RewriteRule (webmail)(.*) http://mail.google.com/a/theberrics.com [R,L]
+	
+    # Battle at the berrics 4
+    RewriteRule ^(batb4|batb4\.php) /battle-at-the-berrics-4 [R=301,L]
+    # Battle at the berrics 3
+    RewriteRule ^(batb3\.php|batb3) /battle-at-the-berrics-3 [R=301,L]
+    # Battle at the berrics 2
+    RewriteRule ^(batb2\.php|batb2) /battle-at-the-berrics-2 [R=301,L]
+    # Battle at the berrics 1
+    RewriteRule ^(batb\.php) /battle-at-the-berrics-1 [R=301,L]
+	# Battle at the Berrics Index
+    RewriteRule ^(batb) /battle-at-the-berrics.html [R=301,L]
+    
+    
+    # Battle Commanders
+    RewriteRule ^(battlecommander\.php) /battle-commander [R=301,L]
+    ## TOREY
+    RewriteRule ^(batcom110502\.php) /battle-commander/torey-pudwill.html [R=301,L]
+    ## Mikey
+    RewriteRule ^(batcom110212\.php) /battle-commander/mikey-taylor.html [R=301,L]
+    ## Shane
+    RewriteRule ^(batcom101225\.php) /battle-commander/shane-oneill.html [R=301,L]
+    ## Paul
+    RewriteRule ^(batcom101023\.php) /battle-commander/paul-rodriguez.html [R=301,L]
+    ## Brezinski
+    RewriteRule ^(batcom100410\.php) /battle-commander/joey-brezinski.html [R=301,L]
+    ## Appleyard
+    RewriteRule ^(batcom100313\.php) /battle-commander/mark-appleyard.html [R=301,L]
+    ## Cole
+    RewriteRule ^(batcom091024\.php) /battle-commander/chris-cole.html [R=301,L]
+    ## Marks
+    RewriteRule ^(batcom090926\.php) /battle-commander/billy-marks.html [R=301,L]
+    ## Ladd
+    RewriteRule ^(batcom090822\.php) /battle-commander/pj-ladd.html [R=301,L]
+    ## Vallely
+    RewriteRule ^(batcom090725\.php) /battle-commander/mike-vallely.html [R=301,L]
+    ## Biebel
+    RewriteRule ^(batcom090620\.php) /battle-commander/brandon-biebel.html [R=301,L]
+    ## Getz
+    RewriteRule ^(batcom090523\.php) /battle-commander/kerry-getz.html [R=301,L]
+    ## Lizard King
+    RewriteRule ^(batcom090307\.php) /battle-commander/lizard-king.html [R=301,L]
+    ## Hill
+    RewriteRule ^(batcom081024\.php) /battle-commander/garrett-hill.html [R=301,L]
+    ## Kellen
+    RewriteRule ^(batcom080822\.php) /battle-commander/kellen-james.html [R=301,L]
+    ##Ellington
+    RewriteRule ^(batcom080307\.php) /battle-commander/erik-ellington.html [R=301,L]
+    ##Mariano
+    RewriteRule ^(batcom080113\.php) /battle-commander/guy-mariano.html [R=301,L]
+    ##Koston
+    RewriteRule ^(batcom071221\.php) /battle-commander/eric-koston.html [R=301,L]
+   
+    # Recruits
+    
+    ##Tolentino
+    RewriteRule ^(recruits110404\.php) /recruit/luis-tolentino.html [R=301,L]
+    ##Torgerson
+    RewriteRule ^(recruits110129\.php) /recruit/davis-torgerson.html [R=301,L]
+    ##Hart
+    RewriteRule ^(recruits101210\.php) /recruit/kelly-hart.html [R=301,L]
+    ##M.Smith
+    RewriteRule ^(recruits101009\.php) /recruit/morgan-smith.html [R=301,L]
+    ##Asta
+    RewriteRule ^(recruits100417\.php) /recruit/tom-asta.html [R=301,L]
+    ##Walker
+    RewriteRule ^(recruits100320\.php) /recruit/walker-ryan.html [R=301,L]
+    ##Maldonado
+    RewriteRule ^(recruits091212\.php) /recruit/ray-maldonado.html [R=301,L]
+    ##Tucker
+    RewriteRule ^(recruits091115\.php) /recruit/nick-tucker.html [R=301,L]
+    ##Terbush
+    RewriteRule ^(recruits091016\.php) /recruit/kyle-terbush.html [R=301,L]
+    ##McLouth
+    RewriteRule ^(recruits090904\.php) /recruit/nick-mclouth.html [R=301,L]
+    ##Gatlyn
+    RewriteRule ^(recruits090731\.php) /recruit/josiah-gatlyn.html [R=301,L]
+    ##Fisher
+    RewriteRule ^(recruits090530\.php) /recruit/ben-fisher.html [R=301,L]
+    ##Troy
+    RewriteRule ^(recruits090314\.php) /recruit/chris-troy.html [R=301,L]
+    ##A.Williams
+    RewriteRule ^(recruits081215\.php) /recruit/anthony-williams.html [R=301,L]
+    ##Gantry
+    RewriteRule ^(recruits081025\.php) /recruit/gantry-hill.html [R=301,L]
+    ##Furby
+    RewriteRule ^(recruits080912\.php) /recruit/furby.html [R=301,L]
+    ##Surrey
+    RewriteRule ^(recruits080815\.php) /recruit/tyler-surrey.html [R=301,L]
+    ##Beasley
+    RewriteRule ^(recruits080627\.php) /recruit/theotis-beasley.html [R=301,L]
+    ##Pfaff
+    RewriteRule ^(recruits080516\.php) /recruit/scott-pfaff.html [R=301,L]
+    ##Cao
+    RewriteRule ^(recruits080328\.php) /recruit/jimmy-cao.html [R=301,L]
+    ##Villemin
+    RewriteRule ^(recruits080208\.php) /recruit/lem-villemin.html [R=301,L]
+    ##Craig
+    RewriteRule ^(recruits071213\.php) /recruit/eduardo-craig.html [R=301,L]
+    
+    #UNITED NATIONS
+    RewriteRule ^(unitednations\.php) /united-nations [R=301,L]
+    ##TURF
+    RewriteRule ^(un110425\.php) /united-nations/turf.html [R=301,L]   
+    ##LRG
+    RewriteRule ^(un101217\.php) /united-nations/lrg-united.html [R=301,L]
+    ##ORGANIKA
+    RewriteRule ^(un101016\.php) /united-nations/organika.html [R=301,L]
+    ##PLANB
+    RewriteRule ^(un100430\.php) /united-nations/plan-b.html [R=301,L]
+    ##MINOR MEDIA
+    RewriteRule ^(un100508\.php) /united-nations/minor-media.html [R=301,L]
+    ##EXPEDITION
+    RewriteRule ^(un100403\.php) /united-nations/expedition.html [R=301,L]
+     ##Cliche
+    RewriteRule ^(un100306\.php) /united-nations/cliche.html [R=301,L]
+    ##DC
+    RewriteRule ^(un100122\.php) /united-nations/dc.html [R=301,L]
+    ##BLUEPRINT
+    RewriteRule ^(un091225\.php) /united-nations/blueprint.html [R=301,L]
+    ##CANTEEN
+    RewriteRule ^(un091127\.php) /united-nations/canteen.html [R=301,L]
+    ##CREATURE
+    RewriteRule ^(un091031\.php) /united-nations/creature.html [R=301,L]
+    ##RVCA
+    RewriteRule ^(un090814\.php) /united-nations/rvca.html [R=301,L]
+    ##VOLCOM
+    RewriteRule ^(un090703\.php) /united-nations/volcom.html [R=301,L]
+    ##NIKE SB AMS
+    RewriteRule ^(un090608\.php) /united-nations/nike-sb-ams.html [R=301,L]
+    ##ENJOI
+    RewriteRule ^(un080926\.php) /united-nations/enjoi.html [R=301,L]
+    ##SK8MAFIA
+    RewriteRule ^(un080808\.php) /united-nations/sk8mafia.html [R=301,L]
+    ##REAL
+    RewriteRule ^(un080418\.php) /united-nations/real.html [R=301,L]
+    ##BLACK LABEL
+    RewriteRule ^(un080314\.php) /united-nations/black-label.html [R=301,L]
+    ##STEREO
+    RewriteRule ^(un080122\.php) /united-nations/stereo.html [R=301,L]
+    ##CITY
+    RewriteRule ^(un071218\.php) /united-nations/city.html [R=301,L]
+    
+     #DailyOps Home Page (/dailyops.php)
+  	 RewriteRule ^(dailyops.php) /dailyops [R=301,L]
+    
+    #UNIT DIRECTIVE
+    RewriteRule ^(unitdirctive\.php) /unit-directive [R=301,L]
+    
+    #WEDNESDAYS WITH REDA
+    RewriteRule ^(reda\.php) /wednesdsays-with-reda [R=301,L]
+    
+    #Yoonivision
+   	RewriteRule ^(yoonivision\.php) /yoonivision [R=301,L]
+    
+    #YOUnited nations
+    RewriteRule ^(YOUnitedNations\.php) /younited-nations [R=301,L]
+    
+    #YOUnited nations2
+    RewriteRule ^(YOUnitedNations2\.php) /younited-nations-2 [R=301,L]
+    
+    #shoot all skaters
+    RewriteRule ^(shootallskaters\.php) /shoot-all-skaters [R=301,L]
+    
+    #skateordice
+    RewriteRule ^(skateordice\.php) /skate-or-dice [R=301,L]
+    
+    #textyoself
+    RewriteRule ^(texttheberrics\.php) /text-yoself-beefo-yo-wreck-yoself [R=301,L]
+    
+    #THRASHIN THURSDAYS
+    RewriteRule ^(thrashin\.php) /thrashin-thursdays [R=301,L]
+    
+    #throwaway thursdays
+    RewriteRule ^(tatd\.php) /throwaway-thursdays [R=301,L]
+    
+    #trajectory
+    RewriteRule ^(trajectory\.php) /trajectory [R=301,L]
+    
+    #trickipedia
+    RewriteRule ^(trickipedia\.php) /trickipedia [R=301,L]
+    
+    #Battle ROYALe
+   	RewriteRule ^(battleroyale\.php) /battle-royale [R=301,L]
+   	
+   	#CANTEEN
+   	RewriteRule ^(canteen\.php) http://theberricscanteen.com/ [R=301,L]
+   	
+   	#CLINICAL RESEARCH
+   	RewriteRule ^(clinicalresearch\.php) /clinical-research [R=301,L]
+   	
+   	#DEPARTMENT 8
+   	RewriteRule ^(department8\.php) /department-8 [R=301,L]
+	
+	#EMOTW
+	RewriteRule ^(emotw\.php) /emails-of-the-week [R=301,L]
+	 
+	#FIELD OPS
+	RewriteRule ^(fieldops\.php) /field-ops [R=301,L]
+	 
+	#FIRST TRY
+	RewriteRule ^(firsttry\.php) /first-try-fridays [R=301,L]
+	 
+	#HIPHOPHISTORY
+	RewriteRule ^(hiphophistory\.php) /hip-hop-history [R=301,L]
+	 
+	#MIKEY DAYS
+	RewriteRule ^(mikeydays\.php) /mikey-days [R=301,L]
+        
+    # aberrican me
+    RewriteRule ^(aberricanme\.php) /aberrican-me [R=301,L]
+    
+    #bangin
+    RewriteRule ^(bangin\.php) /bangin [R=301,L]
+    
+    ## fix weekendtage
+    RewriteRule ^(gen-ops\/a-weekendtage-announcement-part-2.html)  /weekendtage/a-weekendtage-announcement-part-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-part-1.html)  /weekendtage/weekendtage-part-1.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-part-2.html)  /weekendtage/weekendtage-part-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-christmas-part-1.html)  /weekendtage/weekendtage-christmas-part-1.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-christmas-part-2.html)  /weekendtage/weekendtage-christmas-part-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/weekendtage-march-2012.html)  /weekendtage/weekendtage-march-2012.html [R=301,L]
+   	RewriteRule ^(gen-ops\/weekendtage-phoenix-am.html)  /weekendtage/weekendtage-phoenix-am.html [R=301,L]
+   	RewriteRule ^(gen-ops\/breaking-news-bulletin.html)  /weekendtage/breaking-news-bulletin.html [R=301,L]
+    
+    ## fix younited nations 3
+    RewriteRule ^(gen-ops\/yn3-and-the-winner-is.html) /younited-nations-3/yn3-and-the-winner-is.html [R=301,L]
+	RewriteRule ^(gen-ops\/younited-nations-3-winner-1.html) /younited-nations-3/younited-nations-3-winner-1.html [R=301,L]
+	RewriteRule ^(gen-ops\/younited-nations-3-winner-2.html) /younited-nations-3/younited-nations-3-winner-2.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-wardrobe-department-award.html) /younited-nations-3/yn3-wardrobe-department-award.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-frostbite-award.html) /younited-nations-3/yn3-frostbite-award.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-all-girl-crew-award.html) /younited-nations-3/yn3-all-girl-crew-award.html [R=301,L]
+	RewriteRule ^(gen-ops\/yn3-tranny-crew-award.html) /younited-nations-3/yn3-tranny-crew-award.html [R=301,L]
+    
+    #splash page legacy links
+    RewriteRule ^(splash\/life) /splash/740cc0f35da295aa4b5a36fa88da34a0 [R=301,L]
+    RewriteRule ^(splash\/hesh) /splash/b6e65bb9d4469ebf016554a4e092a766 [R=301,L]
+    
+    
+### END BERRICS URL FIXES
+
+	##REWRITE CSS/JS FILES TO MIN.** FILES IF APPLICABLE
+	#RewriteCond %{HTTP_HOST} !^dev\.
+	#RewriteCond %{REQUEST_FILENAME} !\.min(\.css|\.js)$
+	#RewriteCond %{REQUEST_FILENAME} (\.css|\.js)$
+	#Rewrite to **.min.**
+#	RewriteRule ^(.*)(\.css|\.js)$ $1.min$2 [QSA]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+	#File not found, revert it back!
+	RewriteRule ^(.*)(\.min)(\.css|\.js)$ $1$3 [QSA]
+
+
+    ## FILES
+    
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    
+    ## ALL TO INDEX
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
