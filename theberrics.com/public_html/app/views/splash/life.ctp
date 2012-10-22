@@ -9,7 +9,7 @@ $this->set("title_for_layout","The Berrics - Life: Featuring Paul Rodriguez");
 
 body {
 
-	background:url(/img/splash/life/bg.jpg) no-repeat center top fixed;
+	background:url(/img/splash/life/bg1.jpg) no-repeat center top fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
