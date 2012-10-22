@@ -928,7 +928,7 @@ public function dc_apr() {
 
 		$post = $this->Dailyop->returnPost(array(
 	
-				"Dailyop.id"=>6039
+				"Dailyop.id"=>6093
 	
 		),1);
 	

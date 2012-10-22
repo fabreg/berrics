@@ -30,12 +30,13 @@ class SplashRoute extends CakeRoute {
 			case "2012-10-15":
 				$params['action'] = "dc_youth";
 			break;
-			case "2012-10-16":
+			case "2012-10-22":
 				$params['action'] = "life";
 			break;
 			case "2012-10-17":
 				$params['action'] = "index";
 			break;
+
 			default:
 				$pages = array(
 					"dc_youth",
