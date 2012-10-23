@@ -125,7 +125,8 @@ class BerricsRecordsController extends DailyopsController {
 				"name"=>$file['name'],
 				"model"=>"BerricsRecord",
 				"foreign_key"=>base64_decode($_POST['berrics_record_id']),
-				"user_id"=>$this->user_id_scope
+				"user_id"=>$this->user_id_scope,
+				"file_status"=>"pending"
 			
 			));
 			
