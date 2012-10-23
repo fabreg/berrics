@@ -179,7 +179,10 @@
  *
  */
 	Configure::write('Session', array(
-		'defaults' => 'database'
+		'defaults' => 'database',
+		"cookieTimeout"=>42000,
+		'timeout'=>24000,
+		'cookie'=>'berricsv3'
 	));
 	
 /**

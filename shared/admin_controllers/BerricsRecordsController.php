@@ -214,12 +214,56 @@ class BerricsRecordsController extends LocalAppController {
 				"MediaFileUpload.created"=>"DESC"
 			)
 		);
+
+		if(isset($this->request->params['named']['serach'])) {
+
+			if (isset($this->request->params['named']['MediaFileUpload.file_status']) && 
+				!empty($this->request->params['named']['MediaFileUpload.file_status'])) {
+				
+				$this->Paginator->settings['MediaFileUpload']['conditions']['MediaFileUpload.file_status'] = 
+				$this->request->data['MediaFileUpload']['file_status'] = 
+						$this->request->params['named']['MediaFileUpload.file_status'];
+
+			}
+
+
+		}
+
+
 		$uploads = $this->paginate('MediaFileUpload');
 		$this->set(compact("uploads"));
 
 
 	}
 
+	public function filter_pending() {
+		
+		if(count($this->request->data)>0) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"search"=>true
+				);
+				
+				
+				foreach($this->request->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						
+
+						$url[$k.".".$kk]=urlencode($vv);
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+
+	}
 	
 	
 	
