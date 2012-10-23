@@ -54,10 +54,10 @@
 			<tr>
 				<td>
 					<div><strong><?php echo $v['BerricsRecord']['record_name']; ?></strong></div>
-					<div><small><em><?php echo $this->Time->nice($v['MediaFileUpload']['created']); ?></em></small></div>
 					<div><small>
-						<?php //echo $v['MediaFileUpload'][''] ?>
+						<?php echo $v['User']['first_name'];  ?> <?php echo $v['User']['last_name']; ?> (<a target="_blank" href="/users/edit/<?php echo $v['User']['id'] ?>">edit</a>)
 					</small></div>
+					<div><small><em><?php echo $this->Time->nice($v['MediaFileUpload']['created']); ?></em></small></div>
 				</td>
 				<td>
 					<span class="label label-info">

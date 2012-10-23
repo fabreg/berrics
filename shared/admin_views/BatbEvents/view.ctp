@@ -265,8 +265,8 @@ function userSelected(user,field) {
 						$winner_list[$match['Player2User']['id']] = $match['Player2User']['first_name']." ".$match['Player2User']['last_name'];
 						
 						
-						$winning_col  = "<div><strong>RPS Winner:</strong> ".$this->Form->select("BatbMatch.rps_winner_user_id",$winner_list,NULL,array("empty"=>true))."</div>";
-						$winning_col .= "<div><strong>Winning Skater:</strong> ".$this->Form->select("BatbMatch.match_winner_user_id",$winner_list,NULL,array("empty"=>true))."</div>";
+						$winning_col  = "<div><strong>RPS Winner:</strong> ".$this->Form->select("BatbMatch.rps_winner_user_id",$winner_list,array("empty"=>true))."</div>";
+						$winning_col .= "<div><strong>Winning Skater:</strong> ".$this->Form->select("BatbMatch.match_winner_user_id",$winner_list,array("empty"=>true))."</div>";
 						$winning_col .= "<div><strong>Winner's Letters:</strong> ".$this->Form->select("BatbMatch.winner_letters",$winningLettersDrop)."</div>";
 						$winning_col .= "<div><strong>Week #</strong> ".$this->Form->select("BatbMatch.week_num",$week_drop)."</div>"; 
 						$winning_col .= " ".$this->Form->submit("Update",array("div"=>false));
