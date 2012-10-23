@@ -21,6 +21,8 @@ class TagsController extends LocalAppController {
 		
 		
 	}
+
+
 	
 	
 	public function view() {
@@ -93,7 +95,21 @@ class TagsController extends LocalAppController {
 	}
 	
 	
+	public function cloud() {
+		
+		$letter = $this->params['letter'];
+		
+		$tags = $this->Tag->tagIndexList($letter);
+		
+		$this->set(compact("tags"));
+		
+	}
 	
+	public function cloud_index() {
+		
+		
+		
+	}
 	
 	
 	
