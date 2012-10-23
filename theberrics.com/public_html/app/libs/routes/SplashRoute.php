@@ -33,8 +33,8 @@ class SplashRoute extends CakeRoute {
 			case "2012-10-22":
 				$params['action'] = "life";
 			break;
-			case "2012-10-17":
-				$params['action'] = "index";
+			case "2012-10-23":
+				$params['action'] = "life_youtube";
 			break;
 
 			default:

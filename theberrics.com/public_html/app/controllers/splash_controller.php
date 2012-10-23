@@ -934,6 +934,24 @@ public function dc_apr() {
 	
 		$this->set(compact("post"));
 	}
+
+	public function life_youtube() {
+		
+		$link = 'http://www.youtube.com/watch_popup?v=I5W06Xr5t9E';
+		$target = '_blank';
+
+		if($this->RequestHandler->isMobile()) {
+
+			$link = 'http://www.youtube.com/watch?v=I5W06Xr5t9E';
+			$target = '';
+
+		}
+
+		$title_for_layout = "The Berrics - LIFE: Featuring Paul Rodriguez";
+
+		$this->set(compact("link","target","title_for_layout"));
+
+	}
 	
 	
 }
