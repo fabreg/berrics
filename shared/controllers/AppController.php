@@ -66,7 +66,7 @@ class AppController extends Controller {
 		if($this->Session->id()=='undefined') $this->Session->destroy();
 		//die(print_r($_SERVER));
 		if(
-			$_SERVER['HTTPS'] == 'on' || 
+			(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || 
 			(isset($_SERVER['REDIRECT_HTTP_SCHEME']) && strtolower($_SERVER['REDIRECT_HTTP_SCHEME'])=="https")
 			) 
 		{
