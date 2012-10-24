@@ -7,6 +7,7 @@ $(document).ready(function() {
 		success:function(d) { 
 
 			$("#search-results").html(d);
+			initBootstrap();
 
 		},
 		beforeSubmit:function() { 
@@ -19,7 +20,8 @@ $(document).ready(function() {
 });
 
 </script>
-<div class='form'>
+<div class="row-fluid" style='padding:20px;'>
+	<div class="span12"><div class='form'>
 	<div style='text-align:right; padding:10px;'><a href='javascript:UserSearch.closeModal();' style='color:black;'>[X] Close</a></div>
 	<fieldset>
 		<legend>Search Users</legend>
@@ -33,4 +35,5 @@ $(document).ready(function() {
 </div>
 <div class='index' id='search-results' style=''>
 	
+</div></div>
 </div>
