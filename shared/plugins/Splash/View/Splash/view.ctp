@@ -1,5 +1,5 @@
 <?php 
 
-echo $this->Berrics->parseSplashDom($page,true);
+echo $this->Berrics->parseSplashDom($page);
 
 ?>
