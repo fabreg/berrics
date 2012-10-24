@@ -194,8 +194,9 @@ class CanteenController extends CanteenAppController {
 			
 			$this->set(compact("orders"));
 			
-			return $this->render("/elements/canteen-support-order-table");
+			$this->render("/Elements/canteen-support-order-table");
 			
+			return;
 		}
 		
 	}
