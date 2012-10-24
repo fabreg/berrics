@@ -52,10 +52,7 @@
 	<?php endif; ?>
 </head>
 <body>
-<!-- We Like Zuckerberg -->
-<div id="fb-root"></div>
 
-<!-- Zuckerberg Likes Us -->
 	<div id='main-container'>
 		<?php echo $this->element("layout/top-banner-container"); ?>
 		<div id='page-wrapper-left'>
@@ -127,5 +124,14 @@
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 	<!-- TheBerrics.com By:John.Hardy@me.com  8=D :-) 2011-06-20 -->
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=128870297181216";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Zuckerberg Likes Us -->
 </body>
 </html>
