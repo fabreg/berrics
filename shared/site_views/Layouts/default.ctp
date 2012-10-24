@@ -122,6 +122,9 @@
 	<div style='font-size:9px; text-align:right;'>
 		<?php echo php_uname("n"); ?>-<?php echo Configure::version(); ?>
 	</div>
+	<div>
+<?php pr($_SERVER); ?>
+	</div>
 	<?php echo $this->element('sql_dump'); ?>
 	<!-- TheBerrics.com By:John.Hardy@me.com  8=D :-) 2011-06-20 -->
 </body>
