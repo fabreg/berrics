@@ -27,7 +27,7 @@ if(!isset($rss_feed)) {
 			"https://platform.twitter.com/widgets.js",
 			"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js",
 			"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
-			//"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
+			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
 		)); 
 		
 		if(!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']!=true) {

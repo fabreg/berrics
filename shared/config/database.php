@@ -15,7 +15,8 @@ class DATABASE_CONFIG {
 	public $master = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => true,
-		'host' => '10.183.200.8',
+		//'host' => '10.183.200.8',
+		'host'=>'10.183.200.12',
 		'login' => 'john',
 		'password' => '19Berrics82',
 		'database' => 'theberrics',

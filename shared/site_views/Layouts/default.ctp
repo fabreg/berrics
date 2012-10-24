@@ -52,7 +52,7 @@
 	<?php endif; ?>
 </head>
 <body>
-
+	<div id="fb-root"></div> <!-- ZUCK-IT! -->
 	<div id='main-container'>
 		<?php echo $this->element("layout/top-banner-container"); ?>
 		<div id='page-wrapper-left'>
@@ -120,15 +120,8 @@
 		<?php echo php_uname("n"); ?>-<?php echo Configure::version(); ?>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
+	<!-- Zuckerberg Likes Us : We Hate His Javascript -->
+	<script>FB.XFBML.parse();</script>
 	<!-- TheBerrics.com By:John.Hardy@me.com  8=D :-) 2011-06-20 -->
-	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<!-- Zuckerberg Likes Us -->
 </body>
 </html>
