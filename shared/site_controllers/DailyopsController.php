@@ -705,7 +705,7 @@ class DailyopsController extends LocalAppController {
 		
 		$this->set($related);
 		
-		$this->render("/elements/related/dailyops-related");
+		$this->render("/Elements/related/dailyops-related");
 		
 	}
 	
