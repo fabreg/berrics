@@ -23,6 +23,18 @@ $(document).ready(function() {
 
 	});
 
+	$('.media-item-display-weight').change(function() { 
+
+		var form = $("#media-form");
+
+		form.attr("autosave",true);
+	
+		form.submit();
+
+		form.removeAttr("autosave");
+
+	});
+
 	
 });
 
@@ -151,7 +163,7 @@ echo $this->Form->input("element",array("value"=>"edit-media","type"=>"hidden"))
 								<span class='label label-success'><?php echo strtoupper($types[$v['MediaFile']['media_type']]); ?></span>
 							</div>
 							
-							<?php echo $this->Form->input("DailyopMediaItem.{$k}.display_weight",array("options"=>$sort)); ?>
+							<?php echo $this->Form->input("DailyopMediaItem.{$k}.display_weight",array("options"=>$sort,'class'=>'media-item-display-weight')); ?>
 							<?php echo $this->Form->input("DailyopMediaItem.{$k}.id"); ?>
 							<div class='btn-toolbar'>
 									<div class='btn-group dropdown'>
