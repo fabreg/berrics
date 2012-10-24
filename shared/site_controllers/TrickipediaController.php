@@ -33,7 +33,7 @@ class TrickipediaController extends DailyopsController {
 		//load models
 		$this->loadModel("Dailyop");
 
-		$posts = $this->Dailyop->trickipedia_list(1);
+		$posts = $this->Dailyop->trickipedia_list();
 
 		//die(pr($posts));
 

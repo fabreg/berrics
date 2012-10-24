@@ -199,7 +199,7 @@ $(document).ready(function() {
 				<a href='/<?php echo $this->request->params['section']."/".$post['Dailyop']['uri']; ?>'>
 				<?php 
 
-					echo $meta[0];
+					echo $this->Text->truncate($meta[0],32);
 				
 				?>
 				</a>
