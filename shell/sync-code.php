@@ -6,7 +6,8 @@ $dir = dirname(__FILE__)."/";
 $servers = array(
 			"w1",
 			"w2",
-			"w3"
+			"w3",
+			"w4"
 		);
 
 foreach($servers as $server) {
