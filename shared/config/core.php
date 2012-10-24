@@ -57,7 +57,10 @@
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',
 		'level' => E_ALL & ~E_DEPRECATED,
-		'trace' => true
+		'trace' => true,
+		//'level'=>0,
+		//'trace'=>0
+		
 	));
 
 /**

@@ -463,7 +463,7 @@ class Dailyop extends AppModel {
 			$tagPosts = $this->Tag->returnHighestRankedPosts($tag_ids,$dailyop_id,$exclude);
 			
 			//how many did we get off of the date?
-			$remainder = $total_posts - count($related);
+			//$remainder = $total_posts - count($related);
 			
 			while(count($related) < $limit) {
 				
@@ -511,7 +511,6 @@ class Dailyop extends AppModel {
 		
 		$cond = array(
 			"Dailyop.dailyop_section_id"=>$section_id,
-			"Dailyop.id !="=>$dailyop_id,
 			"Dailyop.publish_date < NOW()",
 			"Dailyop.active"=>1
 		);
