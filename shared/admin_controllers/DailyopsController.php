@@ -289,6 +289,19 @@ class DailyopsController extends LocalAppController {
 		}
 
 		$this->request->data['Dailyop']['publish_date'] = $this->request->data['Dailyop']['pub_date']." ".$this->request->data['Dailyop']['pub_time'].":00";
+		
+			if($this->request->data['Dailyop']['featured_archive'] == 1) {
+				
+				$this->Dailyop->updateAll(
+					array(
+						"featured_archive"=>0
+					),
+					array(
+						"featured_archive"=>1
+					)
+				);
+				
+			}
 		$this->Dailyop->create();
 		$this->Dailyop->id = $this->request->data['Dailyop']['id'];
 		if($this->Dailyop->save($this->request->data)) {
