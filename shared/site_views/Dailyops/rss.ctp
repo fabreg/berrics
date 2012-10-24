@@ -5,7 +5,7 @@
 ?>
 <item> 
       <title><![CDATA[<?php echo $post['Dailyop']['name']; ?>]]></title> 
-      <link>http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $this->Berrics->dailyopPostUrl($post); ?></link> 
+      <link>http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $this->Berrics->dailyopsPostUrl($post); ?></link> 
       <description>
       	<![CDATA[<?php echo $post['Dailyop']['name']." ".strip_tags($post['text_content']); ?>]]>
       </description> 
