@@ -5,19 +5,19 @@
 	//do some variable checks
 	if(!isset($title_for_feed)) {
 		
-		$title_for_feed;
+		$title_for_feed = 'The Berrics - Dailyops';
 		
 	}
 	
 	if(!isset($link_for_feed)) {
 		
-		$link_for_feed;
+		$link_for_feed = '';
 		
 	}
 	
 	if(!isset($description_for_feed)) {
 		
-		$description_for_feed;
+		$description_for_feed = '';
 		
 	}
 	
@@ -38,7 +38,7 @@
     <image>
     	<title><?php $title_for_feed; ?></title>
     	<link><?php echo $link_for_feed; ?></link>
-    	<url>http://<?php echo $_SERVER['SERVER_NAME']; ?>/theme/website/img/theberrics-header-logo.png</url>
+    	<url>http://<?php echo $_SERVER['SERVER_NAME']; ?>/img/theberrics-header-logo.png</url>
     </image>
    	<?php 
    	

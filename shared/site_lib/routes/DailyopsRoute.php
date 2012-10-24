@@ -41,6 +41,8 @@ class DailyopsRoute extends CakeRoute {
 				 //this will allow the router to pass in unpublished posts;
 				 //auth control will be handled by the controller
 				 
+				if(!isset($_SERVER['DEVSERVER'])) $_SERVER['DEVSERVER'] = 0;
+
 				$post = $dop->returnPost(array(
 					
 					"Dailyop.uri"=>$params['uri'],
