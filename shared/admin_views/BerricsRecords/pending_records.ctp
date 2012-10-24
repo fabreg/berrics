@@ -82,11 +82,11 @@
 								<li><a href="http://50.57.104.64/<?php echo $v['MediaFileUpload']['file_name']; ?>" target='_blank'>
 										<i class="icon-download"></i>Download File
 									</a></li>
-								<li>
+								<!-- <li>
 									<a href="<?php echo $this->Html->url(array('action'=>'reject', $v['MediaFileUpload']['id']), false); ?>">
 									<i class="icon-remove-sign"></i> Reject File</a>
 									
-								</li>
+								</li> -->
 							</ul>
 						</span>
 				</td>
