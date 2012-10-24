@@ -108,7 +108,7 @@ public function hit_linter() {
 			$c = curl_init();
 			curl_setopt($c,CURLOPT_FOLLOWLOCATION,true);
 			curl_setopt($c,CURLOPT_RETURNTRANSFER,true);
-			curl_setopt($c,CURLOPT_URL,"https://developers.facebook.com/tools/lint/?url={$url_enc}&format=json");
+			curl_setopt($c,CURLOPT_URL,"http://developers.facebook.com/tools/debug/og/object?q={$url_enc}&format=json");
 			
 			$res = curl_exec($c);
 			
