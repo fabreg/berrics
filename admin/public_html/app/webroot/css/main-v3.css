@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+body {
+	
+	padding-top:55px;
+	
+}
+
+.index {
+	
+	overflow:auto;
+	
+}
+
+
+.index table .actions .btn {
+	
+	margin-top:3px;
+	
+}
+
+fieldset > *:first-of-type
+{
+-webkit-margin-top-collapse: separate;
+margin-top: 10px;
+}

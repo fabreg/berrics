@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+body {
+
+	background-image:url(/theme/thanksgiving-2011/img/TGIVING-PARADE-REPEAT.jpg);
+	background-color:#1b0c04;
+	background-repeat:repeat-x;
+}
+
+#main-container {
+
+	background-image:url(/theme/thanksgiving-2011/img/TGIVING-PARADE-RIGHT.jpg);
+	background-repeat:no-repeat;
+	background-position:right top;
+	
+}
+
+#header-container {
+
+	margin-top:0px;	
+	
+}
+
+
+
+
+
+#dailyops .top-date-heading h1:after {	
+
+	content:"HAPPY THANKSGIVING";
+
+}
+
+#dailyops .top-date-heading .date-top {
+	
+	display:none;
+	
+
+}
+
+.d-post-bit .bottom {
+
+
+	background-image:url(/theme/thanksgiving-2011/img/post-bit-bottom_tgiving.png);
+
+}

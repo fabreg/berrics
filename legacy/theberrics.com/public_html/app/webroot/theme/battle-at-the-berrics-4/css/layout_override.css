@@ -1,0 +1,488 @@
+@CHARSET "UTF-8";
+
+body {
+
+	background-image:url(/theme/battle-at-the-berrics-4/img/layout/batb4_BG.jpg);
+
+}
+
+.batb4-header {
+	
+	width:100%;	
+	background-color:black;
+	text-align:center;
+	background-image:url(/theme/battle-at-the-berrics-4/img/layout/main-header.png);
+	background-position:center 0px;
+	background-repeat:no-repeat;
+	height:100px;
+	width:1080px;
+	
+}
+
+
+#batb4 #header .inner {
+
+	width:855px;
+	margin-left:auto;
+	height:111px;
+	position:relative;
+	
+}
+             
+
+#batb4 #header .dc-link {
+
+	position:absolute;
+		
+
+	top:0px;
+	left:0px;
+	z-index:1000;
+}
+
+#batb4 #header .home {
+
+	position:absolute;
+	top:0px;
+	left:100px;
+		
+	
+}
+
+#batb4 #dc-header {
+	
+	background-image:url(/theme/battle-at-the-berrics-4/img/layout/dc-header.png);	
+	height:118px;
+	position:relative;
+		
+}
+
+#batb4 #dc-header .banner {
+
+	position:absolute;
+	right:0px;
+	top:22px;	
+	
+}
+
+#batb4 #pagecontainer {
+
+	
+	margin:auto;	
+	
+}
+
+#batb4-header {
+
+	height:144px;
+	background-image:url(/theme/battle-at-the-berrics-4/img/layout/batb4-header.png);
+	margin-top:2px;
+	position:relative;
+	background-repeat:no-repeat;
+	background-position: center center;
+}
+
+#batb4-header .lrg-link {
+
+	position:absolute;
+	right:0px;
+	top:0px;
+		
+	
+}
+
+
+
+#batb4 #bracket-container {
+
+	position:relative;	
+	height:800px;
+	
+}
+
+#flashMessage  {
+
+	background-color:red;
+	color:white;
+	font-weight:bold;
+	font-size:160%;	
+	border-radius:10px;
+	-moz-border-radius:10px;
+	text-align:center;
+	margin-top:5px;
+	margin-bottom:5px;
+	padding:10px;
+}
+
+
+
+
+
+/*
+POST OVERRIDE
+*/
+.d-post-bit {
+
+	background-color:#111;
+
+}
+
+.d-post-bit .container-top,.d-post-bit .container,.d-post-bit .bottom {
+
+	background-image:none;
+
+}
+.d-post-bit .container-top {
+
+	background-color:#111;	
+	
+}
+
+#dailyops h1 {
+	
+	color:#111;	
+	
+}
+
+/*
+	
+	
+	BRACKET THUMBS
+	
+*/
+
+.batb-match-thumb {
+
+	background-color:#111;
+	padding:8px;
+	float:left;
+	margin:20px;
+	position:relative;
+	
+}
+
+.batb-match-thumb .over {
+
+	position:absolute;
+	background-image:url(/img/layout/batb-thumb-over.png);
+	display:none;
+	width:215px;
+	height:159px;
+	top:0px;
+	left:0px;
+	cursor:pointer;
+}
+
+.round-title {
+
+	font-size:28px;
+	font-weight:bold;
+	border-bottom:2px solid #333;
+	color:#212121;
+	padding:6px;
+	
+}
+
+.round {
+
+	clear:both;
+
+}
+
+
+#footer .links a,#footer .links {
+
+	color:black;	
+	
+}
+
+	
+	
+/*
+
+FINALS BRACKETS	
+	
+*/	
+
+
+#batb4 #brackets-finals {
+	
+	
+}
+#batb4 #brackets-finals .inner {
+	
+	padding:5px;
+	border:3px solid #000;
+	
+}
+
+#batb4 #brackets-finals .canvas {
+	
+	position:relative;	
+	height:379px;
+	width:982px;
+	background-image:url(/theme/battle-at-the-berrics-4/img/layout/finals-bracket-bg.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	
+}
+
+
+#batb4 #finals_bracket_2_match_1 {
+
+	position:absolute;
+	font-size:26px;
+	color:black;	
+	text-align:Center;
+	
+	top:25px;
+	left:15px;
+	width:305px;
+	
+}
+
+#batb4 #finals_bracket_2_match_1 .spacer,#batb4 #finals_bracket_2_match_2 .spacer {
+
+	
+	height:42px;	
+	
+	
+	
+}
+
+
+#batb4 #finals_bracket_2_match_2 {
+
+	position:absolute;
+	font-size:26px;
+	color:black;	
+	text-align:Center;
+		
+	top:25px;
+	right:15px;
+	width:305px;
+}
+
+
+#batb4 #tabs {
+
+	width:982px;
+	margin:auto;
+	border-bottom:2px solid #000;	
+	margin-top:15px;
+}
+
+#batb4 #tabs ul {
+	
+
+	list-style:none;	
+	
+}
+#batb4 #tabs a {
+
+	color:inherit;
+	text-decoration:none;	
+	
+}
+#batb4 #tabs ul li {
+	
+
+	float:left;
+	margin-left:5px; margin-right:5px;
+	height:30px;
+	line-height:30px;
+	padding-left:8px; padding-right:8px;	
+	float:left;
+	border:2px solid #000;
+	border-bottom:none;
+	background-color:#ccc;
+	color:#000;
+	cursor:pointer;
+}
+
+#batb4 #tabs ul .selected {
+
+	background-color:#000;
+	color:#fff;	
+	
+}
+
+
+
+#batb4-vote #rules {
+
+
+	background-color:#000;
+	padding:5px;
+	margin-top:15px;
+	color:#999;
+	
+}
+#batb4-vote #rules p {
+
+	line-height:18px;
+	font-size:16px;
+	
+}
+
+#batb4-vote #rules ul {
+	
+	margin:20px;	
+	
+}
+
+#batb4-vote #rules  .title {
+
+	font-size:18px;
+	font-weight:bold;
+	padding-top:5px;
+	padding-bottom:5px;
+	border-bottom:1px solid #333;
+}
+
+
+
+#batb4-vote {
+
+	
+	width:993px;
+	margin:auto;	
+	font-family:arial;
+
+}
+
+
+#batb4-vote #finals-bracket {
+
+	
+
+
+}
+
+
+
+
+#batb4-vote #finals-bracket .inner {
+
+	padding:5px;
+	border:3px solid #000;
+}
+
+
+#batb4-vote #finals-bracket .canvas {
+
+	position:relative;	
+	height:379px;
+	width:982px;
+	background-image:url(/theme/battle-at-the-berrics-4/img/layout/finals-bracket-bg.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+
+}
+
+#voting-form table {
+
+	border:1px solid #232323;
+	border-bottom:none;
+	border-right:none;
+
+}
+
+#voting-form table td, #voting-form table th {
+
+	border:1px solid #232323;
+	border-top:none;
+	border-left:none;
+
+}
+#voting-form table td {
+
+	background-color:#e9e9e9;
+	padding:5px;
+}
+
+#voting-form table th {
+
+	text-align:left;
+	font-color:#fff;
+	background-color:#232323;
+	padding:8px;
+
+}
+
+#voting-form label {
+
+	display:block;
+	clear:both;
+
+}
+
+#voting-form label {
+
+	color:black;
+
+}
+
+#voting-form select {
+
+	font-size:18px;
+	width:90%;
+}
+
+#voting-form select option {
+
+	padding:3px;
+
+}
+
+#voting-form #submit-button-div {
+
+	padding:15px;
+	text-align:center;
+
+}
+
+#voting-form #submit-button {
+
+	padding:10px;
+	border:1px solid #fff;
+	background-color:#000;
+	color:white;
+	font-size:18px;	
+	
+}
+
+#login-button {
+	
+	text-align:center;	
+	padding:20px;
+	color:black;
+	font-size:22px;
+}
+
+#login-button img {
+	
+	margin:10px;	
+	clear:both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+

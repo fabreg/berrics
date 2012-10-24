@@ -1,6 +1,6 @@
-aberricanoriginals.theberrics.com/public_html/app/webroot/files
+legacy/
 logs
 upload
+uploads
 dfp
-robots.txt
 .git
