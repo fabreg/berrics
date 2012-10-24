@@ -4,7 +4,8 @@
 $dir = dirname(__FILE__)."/";
 
 $servers = array(
-			"w1"
+			"w1",
+			"w2"
 		);
 
 foreach($servers as $server) {
