@@ -54,7 +54,7 @@ class LoginController extends IdentityAppController {
 		
 		$fb = FacebookApi::instance();
 		
-		$fb->facebook->getSession();
+		//$fb->facebook->getSession();
 		
 		$next_domain = "http://".$_SERVER['SERVER_NAME'];
 		
@@ -63,7 +63,15 @@ class LoginController extends IdentityAppController {
 			$callback_after = '';
 			
 		}
+
+		//die(print_r($fb->facebook->getLoginUrl(array("next"=>$next_domain."/identity/login/handle_facebook_callback/".$callback_after,"req_perms"=>"email,publish_stream,user_about_me"))));
 		
+		if(isset($_GET['code'])) {
+
+			return $this->handle_facebook_callback();
+
+		}
+
 		return $this->redirect($fb->facebook->getLoginUrl(array("next"=>$next_domain."/identity/login/handle_facebook_callback/".$callback_after,"req_perms"=>"email,publish_stream,user_about_me")));
 		
 	}
@@ -72,7 +80,8 @@ class LoginController extends IdentityAppController {
 		
 		$fb = FacebookApi::instance();
 
-		$fb_session = $fb->facebook->getSession();
+
+		//$fb_session = $fb->facebook->getSession();
 
 		$fb_user = $fb->facebook->api("/me");
 

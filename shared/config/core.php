@@ -32,7 +32,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+	Configure::write('debug', 2);
 	//preg_match('/(ADMIN|WEB2VM)/',strtoupper(php_uname("-n"))) && 
 	if(isset($_GET['t'])) {
 		
@@ -56,10 +56,10 @@
  */
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',
-		//'level' => E_ALL & ~E_DEPRECATED,
-		//'trace' => true,
-		'level'=>0,
-		'trace'=>0
+		'level' => E_ALL & ~E_DEPRECATED,
+		'trace' => true,
+		//'level'=>0,
+		//'trace'=>0
 		
 	));
 

@@ -22,6 +22,8 @@ class FacebookApi {
 			"cookie" => true
 		
 		));
+
+		die(print_r($this->facebook));
 		
 	}
 	
