@@ -1699,6 +1699,17 @@ class TesterController extends LocalAppController {
 	}
 
 
+	public function test_product() {
+
+		$this->loadModel("CanteenProduct");
+
+		$p = $this->CanteenProduct->returnAdminProduct(1001028);
+
+		die(print_r($p));
+
+	}
+
+
 
 	
 }

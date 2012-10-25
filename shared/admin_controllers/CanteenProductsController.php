@@ -54,6 +54,8 @@ class CanteenProductsController extends LocalAppController {
 					
 					foreach($v as $kk=>$vv) {
 						
+						if(empty($vv)) continue;
+
 						$url[$k.".".$kk]=$vv;
 						
 					}
