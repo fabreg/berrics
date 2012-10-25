@@ -21,7 +21,7 @@ $(document).ready(function() {
 			document.location.href = ref;
 		});
 
-		if($(this).attr("current_record")=="0") {
+		if($(this).attr("current_record")!=1) {
 
 			$(this).find('.overlay').addClass("failed");
 			
