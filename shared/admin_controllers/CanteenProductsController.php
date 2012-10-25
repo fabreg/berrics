@@ -70,7 +70,9 @@ class CanteenProductsController extends LocalAppController {
 	
 	public function index() {
 		
-		$this->paginate['CanteenProduct'] = array(
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['CanteenProduct'] = array(
 		
 			"contain"=>array(
 				"CanteenCategory",
@@ -101,14 +103,14 @@ class CanteenProductsController extends LocalAppController {
 
 			if(isset($this->request->params['named']['CanteenProduct.canteen_category_id'])) {
 				
-				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.canteen_category_id'] = 
+				$this->Paginator->settings['CanteenProduct']['conditions']['CanteenProduct.canteen_category_id'] = 
 				$this->request->data['CanteenProduct']['canteen_category_id'] = 
 				$this->request->params['named']['CanteenProduct.canteen_category_id'];
 				
 			}
 			if(isset($this->request->params['named']['CanteenProduct.brand_id'])) {
 				
-				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.brand_id'] = 
+				$this->Paginator->settings['CanteenProduct']['conditions']['CanteenProduct.brand_id'] = 
 				$this->request->data['CanteenProduct']['brand_id'] = 
 				$this->request->params['named']['CanteenProduct.brand_id'];
 				
@@ -116,26 +118,26 @@ class CanteenProductsController extends LocalAppController {
 			
 			if(isset($this->request->params['named']['CanteenProduct.name'])) {
 				
-				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenProduct.name'])."%";
+				$this->Paginator->settings['CanteenProduct']['conditions']['CanteenProduct.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenProduct.name'])."%";
 				$this->request->data['CanteenProduct']['name'] = $this->request->params['named']['CanteenProduct.name'];
 				
 			}
 			if(isset($this->request->params['named']['CanteenProduct.sub_title'])) {
 				
-				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.sub_title LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenProduct.sub_title'])."%";
+				$this->Paginator->settings['CanteenProduct']['conditions']['CanteenProduct.sub_title LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenProduct.sub_title'])."%";
 				$this->request->data['CanteenProduct']['sub_title'] = $this->request->params['named']['CanteenProduct.sub_title'];
 				
 			}
 			if(isset($this->request->params['named']['CanteenProduct.active'])) {
 				
-				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.active'] = 
+				$this->Paginator->settings['CanteenProduct']['conditions']['CanteenProduct.active'] = 
 				$this->request->data['CanteenProduct']['active'] = 
 				$this->request->params['named']['CanteenProduct.active'];
 				
 			}
 			if(isset($this->request->params['named']['CanteenProduct.featured'])) {
 				
-				$this->paginate['CanteenProduct']['conditions']['CanteenProduct.featured'] = 
+				$this->Paginator->settings['CanteenProduct']['conditions']['CanteenProduct.featured'] = 
 				$this->request->data['CanteenProduct']['featured'] = 
 				$this->request->params['named']['CanteenProduct.featured'];
 				
@@ -143,7 +145,7 @@ class CanteenProductsController extends LocalAppController {
 			
 			if(isset($this->request->params['named']['CanteenProductPrice.currency_id'])) {
 				
-				$this->paginate['CanteenProduct']['contain']['CanteenProductPrice']['conditions']['CanteenProductPrice.currency_id'] = $this->request->params['named']['CanteenProductPrice.currency_id'];
+				$this->Paginator->settings['CanteenProduct']['contain']['CanteenProductPrice']['conditions']['CanteenProductPrice.currency_id'] = $this->request->params['named']['CanteenProductPrice.currency_id'];
 				
 				$this->request->data['CanteenProductPrice']['currency_id'] = $this->request->params['named']['CanteenProductPrice.currency_id'];
 				
