@@ -62,6 +62,10 @@ class LoginController extends IdentityAppController {
 			
 			$callback_after = '';
 			
+		} else {
+
+			CakeSession::write("here",base64_decode($callback_after));
+
 		}
 
 		//die(print_r($fb->facebook->getLoginUrl(array("next"=>$next_domain."/identity/login/handle_facebook_callback/".$callback_after,"req_perms"=>"email,publish_stream,user_about_me"))));
