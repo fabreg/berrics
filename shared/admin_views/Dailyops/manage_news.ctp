@@ -164,7 +164,7 @@ table td select {
 			</td>
 			 -->
 			<td class='actions'>
-				<a href='/dailyops/edit/<?php echo $p['Dailyop']['id']; ?>/<?php echo base64_encode($this->here); ?>'>Edit</a>
+				<a href='<?php echo $this->Admin->url(array("controller"=>"dailyops","action"=>"edit",$p['Dailyop']['id'])); ?>'>Edit</a>
 				<a href='http://dev.theberrics.com/news/<?php echo $p['Dailyop']['uri']; ?>' target='_blank'>Preview</a>
 			</td>
 		</tr>
