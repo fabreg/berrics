@@ -631,6 +631,15 @@ class DailyopsController extends LocalAppController {
 		$this->Paginator->settings = array();
 		
 		$this->Paginator->settings['MediaFile']['order'] = array("MediaFile.modified"=>"DESC");
+
+		if(isset($this->request->data['MediaFile']['name'])) {
+
+
+			$this->Paginator->settings['MediaFile']['conditions']['MediaFile.name LIKE'] = 
+			"%".str_replace(" ","%",$this->request->data['MediaFile']['name'])."%";
+
+		}
+
 		
 		$media = $this->paginate("MediaFile");
 		
@@ -675,6 +684,10 @@ class DailyopsController extends LocalAppController {
 					
 				}
 				
+				$tab = "media";
+
+				if($model=="DailyopTextItem") $tab = "article";
+
 				$this->{$model}->save($d);
 				
 				$this->Session->setFlash("Media attached succesfully");
@@ -683,7 +696,7 @@ class DailyopsController extends LocalAppController {
 					"action"=>"edit",
 					$this->request->data['AttachMedia']['dailyop_id'],
 					"?"=>array(
-						"tab"=>"media"		
+						"tab"=>$tab	
 					)		
 				);
 				
