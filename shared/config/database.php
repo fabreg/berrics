@@ -5,7 +5,8 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => true,
-		'host'=>'10.176.164.233',
+		'host'=>'10.176.129.133',
+		//'host'=>'10.176.164.233',
 		//'host' => '10.183.200.12',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -43,7 +44,7 @@ class DATABASE_CONFIG {
 
 		if($uname == 'WEB2VM') {
 			
-			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
+			//$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
 
 			
 		}	
