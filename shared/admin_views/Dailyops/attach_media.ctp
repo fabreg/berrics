@@ -6,6 +6,10 @@ $sortingOptions = array(
 	"MediaFile.name"=>"Name"
 );
 
+$tab = "media";
+
+if($model == "DailyopTextItem") $tab = "article";
+
 ?>
 <script type="text/javascript">
 
@@ -30,10 +34,10 @@ $sortingOptions = array(
 	
 </script>
 <div class='page-header'>
-	<h1>Attach Media <small><?php echo $post['Dailyop']['name']; ?> - <?php echo $post['Dailyop']['sub_title']; ?></small> <a href='/dailyops/edit/<?php echo $post['Dailyop']['id']; ?>?tab=media' class='btn btn-primary'>Back to post</a></h1>
+	<h1>Attach Media <small><?php echo $post['Dailyop']['name']; ?> - <?php echo $post['Dailyop']['sub_title']; ?></small> <a href='/dailyops/edit/<?php echo $post['Dailyop']['id']; ?>?tab=<?php echo $tab ?>' class='btn btn-primary'>Back to post</a></h1>
 </div>
 <div class='well well-small'>
-	<h3>Filter</h3>
+	<h5>Filter</h5>
 	<?php 
 		echo $this->Form->create('MediaFile',array(
 			"id"=>'MediaFileForm',
@@ -41,7 +45,7 @@ $sortingOptions = array(
 		));
 		echo $this->Form->input("name");
 	?>
-	<div class="form-actions">
+	<div class="">
 		<button class="btn btn-primary">Filter</button> &nbsp;
 		<button class="btn btn-success" id='reset-button' type='button'>Reset</button>
 	</div>
