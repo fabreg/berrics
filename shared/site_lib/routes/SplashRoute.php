@@ -37,7 +37,6 @@ class SplashRoute extends CakeRoute {
 				
 		}		
 		
-		//die(pr($params));
 		return $params;
 		
 	}

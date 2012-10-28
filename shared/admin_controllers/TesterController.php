@@ -1709,6 +1709,29 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function brand_tags() {
+		
+		$this->loadModel('Tag');
+		$this->loadModel('Brand');
+		
+		$brands = $this->Brand->find('all');
+
+		foreach ($brands as $k => $v) {
+			
+			$tag = $this->Tag->findByName($v['Brand']['name']);
+
+			echo $v['Brand']['name'],"<br />";
+			echo "<pre>";
+			print_r($tag);
+			echo "</pre>","<br />";
+
+		}
+
+		die();
+
+
+	}
+
 
 
 	
