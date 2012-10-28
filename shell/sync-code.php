@@ -8,7 +8,8 @@ $servers = array(
 			"w2",
 			"w3",
 			"w4",
-			"w5"
+			"w5",
+			"w6"
 		);
 
 foreach($servers as $server) {
