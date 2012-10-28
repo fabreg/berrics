@@ -44,7 +44,7 @@ class DATABASE_CONFIG {
 
 		if($uname == 'WEB2VM') {
 			
-			//$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
+			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
 
 			
 		}	
