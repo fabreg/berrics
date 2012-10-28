@@ -71,7 +71,7 @@ if(!$this->request->is("ajax")):
 					
 					<?php else: ?>
 					<?php echo $this->Html->link("Edit",array("action"=>"edit",$v['SplashCreative']['id'])); ?>
-					<a href='http://v3.theberrics.com/splash/<?php  echo $v['SplashCreative']['hash_key']; ?>' class='btn btn-success btn-small' target='_blank'>
+					<a href='http://theberrics.com/splash/<?php  echo $v['SplashCreative']['hash_key']; ?>' class='btn btn-success btn-small' target='_blank'>
 						<i class="icon icon-white icon-eye-open"></i> Preview</a>
 					<a href="<?php echo $this->Admin->url(array("action"=>"copy",$v['SplashCreative']['id'])); ?>" class="btn btn-small btn-info">
 						<i class="icon icon-white icon-pencil"></i> Copy
