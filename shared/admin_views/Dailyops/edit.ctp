@@ -192,7 +192,7 @@ span.msg {
 		<li><a href='#meta' data-toggle='tab'>Meta <span class='badge badge-info' id='meta-badge'></span></a></li>
 		<li><a href='#media' data-toggle='tab'>Media <span class='badge badge-info' id='media-badge'><?php echo count($this->request->data['DailyopMediaItem']); ?></span></a></li>
 		<li><a href='#article' data-toggle='tab'>Article <span class='badge badge-info' id='article-badge'></span></a>
-		<li><a href='#assigned' data-toggle='tab'>Assigned Users <span class='badge badge-info' id='users-badge'>0</span></a>
+		<li><a href='#assigned' data-toggle='tab'>Assigned Employees <span class='badge badge-info' id='users-badge'>0</span></a>
 		<li><a href="#errors" data-toggle='tab'>Errors</a></li>
 	</ul>
 

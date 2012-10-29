@@ -7,8 +7,11 @@
 		echo $this->Form->input("last_name");
 		echo $this->Form->input("email");
 		echo $this->Form->input("passwd");
-		echo $this->Form->input('user_group_id');
-		echo $this->Form->input("tags",array("label"=>"Tags: (Multiple tags should be comma seperated)"));
+				echo $this->Form->input("berrics_employee");
+		echo $this->Form->input("pro_skater");
+		echo $this->Form->input("am_skater");
+		echo $this->Form->input('user_group_id',array("type"=>"hidden","value"=>60));
+		//echo $this->Form->input("tags",array("label"=>"Tags: (Multiple tags should be comma seperated)"));
 	?>
 	</fieldset>
 		
@@ -23,21 +26,4 @@
 	</fieldset>
 	
 <?php echo $this->Form->end(__('Submit', true));?>
-</div>
-<div class="actions">
-	<h3><?php __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Admin->link(__('List Users', true), array('action' => 'index'));?></li>
-		<li><?php echo $this->Admin->link(__('List User Groups', true), array('controller' => 'user_groups', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Admin->link(__('New User Group', true), array('controller' => 'user_groups', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Admin->link(__('List Banners', true), array('controller' => 'banners', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Admin->link(__('New Banner', true), array('controller' => 'banners', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Admin->link(__('List Dailyops', true), array('controller' => 'dailyops', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Admin->link(__('New Dailyop', true), array('controller' => 'dailyops', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Admin->link(__('List Media Files', true), array('controller' => 'media_files', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Admin->link(__('New Media File', true), array('controller' => 'media_files', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Admin->link(__('List User Permissions', true), array('controller' => 'user_permissions', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Admin->link(__('New User Permission', true), array('controller' => 'user_permissions', 'action' => 'add')); ?> </li>
-	</ul>
 </div>
