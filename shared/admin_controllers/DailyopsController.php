@@ -684,25 +684,31 @@ class DailyopsController extends LocalAppController {
 					
 				}
 				
-				$tab = "media";
-
-				if($model=="DailyopTextItem") $tab = "article";
+				
 
 				$this->{$model}->save($d);
 				
 				$this->Session->setFlash("Media attached succesfully");
 				
-				$url = array(
+				
+				
+				
+				
+			}
+
+			$tab = "media";
+
+			if($model=="DailyopTextItem") $tab = "article";
+
+			$url = array(
 					"action"=>"edit",
 					$this->request->data['AttachMedia']['dailyop_id'],
 					"?"=>array(
 						"tab"=>$tab	
 					)		
 				);
-				
-				$this->redirect($url);
-				
-			}
+			
+			$this->redirect($url);
 			
 		}
 		
