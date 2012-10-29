@@ -9,6 +9,6 @@
 </video>
 <?php 
 
-echo base64_decode($pre);
+//echo base64_decode($pre);
 
 ?>
