@@ -270,6 +270,8 @@ class CanteenOrder extends AppModel {
 					
 				$child['parent_id'] = $parent_id;
 				
+				$child['canteen_inventory_record_id'] = $child['CanteenProduct']['CanteenInventoryRecord']['id'];
+
 				$this->CanteenOrderItem->create();
 				
 				if(isset($child['id'])) $this->CanteenOrderItem->id = $child['id'];

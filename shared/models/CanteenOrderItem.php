@@ -185,13 +185,13 @@ class CanteenOrderItem extends AppModel {
 			//format the return like the admin order
 			
 			
-			$Item["CanteenProduct"]=array_merge($child_product['CanteenProduct'],$child_product['CanteenProductInventory']);
+			$Item["CanteenProduct"]=array_merge($child_product['CanteenProduct'],$child_product['CanteenProductInventory'][0]);
 			
 
 			$Item['CanteenProduct']['ParentCanteenProduct'] = $child_product['ParentCanteenProduct'];
 			
 			unset($child_product);
-
+			
 			//copy the title/subtitle and opt_label and opt_value
 			$Item['title'] = $Item['CanteenProduct']['ParentCanteenProduct']['name'];
 			
