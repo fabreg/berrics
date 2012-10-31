@@ -778,6 +778,28 @@ class DailyopsController extends LocalAppController {
 		$this->set(compact("data"));
 		
 	}
+
+
+	/**
+	 * NEW LAYOUT!
+	 */
+	public function new() {
+		
+		$this->loadModel('Dailyop');
+		
+		$this->layout = "version3";
+
+
+		
+
+
+
+	}
+
+
+
+
+	
 	
 	
 	
