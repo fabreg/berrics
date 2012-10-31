@@ -394,7 +394,9 @@ class CanteenShippingRecordsController extends LocalAppController {
 	
 		$this->loadModel("LjgTrackingFile");
 		
-		$this->paginate['LjgTrackingFile'] = array(
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['LjgTrackingFile'] = array(
 			"conditions"=>array(
 			
 			),
@@ -407,7 +409,6 @@ class CanteenShippingRecordsController extends LocalAppController {
 		$files = $this->paginate("LjgTrackingFile");
 		
 		$this->set(compact("files"));
-				
 	
 	}
 	
