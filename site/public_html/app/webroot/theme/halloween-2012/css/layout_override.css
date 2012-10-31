@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+body {
+
+	background-image:url(/theme/halloween-2012/img/halloween_bg.jpg);
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-attachment:fixed;
+	
+}
+
+.d-post-bit .container-top {
+
+    background-image: url(/theme/halloween-2012/img/post-bit-top.png);
+
+}
+
+.d-post-bit .bottom {
+
+	
+    background-image: url(/theme/halloween-2012/img/post-bit-bottom.png);
+
+    
+}
+
+#featured-post {
+
+	background-image:url(/theme/halloween-2012/img/featured-post.png);
+
+}
+
+#featured-canteen-product {
+
+	background-image:url(/theme/halloween-2012/img/featured-canteen.png);
+
+}
+
+
+#right-col-social-buttons {
+
+	background-image:url(/theme/halloween-2012/img/social-buttons-bg.png);
+
+}
