@@ -162,9 +162,20 @@ span.msg {
 }
 
 </style>
+<?php 
+
+	$backUrl = "/dailyops";
+
+	if(isset($this->request->params['named']['cb'])) {
+
+		$backUrl = base64_decode($this->request->params['named']['cb']);
+
+	}
+
+?>
 <div class=''>
 	<div class='page-header'>
-		<h1>Edit Post <small>ID: <?php echo $this->request->data['Dailyop']['id']; ?></small> <a class='btn btn-primary btn-mini' href='/dailyops'><i class='icon icon-white icon-circle-arrow-left'></i> Back to listing</a></h1>
+		<h1>Edit Post <small>ID: <?php echo $this->request->data['Dailyop']['id']; ?></small> <a class='btn btn-primary btn-mini' href='<?php echo $backUrl; ?>'><i class='icon icon-white icon-circle-arrow-left'></i> Back to listing</a></h1>
 		<strong>Author:</strong> <?php echo $this->data['User']['first_name']; ?> <?php echo $this->data['User']['last_name']; ?> ( <?php echo $this->Time->niceShort($this->data['Dailyop']['created']); ?> )
 		
 	</div>
@@ -181,7 +192,7 @@ span.msg {
 		<li><a href='#meta' data-toggle='tab'>Meta <span class='badge badge-info' id='meta-badge'></span></a></li>
 		<li><a href='#media' data-toggle='tab'>Media <span class='badge badge-info' id='media-badge'><?php echo count($this->request->data['DailyopMediaItem']); ?></span></a></li>
 		<li><a href='#article' data-toggle='tab'>Article <span class='badge badge-info' id='article-badge'></span></a>
-		<li><a href='#assigned' data-toggle='tab'>Assigned Users <span class='badge badge-info' id='users-badge'>0</span></a>
+		<li><a href='#assigned' data-toggle='tab'>Assigned Employees <span class='badge badge-info' id='users-badge'>0</span></a>
 		<li><a href="#errors" data-toggle='tab'>Errors</a></li>
 	</ul>
 

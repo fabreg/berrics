@@ -48,6 +48,8 @@ class MediaFilesController extends LocalAppController {
 			
 			foreach($v as $kk=>$vv) {
 				
+				if(empty($vv)) continue;
+
 				$url[$k.".".$kk]=urlencode($vv);
 				
 			}
@@ -61,6 +63,8 @@ class MediaFilesController extends LocalAppController {
 	function index() {
 		$this->MediaFile->recursive = 0;
 		
+		$this->Paginator->settings = array();
+
 		$this->paginate = array(
 			"order"=>array("MediaFile.created"=>"DESC"),
 			"contain"=>array(
@@ -74,7 +78,7 @@ class MediaFilesController extends LocalAppController {
 			//check for mediaFile name
 			if(isset($this->request->params['named']['MediaFile.name'])) {
 				
-				$this->paginate['conditions'][]['MediaFile.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['MediaFile.name'])."%"; 
+				$this->Paginator->settings['conditions'][]['MediaFile.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['MediaFile.name'])."%"; 
 				$this->request->data['MediaFile']['name'] = $this->request->data['MediaFile']['named'] = $this->request->params['named']['MediaFile.name'];
 				
 			}
@@ -82,7 +86,7 @@ class MediaFilesController extends LocalAppController {
 			//filter the websites
 			if(isset($this->request->params['named']['MediaFile.website_id'])) {
 				
-				$this->paginate['conditions'][]['MediaFile.website_id'] = $this->request->params['named']['MediaFile.website_id'];
+				$this->Paginator->settings['conditions'][]['MediaFile.website_id'] = $this->request->params['named']['MediaFile.website_id'];
 				$this->request->data['MediaFile']['website_id'] = $this->request->params['named']['MediaFile.website_id'];
 				
 			}
@@ -90,15 +94,15 @@ class MediaFilesController extends LocalAppController {
 			//filter the media type
 			if(isset($this->request->params['named']['MediaFile.media_type'])) {
 				
-				$this->paginate['conditions'][]['MediaFile.media_type'] = $this->request->params['named']['MediaFile.media_type'];
+				$this->Paginator->settings['conditions'][]['MediaFile.media_type'] = $this->request->params['named']['MediaFile.media_type'];
 				$this->request->data['MediaFile']['media_type'] = $this->request->params['named']['MediaFile.media_type'];
 				
 			}
 			
 			if(isset($this->request->params['named']['MediaFile.limelight_not_active']) && $this->request->params['named']['MediaFile.limelight_not_active'] == 1) {
 				
-				$this->paginate['conditions']['MediaFile.limelight_active'] = 0;
-				$this->paginate['conditions']['MediaFile.limelight_transfer_status'] = 0;
+				$this->Paginator->settings['conditions']['MediaFile.limelight_active'] = 0;
+				$this->Paginator->settings['conditions']['MediaFile.limelight_transfer_status'] = 0;
 				
 				$this->request->data['MediaFile']['limelight_not_active'] = 1;
 				

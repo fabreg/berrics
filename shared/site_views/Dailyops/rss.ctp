@@ -4,10 +4,10 @@
 
 ?>
 <item> 
-      <title><![CDATA[<?php echo $post['Dailyop']['name']; ?>]]></title> 
+      <title><![CDATA[<?php echo $post['Dailyop']['name']." : ".$post['Dailyop']['sub_title']; ?>]]></title> 
       <link>http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $this->Berrics->dailyopsPostUrl($post); ?></link> 
       <description>
-      	<![CDATA[<?php echo $post['Dailyop']['name']." ".strip_tags($post['text_content']); ?>]]>
+      	<![CDATA[<?php echo $post['Dailyop']['name']." ".strip_tags($post['Dailyop']['text_content']); ?>]]>
       </description> 
       <?php echo $this->Time->nice($post['Dailyop']['publish_date']) . ' GMT'; ?> 
        <pubDate><?php echo $this->Time->nice($this->Time->gmt($post['Dailyop']['publish_date'])) . ' GMT'; ?></pubDate> 

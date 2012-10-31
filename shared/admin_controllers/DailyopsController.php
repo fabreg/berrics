@@ -289,6 +289,19 @@ class DailyopsController extends LocalAppController {
 		}
 
 		$this->request->data['Dailyop']['publish_date'] = $this->request->data['Dailyop']['pub_date']." ".$this->request->data['Dailyop']['pub_time'].":00";
+		
+			if($this->request->data['Dailyop']['featured_archive'] == 1) {
+				
+				$this->Dailyop->updateAll(
+					array(
+						"featured_archive"=>0
+					),
+					array(
+						"featured_archive"=>1
+					)
+				);
+				
+			}
 		$this->Dailyop->create();
 		$this->Dailyop->id = $this->request->data['Dailyop']['id'];
 		if($this->Dailyop->save($this->request->data)) {
@@ -618,6 +631,15 @@ class DailyopsController extends LocalAppController {
 		$this->Paginator->settings = array();
 		
 		$this->Paginator->settings['MediaFile']['order'] = array("MediaFile.modified"=>"DESC");
+
+		if(isset($this->request->data['MediaFile']['name'])) {
+
+
+			$this->Paginator->settings['MediaFile']['conditions']['MediaFile.name LIKE'] = 
+			"%".str_replace(" ","%",$this->request->data['MediaFile']['name'])."%";
+
+		}
+
 		
 		$media = $this->paginate("MediaFile");
 		
@@ -662,21 +684,31 @@ class DailyopsController extends LocalAppController {
 					
 				}
 				
+				
+
 				$this->{$model}->save($d);
 				
 				$this->Session->setFlash("Media attached succesfully");
 				
-				$url = array(
+				
+				
+				
+				
+			}
+
+			$tab = "media";
+
+			if($model=="DailyopTextItem") $tab = "article";
+
+			$url = array(
 					"action"=>"edit",
 					$this->request->data['AttachMedia']['dailyop_id'],
 					"?"=>array(
-						"tab"=>"media"		
+						"tab"=>$tab	
 					)		
 				);
-				
-				$this->redirect($url);
-				
-			}
+			
+			$this->redirect($url);
 			
 		}
 		

@@ -72,10 +72,14 @@ class MediaController extends LocalAppController {
 		
 		
 		$m = $m['MediaFile'];
+
+		$m['brightcove_url'] = $this->limelight_uri.$m['limelight_file'];
+
+		/*
 		
 		if($m['media_type'] == 'bcove' && $m['limelight_transfer_status'] == 1 && $m['limelight_active'] == 1) {
 			
-			$m['brightcove_url'] = $this->limelight_uri.$m['limelight_file'];
+			
 			
 		} elseif($m['media_type'] == 'bcove' && empty($m['brightcove_url'])) {
 			
@@ -92,6 +96,7 @@ class MediaController extends LocalAppController {
 			));
 			
 		}
+		*/
 		
 		$this->insertMediaHit($m['id']);
 		

@@ -1699,6 +1699,40 @@ class TesterController extends LocalAppController {
 	}
 
 
+	public function test_product() {
+
+		$this->loadModel("CanteenProduct");
+
+		$p = $this->CanteenProduct->returnAdminProduct(1001028);
+
+		die(print_r($p));
+
+	}
+
+	public function brand_tags() {
+		
+		$this->loadModel('Tag');
+		$this->loadModel('Brand');
+		
+		$brands = $this->Brand->find('all');
+
+		foreach ($brands as $k => $v) {
+			
+			$tag = $this->Tag->findByName($v['Brand']['name']);
+
+			echo $v['Brand']['name'],"<br />";
+			echo "<pre>";
+			print_r($tag);
+			echo "</pre>","<br />";
+
+		}
+
+		die();
+
+
+	}
+
+
 
 	
 }

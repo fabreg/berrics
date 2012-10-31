@@ -57,7 +57,10 @@
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',
 		'level' => E_ALL & ~E_DEPRECATED,
-		'trace' => true
+		'trace' => true,
+		//'level'=>0,
+		//'trace'=>0
+		
 	));
 
 /**
@@ -180,11 +183,11 @@
  */
 	Configure::write('Session', array(
 		'defaults' => 'database',
-		"cookieTimeout"=>42000,
-		'timeout'=>24000,
+		"cookieTimeout"=>420000,
+		'timeout'=>240000,
 		'cookie'=>'berricsv3'
 	));
-	
+	ini_set("session.cookie_domain",".theberrics.com");
 /**
  * The level of CakePHP security.
  */

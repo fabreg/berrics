@@ -46,8 +46,11 @@ class MediahuntMediaItemsController extends LocalAppController {
 	
 	
 	function index() {
+
+
+		$this->Paginator->settings = array();
 		
-		$this->paginate['MediahuntMediaItem'] = array(
+		$this->Paginator->settings['MediahuntMediaItem'] = array(
 				
 					"limit"=>50,
 					"contain"=>array(
@@ -66,14 +69,14 @@ class MediahuntMediaItemsController extends LocalAppController {
 			
 			if(isset($this->request->params['named']['MediahuntMediaItem.mediahunt_task_id'])) {
 				
-				$this->paginate['MediahuntMediaItem']['conditions']['MediahuntMediaItem.mediahunt_task_id'] = 
+				$this->Paginator->settings['MediahuntMediaItem']['conditions']['MediahuntMediaItem.mediahunt_task_id'] = 
 				$this->request->data['MediahuntMediaItem']['mediahunt_task_id'] = 
 				$this->request->params['named']['MediahuntMediaItem.mediahunt_task_id'];
 				
 			}
 			if(isset($this->request->params['named']['MediahuntMediaItem.approved'])) {
 			
-				$this->paginate['MediahuntMediaItem']['conditions']['MediahuntMediaItem.approved'] =
+				$this->Paginator->settings['MediahuntMediaItem']['conditions']['MediahuntMediaItem.approved'] =
 				$this->request->data['MediahuntMediaItem']['approved'] =
 				$this->request->params['named']['MediahuntMediaItem.approved'];
 			

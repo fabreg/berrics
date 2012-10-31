@@ -26,7 +26,7 @@ class Batb5Controller extends DailyopsController {
 		if($this->request->params['action'] == "view")  {
 			
 			$this->request->params['action'] = "section";
-			$this->view = "view";
+			$this->view = "section";
 			
 		}
 		

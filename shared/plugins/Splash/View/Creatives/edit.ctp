@@ -50,6 +50,6 @@
 
 </div>
 <div class='form-actions'>
-			<a href='http://v3.theberrics.com/splash/<?php echo $this->request->data['SplashCreative']['hash_key']; ?>' class='btn btn-success' target='_blank'>Preview</a>
+			<a href='http://dev.theberrics.com/splash/<?php echo $this->request->data['SplashCreative']['hash_key']; ?>' class='btn btn-success' target='_blank'>Preview</a>
 			<button type='submit' class='btn btn-primary'>Update Creative</button>
 </div>

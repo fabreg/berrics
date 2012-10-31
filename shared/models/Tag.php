@@ -189,6 +189,8 @@ class Tag extends AppModel {
 		
 		$token = "tag_related_posts_".md5(serialize($cond));
 		
+		$fudge = false;
+
 		if(($ranked = Cache::read($token,"1min")) === false) {
 			
 			
@@ -203,6 +205,8 @@ class Tag extends AppModel {
 					
 					foreach($post_ids as $id) {
 						
+						if(!array_key_exists($id['DailyopsTag']['dailyop_id'], $res)) $res[$id['DailyopsTag']['dailyop_id']] = 0;
+
 						$res[$id['DailyopsTag']['dailyop_id']] += 1;
 						
 					}

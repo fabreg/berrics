@@ -27,6 +27,8 @@ class Newsv2Controller extends DailyopsController {
 	 		
 	 		
 	 	}
+
+
 	 	
 	}
 	
@@ -69,7 +71,7 @@ class Newsv2Controller extends DailyopsController {
 		
 		if((strtotime($this->request->params['date_in'])>time()) && !$this->isAdmin()) {
 			
-			throw new NotFoundException();
+			//throw new NotFoundException();
 			
 		}
 		
