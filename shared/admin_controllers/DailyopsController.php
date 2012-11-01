@@ -632,6 +632,8 @@ class DailyopsController extends LocalAppController {
 		
 		$this->Paginator->settings['MediaFile']['order'] = array("MediaFile.modified"=>"DESC");
 
+		$this->Paginator->settings['MediaFile']['contain'] = array();
+
 		if(isset($this->request->data['MediaFile']['name'])) {
 
 
