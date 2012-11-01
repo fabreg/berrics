@@ -63,6 +63,18 @@
 		
 	));
 
+	if(preg_match('/(WEB2VM)/',strtoupper(php_uname("-n")))) {
+		//die("fuck");
+		Configure::write('Error', array(
+		'handler' => 'ErrorHandler::handleError',
+		'level' => E_ALL & ~E_DEPRECATED,
+		'trace' => true,
+		
+		
+	));
+
+	}
+
 /**
  * Configure the Exception handler used for uncaught exceptions.  By default,
  * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and

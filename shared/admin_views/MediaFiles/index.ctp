@@ -178,19 +178,20 @@ function imageHover() {
 					<?php echo $this->Admin->link(__('Delete'), array('action' => 'delete', $mediaFile['MediaFile']['id']), array("confirm"=>"Are you sure you want to delete this file?")); ?>
 				<?php endif; ?>
 				</div>
-			
-			<a href='/traffic_reports/media_file_details/media_file_id:<?php echo $mediaFile['MediaFile']['id']; ?>/date_start:2011-06-20/date_end:<?php echo date("Y-m-d"); ?>'>Traffic Report</a> <br />
-			<?php 
-				if(in_array($mediaFile['MediaFile']['id'],$report_queue)):
-			?>
-			<a href='/media_files/remove_queue_video_for_report/<?php echo $mediaFile['MediaFile']['id']; ?>/<?php echo base64_encode($this->request->here."#".$mediaFile['MediaFile']['id']); ?>' id='remove-from-queue' media_file_id='<?php echo $mediaFile['MediaFile']['id']; ?>'>Remove From Report Queue</a>
-			<?php 
-				else:
-			?>
-			<a href='/media_files/queue_video_for_report/<?php echo $mediaFile['MediaFile']['id']; ?>/<?php echo base64_encode($this->request->here."#".$mediaFile['MediaFile']['id']); ?>' id='add-to-queue' media_file_id='<?php echo $mediaFile['MediaFile']['id']; ?>'>Add To Report Queue</a>
-			<?php 
-				endif;
-			?>
+				<?php if ($mediaFile['MediaFile']['media_type'] == "bcove"): ?>
+					<a rel='noAjax' href="<?php echo $this->Html->url(array("action"=>"run_report",$mediaFile['MediaFile']['id'])); ?>" class="btn btn-small">Run Report</a>
+					<?php 
+						if(in_array($mediaFile['MediaFile']['id'],$report_queue)):
+					?>
+					<a href='/media_files/remove_queue_video_for_report/<?php echo $mediaFile['MediaFile']['id']; ?>/<?php echo base64_encode($this->request->here."#".$mediaFile['MediaFile']['id']); ?>' id='remove-from-queue' media_file_id='<?php echo $mediaFile['MediaFile']['id']; ?>'>Remove From Report Queue</a>
+					<?php 
+						else:
+					?>
+					<a href='/media_files/queue_video_for_report/<?php echo $mediaFile['MediaFile']['id']; ?>/<?php echo base64_encode($this->request->here."#".$mediaFile['MediaFile']['id']); ?>' id='add-to-queue' media_file_id='<?php echo $mediaFile['MediaFile']['id']; ?>'>Add To Report Queue</a>
+					<?php 
+						endif;
+					?>
+				<?php endif ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

@@ -1581,6 +1581,35 @@ class MediaFilesController extends LocalAppController {
 		die();
 		
 	}
+
+
+	public function run_report($media_file_id = false) {
+		
+		if(!$media_file_id) throw new NotFoundException("Invalid media file!");
+
+
+		//get the file
+		$file = $this->MediaFile->find('first',array(
+				"conditions"=>array(
+					"MediaFile.id"=>$media_file_id
+				),
+				"contain"=>array()
+			));
+		$this->loadModel('Report');
+		
+		//the begining
+		$start = "2011-06-17";
+		//yesterday
+		$end = date("Y-m-d",strtotime("-1 Day"));
+
+		//let's run the report
+		$this->Report->media_file_report($media_file_id,$file['MediaFile']['name'],$start,$end);
+
+		return $this->redirect(array(
+				"controller"=>"reports"
+			));
+
+	}
 	
 	
 	

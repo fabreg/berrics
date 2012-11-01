@@ -240,6 +240,63 @@ class Report extends AppModel {
 		
 	}
 
+	public function media_file_report($media_file_id = false,$title = "", $start_date,$end_date) {
+		
+
+		$params = serialize(array(
+				"media_file_id"=>$media_file_id,
+				"start_date"=>$start_date,
+				"end_date"=>$end_date
+		));
+
+		$jobs = array();
+
+		$data = array(
+				"report_type"=>"media_file_report",
+				"params_data"=>$params,
+				"user_id"=>CakeSession::read("Auth.User.id"),
+				"report_status"=>"pending",
+				"title"=>$title
+		);
+
+
+		$bq = new BigQueryApi();
+		
+		$start_ts = strtotime($start_date);
+
+		$end_ts = strtotime($end_date." 23:59:59");
+
+		//get the views
+
+		$view_sql = "select count(*) AS total from traffic.media_live where media_file_id = '{$media_file_id}' AND ts>={$start_ts} AND ts<={$end_ts}";
+
+		$jobs['views'] = $bq->addJobQuery($view_sql);
+
+		$mobile_sql = "select count(*) AS total from traffic.media_live where media_file_id = '{$media_file_id}' AND ts>={$start_ts} AND ts<={$end_ts} AND mobile = 1";
+
+		$jobs['mobile_views'] = $bq->addJobQuery($mobile_sql);
+
+		//get the country breakdown
+
+		$country_sql = "select count(*) AS total,country_code from traffic.media_live where media_file_id = '{$media_file_id}' AND ts>={$start_ts} AND ts<={$end_ts} GROUP BY country_code ORDER BY total DESC";
+
+		$jobs['country_view'] = $bq->addJobQuery($country_sql);
+
+		$data['job_data'] = serialize($jobs);
+		
+		$this->create();
+		
+		$this->save($data);
+		
+		$_SERVER['FORCEMASTER'] = true;
+		$report = $this->findById($this->id);
+		unset($_SERVER['FORCEMASTER']);
+		
+		return $report;
+
+
+	}
+
 	public function top_videos($start_date,$end_date,$limit=50,$title = '') {
 		$params = serialize(array(
 				"start_date"=>$start_date,
@@ -289,7 +346,7 @@ class Report extends AppModel {
 		unset($_SERVER['FORCEMASTER']);
 		
 		return $report;
-		}	
+	}	
 	
 	public function refresh_report_status($report_id = false) {
 		
