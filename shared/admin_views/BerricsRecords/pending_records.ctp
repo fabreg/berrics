@@ -80,13 +80,13 @@
 							</a>
 							<ul class="dropdown-menu pull-right">
 								<li><a href="http://50.57.104.64/<?php echo $v['MediaFileUpload']['file_name']; ?>" target='_blank'>
-										<i class="icon-download"></i>Download File
+										<i class="icon-download"></i> Download File
 									</a></li>
-								<!-- <li>
-									<a href="<?php echo $this->Html->url(array('action'=>'reject', $v['MediaFileUpload']['id']), false); ?>">
-									<i class="icon-remove-sign"></i> Reject File</a>
-									
-								</li> -->
+								<li><a href=""><i class="icon icon-remove-sign"></i> Reject File</a></li>
+								<?php if (!empty($v['User']['email'])): ?>
+								<li><a href="">Reject File With Email</a></li>
+								<?php endif ?>
+								
 							</ul>
 						</span>
 				</td>

@@ -99,7 +99,7 @@ class MediaFileUploadsController extends LocalAppController {
 		
 		$past_seven = $this->MediaFileUpload->find('count',array(
 						"conditions"=>array(
-								"DATE(MediaFileUpload.created) ='{$past_seven}'"
+								"DATE(MediaFileUpload.created) > '{$past_seven}'"
 							)
 						));
 		
