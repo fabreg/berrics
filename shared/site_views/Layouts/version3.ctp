@@ -15,7 +15,6 @@
 			"v3/bootstrap",
 			"v3/modernizr",
 			"v3/main"
-
 		));
 	?>
 	<body>
@@ -24,7 +23,7 @@
 				<div class="row-fluid">
 					<div class="span8">
 						<div class="hidden-phone">
-							<img src='/img/v3/layout/berrics-heading.jpg' alt='THE BERRICS' border='0' />
+							<img src='/img/v3/layout/berrics-heading.gif' alt='THE BERRICS' border='0' />
 						</div>
 					</div>
 				</div>
