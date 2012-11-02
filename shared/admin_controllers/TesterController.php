@@ -1718,11 +1718,18 @@ class TesterController extends LocalAppController {
 
 		foreach ($brands as $k => $v) {
 			
-			$tag = $this->Tag->findByName($v['Brand']['name']);
+			$tag = $this->Tag->find('first',array(
+
+				"conditions"=>array(
+					"Tag.name" => $v['Brand']['name']
+				),
+				"contain"=>array()
+
+			));
 
 			echo $v['Brand']['name'],"<br />";
 			echo "<pre>";
-			print_r($tag);
+			print_r($tag['Tag']['name']);
 			echo "</pre>","<br />";
 
 		}

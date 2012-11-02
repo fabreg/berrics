@@ -1206,6 +1206,20 @@ class Dailyop extends AppModel {
 		return $post_ids;
 		
 	}
+
+	public static function postTemplates() {
+		
+		$a = array(
+
+			"post-bit"=>"Legacy ( Original Version 2 Template )",
+			"dailyops-compact"=>"Dailyop Compact Post",
+			"news-standard"=>"Standard News Template",
+
+		);
+
+		return $a;
+
+	}
 	
 
 }

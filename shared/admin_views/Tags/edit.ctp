@@ -35,7 +35,31 @@
 			</div>
 		</div>
 	</fieldset>
+	<fieldset>
+		<legend>Brand</legend>
+		<div class="row-fluid">
+			<div class="span12">
+				<?php if (!empty($this->request->data['Tag']['brand_id'])): ?>
+					
+				<?php else: ?>
+					<span class="label label-important">No Brand Attached</span>
+				<?php endif ?>
+			</div>
+		</div>
+	</fieldset>	
 
+	<fieldset>
+		<legend>Unified Store</legend>
+		<div class="row-fluid">
+			<div class="span12">
+				<?php if (!empty($this->request->data['Tag']['unified_store'])): ?>
+					
+				<?php else: ?>
+					<span class="label label-important">No Store Attached</span>
+				<?php endif ?>
+			</div>
+		</div>
+	</fieldset>	
 <div class="form-actions"><button class="btn btn-primary" type="submit">Update Tag</button></div>
 <?php echo $this->Form->end();?>
 </div>
