@@ -112,7 +112,9 @@ class Newsv2Controller extends DailyopsController {
 				"contain"=>array(
 					"DailyopTextItem"=>array(
 						"MediaFile"
-					)
+					),
+					"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+					"limit"=>1
 				),
 				"order"=>$sort
 			
@@ -140,12 +142,24 @@ class Newsv2Controller extends DailyopsController {
 		
 		$this->loadModel("Dailyop");
 		
-		$post = $this->Dailyop->returnPost(array(
+		$is_dev = preg_match('/(ADMIN|WEB2VM)/',strtoupper(php_uname('-n')));
 		
-			"Dailyop.uri"=>$this->request->params['uri'],
-			"DailyopSection.uri"=>$this->request->params['section']	
-		
-		),$this->isAdmin());
+		$token = "article_".md5($this->request->params['uri']);
+
+		if(($post = Cache::read($token,"1min")) == false || $is_dev) {
+
+
+			$post = $this->Dailyop->returnPost(array(
+					
+						"Dailyop.uri"=>$this->request->params['uri'],
+						"DailyopSection.uri"=>$this->request->params['section']	
+					
+					),$this->isAdmin());
+
+
+			Cache::write($token,$post,"1min");
+		}
+
 		
 		if(isset($post['Dailyop']['publish_date'])) {
 			
@@ -186,17 +200,17 @@ class Newsv2Controller extends DailyopsController {
 			
 			$unified = $this->Dailyop->find("all",array(
 			
-				"conditions"=>array(
-				"Dailyop.dailyop_section_id"=>65,
-				"Dailyop.active"=>1,
-				"Dailyop.misc_category"=>"news-unified",
-				"DATE(Dailyop.publish_date) = '{$this->request->params['date_in']}'"
-			),
-			"contain"=>array(
-				"UnifiedStore",
-				"DailyopTextItem"
-			),
-			"order"=>array("Dailyop.display_weight"=>"ASC")
+					"conditions"=>array(
+						"Dailyop.dailyop_section_id"=>65,
+						"Dailyop.active"=>1,
+						"Dailyop.misc_category"=>"news-unified",
+						"DATE(Dailyop.publish_date) = '{$this->request->params['date_in']}'"
+					),
+					"contain"=>array(
+						"UnifiedStore",
+						"DailyopTextItem"
+					),
+					"order"=>array("Dailyop.display_weight"=>"ASC")
 			));
 			
 			Cache::write($token,$unified,"1min");
