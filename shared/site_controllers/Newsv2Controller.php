@@ -104,7 +104,7 @@ class Newsv2Controller extends DailyopsController {
 		//lets gather all the news posts
 		$token = "news_general_home_".$this->request->params['date_in'];
 		
-		if(($posts = Cache::read($token,"1min")) === false) {
+		if(($posts = Cache::read($token,"5min")) === false) {
 			
 			$posts = $this->Dailyop->find('all',array(
 				
@@ -120,7 +120,7 @@ class Newsv2Controller extends DailyopsController {
 			
 			));
 			
-			Cache::write($token,$posts,"1min");
+			Cache::write($token,$posts,"5min");
 			
 		}
 		
