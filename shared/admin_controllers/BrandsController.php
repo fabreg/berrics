@@ -29,6 +29,8 @@ class BrandsController extends LocalAppController {
 			
 			foreach($v as $kk=>$vv) {
 				
+				if(empty($vv)) continue;
+
 				$url[$k.".".$kk]=urlencode($vv);
 				
 			}

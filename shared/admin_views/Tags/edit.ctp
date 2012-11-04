@@ -36,7 +36,7 @@
 		</div>
 	</fieldset>
 	<fieldset>
-		<legend>Brand</legend>
+		<legend>Brand <a href="<?php echo $this->Admin->url(array("controller"=>"brands","action"=>"attach_brand")); ?>" class="btn btn-primary btn-small"></a> </legend>
 		<div class="row-fluid">
 			<div class="span12">
 				<?php if (!empty($this->request->data['Tag']['brand_id'])): ?>

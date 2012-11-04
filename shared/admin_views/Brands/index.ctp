@@ -1,18 +1,35 @@
-<div class="brands index form">
-	<h2><?php __('Brands');?></h2>
-	<div>
-		<fieldset>
-			<legend>Search</legend>
-			<div>
+<div class="page-header">
+	<h1>Brands</h1>
+</div>
+
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li><a href="#1" data-toggle="tab">Search</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane" id="1">
+			<div class="well well-small">
 				<?php 
-				
-					echo $this->Form->create("Brand",array("url"=>"/brands/search"));
+
+					echo $this->Form->create('Brand',array(
+						"id"=>'BrandForm',
+						"url"=>array("action"=>"search")
+					));
+
 					echo $this->Form->input("name");
-					echo $this->Form->end("Search");
+
+
+
 				?>
+				<button class="btn btn-primary" type="submit">Search Brands</button>
+				<?php echo $this->Form->end(); ?>
 			</div>
-		</fieldset>
+		</div>
 	</div>
+</div>
+
+<div class="brands index form">
+
 	<?php echo $this->Admin->adminPaging(); ?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
