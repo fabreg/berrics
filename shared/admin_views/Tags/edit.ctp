@@ -16,37 +16,51 @@
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
 	?>
-	<fieldset>
-		<legend>User <a href="<?php echo $this->Admin->url(array("action"=>"attach_user",$this->request->data['Tag']['id'])); ?>" class="btn btn-primary btn-small">Attach User</a></legend>
-		<div class="row-fluid">
-			<div class="span12">
-				<?php if(!empty($this->request->data['User']['id'])): ?>
-				<span><i class="icon icon-user"></i>&nbsp;
-					<?php echo $this->request->data['User']['first_name']; ?> 
-					<?php echo $this->request->data['User']['last_name']; ?> 
-					(<em><?php echo $this->request->data['User']['email']; ?></em>)
-					<a href="<?php echo $this->Admin->url(array("action"=>"remove_user",$this->request->data['Tag']['id'])); ?>" class="btn btn-danger">
-						<i class="icon icon-white icon-remove"></i> Remove User
-					</a>
-				</span>
-				<?php else: ?>
-				<span class="label label-important">No User Attached</span>
-				<?php endif; ?>
+	<div class="well">
+		<fieldset>
+			<legend>User <a href="<?php echo $this->Admin->url(array("action"=>"attach_user",$this->request->data['Tag']['id'])); ?>" class="btn btn-primary btn-small">Attach User</a></legend>
+			<div class="row-fluid">
+				<div class="span12">
+					<?php if(!empty($this->request->data['User']['id'])): ?>
+					<span><i class="icon icon-user"></i>&nbsp;
+						<?php echo $this->request->data['User']['first_name']; ?> 
+						<?php echo $this->request->data['User']['last_name']; ?> 
+						(<em><?php echo $this->request->data['User']['email']; ?></em>)
+						<a href="<?php echo $this->Admin->url(array("action"=>"remove_user",$this->request->data['Tag']['id'])); ?>" class="btn btn-danger">
+							<i class="icon icon-white icon-remove"></i> Remove User
+						</a>
+					</span>
+					<?php else: ?>
+					<span class="label label-important">No User Attached</span>
+					<?php endif; ?>
+				</div>
 			</div>
-		</div>
-	</fieldset>
-	<fieldset>
-		<legend>Brand <a href="<?php echo $this->Admin->url(array("controller"=>"brands","action"=>"attach_brand")); ?>" class="btn btn-primary btn-small">Attach Brand</a> </legend>
-		<div class="row-fluid">
-			<div class="span12">
-				<?php if (!empty($this->request->data['Tag']['brand_id'])): ?>
-					
-				<?php else: ?>
-					<span class="label label-important">No Brand Attached</span>
-				<?php endif ?>
+		</fieldset>
+	</div>
+	<div class="well">
+		<fieldset>
+			<legend>Brand <a href="<?php echo $this->Admin->url(array("controller"=>"brands","action"=>"attach_brand")); ?>" class="btn btn-primary btn-small">Attach Brand</a> </legend>
+			<div class="row-fluid">
+				<div class="span12">
+					<?php if (!empty($this->request->data['Tag']['brand_id'])): ?>
+						<div class='clearfix'>
+							<div style="float:left;">
+								<?php echo $this->Media->brandLogoThumb(array(
+									"Brand"=>$this->request->data['Brand'],
+									"w"=>75
+								)); ?>
+							</div>
+							<div style='float:left;'>
+								<h2><?php echo $this->request->data['Brand']['name'];  ?></h2>
+							</div>
+						</div>	
+					<?php else: ?>
+						<span class="label label-important">No Brand Attached</span>
+					<?php endif ?>
+				</div>
 			</div>
-		</div>
-	</fieldset>	
+		</fieldset>	
+	</div>
 
 	<fieldset>
 		<legend>Unified Store</legend>
@@ -65,6 +79,6 @@
 </div>
 <pre>
 <?php 
-//print_r($this->request->data);
+print_r($this->request->data);
 ?>
 </pre>

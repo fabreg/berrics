@@ -59,7 +59,8 @@ class Tag extends AppModel {
 	);
 
 	public $belongsTo = array(
-			"User"
+			"User",
+			"Brand"
 		);
 	
 	public $hasMany = array(

@@ -113,7 +113,8 @@ class TagsController extends LocalAppController {
 			$this->request->data = $this->Tag->find('first',array(
 						"conditions"=>array("Tag.id"=>$id),
 						"contain"=>array(
-							"User"
+							"User",
+							"Brand"
 						)
 				));
 		}
