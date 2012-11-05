@@ -1716,8 +1716,11 @@ class TesterController extends LocalAppController {
 		
 		$brands = $this->Brand->find('all');
 
+		$count = 0;
+
 		foreach ($brands as $k => $v) {
 			
+
 			$tag = $this->Tag->find('first',array(
 
 				"conditions"=>array(
@@ -1727,12 +1730,25 @@ class TesterController extends LocalAppController {
 
 			));
 
-			echo $v['Brand']['name'],"<br />";
-			echo "<pre>";
-			print_r($tag['Tag']['name']);
-			echo "</pre>","<br />";
+			if(isset($tag['Tag']['id']) && empty($tag['Tag']['brand_id'])) {
+
+				$this->Tag->create();
+
+				$this->Tag->id = $tag['Tag']['id'];
+
+				$this->Tag->save(array(
+
+					"brand_id"=>$v['Brand']['id']
+
+				));
+
+				$count++;
+
+			}
 
 		}
+
+		echo $count;
 
 		die();
 

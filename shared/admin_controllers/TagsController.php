@@ -181,6 +181,27 @@ class TagsController extends LocalAppController {
 
 	}
 
+	public function attach_brand($tag_id = false) {
+		
+
+
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			
+		
+		}
+
+
+		$tag = $this->Tag->find('first',array(
+			"conditions"=>array('Tag.id'=>$tag_id),
+			"contain"=>array()
+		));
+
+		$this->set(compact("tag"));
+
+
+	}
+
 
 
 
