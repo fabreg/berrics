@@ -61,19 +61,20 @@
 			</div>
 		</fieldset>	
 	</div>
-
-	<fieldset>
-		<legend>Unified Store</legend>
-		<div class="row-fluid">
-			<div class="span12">
-				<?php if (!empty($this->request->data['Tag']['unified_store'])): ?>
-					
-				<?php else: ?>
-					<span class="label label-important">No Store Attached</span>
-				<?php endif ?>
+	<div class="well">	
+		<fieldset>
+			<legend>Unified Store</legend>
+			<div class="row-fluid">
+				<div class="span12">
+					<?php if (!empty($this->request->data['Tag']['unified_store'])): ?>
+						
+					<?php else: ?>
+						<span class="label label-important">No Store Attached</span>
+					<?php endif ?>
+				</div>
 			</div>
-		</div>
-	</fieldset>	
+		</fieldset>	
+	</div>
 <div class="form-actions"><button class="btn btn-primary" type="submit">Update Tag</button></div>
 <?php echo $this->Form->end();?>
 </div>
