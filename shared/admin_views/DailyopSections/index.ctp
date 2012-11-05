@@ -32,7 +32,17 @@ $directives = DailyopSection::directives();
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $dailyopSection['DailyopSection']['id']; ?>&nbsp;</td>
-		<td><?php echo $dailyopSection['DailyopSection']['featured']; ?></td>
+		<td align='center'><?php 
+			switch ($dailyopSection['DailyopSection']['featured']) {
+				case 1:
+					echo "<span class='label label-success'>YES</span>";
+					break;
+				
+				default:
+					echo "<span class='label label-important'>NO</span>";
+					break;
+			}
+		 ?></td>
 		<td><?php echo $dailyopSection['DailyopSection']['sort_weight']; ?></td>
 		<td>
 			<div style=' float:left; background-color:black;'>
@@ -45,29 +55,31 @@ $directives = DailyopSection::directives();
 					echo $this->Media->sectionIcon(array(
 					
 						"DailyopSection"=>$dailyopSection['DailyopSection'],
-						"w"=>100,
-						"h"=>100	
+						"w"=>75,
+						"h"=>75	
 					
 					));
 				}
 			?>
 			</div>
-			<?php 
-				if(!empty($dailyopSection['DailyopSection']['icon_dark_file'])) {
-					
-					
-					echo $this->Media->sectionIcon(array(
-					
-						"DailyopSection"=>$dailyopSection['DailyopSection'],
-						"w"=>100,
-						"h"=>100,
-						"dark"=>true	
-					
-					));
-					
-				}
-			
-			?>
+			<div class="" style="float:left;">
+				<?php 
+					if(!empty($dailyopSection['DailyopSection']['icon_dark_file'])) {
+						
+						
+						echo $this->Media->sectionIcon(array(
+						
+							"DailyopSection"=>$dailyopSection['DailyopSection'],
+							"w"=>75,
+							"h"=>75,
+							"dark"=>true	
+						
+						));
+						
+					}
+				
+				?>
+			</div>
 		</td>
 		<td><?php echo $this->Time->niceShort($dailyopSection['DailyopSection']['modified']); ?>&nbsp;</td>
 		<td><?php echo $dailyopSection['DailyopSection']['name']; ?>&nbsp;</td>
@@ -90,7 +102,7 @@ $directives = DailyopSection::directives();
 			http://theberrics.com/<?php echo $dailyopSection['DailyopSection']['uri']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Admin->link(__('View'), array('action' => 'view', $dailyopSection['DailyopSection']['id'])); ?>
+			
 			<?php echo $this->Admin->link(__('Edit'), array('action' => 'edit', $dailyopSection['DailyopSection']['id'])); ?>
 			<?php echo $this->Admin->link(__('Delete'), array('action' => 'delete', $dailyopSection['DailyopSection']['id']), null, sprintf(__('Are you sure you want to delete # %s?'), $dailyopSection['DailyopSection']['id'])); ?>
 		</td>
