@@ -25,3 +25,8 @@ echo $this->Html->script(array(
 		'bootstrap',
 		"admin"
 ));
+
+?>
+<script type="text/javascript">
+	$(document).on('touchstart.dropdown', '.dropdown-menu', function(e) { e.stopPropagation(); });
+</script>
