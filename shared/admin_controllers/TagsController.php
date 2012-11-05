@@ -184,8 +184,6 @@ class TagsController extends LocalAppController {
 
 	public function attach_brand($tag_id = false) {
 		
-
-
 		if($this->request->is("post") || $this->request->is("put")) {
 		
 			

@@ -1,10 +1,12 @@
+<?php if (!$this->request->is("ajax")): ?>
 <div class="page-header">
 	<h1>Brands</h1>
 </div>
+<?php endif ?>
 
 <div class="tabbable">
 	<ul class="nav nav-tabs">
-		<li><a href="#1" data-toggle="tab">Search</a></li>
+		<li><a href="#1" rel='noAjax' data-toggle="tab">Search</a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane" id="1">
@@ -106,9 +108,22 @@
 		</td>
 		<td><?php echo $brand['Brand']['website_url']; ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $brand['Brand']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $brand['Brand']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $brand['Brand']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $brand['Brand']['id'])); ?>
+			<?php if ($this->request->is("ajax")): ?>
+				<?php echo $this->Form->create('Tag',array(
+					"id"=>'TagForm',
+					"url"=>$this->request->here
+				));
+					echo $this->Form->input("brand_id",array("type"=>"hidden","value"=>$brand['Brand']['id']));
+					echo $this->Form->input("id",array("type"=>"hidden","value"=>$tag['Tag']['id']));
+					echo $this->Form->button("Attach Brand");
+					echo $this->Form->end();
+
+				 ?>
+			<?php else: ?>
+				<?php echo $this->Html->link(__('View', true), array('action' => 'view', $brand['Brand']['id'])); ?>
+				<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $brand['Brand']['id'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $brand['Brand']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $brand['Brand']['id'])); ?>
+			<?php endif ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

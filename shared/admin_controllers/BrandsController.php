@@ -39,7 +39,6 @@ class BrandsController extends LocalAppController {
 		
 		return $this->redirect($url);
 		
-		
 	}
 	
 	function index() {
@@ -208,5 +207,6 @@ class BrandsController extends LocalAppController {
 		unlink(TMP."upload/".$fileName);
 		
 	}
+
 }
 ?>
