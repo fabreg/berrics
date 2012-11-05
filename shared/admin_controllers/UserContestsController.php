@@ -16,6 +16,12 @@ class UserContestsController extends LocalAppController {
 	
 	public function index() {
 		
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['UserContest']['order'] = array(
+			"UserContest.created"=>"DESC"
+		);
+
 		$data = $this->paginate("UserContest");
 		
 		$this->set(compact("data"));

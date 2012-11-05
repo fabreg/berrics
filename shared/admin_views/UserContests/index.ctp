@@ -1,3 +1,7 @@
+<div class="page-header">
+	<h1>User Contests</h1>
+</div>
+<?php echo $this->Admin->adminPaging(); ?>
 <div class='index form'>
 	
 	<table cellspacing='0'>
