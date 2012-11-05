@@ -8,15 +8,14 @@ jQuery(document).ready(function($) {
 		if(st>98) {
 
 			$("#top-nav-container").addClass("top-nav-parked");
-			$('body').addClass("top-nav-showing");
+			$('#body-div').addClass("top-nav-showing");
 			
 
 		} else {
 
 			$("#top-nav-container").removeClass('top-nav-parked');
-			$('body').removeClass("top-nav-showing");
+			$('#body-div').removeClass("top-nav-showing");
 			
-
 
 		}
 

@@ -14,17 +14,14 @@ body * {
 	
 
 }
-body.top-nav-showing {
+#body-div.top-nav-showing {
 
-	padding-top:80px;
+	padding-top:100px;
 
 }
 
 #main-container {
 
-
-	border:2px solid #000;
-	border-top:none;
 
 }
 
@@ -37,11 +34,10 @@ body.top-nav-showing {
 }
 #top-nav-container {
 
-	border:5px solid #000;
+	border:3px inset #fff;
 	border-left:none;
 	border-right:none;
 	padding:5px;
-	background-color:white;
 	width:100%;
 }
 
