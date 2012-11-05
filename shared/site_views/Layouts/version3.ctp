@@ -36,16 +36,16 @@
 							<li class='top-nav-logo'>
 								<img src='/img/v3/layout/berrics-heading.jpg' alt='THE BERRICS' border='0' />
 							</li>
-							<li>
+							<li class='nav-btn'>
 								<a href="#">FEATURES</a>
 							</li>
-							<li>
+							<li class='nav-btn'>
 								<a href="">NEWS</a>
 							</li>
-							<li>
+							<li class='nav-btn'>
 								<a href="">UNIFIED</a>	
 							</li>
-							<li>CANTEEN</li>
+							<li class='nav-btn'>CANTEEN</li>
 							<li class='hidden-phone'>HEADQUARTERS</li>
 						</ul>
 					</div>
