@@ -138,7 +138,7 @@
 		</ul>
 	</li>
 	<li class='dropdown'>
-		<a href='#' data-toggle='dropdown' >Berrics <b class='caret'></b></a>
+		<a href='#' data-toggle='dropdown' class='dropdown-toggle' >Berrics <b class='caret'></b></a>
 		<div class='dropdown-menu span12 pull-right' style='max-width:550px;'>
 			<div class='row-fluid'>
 				<div class='span6'>
