@@ -43,6 +43,7 @@ echo $this->Admin->adminPaging();
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th>User</th>
+			<th>Brand</th>
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	</thead>
@@ -63,6 +64,15 @@ echo $this->Admin->adminPaging();
 				<i class="icon icon-user"></i> <?php echo $tag['User']['first_name'];  ?> <?php echo $tag['User']['last_name']; ?>
 			<?php else: ?>
 				<span class="label label-important">No User</span>
+			<?php endif ?>
+		</td>
+		<td>
+			<?php if (empty($tag['Brand']['id'])): ?>
+				<span class="label label-important">No Brand</span>
+			<?php else: ?>
+				<span class="label label-success">
+					<?php echo $tag['Brand']['name']; ?>
+				</span>
 			<?php endif ?>
 		</td>
 		<td class="actions">

@@ -80,6 +80,6 @@
 </div>
 <pre>
 <?php 
-print_r($this->request->data);
+//print_r($this->request->data);
 ?>
 </pre>
