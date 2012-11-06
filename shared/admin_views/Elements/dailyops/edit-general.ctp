@@ -261,6 +261,7 @@ function styleChecks() {
 					<i class="icon icon-user"></i>USER 
 					<i class="icon icon-flag"></i>BRAND
 					<i class="icon icon-briefcase"></i>UNIFIED
+					<i class="icon icon-star"></i>CATEGORY
 				</div>
 				<div class="clearfix">
 
@@ -282,6 +283,11 @@ function styleChecks() {
 									<span class="dropdown">
 										<button class="btn btn-small btn-primary"><i class="icon icon-flag icon-white"></i></button>
 									</span>
+								<?php endif ?>
+								<?php if ($val['category']): ?>
+									<button class="btn btn-small btn-primary">
+										<i class="icon icon-star icon-white"></i>
+									</button>
 								<?php endif ?>
 								<a href="<?php echo $this->Admin->url(array("action"=>"edit","controller"=>"tags",$val['id'])); ?>"><?php echo $val['name']; ?></a>&nbsp;
 								<a href="<?php echo $this->Html->url(array("action"=>"handle_remove_tag",$this->request->data['Dailyop']['id'],$val['id'])); ?>" class="remove-tag btn btn-mini">x</a>

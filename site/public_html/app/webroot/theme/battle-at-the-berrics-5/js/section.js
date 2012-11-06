@@ -27,9 +27,7 @@ $(document).ready(function() {
 		
 	});
 	
-	//loadLeaderSummary('overall');
-	//loadLeaderSummary('weekly');
-	
+
 });
 
 function loadLeaderSummary(type) {

@@ -7,14 +7,6 @@
 </div>
 <div>
 	<ul class="nav nav-tabs">
-		<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Actions <span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="/tags/add">New Tag</a></li>
-					
-				</ul>
-			
-		</li>
 		<li><a href="#search" data-toggle='tab'>Search</a></li>
 	</ul>
 	<div class="tab-content">
@@ -42,6 +34,7 @@ echo $this->Admin->adminPaging();
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
+			<th><?php echo $this->Paginator->sort("category") ?></th>
 			<th>User</th>
 			<th>Brand</th>
 			<th class="actions"><?php __('Actions');?></th>
@@ -60,12 +53,20 @@ echo $this->Admin->adminPaging();
 		<td><?php echo $tag['Tag']['modified']; ?>&nbsp;</td>
 		<td><?php echo $tag['Tag']['name']; ?>&nbsp;</td>
 		<td>
+			<?php if ($tag['Tag']['category']): ?>
+				<span class="label label-success">YES</span>
+			<?php else: ?>
+				<span class="label label-important">NO</span>
+			<?php endif ?>
+		</td>
+		<td>
 			<?php if (!empty($tag['User']['id'])): ?>
 				<i class="icon icon-user"></i> <?php echo $tag['User']['first_name'];  ?> <?php echo $tag['User']['last_name']; ?>
 			<?php else: ?>
 				<span class="label label-important">No User</span>
 			<?php endif ?>
 		</td>
+		
 		<td>
 			<?php if (empty($tag['Brand']['id'])): ?>
 				<span class="label label-important">No Brand</span>
