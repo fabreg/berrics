@@ -256,6 +256,12 @@ function styleChecks() {
 				
 				?>
 				<div><strong>Tags</strong></div>
+				<div class="alert alert-info">
+					<strong>Legend</strong> <br />
+					<i class="icon icon-user"></i>USER 
+					<i class="icon icon-flag"></i>BRAND
+					<i class="icon icon-briefcase"></i>UNIFIED
+				</div>
 				<div class="clearfix">
 
 					<?php if (count($this->request->data['Tag'])>0): ?>
@@ -270,6 +276,11 @@ function styleChecks() {
 											</li>
 											<li></li>
 										</ul>
+									</span>
+								<?php endif ?>
+								<?php if (!empty($val['brand_id'])): ?>
+									<span class="dropdown">
+										<button class="btn btn-small btn-primary"><i class="icon icon-flag icon-white"></i></button>
 									</span>
 								<?php endif ?>
 								<a href="<?php echo $this->Admin->url(array("action"=>"edit","controller"=>"tags",$val['id'])); ?>"><?php echo $val['name']; ?></a>&nbsp;
