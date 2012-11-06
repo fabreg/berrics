@@ -66,7 +66,7 @@ echo $this->Admin->adminPaging();
 			<?php endif ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $tag['Tag']['id'])); ?>
+			
 			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $tag['Tag']['id'])); ?>
 			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $tag['Tag']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $tag['Tag']['id'])); ?>
 		</td>

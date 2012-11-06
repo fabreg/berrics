@@ -186,8 +186,25 @@ class TagsController extends LocalAppController {
 		
 		if($this->request->is("post") || $this->request->is("put")) {
 		
-			
+
+			$this->Tag->create();
+
+			$this->Tag->id = $this->request->data['Tag']['id'];
+
+			$this->Tag->save(array(
+
+				"brand_id"=>$this->request->data["Tag"]['brand_id']
+
+			));
+
+			$this->Session->setFlash("Brand Attached Successfully");
 		
+			return $this->redirect(array(
+				"controller"=>"tags",
+				"action"=>"edit",
+				$this->request->data["Tag"]["id"]
+			));
+
 		}
 
 

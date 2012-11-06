@@ -109,16 +109,7 @@
 		<td><?php echo $brand['Brand']['website_url']; ?>&nbsp;</td>
 		<td class="actions">
 			<?php if ($this->request->is("ajax")): ?>
-				<?php echo $this->Form->create('Tag',array(
-					"id"=>'TagForm',
-					"url"=>$this->request->here
-				));
-					echo $this->Form->input("brand_id",array("type"=>"hidden","value"=>$brand['Brand']['id']));
-					echo $this->Form->input("id",array("type"=>"hidden","value"=>$tag['Tag']['id']));
-					echo $this->Form->button("Attach Brand");
-					echo $this->Form->end();
-
-				 ?>
+				<button class="btn btn-primary btn-small attach-brand-btn" value="<?php echo $brand['Brand']['id']; ?>" type="button">Attach Brand</button>
 			<?php else: ?>
 				<?php echo $this->Html->link(__('View', true), array('action' => 'view', $brand['Brand']['id'])); ?>
 				<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $brand['Brand']['id'])); ?>
