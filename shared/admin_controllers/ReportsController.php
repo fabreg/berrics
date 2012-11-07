@@ -184,7 +184,7 @@ class ReportsController extends LocalAppController {
 	
 	public function top_videos() {
 		
-		if($this->request->is("post")) {
+		if($this->request->is("post") || $this->request->is("put")) {
 		
 			$this->Report->top_videos(
 				$this->request->data['Report']['start_date'],
@@ -193,8 +193,13 @@ class ReportsController extends LocalAppController {
 				$this->request->data['Report']['title']
 			);
 
-			
+			$this->Session->setFlash("Top Video Report Queued Successfully");
 		
+			return $this->redirect(array(
+						"controller"=>"reports",
+						"action"=>"index"
+					));
+
 		}
 
 	}

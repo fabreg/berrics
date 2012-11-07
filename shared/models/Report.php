@@ -298,6 +298,7 @@ class Report extends AppModel {
 	}
 
 	public function top_videos($start_date,$end_date,$limit=50,$title = '') {
+		
 		$params = serialize(array(
 				"start_date"=>$start_date,
 				"end_date"=>$end_date,
@@ -323,17 +324,9 @@ class Report extends AppModel {
 		
 		$jobs['total_views'] = $bq->addJobQuery($mv_sql);
 		
-		$mv_sql = "select count(*) AS total,date_str from traffic.media_live where ts>={$start_ts} and ts<={$end_ts} and mobile = 1 group by date_str order by date_str asc";
+		$mv_sql = "select count(*) AS total,media_file_id from traffic.media_live where ts>={$start_ts} and ts<={$end_ts} and mobile = 1 group by media_file_id order by total desc limit {$limit}";
 		
 		$jobs['mobile_views'] = $bq->addJobQuery($mv_sql);
-		
-		$cv_sql = "select count(*) as total,country_code from traffic.media_live where ts>={$start_ts} and ts <={$end_ts} group by country_code order by total desc";
-		
-		$jobs['country_views'] = $bq->addJobQuery($cv_sql);
-		
-		$cv_sql = "select count(*) as total,country_code from traffic.media_live where ts>={$start_ts} and ts <={$end_ts} and mobile = 1 group by country_code order by total desc";
-		
-		$jobs['country_mobile_views'] = $bq->addJobQuery($cv_sql);
 		
 		$data['job_data'] = serialize($jobs);
 		
