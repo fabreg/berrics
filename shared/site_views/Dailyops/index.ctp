@@ -37,7 +37,7 @@ foreach($dailyops as $k=>$dop):
 		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style=''>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
 
 		
-		echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_jeron.jpg'/></a></div>";
+		//echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_jeron.jpg'/></a></div>";
 		if(strtoupper(date("D"))=="SUN") 	echo "<a href='/'><img src='/img/layout/newsv2/aberrican_728x90.jpg' border='0' alt='0'/></a>";
 	
 		
