@@ -59,14 +59,3 @@ function search($array, $key, $value)
 		<?php endforeach ?>
 	</tbody>
 </table>
-<pre>
-
-</pre>
-<pre>
-<?php 
-
-//print_r($files);
-
-print_r($report['Report']['data_formatted']); 
-?>
-</pre>
