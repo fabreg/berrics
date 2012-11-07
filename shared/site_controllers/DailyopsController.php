@@ -783,7 +783,7 @@ class DailyopsController extends LocalAppController {
 	/**
 	 * NEW LAYOUT!
 	 */
-	public function version3() {
+	public function dev() {
 
 		$this->loadModel('Dailyop');
 		
