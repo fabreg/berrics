@@ -15,10 +15,59 @@ class UnifiedStoresController extends LocalAppController {
 		$this->initPermissions();
 		
 	}
-	
+	public function search() {
+
+		if($this->request->is("post") || $this->request->is("put")) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"search"=>true
+				);
+				
+				
+				foreach($this->request->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						if(empty($vv)) continue;
+
+						$url[$k.".".$kk]=urlencode($vv);
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+
+	}
+
 	function index() {
 		
 		$this->UnifiedStore->recursive = 0;
+
+
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['limit'] = 50;
+
+		if(isset($this->request->params['named']['search'])) {
+
+
+			if (isset($this->request->params['named']['UnifiedStore.shop_name'])) {
+				
+				$this->Paginator->settings['conditions']['UnifiedStore.shop_name LIKE'] = 
+					"%".str_replace(" ","%",$this->request->params['named']['UnifiedStore.shop_name'])."%";
+
+				$this->request->data['UnifiedStore']['shop_name'] = $this->request->params['named']['UnifiedStore.shop_name'];
+
+			}
+
+		}
+
+
 		$this->set('unifiedStores', $this->paginate());
 		
 	}

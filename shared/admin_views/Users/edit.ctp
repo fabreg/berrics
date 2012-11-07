@@ -130,7 +130,6 @@ jQuery(document).ready(function($) {
 		<!-- Contact Info -->
 		<div class="tab-pane" id="4">
 			<?php 
-			
 				echo $this->Form->input("phone_number");
 				echo $this->Form->input("street_address");
 				echo $this->Form->input("country",array("options"=>Arr::countries()));

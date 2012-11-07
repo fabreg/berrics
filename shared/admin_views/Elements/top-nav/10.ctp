@@ -306,6 +306,7 @@
 	</li>
 	<li class='dropdown'><a href='#' data-toggle='dropdown' >Unified <b class='caret'></b></a>
 		<ul class='dropdown-menu pull-right'>
+			<!--
 			<li class='nav-header'>Shops / Accounts </li>
 			<li>
 				<a href='/unified_shops'>Manage Shops</a>
@@ -313,7 +314,8 @@
 			<li>
 				<a href='/unified_shops/add'>Add New Shop</a>
 			</li>
-			<li class='nav-header'>**UNIFIED STORES** SO THIS IS THE ONE WE WILL USE</li>
+		-->
+			<li class='nav-header'>Unified Stores</li>
 			<li>
 				<a href='/unified_stores'>Manage STORES</a>
 			</li>

@@ -1,18 +1,54 @@
-<div class="unifiedStores index">
-	<h2><?php echo __('Unified Stores');?></h2>
-		<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%')
-	));
-	?>	</p>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	var uri = document.location.href;
+	if (uri.match(/search:/)) {
 
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous'), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next') . ' >>', array(), null, array('class' => 'disabled'));?>
+		$('.tabbable a[href=#2]').tab('show');
+
+	};
+});
+
+</script>
+<div class="page-header">
+	<h1>Unified Stores</h1>
+</div>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class='dropdown'>
+			<a href="#" data-toggle="dropdown">Actions <b class='caret'></b></a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="<?php echo $this->Admin->url(array("action"=>"add")); ?>"><i class="icon icon-plus-sign"></i>  Add New Store</a>
+				</li>
+			</ul>
+		</li>
+		<li><a href="#2" data-toggle="tab">Search</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane" id="2">
+			<div class="well well-small">
+				<?php 
+					echo $this->Form->create('UnifiedStore',array(
+						"id"=>'UnifiedStoreForm',
+						"url"=>array("action"=>"search")
+					));
+				 	echo $this->Form->input("shop_name");
+					
+				 ?>
+				 <div class="form-actons">
+				 	<button class="btn btn-primary">Search</button>
+				 	<a href="<?php echo $this->Html->url(array("action"=>"index")); ?>" class="btn btn-success">Reset Search</a>
+				 </div>
+				 <?php 
+				 	echo $this->Form->end();
+				  ?>
+			</div>
+		</div>
 	</div>
+</div>
+<div class="unifiedStores index">
+
+	<?php echo $this->Admin->adminPaging(); ?>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
@@ -64,23 +100,4 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%')
-	));
-	?>	</p>
-
-	<div class="paging">
-		<?php echo $this->Paginator->prev('<< ' . __('previous'), array(), null, array('class'=>'disabled'));?>
-	 | 	<?php echo $this->Paginator->numbers();?>
- |
-		<?php echo $this->Paginator->next(__('next') . ' >>', array(), null, array('class' => 'disabled'));?>
-	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Admin->link(__('New Unified Store'), array('action' => 'add')); ?></li>
-	</ul>
-</div>
+<?php echo $this->Admin->adminPaging(); ?>
