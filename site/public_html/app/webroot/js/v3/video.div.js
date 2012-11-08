@@ -8,8 +8,6 @@
 
       var $that = $($this);
 
-
-
       //get the video data
       $.ajax({
 
@@ -61,6 +59,15 @@
       var $this = $data.target;
 
       $this.html($("<div class='video-div' />").append($("<video />")));
+
+      //build the controls
+
+
+      var controls = $($("<div class='controls' />")).append(
+                        $("<div class='inner' />").append(
+                            $("<div class='bar' />").append($("<div class='slider' />"))
+                          )
+                      );
 
       var video = $this.find("video");
 

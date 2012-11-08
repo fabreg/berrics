@@ -789,10 +789,14 @@ class DailyopsController extends LocalAppController {
 		
 		$this->layout = "version3";
 
+		$date = date("Y-m-d");
+
+		$date = '2012-07-21';
+
 		$posts = $this->Dailyop->find("all",array(
 
 			"conditions"=>array(
-				"DATE(Dailyop.publish_date)" => date("Y-m-d"),
+				"DATE(Dailyop.publish_date)" => $date,
 				"Dailyop.active"=>1,
 				"Dailyop.hidden"=>0
 			),
