@@ -12,10 +12,10 @@ class BigQueryApi {
 	public function __construct() {
 		
 		
-		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/apiClient.php"));
-		App::import("Vendor","GoogleBigqueryApi",array("file"=>"google-api-php-client/src/contrib/apiBigqueryService.php"));
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/Google_Client.php"));
+		App::import("Vendor","GoogleBigqueryApi",array("file"=>"google-api-php-client/src/contrib/Google_BigqueryService.php"));
 		
-		$apiClient = new apiClient();
+		$apiClient = new Google_Client();
 		$apiClient->setApplicationName("Testing App");
 		$apiClient->setClientId("632632109626-oi3e0cvvkbur75r1fe4cg80dbuk4sjds@developer.gserviceaccount.com");
 		$apiClient->setClientSecret("dhWNmyamq9LPLfMpWStQbmww");
@@ -29,7 +29,7 @@ class BigQueryApi {
 		
 		$this->apiClient = $apiClient;
 		
-		$this->bq = new apiBigqueryService($apiClient);
+		$this->bq = new Google_BigqueryService($apiClient);
 		
 	}
 	
@@ -81,7 +81,7 @@ class BigQueryApi {
 	public function addJob($command = "default",$opts = array()) {
 		
 		#setup query for the job to run
-		$qr = new JobConfigurationQuery();
+		$qr = new Google_JobConfigurationQuery();
 
 		switch(strtolower($command)) {
 			
@@ -114,13 +114,13 @@ class BigQueryApi {
 			
 		}
 		
-		$job = new Job();
+		$job = new Google_Job();
 		
-		$jobConfig = new JobConfiguration();
+		$jobConfig = new Google_JobConfiguration();
 		
 		$jobConfig->setQuery($qr);
 		
-		$jobRef = new JobReference();
+		$jobRef = new Google_JobReference();
 		
 		
 		//additional job options
@@ -136,6 +136,7 @@ class BigQueryApi {
 		}
 
 		$jobRef->setProjectId($this->berrics_reports);
+
 		$jobOps['projectId'] = $this->berrics_reports;
 		
 		$job->setJobReference($jobRef);
@@ -143,8 +144,8 @@ class BigQueryApi {
 		$job->setConfiguration($jobConfig);
 
 		//make job test
-		$job_id = $this->jobs()->insert($job,$jobOps);
-		//die($job_id);
+		$job_id = $this->jobs()->insert($this->berrics_reports,$job,$jobOps);
+
 		return $job_id;
 		
 	}
