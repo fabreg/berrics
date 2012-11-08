@@ -824,6 +824,15 @@ class DailyopsController extends LocalAppController {
 	}
 
 
+	public function video_controls() {
+		
+		$this->layout = "version3";
+		
+
+
+	}
+
+
 
 
 	

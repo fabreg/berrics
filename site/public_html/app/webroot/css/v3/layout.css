@@ -121,6 +121,12 @@ MAIN UTILITY CLASSSES
 	padding:3px;
 }
 
+/*
+#########################
+VIDEO DIV PLUGIN
+#########################
+*/
+
 .video-div {
 
 	width:100%;
@@ -132,6 +138,51 @@ MAIN UTILITY CLASSSES
 	width:100%;
 
 }
+
+.video-div .controls {
+
+	height:40px;
+
+
+}
+
+
+.video-div .controls .inner {
+
+	position: relative;
+	
+}
+
+
+.video-div .controls .play-btn {
+
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	background-color:#999;
+	height:100%;
+	width:70px;
+}
+
+.video-div .slider {
+
+	height:35px;
+	position:absolute;
+	left:74px;
+	bottom:0px;
+	background-color:#999;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+
+}
+
+
+/*
+######################
+END VIDEO PLUGIN
+######################
+*/
 
 
 /*
