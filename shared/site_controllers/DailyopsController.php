@@ -789,8 +789,33 @@ class DailyopsController extends LocalAppController {
 		
 		$this->layout = "version3";
 
+		$posts = $this->Dailyop->find("all",array(
 
+			"conditions"=>array(
+				"DATE(Dailyop.publish_date)" => date("Y-m-d"),
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0
+			),
+			"order"=>array(
+				"Dailyop.publish_date"=>"ASC"
+			),
+			"contain"=>array(
+				"DailyopMediaItem"=>array(
+					"MediaFile",
+					"limit"=>1,
+					"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
+				),
+				"DailyopSection",
+				"Tag"=>array(
+					"User",
+					"Brand",
+					"UnifiedStore"
+				)
+			)
 
+		));
+
+		$this->set(compact("posts"));
 
 	}
 

@@ -1,8 +1,7 @@
 
 body {
 
-	background-image:url(/img/v3/layout/bg.jpg);
-	background-color: #cfcfcf;
+	background-color: #fff;
 	font-family: "Times New Roman";
 }
 
@@ -40,7 +39,6 @@ body * {
 }
 #top-nav-container {
 
-	width:100%;
 	background-image:url(/img/v3/layout/nav-border-bg.png);
 	height:36px;
 	
@@ -56,8 +54,7 @@ body * {
 
 	position:fixed;
 	top:0px;
-	left:0px;
-	background-color:#e9e9e9;
+	background-color:#fff;
 }
 #top-nav-container.top-nav-parked .top-nav-logo {
 
@@ -122,6 +119,20 @@ MAIN UTILITY CLASSSES
 	background-color:#fff;
 	box-shadow:0px 2px 3px #333;
 	padding:3px;
+}
+
+.video-div {
+
+	width:100%;
+	height:100%;
+
+}
+
+.video-div video {
+
+	width:100%;
+	height:100%;
+
 }
 
 
