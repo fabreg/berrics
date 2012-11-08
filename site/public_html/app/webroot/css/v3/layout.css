@@ -52,6 +52,7 @@ body * {
 
 #top-nav-container.top-nav-parked {
 
+	z-index: 99999;
 	position:fixed;
 	top:0px;
 	background-color:#fff;
@@ -161,22 +162,31 @@ VIDEO DIV PLUGIN
 	-webkit-border-radius:6px;
 	background-color:#999;
 	height:100%;
-	width:70px;
+	width:50px;
 }
 
 .video-div .slider {
 
 	height:35px;
 	position:absolute;
-	left:74px;
+	left:55px;
 	bottom:0px;
 	background-color:#999;
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
+	right:0px;
 
 }
+.video-div .slider .tracking-bar {
 
+	margin-left:15px;
+	margin-top:10px;
+	margin-right:150px;
+	height:15px;
+	background-color:#666;
+	position:relative;
+}
 
 /*
 ######################
