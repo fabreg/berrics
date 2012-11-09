@@ -1514,18 +1514,34 @@ class TesterController extends LocalAppController {
 		
 	}
 
-	public function goog_callback() {
+	public function test_youtube() {
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/Google_Client.php"));
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/contrib/Google_YoutubeService.php"));
 		
-		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/apiClient.php"));
-		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/contrib/apiBigqueryService.php"));
-		
-		$apiClient = new apiClient();
+		$apiClient = new Google_Client();
 		$apiClient->setApplicationName("Testing App");
 		$apiClient->setClientId("632632109626-oi3e0cvvkbur75r1fe4cg80dbuk4sjds@developer.gserviceaccount.com");
 		$apiClient->setClientSecret("dhWNmyamq9LPLfMpWStQbmww");
 		$apiClient->setRedirectUri("http://".$_SERVER['HTTP_HOST']."/tester/goog_callback");
 		$apiClient->setScopes(array(
-				'https://www.googleapis.com/auth/bigquery'
+				'https://www.googleapis.com/auth/youtube'
+		));
+		$apiClient->authenticate();
+		die();
+	}
+
+	public function goog_callback() {
+		
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/Google_Client.php"));
+		App::import("Vendor","GoogleApiClient",array("file"=>"google-api-php-client/src/contrib/Google_YoutubeService.php"));
+		
+		$apiClient = new Google_Client();
+		$apiClient->setApplicationName("Testing App");
+		$apiClient->setClientId("632632109626-oi3e0cvvkbur75r1fe4cg80dbuk4sjds@developer.gserviceaccount.com");
+		$apiClient->setClientSecret("dhWNmyamq9LPLfMpWStQbmww");
+		$apiClient->setRedirectUri("http://".$_SERVER['HTTP_HOST']."/tester/goog_callback");
+		$apiClient->setScopes(array(
+				'https://www.googleapis.com/auth/youtube'
 		));
 		$apiClient->authenticate();
 		
@@ -1751,6 +1767,17 @@ class TesterController extends LocalAppController {
 		echo $count;
 
 		die();
+
+
+	}
+
+	public function yt_channel() {
+		
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+
+		$yt = new YoutubeApi();
+
+		$yt->getChannel();
 
 
 	}
