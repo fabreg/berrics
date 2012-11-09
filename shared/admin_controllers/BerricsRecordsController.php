@@ -17,6 +17,10 @@ class BerricsRecordsController extends LocalAppController {
 	
 	public function index() {
 		
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['BerricsRecord']['order'] = array("BerricsRecord.id"=>"DESC");
+
 		$records = $this->paginate("BerricsRecord");
 		
 		$this->set(compact("records"));

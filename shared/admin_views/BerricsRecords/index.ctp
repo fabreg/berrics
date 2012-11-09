@@ -1,5 +1,9 @@
+<div class="page-header">
+	<h1>For The Record</h1>
+</div>
+<?php echo $this->Admin->adminPaging(); ?>
 <div class='index'>
-	<h2>Berrics Records</h2>
+
 	<table cellspacing='0'>
 		<tr>
 			<th><?php echo $this->Paginator->sort("id"); ?></th>
