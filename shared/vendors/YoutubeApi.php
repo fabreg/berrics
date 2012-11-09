@@ -8,6 +8,9 @@ class YoutubeApi {
 
 	public $youtube = false;
 
+	private $devKey = 'AI39si72k-DemceO36Jpjg0AMV7E9tDDOyvv4SsO_tC8gK_R-KKhLiugFiHIQDWTbuAFNo_QbOHPT5J-n8qFpBdPV0TAdKNN2g';
+
+	public $videos = array();
 
 	public function __construct() {
 		
@@ -22,19 +25,150 @@ class YoutubeApi {
 
 
         Zend_Loader::loadClass('Zend_Gdata_YouTube');
+        Zend_Loader::loadClass('Zend_Gdata_AuthSub');
+		Zend_Loader::loadClass('Zend_Gdata_ClientLogin');
 
-        $this->youtube = new Zend_Gdata_YouTube(null,null,null,'AI39si72k-DemceO36Jpjg0AMV7E9tDDOyvv4SsO_tC8gK_R-KKhLiugFiHIQDWTbuAFNo_QbOHPT5J-n8qFpBdPV0TAdKNN2g');
+		$authenticationURL= 'https://www.google.com/accounts/ClientLogin';
+		$httpClient = 
+  			Zend_Gdata_ClientLogin::getHttpClient(
+              $username = 'youtube@theberrics.com',
+              $password = 'palmetto',
+              $service = 'youtube',
+              $client = null,
+              $source = 'The Berrics', // a short string identifying your application
+              $loginToken = null,
+              $loginCaptcha = null,
+              $authenticationURL);
+
+  	
+  		$this->youtube = new Zend_Gdata_YouTube($httpClient,'The Berrics','The Berrics',$this->devKey);
+
+  		$this->youtube->setMajorProtocolVersion(2);
 
 	}
 
 	public function test() {
 
-		$videoFeed = $this->youtube->getUserUploads('ogberrics');
+		$videoFeed = $this->youtube->getUserUploads('default');
 
-		die(print_r($videoFeed));
-
+		$this->printEntireFeed($videoFeed,1);
+		die();
 
 	}
+
+	public function getAndPrintVideoFeed($location = Zend_Gdata_YouTube::VIDEO_URI) {
+	 
+	  // set the version to 2 to receive a version 2 feed of entries
+	  
+	  $videoFeed = $yt->getVideoFeed($location);
+	  $this->printVideoFeed($videoFeed);
+	}
+ 
+	public function printVideoFeed($videoFeed) {
+	  $count = 1;
+	  foreach ($videoFeed as $videoEntry) {
+	    echo "Entry # " . $count . "\n";
+	    $this->printVideoEntry($videoEntry);
+	    echo "\n";
+	    $count++;
+	  }
+	}
+
+	public function printVideoEntry($videoEntry) {
+	  // the videoEntry object contains many helper functions
+	  // that access the underlying mediaGroup object
+	  echo 'Video: ' . $videoEntry->getVideoTitle() . "\n";
+	  echo 'Video ID: ' . $videoEntry->getVideoId() . "\n";
+	  echo 'Updated: ' . $videoEntry->getUpdated() . "\n";
+	  echo 'Description: ' . $videoEntry->getVideoDescription() . "\n";
+	  echo 'Category: ' . $videoEntry->getVideoCategory() . "\n";
+	  echo 'Tags: ' . implode(", ", $videoEntry->getVideoTags()) . "\n";
+	  echo 'Watch page: ' . $videoEntry->getVideoWatchPageUrl() . "\n";
+	  echo 'Flash Player Url: ' . $videoEntry->getFlashPlayerUrl() . "\n";
+	  echo 'Duration: ' . $videoEntry->getVideoDuration() . "\n";
+	  echo 'View count: ' . $videoEntry->getVideoViewCount() . "\n";
+	  echo 'Rating: ' . $videoEntry->getVideoRatingInfo() . "\n";
+	  echo 'Geo Location: ' . $videoEntry->getVideoGeoLocation() . "\n";
+	  echo 'Recorded on: ' . $videoEntry->getVideoRecorded() . "\n";
+	  
+	  // see the paragraph above this function for more information on the 
+	  // 'mediaGroup' object. in the following code, we use the mediaGroup
+	  // object directly to retrieve its 'Mobile RSTP link' child
+	  foreach ($videoEntry->mediaGroup->content as $content) {
+	    if ($content->type === "video/3gpp") {
+	      echo 'Mobile RTSP link: ' . $content->url . "\n";
+	    }
+	  }
+	  
+	  echo "Thumbnails:\n";
+	  $videoThumbnails = $videoEntry->getVideoThumbnails();
+
+	  foreach($videoThumbnails as $videoThumbnail) {
+	    echo $videoThumbnail['time'] . ' - ' . $videoThumbnail['url'];
+	    echo ' height=' . $videoThumbnail['height'];
+	    echo ' width=' . $videoThumbnail['width'] . "\n";
+	  }
+	}
+
+	public function printEntireFeed($videoFeed, $counter) {
+	 foreach($videoFeed as $videoEntry) {
+	   echo $counter . " - " . $videoEntry->getVideoTitle() . "\n";
+	   echo $videoEntry->getVideoId(),"\n";
+	   $counter++;
+	 }
+
+	 // See whether we have another set of results
+	 try {
+	   $videoFeed = $videoFeed->getNextFeed();
+	 } catch (Zend_Gdata_App_Exception $e) {
+	   echo $e->getMessage() . "\n";
+	   return;
+	 }
+
+	 if ($videoFeed) {
+	   echo "-- next set of results --\n";
+	   $this->printEntireFeed($videoFeed, $counter);
+	 }
+	}
+
+	public function getAllVideos() {
+
+		$videoFeed = $this->youtube->getUserUploads('default');
+
+		$this->parseGetAllVideos($videoFeed);
+
+		return $this->videos;
+
+	}
+
+	private function parseGetAllVideos($feed=false) {
+
+		foreach($feed as $video) {
+			
+			$this->videos[] = array(
+				"title"=>$video->getVideoTitle(),
+				"video_id"=>$video->getVideoId(),
+				"tags"=>implode(", ", $video->getVideoTags()),
+				"isVideoPrivate"=>$video->isVideoPrivate()
+				//"dump"=>print_r($video,true)
+			);
+
+		}
+
+		try {
+
+			$feed = $feed->getNextFeed();
+
+		} catch(Zend_Gdata_App_Exception $e) {
+
+			return;
+
+		}
+
+		if($feed) $this->parseGetAllVideos($feed);
+
+	}
+
 
 
 

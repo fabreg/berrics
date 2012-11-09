@@ -1771,13 +1771,28 @@ class TesterController extends LocalAppController {
 
 	}
 
-	public function yt_channel() {
+	public function yt_callback() {
 		
+		die(print_r($_SESSION));
+
+	}
+
+	public function yt_channel() {
+
+		// in app/Config/bootstrap.php
+		App::uses('CakeLog', 'Log');
+
 		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
 
 		$yt = new YoutubeApi();
 
-		$yt->test();
+		$videos = $yt->getAllVideos();
+
+		$dump = print_r($videos,true);
+
+		CakeLog::write("debug",$dump);
+
+		die();
 
 
 	}
