@@ -1777,7 +1777,7 @@ class TesterController extends LocalAppController {
 
 		$yt = new YoutubeApi();
 
-		$yt->getChannel();
+		$yt->test();
 
 
 	}
