@@ -9,7 +9,7 @@ class YoutubeApi {
 	public $youtube = false;
 
 
-	public function __construct($value='') {
+	public function __construct() {
 		
 		$include = get_include_path();
         $include.=  ":".DS.'home'.DS.'sites'.DS.'berrics.v3'.DS.'shared'.DS.'vendors' . DS;
