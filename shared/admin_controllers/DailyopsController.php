@@ -1109,6 +1109,25 @@ class DailyopsController extends LocalAppController {
 		
 	}
 
+
+	public function share() {
+		
+
+
+	}
+
+	public function ajax_list_youtube($hidden = true) {
+		
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+
+		$yt = new YoutubeApi();
+
+		$videos = $yt->getAllVideos();
+
+		$this->set(compact("videos"));
+
+	}
+
 	
 	
 	

@@ -111,15 +111,12 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort("active"); ?>
 			<th><?php echo $this->Paginator->sort("hidden"); ?></th>
-			
-			
+			<th><?php echo $this->Paginator->sort("share"); ?></th>
 			<th><?php echo $this->Paginator->sort("publish_date"); ?></th>
 			<th><?php echo $this->Paginator->sort('dailyop_section_id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('user_id');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
-			
-
 			<th class="actions"><?php __('Actions');?></th>
 	</tr>
 	<?php
@@ -160,6 +157,19 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 			}
 		
 		?></td>
+		<td>
+			<?php 
+				switch ($dailyop['Dailyop']['share']) {
+					case 1:
+						echo "<span class='label label-success'>YES</span>";
+						break;
+					
+					default:
+						echo "<span class='label label-important'>NO</span>";
+						break;
+				}
+			 ?>
+		</td>
 		
 		
 		<td><?php echo $this->Time->niceShort($dailyop['Dailyop']['publish_date']); ?></td>
