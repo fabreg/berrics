@@ -479,7 +479,7 @@ class DailyopsController extends LocalAppController {
 			
 			$this->set(compact("section","posts","year_in","years")); 
 			
-			return $this->render("{$ctp}");
+			return $this->render("/Dailyops/{$ctp}");
 			
 		} else {
 			

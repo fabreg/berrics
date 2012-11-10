@@ -17,6 +17,7 @@ class ImageGalleryController extends DailyopsController {
 		$this->Auth->allow("*");
 	
 		
+		
 	}
 	
 
