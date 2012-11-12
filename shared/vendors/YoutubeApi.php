@@ -31,8 +31,10 @@ class YoutubeApi {
 		$authenticationURL= 'https://www.google.com/accounts/ClientLogin';
 		$httpClient = 
   			Zend_Gdata_ClientLogin::getHttpClient(
-              $username = 'youtube@theberrics.com',
-              $password = 'palmetto',
+              //$username = 'youtube@theberrics.com',
+              //$password = 'palmetto',
+  			   $username = "john.c.hardy@gmail.com",
+  			   $password = "artosari",
               $service = 'youtube',
               $client = null,
               $source = 'The Berrics', // a short string identifying your application
@@ -149,8 +151,8 @@ class YoutubeApi {
 				"title"=>$video->getVideoTitle(),
 				"video_id"=>$video->getVideoId(),
 				"tags"=>implode(", ", $video->getVideoTags()),
-				"isVideoPrivate"=>$video->isVideoPrivate()
-				//"dump"=>print_r($video,true)
+				"isVideoPrivate"=>$video->isVideoPrivate(),
+				"dump"=>print_r($video,true)
 			);
 
 		}
@@ -168,6 +170,83 @@ class YoutubeApi {
 		if($feed) $this->parseGetAllVideos($feed);
 
 	}
+
+	public function getUploadedVideos($hidden = true) {
+		
+			//$devTagUrl ='http://gdata.youtube.com/feeds/api/videos/-/%7Bhttp%3A%2F%2Fgdata.youtube.com%2Fschemas%2F2007%2Fdevelopertags.cat%7Dberricsupload';
+
+			$query = $this->youtube->newVideoQuery();
+
+			$query->setAuthor("ibejohn818");
+
+			$query->setVideoQuery("berricsapi");
+
+			die(print_r($query->getQueryUrl(2)));
+
+	  		$feed = $this->youtube->getVideoFeed($query->getQueryUrl(2));
+
+	  		die(print_r($feed));
+
+	  		$this->parseGetAllVideos($feed);
+
+	  		return $this->videos;
+
+	}
+
+
+	public function uploadVideo($Dailyop = false) {
+
+		//if(!$Dailyop) throw new Exception("Invalid Dailyops ID");
+		//let's get the video that needs to be uploaded
+
+		$DailyopsShareParameter = ClassRegistry::init("DailyopsShareParameter");
+
+		Zend_Loader::loadClass('Zend_Gdata_YouTube_VideoEntry');
+
+		$videoEntry = new Zend_Gdata_YouTube_VideoEntry();
+
+		$src = $this->youtube->newMediaFileSource("/tmp/Ishod_fourstar.mp4");
+
+		$src->setContentType('video/mp4');
+
+		$src->setSlug("Ishod_fourstar.mp4");
+
+		$videoEntry->setMediaSource($src);
+
+		$videoEntry->setVideoTitle("Testing Upload API");
+
+		$videoEntry->setVideoCategory('Sports');
+
+		$videoEntry->setVideoDeveloperTags(array("berricsapi","berricsupoad"));
+
+		$videoEntry->setVideoTags("ishod, the berrics, berricsapi");
+
+		$uploadUrl = 'http://uploads.gdata.youtube.com/feeds/api/users/default/uploads';
+		
+		try {
+		  $newEntry = $this->youtube->insertEntry($videoEntry, $uploadUrl, 'Zend_Gdata_YouTube_VideoEntry');
+		} catch (Zend_Gdata_App_HttpException $httpException) {
+		  echo $httpException->getRawResponseBody();
+		} catch (Zend_Gdata_App_Exception $e) {
+		    echo $e->getMessage();
+		}
+
+		//die(print_r($newEntry));
+		$newEntry->setMajorProtocolVersion(2);
+		$newVideo = array(
+			"video_id"=>$newEntry->getVideoId()
+		);
+
+		die(print_r($newVideo));
+
+	}
+
+	public function updateVideo() {
+
+
+
+	}
+
 
 
 

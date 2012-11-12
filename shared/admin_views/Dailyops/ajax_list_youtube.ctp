@@ -15,6 +15,9 @@
 				<td>
 					<div><?php echo $v['title']; ?></div>
 					<div><?php echo $v['video_id'] ?></div>
+					<pre>
+						<?php echo $v['dump']; ?>
+					</pre>
 				</td>
 			</tr>
 		<?php endforeach ?>

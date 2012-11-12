@@ -1797,6 +1797,30 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function yt_upload() {
+
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+
+		$yt = new YoutubeApi();
+
+		$yt->uploadVideo();
+
+
+
+	}
+
+	public function yt_devtags() {
+		
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+
+		$yt = new YoutubeApi();
+
+		$videos = $yt->getUploadedVideos();
+
+		die(print_r($videos));
+
+	}
+
 
 
 	
