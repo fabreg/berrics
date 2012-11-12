@@ -177,8 +177,6 @@ class YoutubeApi {
 
 			$query = $this->youtube->newVideoQuery();
 
-			$query->setAuthor("ibejohn818");
-
 			$query->setVideoQuery("berricsapi");
 
 			die(print_r($query->getQueryUrl(2)));
