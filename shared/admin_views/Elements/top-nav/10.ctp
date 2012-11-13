@@ -160,7 +160,6 @@
 						<li>
 							<a href='/dailyops/add'>Create new post</a>
 						</li>
-						<li><a href="<?php echo $this->Admin->url(array("controller"=>"dailyops","action"=>"share")); ?>">Video Sharing</a></li>
 						<li class='nav-header'>The DailyOps Sections</li>
 						<li>
 							<a href='/dailyop_sections'>Manage Sections</a>
