@@ -811,8 +811,7 @@ class DailyopsController extends LocalAppController {
 				"DailyopSection",
 				"Tag"=>array(
 					"User",
-					"Brand",
-					"UnifiedStore"
+					"Brand"
 				)
 			)
 
