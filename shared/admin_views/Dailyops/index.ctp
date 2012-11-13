@@ -177,8 +177,15 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 			 <span class='dropdown'>
 			 	<a href='#' data-toggle='dropdown'><b class="caret"></b></a>
 			 	<ul class="dropdown-menu">
-			 		<li><a href='<?php echo $this->Admin->url(array("action"=>"toggle_share",$dailyop['Dailyop']['id'])); ?>'>Toggle</a></li>
-			 		<li></li>
+			 		<?php if ($dailyop['Dailyop']['share']): ?>
+			 			<li>
+			 				<a href="<?php echo $this->Admin->url(array("action"=>"turn_off_sharing",$dailyop['Dailyop']['id'])); ?>">Turn Off Sharing</a>
+			 			</li>
+			 		<?php else: ?>
+			 			<li>
+			 				<a href="<?php echo $this->Admin->url(array("action"=>"turn_on_sharing",$dailyop['Dailyop']['id'])); ?>">Turn On Sharing</a>
+			 			</li>
+			 		<?php endif ?>
 			 	</ul>
 			 </span>
 		</td>

@@ -1148,28 +1148,79 @@ class DailyopsController extends LocalAppController {
 
 	
 	
-	public function toggle_share($id = false) {
+	public function turn_on_sharing($id) {
+
+		$this->loadModel('DailyopsShareParameter');
+		$this->loadModel('VideoTask');
 		
-		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>$id),true,true);
+		$post = $this->Dailyop->returnPost(array(
+			"Dailyop.id"=>$id
+		),$this->isAdmin(),1);
 
-		$key = 0;
+		//get the sharing parameters
 
-		if($post['Dailyop']['share'] == 0) $key = 1;
+		$params = $this->DailyopsShareParameter->find("all",array(
+
+			"conditions"=>array(
+				"DailyopsShareParameter.dailyop_id"=>$id
+			)
+
+		));
+
+		$yt = Set::extract("/DailyopsShareParameter[service=youtube]",$params);
+		$vimeo = Set::extract("/DailyopsShareParameter[service=vimeo]",$params);
+		
+		$fm = array();
+
+		//queue up the youtube task
+		if(count($yt)<=0) { //no video id for youtube, start an upload task
+
+			$this->VideoTask->queueTask(array(
+				"model"=>"Dailyop",
+				"foreign_key"=>$id,
+				"task"=>"youtube_upload",
+			));
+
+			$fm[] = "Youtube Upload Has Been Queued";
+
+		} else { //we have a video id for youtube, start an update to visible task
+
+			$this->VideoTask->queueTask(array(
+				"model"=>"Dailyop",
+				"foreign_key"=>$id,
+				"task"=>"youtube_make_visible"
+
+			));
+
+			$fm[] = "Youtube Video Has Been queued for update";
+
+		}
+
+		//update the post to share on
 
 		$this->Dailyop->create();
-
 		$this->Dailyop->id = $id;
+		$this->Dailyop->save(array(
+			"share"=>1
+		));
 
-		$this->Dailyop->save(array("share"=>$key));
+		$msg = implode("<br />", $fm);
+
+		$this->Session->setFlash($msg);
 
 		$cb = "/dailyops";
 
-		if(isset($this->request->params['named']['cb'])) 
-			$cb = base64_decode($this->request->params['named']['cb']);
+		if(isset($this->request->params['named']['cb'])) $cb = base64_decode($this->request->params['named']['cb']);
 
-		$this->Session->setFlash("Share status updated");
+		$this->redirect($cb);
 
-		return $this->redirect($cb."#".$id);
+		return;
+
+	}
+
+	public function turn_off_sharing($id) {
+		
+
 
 	}
 

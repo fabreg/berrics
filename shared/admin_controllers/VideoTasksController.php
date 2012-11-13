@@ -24,6 +24,15 @@ class VideoTasksController extends LocalAppController {
  */
 	public function index() {
 		$this->VideoTask->recursive = 0;
+
+		$this->Paginator->settings = array(
+			"VideoTask"=>array(
+				"contain"=>array(
+					"User"
+				)
+			)
+		);
+
 		$this->set('videoTasks', $this->paginate());
 	}
 

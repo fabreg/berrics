@@ -188,9 +188,13 @@ class MediaFile extends AppModel {
 
 		$file_dl = self::$ll_url.$file['MediaFile']['limelight_file'];
 
-		$output = passthru("curl {$file_dl} > '/home/sites/tmpfiles/{$file['MediaFile']['limelight_file']}'");
-		
-		return $output;
+		if(!file_exists("/home/sites/tmpfiles/".$file['MediaFile']['limelight_file'])) {
+
+			$output = passthru("curl {$file_dl} > '/home/sites/tmpfiles/{$file['MediaFile']['limelight_file']}'");
+
+		}
+
+		return "/home/sites/tmpfiles/".$file['MediaFile']['limelight_file'];
 
 	}
 	

@@ -250,14 +250,7 @@ function styleChecks() {
 						?>
 					</div>
 				</div>
-				<div class="row-fluid">
-					<div class="span6">
-						<?php echo $this->Form->input("post_template",array("options"=>Dailyop::postTemplates(),"help"=>"<small>** This Setting is only for Verion 3 Posts</small>")); ?>
-					</div>
-					<div class="span6">
-						
-					</div>
-				</div>
+				
 				<?php 
 				
 				echo $this->Form->input('name');
