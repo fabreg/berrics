@@ -31,10 +31,10 @@ class YoutubeApi {
 		$authenticationURL= 'https://www.google.com/accounts/ClientLogin';
 		$httpClient = 
   			Zend_Gdata_ClientLogin::getHttpClient(
-              //$username = 'youtube@theberrics.com',
-              //$password = 'palmetto',
-  			   $username = "john.c.hardy@gmail.com",
-  			   $password = "artosari",
+              $username = 'youtube@theberrics.com',
+              $password = 'palmetto',
+  			   //$username = "john.c.hardy@gmail.com",
+  			   //$password = "artosari",
               $service = 'youtube',
               $client = null,
               $source = 'The Berrics', // a short string identifying your application
