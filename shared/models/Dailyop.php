@@ -15,7 +15,8 @@ class Dailyop extends AppModel {
 	
 		"DailyopMediaItem",
 		"DailyopTextItem",
-		"UserAssignedPost"
+		"UserAssignedPost",
+		"DailyopsShareParameter"
 		
 	);
 	
@@ -1220,6 +1221,7 @@ class Dailyop extends AppModel {
 		return $a;
 
 	}
+
 	
 
 }

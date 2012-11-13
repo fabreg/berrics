@@ -11,18 +11,20 @@
 	<tbody>
 		<?php foreach ($videos as $k => $v): ?>
 			<tr>
-				<td></td>
+				<td>
+					
+				</td>
 				<td>
 					<div><?php echo $v['title']; ?></div>
 					<div><?php echo $v['video_id'] ?></div>
-					<pre>
-						<?php echo $v['dump']; ?>
-					</pre>
 				</td>
 			</tr>
 		<?php endforeach ?>
 	</tbody>
 </table>
 <script type="text/javascript">
-	initBootstrap();
+initBootstrap();
 </script>
+<pre>
+<?php print_r($videos); ?>
+</pre>

@@ -1821,6 +1821,28 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_dl() {
+		
+		$this->loadModel('MediaFile');
+
+		$status = $this->MediaFile->downloadVideoToTmp('50875294-d83c-4c57-9e4a-3aec323849cf');
+		
+		die(print_r($status));
+
+	}
+
+	public function yt_get_video() {
+		
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+
+		$yt = new YoutubeApi();
+
+		$video = $yt->returnVideoEntry('hAtJ6Epqd6Y');
+
+		die(print_r($video));
+
+
+	}
 
 
 	

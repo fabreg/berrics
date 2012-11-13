@@ -128,7 +128,9 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 		}
 	?>
 	<tr dailyop_id='<?php echo $dailyop['Dailyop']['id']; ?>' section_id='<?php echo $dailyop['DailyopSection']['id']; ?>' uri='<?php echo $dailyop['Dailyop']['uri']; ?>'>
-		<td><?php echo $dailyop['Dailyop']['id']; ?>&nbsp;</td>
+		<td><?php echo $dailyop['Dailyop']['id']; ?>&nbsp;
+			<a name='<?php echo $dailyop['Dailyop']['id']; ?>'></a>
+		</td>
 		<td><?php 
 				
 			switch($dailyop['Dailyop']['active']) {
@@ -161,14 +163,24 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 			<?php 
 				switch ($dailyop['Dailyop']['share']) {
 					case 1:
-						echo "<span class='label label-success'>YES</span>";
+						$cls = "label label-success";
+						$lbl = "YES";
 						break;
 					
 					default:
-						echo "<span class='label label-important'>NO</span>";
+						$cls = "label label-important";
+						$lbl = "NO";
 						break;
 				}
 			 ?>
+			 <span class='<?php echo $cls; ?>'><?php echo $lbl; ?></span>
+			 <span class='dropdown'>
+			 	<a href='#' data-toggle='dropdown'><b class="caret"></b></a>
+			 	<ul class="dropdown-menu">
+			 		<li><a href='<?php echo $this->Admin->url(array("action"=>"toggle_share",$dailyop['Dailyop']['id'])); ?>'>Toggle</a></li>
+			 		<li></li>
+			 	</ul>
+			 </span>
 		</td>
 		
 		

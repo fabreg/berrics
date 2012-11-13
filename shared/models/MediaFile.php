@@ -13,6 +13,8 @@ class MediaFile extends AppModel {
 	 * @var string
 	 */
 	public static $mv_url = "http://berrics.vo.llnwd.net/o45/s/";
+
+	public static $ll_url = "http://berrics.vo.llnwd.net/o45/";
 	
 	var $name = 'MediaFile';
 	
@@ -173,6 +175,23 @@ class MediaFile extends AppModel {
 		
 		return $url."&h=".$hash;
 		
+	}
+
+	public function downloadVideoToTmp($id = false) {
+		
+		$file = $this->find("first",array(
+			"conditions"=>array(
+				"MediaFile.id"=>$id
+			),
+			"contain"=>array()
+		));
+
+		$file_dl = self::$ll_url.$file['MediaFile']['limelight_file'];
+
+		$output = passthru("curl {$file_dl} > '/home/sites/tmpfiles/{$file['MediaFile']['limelight_file']}'");
+		
+		return $output;
+
 	}
 	
 	

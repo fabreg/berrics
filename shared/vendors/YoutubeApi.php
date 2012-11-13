@@ -147,12 +147,16 @@ class YoutubeApi {
 
 		foreach($feed as $video) {
 			
+			$thumbs = $video->getVideoThumbnails();
+			//die(print_r($thumbs));
 			$this->videos[] = array(
 				"title"=>$video->getVideoTitle(),
 				"video_id"=>$video->getVideoId(),
 				"tags"=>implode(", ", $video->getVideoTags()),
 				"isVideoPrivate"=>$video->isVideoPrivate(),
-				"dump"=>print_r($video,true)
+				"thumb0"=>$thumbs[0]['url'],
+				"thumb1"=>$thumbs[1]['url'],
+				"thumb2"=>$thumbs[2]['url']
 			);
 
 		}
@@ -188,6 +192,28 @@ class YoutubeApi {
 	  		$this->parseGetAllVideos($feed);
 
 	  		return $this->videos;
+
+	}
+
+	public function returnVideoEntry($video_id = false) {
+
+		if(!$video_id) throw new Exception("Video ID is invalid");
+
+		$videoEntry = $this->youtube->getVideoEntry($video_id);
+
+		$thumbs = $videoEntry->getVideoThumbnails();
+
+		$video = array(
+				"title"=>$videoEntry->getVideoTitle(),
+				"video_id"=>$videoEntry->getVideoId(),
+				"tags"=>implode(", ", $videoEntry->getVideoTags()),
+				"isVideoPrivate"=>$videoEntry->isVideoPrivate(),
+				"thumb0"=>$thumbs[0]['url'],
+				"thumb1"=>$thumbs[1]['url'],
+				"thumb2"=>$thumbs[2]['url']
+			);
+
+		return $video;
 
 	}
 

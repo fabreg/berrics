@@ -1112,7 +1112,25 @@ class DailyopsController extends LocalAppController {
 
 	public function share() {
 		
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$this->Dailyop->DailyopsShareParameter->processSharingList($this->request->data);
+		
+		}
 
+		$posts = $this->Dailyop->find("all",array(
+
+			"conditions"=>array(
+				"Dailyop.share"=>1
+			),
+			"contain"=>array(
+				"DailyopSection",
+				"DailyopsShareParameter"
+			)
+
+		));
+
+		$this->set(compact("posts"));
 
 	}
 
@@ -1130,13 +1148,31 @@ class DailyopsController extends LocalAppController {
 
 	
 	
-	
-	
-	
-	
-	
-	
-	
+	public function toggle_share($id = false) {
+		
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>$id),true,true);
+
+		$key = 0;
+
+		if($post['Dailyop']['share'] == 0) $key = 1;
+
+		$this->Dailyop->create();
+
+		$this->Dailyop->id = $id;
+
+		$this->Dailyop->save(array("share"=>$key));
+
+		$cb = "/dailyops";
+
+		if(isset($this->request->params['named']['cb'])) 
+			$cb = base64_decode($this->request->params['named']['cb']);
+
+		$this->Session->setFlash("Share status updated");
+
+		return $this->redirect($cb."#".$id);
+
+	}
+
 	
 	
 }

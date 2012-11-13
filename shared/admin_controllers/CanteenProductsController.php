@@ -1001,7 +1001,6 @@ class CanteenProductsController extends LocalAppController {
 		
 		$this->CanteenInventoryRecord->import_ljg_inventory();
 	
-	
 	}
 	
 	public function copy_product($id) {
