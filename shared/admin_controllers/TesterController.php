@@ -1844,6 +1844,33 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_video_task() {
+		
+		$this->loadModel('VideoTask');
+
+		$task = $this->VideoTask->findById(5);
+
+		//$this->VideoTask->youtube_upload($task);
+		
+		$this->VideoTask->{$task['VideoTask']['task']}($task);
+
+	}
+
+	public function test_tags($value='') {
+		$this->loadModel('Dailyop');
+
+		$post = $this->Dailyop->returnPost(array(
+			"Dailyop.id"=>"822"
+		),1);
+
+		$tags = Set::extract("/Tag/name",$post);
+		$tags[] = "Skateboarding";
+		$tags[] = "The Berrics";
+
+		die(pr($tags));
+		
+	}
+
 
 	
 }

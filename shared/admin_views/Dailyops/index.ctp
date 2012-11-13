@@ -21,6 +21,16 @@ $(document).ready(function() {
 		});
 
 	});
+
+	$('a[rel=show-sharing]').click(function() { 
+
+		var url = $(this).attr("href");
+
+		showSharingInfo(url);
+
+		return false;
+
+	});
 	
 });
 
@@ -47,6 +57,37 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 	});
 	
 	
+}
+
+function showSharingInfo($url) {
+
+	$("body").append("<div id='share-modal' class='modal hide' ><div class='alert'>Loading Info ..... </div></div>");
+
+	var modal = $("#share-modal");
+
+	modal.modal({'backdrop':'static'});
+
+	modal.on('show',function() { 
+		var o = {
+
+			url:$url,
+			success:function(d) {
+
+				modal.html(d);
+
+			}
+
+		};
+
+		$.ajax(o);
+	});
+
+	modal.on('hidden',function() { 
+		$("#share-modal").remove();
+	});
+
+	modal.modal('show');
+
 }
 
 </script>
@@ -184,6 +225,11 @@ function dupe_uri_check(dailyop_id,section_id,uri) {
 			 		<?php else: ?>
 			 			<li>
 			 				<a href="<?php echo $this->Admin->url(array("action"=>"turn_on_sharing",$dailyop['Dailyop']['id'])); ?>">Turn On Sharing</a>
+			 			</li>
+			 		<?php endif ?>
+			 		<?php if (count($dailyop['DailyopsShareParameter'])>0): ?>
+			 			<li>
+			 				<a href="<?php echo $this->Admin->url(array("action"=>"show_sharing_info",$dailyop['Dailyop']['id'])); ?>" rel='show-sharing'>View Sharing Info</a>
 			 			</li>
 			 		<?php endif ?>
 			 	</ul>

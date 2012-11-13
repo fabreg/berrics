@@ -39,6 +39,104 @@ class VideoTask extends AppModel {
 
 
 	}
+
+	public function youtube_upload($VideoTask) {
+		
+		//mark the task as working
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"working"
+		));
+
+		//import and create objects
+		$Dailyop = ClassRegistry::init("Dailyop");
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+		$yt = new YoutubeApi();
+
+		$post = $Dailyop->returnPost(array(
+			"Dailyop.id"=>$VideoTask['VideoTask']['foreign_key']
+		),1,1);
+
+		//let's get the video that needs to be uploaded
+		// it will be the first mediaFile object marked as a bcove media type
+		$videoFile = Set::extract("/DailyopMediaItem/MediaFile[media_type=bcove]",$post);
+
+		if($videoFile[0]['MediaFile']['id']) {
+
+			$videoFile = $videoFile[0];
+
+		}
+
+		$yt->uploadVideo($post,$videoFile);
+
+		//mark the task as not working
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"completed"
+		));
+	}
+
+	public function youtube_make_private($VideoTask) {
+		
+		//mark the task as working
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"working"
+		));
+
+		$ShareParam = ClassRegistry::init("DailyopsShareParameter");
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+		$yt = new YoutubeApi();
+
+		//get the data
+		$param = $ShareParam->findById($VideoTask['VideoTask']['foreign_key']);
+
+		$data = unserialize($param['DailyopsShareParameter']['parameters']);
+
+		$yt->updatePrivacy($param['DailyopsShareParameter']['foreign_key'],true,$data);
+
+		//mark the task as completed
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"completed"
+		));
+
+
+	}
+
+	public function youtube_make_public($VideoTask) {
+		
+		//mark the task as working
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"working"
+		));
+
+		$ShareParam = ClassRegistry::init("DailyopsShareParameter");
+		App::import("Vendor","YoutubeApi",array("file"=>"YoutubeApi.php"));
+		$yt = new YoutubeApi();
+
+		//get the data
+		$param = $ShareParam->findById($VideoTask['VideoTask']['foreign_key']);
+
+		$data = unserialize($param['DailyopsShareParameter']['parameters']);
+		
+		$yt->updatePrivacy($param['DailyopsShareParameter']['foreign_key'],false,$data);
+
+		//mark the task as completed
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"completed"
+		));
+
+
+	}
 	
 
 

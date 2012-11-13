@@ -41,7 +41,7 @@ class YoutubeApi {
               $loginToken = null,
               $loginCaptcha = null,
               $authenticationURL);
-
+  		$httpClient->setHeaders('X-GData-Key', "key={$this->devKey}");
   	
   		$this->youtube = new Zend_Gdata_YouTube($httpClient,'The Berrics','The Berrics',$this->devKey);
 
@@ -218,33 +218,77 @@ class YoutubeApi {
 	}
 
 
-	public function uploadVideo($Dailyop = false) {
+	public function uploadVideo($Dailyop = false,$videoFile = false) {
 
 		//if(!$Dailyop) throw new Exception("Invalid Dailyops ID");
 		//let's get the video that needs to be uploaded
 
 		$DailyopsShareParameter = ClassRegistry::init("DailyopsShareParameter");
+		$MediaFile = ClassRegistry::init("MediaFile");
 
+		//download the file to tmp
+
+		$tmpFile = $MediaFile->downloadVideoToTmp($videoFile['MediaFile']['id']);
+
+		//start the yt uploading processes
 		Zend_Loader::loadClass('Zend_Gdata_YouTube_VideoEntry');
-
 		$videoEntry = new Zend_Gdata_YouTube_VideoEntry();
-
-		$src = $this->youtube->newMediaFileSource("/tmp/Ishod_fourstar.mp4");
-
+		$src = $this->youtube->newMediaFileSource($tmpFile);
 		$src->setContentType('video/mp4');
-
-		$src->setSlug("Ishod_fourstar.mp4");
-
+		$src->setSlug($videoFile['MediaFile']['limelight_file']);
 		$videoEntry->setMediaSource($src);
 
-		$videoEntry->setVideoTitle("Testing Upload API");
+		//make the video title 
+		$videoTitle = $Dailyop['Dailyop']['name'];
+		if(!empty($Dailyop['Dailyop']['sub_title'])) $videoTitle .= " - ".$Dailyop['Dailyop']['sub_title'];
+		$videoEntry->setVideoTitle($videoTitle);
 
+		//now make the video description
+		///////Make the links for the top of the posting
+		$videoDescription = "http://theberrics.com \n\n";
+		//////make the link to the post
+		$videoDescription .= "Original Post: http://theberrics.com/".$Dailyop['DailyopSection']['uri']."/".$Dailyop['Dailyop']['uri']."\n\n";
+		//////make a link to the section of the video
+		$videoDescription .= "More Like This: http://theberrics.com/".$Dailyop['DailyopSection']['uri']."\n\n";
+		//////now stuff in the text description if any
+		if (!empty($Dailyop['Dailyop']['text_content'])) {
+			$videoDescription .= $Dailyop['Dailyop']['text_content'];
+		}
+		$videoEntry->setVideoDescription($videoDescription);
+
+		//now lets set the tags for the post
+		$tags = Set::extract("/Tag/name",$Dailyop);
+		$tag_len = 0;
+		foreach($tags as $k=>$v) {
+
+			if(strlen($v)>30) {
+				unset($tags[$k]);
+			} else {
+
+				$tag_len += strlen($v);
+
+			}
+
+			if($tag_len>=470) {
+
+				unset($tags[$k]);
+
+			}
+
+		}
+
+		$tags[] = "Skateboarding";
+		$tags[] = "The Berrics";
+		$tags = implode(",", $tags);
+		$videoEntry->setVideoTags($tags);
+
+
+		//set the category
 		$videoEntry->setVideoCategory('Sports');
+		//set some dev tags
+		$videoEntry->setVideoDeveloperTags(array("berricsapi","berricsupload"));
 
-		$videoEntry->setVideoDeveloperTags(array("berricsapi","berricsupoad"));
-
-		$videoEntry->setVideoTags("ishod, the berrics, berricsapi");
-
+		//start the upload processes
 		$uploadUrl = 'http://uploads.gdata.youtube.com/feeds/api/users/default/uploads';
 		
 		try {
@@ -254,14 +298,48 @@ class YoutubeApi {
 		} catch (Zend_Gdata_App_Exception $e) {
 		    echo $e->getMessage();
 		}
-
-		//die(print_r($newEntry));
 		$newEntry->setMajorProtocolVersion(2);
-		$newVideo = array(
-			"video_id"=>$newEntry->getVideoId()
-		);
+		$videoid = $newEntry->getVideoId();
 
-		die(print_r($newVideo));
+		//get some additional info that we will need later
+
+		$params = serialize(array(
+			"editHref"=>$newEntry->getEditLink()->getHref()
+		));
+
+
+
+		//now create a share parameter entry for the post
+		$DailyopsShareParameter->create();
+		$DailyopsShareParameter->save(array(
+			"service"=>"youtube",
+			"dailyop_id"=>$Dailyop['Dailyop']['id'],
+			"foreign_key"=>$videoid,
+			"parameters"=>$params
+		));
+
+		return $DailyopsShareParameter->read();
+
+	}
+
+	public function updatePrivacy($videoid = false,$isPrivate = false,$data = array()) {
+
+		$videoEntry = $this->youtube->getVideoEntry($videoid);
+		$videoEntry->setMajorProtocolVersion(2);
+		$putUrl = $data['editHref'];
+
+		if($isPrivate) {
+
+			$videoEntry->setVideoPrivate();
+
+		} else {
+
+			$videoEntry->setVideoPublic();
+
+		}
+
+		$this->youtube->updateEntry($videoEntry,$putUrl);
+
 
 	}
 

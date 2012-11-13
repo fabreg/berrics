@@ -29,8 +29,10 @@ class VideoTasksController extends LocalAppController {
 			"VideoTask"=>array(
 				"contain"=>array(
 					"User"
-				)
-			)
+				),
+				"order"=>array("VideoTask.id"=>"DESC")
+			),
+
 		);
 
 		$this->set('videoTasks', $this->paginate());

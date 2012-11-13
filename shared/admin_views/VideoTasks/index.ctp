@@ -9,7 +9,6 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
-			<th><?php echo $this->Paginator->sort('working'); ?></th>
 			<th><?php echo $this->Paginator->sort('task_status'); ?></th>
 			<th><?php echo $this->Paginator->sort('model'); ?></th>
 			<th><?php echo $this->Paginator->sort('foreign_key'); ?></th>
@@ -25,19 +24,6 @@
 		<td><?php echo h($videoTask['VideoTask']['id']); ?>&nbsp;</td>
 		<td><?php echo h($this->Time->niceShort($videoTask['VideoTask']['created'])); ?>&nbsp;</td>
 		<td><?php echo h($this->Time->niceShort($videoTask['VideoTask']['modified'])); ?>&nbsp;</td>
-		<td><?php 
-
-			switch ($videoTask['VideoTask']['working']) {
-				case 1:
-					echo "<span class='label label-important'>YES</span>";
-					break;
-				
-				default:
-					echo "<span class='label label-success'>NO</span>";
-					break;
-			}
-
-		?></td>
 		<td>
 			<span class="label label-info"><?php echo strtoupper($videoTask['VideoTask']['task_status']);  ?></span>
 		</td>

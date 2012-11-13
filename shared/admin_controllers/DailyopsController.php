@@ -50,7 +50,13 @@ class DailyopsController extends LocalAppController {
 		$this->Paginator->settings['Dailyop'] = array(
 		
 			"limit"=>"50",
-			"order"=>array("Dailyop.publish_date"=>"DESC")
+			"order"=>array("Dailyop.publish_date"=>"DESC"),
+			"contain"=>array(
+				"DailyopSection",
+				"DailyopsShareParameter",
+				"User",
+
+			)
 		
 		);
 		
@@ -1186,9 +1192,9 @@ class DailyopsController extends LocalAppController {
 		} else { //we have a video id for youtube, start an update to visible task
 
 			$this->VideoTask->queueTask(array(
-				"model"=>"Dailyop",
-				"foreign_key"=>$id,
-				"task"=>"youtube_make_visible"
+				"model"=>"DailyopsShareParameter",
+				"foreign_key"=>$yt[0]['DailyopsShareParameter']['id'],
+				"task"=>"youtube_make_public"
 
 			));
 
@@ -1210,7 +1216,7 @@ class DailyopsController extends LocalAppController {
 
 		$cb = "/dailyops";
 
-		if(isset($this->request->params['named']['cb'])) $cb = base64_decode($this->request->params['named']['cb']);
+		if(isset($this->request->params['named']['cb'])) $cb = base64_decode($this->request->params['named']['cb'])."#".$id;
 
 		$this->redirect($cb);
 
@@ -1220,7 +1226,77 @@ class DailyopsController extends LocalAppController {
 
 	public function turn_off_sharing($id) {
 		
+		$this->loadModel('DailyopsShareParameter');
+		$this->loadModel('VideoTask');
+		
+		$post = $this->Dailyop->returnPost(array(
+			"Dailyop.id"=>$id
+		),$this->isAdmin(),1);
 
+		//get the sharing parameters
+
+		$params = $this->DailyopsShareParameter->find("all",array(
+
+			"conditions"=>array(
+				"DailyopsShareParameter.dailyop_id"=>$id
+			)
+
+		));
+
+		$yt = Set::extract("/DailyopsShareParameter[service=youtube]",$params);
+		$vimeo = Set::extract("/DailyopsShareParameter[service=vimeo]",$params);
+		
+		$fm = array();
+
+		//check if we have youtube stuff, if we do then we'll queue up the turn off task
+		if(isset($yt[0]['DailyopsShareParameter']['id'])) {
+
+			$this->VideoTask->queueTask(array(
+				"task"=>"youtube_make_private",
+				"model"=>"DailyopsShareParameter",
+				"foreign_key"=>$yt[0]['DailyopsShareParameter']['id']
+			));
+
+			$fm[] = "Youtube Video Queded to go Private";
+
+		}
+
+		$fm[] = "Post sharing turned off";
+
+		$this->Dailyop->create();
+		$this->Dailyop->id = $id;
+		$this->Dailyop->save(array(
+			"share"=>0
+		));
+
+
+		$msg = implode("<br />", $fm);
+
+		$this->Session->setFlash($msg);
+
+		$cb = "/dailyops";
+
+		if(isset($this->request->params['named']['cb'])) $cb = base64_decode($this->request->params['named']['cb'])."#".$id;
+
+		$this->redirect($cb);
+
+		return;
+
+	}
+
+	public function show_sharing_info($id = false) {
+		
+		$post = $this->Dailyop->returnPost(array(
+			"Dailyop.id"=>$id
+		),$this->isAdmin(),1);
+
+		$params = $this->Dailyop->DailyopsShareParameter->find("all",array(
+				"conditions"=>array(
+					"DailyopsShareParameter.dailyop_id"=>$id
+				)
+		));
+
+		$this->set(compact("post","params"));
 
 	}
 
