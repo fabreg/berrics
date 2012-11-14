@@ -15,6 +15,8 @@ class MediaFile extends AppModel {
 	public static $mv_url = "http://berrics.vo.llnwd.net/o45/s/";
 
 	public static $ll_url = "http://berrics.vo.llnwd.net/o45/";
+
+	public static $dfp_vast_url = "http://pubads.g.doubleclick.net/gampad/ads?sz=700x394&iu=/5885/#LABEL#&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]";
 	
 	var $name = 'MediaFile';
 	
@@ -195,6 +197,16 @@ class MediaFile extends AppModel {
 		}
 
 		return "/home/sites/tmpfiles/".$file['MediaFile']['limelight_file'];
+
+	}
+
+	public static function formatVastUrl($label = false, $tags = false) {
+		
+		$url = self::$dfp_vast_url;
+
+		if($label) $url = str_replace("#LABEL#","V".$label,$url);
+
+		return $url;
 
 	}
 	

@@ -791,7 +791,7 @@ class DailyopsController extends LocalAppController {
 
 		$date = date("Y-m-d");
 
-		$date = '2011-10-15';
+		//$date = '2011-10-15';
 
 		$posts = $this->Dailyop->find("all",array(
 

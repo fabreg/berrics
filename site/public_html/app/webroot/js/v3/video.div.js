@@ -38,32 +38,40 @@
 
       var $that = $($this);
 
+      var service_uri = "/media_service/video_player_request";
+
+      //build the request data for the video_play_request
+      var req = {};
+      req.data = {};
+
+      if($that.attr("data-media-file-id")) {
+
+        req.data.media_file_id = $that.attr("data-media-file-id");
+
+      }
+
+      var data = $.data($this,{
+
+            "target":$this,
+            "parent":$that.parent(),
+            "request":false,
+            "bufferInterval":false,
+            "controlsTimeout":false,
+            "playingAd":false,
+            "GoogleAdsManager":false
+
+          });
+
       //get the video data
       $.ajax({
 
         "type":"post",
         "dataType":"json",
-        "data":{
-
-          "data":{
-            "json":JSON.stringify({
-                    "media_file_id":$that.attr("data-media-file-id")
-                  })
-          }
-
-        },
-        "url":"/media/json_video_service",
+        "data":req,
+        "url":service_uri,
         "success":function(d) { 
 
-          var data = $.data($this,{
-
-            "target":$this,
-            "parent":$that.parent(),
-            "request":d,
-            "bufferInterval":false,
-            "controlsTimeout":false
-
-          });
+          data.request = d;
 
           //check if the browser supports h.264
           if(/(probably)/ig.test(Modernizr.video.h264)) {
@@ -71,6 +79,7 @@
             console.log("USE H264");
             methods.initHtml($this);
             
+
           } else {
             
             console.log("USE FLASH");
@@ -101,13 +110,14 @@
 
       video.attr({
 
-        "src":methods.LIMELIGHT_URL+$data.request.MediaFile.limelight_file,
         "controls":false,
         "autoplay":true
 
       });
 
-      methods.initHtmlEvents($this);
+      methods.initHtmlEvents(context);
+
+      methods.handleVideoPlay(context);
 
       console.log($data.parent);
 
@@ -325,9 +335,135 @@
 
 
     },
+    playVideo:function(context) {
+
+      var $data = $.data(context);
+
+      var video = $data.target.find('video');
+
+      video.attr({
+          "src":methods.LIMELIGHT_URL+$data.request[0]['MediaFile']['limelight_file']
+
+      });
+
+      video.get(0).play();
+
+
+    },
+    loadGoogleAd:function(context) { 
+
+        var $data = $.data(context);
+      
+        var adsLoader = new google.ima.AdsLoader();
+
+        adsLoader.addEventListener(
+          google.ima.AdsLoadedEvent.Type.ADS_LOADED,
+          function(e) {
+            
+            $data.GoogleAdsManager = e.getAdsManager();
+            
+            console.log("Google Adsmanager Start");
+            
+            //handle the end of the ad
+            $data.GoogleAdsManager.addEventListener(
+                 google.ima.AdEvent.Type.COMPLETE,
+                function(ee) {
+                  
+                  console.log("Ad Completed Playing");
+              
+                },
+                false
+            );
+            
+            //configure the click element
+            $data.GoogleAdsManager.setClickTrackingElement($data.target.find(".click-element").show().get(0));
+            
+            //play the ad
+            $data.GoogleAdsManager.play($data.target.find("video").get(0));
+    
+          },
+          false);
+
+        adsLoader.addEventListener(
+            google.ima.AdErrorEvent.Type.AD_ERROR,
+            function(e) { 
+              
+              console.log("Google Video Ad Error: ");
+              console.log(e.getError());
+              
+              
+              return methods.handleVideoEnd(context);
+              
+              
+            },
+            false);
+
+
+        var adUrl = $data.request[0]['Preroll'] || $data.request[0]['Postroll'];
+
+        console.log(adUrl);
+         adsLoader.requestAds({
+            adTagUrl: adUrl,
+            adType: "video"
+          });
+         
+         console.log(adsLoader);
+
+    },
+    handleVideoPlay:function(context) {
+
+      var $data = $.data(context);
+
+      var req = $data.request;
+
+      var video = req[0] || false;
+
+      if(!video) {
+
+        console.log("No Request Data Found In Handle Video Play");
+        return;
+
+      }
+
+      if(video['Preroll'] || video['Postroll']) {
+
+        console.log("Video Ad Should Be Loaded");
+
+        methods.loadGoogleAd(context);
+
+      } else {
+
+        methods.playVideo(context);
+
+      }
+
+      console.log("Request Data From Handle Video Play");
+
+      console.log(req[0]);
+
+    },
     handleVideoEnd:function(context) {
 
+      var $data = $.data(context);
 
+      if($data.GoogleAdsManager) {
+
+        $data.GoogleAdsManager.unload();
+        $data.GoogleAdsManager = false;
+
+      }
+
+      if($data.request.length >0) {
+
+        $data.request.shift();
+
+        methods.handleVideoPlay(context);
+
+      } else {
+
+        console.log("Show related video screens");
+
+      }
 
     }
 
