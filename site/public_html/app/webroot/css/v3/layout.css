@@ -131,7 +131,7 @@ VIDEO DIV PLUGIN
 .video-div {
 
 	width:100%;
-
+	position:relative;
 }
 
 .video-div video {
@@ -140,11 +140,25 @@ VIDEO DIV PLUGIN
 
 }
 
+.video-div .pause-overlay {
+
+	background-image:url(/img/v3/player/blk-bg.png);
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	display:none;
+
+}
+
 .video-div .controls {
 
 	height:40px;
-
-
+	position:absolute;
+	bottom:5px;
+	left:5px;
+	right:5px;
 }
 
 
@@ -155,27 +169,58 @@ VIDEO DIV PLUGIN
 }
 
 
+
 .video-div .controls .play-btn {
 
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	background-color:#999;
-	height:100%;
+	background-image: url(/img/v3/player/grey-px.png);
+	height:40px;
 	width:50px;
+	position:absolute;
+	left:0px;
 }
+
+.video-div .controls .play-btn:hover {
+
+	cursor: pointer;
+	background-color:#e9e9e9;
+
+}
+
+.video-div .controls .slowmo-btn {
+
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	background-image: url(/img/v3/player/grey-px.png);
+	height:35px;
+	width:30px;
+	left:55px;
+	margin-top:5px;
+	position:absolute;
+}
+.video-div .controls .slowmo-btn:hover {
+
+	cursor: pointer;
+
+}
+
+
 
 .video-div .slider {
 
 	height:35px;
 	position:absolute;
-	left:55px;
+	left:90px;
 	bottom:0px;
-	background-color:#999;
+	background-image: url(/img/v3/player/grey-px.png);
 	border-radius:6px;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
 	right:0px;
+	top:5px;
 
 }
 .video-div .slider .tracking-bar {
@@ -184,8 +229,50 @@ VIDEO DIV PLUGIN
 	margin-top:10px;
 	margin-right:150px;
 	height:15px;
-	background-color:#666;
+	background-image: url(/img/v3/player/blk-bg.png);
 	position:relative;
+	border-radius: 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	cursor: pointer;
+}
+
+.video-div .slider .tracking-bar .buffer {
+
+	z-index: 900;
+	position:absolute;
+	border-radius: 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	height:100%;
+	background-color:blue;
+	width:0%;
+	left:0px;
+}
+
+.video-div .slider .tracking-bar .prog-bar {
+
+	z-index: 901;
+	position:absolute;
+	border-radius: 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	height:100%;
+	background-color:green;
+	width:0%;
+	left:0px;
+}
+
+.video-div .slider .tracking-bar .playhead {
+
+	z-index: 902;
+	position:absolute;
+	border-radius: 3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	height:100%;
+	width:5px;
+
 }
 
 /*

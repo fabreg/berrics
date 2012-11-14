@@ -2,7 +2,7 @@
 	.video-div {
 
 		height:394px;
-
+		border:1px solid #333;
 	}
 </style>
 <div class="row-fluid">

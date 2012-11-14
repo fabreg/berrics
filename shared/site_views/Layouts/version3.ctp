@@ -12,6 +12,7 @@
 
 		echo $this->Html->script(array(
 			"https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js",
+			"https://www.google.com/uds?file=ima&v=1&nodependencyload=true",
 			"v3/bootstrap",
 			"v3/modernizr",
 			"v3/video.div",

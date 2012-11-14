@@ -791,13 +791,14 @@ class DailyopsController extends LocalAppController {
 
 		$date = date("Y-m-d");
 
-		//$date = '2012-07-21';
+		$date = '2011-10-15';
 
 		$posts = $this->Dailyop->find("all",array(
 
 			"conditions"=>array(
 				"DATE(Dailyop.publish_date)" => $date,
-				"Dailyop.active"=>1
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0
 			),
 			"order"=>array(
 				"Dailyop.publish_date"=>"ASC"
@@ -821,12 +822,9 @@ class DailyopsController extends LocalAppController {
 
 	}
 
-
 	public function video_controls() {
 		
 		$this->layout = "version3";
-		
-
 
 	}
 
