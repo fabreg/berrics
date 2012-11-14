@@ -39,3 +39,4 @@ jQuery(document).ready(function($) {
 		RIGHT COL
 	</div>
 </div>
+<video src="http://berrics.vo.llnwd.net/o45/50a26e34-9974-4db5-80cd-6f88c6659e49.mp4" autoplay='1'></video>
