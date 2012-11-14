@@ -100,7 +100,6 @@
 
 define("APP_PREFIX","berrics_site");
 
-
 require "/home/sites/berrics.v3/shared/config/shared_bootstrap.php";
 
 require "/home/sites/berrics.v3/shared/config/cache_config.php";
