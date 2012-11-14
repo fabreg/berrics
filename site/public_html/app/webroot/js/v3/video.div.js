@@ -99,7 +99,7 @@
 
       var $this = $data.target;
 
-      $this.html($("<div class='video-div' />").append($("<div class='click-element' /><div class='pause-overlay'/><video />")));
+      $this.html($("<div class='video-div' />").append($("<div class='click-element' /><div class='pause-overlay'/><video autoplay='true' />")));
         
       var video_div = $this.find(".video-div");
 
@@ -343,7 +343,6 @@
 
       video.attr({
           "src":methods.LIMELIGHT_URL+$data.request[0]['MediaFile']['limelight_file']
-
       });
 
       video.get(0).play();
@@ -416,7 +415,9 @@
 
       var req = $data.request;
 
-      var video = req[0] || false;
+      var video = false;
+
+      if(req[0]) video = req[0];
 
       if(!video) {
 
@@ -437,10 +438,6 @@
 
       }
 
-      console.log("Request Data From Handle Video Play");
-
-      console.log(req[0]);
-
     },
     handleVideoEnd:function(context) {
 
@@ -452,10 +449,16 @@
         $data.GoogleAdsManager = false;
 
       }
+      console.log("Request data");
+      console.log($data.request);
 
       if($data.request.length >0) {
 
         $data.request.shift();
+
+        console.log("Shifted Request Data");
+
+        console.log($data.request);
 
         methods.handleVideoPlay(context);
 
