@@ -99,15 +99,7 @@ class MediaFilesController extends LocalAppController {
 				
 			}
 			
-			if(isset($this->request->params['named']['MediaFile.limelight_not_active']) && $this->request->params['named']['MediaFile.limelight_not_active'] == 1) {
-				
-				$this->Paginator->settings['conditions']['MediaFile.limelight_active'] = 0;
-				$this->Paginator->settings['conditions']['MediaFile.limelight_transfer_status'] = 0;
-				
-				$this->request->data['MediaFile']['limelight_not_active'] = 1;
-				
-			}
-			
+
 		}
 		
 		//get some select lists
@@ -670,24 +662,7 @@ class MediaFilesController extends LocalAppController {
 		
 	}
 	
-	private function sendVideoToBrightcove($file,$meta = array(), $options = array()) {
-		
-		$bc = BCAPI::instance();
-		
-		try {
-			
-			$bc_id = $bc->bc->createMedia("video",$file,$meta,$options);
-			
-		}
-		catch(BCMAPIException $e) {
-			
-			die(print_r($e));
-			
-		}
-		
-		return $bc_id;
-		
-	}
+
 	
 	public function handle_video_file_upload() {
 		

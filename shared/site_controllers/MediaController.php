@@ -24,38 +24,6 @@ class MediaController extends LocalAppController {
 		
 	}
 	
-	
-	public function ajax_video($id) {
-		
-		$this->loadModel("MediaFile");
-		
-		$m = $this->MediaFile->find("first",array(
-		
-			"conditions"=>array(
-				"MediaFile.id"=>$id
-			),
-			"contain"=>array()
-		
-		));
-		
-		$m = $m['MediaFile'];
-		if($m['media_type'] == 'bcove' && $m['limelight_transfer_status'] == 1 && $m['limelight_active'] == 1) {
-			
-			$m['brightcove_url'] = $this->limelight_uri.$m['limelight_file'];
-			
-		} elseif($m['media_type'] == 'bcove' && empty($m['brightcove_url'])) {
-			
-			$bc_info = BCAPI::instance()->bc->find("videobyid",array("video_id"=>$m['brightcove_id']));
-			
-			$m['brightcove_url'] = $bc_info->FLVURL;
-
-		}
-		
-		
-		$this->set(compact("m"));
-		
-	}
-	
 	public function json_file_request($id = false) {
 		
 		$this->loadModel("MediaFile");
@@ -69,35 +37,10 @@ class MediaController extends LocalAppController {
 		
 		));
 		
-		
-		
 		$m = $m['MediaFile'];
 
 		$m['brightcove_url'] = $this->limelight_uri.$m['limelight_file'];
 
-		/*
-		
-		if($m['media_type'] == 'bcove' && $m['limelight_transfer_status'] == 1 && $m['limelight_active'] == 1) {
-			
-			
-			
-		} elseif($m['media_type'] == 'bcove' && empty($m['brightcove_url'])) {
-			
-			$bc_info = BCAPI::instance()->bc->find("videobyid",array("video_id"=>$m['brightcove_id']));
-			
-			$m['brightcove_url'] = $bc_info->FLVURL;
-			
-			$this->MediaFile->id = $m['id'];
-			
-			$this->MediaFile->save(array(
-			
-				"brightcove_url"=>$m['brightcove_url']
-			
-			));
-			
-		}
-		*/
-		
 		$this->insertMediaHit($m['id']);
 		
 		//die(json_encode($m));
