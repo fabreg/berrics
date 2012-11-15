@@ -26,6 +26,7 @@ class Yn3VotingController extends DailyopsController {
 			} else {
 				
 				$this->request->params['action'] = "section";
+				$this->view = "section";
 				
 			}
 		}
