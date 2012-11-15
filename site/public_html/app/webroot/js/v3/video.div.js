@@ -115,8 +115,6 @@
 
       });
 
-      methods.initHtmlEvents(context);
-
       methods.handleVideoPlay(context);
 
       console.log($data.parent);
@@ -156,14 +154,14 @@
       }).
       bind('pause',function(e) {
 
-          play_btn.addClass('paused').removeClass('playing');
-        
+          
+            play_btn.removeClass('paused');
           pause_overlay.show();
 
       }).
       bind('play',function(e) { 
 
-        play_btn.addClass('playing').removeClass('paused');
+        play_btn.addClass('paused');
 
          pause_overlay.hide();
 
@@ -175,20 +173,24 @@
 
         }
 
-
       });
 
-      pause_overlay.click(function() { 
+      pause_overlay.unbind().bind('click',function() { 
 
         video_ele.play();
 
       });
 
       //bind the play button
-      play_btn.click(function() { 
+      play_btn.unbind().bind('click',function() { 
 
           if(play_btn.hasClass('paused')) {
 
+            video_ele.pause();
+
+          } else {
+
+            
             video_ele.play();
 
             if(slowmo_btn.hasClass("active")) {
@@ -197,18 +199,13 @@
               slowmo_btn.removeClass("active");
 
             }
-
-          } else {
-
-            video_ele.pause();
-
           }
 
       });
 
       //bind the slow motion button
 
-     slowmo_btn.click(function() { 
+     slowmo_btn.unbind().bind('click',function() { 
 
           var rate = 1;
           
@@ -341,12 +338,15 @@
 
       var video = $data.target.find('video');
 
+      console.log("Play Video Request Data");
+      
+      console.log($data.request[0]);
+
       video.attr({
           "src":methods.LIMELIGHT_URL+$data.request[0]['MediaFile']['limelight_file']
       });
 
       video.get(0).play();
-
 
     },
     loadGoogleAd:function(context) { 
@@ -398,7 +398,7 @@
             false);
 
 
-        var adUrl = $data.request[0]['Preroll'] || $data.request[0]['Postroll'];
+        var adUrl = $data.request[0]['AdUrl'];
 
         console.log(adUrl);
          adsLoader.requestAds({
@@ -426,7 +426,9 @@
 
       }
 
-      if(video['Preroll'] || video['Postroll']) {
+      methods.initHtmlEvents(context);
+
+      if(video['AdUrl']) {
 
         console.log("Video Ad Should Be Loaded");
 
@@ -443,14 +445,16 @@
 
       var $data = $.data(context);
 
+      var video = $data.target.find("video");
+
       if($data.GoogleAdsManager) {
 
         $data.GoogleAdsManager.unload();
         $data.GoogleAdsManager = false;
+        $data.target.find(".click-element").hide();
+        $data.target.find('video').replaceWith($("<video />"));
 
       }
-      console.log("Request data");
-      console.log($data.request);
 
       if($data.request.length >0) {
 
