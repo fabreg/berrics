@@ -74,6 +74,30 @@ class ImgServer {
 		$this->close();
 		
 	}
+
+	public function upload_video_still_slim($file_name, $file_path) {
+		
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/video/stills-slim");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		$this->close();
+		
+	}
+
+	public function upload_video_still_large($file_name, $file_path) {
+		
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/video/stills-large");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		$this->close();
+		
+	}
 	
 	public function upload_image_file($file_name, $file_path) {
 		

@@ -11,8 +11,9 @@ function handleUpload() {
 
 </script>
 <fieldset>
-	<legend>Video File</legend>
+	<legend>Video File(s)</legend>
 	<div class='well'>
+		<h4>MP4 ( PRIMARY VIDEO )</h4>
 		<?php 
 		
 			echo $this->Form->input("MediaFile.limelight_file",array("disabled"=>true));
@@ -27,9 +28,17 @@ function handleUpload() {
 		</div>
 		<div>
 			
-				<a class='btn btn-warning' href='javascript:uploadVideoFile({id:"<?php echo $this->request->data['MediaFile']['id']; ?>"});'>Update Video File</a>
-			
+			<a class='btn btn-warning' href='javascript:uploadVideoFile({id:"<?php echo $this->request->data['MediaFile']['id']; ?>"});'>Update Video File</a>
 		</div>
+	</div>
+	<div class="well">
+		<h4>OGV (FireFox HTML5)</h4>
+	</div>
+	<div class="well">
+		<h4>MP4 MOBILE</h4>
+	</div>
+	<div class="well">
+		<h4>MP4 MOBILE W/ADVERTISING</h4>
 	</div>
 </fieldset>
 

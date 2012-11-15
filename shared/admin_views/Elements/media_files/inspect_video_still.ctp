@@ -9,9 +9,13 @@ function handleStillUpload() {
 
 
 </script>
+
+
+
 <fieldset>
 	<legend>Video Image</legend>
 	<div class='well'>
+		<h4>PRIMARY IMAGE</h4>
 		<?php if(!empty($this->data['MediaFile']['file_video_still'])): ?>
 			<div style='padding-bottom:5px;'>
 				<label>Video Image</label>
@@ -38,5 +42,11 @@ function handleStillUpload() {
 		<div>
 			<button class='btn btn-warning' type='button' onclick='uploadVideoImage("<?php echo $this->request->data['MediaFile']['id']; ?>");'>Update Video Image</button>
 		</div>
+	</div>
+	<div class="well">
+		<h4>SLIM IMAGE</h4>
+	</div>
+	<div class="well">
+		<h4>LARGE IMAGE</h4>
 	</div>
 </fieldset>
