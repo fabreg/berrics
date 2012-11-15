@@ -71,6 +71,7 @@ class LevisController extends DailyopsController {
 		$this->set(compact("post"));
 		
 		$this->request->params['action'] = "section";
+		$this->view = "section";
 		
 	}
 	
