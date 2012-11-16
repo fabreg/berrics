@@ -60,7 +60,8 @@ class VideoTasksController extends LocalAppController {
 				"contain"=>array(
 					"User"
 				),
-				"order"=>array("VideoTask.id"=>"DESC")
+				"order"=>array("VideoTask.id"=>"DESC"),
+				"limit"=>50
 			),
 
 		);
