@@ -47,7 +47,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
-			"server"=>php_uname("n"),
+			
 			"task_status"=>"working"
 		));
 
@@ -76,7 +76,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
-			"server"=>php_uname("n"),
+			
 			"task_status"=>"completed"
 		));
 	}
@@ -87,7 +87,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
-			"server"=>php_uname("n"),
+			
 			"task_status"=>"working"
 		));
 
@@ -118,7 +118,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
-			"server"=>php_uname("n"),
+			
 			"task_status"=>"working"
 		));
 
@@ -148,7 +148,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
-			"server"=>php_uname("n"),
+			
 			"task_status"=>"working"
 		));
 

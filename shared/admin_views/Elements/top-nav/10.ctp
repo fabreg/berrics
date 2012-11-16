@@ -133,6 +133,9 @@
 			<li>
 				<?php echo $this->Admin->link("Video Tasks",array("controller"=>"video_tasks","action"=>"index")); ?>
 			</li>
+			<li>
+				<?php echo $this->Admin->link("Video Task Servers",array("controller"=>"video_task_servers","action"=>"index")); ?>
+			</li>
 			<li class='nav-header'>Media File Uploads</li>
 			<li>
 				<?php echo $this->Admin->link("Manage Uploads",array("controller"=>"media_file_uploads","action"=>"index")); ?>

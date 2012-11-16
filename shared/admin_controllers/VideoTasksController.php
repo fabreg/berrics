@@ -85,6 +85,15 @@ class VideoTasksController extends LocalAppController {
 
 			}
 
+			if(isset($this->request->params['named']['VideoTask.server'])) {
+
+				$this->request->data['VideoTask']['server'] = 
+				$this->Paginator->settings['VideoTask']['conditions']['VideoTask.server'] = 
+				$this->request->params['named']['VideoTask.server'];
+
+
+			}
+
 
 		}
 
@@ -209,8 +218,26 @@ class VideoTasksController extends LocalAppController {
 
 		}
 
+		$servers = array();
+
+		$server  = $this->VideoTask->find("all",array(
+			"fields"=>array(
+				"DISTINCT(VideoTask.server) AS `server`"
+			),
+			"contain"=>array(),
+			"order"=>array(
+				"VideoTask.server"=>"DESC"
+			)
+		));
+		foreach($server as $v) {
+
+			$servers[$v['VideoTask']['server']] = strtoupper($v['VideoTask']['server']);
+
+		}
+
 		$this->set("statusSelect",$taskStatus);
 		$this->set("taskSelect",$tasks);
+		$this->set("serverSelect",$servers);
 
 	}
 
