@@ -105,7 +105,7 @@ class VideoOpsShell extends AppShell {
 		$tasks = $this->VideoTask->find("all",array(
 			"conditions"=>array(
 				"VideoTask.task_status"=>"pending",
-				"VideoTask.server"=>array('',null)
+				"VideoTask.server"=>null
 			),
 			"contain"=>array(),
 			"order"=>array(
