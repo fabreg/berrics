@@ -10,6 +10,8 @@ $servers = array(
 			"render4",
 			"render5",
 			"render6",
+			"render7",
+			"render8",
 			"render9"
 		);
 
