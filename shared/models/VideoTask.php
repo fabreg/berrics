@@ -16,7 +16,7 @@ class VideoTask extends AppModel {
 
 		if(!isset($data['task_status'])) $data['task_status'] = "pending";
 		if(!isset($data['user_id'])) $data['user_id'] = CakeSession::read("Auth.User.id");
-		
+		if(!isset($data['priority'])) $data['priority'] = 0;
 
 		$this->save($data);
 

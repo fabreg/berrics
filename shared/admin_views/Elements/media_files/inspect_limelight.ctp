@@ -33,6 +33,13 @@ function handleUpload() {
 	</div>
 	<div class="well">
 		<h4>OGV (FireFox HTML5) <a href="<?php echo $this->Admin->url(array("controller"=>"media_files","action"=>"queue_ogv",$this->request->data['MediaFile']['id'])); ?>" class="btn btn-info btn-small">Queue Encoding From MP4</a>	</h4>
+		<div>
+			<label>Direct URL</label>
+			<?php 
+				$ll_url = "http://berrics.vo.llnwd.net/o45/".$this->data['MediaFile']['limelight_file'];
+			?>
+			<a href='<?php echo $ll_url; ?>' target='_blank'><?php echo $ll_url; ?></a>
+		</div>
 	</div>
 	<div class="well">
 		<h4>MP4 MOBILE</h4>
