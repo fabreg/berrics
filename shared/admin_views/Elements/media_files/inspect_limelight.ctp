@@ -36,7 +36,7 @@ function handleUpload() {
 		<div>
 			<label>Direct URL</label>
 			<?php 
-				$ll_url = "http://berrics.vo.llnwd.net/o45/".$this->data['MediaFile']['limelight_file'];
+				$ll_url = "http://berrics.vo.llnwd.net/o45/".$this->data['MediaFile']['limelight_file_ogv'];
 			?>
 			<a href='<?php echo $ll_url; ?>' target='_blank'><?php echo $ll_url; ?></a>
 		</div>
