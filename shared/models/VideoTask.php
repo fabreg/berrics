@@ -192,7 +192,7 @@ class VideoTask extends AppModel {
 		
 		$output = `$cmd`;
 
-		$this->getDatasource()->connect();
+		$this->getDatasource()->reconnect();
 		//ftp the file
 		$llftp->ftpFile($newFileName,$newFilePath);
 
