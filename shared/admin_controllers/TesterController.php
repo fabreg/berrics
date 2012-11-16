@@ -1848,7 +1848,7 @@ class TesterController extends LocalAppController {
 		
 		$this->loadModel('VideoTask');
 
-		$task = $this->VideoTask->findById(37);
+		$task = $this->VideoTask->findById(39);
 
 		//$this->VideoTask->youtube_upload($task);
 		

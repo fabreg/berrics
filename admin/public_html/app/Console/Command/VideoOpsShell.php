@@ -12,10 +12,6 @@ class VideoOpsShell extends AppShell {
 		
 		if(isset($this->args[0]) && is_numeric($this->args[0])) $this->procNum = $this->args[0];
 
-		$sleep = $this->procNum*3;
-
-		sleep($sleep);
-
 		//check to see if we are working
 		if($this->checkWorking()) {
 
@@ -27,6 +23,10 @@ class VideoOpsShell extends AppShell {
 
 		}
 
+		$sleep = $this->procNum*2;
+
+		sleep($sleep);
+
 		//get the pending tasks
 		$task = $this->VideoTask->find("first",array(
 			"conditions"=>array(
@@ -34,7 +34,7 @@ class VideoOpsShell extends AppShell {
 			)
 		));
 
-		if(count($task)<=0) return $this->completed(); 
+		if(!isset($task['VideoTask']['id'])) return $this->completed(); 
 
 		try {
 

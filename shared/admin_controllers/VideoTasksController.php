@@ -34,7 +34,7 @@ class VideoTasksController extends LocalAppController {
 			),
 
 		);
-
+		$this->setSelects();
 		$this->set('videoTasks', $this->paginate());
 	}
 
@@ -117,4 +117,29 @@ class VideoTasksController extends LocalAppController {
 		$this->Session->setFlash(__('Video task was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+	public function setSelects() {
+			
+		$taskStatus = array();
+
+		$status  = $this->VideoTask->find("all",array(
+			"fields"=>array(
+				"DISTINCT(VideoTask.task_status) AS `status`"
+			),
+			"contain"=>array(),
+			"order"=>array(
+				"VideoTask.task_status"=>"DESC"
+			)
+		));
+		foreach($status as $v) {
+
+			$taskStatus[$v['VideoTask']['status']] = strtoupper($v['VideoTask']['status']);
+
+		}
+
+		$this->set("statusSelect",$taskStatus);
+
+	}
+
 }
