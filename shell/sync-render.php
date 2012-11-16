@@ -8,7 +8,9 @@ $servers = array(
 			"render2",
 			"render3",
 			"render4",
-			"render5"
+			"render5",
+			"render6",
+			"render9"
 		);
 
 foreach($servers as $server) {
