@@ -1878,22 +1878,25 @@ class TesterController extends LocalAppController {
 		$this->loadModel('VideoTask');
 		
 
-		$file = $this->MediaFile->find("first",array(
+		$file = $this->MediaFile->find("all",array(
 			"conditions"=>array(
 				"MediaFile.limelight_file LIKE"=>"%.flv"
 			),
-			"contain"=>array()
+			"contain"=>array(),
+			"limit"=>5
 		));
 
-		$this->VideoTask->queueTask(array(
-			"task"=>"flv_to_mp4",
-			"model"=>"MediaFile",
-			"foreign_key"=>$file['MediaFile']['id']
-		));
+		foreach ($file as $k => $v) {
+			
+			$this->VideoTask->queueTask(array(
+				"task"=>"flv_to_mp4",
+				"model"=>"MediaFile",
+				"foreign_key"=>$v['MediaFile']['id']
+			));
 
-		$task = $this->VideoTask->read();
+		}
 
-		die(print_r($task));
+	
 
 	}
 
