@@ -5,7 +5,7 @@ $dir = dirname(__FILE__)."/";
 
 $servers = array(
 			"render1",
-			"render2"
+			//"render2"
 		);
 
 foreach($servers as $server) {
