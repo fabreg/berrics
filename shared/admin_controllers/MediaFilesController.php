@@ -1586,6 +1586,26 @@ class MediaFilesController extends LocalAppController {
 
 	}
 	
+	public function queue_ogv($id) {
+		
+		$this->loadModel('VideoTask');
+		
+		$this->VideoTask->queueTask(array(
+
+			"model"=>"MediaFile",
+			"foreign_key"=>$id,
+			"task"=>"mp4_to_ogv",
+			"priority"=>1
+
+		));
+
+		$this->Session->setFlash("Video queued for OGV conversion");
+
+		$cb = base64_decode($this->request->params['named']['cb']);
+
+		$this->redirect($cb);
+
+	}
 	
 	
 	

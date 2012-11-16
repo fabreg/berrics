@@ -197,6 +197,7 @@ class VideoTask extends AppModel {
 		$llftp->ftpFile($newFileName,$newFilePath);
 
 		//update the video file
+		$MediaFile->getDatasource()->reconnect();
 		$MediaFile->create();
 		$MediaFile->id = $video['MediaFile']['id'];
 		$MediaFile->save(array(
@@ -208,6 +209,65 @@ class VideoTask extends AppModel {
 		$this->save(array(
 			"task_status"=>"completed"
 		));
+
+	}
+
+	public function mp4_to_ogv($VideoTask) {
+		
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			
+			"task_status"=>"working"
+		));
+
+		//import objects
+		$MediaFile = ClassRegistry::init("MediaFile");
+		App::import("Vendor","LLFTP",array("LLFTP.php"));
+
+		$video = $MediaFile->find("first",array(
+			"conditions"=>array(
+				"MediaFile.id"=>$VideoTask['VideoTask']['foreign_key']
+			),
+			"contain"=>array()
+		));
+
+		$llftp = new LLFTP();
+
+		//let's download the video to tmp
+		$tmp_file = $MediaFile->downloadVideoToTmp($VideoTask['VideoTask']['foreign_key']);
+
+		$newFileName = str_replace(".mp4",".ogv",$video['MediaFile']['limelight_file']);
+		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
+
+		$cmd = "/usr/bin/ffmpeg2theora {$tmp_file} -o {$newFilePath}";
+		SysMsg::add(array(
+						"category"=>"Mp4ToOgv",
+						"from"=>"VideoTask",
+						"crontab"=>1,
+						"title"=>$cmd
+				));
+		
+		$output = `$cmd`;
+
+		$this->getDatasource()->reconnect();
+		//ftp the file
+		$llftp->ftpFile($newFileName,$newFilePath);
+
+		//update the video file
+		$MediaFile->getDatasource()->reconnect();
+		$MediaFile->create();
+		$MediaFile->id = $video['MediaFile']['id'];
+		$MediaFile->save(array(
+			"limelight_file_ogv"=>$newFileName
+		));
+
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"completed"
+		));
+
 
 	}
 	

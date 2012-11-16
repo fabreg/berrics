@@ -32,7 +32,7 @@ function handleUpload() {
 		</div>
 	</div>
 	<div class="well">
-		<h4>OGV (FireFox HTML5)</h4>
+		<h4>OGV (FireFox HTML5) <a href="<?php echo $this->Admin->url(array("controller"=>"media_files","action"=>"queue_ogv",$this->request->data['MediaFile']['id'])); ?>" class="btn btn-info btn-small">Queue Encoding From MP4</a>	</h4>
 	</div>
 	<div class="well">
 		<h4>MP4 MOBILE</h4>
