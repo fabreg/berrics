@@ -1883,7 +1883,7 @@ class TesterController extends LocalAppController {
 				"MediaFile.limelight_file LIKE"=>"%.flv"
 			),
 			"contain"=>array(),
-			"limit"=>5
+			"limit"=>800
 		));
 
 		foreach ($file as $k => $v) {

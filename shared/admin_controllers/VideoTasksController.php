@@ -17,6 +17,36 @@ class VideoTasksController extends LocalAppController {
 	}
 
 
+
+	public function search() {
+		
+		if(count($this->request->data)>0) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"search"=>true
+				);
+				
+				
+				foreach($this->request->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						if(empty($vv)) continue;
+
+						$url[$k.".".$kk]=urlencode($vv);
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+
+	}
+
 /**
  * index method
  *
@@ -34,6 +64,30 @@ class VideoTasksController extends LocalAppController {
 			),
 
 		);
+
+		if(isset($this->request->params['named']['search'])) {
+
+			if(isset($this->request->params['named']['VideoTask.task_status'])) {
+
+				$this->request->data['VideoTask']['task_status'] = 
+				$this->Paginator->settings['VideoTask']['conditions']['VideoTask.task_status'] = 
+				$this->request->params['named']['VideoTask.task_status'];
+
+
+			}
+
+			if(isset($this->request->params['named']['VideoTask.task'])) {
+
+				$this->request->data['VideoTask']['task'] = 
+				$this->Paginator->settings['VideoTask']['conditions']['VideoTask.task'] = 
+				$this->request->params['named']['VideoTask.task'];
+
+
+			}
+
+
+		}
+
 		$this->setSelects();
 		$this->set('videoTasks', $this->paginate());
 	}
@@ -138,7 +192,25 @@ class VideoTasksController extends LocalAppController {
 
 		}
 
+		$tasks = array();
+
+		$task  = $this->VideoTask->find("all",array(
+			"fields"=>array(
+				"DISTINCT(VideoTask.task) AS `task`"
+			),
+			"contain"=>array(),
+			"order"=>array(
+				"VideoTask.task"=>"DESC"
+			)
+		));
+		foreach($task as $v) {
+
+			$tasks[$v['VideoTask']['task']] = strtoupper($v['VideoTask']['task']);
+
+		}
+
 		$this->set("statusSelect",$taskStatus);
+		$this->set("taskSelect",$tasks);
 
 	}
 

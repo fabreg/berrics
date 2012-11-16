@@ -1,6 +1,20 @@
 <div class="page-header">
 	<h1>Video Tasks</h1>
 </div>
+<div class="well">
+	<?php 
+		echo $this->Form->create('VideoTask',array(
+			"id"=>'VideoTaskForm',
+			"url"=>array("action"=>"search")
+		));	
+
+		echo $this->Form->input("task_status",array("options"=>$statusSelect,"empty"=>true));
+		echo $this->Form->input("task",array("options"=>$taskSelect,"empty"=>true));
+
+		echo $this->Form->end("Filter")
+	 ?>
+	
+</div>
 <?php echo $this->Admin->adminPaging(); ?>
 <div class="videoTasks index">
 
