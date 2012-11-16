@@ -203,6 +203,8 @@ class VideoTask extends AppModel {
 			"task_status"=>"completed"
 		));
 
+		return $cmd;
+
 	}
 	
 

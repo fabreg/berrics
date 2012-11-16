@@ -34,13 +34,16 @@ class VideoOpsShell extends AppShell {
 
 		try {
 
-			$this->VideoTask->{$task['VideoTask']['task']}($task);
+			$msg = $this->VideoTask->{$task['VideoTask']['task']}($task);
 
 		} 
 		catch(Exception $e) {
 
+			$msg = $e->getMessage();
 
 		}
+
+		$this->out("Message: ".$msg);
 
 	}
 
@@ -57,6 +60,13 @@ class VideoOpsShell extends AppShell {
 				"VideoTaskServer.active"=>1
 			)
 		));
+
+		if(count($servers)<=0) {
+
+			$this->out("No Active Servers Available : Exit");
+			return;
+
+		}
 
 		$available_tasks = 0;
 
