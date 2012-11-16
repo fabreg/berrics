@@ -87,7 +87,7 @@ class ImgServer {
 		
 	}
 
-	public function upload_video_still_large($file_name, $file_path) {
+	public function upload_video_still_large ($file_name, $file_path) {
 		
 		$this->connect();
 		

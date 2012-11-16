@@ -1848,7 +1848,7 @@ class TesterController extends LocalAppController {
 		
 		$this->loadModel('VideoTask');
 
-		$task = $this->VideoTask->findById(5);
+		$task = $this->VideoTask->findById(37);
 
 		//$this->VideoTask->youtube_upload($task);
 		
@@ -1869,6 +1869,32 @@ class TesterController extends LocalAppController {
 
 		die(pr($tags));
 		
+	}
+
+
+	public function test_insert_flv() {
+		
+		$this->loadModel('MediaFile');
+		$this->loadModel('VideoTask');
+		
+
+		$file = $this->MediaFile->find("first",array(
+			"conditions"=>array(
+				"MediaFile.limelight_file LIKE"=>"%.flv"
+			),
+			"contain"=>array()
+		));
+
+		$this->VideoTask->queueTask(array(
+			"task"=>"flv_to_mp4",
+			"model"=>"MediaFile",
+			"foreign_key"=>$file['MediaFile']['id']
+		));
+
+		$task = $this->VideoTask->read();
+
+		die(print_r($task));
+
 	}
 
 

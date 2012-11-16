@@ -29,11 +29,11 @@
 		</td>
 		<td><?php echo h($videoTask['VideoTask']['model']); ?>&nbsp;</td>
 		<td><?php echo h($videoTask['VideoTask']['foreign_key']); ?>&nbsp;</td>
-		<td><?php echo h($videoTask['VideoTask']['task']); ?>&nbsp;</td>
-		<td><?php if (!isset($videoTask['User']['id'])): ?>
+		
+		<td><?php if (isset($videoTask['User']['id'])): ?>
 			<?php echo $videoTask['User']['first_name']; ?> <?php echo $videoTask['User']['last_name']; ?>
 		<?php endif ?></td>
-		
+		<td><?php echo h($videoTask['VideoTask']['task']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $videoTask['VideoTask']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $videoTask['VideoTask']['id'])); ?>

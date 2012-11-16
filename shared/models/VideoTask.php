@@ -16,6 +16,7 @@ class VideoTask extends AppModel {
 
 		if(!isset($data['task_status'])) $data['task_status'] = "pending";
 		if(!isset($data['user_id'])) $data['user_id'] = CakeSession::read("Auth.User.id");
+		
 
 		$this->save($data);
 
@@ -46,6 +47,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
+			"server"=>php_uname("n"),
 			"task_status"=>"working"
 		));
 
@@ -74,6 +76,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
+			"server"=>php_uname("n"),
 			"task_status"=>"completed"
 		));
 	}
@@ -84,6 +87,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
+			"server"=>php_uname("n"),
 			"task_status"=>"working"
 		));
 
@@ -114,6 +118,7 @@ class VideoTask extends AppModel {
 		$this->create();
 		$this->id = $VideoTask['VideoTask']['id'];
 		$this->save(array(
+			"server"=>php_uname("n"),
 			"task_status"=>"working"
 		));
 
@@ -135,6 +140,67 @@ class VideoTask extends AppModel {
 			"task_status"=>"completed"
 		));
 
+
+	}
+
+	public function flv_to_mp4($VideoTask) {
+
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"server"=>php_uname("n"),
+			"task_status"=>"working"
+		));
+
+		//import objects
+		$MediaFile = ClassRegistry::init("MediaFile");
+		App::import("Vendor","LLFTP",array("LLFTP.php"));
+		App::import("Vendor","getid3",array("file"=>"getid3/getid3.php"));
+
+		$video = $MediaFile->find("first",array(
+			"conditions"=>array(
+				"MediaFile.id"=>$VideoTask['VideoTask']['foreign_key']
+			),
+			"contain"=>array()
+		));
+
+		$llftp = new LLFTP();
+
+		$id3 = new getid3();
+
+		//let's download the video to tmp
+		$tmp_file = $MediaFile->downloadVideoToTmp($VideoTask['VideoTask']['foreign_key']);
+
+		//let's get the size of the FLV file
+
+		$flvInfo = $id3->analyze($tmp_file);
+		$height = $flvInfo['video']['resolution_y'];
+		$width = $flvInfo['video']['resolution_x'];
+		$newFileName = str_replace(".flv",".mp4",$video['MediaFile']['limelight_file']);
+		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
+
+		if($height&1) $height++;
+		if($width&1) $width++;
+		
+		$cmd = "/usr/local/bin/ffmpeg -y -i {$tmp_file} -vcodec libx264 -vf 'scale={$width}:{$height}' {$newFilePath}";
+		
+		$output = `$cmd`;
+
+		//ftp the file
+		$llftp->ftpFile($newFileName,$newFilePath);
+
+		//update the video file
+		$MediaFile->create();
+		$MediaFile->id = $video['MediaFile']['id'];
+		$MediaFile->save(array(
+			"limelight_file"=>$newFileName
+		));
+
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"completed"
+		));
 
 	}
 	

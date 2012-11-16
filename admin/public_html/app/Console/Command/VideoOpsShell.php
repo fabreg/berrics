@@ -2,12 +2,20 @@
 
 class VideoOpsShell extends AppShell {
 
+	public $procNum = 1;
+
 	public $uses = array(
 		"VideoTask"
 	);
 
 	public function run() {
-	
+		
+		if(isset($this->args[0]) && is_numeric($this->args[0])) $this->procNum = $this->args[0];
+
+		$sleep = $this->procNum*3;
+
+		sleep($sleep);
+
 		//check to see if we are working
 		if($this->checkWorking()) {
 
@@ -20,33 +28,38 @@ class VideoOpsShell extends AppShell {
 		}
 
 		//get the pending tasks
-		$tasks = $this->VideoTask->find("all",array(
+		$task = $this->VideoTask->find("first",array(
 			"conditions"=>array(
 				"VideoTask.task_status"=>"pending"
 			)
 		));
 
-		foreach($tasks as $task) {
+		if(count($task)<=0) return $this->completed(); 
 
-			try {
+		try {
 
-				$this->VideoTask->{$task['VideoTask']['task']}($task);
+			$this->VideoTask->{$task['VideoTask']['task']}($task);
 
-			}
-			catch(Exception $e) {
+		}
+		catch(Exception $e) {
 
-				$msg = $e->getMessage();
+			$msg = $e->getMessage();
 
-				SysMsg::add(array(
-						"category"=>"VideoOps",
-						"from"=>"Youtube - ".$task['VideoTask']['task'],
-						"crontab"=>1,
-						"title"=>"Youtube - ".$task['VideoTask']['task']." Exception",
-						"message"=>$msg
-				));
+			SysMsg::add(array(
+					"category"=>"VideoOps",
+					"from"=>"Youtube - ".$task['VideoTask']['task'],
+					"crontab"=>1,
+					"title"=>"Youtube - ".$task['VideoTask']['task']." Exception",
+					"message"=>$msg
+			));
 
-			}
-			
+			$this->VideoTask->create();
+			$this->VideoTask->id = $task['VideoTask']['id'];
+			$this->VideoTask->save(array(
+				"task_status"=>"error"
+			));
+
+			$this->completed();
 
 		}
 
@@ -57,19 +70,25 @@ class VideoOpsShell extends AppShell {
 
 	public function working() {
 		
-		`touch /tmp/VideoOps`;
+		$file = "VideoOps".$this->procNum;
+
+		`touch /tmp/$file`;
 
 	}
 
 	public function completed() {
 		
-		`rm -rf /tmp/VideoOps`;
+		$file = "VideoOps".$this->procNum;
+
+		`rm -rf /tmp/$file`;
 
 	}
 
 	public function checkWorking() {
 
-		return file_exists("/tmp/VideoOps");
+		$file = "VideoOps".$this->procNum;
+
+		return file_exists("/tmp/$file");
 
 	}
 
