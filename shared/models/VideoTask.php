@@ -183,10 +183,16 @@ class VideoTask extends AppModel {
 		if($width&1) $width++;
 		
 		$cmd = "/usr/local/bin/ffmpeg -y -i {$tmp_file} -vcodec libx264 -vf 'scale={$width}:{$height}' {$newFilePath}";
-		$this->getDatasource()->connect();
+		SysMsg::add(array(
+						"category"=>"FlvToMp4",
+						"from"=>"VideoTask",
+						"crontab"=>1,
+						"title"=>$cmd
+				));
 		
 		$output = `$cmd`;
 
+		$this->getDatasource()->connect();
 		//ftp the file
 		$llftp->ftpFile($newFileName,$newFilePath);
 
@@ -202,8 +208,6 @@ class VideoTask extends AppModel {
 		$this->save(array(
 			"task_status"=>"completed"
 		));
-
-		return $cmd;
 
 	}
 	
