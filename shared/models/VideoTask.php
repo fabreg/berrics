@@ -183,6 +183,7 @@ class VideoTask extends AppModel {
 		if($width&1) $width++;
 		
 		$cmd = "/usr/local/bin/ffmpeg -y -i {$tmp_file} -vcodec libx264 -vf 'scale={$width}:{$height}' {$newFilePath}";
+		$this->getDatasource()->connect();
 		
 		$output = `$cmd`;
 
