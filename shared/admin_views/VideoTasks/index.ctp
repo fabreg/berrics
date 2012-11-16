@@ -14,6 +14,7 @@
 			<th><?php echo $this->Paginator->sort('foreign_key'); ?></th>
 			<th><?php echo $this->Paginator->sort("User.first_name") ?></th>
 			<th><?php echo $this->Paginator->sort('task'); ?></th>
+			<th><?php echo $this->Paginator->sort('server'); ?></th>
 		
 			
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -34,6 +35,7 @@
 			<?php echo $videoTask['User']['first_name']; ?> <?php echo $videoTask['User']['last_name']; ?>
 		<?php endif ?></td>
 		<td><?php echo h($videoTask['VideoTask']['task']); ?>&nbsp;</td>
+		<td><?php echo h($videoTask['VideoTask']['server']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $videoTask['VideoTask']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $videoTask['VideoTask']['id'])); ?>
