@@ -85,8 +85,13 @@ class VideoOpsShell extends AppShell {
 
 			$servers[$k]['available'] = $v['VideoTaskServer']['max_tasks'] - $working;
 
-			$available_tasks += $v['VideoTaskServer']['max_tasks'] - $working;
+			if($servers[$k]['available']>0) {
 
+				$available_tasks += $v['VideoTaskServer']['max_tasks'] - $working;
+
+			}
+
+			
 		}
 
 		if($available_tasks<=0) {
