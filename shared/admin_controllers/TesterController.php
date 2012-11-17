@@ -1884,7 +1884,7 @@ class TesterController extends LocalAppController {
 				"MediaFile.limelight_file_ogv is null OR MediaFile.limelight_file_ogv=''"
 			),
 			"contain"=>array(),
-			"limit"=>1200
+			"limit"=>3000
 			
 		));
 
