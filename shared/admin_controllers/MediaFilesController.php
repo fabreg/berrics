@@ -1331,6 +1331,8 @@ class MediaFilesController extends LocalAppController {
 			$this->MediaFile->id = $id;
 			$this->MediaFile->save($udata);
 			
+			$this->encode_ogv($this->MediaFile->$id);
+
 			$this->Session->setFlash('File uploaded successfully');
 			
 			die(json_encode($this->MediaFile->read()));
@@ -1588,6 +1590,17 @@ class MediaFilesController extends LocalAppController {
 	
 	public function queue_ogv($id) {
 		
+		$this->encode_ogv($id);
+
+		$this->Session->setFlash("Video queued for OGV conversion");
+
+		$cb = base64_decode($this->request->params['named']['cb']);
+
+		$this->redirect($cb);
+	}
+
+	private function encode_ogv($id) {
+		
 		$this->loadModel('VideoTask');
 		
 		$this->VideoTask->queueTask(array(
@@ -1599,11 +1612,9 @@ class MediaFilesController extends LocalAppController {
 
 		));
 
-		$this->Session->setFlash("Video queued for OGV conversion");
+		
 
-		$cb = base64_decode($this->request->params['named']['cb']);
-
-		$this->redirect($cb);
+		
 
 	}
 	
