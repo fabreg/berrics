@@ -1185,6 +1185,7 @@ class DailyopsController extends LocalAppController {
 				"model"=>"Dailyop",
 				"foreign_key"=>$id,
 				"task"=>"youtube_upload",
+				"priority"=>1
 			));
 
 			$fm[] = "Youtube Upload Has Been Queued";
@@ -1194,7 +1195,8 @@ class DailyopsController extends LocalAppController {
 			$this->VideoTask->queueTask(array(
 				"model"=>"DailyopsShareParameter",
 				"foreign_key"=>$yt[0]['DailyopsShareParameter']['id'],
-				"task"=>"youtube_make_public"
+				"task"=>"youtube_make_public",
+				"priority"=>1
 
 			));
 
@@ -1254,7 +1256,8 @@ class DailyopsController extends LocalAppController {
 			$this->VideoTask->queueTask(array(
 				"task"=>"youtube_make_private",
 				"model"=>"DailyopsShareParameter",
-				"foreign_key"=>$yt[0]['DailyopsShareParameter']['id']
+				"foreign_key"=>$yt[0]['DailyopsShareParameter']['id'],
+				"priority"=>1
 			));
 
 			$fm[] = "Youtube Video Queded to go Private";

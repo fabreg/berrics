@@ -178,7 +178,7 @@ class VideoOpsShell extends AppShell {
 
 		$server_name = php_uname('n');
 
-		$date_seed = date("Y-m-d H:i:s",strtotime("-18 Minutes"));
+		$date_seed = date("Y-m-d H:i:s",strtotime("-12 Minutes"));
 
 		$sql = "update video_tasks set task_status='timeout' where task_status='working' and modified <= '$date_seed'";
 
