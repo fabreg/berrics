@@ -1872,7 +1872,7 @@ class TesterController extends LocalAppController {
 	}
 
 
-	public function test_insert_flv() {
+	public function test_insert_ogv() {
 		
 		$this->loadModel('MediaFile');
 		$this->loadModel('VideoTask');
@@ -1880,16 +1880,18 @@ class TesterController extends LocalAppController {
 
 		$file = $this->MediaFile->find("all",array(
 			"conditions"=>array(
-				"MediaFile.limelight_file LIKE"=>"%.flv"
+				"MediaFile.limelight_file LIKE"=>"%.mp4",
+				"MediaFile.limelight_file_ogv is null OR MediaFile.limelight_file_ogv=''"
 			),
 			"contain"=>array(),
-			"limit"=>800
+			"limit"=>20
+			
 		));
 
 		foreach ($file as $k => $v) {
 			
 			$this->VideoTask->queueTask(array(
-				"task"=>"flv_to_mp4",
+				"task"=>"mp4_to_ogv",
 				"model"=>"MediaFile",
 				"foreign_key"=>$v['MediaFile']['id']
 			));
