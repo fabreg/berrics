@@ -237,7 +237,7 @@ class VideoTask extends AppModel {
 
 		//let's download the video to tmp
 		$tmp_file = $MediaFile->downloadVideoToTmp($VideoTask['VideoTask']['foreign_key']);
-
+		$this->query("SET SESSION wait_timeout = 28800");
 		$newFileName = str_replace(".mp4",".ogv",$video['MediaFile']['limelight_file']);
 		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
 		$cmd = "/usr/bin/ffmpeg2theora {$tmp_file} -o {$newFilePath} --audioquality 5";
