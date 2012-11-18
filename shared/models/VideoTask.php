@@ -181,7 +181,7 @@ class VideoTask extends AppModel {
 
 		if($height&1) $height++;
 		if($width&1) $width++;
-		
+		$this->getDatasource()->disconnect();
 		$cmd = "/usr/local/bin/ffmpeg -y -i {$tmp_file} -vcodec libx264 -vf 'scale={$width}:{$height}' {$newFilePath}";
 		SysMsg::add(array(
 						"category"=>"FlvToMp4",
@@ -192,12 +192,11 @@ class VideoTask extends AppModel {
 		
 		$output = `$cmd`;
 
-		$this->getDatasource()->reconnect();
+		$this->getDatasource()->connect();
 		//ftp the file
 		$llftp->ftpFile($newFileName,$newFilePath);
 
 		//update the video file
-		$MediaFile->getDatasource()->reconnect();
 		$MediaFile->create();
 		$MediaFile->id = $video['MediaFile']['id'];
 		$MediaFile->save(array(
@@ -239,7 +238,7 @@ class VideoTask extends AppModel {
 
 		$newFileName = str_replace(".mp4",".ogv",$video['MediaFile']['limelight_file']);
 		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
-
+		$this->getDatasource()->disconnect();
 		$cmd = "/usr/bin/ffmpeg2theora {$tmp_file} -o {$newFilePath}";
 		SysMsg::add(array(
 						"category"=>"Mp4ToOgv",
@@ -250,12 +249,11 @@ class VideoTask extends AppModel {
 		
 		$output = `$cmd`;
 
-		$this->getDatasource()->reconnect();
+		$this->getDatasource()->connect();
 		//ftp the file
 		$llftp->ftpFile($newFileName,$newFilePath);
 
 		//update the video file
-		$MediaFile->getDatasource()->reconnect();
 		$MediaFile->create();
 		$MediaFile->id = $video['MediaFile']['id'];
 		$MediaFile->save(array(
