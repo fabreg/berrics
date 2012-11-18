@@ -240,7 +240,7 @@ class VideoTask extends AppModel {
 
 		$newFileName = str_replace(".mp4",".ogv",$video['MediaFile']['limelight_file']);
 		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
-		$cmd = "/usr/bin/ffmpeg2theora {$tmp_file} -o {$newFilePath} --videoquality 8 --audioquality 5";
+		$cmd = "/usr/bin/ffmpeg2theora {$tmp_file} -o {$newFilePath} --audioquality 5";
 		
 		
 		SysMsg::add(array(
