@@ -58,7 +58,8 @@
             "bufferInterval":false,
             "controlsTimeout":false,
             "playingAd":false,
-            "GoogleAdsManager":false
+            "GoogleAdsManager":false,
+            "videoFormat":"mp4"
 
           });
 
@@ -77,15 +78,18 @@
           if(/(probably)/ig.test(Modernizr.video.h264)) {
             
             console.log("USE H264");
-            methods.initHtml($this);
+            
             
 
           } else {
             
-            console.log("USE FLASH");
-            methods.initFlash($this);
+            console.log("USE OGV");
+            
+            data.videoFormat="ogv";
             
           }
+
+          methods.initHtml($this);
 
         }
 
@@ -338,12 +342,25 @@
 
       var video = $data.target.find('video');
 
+      var src = false;
+
       console.log("Play Video Request Data");
       
       console.log($data.request[0]);
 
+      switch($data.videoFormat) {
+
+        case "ogv":
+          src = methods.LIMELIGHT_URL+$data.request[0]['MediaFile']['limelight_file_ogv'];
+          break;
+        default:
+          src = methods.LIMELIGHT_URL+$data.request[0]['MediaFile']['limelight_file'];
+          break;
+
+      }
+
       video.attr({
-          "src":methods.LIMELIGHT_URL+$data.request[0]['MediaFile']['limelight_file']
+          "src":src
       });
 
       video.get(0).play();
