@@ -5,15 +5,7 @@ $dir = dirname(__FILE__)."/";
 
 $servers = array(
 			"render1",
-			"render2",
-			"render3",
-			"render4",
-			"render5",
-			"render6",
-			"render7",
-			"render8",
-			"render9",
-			"render10"
+
 		);
 
 foreach($servers as $server) {
