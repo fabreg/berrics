@@ -191,6 +191,7 @@ class VideoTask extends AppModel {
 						"crontab"=>1,
 						"title"=>$cmd
 				));
+		$this->query("SET SESSION wait_timeout = 28800");
 		$this->getDatasource()->disconnect();
 		$output = `$cmd`;
 		$this->getDatasource()->connect();
