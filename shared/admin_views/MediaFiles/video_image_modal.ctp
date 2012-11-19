@@ -36,35 +36,85 @@ $(document).ready(function() {
 	});
 
 	
-	$("#MediaFileImageFile").change(function() { 
+	$(".modal-body input[type=file]").change(function() { 
 
-		var file = $(this).prop('files')[0];
-		var submit  = $("#submit-button");
-		var valid = ["image/jpg","image/jpeg","image/gif","image/png"];
-
-		var is_valid = ($.inArray(file.type,valid))+1;
-		
-		console.log(file);
-
-		if(is_valid) {
-
-			submit.attr("disabled",false);
-			
-		} else {
-
-			
-			$(this).val('');
-
-			alert("Please choose a valid image");
-
-			submit.attr("disabled",true);
-		}
+		validateImages();
 
 	});
 
 	
 });
+
+function validateImages() {
+	
+
+	var valid = false;
+
+	var submit  = $("#submit-button");
+
+	var empty = 0;
+
+	var inputs = $(".modal-body input[type=file]").get();
+
+	for(var a in inputs) {
+		
+		var input = $(inputs[a]);
+
+		if(input.val().length>0) {
+
+			var file = input.prop('files')[0];
+			var validFile = ["image/jpg","image/jpeg","image/gif","image/png"];
+			var is_valid = ($.inArray(file.type,validFile))+1;
+
+			if(!is_valid) {
+
+				submit.attr("disabled",true);
+				input.val("");
+				alert("Invalid Image Format");
+				return validateImages();
+				break;
+			}
+
+		} else {
+
+			empty++;
+			console.log("empty:"+empty);
+			console.log("name:"+input.attr("name"));
+		}	
+
+	}
+
+	
+		
+
+
+	if(empty>=3) {
+
+		submit.attr("disabled",true);
+
+	} else {
+		 submit.attr("disabled",false);
+	 	
+
+	}
+	
+	
+	
+
+}
 </script>
+<style>
+	.modal-body input[type=file] {
+
+		font-size: 11px;
+
+	}
+	.modal-body label {
+
+		font-size:12px;
+
+	}
+</style>
 <?php 
 
 	$url = array(
@@ -76,23 +126,35 @@ $(document).ready(function() {
 	echo $this->Form->input("id");
 ?>
 <div class='modal-header'>
-	<h4>Video Image</h4>
+	<h4>Video Image - <?php echo $this->request->data['MediaFile']['name']; ?></h4>
 </div>
 <div class='modal-body'>
-	<div class='row-fluid'>
-		<h5><?php echo $this->request->data['MediaFile']['name']; ?></h5>
-	</div>
-	<?php if(!empty($this->request->data['MediaFile']['file_video_still'])): ?>
-	<div class='row-fluid'>
-		<div><strong>Current Image:</strong></div>
-		<?php echo $this->Media->mediaThumb(array(
-					"MediaFile"=>$this->request->data['MediaFile'],
-					"h"=>"80"
-				)); ?>
-	</div>
-	<?php endif; ?>
-	<div class='row-fluid'>
-		<?php echo $this->Form->input("image_file",array("type"=>"file")); ?>
+	<div class="row-fluid">
+		<div class="span12">
+			<table class='table table-bordered table-hover table-striped'>
+				<tbody>
+					<tr>
+						<td width='60%'><?php echo $this->Form->input("image_file",array("type"=>"file","label"=>"Primary Image")); ?></td>
+						<td>
+							<?php if(!empty($this->request->data['MediaFile']['file_video_still'])): ?>
+								<?php echo $this->Media->mediaThumb(array(
+											"MediaFile"=>$this->request->data['MediaFile'],
+											"h"=>"45"
+										)); ?>
+							<?php endif; ?>
+						</td>
+					</tr>
+					<tr>
+						<td><?php echo $this->Form->input("image_file_slim",array("type"=>"file","label"=>"Slim Image")); ?></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><?php echo $this->Form->input("image_file_large",array("type"=>"file","label"=>"Large Image")); ?></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<div class='row-fluid'>
 		<div>

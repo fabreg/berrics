@@ -1034,6 +1034,20 @@ class MediaFilesController extends LocalAppController {
 				"conditions"=>array("MediaFile.id"=>$id)
 			));
 			
+			if($this->request->data['MediaFile']['media_type'] == "bcove") {
+
+				//get the video tasks
+				$this->loadModel('VideoTask');
+				$videoTasks = $this->VideoTask->find("all",array(
+					"conditions"=>array(
+						"VideoTask.model"=>"MediaFile",
+						"VideoTask.foreign_key"=>$this->request->data["MediaFile"]['id']
+					)
+				));
+
+				$this->set(compact("videoTasks"));
+
+			}
 			
 			
 		}
@@ -1355,23 +1369,25 @@ class MediaFilesController extends LocalAppController {
 	}
 	
 	public function handle_video_image_modal() {
-		
-		if(!is_uploaded_file($this->request->data['MediaFile']['image_file']['tmp_name']))
-			throw new BadRequestException("Nothing posting in!");
-		
+
+		App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+
+		$img = ImgServer::instance();
+
+		$msg = "";
+
 		$file = $this->request->data['MediaFile']['image_file'];
 		
 		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
 		
 		$tmp_name = md5(time().mt_rand(999,9999)).".".$ext;
-		
-		if(move_uploaded_file($file['tmp_name'],TMP."uploads/".$tmp_name)) {
-			
-			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
 
-			$img = ImgServer::instance();
-				
-			$img->upload_video_still($tmp_name,TMP."uploads/".$tmp_name);
+		if(
+			is_uploaded_file($file['tmp_name']) && 
+			move_uploaded_file($file['tmp_name'],TMP."uploads/".$tmp_name)
+		) {
+			
+			$img->upload_video_still($tmp_name,TMP."uploads/".$tmp_name,false);
 			
 			unlink(TMP."uploads/".$tmp_name);
 			
@@ -1383,11 +1399,74 @@ class MediaFilesController extends LocalAppController {
 						"file_video_still"=>$tmp_name
 					));
 			
-			$this->Session->setFlash("Video image updated successfully");
+			$msg .= "Primary image updated successfully";
 			
-			die(1);
+			
 			
 		}
+
+		$file = $this->request->data['MediaFile']['image_file_slim'];
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$tmp_name = md5(time().mt_rand(999,9999)).".".$ext;
+
+		if(
+			is_uploaded_file($file['tmp_name']) && 
+			move_uploaded_file($file['tmp_name'],TMP."uploads/".$tmp_name)
+		) {
+			
+			$img->upload_video_still_slim($tmp_name,TMP."uploads/".$tmp_name,false);
+			
+			unlink(TMP."uploads/".$tmp_name);
+			
+			$this->MediaFile->create();
+			
+			$this->MediaFile->id = $this->request->data['MediaFile']['id'];
+			
+			$this->MediaFile->save(array(
+						"file_video_still_slim"=>$tmp_name
+					));
+			
+			$msg .= "Slim image updated successfully";
+			
+			
+			
+		}
+
+
+		$file = $this->request->data['MediaFile']['image_file_large'];
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$tmp_name = md5(time().mt_rand(999,9999)).".".$ext;
+
+		if(
+			is_uploaded_file($file['tmp_name']) && 
+			move_uploaded_file($file['tmp_name'],TMP."uploads/".$tmp_name)
+		) {
+			
+			$img->upload_video_still_large($tmp_name,TMP."uploads/".$tmp_name,false);
+			
+			unlink(TMP."uploads/".$tmp_name);
+			
+			$this->MediaFile->create();
+			
+			$this->MediaFile->id = $this->request->data['MediaFile']['id'];
+			
+			$this->MediaFile->save(array(
+						"file_video_still_large"=>$tmp_name
+					));
+			
+			$msg .= "Large image updated successfully";
+			
+			
+			
+		}
+
+
+		$this->Session->setFlash($msg);
+		die(1);
 		
 	}
 	

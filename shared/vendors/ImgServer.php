@@ -45,14 +45,18 @@ class ImgServer {
 	
 	public function connect() {
 		
-		if(!$this->sftp->login('root','WEB2B7eMsiJ43')) {
+		if(!self::$connected) {
+
+			if(!$this->sftp->login('root','WEB2B7eMsiJ43')) {
 			
 			die("Failed to connect to img.theberrics.com");
 			
-		} else {
-			
-			self::$connected = true;
-			
+			} else {
+				
+				self::$connected = true;
+				
+			}
+
 		}
 		
 	}
@@ -63,7 +67,7 @@ class ImgServer {
 		
 	}
 	
-	public function upload_video_still($file_name, $file_path) {
+	public function upload_video_still($file_name, $file_path,$auto_close = true) {
 		
 		$this->connect();
 		
@@ -71,11 +75,11 @@ class ImgServer {
 		
 		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
 		
-		$this->close();
+		if($auto_close) $this->close();
 		
 	}
 
-	public function upload_video_still_slim($file_name, $file_path) {
+	public function upload_video_still_slim($file_name, $file_path,$auto_close = true) {
 		
 		$this->connect();
 		
@@ -83,11 +87,11 @@ class ImgServer {
 		
 		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
 		
-		$this->close();
+		if($auto_close) $this->close();
 		
 	}
 
-	public function upload_video_still_large ($file_name, $file_path) {
+	public function upload_video_still_large ($file_name, $file_path,$auto_close = true) {
 		
 		$this->connect();
 		
@@ -95,7 +99,7 @@ class ImgServer {
 		
 		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
 		
-		$this->close();
+		if($auto_close)	$this->close();
 		
 	}
 	

@@ -159,7 +159,7 @@ function uploadVideoFile() {
 
 function initBootstrap() {
 
-	$("table:not([class])").addClass('table').addClass('table-striped').addClass('table-bordered');
+	$("table:not([class])").addClass('table').addClass('table-striped').addClass('table-bordered').addClass("table-hover");
 
 	$('.index table.table th a.asc').parent().prepend($("<i class='icon-arrow-down' />"));
 	

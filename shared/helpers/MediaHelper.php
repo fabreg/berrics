@@ -22,7 +22,26 @@ class MediaHelper extends AppHelper {
 		switch($m['media_type']) {
 			
 			case "bcove":
-				$opt['src'] = "/video/stills/".$m['file_video_still'];
+				$img_key = '';
+
+				if(isset($opt['type'])) $img_key = $opt['type'];
+
+				switch($img_key) {
+
+					case 'slim':
+						$opt['src'] = "/video/stills-slim/".$m['file_video_still_slim'];
+					break;
+					case 'large':
+						$opt['src'] = "/video/stills-large/".$m['file_video_still_large'];
+					break;
+					default:
+						$opt['src'] = "/video/stills/".$m['file_video_still'];
+					break;
+
+
+				}
+				
+				
 			break;
 			case "piclink":
 				$opt['src'] = "/images/".$m['file'];

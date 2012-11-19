@@ -9,7 +9,9 @@ $tag_str = implode(",",$tag_array);
 <div class="tabbable">
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#1" data-toggle="tab">General</a></li>
-		<li><a href="#2" data-toggle="tab">Video Tasks</a></li>
+		<?php if ($this->request->data['MediaFile']['media_type'] == "bcove"): ?>
+		<li><a href="#2" data-toggle="tab">Video Tasks <span class="badge"><?php echo count($videoTasks); ?></span>	</a></li>
+		<?php endif ?>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="1">
@@ -75,7 +77,30 @@ $tag_str = implode(",",$tag_array);
 
 		</div>
 		<div class="tab-pane" id="2">
-			
+			<?php if (isset($videoTasks)): ?>
+				<table cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Created/Modified</th>
+							<th>TaskStatus</th>
+							<th>Task</th>
+							<th>Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($videoTasks as $k => $v): ?>
+						<tr>
+							<td><?php echo $v['VideoTask']['id']; ?></td>
+							<td><?php echo $this->Time->niceShort($v['VideoTask']['created']); ?> - <?php echo $this->Time->niceShort($v['VideoTask']['modified']); ?></td>
+							<td><span class="label label-info"> <?php echo strtoupper($v['VideoTask']['task_status']); ?></span></td>
+							<td><?php echo strtoupper($v['VideoTask']['task']) ?></td>
+							<td></td>
+						</tr>
+						<?php endforeach ?>
+					</tbody>
+				</table>
+			<?php endif ?>
 		</div>
 	</div>
 </div>
