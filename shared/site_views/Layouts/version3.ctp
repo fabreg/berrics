@@ -29,27 +29,33 @@
 				<div class="row-fluid">
 					<div class="span8">
 						<div class="hidden-phone">
-							<img src='/img/v3/layout/berrics-heading.png' alt='THE BERRICS' border='0' />
+							<img src='/img/v3/layout/berrics-header-logo.png' alt='THE BERRICS' border='0' />
 						</div>
 					</div>
 				</div>
 				<div class='row-fluid' id='top-nav-container'>
 					<div class="span12">
 						<ul id='top-nav-list' class='nav-collapse'>
-							<li class='top-nav-logo'>
-								<img src='/img/v3/layout/berrics-heading.jpg' alt='THE BERRICS' border='0' />
-							</li>
+							
 							<li class='nav-btn'>
 								<a href="#">FEATURES</a>
 							</li>
+							<li class="spacer"></li>
 							<li class='nav-btn'>
 								<a href="">NEWS</a>
 							</li>
+							<li class="spacer"></li>
 							<li class='nav-btn'>
 								<a href="">UNIFIED</a>	
 							</li>
+							<li class="spacer"></li>
 							<li class='nav-btn'>CANTEEN</li>
-							<li class='hidden-phone'>HEADQUARTERS</li>
+							<li class="spacer"></li>
+							<li class='hidden-phone nav-btn'>HEADQUARTERS</li>
+							<li class="spacer"></li>
+							<li class='nav-btn'>MORE</li>
+							<li class="spacer"></li>
+							<li class='nav-btn search'>SEARCH <input type='text' /></li>
 						</ul>
 					</div>
 				</div>
