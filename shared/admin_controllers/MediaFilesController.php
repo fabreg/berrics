@@ -1345,7 +1345,7 @@ class MediaFilesController extends LocalAppController {
 			$this->MediaFile->id = $id;
 			$this->MediaFile->save($udata);
 			
-			$this->encode_ogv($this->MediaFile->$id);
+			$this->encode_ogv($id);
 
 			$this->Session->setFlash('File uploaded successfully');
 			
