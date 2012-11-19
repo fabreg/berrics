@@ -123,7 +123,12 @@ function validateImages() {
 	);
 
 	echo $this->Form->create("MediaFile",array("enctype"=>"multipart/form-data","class"=>"modal-form","id"=>"image-form","url"=>$url));
-	echo $this->Form->input("id");
+	if(isset($this->request->data['MediaFile']['id'])) {
+
+		echo $this->Form->input("id");
+
+	}
+	
 ?>
 <div class='modal-header'>
 	<h4>Video Image - <?php echo $this->request->data['MediaFile']['name']; ?></h4>
