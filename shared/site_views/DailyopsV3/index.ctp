@@ -153,17 +153,14 @@ jQuery(document).ready(function($) {
 	});
 	/*
 	$.ajax({
-
 		"url":"/dailyops/ajax_video_play",
 		"success":function(d) {
 
 			$("#autoplay").html(d);
 			$("#autoplay video").click();
 		}
-
-
 	});
-*/
+	*/
 
 });
 </script>
@@ -196,20 +193,7 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 	<div class="span4 right-col">
-		<div id="trending-content">
-			<h2>TRENDING CONTENT: </h2>
-			<div class="row-fluid tab-row">
-				<div class="span4">
-					This Week..
-				</div>
-				<div class="span4">
-					This Month..
-				</div>
-				<div class="span4">
-					This Year..
-				</div>
-			</div>
-		</div>
+		<?php echo $this->element("layout/v3/standard-right-column"); ?>
 	</div>
 </div>
 <div id="autoplay">
