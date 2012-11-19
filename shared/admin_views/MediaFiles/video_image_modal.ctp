@@ -151,11 +151,27 @@ function validateImages() {
 					</tr>
 					<tr>
 						<td><?php echo $this->Form->input("image_file_slim",array("type"=>"file","label"=>"Slim Image")); ?></td>
-						<td></td>
+						<td>
+							<?php if(!empty($this->request->data['MediaFile']['file_video_still_slim'])): ?>
+								<?php echo $this->Media->mediaThumb(array(
+											"MediaFile"=>$this->request->data['MediaFile'],
+											"h"=>"45",
+											"type"=>"slim"
+										)); ?>
+							<?php endif; ?>
+						</td>
 					</tr>
 					<tr>
 						<td><?php echo $this->Form->input("image_file_large",array("type"=>"file","label"=>"Large Image")); ?></td>
-						<td></td>
+						<td>
+							<?php if(!empty($this->request->data['MediaFile']['file_video_still_large'])): ?>
+								<?php echo $this->Media->mediaThumb(array(
+											"MediaFile"=>$this->request->data['MediaFile'],
+											"h"=>"45",
+											"type"=>"large"
+										)); ?>
+							<?php endif; ?>
+						</td>
 					</tr>
 				</tbody>
 			</table>
