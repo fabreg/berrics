@@ -10,7 +10,7 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 }
 
 
-
+//splash page router
 if($_SERVER['REQUEST_URI'] == "/") {
 	
 	App::uses("SplashRoute",'routes');
@@ -24,8 +24,14 @@ if($_SERVER['REQUEST_URI'] == "/") {
 	);
 	
 }
+if($_SERVER['REQUEST_URI']=="/splash/keep-going.html") {
 
-Router::connect("/t-shirts",array("controller"=>"apparel","action"=>"index"));
+	Router::connect(
+		"/splash/keep-going.html",
+		array("controller"=>"splash","action"=>"view","plugin"=>"splash","fd6755b221f1ec9a95d4ab6cfbe65268")
+	);
+
+}
 
 Router::connect("/splash/*",array("controller"=>"splash","action"=>"view","plugin"=>"splash"));
 
