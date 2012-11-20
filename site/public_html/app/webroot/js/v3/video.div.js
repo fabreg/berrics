@@ -78,8 +78,6 @@
           if(/(probably)/ig.test(Modernizr.video.h264)) {
             
             console.log("USE H264");
-            
-            
 
           } else {
             
@@ -88,7 +86,7 @@
             data.videoFormat="ogv";
             
           }
-
+          data.videoFormat="mp4";
           methods.initHtml($this);
 
         }
@@ -363,7 +361,7 @@
           "src":src
       });
 
-      video.get(0).play();
+      //video.get(0).play();
 
     },
     loadGoogleAd:function(context) { 

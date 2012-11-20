@@ -17,6 +17,8 @@
 			"v3/bootstrap",
 			"v3/modernizr",
 			"v3/video.div",
+			"v3/respond.min.js",
+			"v3/html5shiv",
 			"v3/main"
 		));
 	?>
