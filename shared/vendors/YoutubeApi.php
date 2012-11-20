@@ -2,7 +2,7 @@
 /**
  * BERRICS YOUTUBE API
  */
-
+App::uses('Sanitize', 'Utility');
 class YoutubeApi {
 
 
@@ -245,14 +245,14 @@ class YoutubeApi {
 
 		//now make the video description
 		///////Make the links for the top of the posting
-		$videoDescription = "http://theberrics.com \n\n";
+		$videoDescription = "http://theberrics.com \n";
 		//////make the link to the post
-		$videoDescription .= "Original Post: http://theberrics.com/".$Dailyop['DailyopSection']['uri']."/".$Dailyop['Dailyop']['uri']."\n\n";
+		$videoDescription .= "Original Post: http://theberrics.com/".$Dailyop['DailyopSection']['uri']."/".$Dailyop['Dailyop']['uri']."\n";
 		//////make a link to the section of the video
 		$videoDescription .= "More Like This: http://theberrics.com/".$Dailyop['DailyopSection']['uri']."\n\n";
 		//////now stuff in the text description if any
 		if (!empty($Dailyop['Dailyop']['text_content'])) {
-			$videoDescription .= $Dailyop['Dailyop']['text_content'];
+			$videoDescription .= Sanitize::html($Dailyop['Dailyop']['text_content'],array("remove"=>true));
 		}
 		$videoEntry->setVideoDescription($videoDescription);
 
