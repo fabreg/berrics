@@ -1,14 +1,25 @@
 <div id="trending-content">
 	<h2>TRENDING CONTENT: </h2>
-	<div class="row-fluid tab-row">
-		<div class="span4">
-			This Week..
-		</div>
-		<div class="span4">
-			This Month..
-		</div>
-		<div class="span4">
-			This Year..
-		</div>
+	<div class="tab-row">
+		<div class="tab">The Week</div>
+		<div class="tab">This Month</div>
+		<div class="tab">This Year</div>
+	</div>
+	<div class="content">
+		<table cellspacing='0'>
+			<tbody>
+				<?php foreach ($trending_posts as $k => $v): ?>
+				<tr>
+					<td>
+						
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+				<?php endforeach ?>
+				
+			</tbody>
+		</table>
 	</div>
 </div>

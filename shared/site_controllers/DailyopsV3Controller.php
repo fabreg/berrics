@@ -53,8 +53,40 @@ class DailyopsV3Controller extends LocalAppController {
 
 		));
 
+		$this->setTrendingContent();
+
 		$this->set(compact("posts"));
 
+	}
+
+	public function setTrendingContent() {
+		
+		$this->loadModel('Dailyop');
+		
+		//get get the last 5 battle commanders
+
+		$trending = $this->Dailyop->find("all",array(
+
+			"conditions"=>array(
+				"Dailyop.dailyop_section_id"=>1,
+				"Dailyop.active"=>1
+			),
+			"contain"=>array(
+				"DailyopSection",
+				"DailyopMediaItem"=>array(
+					"MediaFile",
+					"order"=>array(
+						"DailyopMediaItem.display_weight"=>"ASC"
+					),
+					"limit"=>1
+				)
+			),
+			"limit"=>5
+
+		));
+
+		$this->set("trending_posts",$trending);
+			
 
 	}
 

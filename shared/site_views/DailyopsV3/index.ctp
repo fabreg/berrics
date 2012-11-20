@@ -77,41 +77,6 @@
 
 }
 
-#trending-content {
-
-	max-width:300px;
-	margin:auto;
-}
-#trending-content .row-fluid {
-
-	margin:0;
-	padding:0;
-}
-
-#trending-content .tab-row {
-
-	margin-top:2px;
-
-}
-
-#trending-content .tab-row .span4 {
-
-	margin:0;
-	padding:0;
-	border:1px solid #000;
-}
-
-
-#trending-content h2 {
-
-	font-family: 'Arial Narrow';
-	font-size:22px;
-	padding:4px;
-	margin:0;
-	line-height:22px;
-	border-bottom:2px solid #000;
-
-}
 
 /*
 
