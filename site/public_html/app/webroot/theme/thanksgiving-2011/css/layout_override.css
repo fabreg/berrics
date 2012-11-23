@@ -44,3 +44,9 @@ body {
 	background-image:url(/theme/thanksgiving-2011/img/post-bit-bottom_tgiving.png);
 
 }
+
+#header #main-icon {
+
+	left:-45px;
+
+}
