@@ -1903,5 +1903,53 @@ class TesterController extends LocalAppController {
 	}
 
 
+
+	public function insert_search_items() {
+		
+		$this->loadModel('Dailyop');
+
+		$this->loadModel('SearchItem');
+		
+		$posts = $this->Dailyop->find("all",array(
+					"conditions"=>array(
+						"Dailyop.promo"=>0,
+						"Dailyop.active"=>1
+					),
+					"contain"=>array(
+						"Tag"
+					),
+					"limit"=>2000,
+					"page"=>3,
+					"order"=>array(
+						"Dailyop.id"=>"ASC"
+					)
+				));
+
+		foreach($posts as $post) {
+
+			$tags = Set::extract("/Tag/name",$post);
+			
+			$tags = implode(" ", $tags);
+
+			$kw = $tags." ";
+
+			if(!empty($post['Dailyop']['text_content'])) $kw.= strip_tags($post['Dailyop']['text_content']);
+
+			$this->SearchItem->create();
+			$this->SearchItem->save(array(
+				"model"=>"Dailyop",
+				"foreign_key"=>$post['Dailyop']['id'],
+				"title"=>$post['Dailyop']['name'],
+				"sub_title"=>$post['Dailyop']['sub_title'],
+				"keywords"=>$kw
+			));
+
+		}
+
+
+	}
+
+
+
 	
 }
