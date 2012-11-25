@@ -13,11 +13,93 @@ class DailyopsController extends LocalAppController {
 		$this->initPermissions();
 		
 		$this->Auth->allow();
+
+		$this->layout = "version3";
 		
 	}
 	
-	
+
 	public function index() {
+		
+		$home_mode = false;
+
+		if(isset($this->request->params['year']) && isset($this->request->params['month']) && isset($this->request->params['day'])) {
+
+			$dateIn = date("Y-m-d",strtotime($this->request->params['year']."-".$this->request->params['month']."-".$this->request->params['day']));
+			
+		} else {
+
+			$dateIn = date("Y-m-d");
+			$home_mode = true;
+
+		}
+
+		$token = "dailyops_{$dateIn}_{$home_mode}";
+
+		if(($posts=Cache::read($token,"1min"))===false) {
+
+			if($home_mode) { //validate that the dateIn has posts, if not then shift it up
+
+				$dateIn = $this->checkHomeDateIn($dateIn);
+
+			}
+
+			$cond = array(
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"DATE(Dailyop.publish_date) = '{$dateIn}'",
+				"Dailyop.publish_date <= NOW()"
+			);
+
+			$posts = $this->Dailyop->find("all",array(
+				"conditions"=>$cond,
+				"contain"=>array(
+					"DailyopMediaItem"=>array(
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+						"limit"=>1,
+						"MediaFile"
+					),
+					"DailyopTextItem"=>array(
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1,
+						"MediaFile"
+					),
+					"DailyopSection",
+					"Tag"=>array(
+						"UnifiedStore",
+						"User",
+						"Brand"
+					)
+				),
+				"order"=>array(
+					"Dailyop.publish_date"=>"DESC"
+				)
+			));
+
+		}
+
+		$this->set("posts",$posts);
+
+	}
+
+	private function checkHomeDateIn($dateIn) {
+		
+		$chk = $this->Dailyop->find("count",array(
+			"conditions"=>array(
+				"DATE(Dailyop.publish_date) = '{$dateIn}'",
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"Dailyop.publish_date <= NOW()"
+			),
+			"contain"=>array()
+		));
+		
+		if($chk<=0) return $this->checkHomeDateIn(date("Y-m-d",strtotime("-1 Day",strtotime($dateIn))));
+
+		return $dateIn;
+	}
+	
+	public function index__() {
 	
 		//FIX SEARCH ENGINES!!!!
 		if(isset($_GET['page'])) {

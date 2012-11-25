@@ -1,99 +1,166 @@
-<?php 
+<style type="text/css">
+.dailyops-post {
 
-$this->Html->script(array("dailyops/post-bit"),array("inline"=>false));
+	background-color: #e9e9e9;
+	max-width:700px;
+	margin:auto;
+}
+.large-post {
 
-switch($this->theme) {
+	max-width:1120px;
+	margin:auto;
 
-	case "battle-commander-carlin":
-		$this->set("title_for_layout","BATTLE COMMANDER: JIMMY CARLIN");
-	break;
-	default:
-		$this->set("title_for_layout","Daily Ops");
-	break;
+}
+
+#dailyops {
+
+	margin-top:8px;
+
+
+}
+
+#dailyops .left-col {
+
+	
+
+}
+#dailyops .left-col .inner {
+
+	max-width:728px;
+	margin:auto;
+
+}
+#dailyops .right-col {
+
+	height:100%;
+	border-left:1px dotted #ccc;
+}
+
+.post-slim {
+
+	border-top:1px solid #000;
+	margin-top:5px;
+}
+
+.post-slim h2 {
+
+	font-size:18px;
+	padding:5px;
+	margin:0;
+	text-align:center;
+	line-height:18px;
+	font-family: 'Arial Narrow';
+
+}
+
+.post-slim h3 {
+
+	font-size:14px;
+	padding:0;
+	margin:0;
+	text-align: center;
+	line-height: 14px;
+	font-family: 'Times New Roman';
+	font-style:italic;
+	margin-bottom:5px;
+}
+
+#body-row {
+
+
+
+}
+
+#banner1 {
+
+	margin:auto;
+
 }
 
 
+/*
 
+RESPONSIVE SHIT
+*/
 
-?>
-<div id='dailyops'>
-<?php 
-if(!isset($this->request->params['section'])):
-?>
-
-<?php 
-endif;
-?>
-<?php
-
-foreach($dailyops as $k=>$dop):
-
-?>
-
-<?php 
-
-	if($k == 0) {
-		
-		echo "<div class='top-date-heading'><h1>&nbsp;&nbsp;&nbsp;DAILY OPS: <span class='date-top' style=''>".strtoupper(date("l, F j, Y",strtotime($dop['Dailyop']['publish_date'])))."</span></h1></div>";
-
-		
-		//echo "<div><a href='/identity/login/send_to_facebook/".base64_encode("/pizza_party")."'><img border='0' src='/img/layout/pizza_jeron.jpg'/></a></div>";
-		if(strtoupper(date("D"))=="SUN") 	echo "<a href='/'><img src='/img/layout/newsv2/aberrican_728x90.jpg' border='0' alt='0'/></a>";
+/* Large desktop */
+@media (min-width: 1200px) { 
 	
-		
-	}
-?>
-
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
 	
-	<?php 
-	echo $this->element("dailyops/post-bit",array("dop"=>$dop));
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+
+}
+
+</style>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
 	
-	if($k == 0) {
+	$('.dailyops-post,.large-post').click(function(e) { 
 
-		echo $this->element("banner-placements/dops-post-bottom");
+		$(this).videoDiv();
+		$(this).unbind('click');
 
-	} 
-		
-	echo "<div style='height:35px;'></div>";	
-		
-?>
+	});
+	/*
+	$.ajax({
+		"url":"/dailyops/ajax_video_play",
+		"success":function(d) {
 
-<?php 
+			$("#autoplay").html(d);
+			$("#autoplay video").click();
+		}
+	});
+	*/
 
-endforeach;
-
-?>
-
-	<div id='paging-menu'>
-		<div class='left'>
-		<?php 
-		
-			if($newer_date && !preg_match('/^(\/dailyops)/',$_SERVER['REQUEST_URI'])) {
-				$newer_date = strtotime($newer_date);
-				echo $this->Html->link("<span> ".date("F jS, Y",$newer_date)."</span>",date("/Y/m/d",$newer_date),array("escape"=>false,"title"=>date("F jS, Y",$newer_date)));
-				
-			}
-			
-		?>
+});
+</script>
+<div class="row-fluid" id='featured'>
+	<div class="span12 ">
+		<div class="large-post" data-postid='<?php echo $featured_post['Dailyop']['id']; ?>' data-media-file-id='<?php echo $featured_post['DailyopMediaItem'][0]['MediaFile']['id'] ?>'>
+			<img src="/img/v3/layout/large-post.png" alt="">	
 		</div>
-		<div class='right'>
-		<?php 
-			
-			if($older_date) {
-				
-				$older_date = strtotime($older_date);
-				echo $this->Html->link("<span>".date("F jS, Y",$older_date)."</span>",date("/Y/m/d",$older_date),array("escape"=>false,"title"=>date("F jS, Y",$older_date)));
-				
-			}
-			
-		?>
-		</div>
-		<div style='clear:both'></div>
 	</div>
 </div>
-
-<?php 
-
-echo $this->element("dailyops/date-bit");
-
-?>
+<div class="row-fluid" id='dailyops'>
+	<div class="span8 left-col">
+		<div class="inner">
+			<div class="banner-728" id='banner1'>
+				<img src="/img/v3/layout/728-banner.png" alt="" border='0'>
+			</div>
+			<?php foreach ($posts as $k => $v): ?>
+				<div class="post post-slim">
+					<div class="heading">
+						<h2><?php echo $v['Dailyop']['name']; ?></h2>
+						<?php if (!empty($v['Dailyop']['sub_title'])): ?>
+						<h3><?php echo $v['Dailyop']['sub_title']; ?></h3>
+						<?php endif ?>
+					</div>
+					<div class="dailyops-post" data-postid='<?php echo $v['Dailyop']['id']; ?>' data-media-file-id='<?php echo $v['DailyopMediaItem'][0]['MediaFile']['id'] ?>'>
+						<img src="/img/v3/layout/post-slim.png" alt="">
+					</div>
+				</div>
+			<?php endforeach ?>
+		</div>
+	</div>
+	<div class="span4 right-col">
+		<?php echo $this->element("layout/v3/standard-right-column"); ?>
+	</div>
+</div>
+<div id="autoplay">
+	
+</div>

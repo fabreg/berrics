@@ -159,6 +159,18 @@ VIDEO DIV PLUGIN
 	position:relative;
 }
 
+.video-div:-webkit-full-screen	{ height: 100%; background-color:#000; }
+.video-div:-moz-full-screen		{ height: 100%; background-color:#000; }
+.video-div:-ms-full-screen		{ height: 100%; background-color:#000; }
+.video-div:-o-full-screen		{ height: 100%; background-color:#000; }
+.video-div:full-screen			{ height: 100%; background-color:#000; }
+
+.video-div:-webkit-full-screen	video { height: 100%; }
+.video-div:-moz-full-screen		video { height: 100%; }
+.video-div:-ms-full-screen		video { height: 100%; }
+.video-div:-o-full-screen		video { height: 100%; }
+.video-div:full-screen			video { height: 100%; }
+
 .video-div video {
 
 	width:100%;
