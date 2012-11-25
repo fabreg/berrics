@@ -11,6 +11,7 @@ $servers = array(
 			"w5",
 			"w6",
 			"w7",
+			"w9"
 		
 			
 		);
