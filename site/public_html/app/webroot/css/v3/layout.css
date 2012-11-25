@@ -263,6 +263,18 @@ VIDEO DIV PLUGIN
 	background-color:#e9e9e9;
 
 }
+.video-div .controls .fullscreen-btn {
+
+	background-image: url(/img/v3/player/player-sprite.png);
+	background-repeat: no-repeat;
+	background-position: -6px -3px;
+	height:35px;
+	width:30px;
+	position:absolute;
+	right:0px;
+	margin-top:5px;
+}
+
 
 
 
@@ -273,7 +285,7 @@ VIDEO DIV PLUGIN
 	left:90px;
 	bottom:0px;
 	background-image: url(/img/v3/player/grey-px.png);
-		border-radius: 3px;
+	border-radius: 3px;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 	right:0px;
@@ -288,15 +300,74 @@ VIDEO DIV PLUGIN
 	height:15px;
 	border:2px solid #e9e9e9;
 	position:relative;
-
 	cursor: pointer;
 }
+.video-div .slider .tracking-bar .playhead {
 
+	z-index: 902;
+	position:absolute;
+	height:100%;
+	width:1px;
+	top:0px;
+	left:0px;
+	background-color: red;
+}
+.video-div .slider .tracking-bar .playhead .time-bubble {
+
+	position: relative;
+	width:36px;
+	height:16px;
+	background-color: #999;
+	margin-top:-18px;
+	margin-left:-18px;
+	border-radius: 3px;
+
+}
+
+.video-div .slider .tracking-bar .playhead .time-bubble .inner {
+
+	text-align: center;
+	font-size: 11px;
+	color:#666;
+	line-height: 16px;
+
+}
+
+.video-div .slider .tracking-bar .seekhead .time-bubble {
+
+	position: relative;
+	width:36px;
+	height:16px;
+	background-color: #999;
+	margin-top:-18px;
+	margin-left:-18px;
+	border-radius: 3px;
+
+}
+
+.video-div .slider .tracking-bar .seekhead .time-bubble .inner {
+
+	text-align: center;
+	font-size: 11px;
+	color:#666;
+	line-height: 16px;
+
+}
+.video-div .slider .tracking-bar .seekhead {
+
+	z-index: 902;
+	position:absolute;
+	height:100%;
+	width:1px;
+	top:0px;
+	left:0px;
+	background-color: red;
+	display: none;
+}
 .video-div .slider .tracking-bar .buffer {
 
 	z-index: 900;
 	position:absolute;
-
 	height:100%;
 	background-color:blue;
 	width:0%;
@@ -314,15 +385,7 @@ VIDEO DIV PLUGIN
 	left:0px;
 }
 
-.video-div .slider .tracking-bar .playhead {
 
-	z-index: 902;
-	position:absolute;
-
-	height:100%;
-	width:5px;
-
-}
 
 /*
 ####################
@@ -349,6 +412,9 @@ TRENDING TABS
 	border:1px solid #000;
 	border-right:none;
 	float:left;
+	padding:4px;
+	font-size: 14px;
+	font-weight: bold;
 }
 
 #trending-content .tab-row .tab:last-child {

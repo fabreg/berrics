@@ -12,7 +12,8 @@
                     <div class='tracking-bar'>\
                       <div class='buffer'></div>\
                       <div class='prog-bar'></div>\
-                      <div class='playhead'></div>\
+                      <div class='seekhead'><div class='time-bubble'><div class='inner'></div></div></div>\
+                      <div class='playhead'><div class='time-bubble'><div class='inner'></div></div></div>\
                     </div>\
                   </div>\
                   <div class='volume'>\
@@ -86,7 +87,7 @@
             data.videoFormat="ogv";
             
           }
-          data.videoFormat="mp4";
+          
           methods.initHtml($this);
 
         }
@@ -144,10 +145,13 @@
 
       var slowmo_btn = controls.find('.slowmo-btn');
 
+      var fullscreen_btn = $this.find('.fullscreen-btn');
+
       var slider = controls.find('.slider');
 
       var pause_overlay = $this.find(".pause-overlay");
       
+      var tracking_bar = $this.find('.tracking-bar');
 
       video.unbind().
       bind('loadstart',function(e) { }).
@@ -233,6 +237,70 @@
 
      });
 
+     fullscreen_btn.unbind().
+     bind('click',function(e) { 
+
+      $this.find('.video-div').toggleFullScreen();
+
+     });
+
+     tracking_bar.unbind().
+     hover(
+      function() {
+
+        $this.find('.seekhead').show();
+
+      },
+      function() {
+
+        $this.find('.seekhead').hide();
+
+      }
+    ).bind('mousemove',function(e) { 
+
+      //slider bars offeset
+      var so = $this.find('.tracking-bar').offset();
+
+      var px = e.pageX;
+ 
+      var mx = px-so.left;
+
+      var bw = $this.find('.tracking-bar').width();
+
+      var dur = video_ele.duration;
+
+      var tp = (dur/100);
+
+      var bp = Math.floor((mx/bw)*100);
+
+      var ct = bp*tp;
+
+      $this.find('.seekhead .time-bubble .inner').html(methods.formatVideoTime(ct));
+
+      $this.find('.seekhead').css({"left":(mx-1)+"px"});
+
+      console.log("Mouse X: "+mx);
+
+    }).bind('click',function(e,ui) { 
+      
+        var duration = video.get(0).duration;
+       
+        //tracking offset to body
+        var bO = $this.find('.tracking-bar').offset();
+        //mouse position relative to tracking bar
+        var tPos = (e.pageX - bO.left);
+        
+        //tracking bar width
+        var wBar = $this.find('.tracking-bar').width();
+        //percentage of mouse position in tracking bar
+        var bPercent = Math.floor((tPos/wBar)*100);
+        //percentage of the duration of the video
+        var tPercent = (duration/100);
+        
+        video_ele.currentTime = bPercent*tPercent;
+        
+    });
+
      //show and hide the controls
      $this.unbind("mousemove").bind("mousemove",function(e) { 
 
@@ -263,9 +331,26 @@
         var ct = ve.currentTime;
         var percentPlayed = (ct * 100) / duration;
 
+
         prog_bar.css({"width":percentPlayed+"%"});
 
-      //  var sliderPixel = Math.ceil((percentPlayed * (data.target.find('.tracking').width()/100)));
+        var sliderPixel = Math.ceil((percentPlayed * ($data.target.find('.tracking-bar').width()/100)));
+
+        if(sliderPixel>0) {
+
+            $this.find(".playhead").css({
+
+              "left":sliderPixel+"px"
+
+             });
+
+            var timeStr = methods.formatVideoTime(ct);
+
+            $this.find('.playhead .time-bubble .inner').html(timeStr);
+
+        }
+
+        
 
         //console.log("Slider Pixel: "+sliderPixel);
         
@@ -487,6 +572,16 @@
 
       }
 
+    },
+    formatVideoTime:function(seconds) {
+      
+        var min = Math.floor(seconds / 60);
+        var sec = Math.floor(seconds - (min * 60));
+        
+        if(sec<10) sec = "0" + sec;
+        
+        return min+":"+sec;
+        
     }
 
   };

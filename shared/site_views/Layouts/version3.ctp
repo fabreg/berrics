@@ -16,6 +16,7 @@
 			"https://www.google.com/uds?file=ima&v=1&nodependencyload=true",
 			"v3/bootstrap",
 			"v3/modernizr",
+			"v3/jquery.fullscreen-min",
 			"v3/video.div",
 			"v3/respond.min.js",
 			"v3/html5shiv",
