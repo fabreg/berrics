@@ -55,6 +55,19 @@ $(document).ready(function() {
 		return false;
 	});
 
+	$.ajax({
+
+		"url":'<?php echo $this->Html->url(array("controller"=>"dailyops","action"=>"dupe_uri_check",$this->request->data['Dailyop']['id'],$this->request->data['Dailyop']['dailyop_section_id'],$this->request->data['Dailyop']['uri'])); ?>',
+		"success":function(d) { 
+			if(d==0) {
+
+				$("label[for=DailyopUri]").append(" <span class='label label-important label-small'>DUPE FOUND</span>");
+
+			}
+		}
+
+	});
+
 });
 
 function styleChecks() {
@@ -76,6 +89,8 @@ function styleChecks() {
 	
 	
 }
+
+
 
 </script>
 <style type="text/css">

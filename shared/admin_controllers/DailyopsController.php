@@ -200,6 +200,7 @@ class DailyopsController extends LocalAppController {
 			
 			$this->request->data = $this->Dailyop->returnPost(array("Dailyop.id"=>$id),$this->isAdmin(),true);
 			
+			
 		}
 		
 		$this->setSelects();
@@ -256,7 +257,7 @@ class DailyopsController extends LocalAppController {
 		}
 		
 		$this->request->data = $this->Dailyop->returnPost(array("Dailyop.id"=>$id),$this->isAdmin(),true);
-		
+
 		$this->setSelects();
 		
 		$this->render("/Elements/dailyops/{$element}");
