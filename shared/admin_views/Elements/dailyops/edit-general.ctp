@@ -193,20 +193,6 @@ function styleChecks() {
 							?>
 						</div>
 					</div>
-					<div class='row-fluid'>
-						<div class='span6 '>
-							<?php 
-							
-							echo $this->Form->input("share",array("help"=>"<small>Mirror on YouTube and Vimeo</small>"));
-								
-							?>
-						</div>
-						<div class='span6 '>
-							
-						</div>
-					</div>
-
-					
 				</div>
 
 		<div class='form-actions'>
@@ -250,7 +236,16 @@ function styleChecks() {
 						?>
 					</div>
 				</div>
-				
+				<div class='row-fluid'>
+					<div class='span6'>
+						<?php 
+						echo $this->Form->input('post_template');
+						?>
+					</div>
+					<div class='span6'>
+						
+					</div>
+				</div>
 				<?php 
 				
 				echo $this->Form->input('name');
