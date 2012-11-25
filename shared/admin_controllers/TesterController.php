@@ -1912,14 +1912,14 @@ class TesterController extends LocalAppController {
 		
 		$posts = $this->Dailyop->find("all",array(
 					"conditions"=>array(
-						"Dailyop.promo"=>0,
+						"Dailyop.promo"=>null,
 						"Dailyop.active"=>1
 					),
 					"contain"=>array(
 						"Tag"
 					),
 					"limit"=>2000,
-					"page"=>3,
+					"page"=>1,
 					"order"=>array(
 						"Dailyop.id"=>"ASC"
 					)
@@ -1941,7 +1941,9 @@ class TesterController extends LocalAppController {
 				"foreign_key"=>$post['Dailyop']['id'],
 				"title"=>$post['Dailyop']['name'],
 				"sub_title"=>$post['Dailyop']['sub_title'],
-				"keywords"=>$kw
+				"keywords"=>$kw,
+				"active"=>$post['Dailyop']['active'],
+				"publish_date"=>$post['Dailyop']['publsh_date']
 			));
 
 		}
