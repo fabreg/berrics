@@ -1213,8 +1213,8 @@ class Dailyop extends AppModel {
 		$a = array(
 
 			"post-bit"=>"Legacy ( Original Version 2 Template )",
-			"dailyops-compact"=>"Dailyop Compact Post",
-			"news-standard"=>"Standard News Template",
+			"slim"=>"Slim Post",
+			"news"=>"Standard News",
 
 		);
 
