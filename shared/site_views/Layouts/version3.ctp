@@ -70,6 +70,7 @@
 				</div>
 			</div>
 		</div>
+		<div style='text-align:right; font-size:10px;'><?php echo php_uname('n'); ?></div>
 		<?php echo $this->element('sql_dump'); ?>
 	</body>
 </html>
