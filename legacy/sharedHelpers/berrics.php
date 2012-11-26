@@ -349,6 +349,28 @@ class BerricsHelper extends AppHelper {
 		
 		
 	}
+
+	public function postMediaDiv($Dailyop,$opt) {
+		
+		$template = $Dailyop['Dailyop']['post_template'];
+
+		$MediaFile = $Dailyop['DailyopMediaItem'][0]['MediaFile'];
+
+		$opts = array_merge(array(
+			"data-media-file-id"=>$MediaFile['id'],
+			"data-dailyop-id"=>$Dailyop['Dailyop']['id'],
+			"data-media-type"=>$MediaFile['media_type']
+		),$opts)
+
+		$img = $this->Media->mediaThumb(array(
+					"MediaFile"=>$MediaFile,
+					"w"=>"700",
+					"type"=>$template
+				));
+
+		return $this->Html->div(null,$img,$opts);
+
+	}
 	
 	
 }

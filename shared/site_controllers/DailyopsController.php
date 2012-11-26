@@ -8,6 +8,8 @@ class DailyopsController extends LocalAppController {
 	
 	public function beforeFilter($skipInit = false) {
 		
+		$this->top_element = "layout/v3/top_element_featured_post";
+
 		parent::beforeFilter();
 
 		$this->initPermissions();

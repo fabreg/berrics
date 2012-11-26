@@ -1,4 +1,14 @@
 
+@font-face {
+    font-family: 'universcn';
+    src: url('/fonts/universltstdcn.eot?') format('eot'),
+         url('/fonts/universltstdcn.woff') format('woff'),
+         url('/fonts/universltstdcn.ttf') format('truetype'),
+         url('/fonts/universltstdcn.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
 
 	background-color: #fff;
@@ -396,20 +406,67 @@ VIDEO DIV PLUGIN
 	width:0%;
 	left:0px;
 }
+/*
+##################
+TWO COLUMN BODY
+##################
+*/
+
+#two-column-body {
+
+	margin-top:8px;
 
 
+}
+
+#two-column-body .left-col {
+
+	
+
+}
+#two-column-body .left-col .inner {
+
+	max-width:728px;
+	margin:auto;
+
+}
+#two-column-body .right-col {
+
+	height:100%;
+	border-left:2px dotted #ccc;
+
+}
 
 /*
-####################
+#######################
+STANDARD RIGHT COLUMN
+#######################
+*/
+#standard-right-column {
+
+	max-width: 300px;
+	margin: auto;
+
+}
+
+/*
+######################
 TRENDING TABS
 ######################
 */
 
+hr.hr1 {
+
+	background-image:url(/img/v3/layout/hr-1.png);
+	height:5px;
+	background-color: transparent;
+	border:none;
+	margin-top:3px;
+	margin-bottom:3px;
+}
 
 #trending-content {
 
-	max-width:300px;
-	margin:auto;
 }
 
 #trending-content .tab-row {
@@ -439,19 +496,126 @@ TRENDING TABS
 
 #trending-content h2 {
 
-	font-family: 'Arial Narrow';
+	font-family: 'universcn';
 	font-size:22px;
 	padding:4px;
+	padding-bottom:0px;
 	margin:0;
 	line-height:22px;
 	border-bottom:2px solid #000;
+	font-weight: normal;
 
 }
+
+#trending-content table {
+
+
+	width:100%;
+
+}
+
+#trending-content table td {
+
+	padding:4px;
+	border-bottom:1px solid #ccc;
+	padding-bottom:8px;
+	font-size: 18px;
+	font-family: 'universcn';
+
+}
+
+#trending-content table td small {
+
+	font-family: 'Times New Roman';
+	font-style: italic;
+	font-size:12px;
+	color:#666;
+
+}
+
+#trending-content table tr:last-child td {
+
+	border:none;
+
+}
+
 /*
 ######################
 END VIDEO PLUGIN
 ######################
 */
+
+/*
+#######################
+GLOBAL POST ELEMENTS
+#######################
+*/
+
+.post {
+
+	margin-top:10px;
+	margin-bottom:5px;
+	border-top:1px solid #000;
+}
+
+.post .post-top {
+
+
+}
+
+.post .post-top h1 {
+
+	text-align: center;
+	font-size: 22px;
+	line-height: 26px;
+	font-family: 'Arial';
+	padding:0;
+	margin:0;
+
+}
+
+.post .post-top h2 {
+
+	text-align: center;
+	font-size: 16px;
+	line-height: 20px;
+	font-family: 'Times New Roman';
+	padding:0;
+	margin:0;
+	margin-bottom:3px;
+	font-style: italic;
+	font-weight: normal;
+}
+/*
+#####################
+standard post 
+#####################
+*/
+.standard-post {
+
+
+}
+
+.standard-post .post-top {
+
+
+}
+
+.standard-post .post-top h1 {
+
+
+
+
+}
+
+.standard-post div[data-media-file-id] {
+
+	max-width:700px;
+	margin:auto;
+
+}
+
+
 
 
 /*

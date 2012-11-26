@@ -65,7 +65,8 @@
 			</header>
 			<div class="row-fluid" id='body-row'>
 				<div class="span12" id='body-div'>
-					<?php echo $content_for_layout; ?>
+					<?php echo $this->element($top_element); ?>
+					<?php echo $this->element($body_element); ?>
 				</div>
 			</div>
 		</div>

@@ -6,17 +6,17 @@ App::import("Vendor","CanteenConfig",array("file"=>"CanteenConfig.php"));
 
 class LocalAppController extends AppController {
 	
-	
-	
 	public $app_name = "TheBerrics";
 	
 	public $helpers = array("Berrics","Media","Store","Number");
-	
-	//public $view = "Theme";
-	
+
 	public $theme = "website";
 	
 	public $enforce_ssl = false;
+
+	public $body_element = "layout/v3/two-column";
+
+	public $top_element = "layout/v3/top_element";
 	
 	public function beforeFilter() {
 		
@@ -67,6 +67,9 @@ class LocalAppController extends AppController {
 			$this->releaseSSL();
 			
 		}
+
+		$this->set("body_element",$this->body_element);
+		$this->set("top_element",$this->top_element);
 		
 		
 	}
