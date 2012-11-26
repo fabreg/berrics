@@ -3,26 +3,7 @@
 		<?php echo $title_for_layout; ?>
 	</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<?php 
-
-		echo $this->Html->css(array(
-			"v3/bootstrap",
-			"v3/layout",
-			"v3/bootstrap-responsive"
-		),"stylesheet");
-
-		echo $this->Html->script(array(
-			"https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js",
-			"https://www.google.com/uds?file=ima&v=1&nodependencyload=true",
-			"v3/bootstrap",
-			"v3/modernizr",
-			"v3/jquery.fullscreen-min",
-			"v3/video.div",
-			"v3/respond.min.js",
-			"v3/html5shiv",
-			"v3/main"
-		));
-	?>
+	<?php echo $this->element("layout/v3/html-head-scripts"); ?>
 	<body>
 		<div class='container' id='nav-nested-container'>
 
@@ -72,5 +53,6 @@
 		</div>
 		<div style='text-align:right; font-size:10px;'><?php echo php_uname('n'); ?></div>
 		<?php echo $this->element('sql_dump'); ?>
+		<?php echo $this->element("layout/v3/html-footer-scripts"); ?>
 	</body>
 </html>

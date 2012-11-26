@@ -5,30 +5,30 @@
     CONTROLS:function() { 
 
       var HTM = "<div class='controls'>\
-                <div class='inner'>\
-                  <div class='play-btn'></div>\
-                  <div class='slowmo-btn'></div>\
-                  <div class='slider'>\
-                    <div class='tracking-bar'>\
-                      <div class='buffer'></div>\
-                      <div class='prog-bar'></div>\
-                      <div class='seekhead'><div class='time-bubble'><div class='inner'></div></div></div>\
-                      <div class='playhead'><div class='time-bubble'><div class='inner'></div></div></div>\
+                  <div class='inner'>\
+                    <div class='play-btn'></div>\
+                    <div class='slowmo-btn'></div>\
+                    <div class='slider'>\
+                      <div class='tracking-bar'>\
+                        <div class='buffer'></div>\
+                        <div class='prog-bar'></div>\
+                        <div class='seekhead'><div class='time-bubble'><div class='inner'></div></div></div>\
+                        <div class='playhead'><div class='time-bubble'><div class='inner'></div></div></div>\
+                      </div>\
                     </div>\
-                  </div>\
-                  <div class='volume'>\
-                    <div class='inner'>\
-                      <div class='vol-0'></div>\
-                      <div class='vol-20'></div>\
-                      <div class='vol-40'></div>\
-                      <div class='vol-60'></div>\
-                      <div class='vol-80'></div>\
-                      <div class='vol-100'></div>\
+                    <div class='volume'>\
+                      <div class='inner'>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                      </div>\
                     </div>\
+                    <div class='fullscreen-btn'></div>\
                   </div>\
-                  <div class='fullscreen-btn'></div>\
-                </div>\
-              </div>";
+                </div>";
 
         return HTM;
 
@@ -247,6 +247,42 @@
         //$this.toggleFullScreen();
         //$this.get(0).webkitRequestFullscreen();
         //  alert("fuck");
+
+     });
+
+     $this.find('.volume .vol').unbind().
+     bind('click',function(e) { 
+
+      var ind = $(e.target).index();
+
+      var vol = (ind*20);
+
+      var total_vol = $this.find('.vol').length;
+
+      $this.find('.volume .vol').removeClass('off');
+
+      for(var i = 1;i<=total_vol;i++) {
+
+        if((i-1)>ind) {
+
+          $this.find('.volume .vol').eq((i-1)).addClass('off');
+
+        } 
+
+      }
+
+
+      if(vol<100) {
+
+        vol = "."+vol;
+
+      } else {
+
+        vol = 1;
+
+      }
+
+      video_ele.volume = vol;
 
      });
 
