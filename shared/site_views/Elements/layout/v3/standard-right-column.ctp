@@ -1,3 +1,10 @@
+<?php 
+
+$TrendingPost = ClassRegistry::init("TrendingPost");
+
+$trending_posts = $TrendingPost->currentTrending('daily');
+
+?>
 <div id="trending-content">
 	<h2>TRENDING CONTENT: </h2>
 	<div class="tab-row">
