@@ -41,6 +41,21 @@ jQuery(document).ready(function($) {
 
 	});
 
+	initMediaDivs();
+
 });
 
+function initMediaDivs () {
+	
+	$('.post div[data-media-file-id]').each(function() { 
 
+		$(this).click(function() { 
+
+			$(this).videoDiv();
+			$(this).unbind('click');
+
+		});
+
+	});
+
+}

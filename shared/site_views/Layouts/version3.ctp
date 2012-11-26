@@ -32,7 +32,7 @@
 				<div class="row-fluid">
 					<div class="span8">
 						<div class="hidden-phone">
-							<img src='/img/v3/layout/berrics-header-logo.png' alt='THE BERRICS' border='0' />
+							<a href='/dailyops'><img src='/img/v3/layout/berrics-header-logo.png' alt='THE BERRICS' border='0' /></a>
 						</div>
 					</div>
 				</div>

@@ -1,9 +1,11 @@
 <div class="post-footer clearfix">
-	<div class="tags">
-		TAGS// 
-		<?php foreach ($dop['Tag'] as $k => $v): ?>
-			<a href=""><?php echo $v['name']; ?></a>&nbsp;
-		<?php endforeach ?>
+	<div class="row-fluid">
+		<div class="tags span7">
+			TAGS// 
+			<?php foreach ($dop['Tag'] as $k => $v): ?>
+				<a href=""><?php echo strtoupper($v['name']); ?></a>&nbsp;
+			<?php endforeach ?>
+		</div>
+		<div class="social-media span5"></div>
 	</div>
-	<div class="social-media"></div>
 </div>

@@ -8,7 +8,12 @@ class DailyopsController extends LocalAppController {
 	
 	public function beforeFilter($skipInit = false) {
 		
-		$this->top_element = "layout/v3/top_element_featured_post";
+		
+		if($this->request->params['action'] == "index") {
+
+			$this->top_element = "layout/v3/top_element_featured_post";
+
+		}
 
 		parent::beforeFilter();
 
@@ -22,7 +27,7 @@ class DailyopsController extends LocalAppController {
 	
 
 	public function index() {
-		
+
 		$home_mode = false;
 
 		if(isset($this->request->params['year']) && isset($this->request->params['month']) && isset($this->request->params['day'])) {
@@ -864,7 +869,9 @@ class DailyopsController extends LocalAppController {
 	}
 
 
-	
+	public function video_controls() {
+		
+	}
 
 
 

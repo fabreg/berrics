@@ -295,7 +295,7 @@ video.mobile-video-tag {
 
 	background-image: url(/img/v3/player/player-sprite.png);
 	background-repeat: no-repeat;
-	background-position: -6px -3px;
+	background-position: -6px -156px;
 	height:35px;
 	width:30px;
 	position:absolute;
@@ -570,6 +570,18 @@ GLOBAL POST ELEMENTS
 
 }
 
+.post .post-top .date {
+
+	float:left;
+
+}
+
+.post .post-top .time {
+
+	float:right;
+
+}
+
 .post .post-top h1 {
 
 	text-align: center;
@@ -592,6 +604,32 @@ GLOBAL POST ELEMENTS
 	margin-bottom:3px;
 	font-style: italic;
 	font-weight: normal;
+}
+
+.post .post-top h1 a,
+.post .post-top h2 a {
+
+	color:#333;
+
+}
+
+.post .post-footer {
+
+
+}
+
+.post .post-footer .tags {
+
+	font-size:9px;
+	color:#999;
+	font-family: 'Arial';
+
+}
+.post .post-footer .tags a {
+
+	color:#999;
+	border-bottom:1px dotted #ccc;
+
 }
 /*
 #####################
