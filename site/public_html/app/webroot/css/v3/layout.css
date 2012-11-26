@@ -301,7 +301,7 @@ video.mobile-video-tag {
 	position:absolute;
 	right:0px;
 	margin-top:5px;
-	z-index:10002;
+	z-index:6000;
 }
 
 
@@ -319,7 +319,7 @@ video.mobile-video-tag {
 	-webkit-border-radius:3px;
 	right:0px;
 	top:5px;
-
+	z-index:5001;
 }
 .video-div .slider .tracking-bar {
 
@@ -340,17 +340,20 @@ video.mobile-video-tag {
 	top:0px;
 	left:0px;
 	background-color: red;
+	z-index: 6002;
+	font-family: 'Arial';
 }
 .video-div .slider .tracking-bar .playhead .time-bubble {
 
 	position: relative;
 	width:36px;
 	height:16px;
-	background-color: #999;
+	background-color: #333;
+	color:#f7f7f7;
 	margin-top:-18px;
 	margin-left:-18px;
 	border-radius: 3px;
-
+	
 }
 
 .video-div .slider .tracking-bar .playhead .time-bubble .inner {
@@ -362,15 +365,19 @@ video.mobile-video-tag {
 
 }
 
+
+
 .video-div .slider .tracking-bar .seekhead .time-bubble {
 
 	position: relative;
 	width:36px;
 	height:16px;
-	background-color: #999;
+	background-color: #f5f4ea;
 	margin-top:-18px;
 	margin-left:-18px;
 	border-radius: 3px;
+	color:#333;
+	
 
 }
 
@@ -392,6 +399,9 @@ video.mobile-video-tag {
 	left:0px;
 	background-color: red;
 	display: none;
+	z-index: 6003;
+	font-family: 'Arial';
+
 }
 .video-div .slider .tracking-bar .buffer {
 
@@ -573,13 +583,18 @@ GLOBAL POST ELEMENTS
 .post .post-top .date {
 
 	float:left;
-
+	font-size:10px;
+	font-family: 'Arial';
+	font-weight: bold;
+	
 }
 
 .post .post-top .time {
 
 	float:right;
-
+	font-size:10px;
+	font-family: 'Arial';
+	font-weight: bold;
 }
 
 .post .post-top h1 {
@@ -615,6 +630,8 @@ GLOBAL POST ELEMENTS
 
 .post .post-footer {
 
+	max-width: 700px;
+	margin: auto;
 
 }
 
