@@ -640,6 +640,15 @@ RESPONSIVE SHIT
 	#top-nav-list li {
 		font-size:15px;
 	}
+
+	/*
+	Two Column Body
+	*/
+	#two-column-body .left-column {
+
+		width:100%;
+
+	}
 }
  
 /* Landscape phone to portrait tablet */
