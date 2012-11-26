@@ -2,6 +2,8 @@
 
 App::import("Vendor","BCAPI",array("file"=>"bc_api.php"));
 
+App::uses("AppController","Controller");
+
 class LocalAppController extends AppController {
 	
 	

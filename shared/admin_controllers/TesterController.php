@@ -1902,6 +1902,18 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_trending() {
+		
+		$this->loadModel('TrendingPost');
+
+		$posts = $this->TrendingPost->currentTrending();
+
+		die(print_r($posts));
+
+
+		
+
+	}
 
 	
 }

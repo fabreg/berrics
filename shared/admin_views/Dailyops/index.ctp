@@ -271,10 +271,9 @@ function showSharingInfo($url) {
 						<a class='none' href='<?php echo $this->Admin->url(array("controller"=>"dailyops","action"=>"edit",$dailyop['Dailyop']['id'])); ?>' target='_blank'>Edit in new window</a>
 					</li>
 				</ul>
-							
-				
 			</div>
 			<div class='btn-group'>
+							<a href="<?php echo $this->Admin->url(array("controller"=>"trending_posts","action"=>"add_post",$dailyop['Dailyop']['id'])); ?>" class="btn btn-success btn-small"> <i class="icon icon-white icon-plus-sign"></i> Trending</a>
 							<?php echo $this->Admin->link(__('Delete', true), array('action' => 'delete', $dailyop['Dailyop']['id']),array("confirm"=>"Are you sure you want to delete this post?")); ?>
 				
 			</div>

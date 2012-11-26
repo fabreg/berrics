@@ -23,16 +23,20 @@
 		<button type='button' value='' data-toggle='collapse' data-target='#users-<?php echo $post['Dailyop']['id']; ?>' class='btn btn-primary btn-mini users-button'><i class='icon icon-white icon-user'></i> <?php echo count($post['UserAssignedPost']); ?></button>
 		<a class='btn btn-primary btn-mini'
 			href='<?php echo $this->Admin->url(array("controller"=>"dailyops","action"=>"edit",$post['Dailyop']['id'],"cb"=>$this->here)); ?>'><i
-			class='icon icon-edit icon-white'></i> Edit</a> <span
+			class='icon icon-edit icon-white'></i> Edit</a> 
+			<a href="<?php echo $this->Admin->url(array("controller"=>"trending_posts","action"=>"add_post",$post['Dailyop']['id'])); ?>" class="btn btn-success btn-mini"><i class="icon icon-white icon-plus-sign"></i> Make Tredning</a>
+			
+
+
+	</div>
+	<div style='margin-top: 3px;'>
+		<span
 			class='label label-info'> <?php echo date('g:iA',strtotime($post['Dailyop']['publish_date'])); ?>
 		</span>&nbsp;
 
 		<?php if($post['Dailyop']['hidden']) echo "<span class='label label-inverse'>Hidden</span> "; ?>
 		<?php if($post['Dailyop']['pinned']) echo "<span class='label label-warning'>Pinned</span> "; ?>
-
-
 	</div>
-	
 	<?php if(count($post['UserAssignedPost'])>0): ?>
 	<div id='users-<?php echo $post['Dailyop']['id']; ?>' class='collapse' style='padding-top:5px;'>
 		<div class='alert alert-info'>

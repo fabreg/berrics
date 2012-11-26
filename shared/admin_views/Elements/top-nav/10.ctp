@@ -163,6 +163,9 @@
 						<li>
 							<a href='/dailyops/add'>Create new post</a>
 						</li>
+						<li>
+							<a href='/trending_posts'>Trending Posts</a>
+						</li>
 						<li class='nav-header'>The DailyOps Sections</li>
 						<li>
 							<a href='/dailyop_sections'>Manage Sections</a>
