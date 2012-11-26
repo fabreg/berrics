@@ -13,34 +13,6 @@
 }
 
 
-.post-slim {
-
-	border-top:1px solid #000;
-	margin-top:5px;
-}
-
-.post-slim h2 {
-
-	font-size:18px;
-	padding:5px;
-	margin:0;
-	text-align:center;
-	line-height:18px;
-	font-family: 'Arial Narrow';
-
-}
-
-.post-slim h3 {
-
-	font-size:14px;
-	padding:0;
-	margin:0;
-	text-align: center;
-	line-height: 14px;
-	font-family: 'Times New Roman';
-	font-style:italic;
-	margin-bottom:5px;
-}
 
 #body-row {
 
@@ -50,6 +22,13 @@ border-right:2px dotted #ccc;
 
 #banner1 {
 
+	margin:auto;
+
+}
+
+#dailyops {
+
+	max-width:728px;
 	margin:auto;
 
 }
@@ -68,13 +47,7 @@ RESPONSIVE SHIT
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) { 
 
-#dailyops .left-col {
 
-	
-		width:100%;
-
-	}
-	
 }
  
 /* Landscape phone to portrait tablet */
@@ -95,29 +68,27 @@ RESPONSIVE SHIT
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	
-	$('.dailyops-post,.large-post,div[data-media-file-id]').click(function(e) { 
+	$('.large-post,div[data-media-file-id]').click(function(e) { 
 
 		$(this).videoDiv();
 		$(this).unbind('click');
 
 	});
-	/*
-	$.ajax({
-		"url":"/dailyops/ajax_video_play",
-		"success":function(d) {
 
-			$("#autoplay").html(d);
-			$("#autoplay video").click();
-		}
-	});
-	*/
+	
+
 
 });
 </script>
 
-<div class="banner-728" id='banner1'>
-	<img src="/img/v3/layout/728-banner.png" alt="" border='0'>
+<div id="dailyops" class='clearfix'>
+	<div class="banner-728" id='banner1'>
+		<img src="/img/v3/layout/728-banner.png" alt="" border='0'>
+	</div>
+	<?php foreach ($posts as $k => $v): ?>
+		<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
+	<?php endforeach ?>
 </div>
-<?php foreach ($posts as $k => $v): ?>
-	<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
-<?php endforeach ?>
+<div>
+	<button class="btn" id='load-more'>Load More</button>
+</div>

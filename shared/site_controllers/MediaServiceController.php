@@ -39,7 +39,7 @@ class MediaServiceController extends LocalAppController {
 
 		if(!empty($MediaFile['MediaFile']['preroll_label'])) {
 
-			//$data[]['AdUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
+			$data[]['AdUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
 
 		}
 

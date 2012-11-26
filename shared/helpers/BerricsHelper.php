@@ -428,11 +428,29 @@ class BerricsHelper extends AppHelper {
 			"data-media-type"=>$MediaFile['media_type']
 		);
 
+		if($this->request->is("mobile")) {
+			$poster = $this->Media->mediaThumbSrc(array(
+					"MediaFile"=>$MediaFile,
+					"w"=>"700",
+					"type"=>$template
+				));
+			$img = "<video poster='{$poster}' class='mobile-video-tag'></div>";
+
+		} else {
+
+			$img = $this->Media->mediaThumb(array(
+					"MediaFile"=>$MediaFile,
+					"w"=>"700",
+					"type"=>$template
+				));
+
+		}
 		$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
 					"w"=>"700",
 					"type"=>$template
 				));
+		
 
 		return $this->Html->tag("div",$img,$opts);
 

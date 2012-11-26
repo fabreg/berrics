@@ -95,6 +95,8 @@
 
       });
 
+      return $this;
+
     },
     initHtml:function(context) {
 
@@ -103,7 +105,7 @@
       var $this = $data.target;
 
       $this.html($("<div class='video-div' />").append($("<div class='click-element' /><div class='pause-overlay'/><video autoplay='true' />")));
-        
+
       var video_div = $this.find(".video-div");
 
       video_div.append(methods.CONTROLS());
@@ -241,6 +243,10 @@
      bind('click',function(e) { 
 
       $this.find('.video-div').toggleFullScreen();
+      
+        //$this.toggleFullScreen();
+        //$this.get(0).webkitRequestFullscreen();
+        //  alert("fuck");
 
      });
 
@@ -446,6 +452,8 @@
           "src":src
       });
 
+      video.load();
+
       //video.get(0).play();
 
     },
@@ -552,7 +560,7 @@
         $data.GoogleAdsManager.unload();
         $data.GoogleAdsManager = false;
         $data.target.find(".click-element").hide();
-        $data.target.find('video').replaceWith($("<video />"));
+        $data.target.find('video').html('').attr("src","");
 
       }
 

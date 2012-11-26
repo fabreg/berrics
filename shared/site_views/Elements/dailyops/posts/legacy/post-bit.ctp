@@ -3,5 +3,6 @@
 	<?php 
 		echo $this->Berrics->postMediaDiv($dop);
 	?>
+	<?php echo $this->element("dailyops/posts/post-footer",array("dop"=>$dop)); ?>
 </div>
 
