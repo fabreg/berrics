@@ -23,8 +23,9 @@
 					<div class="span12">
 						<ul id='top-nav-list' class='nav-collapse'>
 							
-							<li class='nav-btn'>
+							<li class='nav-btn' id='top-dropdown'>
 								<a href="#">FEATURES</a>
+								
 							</li>
 							<li class="spacer"></li>
 							<li class='nav-btn'>

@@ -91,21 +91,40 @@ body * {
 	list-style: none;
 	margin:0px;
 	padding:0px;
-	margin-top:6px;
+	margin-top:4px;
 }
 
-#top-nav-list li {
+#top-nav-list>li {
 
 	float:left;
 	padding-left:24px;
 	padding-right:24px;
-	height:22px;
-	line-height:22px;
+	height:24px;
+	line-height:24px;
 	font-size:16px;
 	text-align:center;
+	cursor: pointer;
 
 }
+#top-nav-list>li:hover,
+#top-nav-list>li:hover a {
 
+	background-color:#000;
+	color:#fff;
+
+}
+#top-nav-list>li>a {
+
+	color:#000;
+
+}
+#top-nav-list>li>a:hover {
+
+	color:#fff;
+	text-decoration:none;
+	border-bottom:1px dotted #fff;
+
+}
 #top-nav-list li.spacer {
 
 	width:2px;
@@ -615,7 +634,7 @@ GLOBAL POST ELEMENTS
 
 .post {
 
-	margin-top:10px;
+	margin-top:5px;
 	margin-bottom:5px;
 	border-top:1px solid #000;
 }
@@ -686,6 +705,7 @@ GLOBAL POST ELEMENTS
 	color:#999;
 	font-family: 'Arial';
 	line-height:11px;
+	margin:0;
 
 }
 .post .post-footer .tags a {
@@ -695,18 +715,30 @@ GLOBAL POST ELEMENTS
 
 }
 
+.post .post-footer .social-media .twitter {
+
+	float:right;
+	margin-right: 4px;
+}
+
+.post .post-footer .social-media .fb-like {
+
+	float:right;
+
+}
+
 .post .post-text {
 
 	max-width:700px;
 	margin:auto;
-
+	margin-bottom:14px;
+	margin-top: 14px;
 }
 
 .post .post-text .text-content {
 
 	text-align: justify;
-	margin-bottom:8px;
-	margin-top: 8px;
+
 	font-size: 13px;
 	line-height: 16px;
 	color:#333;

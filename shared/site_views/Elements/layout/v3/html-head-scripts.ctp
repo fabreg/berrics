@@ -13,6 +13,7 @@
 			"v3/respond.min.js",
 			"v3/html5shiv",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
+			"https://platform.twitter.com/widgets.js",
 			"https://www.google.com/uds/api/ima/1.8/84479ae78e2ae96fc191dae83ffb2033/default.IN.js",
 			//"https://www.google.com/uds?file=ima&v=1&nodependencyload=true",
 			"v3/video.div",
