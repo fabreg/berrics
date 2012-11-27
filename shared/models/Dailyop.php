@@ -1221,6 +1221,51 @@ class Dailyop extends AppModel {
 		return $a;
 
 	}
+	/**
+	 * GET POSTS BY SECTION AND YEAR
+	 */
+	public function getPostsBySection($DailyopSection = fasle,$year = false) {
+			
+		if(!$DailyopSection) throw new BadRequestException("No Dailyop Section Passed In");
+
+		if(isset($DailyopSection['DailyopSection'])) $DailyopSection = $DailyopSection['DailyopSection'];
+
+		if(!$year) $year = date("Y");
+
+		$token = "dailyop_section_posts_".$DailyopSection['id']."_".$year;
+
+		if(($posts = Cache::read($token,"1min")) === false) {
+
+			$posts = $this->find("all",array(
+				"conditions"=>array(
+					"Dailyop.dailyop_section_id"=>$DailyopSection['id'],
+					"Dailyop.active"=>1,
+					"Dailyop.hidden"=>0,
+					"YEAR(Dailyop.publish_date) = '{$year}'",
+				),
+				"contain"=>array(
+					"DailyopSection",
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+						"limit"=>1
+					),
+					"DailyopTextItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1
+					)
+				)
+			));
+
+			//Cache::write($token,$posts,"1min");
+
+		}
+
+		return $posts;
+
+
+	}	
 
 	public function extractSearchValues($Dailyop) {
 
@@ -1290,7 +1335,5 @@ class Dailyop extends AppModel {
 		return parent::afterDelete();
 
 	}
-
 	
-
 }

@@ -39,7 +39,6 @@ body * {
 	position: relative;
 	margin-bottom:8px;
 }
-
 #top-header .facebook-button {
 
 
@@ -845,9 +844,40 @@ standard post
 
 }
 
+/*
+##########################
+GLOBAL POST THUMBNAIL
+########################
+*/
+
+.post-thumb {
+
+
+}
+
+/*
+##########################
+STANDARD THUMBNAIL
+########################
+*/
+
+.standard-post-thumb {
+
+	max-width:195px;
+	float:left;
+	margin-left:4px;
+	margin-right:4px;
+}
+
+.standard-post-thumb {
+
+	
+
+}
+
+
 	
 /*
-
 RESPONSIVE SHIT
 */
 
@@ -872,6 +902,15 @@ RESPONSIVE SHIT
 
 	}
 
+	/*standard posts*/
+	.standard-post-thumb {
+
+		max-width:175px;
+		float:left;
+		margin-left:5px;
+		margin-right:5px;
+	}
+
 }
  
 /* Portrait tablet to landscape and desktop */
@@ -888,6 +927,12 @@ RESPONSIVE SHIT
 
 		width:100%;
 
+	}
+
+	.standard-post-thumb {
+
+		width:100%;
+		max-width: 100%;
 	}
 
 }

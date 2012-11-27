@@ -104,6 +104,37 @@ class DailyopsController extends LocalAppController {
 
 	}
 
+	public function section($year = false, $auto_render = true,$legacy = false) {
+		
+		$sections = $this->Dailyop->DailyopSection->returnSections();
+		
+		$section_uri = $this->request->params['section'];
+				
+		$section = Set::extract("/DailyopSection[uri={$section_uri}]",$sections);
+		
+		$section=$section[0]['DailyopSection'];
+		
+		if(!$year || !preg_match('/[0-9]{4}/',$year)) {
+			
+			$year = $this->Dailyop->getLatestYear($section['id']);
+			
+		}
+		
+		$this->set(compact("year"));
+		
+		if(!empty($section['uri'])) {
+			
+			$this->theme = $section['uri'];
+			
+		}
+
+		$posts = $this->Dailyop->getPostsBySection($section,$year);
+
+		$this->set(compact("posts"));
+
+
+	}
+
 	private function checkHomeDateIn($dateIn) {
 		
 		$chk = $this->Dailyop->find("count",array(
@@ -454,7 +485,7 @@ class DailyopsController extends LocalAppController {
 		
 	}
 	
-	public function section($year = false, $auto_render = true,$legacy = false) {
+	public function _section($year = false, $auto_render = true,$legacy = false) {
 		
 		$sections = $this->Dailyop->DailyopSection->returnSections();
 		

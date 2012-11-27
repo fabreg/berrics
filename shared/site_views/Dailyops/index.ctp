@@ -31,7 +31,6 @@
 
 
 /*
-
 RESPONSIVE SHIT
 */
 
@@ -72,23 +71,37 @@ jQuery(document).ready(function($) {
 
 	});
 
+	var col = $("#dailyops");
+	$(window).scroll(function(){
+	   if (col.outerHeight() == (col.get(0).scrollHeight - col.scrollTop()))
+	   console.log("fic"); 
+	});
+
+
+
 });
 function loadNextPosts() {
 	
-	var d = new Date(new Date().setDate(dailyops_date.getDate()-1));
-	var d_str = "/"+d.getFullYear()+"/"+(d.getMonth() + 1)+"/";
+	var nd = new Date(dailyops_date);
+	nd.setDate(nd.getDate()-1);
+	var d = new Date(nd);
+	
 	var day = d.getDate();
 
 	if(day<10) day = "0"+day;
 
-	d_str = d_str+day;
+	var month = (d.getMonth() + 1);
+
+	if(month<10) month = "0"+month;
+
+	var d_str = "/"+d.getFullYear()+"/"+month+"/"+day;
 
 	$.ajax({
 
 		"url":d_str,
 		"success":function(d) {
 
-			$("#dailyops").html(d);
+			$("#dailyops").append(d);
 
 			initMediaDivs();
 			FB.XFBML.parse();
@@ -97,11 +110,11 @@ function loadNextPosts() {
 		}
 
 	});
-
+	/*
 	$('html, body').animate({
 	    scrollTop: 105
 	 }, 2000);
-
+	*/
 }
 </script>
 
