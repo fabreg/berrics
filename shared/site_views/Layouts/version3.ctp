@@ -2,7 +2,9 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
 	<?php echo $this->element("layout/v3/html-head-scripts"); ?>
 	<body>
 		<div class='container' id='nav-nested-container'>

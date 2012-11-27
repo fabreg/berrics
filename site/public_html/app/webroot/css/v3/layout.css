@@ -476,7 +476,8 @@ TWO COLUMN BODY
 #two-column-body {
 
 	margin-top:8px;
-
+	height:100%;
+	position: relative;
 
 }
 
@@ -693,6 +694,24 @@ GLOBAL POST ELEMENTS
 	border-bottom:1px dotted #ccc;
 
 }
+
+.post .post-text {
+
+	max-width:700px;
+	margin:auto;
+
+}
+
+.post .post-text .text-content {
+
+	text-align: justify;
+	margin-bottom:8px;
+	margin-top: 8px;
+	font-size: 13px;
+	line-height: 16px;
+	color:#333;
+}
+
 /*
 #####################
 standard post 
@@ -735,6 +754,18 @@ RESPONSIVE SHIT
 		margin:0;
 
 	}
+	#body-row {
+
+		border-right:2px dotted #ccc;
+
+	}
+
+	#two-column-body .right-column {
+
+		border-left:2px dotted #ccc;
+		height:100%;
+
+	}
 
 }
  
@@ -753,6 +784,7 @@ RESPONSIVE SHIT
 		width:100%;
 
 	}
+
 }
  
 /* Landscape phone to portrait tablet */

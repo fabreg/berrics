@@ -14,11 +14,7 @@
 
 
 
-#body-row {
 
-border-right:2px dotted #ccc;
-
-}
 
 #banner1 {
 
@@ -67,15 +63,7 @@ RESPONSIVE SHIT
 </style>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
-	
-	$('.large-post,div[data-media-file-id]').click(function(e) { 
 
-		$(this).videoDiv();
-		$(this).unbind('click');
-
-	});
-
-	
 
 
 });
