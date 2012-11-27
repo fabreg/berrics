@@ -32,11 +32,23 @@
 							
 										$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 
-										die(pr($f_sections));
-
 										foreach ($f_sections as $k => $v): ?>
-											<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'><?php echo $v['DailyopSection']['nav_label']; ?></a></li>
-										<?php endforeach ?>
+											<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
+												<?php 
+
+													$nl = $v['DailyopSection']['name']; 
+
+													if(!empty($v['DailyopSection']['nav_label'])) $nl = $v['DailyopSection']['nav_label'];
+													echo $this->Media->sectionIcon(array(
+														"DailyopSection"=>$v['DailyopSection'],
+														"dark"=>true,
+														"h"=>15
+													));
+													echo strtoupper($nl);
+
+												?>
+												</a></li>
+										<?php endforeach; unset($nl,$f_sections); ?>
 									</ul>
 								</div>
 							</li>

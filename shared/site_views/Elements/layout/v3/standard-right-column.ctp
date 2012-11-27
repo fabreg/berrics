@@ -43,4 +43,11 @@ $trending_posts = $TrendingPost->currentTrending('weekly');
 	<div style='max-width:300px; margin:auto;'>
 		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
 	</div>
+	<h2>SHREDLINES:</h2>
+	<hr class='hr1' />
+	Cowabunga
+	<hr class='hr1' />
+	<div style='max-width:300px; margin:auto;'>
+		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
+	</div>
 </div>

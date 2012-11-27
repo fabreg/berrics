@@ -45,6 +45,10 @@ class DailyopsController extends LocalAppController {
 
 		}
 
+		if($this->request->is('ajax')) {
+			$home_mode = true;
+		}
+
 		$token = "dailyops_{$dateIn}_{$home_mode}";
 
 		if(($posts=Cache::read($token,"1min"))===false) {
@@ -90,7 +94,13 @@ class DailyopsController extends LocalAppController {
 		}
 
 		$this->set("posts",$posts);
-		$this->set(compact("title_for_layout"));
+		$this->set(compact("title_for_layout","dateIn"));
+
+		if($this->request->is('ajax')) {
+
+			$this->render("/Elements/dailyops/dailyops-index");
+
+		}
 
 	}
 

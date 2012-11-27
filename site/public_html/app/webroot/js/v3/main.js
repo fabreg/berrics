@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 		}
 
 	});
-
+	initLayout();
 	initMediaDivs();
 
 });
@@ -57,5 +57,18 @@ function initMediaDivs () {
 		});
 
 	});
+
+}
+function initLayout() {
+	
+	$("#top-dropdown").unbind().
+	hover(
+		function() {
+			$("#top-dropdown-menu").slideDown();
+		},
+		function() {
+			$("#top-dropdown-menu").hide();
+		}
+	);
 
 }

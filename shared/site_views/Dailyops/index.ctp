@@ -62,20 +62,51 @@ RESPONSIVE SHIT
 
 </style>
 <script type="text/javascript">
+var dailyops_date;
+var today_date = new Date(<?php echo strtotime(date("Y-m-d"))*1000; ?>);
 jQuery(document).ready(function($) {
 
+	$("#load-more").click(function() { 
 
+		loadNextPosts();
+
+	});
 
 });
+function loadNextPosts() {
+	
+	var d = new Date(new Date().setDate(dailyops_date.getDate()-1));
+	var d_str = "/"+d.getFullYear()+"/"+(d.getMonth() + 1)+"/";
+	var day = d.getDate();
+
+	if(day<10) day = "0"+day;
+
+	d_str = d_str+day;
+
+	$.ajax({
+
+		"url":d_str,
+		"success":function(d) {
+
+			$("#dailyops").html(d);
+
+			initMediaDivs();
+			FB.XFBML.parse();
+			history.pushState({},"Dailyops",d_str);
+
+		}
+
+	});
+
+	$('html, body').animate({
+	    scrollTop: 105
+	 }, 2000);
+
+}
 </script>
 
 <div id="dailyops" class='clearfix'>
-	<div class="banner-728" id='banner1'>
-		<img src="/img/v3/layout/728-banner.png" alt="" border='0'>
-	</div>
-	<?php foreach ($posts as $k => $v): ?>
-		<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
-	<?php endforeach ?>
+	<?php echo $this->element("dailyops/dailyops-index"); ?>
 </div>
 <div>
 	<button class="btn" id='load-more'>Load More</button>
