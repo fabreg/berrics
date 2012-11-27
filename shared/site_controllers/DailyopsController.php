@@ -11,7 +11,7 @@ class DailyopsController extends LocalAppController {
 		
 		if($this->request->params['action'] == "index") {
 
-			$this->top_element = "layout/v3/top_element_featured_post";
+			//$this->top_element = "layout/v3/top_element_featured_post";
 
 		}
 
@@ -27,6 +27,10 @@ class DailyopsController extends LocalAppController {
 	
 
 	public function index() {
+
+		$this->set("top_element","layout/v3/top_element_featured_post");
+
+		$title_for_layout = "The Berrics - The DailyOps";
 
 		$home_mode = false;
 
@@ -86,6 +90,7 @@ class DailyopsController extends LocalAppController {
 		}
 
 		$this->set("posts",$posts);
+		$this->set(compact("title_for_layout"));
 
 	}
 

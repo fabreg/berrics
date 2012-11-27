@@ -25,7 +25,17 @@
 							
 							<li class='nav-btn' id='top-dropdown'>
 								<a href="#">FEATURES</a>
-								
+								<div id="top-dropdown-menu">
+									<ul>
+										<?php 
+										$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
+							
+										$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
+										foreach ($f_sections as $k => $v): ?>
+											<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'><?php echo $v['DailyopSection']['nav_label']; ?></a></li>
+										<?php endforeach ?>
+									</ul>
+								</div>
 							</li>
 							<li class="spacer"></li>
 							<li class='nav-btn'>
