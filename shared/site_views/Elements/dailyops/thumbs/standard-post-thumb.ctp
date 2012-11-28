@@ -15,6 +15,6 @@
 		<?php echo $this->Text->truncate(strtoupper($post['Dailyop']['name']),25); ?>
 	</div>
 	<div class="post-sub-title">
-		<?php echo $this->Text->truncate($post['Dailyop']['sub_title'],28); ?>&nbsp;
+		<?php echo $this->Text->truncate($post['Dailyop']['sub_title'],50); ?>&nbsp;
 	</div>
 </div>

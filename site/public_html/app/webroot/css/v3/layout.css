@@ -981,6 +981,8 @@ STANDARD THUMBNAIL
 	font-style: italic;
 	font-weight: bold;
 	line-height: 12px;
+	height:12px;
+	overflow:hidden;
 	margin-top: -3px;
 }
 .standard-post-thumb .post-date {
