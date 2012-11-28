@@ -43,3 +43,14 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 </div>
+<div class="row-fluid">
+	<div class="span12">
+		<ul class="nav nav-pills pull-right">
+			<?php foreach ($year_select as $k => $v): ?>
+				<li>
+					<a href="/<?php echo $section['uri'];  ?>/<?php echo $v ?>" title='<?php echo addslashes($section['name']); ?> - <?php echo $v; ?>'><?php echo $v; ?></a>
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+</div>

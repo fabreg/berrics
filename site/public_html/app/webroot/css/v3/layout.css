@@ -808,9 +808,10 @@ GLOBAL POST ELEMENTS
 	text-align: center;
 	font-size: 22px;
 	line-height: 26px;
-	font-family: 'Arial';
+	font-family: 'universcnb';
 	padding:0;
 	margin:0;
+	font-weight: normal;
 
 }
 
