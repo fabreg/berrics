@@ -5,7 +5,11 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
-	<?php echo $this->element("layout/v3/html-head-scripts"); ?>
+	<?php 
+
+		echo $this->element("layout/v3/html-head-scripts"); 
+		echo $scripts_for_layout;
+	?>
 	<body>
 		<div class='container' id='nav-nested-container'>
 
