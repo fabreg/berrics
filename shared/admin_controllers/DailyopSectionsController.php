@@ -62,9 +62,7 @@ class DailyopSectionsController extends LocalAppController {
 		if (!empty($this->request->data)) {
 			
 			$this->request->data['Tag'] = $this->DailyopSection->Tag->parseTags($this->request->data['Tag']);
-			
-			ImgServer::instance()->connect();
-			
+
 			if(($dark_file = $this->uploadIcon($this->request->data,$this->request->data['DailyopSection']['icon_dark_file']))!=false) {
 				
 				$this->request->data['DailyopSection']['icon_dark_file'] = $dark_file;
@@ -83,8 +81,24 @@ class DailyopSectionsController extends LocalAppController {
 				unset($this->request->data['DailyopSection']['icon_light_file']);
 				
 			}
-			
-			ImgServer::instance()->close();
+			if(($color_file = $this->uploadIcon($this->request->data,$this->request->data['DailyopSection']['icon_color_file']))!=false) {
+				
+				$this->request->data['DailyopSection']['icon_color_file'] = $color_file;
+				
+			} else {
+				
+				unset($this->request->data['DailyopSection']['icon_color_file']);
+				
+			}
+			if(($heading_file = $this->uploadHeading($this->request->data,$this->request->data['DailyopSection']['section_heading_file']))!=false) {
+				
+				$this->request->data['DailyopSection']['section_heading_file'] = $heading_file;
+				
+			} else {
+				
+				unset($this->request->data['DailyopSection']['section_heading_file']);
+				
+			}
 			
 			$this->request->data['Tag'] = $this->DailyopSection->Tag->parseTags($this->request->data['Tag']['Tag']);
 			if ($this->DailyopSection->save($this->request->data)) {
@@ -124,11 +138,11 @@ class DailyopSectionsController extends LocalAppController {
 		
 		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
 		
-		$fileName = md5(mt_rand(999,9999)).".".$ext;
+		$fileName = md5(mt_rand(999,99999).time()).".".$ext;
 		
-		move_uploaded_file($file['tmp_name'],TMP."upload/".$fileName);
+		move_uploaded_file($file['tmp_name'],TMP."uploads/".$fileName);
 		
-		ImgServer::instance()->upload_icon_file($fileName,TMP."upload/".$fileName,false);
+		ImgServer::instance()->upload_icon_file($fileName,TMP."uploads/".$fileName);
 		
 		unlink(TMP."upload/".$fileName);
 		
@@ -137,6 +151,29 @@ class DailyopSectionsController extends LocalAppController {
 		
 	}
 	
+	private function uploadHeading($data,$file) {
+		
+		if(!is_uploaded_file($file['tmp_name'])) {
+			
+			return false;
+			
+		}
+		
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		
+		$fileName = md5(mt_rand(999,99999).time()).".".$ext;
+		
+		move_uploaded_file($file['tmp_name'],TMP."uploads/".$fileName);
+		
+		ImgServer::instance()->upload_section_heading($fileName,TMP."uploads/".$fileName);
+		
+		unlink(TMP."upload/".$fileName);
+		
+		return $fileName;
+		
+		
+	}
+
 	public function manage_menu() {
 		
 		if(count($this->request->data)>0) {

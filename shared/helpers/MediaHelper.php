@@ -246,6 +246,37 @@ class MediaHelper extends AppHelper {
 		echo $this->Html->image("{$proto}://img.theberrics.com/i.php?src=/berrics-icons/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
 		
 	}
+
+	public function sectionHeading($d = array(),$options=array()) {
+		
+		$section = $d['DailyopSection'];
+
+		$img = array();
+
+		$img['src'] = $section['section_heading_file'];
+
+		if(isset($d['w'])) {
+			
+			$img['w'] = $d['w'];
+			
+		}
+		
+		if(isset($d['h'])) {
+			
+			$img['h'] = $d['h'];
+			
+		}
+
+		$proto = 'http';
+	
+		if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == true) {
+			
+			$proto = 'https';
+			
+		}
+		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=/section-headings/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
+
+	}
 	
 	public function styleCodeImage($image,$opts = array()) {
 		

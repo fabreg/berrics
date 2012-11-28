@@ -26,6 +26,8 @@ $tag_str = implode(",",$tag_array);
 		echo $this->Form->input("sort_weight");
 		echo $this->Form->input("icon_light_file",array("type"=>"file"));
 		echo $this->Form->input("icon_dark_file",array("type"=>"file"));
+		echo $this->Form->input("icon_color_file",array("type"=>"file"));
+		echo $this->Form->input("section_heading_file",array("type"=>"file"));
 		echo $this->Form->input('Tag',array("type"=>"text","label"=>"Tags ( Multiple tags should be comma sperated )","value"=>$tag_str));
 	?>
 </div>

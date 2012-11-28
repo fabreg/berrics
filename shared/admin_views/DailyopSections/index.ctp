@@ -13,9 +13,11 @@ $directives = DailyopSection::directives();
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort('active'); ?></th>
 			<th><?php echo $this->Paginator->sort('featured'); ?></th>
 			<th><?php echo $this->Paginator->sort('sort_weight'); ?></th>
 			<th>Icons</th>
+			<th>Heading IMG</th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('directive'); ?></th>
@@ -32,6 +34,17 @@ $directives = DailyopSection::directives();
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $dailyopSection['DailyopSection']['id']; ?>&nbsp;</td>
+		<td align='center'><?php 
+			switch ($dailyopSection['DailyopSection']['active']) {
+				case 1:
+					echo "<span class='label label-success'>YES</span>";
+					break;
+				
+				default:
+					echo "<span class='label label-important'>NO</span>";
+					break;
+			}
+		 ?></td>
 		<td align='center'><?php 
 			switch ($dailyopSection['DailyopSection']['featured']) {
 				case 1:
@@ -80,6 +93,16 @@ $directives = DailyopSection::directives();
 				
 				?>
 			</div>
+		</td>
+		<td>
+			<?php if (!empty($dailyopSection['DailyopSection']['section_heading_file'])): ?>
+				<?php echo $this->Media->sectionHeading(
+					array(
+						"DailyopSection"=>$dailyopSection['DailyopSection'],
+						"w"=>175
+					)
+				); ?>
+			<?php endif ?>
 		</td>
 		<td><?php echo $this->Time->niceShort($dailyopSection['DailyopSection']['modified']); ?>&nbsp;</td>
 		<td><?php echo $dailyopSection['DailyopSection']['name']; ?>&nbsp;</td>

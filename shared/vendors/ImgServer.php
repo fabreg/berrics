@@ -115,25 +115,27 @@ class ImgServer {
 		
 	}
 	
-	public function upload_icon_file($file_name,$file_path,$auto_connect = true) {
+	public function upload_icon_file($file_name,$file_path) {
 		
-		if($auto_connect) {
-			
-			$this->connect();
-			
-		}
-		
+		$this->connect();
+
 		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/berrics-icons");
 		
 		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
 		
-		if($auto_connect) { 
-			
-			$this->close();
-			
-		}
 		
 	}
+
+	public function upload_section_heading($file_name,$file_path) {
+			
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/section-headings");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+	}
+
 	
 	public function upload_swf_file($file_name, $file_path) {
 		
@@ -300,6 +302,10 @@ class ImgServer {
 		$this->sftp->delete($file);
 		
 	}
+
+	public function __destruct() {
+       $this->close();
+   }
 
 	
 	
