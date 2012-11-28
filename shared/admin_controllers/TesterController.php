@@ -1933,7 +1933,7 @@ class TesterController extends LocalAppController {
 					"contain"=>array(
 						"Tag"
 					),
-					"limit"=>1000,
+					"limit"=>500,
 					"page"=>$page,
 					"order"=>array(
 						"Dailyop.id"=>"ASC"
