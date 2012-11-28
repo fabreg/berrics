@@ -1916,7 +1916,7 @@ class TesterController extends LocalAppController {
 	}
 
 
-	public function insert_search_items() {
+	public function insert_search_items($page = 1) {
 		
 		$this->loadModel('Dailyop');
 
@@ -1924,14 +1924,17 @@ class TesterController extends LocalAppController {
 		
 		$posts = $this->Dailyop->find("all",array(
 					"conditions"=>array(
-						"Dailyop.promo"=>null,
+						"OR"=>array(
+							"Dailyop.promo"=>null,
+							"Dailyop.promo"=>0
+						),
 						"Dailyop.active"=>1
 					),
 					"contain"=>array(
 						"Tag"
 					),
-					"limit"=>2000,
-					"page"=>1,
+					"limit"=>1000,
+					"page"=>$page,
 					"order"=>array(
 						"Dailyop.id"=>"ASC"
 					)
