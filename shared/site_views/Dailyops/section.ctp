@@ -1,4 +1,4 @@
-<div id="post-section">
+<div id="post-section" class='clearfix'>
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="banner-728" id='banner1'>
