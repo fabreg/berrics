@@ -8,12 +8,12 @@
 ?>
 <script>
 	FB.XFBML.parse();
-	$('img.lazy').lazyload({
-		threshold : 200
-	});
 	/*
 
 	
 	*/
-
+	jQuery(document).ready(function($) {
+		$('img.lazy').lazyload();
+	});
+	
 </script>

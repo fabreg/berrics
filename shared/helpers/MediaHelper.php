@@ -75,7 +75,7 @@ class MediaHelper extends AppHelper {
 		if(isset($opt['h'])) {
 			
 			$size .="&h=".$opt['h'];
-			
+			$height = $opt['h'];
 		} else {
 			
 			//$size .="&h=1000";
@@ -85,6 +85,7 @@ class MediaHelper extends AppHelper {
 		if(isset($opt['w'])) {
 			
 			$size .= "&w=".$opt['w'];
+			$width = $opt['w'];
 			
 		} else {
 			
@@ -108,6 +109,8 @@ class MediaHelper extends AppHelper {
 			$attr['data-original'] = $img_src_str;
 			$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$empty_img."&zc=1".$size;
 			$attr['class'] = "lazy";
+			if(isset($width)) $attr['width'] = $width;
+		//	if(isset($height)) $attr['height'] = "height";
 
 		}
 		

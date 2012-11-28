@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+$(function() {
 
 	//top menu parking
 	$(window).bind('scroll.topNav resize.topNav',function(e) { 
