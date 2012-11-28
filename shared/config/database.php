@@ -5,9 +5,8 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host'=>'10.176.164.233',
-		//'host' => '10.183.200.12',
-		//'host'=>'10.176.129.133',
+		//'host'=>'10.176.164.233',
+		'host'=>'10.176.129.133',
 		'login' => 'john',
 		'password' => '19Berrics82',
 		'database' => 'theberrics',
@@ -17,8 +16,6 @@ class DATABASE_CONFIG {
 	public $master = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		//OLD MASTER//'host' => '10.183.200.8',
-		//'host'=>'10.183.200.12',
 		'host'=>'10.176.129.133',
 		'login' => 'john',
 		'password' => '19Berrics82',
