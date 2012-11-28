@@ -89,7 +89,7 @@ class DailyopsController extends LocalAppController {
 		
 				"contain"=>array(
 				),
-				"order"=>array("Dailyop.publish_date"=>"DESC"),
+				"order"=>array("Dailyop.pinned"=>"DESC","Dailyop.publish_date"=>"DESC"),
 				"limit"=>$limit,
 				"conditions"=>$conditions,
 				"fields"=>array("Dailyop.id")
@@ -198,7 +198,7 @@ class DailyopsController extends LocalAppController {
 		
 		$newer_date = $this->Dailyop->getNextDate($dateArg,false);
 		
-		$this->set(compact("dailyops","dateIn","meta_k","newer_date","older_date"));
+		$this->set(compact("dailyops","dateIn","meta_k","newer_date","older_date","home_page"));
 		
 		$this->setRssFeed();
 
