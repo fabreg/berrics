@@ -227,6 +227,111 @@ border-bottom:1px dotted #fff;
 
 
 /*
+##################
+TWO COLUMN BODY
+##################
+*/
+
+#two-column-body {
+
+	margin-top:8px;
+	height:100%;
+	position: relative;
+
+}
+
+#two-column-body .left-col {
+
+	
+
+}
+#two-column-body .left-col .inner {
+
+	max-width:728px;
+	margin:auto;
+
+}
+#two-column-body .right-col {
+
+	height:100%;
+	border-left:2px dotted #ccc;
+
+}
+
+/*
+#######################
+STANDARD RIGHT COLUMN
+#######################
+*/
+#standard-right-column {
+
+	max-width: 300px;
+	margin: auto;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+	#top-nav-container .span12 {
+
+		margin:0;
+
+	}
+	#body-row {
+
+		border-right:2px dotted #ccc;
+
+	}
+
+	#two-column-body .right-column {
+
+		border-left:2px dotted #ccc;
+		height:100%;
+
+	}
+
+
+}
+
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+
+	#top-nav-list li {
+		font-size:15px;
+	}
+
+	/*
+	Two Column Body
+	*/
+	#two-column-body .left-column {
+
+		width:100%;
+
+	}
+
+
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+
+}
+
+/*###############################################*/
+
+
+/*
 
 MAIN UTILITY CLASSSES
 
@@ -559,48 +664,11 @@ video.mobile-video-tag {
 }
 
 /*
-##################
-TWO COLUMN BODY
-##################
+######################
+END VIDEO PLUGIN
+######################
 */
 
-#two-column-body {
-
-	margin-top:8px;
-	height:100%;
-	position: relative;
-
-}
-
-#two-column-body .left-col {
-
-	
-
-}
-#two-column-body .left-col .inner {
-
-	max-width:728px;
-	margin:auto;
-
-}
-#two-column-body .right-col {
-
-	height:100%;
-	border-left:2px dotted #ccc;
-
-}
-
-/*
-#######################
-STANDARD RIGHT COLUMN
-#######################
-*/
-#standard-right-column {
-
-	max-width: 300px;
-	margin: auto;
-
-}
 
 /*
 ######################
@@ -691,12 +759,6 @@ hr.hr1 {
 	border:none;
 
 }
-
-/*
-######################
-END VIDEO PLUGIN
-######################
-*/
 
 /*
 #######################
@@ -817,6 +879,20 @@ GLOBAL POST ELEMENTS
 
 /*
 #####################
+post section
+#####################
+*/
+
+#post-section {
+
+	max-width:728px;
+	margin:auto;
+
+}
+
+
+/*
+#####################
 standard post 
 #####################
 */
@@ -863,90 +939,114 @@ STANDARD THUMBNAIL
 
 .standard-post-thumb {
 
-	max-width:195px;
+	max-width:32%;
 	float:left;
-	margin-left:4px;
-	margin-right:4px;
+	text-align:center;
+
 }
+.standard-post-thumb:nth-child(3n+1) {
 
-.standard-post-thumb {
+	margin-right:2%;
+	
 
+}
+.standard-post-thumb:nth-child(3n+3) {
+
+	float:right;
 	
 
 }
 
-
-	
-/*
-RESPONSIVE SHIT
-*/
 
 /* Large desktop */
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {  
 
-	#top-nav-container .span12 {
-
-		margin:0;
-
-	}
-	#body-row {
-
-		border-right:2px dotted #ccc;
-
-	}
-
-	#two-column-body .right-column {
-
-		border-left:2px dotted #ccc;
-		height:100%;
-
-	}
-
-	/*standard posts*/
 	.standard-post-thumb {
 
-		max-width:175px;
+		max-width:24%;
 		float:left;
-		margin-left:5px;
-		margin-right:5px;
+		margin-right:1%;
+
 	}
+	.standard-post-thumb:nth-child(3n+1) {
+
+		margin-right:1%;
+		
+
+	}
+	.standard-post-thumb:nth-child(3n+3) {
+
+		float:left;
+		margin-right:1%
+
+	}
+	.standard-post-thumb:nth-child(4n+4) {
+
+		float:right;
+		margin-right:0
+
+	}
+
 
 }
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { 
-
-	#top-nav-list li {
-		font-size:15px;
-	}
-
-	/*
-	Two Column Body
-	*/
-	#two-column-body .left-column {
-
-		width:100%;
-
-	}
-
-	.standard-post-thumb {
-
-		width:100%;
-		max-width: 100%;
-	}
-
-}
+@media (min-width: 768px) and (max-width: 979px) {  }
  
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-
-
-
-}
+@media (max-width: 767px) { }
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
 
+	.standard-post-thumb {
+
+		max-width:100%;
+		width:100%;
+		float:none;
+		margin-right:1%;
+
+	}
+	.standard-post-thumb:nth-child(3n+1) {
+
+		margin-right:0
+		
+
+	}
+	.standard-post-thumb:nth-child(3n+3) {
+
+		float:none;
+		margin-right:0
+
+	}
+	.standard-post-thumb:nth-child(4n+4) {
+
+		float:none;
+		margin-right:0
+
+	}
 
 }
+
+/*#############################################*/
+
+
+
+/*#############################################*/
+/*#############################################*/
+/*#############################################*/
+/*#############################################*/
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
 
