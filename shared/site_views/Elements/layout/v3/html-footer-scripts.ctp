@@ -6,4 +6,14 @@
 			
 		));
 ?>
-<script>FB.XFBML.parse();</script>
+<script>
+	FB.XFBML.parse();
+	$('img.lazy').lazyload();
+	/*
+
+	{
+		threshold : 200
+	}
+	*/
+
+</script>

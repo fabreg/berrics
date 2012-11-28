@@ -422,11 +422,21 @@ class BerricsHelper extends AppHelper {
 
 		$MediaFile = $Dailyop['DailyopMediaItem'][0]['MediaFile'];
 
-		$opts = array(
+		$opts = array_merge(array(
 			"data-media-file-id"=>$MediaFile['id'],
 			"data-dailyop-id"=>$Dailyop['Dailyop']['id'],
 			"data-media-type"=>$MediaFile['media_type']
-		);
+		),$opts);
+
+		//check for lazy load
+		$lazy = false;
+		if(isset($opts['lazy']) && $opts['lazy'] == true) {
+
+			$lazy = true;
+
+		}
+
+		unset($opts['lazy']);
 
 		if($this->request->is("mobile")) {
 			$poster = $this->Media->mediaThumbSrc(array(
@@ -441,14 +451,16 @@ class BerricsHelper extends AppHelper {
 			$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
 					"w"=>"700",
-					"type"=>$template
+					"type"=>$template,
+					"lazy"=>$lazy
 				));
 
 		}
 		$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
 					"w"=>"700",
-					"type"=>$template
+					"type"=>$template,
+					"lazy"=>$lazy
 				));
 		
 

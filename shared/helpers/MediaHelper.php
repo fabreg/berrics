@@ -16,6 +16,8 @@ class MediaHelper extends AppHelper {
 			$opt['zc'] = 0;
 			
 		}
+
+		$empty_img = '/loading-imgs/loading-700.jpg';
 		
 		$m = $opt['MediaFile'];
 		
@@ -98,9 +100,19 @@ class MediaHelper extends AppHelper {
 		}
 		
 		$attr['border'] = 0;
+
+		$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
+
+		if(isset($opt['lazy']) && $opt['lazy'] == true) {
+
+			$attr['data-original'] = $img_src_str;
+			$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$empty_img."&zc=1".$size;
+			$attr['class'] = "lazy";
+
+		}
 		
 		//return the thumbnail
-		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
+		return $this->Html->image($img_src_str,$attr);
 			
 	}
 	

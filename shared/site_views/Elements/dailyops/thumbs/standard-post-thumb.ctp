@@ -2,15 +2,19 @@
 <?php 
 
 	$media_file = $post['DailyopMediaItem'][0]['MediaFile'];
-	$thumb_url = $this->Media->mediaThumbSrc(array(
-						"MediaFile"=>$media_file,
-						"w"=>300
-					));
+	
 ?>
 	<div class="post-date">
 		<?php echo date("m.d.Y",strtotime($post['Dailyop']['publish_date'])) ?>
 	</div>
-	<img src="/img/v3/layout/blk-px.png" alt="" border='0' data-original='<?php echo $thumb_url; ?>' width='300' class='lazy'>
+	<?php 
+					echo $this->Media->mediaThumb(array(
+						"MediaFile"=>$media_file,
+						"w"=>350,
+						"h"=>200,
+						"lazy"=>true
+					)); 
+	?>
 	<div class="post-title">
 		<?php echo $this->Text->truncate(strtoupper($post['Dailyop']['name']),25); ?>
 	</div>
