@@ -7,3 +7,8 @@
 <?php foreach ($posts as $k => $v): ?>
 	<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
 <?php endforeach ?>
+<script type="text/javascript">
+	$('img.lazy').lazyload({
+		threshold : 200
+	});
+</script>

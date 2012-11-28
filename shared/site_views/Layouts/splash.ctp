@@ -8,21 +8,15 @@
 
 
 
-echo $this->element("layout/html-head-scripts");
+echo $this->element("layout/v3/html-head-scripts");
 echo $head_content;
 ?>
 </head>
 <body>
-	<?php echo $content_for_layout; ?>
 	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <!-- Zuckerberg Likes Us -->
+	<?php echo $content_for_layout; ?>
+	<?php echo $this->element("layout/v3/html-footer-scripts"); ?>
 </body>
 <!-- <?php echo php_uname('n'); ?> -->
 </html>
