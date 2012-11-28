@@ -1,17 +1,25 @@
 <?php 
 
-	$this->Html->script(array("v3/jquery.lazyload.min"),array("inline"=>false));
+	//page title
+	$this->set("title_for_layout","The Berrics - ".$section['name']);
 
 ?>
-<script>
+<script type="text/javascript">
+var section=<?php echo json_encode($section); ?>;
 jQuery(document).ready(function($) {
-		
+	
+	$("#SectionYear").change(function() { 
 
-	$('.lazy').lazyload();
+		var year = $(this).val();
 
+		var uri = "/"+section.uri+"/"+year;
 
+		document.location.href = uri;
+
+	});
 
 });
+
 
 </script>
 <div id="post-section" class='clearfix'>
@@ -23,27 +31,15 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 	<div class="row-fluid">
-		<?php foreach ($posts as $k => $v): ?>
-			<div class='post-thumb standard-post-thumb'>
-			<?php 
-
-				$media_file = $v['DailyopMediaItem'][0]['MediaFile'];
-				$thumb_url = $this->Media->mediaThumbSrc(array(
-									"MediaFile"=>$media_file,
-									"w"=>300
-								));
-			?>
-			<div class="post-date">
-				<?php echo date("m.d.Y",strtotime($v['Dailyop']['publish_date'])) ?>
-			</div>
-			<img src="/img/v3/layout/blk-px.png" alt="" border='0' data-original='<?php echo $thumb_url; ?>' width='300' class='lazy'>
-			<div class="post-title">
-				<?php echo $this->Text->truncate(strtoupper($v['Dailyop']['name']),25); ?>
-			</div>
-			<div class="post-sub-title">
-				<?php echo $this->Text->truncate($v['Dailyop']['sub_title'],28); ?>&nbsp;
-			</div>
-			</div>
-		<?php endforeach ?>
+		<div class="span4 offset8">
+			<?php echo $this->Form->input("years",array("options"=>$year_select,"id"=>"SectionYear")); ?>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="thumb-collection">
+			<?php foreach ($posts as $k => $v): ?>
+				<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
+			<?php endforeach ?>
+		</div>
 	</div>
 </div>

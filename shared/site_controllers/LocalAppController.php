@@ -8,7 +8,15 @@ class LocalAppController extends AppController {
 	
 	public $app_name = "TheBerrics";
 	
-	public $helpers = array("Berrics","Media","Store","Number");
+	public $helpers = array(
+							"Berrics",
+							"Media",
+							"Store",
+							"Number",
+							"Form" => array(
+							        "className" => "BootstrapForm"
+							 )
+					);
 
 	public $theme = "website";
 	

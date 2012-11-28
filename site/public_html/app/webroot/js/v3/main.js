@@ -70,5 +70,6 @@ function initLayout() {
 			$("#top-dropdown-menu").hide();
 		}
 	);
+	$('img.lazy').lazyload();
 
 }

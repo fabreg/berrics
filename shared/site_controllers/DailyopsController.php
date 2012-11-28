@@ -130,7 +130,9 @@ class DailyopsController extends LocalAppController {
 
 		$posts = $this->Dailyop->getPostsBySection($section,$year);
 
-		$this->set(compact("posts"));
+		$year_select = $this->Dailyop->getYearsBySection($section['id']);
+
+		$this->set(compact("posts","section","year_select"));
 
 
 	}

@@ -303,8 +303,6 @@ class Dailyop extends AppModel {
 		
 		if(($years = Cache::read($token,"1min")) === false) {
 			
-			
-				
 			$years = $this->find("all",array(
 					
 						"fields"=>array(
