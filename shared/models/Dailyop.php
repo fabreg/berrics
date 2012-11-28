@@ -1222,6 +1222,26 @@ class Dailyop extends AppModel {
 
 	}
 
+	public function updateSearchItem($Dailyop) {
+		
+		$SearchItem = ClassRegistry::init("SearchItem");
+
+		$SearchItem->create();
+		$chk = $SearchItem->find("first",array(
+
+			"conditions"=>array(
+				"SearchItem.model"=>"Dailyop",
+				"SearchItem.foreign_key"=>$Dailyop['Dailyop']['id']
+			)
+
+		));
+
+		if(isset($chk['SearchItem']['id'])) $SearchItem->id = $chk['SearchItem']['id'];
+
+		
+
+	}
+
 	
 
 }

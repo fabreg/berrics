@@ -169,5 +169,12 @@ class DashboardController extends LocalAppController {
 		$this->set(compact("orders_month"));
 		
 	}
+
+
+	public function search() {
+		
+		
+		
+	}
 	
 }
