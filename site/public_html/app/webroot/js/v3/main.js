@@ -70,6 +70,8 @@ function initLayout() {
 			$("#top-dropdown-menu").hide();
 		}
 	);
-	$('img.lazy').lazyload();
+	$('img.lazy').lazyload({
+		threshold : 200
+	});
 
 }
