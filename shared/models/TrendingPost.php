@@ -56,7 +56,7 @@ class TrendingPost extends AppModel {
 		if(($posts = Cache::read($token,"5min"))===false) {
 
 			$posts = $this->find("all",array(
-				"condition"=>array(
+				"conditions"=>array(
 					"TrendingPost.section"=>$section,
 					"TrendingPost.start_date < NOW()",
 					"TrendingPost.end_date > NOW()"
@@ -76,6 +76,8 @@ class TrendingPost extends AppModel {
 					"TrendingPost.display_weight"=>"ASC"
 				)
 			));
+
+			Cache::write($token,$posts,"1min");
 
 		}
 

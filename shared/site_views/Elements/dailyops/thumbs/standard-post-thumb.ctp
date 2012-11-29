@@ -2,19 +2,21 @@
 <?php 
 
 	$media_file = $post['DailyopMediaItem'][0]['MediaFile'];
-	
+	$url = $this->Berrics->dailyopsPostUrl($post);
 ?>
 	<div class="post-date">
 		<?php echo date("m.d.Y",strtotime($post['Dailyop']['publish_date'])) ?>
 	</div>
+	<a href="<?php echo $url; ?>">
 	<?php 
 					echo $this->Media->mediaThumb(array(
 						"MediaFile"=>$media_file,
 						"w"=>350,
-						"h"=>200,
+						"h"=>175,
 						"lazy"=>true
 					)); 
 	?>
+	</a>
 	<div class="post-title">
 		<?php echo $this->Text->truncate(strtoupper($post['Dailyop']['name']),25); ?>
 	</div>

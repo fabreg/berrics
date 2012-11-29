@@ -6,34 +6,19 @@ $trending_posts = $TrendingPost->currentTrending('weekly');
 
 ?>
 <div id="standard-right-column">
+	<!--Trending Content!-->
 	<div id="trending-content">
 		<h2>BANGIN! CONTENT: </h2>
 		<div class="tab-row clearfix">
-			<div class="tab">The Week</div>
-			<div class="tab">This Month</div>
-			<div class="tab">This Year</div>
+			<div class="tab active" data-section='weekly'>The Week</div>
+			<div class="tab" data-section='monthly'>This Month</div>
+			<div class="tab" data-section='yearly'>This Year</div>
 		</div>
-		<div class="content">
+		<div>
 			<table cellspacing='0'>
-				<tbody>
+				<tbody class="content">
 					<?php foreach ($trending_posts as $k => $v): ?>
-					<tr>
-						<td width='100'>
-							<?php echo $this->Media->mediaThumb(array(
-								"MediaFile"=>$v['Dailyop']['DailyopMediaItem'][0]['MediaFile'],
-								"w"=>90,
-								
-							)); ?>
-						</td>
-						<td>
-							<?php echo $this->Text->truncate($v['Dailyop']['name'],36); ?>
-							<div>
-								<small>
-									<?php echo $this->Text->truncate($v['Dailyop']['sub_title'],36); ?>&nbsp;
-								</small>
-							</div>
-						</td>
-					</tr>
+					<?php echo $this->element("layout/v3/trending-tr",array("post"=>$v)) ?>
 					<?php endforeach ?>
 				</tbody>
 			</table>

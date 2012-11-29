@@ -21,7 +21,7 @@ class DailyopsController extends LocalAppController {
 		
 		$this->Auth->allow();
 
-		$this->layout = "version3";
+		//$this->layout = "version3";
 		
 	}
 	
@@ -919,6 +919,15 @@ class DailyopsController extends LocalAppController {
 		
 	}
 
+	public function trending($key = "weekly") {
+		
+		$this->loadModel('TrendingPost');
+		
+		$posts = $this->TrendingPost->currentTrending($key);
+		
+		$this->set(compact("posts"));
+
+	}
 
 	public function video_controls() {
 		

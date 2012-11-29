@@ -31,8 +31,39 @@ $(function() {
 	});
 	initLayout();
 	initMediaDivs();
+	initTrending();
 
 });
+
+function initTrending () {
+	
+	$("#trending-content .tab:not(.active)").click(function() { 
+
+		$("#trending-content .loading").remove();
+
+		$("#trending-content").append($("<div class='loading' />"));
+
+		$("#trending-content .loading").fadeIn('fast');
+
+		var s = $(this).attr("data-section");
+		$("#trending-content .tab").removeClass('active').unbind('click');
+		$(this).addClass('active');
+		$.ajax({
+
+			"url":"/dailyops/trending/"+s,
+			"success":function(d) {
+
+				$("#trending-content .content").html(d);
+				initTrending();
+				$("#trending-content .loading").fadeOut('fast',function() { $("#trending-content .loading").remove(); });
+			}
+
+
+		});
+
+	});
+
+}
 
 function initMediaDivs () {
 	
