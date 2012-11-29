@@ -29,36 +29,41 @@ class TagsController extends LocalAppController {
 		
 		if(empty($this->request->params['slug'])) throw new NotFoundException("Invalid link!");
 		
-		
 		$tag = $this->Tag->find("first",array(
-					"conditions"=>array("Tag.slug"=>$this->request->params['slug'])
+					"conditions"=>array("Tag.slug"=>$this->request->params['slug']),
+					"contain"=>array()
 				));
+
+		$this->loadModel('DailyopsTag');
 		
 		$token = "tag-posts-".md5($this->request->params['slug']);
 		
 		if(($post_ids = Cache::read($token,"1min")) === false) {
 			
-			$posts = $this->Tag->find("first",array(
-					"fields"=>array(
-							"Tag.id"
-					),
-					"conditions"=>array(
-							"Tag.slug"=>$this->request->params['slug']
-					),
-					"contain"=>array(
-							"Dailyop"=>array(
-									"fields"=>array(
-											"Dailyop.id"
-									),
-									"conditions"=>array(
-											"Dailyop.active"=>1,
-											"Dailyop.publish_date < NOW()"
-									)
-							)
-					)
+			$ids = $this->DailyopsTag->find("all",array(
+
+				"conditions"=>array(
+					"DailyopsTag.tag_id"=>$tag['Tag']['id']
+				)
+
 			));
+
+			$ids = Set::extract("/DailyopsTag/dailyop_id",$ids);
+
+			$post_ids = $this->Dailyop->find("all",array(
+							"fields"=>array(
+								"Dailyop.id"
+							),
+							"conditions"=>array(
+								"Dailyop.active"=>1,
+								"Dailyop.publish_date < NOW()",
+								"Dailyop.dailyop_section_id !="=>65,
+								"Dailyop.id"=>$ids
+							),
+							"contain"=>array(),
+						));
 			
-			$post_ids = Set::extract("/Dailyop/id",$posts);
+			$post_ids = Set::extract("/Dailyop/id",$post_ids);
 			
 			Cache::write($token,$post_ids,"1min");
 			

@@ -40,8 +40,17 @@ $tumblr_source = "";
 		</div>
 		<div class="tags span8">
 			TAGS// 
-			<?php foreach ($dop['Tag'] as $k => $v): ?>
-				<a href=""><?php echo strtoupper($v['name']); ?></a>&nbsp;
+			<?php 
+				
+				foreach ($dop['Tag'] as $k => $v): 
+
+				$url = "/tags/{$v['slug']}";
+
+				if(isset($v['User']['id']) && !empty($v['User']['profile_uri']))
+					$url = "/profiles/".$v['User']['profile_uri']; 
+
+			?>
+				<a href="<?php echo $url; ?>"><?php echo strtoupper($v['name']); ?></a>&nbsp;
 			<?php endforeach ?>
 		</div>
 		

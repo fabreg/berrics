@@ -75,6 +75,7 @@ Router::connect("/canteen/cart",array("controller"=>"canteen_cart"));
 
 
 //tags
+
 if(preg_match('/\/tags/',$_SERVER['REQUEST_URI'])) {
 	
 	Router::connect("/tags/paginate_posts/*",array("controller"=>"tags","action"=>"paginate_posts"));
@@ -92,7 +93,7 @@ if(preg_match('/\/tags/',$_SERVER['REQUEST_URI'])) {
 	));
 	
 	
-	//tag drill down
+		//tag drill down
 	Router::connect("/tags/:slug/*",array(
 	
 		"controller"=>"tags",

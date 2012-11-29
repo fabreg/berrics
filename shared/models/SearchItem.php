@@ -26,5 +26,49 @@ class SearchItem extends AppModel {
 
 	}
 
+	public function formatString($s) {
+		
+		 $final = array();
+	    foreach (array_filter(preg_split('/[\s\'-]+/', $s)) as $word) {
+	            $final[] = "+$word";
+	    }
+	    $s = implode(' ', $final);
+
+	    return $s;
+
+	}
+
+	public function run_search($str) {
+		
+		$token = "ft-search-".md5($str);
+
+		if(($result = Cache::read($token,"1min")) === false) {
+
+			$query = $this->formatString($str);
+
+			$match = "MATCH(title,sub_title,keywords) AGAINST('{$query}')";
+
+			$match_bool = "MATCH(title,sub_title,keywords) AGAINST('{$query}' IN BOOLEAN MODE)";
+
+			$result = $this->find("all",array(
+							"fields"=>array(
+								"*",
+								"{$match} AS `Score`"
+							),
+							"conditions"=>array(
+								$match_bool
+							),
+							"order"=>array(
+								"Score"=>"DESC"
+							)
+						));
+
+			//Cache::write($token,$result,"1min");
+
+		}
+
+		return $result;
+
+	}
 
 }

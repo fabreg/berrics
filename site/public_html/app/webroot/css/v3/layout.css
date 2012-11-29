@@ -937,6 +937,39 @@ post section
 
 /*
 #####################
+tags section
+#####################
+*/
+#tags-section {
+
+	max-width:728px;
+	margin:auto;
+
+}
+
+#tags-section .heading {
+
+border-bottom:2px dotted #ccc;
+
+}
+
+#tags-section .heading h1 {
+
+	font-family: 'universcnb';
+	font-weight: normal;
+
+}
+
+#tags-section .pagination ul li a {
+
+	font-family: 'universcn';
+	color:#333;
+}
+
+
+
+/*
+#####################
 standard post 
 #####################
 */
@@ -988,8 +1021,11 @@ STANDARD THUMBNAIL
 	float:left;
 	text-align:center;
 	margin-top:14px;
-
+	min-height: 134px;
 }
+
+
+
 .standard-post-thumb:nth-child(3n+1) {
 
 	margin-right:2%;
@@ -1008,6 +1044,9 @@ STANDARD THUMBNAIL
 	font-size:14px;
 	line-height: 14px;
 	padding-top:3px;
+	overflow:hidden;
+	height:14px;
+
 }
 
 .standard-post-thumb .post-sub-title {
@@ -1019,7 +1058,8 @@ STANDARD THUMBNAIL
 	line-height: 12px;
 	height:12px;
 	overflow:hidden;
-	margin-top: -3px;
+
+
 }
 .standard-post-thumb .post-date {
 
@@ -1060,6 +1100,7 @@ STANDARD THUMBNAIL
 	}
 
 
+
 }
  
 /* Portrait tablet to landscape and desktop */
@@ -1097,6 +1138,8 @@ STANDARD THUMBNAIL
 		margin-right:0
 
 	}
+
+
 
 }
 

@@ -1,10 +1,15 @@
-<h1>
-Search: <?php echo strtoupper($search_label); ?>
-</h1>
-<div id='posts' class='results'>
-	<?php 
+<style type="text/css">
 	
-		echo $this->element("results/posts-div",array(compact("posts_data","posts_data_total")));
-	
-	?>
+#search-results {
+
+	max-width: 728px;
+	margin: auto;
+
+}
+
+</style>
+<div id="search-results">
+	<?php foreach ($posts as $k => $v): ?>
+		<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
+	<?php endforeach ?>
 </div>

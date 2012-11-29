@@ -66,7 +66,7 @@
 							<li class="spacer"></li>
 							<li class='nav-btn'>MORE</li>
 							<li class="spacer"></li>
-							<li class='nav-btn search'>SEARCH <input type='text' /></li>
+							<li class='nav-btn search'><form method='post' action='/search' >SEARCH<input name='data[Search][term]' type='text' /><button>GO</button></form></li>
 						</ul>
 					</div>
 				</div>
