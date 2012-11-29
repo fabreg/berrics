@@ -18,6 +18,8 @@ jQuery(document).ready(function($) {
 
 	});
 
+	$('.bottom-year-nav li[data-year=<?php echo $year; ?>]').addClass('active');
+
 });
 
 
@@ -30,9 +32,25 @@ jQuery(document).ready(function($) {
 			</div>
 		</div>
 	</div>
+	<?php if (!empty($section['section_heading_file'])): ?>
+	<div class="row-fluid section-heading-div">
+		<div class="span12">
+			<?php echo $this->Media->sectionHeading(array(
+				"DailyopSection"=>$section,
+				"w"=>728
+			)); ?>
+		</div>
+	</div>
+	<?php endif ?>
 	<div class="row-fluid">
-		<div class="span4 offset8">
-			<?php echo $this->Form->input("years",array("options"=>$year_select,"id"=>"SectionYear")); ?>
+		<div class="span5 offset7" id='jump-menu'>
+			<?php echo $this->Form->create('DailyopSection',array(
+				"id"=>'DailyopSectionForm',
+				"url"=>$this->request->here,
+				"class"=>"form form-horizontal"
+			)); ?>
+			<?php echo $this->Form->input("years",array("options"=>$year_select,"id"=>"SectionYear","selected"=>$year,"label"=>"JUMP TO")); ?>
+			<?php echo $this->Form->end(); ?>
 		</div>
 	</div>
 	<div class="row-fluid">
@@ -45,9 +63,9 @@ jQuery(document).ready(function($) {
 </div>
 <div class="row-fluid">
 	<div class="span12">
-		<ul class="nav nav-pills pull-right">
+		<ul class="nav nav-pills pull-right bottom-year-nav">
 			<?php foreach ($year_select as $k => $v): ?>
-				<li>
+				<li data-year='<?php echo $v; ?>'>
 					<a href="/<?php echo $section['uri'];  ?>/<?php echo $v ?>" title='<?php echo addslashes($section['name']); ?> - <?php echo $v; ?>'><?php echo $v; ?></a>
 				</li>
 			<?php endforeach ?>

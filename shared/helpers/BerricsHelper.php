@@ -425,7 +425,8 @@ class BerricsHelper extends AppHelper {
 		$opts = array_merge(array(
 			"data-media-file-id"=>$MediaFile['id'],
 			"data-dailyop-id"=>$Dailyop['Dailyop']['id'],
-			"data-media-type"=>$MediaFile['media_type']
+			"data-media-type"=>$MediaFile['media_type'],
+			"class"=>"post-media-div"
 		),$opts);
 
 		//check for lazy load

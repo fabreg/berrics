@@ -11,22 +11,17 @@
 		echo $scripts_for_layout;
 	?>
 	<body>
-		<div class='container' id='nav-nested-container'>
-
-		</div>
-		<div class="container" id='main-container'>
-			<header id='top-header'>
-				<div class="row-fluid">
-					<div class="span8">
-						<div class="hidden-phone">
-							<a href='/dailyops'><img src='/img/v3/layout/berrics-header-logo.png' alt='THE BERRICS' border='0' /></a>
-						</div>
+		<header>
+			<div class="container">
+				<div class="row-fluid top-row">
+					<div class="span8" >
+						<img src="/img/v3/layout/berrics-header-logo.jpg" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" />
 					</div>
+					<div class="span4"></div>
 				</div>
-				<div class='row-fluid' id='top-nav-container'>
+				<div class="row-fluid">
 					<div class="span12">
 						<ul id='top-nav-list' class='nav-collapse'>
-							
 							<li class='nav-btn' id='top-dropdown'>
 								<a href="#">FEATURES</a>
 								<div id="top-dropdown-menu">
@@ -75,7 +70,10 @@
 						</ul>
 					</div>
 				</div>
-			</header>
+			</div>
+		</header>
+		<div class="container" id='main-container'>
+			
 			<div class="row-fluid" id='body-row'>
 				<div class="span12" id='body-div'>
 					<?php echo $this->element($top_element); ?>
