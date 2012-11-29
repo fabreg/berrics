@@ -1222,23 +1222,72 @@ class Dailyop extends AppModel {
 
 	}
 
-	public function updateSearchItem($Dailyop) {
+	public function extractSearchValues($Dailyop) {
+
+		$id = $Dailyop['Dailyop']['id'];
+
+		$tags = Set::extract("/Tag/name",$Dailyop);
+			
+		$tags = implode(" ", $tags);
+
+		$kw = $tags." ";
+
+		if(!empty($Dailyop['Dailyop']['text_content'])) $kw.= strip_tags($Dailyop['Dailyop']['text_content'])." ";
+
+		if(count($Dailyop['DailyopTextItem'])>0) {
+
+			foreach ($Dailyop['DailyopTextItem'] as $k => $v) {
+				
+				$kw.=strip_tags($v['text_content'])." ";
+				$kw.=strip_tags($v['heading'])." ";
+
+			}
+
+		}
+
+		$s = array(
+			"title"=>$Dailyop['Dailyop']['name'],
+			"sub_title"=>$Dailyop['Dailyop']['sub_title'],
+			"keywords"=>$kw,
+			"model"=>"Dailyop",
+			"foreign_key"=>$id
+		);
+
+		return $s;
+
+	}
+
+	public function afterSave($created) {
+		
+		$id = $this->id;
+
+		$_SERVER['FORCEMASTER'] = true;
+
+		$post = $this->returnPost(array(
+					"Dailyop.id"=>$id
+				),true,true);
+
+		//make the keywords
+		$s = $this->extractSearchValues($post);
 		
 		$SearchItem = ClassRegistry::init("SearchItem");
 
-		$SearchItem->create();
-		$chk = $SearchItem->find("first",array(
+		$SearchItem->insertItem($s);
 
-			"conditions"=>array(
-				"SearchItem.model"=>"Dailyop",
-				"SearchItem.foreign_key"=>$Dailyop['Dailyop']['id']
-			)
+		return parent::afterSave();
 
+	}
+
+	public function afterDelete($created) {
+		
+		$SearchItem = ClassRegistry::init("SearchItem");
+
+		$SearchItem->deleteAll(array(
+			"model"=>"Dailyop",
+			"foreign_key"=>$this->id
 		));
 
-		if(isset($chk['SearchItem']['id'])) $SearchItem->id = $chk['SearchItem']['id'];
-
-		
+		return parent::afterDelete();
 
 	}
 

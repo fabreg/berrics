@@ -1305,7 +1305,6 @@ class DailyopsController extends LocalAppController {
 		$this->set(compact("post","params"));
 
 	}
-
 	
 	
 }
