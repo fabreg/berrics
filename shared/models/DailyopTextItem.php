@@ -48,6 +48,18 @@ class DailyopTextItem extends AppModel {
 		return $img_dir;
 		
 	}
+
+	public static function headingStyles() {
+	return array(
+			"default"=>"default"
+			);
+	}
+
+	public static function textContentStyles() {
+		return array(
+				"default"=>"default"
+			);
+	}
 	
 }
 

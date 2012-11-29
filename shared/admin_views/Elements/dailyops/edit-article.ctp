@@ -114,9 +114,22 @@ foreach($this->request->data['DailyopTextItem'] as $k=>$v):
 			$this->Form->formSpan = "span12";
 			echo $this->Form->input("DailyopTextItem.{$k}.id");
 			echo $this->Form->input("DailyopTextItem.{$k}.display_weight",array("options"=>$sort));
-			echo $this->Form->input("DailyopTextItem.{$k}.heading");
-			echo $this->Form->input("DailyopTextItem.{$k}.text_content");
+		?>
+		
+		<div class="row-fluid">
+			<div class="span8">
+				<?php echo $this->Form->input("DailyopTextItem.{$k}.heading"); ?>
+			</div>
+			<div class="span4">
+				<?php 
+				echo $this->Form->input("DailyopTextItem.{$k}.heading_style",array("options"=>DailyopTextItem::headingStyles()));
 			
+				 ?>
+			</div>
+		</div>
+		<?php
+			echo $this->Form->input("DailyopTextItem.{$k}.text_content");
+			echo $this->Form->input("DailyopTextItem.{$k}.text_content_style",array("options"=>DailyopTextItem::textContentStyles()));
 		?>
 		<button class='btn btn-primary'>Update Text</button>
 		<button class='btn btn-danger remove-text-item' value='<?php echo $v['id']; ?>' type='button' ><i class='icon icon-white icon-minus-sign'></i> Remove</button>
