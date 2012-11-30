@@ -1,6 +1,7 @@
 $(function() {
 
 	//top menu parking
+	/*
 	$(window).bind('scroll.topNav resize.topNav',function(e) { 
 
 		var st = $(window).scrollTop();
@@ -29,6 +30,7 @@ $(function() {
 		}
 
 	});
+	*/
 	initLayout();
 	initMediaDivs();
 	initTrending();
@@ -67,7 +69,7 @@ function initTrending () {
 
 function initMediaDivs () {
 	
-	$('.post div[data-media-file-id]').each(function() { 
+	$('.large-post').each(function() { 
 
 		$(this).click(function() { 
 
@@ -75,9 +77,23 @@ function initMediaDivs () {
 			$(this).unbind('click');
 
 		});
+		
 
 	});
 
+	$('.post .post-media-div[data-media-type=bcove]').unbind().hover(
+	function() { 
+		$(this).find('.video-hover').fadeIn();
+	},
+	function() { 
+		$(this).find('.video-hover').fadeOut();
+	}).click(function() { 
+		
+
+			$(this).videoDiv();
+			$(this).unbind('click');
+
+	});
 
 
 

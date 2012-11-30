@@ -457,6 +457,7 @@ class BerricsHelper extends AppHelper {
 				));
 
 		}
+
 		$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
 					"w"=>"700",
@@ -464,6 +465,30 @@ class BerricsHelper extends AppHelper {
 					"lazy"=>$lazy
 				));
 		
+		switch(strtolower($MediaFile['media_type'])) {
+
+			case 'img':
+
+				$hover = "<div class='img-hover'></div>";
+				$img = $hover.$img;
+
+				if(!empty($Dailyop['Dailyop']['url'])) {
+
+					$href=$Dailyop['Dailyop']['url'];
+					$target = $Dailyop['Dailyop']['window_target'];
+					
+
+					$img = "<a href='{$href}' target='{$target}' >{$img}</a>";
+
+				}
+			break;
+			case "bcove":
+				$hover = "<div class='video-hover'><div class='play-button'></div></div>";
+				$img = $hover.$img;
+			break;
+
+
+		}
 
 		return $this->Html->tag("div",$img,$opts);
 

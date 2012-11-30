@@ -20,7 +20,9 @@
 body {
 
 	background-color: #fff;
-	font-family: "Times New Roman";
+	font-family: "universcn";
+	padding-top:70px;
+
 }
 
 body * {
@@ -37,25 +39,16 @@ header {
 	background-image:url(/img/v3/layout/top-header-bottom-edge.png);
 	background-repeat: repeat-x;
 	background-position: bottom center;
-	margin-bottom:8px;
-
-}
-
-header.top-nav-parked {
-
 	position:fixed;
 	top:0px;
 	left:0px;
 	width:100%;
 	z-index:10001;
-	margin-bottom:0;
-}
-
-header.top-nav-parked .top-row {
-
-	display:none;
+	margin:0;
+	padding-bottom:3px;
 
 }
+
 
 #berrics-heading-logo {
 
@@ -64,9 +57,9 @@ header.top-nav-parked .top-row {
 
 }
 
-#body-div.top-nav-showing {
+#body-div {
 
-	padding-top:100px;
+	
 
 }
 
@@ -86,6 +79,7 @@ header.top-nav-parked .top-row {
 	color:#fff;
 	font-family: 'universcn';
 	letter-spacing: 1px;
+	margin-bottom:5px;
 }
 
 #top-nav-list li {
@@ -162,14 +156,20 @@ header.top-nav-parked .top-row {
 #top-dropdown-menu {
 
 	position: absolute;
-	border: 2px solid #000;
-	border-top:0;
-	padding:8px;
+	
 	display: none;
-	width:450px;
-	background-color: #fff;
+	width:450px;	
+	
 	left:0px;
-	top:25px;
+	top:21px;
+	padding-top:3px;
+}
+#top-dropdown-menu .inner {
+
+		background-color: #fff;
+		border: 2px solid #000;
+		border-top:0;
+		padding:8px;
 }
 
 #top-dropdown-menu ul {
@@ -309,7 +309,17 @@ TWO COLUMN BODY
 		width:100%;
 
 	}
+	header {
 
+		position: static;
+
+	}
+
+	#top-nav-list {
+
+		display: none;
+
+	}
 
 
 }
@@ -318,12 +328,34 @@ TWO COLUMN BODY
 @media (max-width: 767px) {
 
 
+	header {
+
+		position: static;
+
+	}
+	#top-nav-list {
+
+		display: none;
+
+	}
 
 }
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
 
+
+
+	header {
+
+		position: static;
+
+	}
+	#top-nav-list {
+
+		display: none;
+
+	}
 
 }
 
@@ -962,6 +994,25 @@ GLOBAL POST ELEMENTS
 .post .post-media-div {
 
 	position: relative;
+
+}
+
+.post .post-media-div .img-hover,
+.post .post-media-div .video-hover,
+.post .post-media-div .play-button {
+
+	display: none;
+
+}
+.post .post-media-div .img-hover,
+.post .post-media-div .video-hover {
+
+	background-image:url(/img/v3/layout/blk-px.png);
+	top:0px;
+	left:0px;
+	width:100%;
+	height: 100%;
+	position: absolute;
 
 }
 

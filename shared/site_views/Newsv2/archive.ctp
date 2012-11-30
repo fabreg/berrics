@@ -89,7 +89,7 @@
 }
 </style>
 <div id='archive'>
-	<div style='width:640px; float:left;'>
+	<div>
 		<?php 
 		
 			$i = 1;
@@ -136,8 +136,6 @@
 		?>
 		<div style='clear:both;'></div>
 	</div>
-	<div class='right-banners'>
-		<?php echo $this->element("layout/right-banners"); ?>
-	</div>
+
 	<div style='clear:both;'></div>
 </div>

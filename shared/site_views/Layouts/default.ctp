@@ -17,38 +17,38 @@
 					<div class="span8" >
 						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
 					</div>
-					<div class="span4"></div>
+					<div class="span4 hidden-tablet"></div>
 				</div>
-				<div class="row-fluid">
-					<div class="span12">
-						<ul id='top-nav-list' class='nav-collapse'>
+				<ul id='top-nav-list'>
 							<li class='nav-btn' id='top-dropdown'>
 								<a href="#">FEATURES</a>
 								<div id="top-dropdown-menu">
-									<ul>
-										<?php 
-										$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
-							
-										$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
+									<div class="inner clearfix">
+										<ul>
+											<?php 
+											$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
+								
+											$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 
-										foreach ($f_sections as $k => $v): ?>
-											<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
-												<?php 
+											foreach ($f_sections as $k => $v): ?>
+												<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
+													<?php 
 
-													$nl = $v['DailyopSection']['name']; 
+														$nl = $v['DailyopSection']['name']; 
 
-													if(!empty($v['DailyopSection']['nav_label'])) $nl = $v['DailyopSection']['nav_label'];
-													echo $this->Media->sectionIcon(array(
-														"DailyopSection"=>$v['DailyopSection'],
-														"dark"=>true,
-														"h"=>15
-													));
-													echo strtoupper($nl);
+														if(!empty($v['DailyopSection']['nav_label'])) $nl = $v['DailyopSection']['nav_label'];
+														echo $this->Media->sectionIcon(array(
+															"DailyopSection"=>$v['DailyopSection'],
+															"dark"=>true,
+															"h"=>15
+														));
+														echo strtoupper($nl);
 
-												?>
-												</a></li>
-										<?php endforeach; unset($nl,$f_sections); ?>
-									</ul>
+													?>
+													</a></li>
+											<?php endforeach; unset($nl,$f_sections); ?>
+										</ul>
+									</div>
 								</div>
 							</li>
 							<li class="spacer"></li>
@@ -68,8 +68,6 @@
 							<li class="spacer"></li>
 							<li class='nav-btn search'><form method='post' action='/search' >SEARCH<input name='data[Search][term]' type='text' /><button>GO</button></form></li>
 						</ul>
-					</div>
-				</div>
 			</div>
 		</header>
 		<div class="container" id='main-container'>
