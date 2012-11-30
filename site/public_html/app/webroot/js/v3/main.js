@@ -82,6 +82,7 @@ function initMediaDivs () {
 	});
 
 
+	//video post
 	$('.post .post-media-div[data-media-type=bcove]').unbind().hover(
 	function() { 
 		$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
@@ -89,12 +90,26 @@ function initMediaDivs () {
 	function() { 
 		$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
 	}).click(function() { 
-		
+			
+			if($(this).find('video').length<=0) {
 
-			$(this).videoDiv();
-			$(this).unbind('click');
+				$(this).videoDiv();
+				$(this).unbind('click');
+
+			}
 
 	});
+
+	//post thumb
+	$('.post-thumb .thumb').unbind().
+	hover(
+		function() { 
+			$(this).find('.overlay').fadeIn().parent().find('.play-button').animate({opacity:1});
+		},
+		function() { 
+			$(this).find('.overlay').fadeOut().parent().find('.play-button').animate({opacity:.6});;
+		}
+	)
 
 
 
