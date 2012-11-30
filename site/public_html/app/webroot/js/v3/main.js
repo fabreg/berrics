@@ -81,12 +81,13 @@ function initMediaDivs () {
 
 	});
 
+
 	$('.post .post-media-div[data-media-type=bcove]').unbind().hover(
 	function() { 
-		$(this).find('.video-hover').fadeIn();
+		$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
 	},
 	function() { 
-		$(this).find('.video-hover').fadeOut();
+		$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
 	}).click(function() { 
 		
 

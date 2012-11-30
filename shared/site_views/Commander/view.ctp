@@ -47,7 +47,7 @@ $this->set(compact("title_for_layout","meta_k"));
 
 	<?php foreach ($posts as $year => $posts): ?>
 	<div class="posts-menu clearfix">
-		<h3><?php echo $year ?> BATTLE COMMANDERS</h3>
+		<h3><?php echo $year ?> <?php echo strtoupper(Inflector::pluralize($viewing['DailyopSection']['name'])) ?></h3>
 		<?php 
 			foreach ($posts as $k => $post): 
 			$img = $post['DailyopMediaItem'][4]['MediaFile'];

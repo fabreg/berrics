@@ -483,7 +483,7 @@ class BerricsHelper extends AppHelper {
 				}
 			break;
 			case "bcove":
-				$hover = "<div class='video-hover'><div class='play-button'></div></div>";
+				$hover = "<div class='play-button'></div><div class='video-hover'></div>";
 				$img = $hover.$img;
 			break;
 
