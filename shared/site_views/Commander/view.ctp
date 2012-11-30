@@ -39,7 +39,7 @@ $this->set(compact("title_for_layout","meta_k"));
 		<div class="span12">
 				<?php 
 	
-					echo $this->element("dailyops/post-bit",array("dop"=>$viewing));
+					echo $this->element("dailyops/post-bit",array("dop"=>$viewing,"lazy"=>false));
 						
 				?>
 		</div>
