@@ -18,6 +18,8 @@ class BangyoselfController extends DailyopsController {
 	
 	public function beforeFilter() {
 		
+		$this->body_element = "layout/v3/one-column";
+
 		if($this->request->params['action'] == "handle_upload") {
 			
 			$this->Session->id($this->request->params['pass'][0]);

@@ -27,9 +27,7 @@ jQuery(document).ready(function($) {
 <div id="post-section" class='clearfix'>
 	<div class="row-fluid">
 		<div class="span12">
-			<div class="banner-728" id='banner1'>
-				<img src="/img/v3/layout/728-banner.png" alt="" border='0'>
-			</div>
+			<?php echo $this->element("banners/728") ?>
 		</div>
 	</div>
 	<?php if (!empty($section['section_heading_file'])): ?>

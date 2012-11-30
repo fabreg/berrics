@@ -7,14 +7,14 @@ class CommanderController extends LocalAppController {
 	public $uses = array();
 	
 	public function beforeFilter() {
-		
+
 		parent::beforeFilter();
 		
 		$this->initPermissions();
 		
 		$this->Auth->allow();
 		
-		$this->theme = $this->request->params['section'];
+		$this->theme = "commander";
 		
 		if($this->request->params['action'] == "section") {
 			
@@ -95,7 +95,7 @@ class CommanderController extends LocalAppController {
 			
 			));
 			
-			Cache::write($cache_token,$posts,"1min");
+			//Cache::write($cache_token,$posts,"1min");
 			
 		}
 		
@@ -119,9 +119,15 @@ class CommanderController extends LocalAppController {
 			
 			$viewing = $posts[0];
 			
-			
-			
 		}
+
+		$years = array();
+
+		foreach($posts as $v) $years[date("Y",strtotime($v['Dailyop']['publish_date']))][] = $v;
+
+		$posts = $years;
+
+		unset($years);
 		
 		//set the FB META TAG
 		

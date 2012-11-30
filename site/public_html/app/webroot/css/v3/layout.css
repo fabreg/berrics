@@ -363,6 +363,54 @@ MAIN UTILITY CLASSSES
 
 
 /*
+################################
+BATTLE COMMANDER / UN / RECRUIT
+#################################
+*/
+
+#commander-view {
+
+	max-width:728px;
+	margin:auto;
+
+}
+#commander-view .commander-img {
+
+	max-width:700px;
+	margin:auto;
+	margin-top: 5px;
+}
+
+#commander-view .posts-menu {
+
+
+	font-family:'universcn';
+	border-top:1px solid #333;
+	margin-top:4px;
+
+}
+
+#commander-view .posts-menu h3 {
+
+	font-weight: normal;
+	font-size:16px;
+	line-height:18px;
+
+}
+
+#commander-view .posts-menu .menu-item {
+
+	float:left;
+	width:49.5%;
+}
+
+#commander-view .posts-menu .menu-item:nth-child(odd) {
+
+	float:right;
+
+}
+
+/*
 #########################
 VIDEO DIV PLUGIN
 #########################

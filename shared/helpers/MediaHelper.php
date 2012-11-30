@@ -17,7 +17,7 @@ class MediaHelper extends AppHelper {
 			
 		}
 
-		$empty_img = '/loading-imgs/loading-700.jpg';
+		$empty_img = '/loading-imgs/loading-lazy.jpg';
 		
 		$m = $opt['MediaFile'];
 		

@@ -1,19 +1,11 @@
 <?php 
 
-$this->Html->script(array("commander/view"),array("inline"=>false));
-
-//temp hack to make the jimmy theme come up
-
-if($viewing['Dailyop']['id'] == 3112) {
-	
-	$this->Html->css("/theme/battle-commander-carlin/css/layout_override.css","stylesheet",array("inline"=>false));
-	
-}
+//$this->Html->script(array("commander/view"),array("inline"=>false));
 
 //check to see if there is a theme override and manually check for the CSS
 if(!empty($viewing['Dailyop']['theme_override'])) {
 	
-	$this->Html->css("/theme/{$viewing['Dailyop']['theme_override']}/css/layout_override.css","stylesheet",array("inline"=>false));
+	//$this->Html->css("/theme/{$viewing['Dailyop']['theme_override']}/css/layout_override.css","stylesheet",array("inline"=>false));
 	
 }
 
@@ -33,46 +25,46 @@ $meta_k = implode(",",$meta_k);
 
 $this->set(compact("title_for_layout","meta_k"));
 
-$bg_img = "http://img.theberrics.com/images/".$viewing['DailyopMediaItem'][1]['MediaFile']['file'];
 
 ?>
-<style>
-#battle-commander .d-post-bit {
 
-	background-image:url(<?php echo $bg_img; ?>);
 
-}
-</style>
-<div id='battle-commander'>
-	<?php 
-	
-		echo $this->element("dailyops/post-bit",array("dop"=>$viewing));
-			
-	?>
-</div>
-
-<div id='thumb-menu-header'>
-
-</div>
-<div id='commander-thumb-menu'>
-	<?php 
-	
-		foreach($posts as $post):
-	
-	
-	?>
-	
-	<div class='post-thumb-div'>
-		<div class='post-thumb-over'></div>
-		<a href='/<?php echo $post['DailyopSection']['uri']; ?>/<?php echo $post['Dailyop']['uri']; ?>'>
-			<img src='http://img.theberrics.com/images/<?php echo $post['DailyopMediaItem'][2]['MediaFile']['file']; ?>' border='0' />
-		</a>
+<div id='commander-view' class='commander-view <?php echo $this->request->params['section']; ?>'>
+	<div class="row-fluid">
+		<div class="span12">
+			<?php echo $this->element("banners/728") ?>
+		</div>
 	</div>
-	<?php 
+	<div class="row-fluid">
+		<div class="span12">
+				<?php 
 	
-	
-		endforeach;
-	
-	?>
-	<div style='clear:both;'></div>
+					echo $this->element("dailyops/post-bit",array("dop"=>$viewing));
+						
+				?>
+		</div>
+	</div>
+
+	<?php foreach ($posts as $year => $posts): ?>
+	<div class="posts-menu clearfix">
+		<h3><?php echo $year ?> BATTLE COMMANDERS</h3>
+		<?php 
+			foreach ($posts as $k => $post): 
+			$img = $post['DailyopMediaItem'][4]['MediaFile'];
+			$url = $this->Berrics->dailyopsPostUrl($post);
+		?>
+			<div class='menu-item'>
+				<a href="<?php echo $url; ?>">
+					<?php if(!empty($img)): ?>
+						<img src="http://img.theberrics.com/images/<?php echo $img['file']; ?>" alt="" />
+					<?php else: ?>
+						<?php echo $post['Dailyop']['name']; ?> - <?php echo $post['Dailyop']['sub_title']; ?>
+					<?php endif ?>
+				</a>
+			</div>
+			
+		<?php endforeach ?>
+	</div>
+	<?php endforeach ?>
+
 </div>
