@@ -64,6 +64,7 @@
 
           });
 
+      methods.initHtml($this);
       //get the video data
       $.ajax({
 
@@ -88,8 +89,8 @@
             
           }
           
-          methods.initHtml($this);
-
+          
+          methods.handleVideoPlay($this);
         }
 
 
@@ -104,7 +105,7 @@
 
       var $this = $data.target;
 
-      $this.html($("<div class='video-div' />").append($("<div class='click-element' /><div class='pause-overlay'/><video autoplay='true' />")));
+      $this.html($("<div class='video-div' />").append($("<div class='loader' /><div class='click-element' /><div class='pause-overlay'/><video autoplay='true' />")));
 
       var video_div = $this.find(".video-div");
 
@@ -120,9 +121,9 @@
 
       });
 
-      methods.handleVideoPlay(context);
-
       console.log($data.parent);
+
+      $this.find('.loader').show();
 
     },
     initFlash:function(context) {
@@ -169,9 +170,11 @@
       }).
       bind('play',function(e) { 
 
+        $this.find('.loader').hide();
+
         play_btn.addClass('paused');
 
-         pause_overlay.hide();
+        pause_overlay.hide();
 
         if(!$data.bufferInterval) {
 
@@ -376,7 +379,7 @@
 
         prog_bar.css({"width":percentPlayed+"%"});
 
-        var sliderPixel = Math.ceil((percentPlayed * ($data.target.find('.tracking-bar').width()/100)));
+        var sliderPixel = Math.floor((percentPlayed * ($data.target.find('.tracking-bar').width()/100)));
 
         if(sliderPixel>0) {
 
@@ -590,6 +593,8 @@
       var $data = $.data(context);
 
       var video = $data.target.find("video");
+
+      $data.target.find('.loader').show();
 
       if($data.GoogleAdsManager) {
 

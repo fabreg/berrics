@@ -21,16 +21,12 @@ jQuery(document).ready(function($) {
 });
 
 </script>
-<style type="text/css">
-	
-#search-results {
-
-	max-width: 728px;
-	margin: auto;
-
-}
-
-</style>
+<div>
+	<h1>
+		<?php echo strtoupper(base64_decode($this->request->pass[0])); ?>
+	</h1>
+</div>
+<div id="search-results">
 	<div class="row-fluid">
 		<div class="span12">
 			<div class="pagination pull-right">
@@ -41,8 +37,19 @@ jQuery(document).ready(function($) {
 			</div>
 		</div>
 	</div>
-<div id="search-results">
-	<?php foreach ($posts as $k => $v): ?>
+	<div class="thumb-collection">
+		<?php foreach ($posts as $k => $v): ?>
 		<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
 	<?php endforeach ?>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="pagination pull-right">
+				<?php 
+					
+					echo $pag_nav; 
+				?>
+			</div>
+		</div>
+	</div>
 </div>

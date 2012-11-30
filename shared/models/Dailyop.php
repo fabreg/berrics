@@ -1253,6 +1253,9 @@ class Dailyop extends AppModel {
 						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
 						"limit"=>1
 					)
+				),
+				"order"=>array(
+					"Dailyop.publish_date"=>"DESC"
 				)
 			));
 

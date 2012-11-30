@@ -82,7 +82,18 @@ function initMediaDivs () {
 	});
 
 
+
 	//video post
+	if(Modernizr.touch) {
+
+		
+
+	} else {
+
+
+
+	}
+
 	$('.post .post-media-div[data-media-type=bcove]').unbind().hover(
 	function() { 
 		$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
@@ -99,7 +110,6 @@ function initMediaDivs () {
 			}
 
 	});
-
 	//post thumb
 	$('.post-thumb .thumb').unbind().
 	hover(
