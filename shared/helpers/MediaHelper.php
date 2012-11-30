@@ -103,7 +103,7 @@ class MediaHelper extends AppHelper {
 		$attr['border'] = 0;
 
 		$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
-
+		
 		if(isset($opt['lazy']) && $opt['lazy'] == true) {
 
 			$attr['data-original'] = $img_src_str;

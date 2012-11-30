@@ -15,6 +15,8 @@ class Batb5Controller extends DailyopsController {
 	
 	public function beforeFilter() {
 		
+		$this->body_element = "layout/v3/one-column";
+
 		parent::beforeFilter();
 		
 		$this->Auth->allow("*");

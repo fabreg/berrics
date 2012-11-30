@@ -431,9 +431,9 @@ class BerricsHelper extends AppHelper {
 
 		//check for lazy load
 		$lazy = false;
-		if(isset($opts['lazy']) && $opts['lazy'] == true) {
+		if(isset($opts['lazy'])) {
 
-			$lazy = true;
+			$lazy = $opts['lazy'];
 
 		}
 

@@ -4,8 +4,13 @@
 <div class="banner-728" id='banner1'>
 		<img src="/img/v3/layout/728-banner.png" alt="" border='0'>
 </div>
-<?php foreach ($posts as $k => $v): ?>
-	<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
+<?php 
+	$lazy = true;
+	if($home_mode && !$this->request->is('ajax')) $lazy = false;
+
+	foreach ($posts as $k => $v): 
+?>
+	<?php echo $this->element("dailyops/post-bit",array("dop"=>$v,"lazy"=>$lazy)); ?>
 <?php endforeach ?>
 <script type="text/javascript">
 	$('img.lazy').lazyload({

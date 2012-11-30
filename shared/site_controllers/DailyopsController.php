@@ -94,7 +94,7 @@ class DailyopsController extends LocalAppController {
 
 		}
 
-		$this->set("posts",$posts);
+		$this->set(compact("posts","home_mode"));
 		$this->set(compact("title_for_layout","dateIn"));
 
 		if($this->request->is('ajax')) {
