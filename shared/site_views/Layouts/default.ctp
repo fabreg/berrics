@@ -15,7 +15,7 @@
 			<div class="container">
 				<div class="row-fluid top-row">
 					<div class="span8" >
-						<a href='/dailyops'><img src="/img/v3/layout/berrics-header-logo.jpg" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
+						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
 					</div>
 					<div class="span4"></div>
 				</div>

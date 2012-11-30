@@ -11,8 +11,8 @@
 	<?php 
 					echo $this->Media->mediaThumb(array(
 						"MediaFile"=>$media_file,
-						"w"=>310,
-						"h"=>175,
+						"w"=>350,
+						"h"=>200,
 						"zc"=>1,
 						"lazy"=>true
 					)); 

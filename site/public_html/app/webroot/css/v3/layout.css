@@ -57,9 +57,16 @@ header.top-nav-parked .top-row {
 
 }
 
+#berrics-heading-logo {
+
+	margin-top:5px;
+	margin-left:10px;
+
+}
+
 #body-div.top-nav-showing {
 
-	padding-top:130px;
+	padding-top:100px;
 
 }
 
@@ -84,10 +91,10 @@ header.top-nav-parked .top-row {
 #top-nav-list li {
 
 	float:left;
-	padding-left:24px;
-	padding-right:24px;
+	padding-left:14px;
+	padding-right:14px;
 	height:24px;
-	line-height:24px;
+	line-height:30px;
 	font-size:16px;
 	text-align:center;
 	cursor: pointer;
@@ -99,6 +106,7 @@ header.top-nav-parked .top-row {
 
 }
 #top-nav-list li:hover a {
+
 	border-bottom:1px dotted #fff;
 	
 }
@@ -144,11 +152,6 @@ header.top-nav-parked .top-row {
 	z-index: 1005;
 }
 
-#top-dropdown:hover {
-
-
-	height:27px;
-}
 
 #top-dropdown ul {
 
@@ -166,10 +169,10 @@ header.top-nav-parked .top-row {
 	width:450px;
 	background-color: #fff;
 	left:0px;
-	top:26px;
+	top:25px;
 }
 
-#top-dropdown-menu>ul {
+#top-dropdown-menu ul {
 
 	padding:0;
 	margin: 0;
@@ -181,27 +184,46 @@ header.top-nav-parked .top-row {
 	width:49%;
 	float:left;
 	text-align: left;
-	width: 205px;
-	font-size: 14px;
+	font-size: 12px;
 	font-family: 'universcn';
-	line-height:20px;
+	line-height:18px;
 	border-bottom:1px solid #000;
+	margin:0;
+	padding:2px;
+
 }
-#top-dropdown-menu>ul>li:nth-child(even) {
+
+
+#top-dropdown-menu ul li:hover,
+#top-dropdown-menu ul li:hover a {
+
+	background-color: #000;
+	color:#fff;
+	border:none;
+}
+
+#top-dropdown-menu ul li:nth-child(even) {
 
 	float:right;
 
 }
 
-#top-dropdown-menu>ul li img {
+#top-dropdown-menu ul li img {
 
 	margin-right:3px;
 
 }
 
-#top-dropdown-menu>ul li a {
+#top-dropdown-menu ul li a {
 
 	color:#000;
+	display:block;
+}
+
+#top-dropdown-menu ul li a:hover {
+
+	color:#fff;
+	border:none;
 
 }
 

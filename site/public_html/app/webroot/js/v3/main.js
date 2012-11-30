@@ -5,7 +5,7 @@ $(function() {
 
 		var st = $(window).scrollTop();
 
-		if(st>80) {
+		if(st>65) {
 
 			var offset = $("#main-container").offset();
 
@@ -87,7 +87,7 @@ function initLayout() {
 	$("#top-dropdown").unbind().
 	hover(
 		function() {
-			$("#top-dropdown-menu").slideDown();
+			$("#top-dropdown-menu").slideDown('fast');
 		},
 		function() {
 			$("#top-dropdown-menu").hide();
