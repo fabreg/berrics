@@ -49,6 +49,7 @@ header {
 
 }
 
+
 h2 {
 
 	margin:2px;
@@ -352,22 +353,14 @@ TWO COLUMN BODY
 
 
 	}
+
+
+
 	header {
 
 		position: static;
 		background-position: center -117px;
-	}
-
-	#top-nav-list {
-
-		display: none;
-
-	}
-
-	body {
-
-		padding-top:120px;
-
+		margin-bottom:15px;
 	}
 
 }
@@ -379,13 +372,11 @@ TWO COLUMN BODY
 	header {
 
 		position: static;
+		background-position: center -117px;
+		margin-bottom:15px;
 
 	}
-	#top-nav-list {
 
-		display: none;
-
-	}
 
 }
  
@@ -397,13 +388,10 @@ TWO COLUMN BODY
 	header {
 
 		position: static;
-
+		background-position: center -117px;
+		margin-bottom:15px;
 	}
-	#top-nav-list {
 
-		display: none;
-
-	}
 
 }
 
@@ -488,6 +476,32 @@ BATTLE COMMANDER / UN / RECRUIT
 
 	float:right;
 
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+
+	#commander-view .posts-menu .menu-item {
+
+		width:100%;
+
+	}
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+	#commander-view .posts-menu .menu-item {
+
+		width:100%;
+
+	}
 }
 
 /*
