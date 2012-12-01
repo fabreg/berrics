@@ -21,7 +21,7 @@ body {
 
 	background-color: #fff;
 	font-family: "universcn";
-	padding-top:70px;
+	
 
 }
 
@@ -60,6 +60,12 @@ h2 {
 
 	margin-top:5px;
 	margin-left:10px;
+
+}
+
+#body-row {
+
+	padding-top:70px;
 
 }
 
@@ -185,7 +191,7 @@ h2 {
 #top-dropdown {
 
 	position: relative;
-	z-index: 1005;
+	z-index: 10005;
 }
 
 
@@ -198,13 +204,13 @@ h2 {
 #top-dropdown-menu {
 
 	position: absolute;
-	
 	display: none;
 	width:450px;	
-	
 	left:0px;
 	top:21px;
 	padding-top:3px;
+	z-index: 10010;
+
 }
 #top-dropdown-menu .inner {
 
@@ -266,6 +272,13 @@ h2 {
 
 	color:#fff;
 	border:none;
+
+}
+
+#top-nav-div.phone #top-dropdow-menu {
+
+	position: static;
+	display: block;
 
 }
 
@@ -361,6 +374,7 @@ TWO COLUMN BODY
 		position: static;
 		background-position: center -117px;
 		margin-bottom:15px;
+		height:auto;
 	}
 
 }
@@ -374,7 +388,7 @@ TWO COLUMN BODY
 		position: static;
 		background-position: center -117px;
 		margin-bottom:15px;
-
+		height:auto;
 	}
 
 
@@ -390,6 +404,7 @@ TWO COLUMN BODY
 		position: static;
 		background-position: center -117px;
 		margin-bottom:15px;
+		height:auto;
 	}
 
 
@@ -534,11 +549,7 @@ VIDEO DIV PLUGIN
 	background-color:#000;
 }
 
-video.mobile-video-tag {
 
-	width:100%;
-
-}
 
 .video-div .loader {
 
@@ -1255,6 +1266,27 @@ standard post
 
 
 }
+
+/*
+#####################
+large post 
+#####################
+*/
+
+.large-post {
+
+
+
+}
+
+.large-post .post-media-div {
+
+	min-height: 50px;
+
+}
+
+
+
 
 /*
 ##########################

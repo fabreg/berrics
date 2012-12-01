@@ -1,7 +1,5 @@
 <div class="row-fluid" id='featured'>
-	<div class="span12 ">
-		<div class="large-post" data-postid='<?php echo $featured_post['Dailyop']['id']; ?>' data-media-file-id='<?php echo $featured_post['DailyopMediaItem'][0]['MediaFile']['id'] ?>'>
-			<img src="/img/v3/layout/large-post.png" alt="">	
-		</div>
+	<div class="span10 ">
+		<?php echo $this->element('dailyops/posts/featured/post',array("post"=>$featured_post)) ?>
 	</div>
 </div>

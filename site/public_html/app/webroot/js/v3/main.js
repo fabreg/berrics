@@ -4,15 +4,24 @@ $(function() {
 
 		var $w = $(window).width();
 
+		if($w<978) {
+
+			$('#top-nav-div').addClass('phone').hide().find('#top-nav-list').addClass('phone');
+
+		} else {
+
+			$('#top-nav-div').removeClass('phone').show().find('#top-nav-list').removeClass('phone');
+
+		}
 		
-	});
+	}).trigger('resize');
 
 	
 	$('#mobile-nav-toggle').unbind().click(function() { 
 
-				$("#top-nav-list").toggle('fast');
+				$("#top-nav-div").toggle('fast');
 
-			});
+	});
 	initLayout();
 	initMediaDivs();
 	initTrending();

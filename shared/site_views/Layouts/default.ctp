@@ -56,7 +56,8 @@
 						
 					</div>
 				</div>
-				<ul id='top-nav-list'>
+					<div id="top-nav-div">
+						<ul id='top-nav-list'>
 							<li class='nav-btn' id='top-dropdown'>
 								<a href="#">FEATURES</a>
 								<div id="top-dropdown-menu">
@@ -99,13 +100,14 @@
 							<li class="spacer"></li>
 							<li class='nav-btn'><a href='/canteen'>CANTEEN</a></li>
 							<li class="spacer"></li>
-							<li class='hidden-phone nav-btn'>HEADQUARTERS</li>
+							<li class='nav-btn'>HEADQUARTERS</li>
 							<li class="spacer"></li>
 							<li class='nav-btn'>MORE</li>
 							
 							<li class='nav-btn search'><form method='post' action='/search' ><label for="">SEARCH</label>
 							<input name='data[Search][term]' type='text' /><button></button></form></li>
 						</ul>
+					</div>
 			</div>
 		</header>
 		<div class="container" id='main-container'>
