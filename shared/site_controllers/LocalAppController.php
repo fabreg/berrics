@@ -56,7 +56,7 @@ class LocalAppController extends AppController {
 		
 		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) $this->fixGeoIp();
 		
-		$this->setSections();
+		//$this->setSections();
 		
 		$this->setCanteenCategories();
 		
