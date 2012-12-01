@@ -72,7 +72,6 @@ class TrendingPost extends AppModel {
 					)
 				),
 				"order"=>array(
-					"TrendingPost.start_date"=>"DESC",
 					"TrendingPost.display_weight"=>"ASC"
 				)
 			));

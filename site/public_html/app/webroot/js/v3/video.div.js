@@ -51,6 +51,12 @@
 
       }
 
+     if($that.attr("data-dailyop-id")) {
+
+        req.data.dailyop_id = $that.attr("data-dailyop-id");
+
+      }
+
       var data = $.data($this,{
 
             "target":$this,

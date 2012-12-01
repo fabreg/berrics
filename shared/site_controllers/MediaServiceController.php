@@ -37,13 +37,23 @@ class MediaServiceController extends LocalAppController {
 			"contain"=>array()
 		));
 
+		if(isset($this->request->data['dailyop_id'])) {
+
+			$Post = $this->Dailyop->returnPost(array(
+				'Dailyop.id'=>$this->request->data['dailyop_id']
+			),$this->isAdmin());
+
+		}
+
 		if(!empty($MediaFile['MediaFile']['preroll_label'])) {
 
 			$data[]['AdUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
 
 		}
 
-		$data[]['MediaFile'] = $MediaFile['MediaFile'];
+		$d['MediaFile'] =  $MediaFile['MediaFile'];
+		if(isset($Post)) $d['Dailyop'] = $Post;
+		$data[] = $d;
 
 		if(!empty($MediaFile['MediaFile']['postroll_label'])) {
 

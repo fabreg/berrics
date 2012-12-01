@@ -2,7 +2,6 @@
 
 	//page title
 	$this->set("title_for_layout","The Berrics - ".$section['name']);
-
 ?>
 <script type="text/javascript">
 var section=<?php echo json_encode($section); ?>;
@@ -54,11 +53,17 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 	<div class="row-fluid">
-		<div class="thumb-collection clearfix">
-			<?php foreach ($posts as $k => $v): ?>
-				<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
-			<?php endforeach ?>
-		</div>
+		<?php
+			if(preg_match('/(first)/',$section['section_view_override']) || empty($section['section_view_override'])) {
+
+				echo $this->element("dailyops/views/section-grouped");
+
+			} else {
+
+				echo $this->element("dailyops/views/section-standard");
+
+			}
+		?>
 	</div>
 </div>
 <div class="row-fluid">
@@ -72,3 +77,4 @@ jQuery(document).ready(function($) {
 		</ul>
 	</div>
 </div>
+<?php pr($section) ?>

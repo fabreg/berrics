@@ -43,7 +43,7 @@ function initTrending () {
 
 		$("#trending-content .loading").remove();
 
-		$("#trending-content").append($("<div class='loading' />"));
+		$("#trending-content").append($("<div class='loading' />").append($("<div class='spinner' />")));
 
 		$("#trending-content .loading").fadeIn('fast');
 

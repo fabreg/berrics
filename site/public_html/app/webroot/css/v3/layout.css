@@ -355,7 +355,7 @@ TWO COLUMN BODY
 	header {
 
 		position: static;
-
+		background-position: center -117px;
 	}
 
 	#top-nav-list {
@@ -364,6 +364,11 @@ TWO COLUMN BODY
 
 	}
 
+	body {
+
+		padding-top:120px;
+
+	}
 
 }
  
@@ -864,6 +869,16 @@ hr.hr1 {
 	
 }
 
+#trending-content .loading .spinner {
+
+	height:100%;
+	width:100%;
+	background-image: url(/img/v3/layout/loader-big.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+
+}
+
 #trending-content .tab-row {
 
 	margin-top:3px;
@@ -1150,6 +1165,16 @@ post section
 #post-section .bottom-year-nav {
 
 	margin-top: 10px;
+
+}
+
+#post-section h3 {
+
+	margin:0;
+	padding-top:10px;
+	padding-bottom: 3px;
+	border-bottom:1px solid #333;
+	width:100%;
 
 }
 
