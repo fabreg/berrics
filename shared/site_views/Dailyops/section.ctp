@@ -39,6 +39,8 @@ jQuery(document).ready(function($) {
 			)); ?>
 		</div>
 	</div>
+	<?php else: ?>
+	<h1><?php echo $section['name']; ?></h1>
 	<?php endif ?>
 	<div class="row-fluid">
 		<div class="span5 offset7" id='jump-menu'>

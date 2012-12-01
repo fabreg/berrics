@@ -1,12 +1,41 @@
+<?php 
+	if(!isset($meta_d)) {
+		
+		$meta_d = "";
+		
+	}
+
+	if(!isset($meta_k)) {
+		
+		$meta_k = "";
+		
+	}
+	
+	if(!isset($fb_meta_img)) {
+		
+		$fb_meta_img = '';
+		
+	}
+	
+	if(!isset($rss_feed)) {
+		
+		$rss_feed = '';
+		
+	}
+ ?>
 <html>
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+	<meta name='keywords' content='<?php echo $meta_k; ?>' >
+	<meta name='decsription' content='<?php echo $meta_d; ?>' >
+	<meta property="fb:app_id" content="128870297181216">
+	<meta property="og:url" content="http://theberrics.com<?php echo $_SERVER['REQUEST_URI']; ?>">
+	<meta property="og:type" content="website">
 	<?php 
-
+		echo $fb_meta_img;
 		echo $this->element("layout/v3/html-head-scripts"); 
 		echo $scripts_for_layout;
 	?>
@@ -16,10 +45,15 @@
 				<div class="row-fluid top-row">
 					<div class="span8" >
 						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
+						<div class="pull-right" >
+							<button class="btn btn-mini"><i class="icon icon-edit"></i></button>
+						</div>
 					</div>
-					<div class="span4 hidden-tablet"></div>
+					<div class="span4">
+						
+					</div>
 				</div>
-				<ul id='top-nav-list'>
+				<ul id='top-nav-list' class='nav-collapse'>
 							<li class='nav-btn' id='top-dropdown'>
 								<a href="#">FEATURES</a>
 								<div id="top-dropdown-menu">
@@ -65,7 +99,7 @@
 							<li class='hidden-phone nav-btn'>HEADQUARTERS</li>
 							<li class="spacer"></li>
 							<li class='nav-btn'>MORE</li>
-							<li class="spacer"></li>
+							
 							<li class='nav-btn search'><form method='post' action='/search' ><label for="">SEARCH</label>
 							<input name='data[Search][term]' type='text' /><button></button></form></li>
 						</ul>

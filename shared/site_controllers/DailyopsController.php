@@ -129,15 +129,70 @@ class DailyopsController extends LocalAppController {
 			
 		}
 
-		$posts = $this->Dailyop->getPostsBySection($section,$year);
+		$posts = $this->Dailyop->getPostsBySectionYear($section,$year);
 
 		$year_select = $this->Dailyop->getYearsBySection($section['id']);
 
 		$year_select = array_combine($year_select, $year_select);
 
+
+
 		$this->set(compact("posts","section","year_select"));
 
 
+	}
+
+	public function view() {
+		
+		$this->loadModel("DailyopSection");
+		
+		$entry = $this->Dailyop->returnPost(array(
+		
+			"DailyopSection.uri"=>$this->request->params['section'],
+			"Dailyop.uri"=>$this->request->params['uri']
+		
+		),$this->isAdmin());
+		
+		if(!$entry) {
+			
+			throw new NotFoundException();
+			
+		}
+
+		//let's get the media item we want to show on facebook
+		
+		$this->setFacebookMetaData($entry);
+		
+		$this->set(compact("entry"));
+		
+		
+		//set the title of the page
+		
+		$this->set("title_for_layout",stripslashes($entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']));
+		
+		//build a list of tags for meta_k
+		
+		$k = array();
+		
+		foreach($entry['Tag'] as $t) {
+			
+			$k[] = $t['name'];
+			
+		}
+		
+		if(count($k)>0) {
+			
+			$meta_k = implode(",",$k);
+			
+			$this->set(compact("meta_k"));
+			
+		}
+		
+		$this->sectionRelated($entry);
+
+		$this->setRssFeed();
+	
+		
 	}
 
 	private function checkHomeDateIn($dateIn) {
@@ -156,6 +211,93 @@ class DailyopsController extends LocalAppController {
 
 		return $dateIn;
 	}
+
+
+
+	private function sectionRelated($post) {
+
+		$posts = $this->Dailyop->find("all",array(
+			"conditions"=>array(
+				"Dailyop.dailyop_section_id"=>$post['Dailyop']['dailyop_section_id'],
+				"Dailyop.id !="=>$post['Dailyop']['id'],
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"Dailyop.publish_date <= NOW()"
+			),
+			"contain"=>array(
+				"DailyopSection",
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+						"limit"=>1
+					),
+					"DailyopTextItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1
+					)
+			),
+			"limit"=>4,
+			"order"=>array(
+				"Dailyop.publish_date"=>"DESC"
+			)
+		));
+
+		$tags = Set::extract("/Tag/name",$post);
+
+		$this->loadModel('SearchItem');
+
+		$str = implode(" ",$tags);
+
+		$str .= " ".$post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];
+
+		$cond = array(
+			"model"=>"Dailyop",
+			"foreign_key !="=>$post['Dailyop']['id']
+		);
+
+		$res = $this->SearchItem->run_search($str,false,$cond);
+
+		$ids = Set::extract("/SearchItem/foreign_key",$res);
+
+		$related = $this->Dailyop->find("all",array(
+			"conditions"=>array(
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"Dailyop.publish_date <= NOW()",
+				"Dailyop.dailyop_section_id !="=>65,
+				"Dailyop.id"=>$ids
+			),
+			"contain"=>array(
+				"DailyopSection",
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+						"limit"=>1
+					),
+					"DailyopTextItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1
+					)
+			),
+			"limit"=>4,
+			"order"=>array(
+				"Dailyop.publish_date"=>"DESC"
+			)
+		));
+
+		$this->set("recent_posts",$posts);
+		$this->set("related_posts",$related);
+
+
+	}
+
+
+
+
+
+
 	
 	public function index__() {
 	
@@ -428,67 +570,7 @@ class DailyopsController extends LocalAppController {
 	}
 	
 	
-	public function view() {
-		
-		$this->loadModel("DailyopSection");
-		
-		$entry = $this->Dailyop->returnPost(array(
-		
-			"DailyopSection.uri"=>$this->request->params['section'],
-			"Dailyop.uri"=>$this->request->params['uri']
-		
-		),$this->isAdmin());
-		
-		if(!$entry) {
-			
-			throw new NotFoundException();
-			
-		}
-		
-		$sections = $this->DailyopSection->returnSections();
-		
-		$section = Set::extract("/DailyopSection[uri=".$this->request->params['section']."]/id",$sections);
-
-		$section_id = $section[0];
-
-		//get the rest of the post from this category from the same month/year
-		
-		$posts = $this->Dailyop->returnPostsByMonth($entry['Dailyop']['publish_date'],$entry['Dailyop']['dailyop_section_id'],$entry['Dailyop']['id']);
-		
-		
-		//let's get the media item we want to show on facebook
-		
-		$this->setFacebookMetaData($entry);
-		
-		$this->set(compact("entry","posts"));
-		
-		
-		//set the title of the page
-		
-		$this->set("title_for_layout",stripslashes($entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']));
-		
-		//build a list of tags for meta_k
-		
-		$k = array();
-		
-		foreach($entry['Tag'] as $t) {
-			
-			$k[] = $t['name'];
-			
-		}
-		
-		if(count($k)>0) {
-			
-			$meta_k = implode(",",$k);
-			
-			$this->set(compact("meta_k"));
-			
-		}
-		
-		$this->setRssFeed();
 	
-		
-	}
 	
 	public function _section($year = false, $auto_render = true,$legacy = false) {
 		

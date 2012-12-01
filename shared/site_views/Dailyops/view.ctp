@@ -32,4 +32,18 @@ $m = $entry['DailyopMediaItem'][0]['MediaFile'];
 		echo $this->element("dailyops/post-bit",array("dop"=>$entry)); 
 
 	?>
+
+
 </div>
+	<h2>Recent <small>(<a href="/<?php echo $entry['DailyopSection']['uri'] ?>"> View More </a>)</small> </h2>
+	<div class="thumb-collection clearfix">
+		<?php foreach ($recent_posts as $k => $v): ?>
+			<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
+		<?php endforeach ?>
+	</div>
+		<h2>Related</h2>
+	<div class="thumb-collection clearfix">
+		<?php foreach ($related_posts as $k => $v): ?>
+			<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
+		<?php endforeach ?>
+	</div>

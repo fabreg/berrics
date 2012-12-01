@@ -49,6 +49,11 @@ header {
 
 }
 
+h2 {
+
+	margin:2px;
+
+}
 
 #berrics-heading-logo {
 
@@ -147,7 +152,7 @@ header {
 
 	width:auto;
 	float:left;
-
+	padding-right:8px;
 }
 
 #top-nav-list li.search button {
@@ -160,6 +165,7 @@ header {
 	padding: 0;
 	border:none;
 	background-color: transparent;
+	margin-bottom:10px;
 }
 
 #top-nav-container.top-nav-parked li {
@@ -538,6 +544,16 @@ video.mobile-video-tag {
 	height:100%;
 	width:100%;
 	display:none;
+
+}
+.video-div .pause-overlay .play-icon {
+
+	height:100%;
+	width:100%;
+	background-image: url(/img/v3/layout/play-button.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	opacity: .6;
 
 }
 .video-div .click-element {
@@ -1131,6 +1147,13 @@ post section
 
 }
 
+#post-section .bottom-year-nav {
+
+	margin-top: 10px;
+
+}
+
+
 /*
 #####################
 tags section
@@ -1387,6 +1410,23 @@ STANDARD THUMBNAIL
 
 /*#############################################*/
 
+/*
+##########################
+BOOTSTRAP OVERRIDES
+########################
+*/
+
+.nav-pills li a {
+
+	color:#333;
+
+}
+
+.nav-pills li.active a {
+
+	background-color:#ccc;
+
+}
 
 
 /*#############################################*/

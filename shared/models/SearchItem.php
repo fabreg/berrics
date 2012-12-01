@@ -26,11 +26,17 @@ class SearchItem extends AppModel {
 
 	}
 
-	public function formatString($s) {
+	public function formatString($s,$strict = true) {
 		
 		 $final = array();
 	    foreach (array_filter(preg_split('/[\s\'-]+/', $s)) as $word) {
-	            $final[] = "+$word";
+	            if ($strict) {
+	            	  $final[] = "+$word";
+	            } else {
+	            	  $final[] = "$word";
+	            }
+	            
+	          
 	    }
 	    $s = implode(' ', $final);
 
@@ -38,13 +44,13 @@ class SearchItem extends AppModel {
 
 	}
 
-	public function run_search($str) {
+	public function run_search($str,$strict=true,$cond = array()) {
 		
-		$token = "ft-search-".md5($str);
+		$token = "ft-search-".md5($str).md5(serialize($cond));
 
 		if(($result = Cache::read($token,"1min")) === false) {
 
-			$query = $this->formatString($str);
+			$query = $this->formatString($str,$strict);
 
 			$match = "MATCH(title,sub_title,keywords) AGAINST('{$query}')";
 
@@ -55,9 +61,9 @@ class SearchItem extends AppModel {
 								"*",
 								"{$match} AS `Score`"
 							),
-							"conditions"=>array(
+							"conditions"=>array_merge(array(
 								$match_bool
-							),
+							),$cond),
 							"order"=>array(
 								"Score"=>"DESC"
 							)

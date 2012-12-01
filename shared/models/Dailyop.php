@@ -1222,7 +1222,7 @@ class Dailyop extends AppModel {
 	/**
 	 * GET POSTS BY SECTION AND YEAR
 	 */
-	public function getPostsBySection($DailyopSection = fasle,$year = false) {
+	public function getPostsBySectionYear($DailyopSection = fasle,$year = false) {
 			
 		if(!$DailyopSection) throw new BadRequestException("No Dailyop Section Passed In");
 

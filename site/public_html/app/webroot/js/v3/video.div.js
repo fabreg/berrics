@@ -105,7 +105,7 @@
 
       var $this = $data.target;
 
-      $this.html($("<div class='video-div' />").append($("<div class='loader' /><div class='click-element' /><div class='pause-overlay'/><video autoplay='true' />")));
+      $this.html($("<div class='video-div' />").append($("<div class='loader' /><div class='click-element' /><div class='pause-overlay'><div class='play-icon'></div></div><video autoplay='true' />")));
 
       var video_div = $this.find(".video-div");
 
