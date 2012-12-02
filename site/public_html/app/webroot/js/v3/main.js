@@ -91,20 +91,29 @@ function initMediaDivs () {
 
 	}
 
-	$('.post .post-media-div[data-media-type=bcove]:not(:has(video))').hover(
-	function() { 
-		$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
-	},
-	function() { 
-		$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
-	}).click(function() { 
-			
-			if($(this).find('video').length<=0) {
+	$('.post .post-media-div[data-media-type=bcove]:not(:has(video))').each(function(e) { 
 
+		$this = $(this);
+
+		if(!Modernizr.touch) {
+
+			$this.hover(
+			function() { 
+				$this.find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
+			},
+			function() { 
+				$this.find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
+			});
+
+		}
+		
+
+		$this.click(function() { 
+			
 				$(this).videoDiv();
 				$(this).unbind('click');
 
-			}
+		});
 
 	});
 	//post thumb

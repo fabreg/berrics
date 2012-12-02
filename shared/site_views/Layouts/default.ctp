@@ -57,19 +57,14 @@
 			</div>
 					</header>
 		<div class="container" id='main-container'>
-			
 			<div class="row-fluid" id='body-row'>
 				<div class="span12" id='body-div'>
 					<?php echo $this->element($top_element); ?>
 					<?php echo $this->element($body_element); ?>
 				</div>
 			</div>
-			<div class="row-fluid">
-				<div class="span12">
-						<div style='text-align:right; font-size:10px;'><?php echo php_uname('n'); ?></div>
-				</div>
-			</div>
 		</div>
+		<div style='text-align:right; font-size:10px; clear:both;'><?php echo php_uname('n'); ?></div>
 		<?php echo $this->element('sql_dump'); ?>
 		<?php echo $this->element("layout/v3/html-footer-scripts"); ?>
 	</body>

@@ -85,6 +85,9 @@ h2 {
 
 }
 
+
+
+
 #top-nav-div {
 
 	display:none;
@@ -334,7 +337,7 @@ TWO COLUMN BODY
 }
 #two-column-body .right-column {
 
-	height:100%;
+	height:auto;
 	
 }
 

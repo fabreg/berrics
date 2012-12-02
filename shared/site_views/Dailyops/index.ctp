@@ -22,12 +22,18 @@
 
 }
 
-#dailyops {
+.load-btn {
 
-	max-width:728px;
-	margin:auto;
+	background-color: #fff;
+	border:1px solid #333;
+	font-size: 18px;
+	text-align: center;
+	width:60%;
+	padding:20px;
 
 }
+
+
 
 
 /*
@@ -65,7 +71,7 @@ var dailyops_date;
 var today_date = new Date(<?php echo strtotime(date("Y-m-d"))*1000; ?>);
 jQuery(document).ready(function($) {
 
-	$("#load-more").click(function() { 
+	$(".load-more-btn").click(function() { 
 
 		loadNextPosts();
 
@@ -121,6 +127,6 @@ function loadNextPosts() {
 <div id="dailyops" class='clearfix'>
 	<?php echo $this->element("dailyops/dailyops-index"); ?>
 </div>
-<div>
-	<button class="btn" id='load-more'>Load More</button>
+<div class='load-more-btn-div'>
+	<button class='load-more-btn load-btn'>Load More</button>
 </div>
