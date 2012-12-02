@@ -5,7 +5,7 @@ $TrendingPost = ClassRegistry::init("TrendingPost");
 $trending_posts = $TrendingPost->currentTrending('weekly');
 
 ?>
-<div id="standard-right-column">
+<div id="standard-right-column" style='clearfix'>
 	<!--Trending Content!-->
 	<div id="trending-content">
 		<h2>BANGIN! CONTENT: </h2>
@@ -14,7 +14,7 @@ $trending_posts = $TrendingPost->currentTrending('weekly');
 			<div class="tab" data-section='monthly'>This Month</div>
 			<div class="tab" data-section='yearly'>This Year</div>
 		</div>
-		<div>
+		<div class='content'>
 			<table cellspacing='0'>
 				<tbody class="content">
 					<?php foreach ($trending_posts as $k => $v): ?>
@@ -25,14 +25,19 @@ $trending_posts = $TrendingPost->currentTrending('weekly');
 		</div>
 	</div>
 	<hr class='hr1' />
-	<div style=''>
+	<div class='banner-300'>
 		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
 	</div>
-	<h2>SHREDLINES:</h2>
+
+	<div id="news-headlines">
+		<h2>SHREDLINES:</h2>
+		<hr class='hr1' />
+		<div class="content">
+			
+		</div>
+	</div>
 	<hr class='hr1' />
-	Cowabunga
-	<hr class='hr1' />
-	<div style=''>
+	<div class='banner-300'>
 		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
 	</div>
 </div>
