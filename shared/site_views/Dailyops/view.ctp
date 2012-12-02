@@ -33,17 +33,16 @@ $m = $entry['DailyopMediaItem'][0]['MediaFile'];
 
 	?>
 
-
-</div>
-	<h2>Recent <small>(<a href="/<?php echo $entry['DailyopSection']['uri'] ?>"> View More </a>)</small> </h2>
+	<h3>Recent <small>(<a href="/<?php echo $entry['DailyopSection']['uri'] ?>"> View More </a>)</small> </h3>
 	<div class="thumb-collection clearfix">
 		<?php foreach ($recent_posts as $k => $v): ?>
 			<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
 		<?php endforeach ?>
 	</div>
-		<h2>Related</h2>
+		<h3>Related</h3>
 	<div class="thumb-collection clearfix">
 		<?php foreach ($related_posts as $k => $v): ?>
 			<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
 		<?php endforeach ?>
 	</div>
+</div>

@@ -45,7 +45,7 @@
 				<div class="row-fluid top-row">
 					<div class="span8" >
 						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
-						<div class="pull-right" >
+						<div class="pull-right hidden-desktop" >
 							<button class="btn btn-mini" id='mobile-nav-toggle'><i class="icon icon-edit"></i></button>
 						</div>
 					</div>

@@ -29,7 +29,7 @@ $(function() {
 	
 	$('#mobile-nav-toggle').unbind().click(function() { 
 
-				$("#top-nav-div").toggle('fast');
+				$("#top-nav-mobile").toggle('normal');
 
 	});
 	initLayout();
@@ -141,7 +141,7 @@ function initNav () {
 		}
 	);
 
-	$("#top-nav-mobile #top-dropdown-menu").show();
+	$("#top-nav-mobile").find("#top-dropdown-menu").show();
 	$("#top-nav-div #top-dropdown-menu").hide();
 
 }

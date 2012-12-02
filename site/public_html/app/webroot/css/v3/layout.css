@@ -63,16 +63,18 @@ h2 {
 
 }
 
-#body-row {
 
-	padding-top:70px;
-
-}
 
 
 #body-div {
 
 	
+
+}
+
+#body-row {
+
+	padding-top:70px;
 
 }
 
@@ -275,6 +277,7 @@ h2 {
 
 #top-nav-mobile {
 
+	display: none;
 
 }
 
@@ -288,6 +291,46 @@ h2 {
 	display:none;
 
 }
+#top-nav-mobile #top-nav-list>ul li {
+
+	color:#000;
+}
+
+#top-nav-mobile #top-nav-list .nav-btn {
+
+	height:18px;
+	line-height: 18px;
+	font-size:12px;
+
+}
+
+#top-nav-mobile #top-nav-list .nav-btn:before {
+
+	content:"\203A";
+	text-indent: -5px;
+}
+#top-nav-mobile #top-nav-list .nav-btn#top-dropdown {
+
+	height:auto;
+
+}
+
+#top-nav-mobile #top-nav-list #top-dropdown-menu ul {
+
+	list-style: none;
+	margin:0;
+	margin-left:5px;
+
+}
+
+#top-nav-mobile #top-nav-list #top-dropdown-menu ul li {
+
+
+
+}
+
+
+#top-nav-mobile #top-nav-list #top-dropdown-menu ul 
 
 
 
@@ -333,6 +376,8 @@ TWO COLUMN BODY
 
 		border-right:2px dotted #ccc;
 		border-left:2px dotted #ccc;
+		
+
 	}
 
 	#two-column-body .right-column {
@@ -373,6 +418,13 @@ TWO COLUMN BODY
 		height:auto;
 	}
 
+	#body-row {
+
+		padding-top:0px;
+	
+	}
+
+
 }
  
 /* Landscape phone to portrait tablet */
@@ -385,6 +437,12 @@ TWO COLUMN BODY
 		background-position: center -117px;
 		margin-bottom:15px;
 		height:auto;
+	}
+
+		#body-row {
+
+		padding-top:0px;
+	
 	}
 
 
@@ -401,6 +459,12 @@ TWO COLUMN BODY
 		background-position: center -117px;
 		margin-bottom:15px;
 		height:auto;
+	}
+
+		#body-row {
+
+		padding-top:0px;
+	
 	}
 
 
@@ -1196,9 +1260,30 @@ post section
 	padding-bottom: 3px;
 	border-bottom:1px solid #333;
 	width:100%;
-
+	font-weight: normal;
+	font-size:20px;
 }
 
+/*
+#####################
+post section
+#####################
+*/
+
+#post-view {
+
+
+}
+#post-view h3 {
+
+	margin:0;
+	padding-top:10px;
+	padding-bottom: 3px;
+	border-bottom:1px solid #333;
+	width:100%;
+	font-weight: normal;
+	font-size:20px;
+}
 
 /*
 #####################
