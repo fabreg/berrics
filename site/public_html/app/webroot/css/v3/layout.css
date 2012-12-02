@@ -293,6 +293,18 @@ h2 {
 
 }
 
+#top-nav-mobile .search button {
+
+	background-image: url(/img/v3/layout/search-button.png);
+	background-repeat: no-repeat;
+	height:19px;
+	width:19px;
+	margin:0;
+	padding: 0;
+	border:none;
+	background-color: transparent;
+	margin-bottom:10px;
+}
 
 
 /*
@@ -400,7 +412,7 @@ TWO COLUMN BODY
 
 	#body-row {
 
-		padding-top:85px;
+		padding-top:114px;
 
 	}
 	
@@ -424,7 +436,7 @@ TWO COLUMN BODY
 	}
 	#body-row {
 
-		padding-top:85px;
+		padding-top:114px;
 
 	}
 
@@ -457,7 +469,7 @@ TWO COLUMN BODY
 
 	#body-row {
 
-		padding-top:85px;
+		padding-top:114px;
 
 	}
 
