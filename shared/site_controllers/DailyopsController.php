@@ -30,7 +30,7 @@ class DailyopsController extends LocalAppController {
 
 		$this->set("top_element","layout/v3/top_element_featured_post");
 
-		$title_for_layout = "The Berrics - The DailyOps";
+		$title_for_layout = "The Berrics - Daily Ops";
 
 		$home_mode = false;
 

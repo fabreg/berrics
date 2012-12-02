@@ -5,6 +5,8 @@
 		</div>
 	</div>
 	<div class="span4 right-column">
-		<?php echo $this->element("layout/v3/standard-right-column"); ?>
+		<div class="inner">
+			<?php echo $this->element("layout/v3/standard-right-column"); ?>
+		</div>
 	</div>
 </div>
