@@ -2,6 +2,8 @@
 $DailyopSection = ClassRegistry::init("DailyopSection");
 $sections_array = $DailyopSection->returnSections();
 ?>
+
+<div id="top-nav-div">
 <ul id='top-nav-list'>
 	<li class='nav-btn' id='top-dropdown'>
 		<a href="#">FEATURES</a>
@@ -51,4 +53,23 @@ $sections_array = $DailyopSection->returnSections();
 	
 	<li class='nav-btn search'><form method='post' action='/search' ><label for="">SEARCH</label>
 	<input name='data[Search][term]' type='text' /><button></button></form></li>
-</ul>
+</ul>			
+</div>
+<div class="" id="top-nav-mobile">
+<select id='mobile-nav-select'>
+<option value="">Navigation..</option>
+<option value="/dailyops">DAILY OPS</option>
+<option value="/canteen">CANTEEN</option>
+<option value="/headquarters.html">HEADQUARTERS</option>
+<optgroup label='Features'>
+	<?php 
+	$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
+
+	$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
+
+	foreach ($f_sections as $k => $v): ?>
+	<option value="/<?php echo $v['DailyopSection']['uri']; ?>"><?php echo $v['DailyopSection']['name']; ?></option>
+	<?php endforeach; unset($nl,$f_sections); ?>
+</optgroup>
+</select>
+</div>

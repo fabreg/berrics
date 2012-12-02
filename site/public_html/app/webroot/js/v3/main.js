@@ -6,30 +6,26 @@ $(function() {
 
 		if($w<=978) {
 
-			if($("#top-nav-mobile #top-nav-list").length<=0) {
-
-				$("#top-nav-list").appendTo($("#top-nav-mobile"));
-				initNav();
-			}
-
-			//$('#top-nav-div').addClass('phone').hide().find('#top-nav-list').addClass('phone');
+			$("#top-nav-div").hide();
+			$("#top-nav-mobile").show();
 
 		} else {
 
-			//$('#top-nav-div').removeClass('phone').show().find('#top-nav-list').removeClass('phone');
-			if($("#top-nav-div #top-nav-list").length<=0) {
+			$("#top-nav-div").show();
+			$("#top-nav-mobile").hide();
 
-				$("#top-nav-list").appendTo($("#top-nav-div"));
-				initNav();
-			}
 		}
 		
 	}).trigger('resize');
 
-	
-	$('#mobile-nav-toggle').unbind().click(function() { 
+	$("#mobile-nav-select").change(function() { 
 
-				$("#top-nav-mobile").toggle('normal');
+
+		var uri = $(this).val();
+
+		if(uri.length>0) document.location.href = uri;
+
+		return;
 
 	});
 	initLayout();

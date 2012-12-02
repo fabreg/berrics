@@ -278,59 +278,16 @@ h2 {
 #top-nav-mobile {
 
 	display: none;
-
+	padding:3px;
+	padding-top: 8px;
 }
 
-#top-nav-mobile #top-nav-list {
+#top-nav-mobile select {
 
-	list-style:none;
-
-}
-#top-nav-mobile #top-nav-list li.spacer {
-
-	display:none;
+	width:100%;
+	
 
 }
-#top-nav-mobile #top-nav-list>ul li {
-
-	color:#000;
-}
-
-#top-nav-mobile #top-nav-list .nav-btn {
-
-	height:18px;
-	line-height: 18px;
-	font-size:12px;
-
-}
-
-#top-nav-mobile #top-nav-list .nav-btn:before {
-
-	content:"\203A";
-	text-indent: -5px;
-}
-#top-nav-mobile #top-nav-list .nav-btn#top-dropdown {
-
-	height:auto;
-
-}
-
-#top-nav-mobile #top-nav-list #top-dropdown-menu ul {
-
-	list-style: none;
-	margin:0;
-	margin-left:5px;
-
-}
-
-#top-nav-mobile #top-nav-list #top-dropdown-menu ul li {
-
-
-
-}
-
-
-#top-nav-mobile #top-nav-list #top-dropdown-menu ul 
 
 
 
@@ -412,17 +369,21 @@ TWO COLUMN BODY
 
 	header {
 
-		position: static;
+		position: absolute;
 		background-position: center -117px;
 		margin-bottom:15px;
 		height:auto;
+		top:0px;
+		left:0px;
+		width:100%;
 	}
 
 	#body-row {
 
-		padding-top:0px;
-	
+		padding-top:85px;
+
 	}
+	
 
 
 }
@@ -433,17 +394,21 @@ TWO COLUMN BODY
 
 	header {
 
-		position: static;
+		position: absolute;
 		background-position: center -117px;
 		margin-bottom:15px;
 		height:auto;
+		top:0px;
+		left:0px;
+		width:100%;
+	}
+	#body-row {
+
+		padding-top:85px;
+
 	}
 
-		#body-row {
-
-		padding-top:0px;
-	
-	}
+		
 
 
 }
@@ -455,16 +420,19 @@ TWO COLUMN BODY
 
 	header {
 
-		position: static;
+		position: absolute;
 		background-position: center -117px;
 		margin-bottom:15px;
 		height:auto;
+		top:0px;
+		left:0px;
+		width:100%;
 	}
 
-		#body-row {
+	#body-row {
 
-		padding-top:0px;
-	
+		padding-top:85px;
+
 	}
 
 
