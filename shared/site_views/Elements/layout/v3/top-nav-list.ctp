@@ -1,6 +1,9 @@
 <?php 
 $DailyopSection = ClassRegistry::init("DailyopSection");
 $sections_array = $DailyopSection->returnSections();
+$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
+
+$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 ?>
 
 <div id="top-nav-div">
@@ -11,9 +14,7 @@ $sections_array = $DailyopSection->returnSections();
 			<div class="inner clearfix">
 				<ul>
 					<?php 
-					$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
-		
-					$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
+
 
 					foreach ($f_sections as $k => $v): ?>
 						<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
@@ -65,7 +66,7 @@ $sections_array = $DailyopSection->returnSections();
 	<?php 
 	$f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
 
-	$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
+$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 
 	foreach ($f_sections as $k => $v): ?>
 	<option value="/<?php echo $v['DailyopSection']['uri']; ?>"><?php echo $v['DailyopSection']['name']; ?></option>
