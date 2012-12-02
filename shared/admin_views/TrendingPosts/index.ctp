@@ -12,13 +12,7 @@ jQuery(document).ready(function($) {
 	<h1>Trending Posts</h1>
 </div>
 
-<div class="tabbable">
-	<ul class="nav nav-tabs">
-		<li><a href="#2" data-toggle="tab">Filter</a></li>
-	</ul>
-	<div class="tab-content">
-		<div class="tab-pane" id="2">
-			<div class="well well-small">
+<div class="well well-small">
 				<?php 
 					echo $this->Form->create('TrendingPost',array(
 						"id"=>'TrendingPostForm',
@@ -35,9 +29,6 @@ jQuery(document).ready(function($) {
 				 
 				 <?php echo $this->Form->end(); ?>
 			</div>
-		</div>
-	</div>
-</div>
 
 <div class="trendingPosts index">
 	<?php echo $this->Admin->adminPaging(); ?>
