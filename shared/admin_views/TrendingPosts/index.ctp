@@ -1,3 +1,13 @@
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	
+	$( "#TrendingPostDate").datepicker({
+		"dateFormat":"yy-mm-dd"
+	});
+
+});
+
+</script>
 <div class="page-header">
 	<h1>Trending Posts</h1>
 </div>
@@ -17,7 +27,8 @@
 				 ?>
 				 <?php 
 
-				 	echo $this->Form->input("section",array("options"=>TrendingPost::sections()));
+				 	echo $this->Form->input("section",array("options"=>TrendingPost::sections(),"empty"=>true));
+				 	echo $this->Form->input("date",array("text"));
 				  ?>
 				 
 				 	<button class="btn btn-primary">Filter</button>

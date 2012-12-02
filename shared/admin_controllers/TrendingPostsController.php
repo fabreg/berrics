@@ -14,7 +14,34 @@ class TrendingPostsController extends LocalAppController {
 		$this->initPermissions();
 
 	}
+	public function search() {
+		
+		if(count($this->request->data)>0) {
+			
+				$url = array(
+		
+					"action"=>"index",
+					"search"=>true
+				);
+				
+				
+				foreach($this->request->data as $k=>$v) {
+					
+					foreach($v as $kk=>$vv) {
+						
+						if(empty($vv)) continue;
 
+						$url[$k.".".$kk]=urlencode($vv);
+						
+					}
+					
+				}
+				
+				return $this->redirect($url);
+				
+		}
+
+	}
 /**
  * index method
  *
@@ -29,6 +56,27 @@ class TrendingPostsController extends LocalAppController {
 				)
 			)
 		);
+
+		if(isset($this->request->params['named']['search'])) {
+
+			if(isset($this->request->params['named']['TrendingPost.date'])) {
+
+				$this->Paginator->settings['TrendingPost']['conditions'][] = "DATE(TrendingPost.start_date)<='{$this->request->params['named']['TrendingPost.date']}'";
+				$this->Paginator->settings['TrendingPost']['conditions'][] = "DATE(TrendingPost.end_date)>='{$this->request->params['named']['TrendingPost.date']}'";
+
+				$this->request->data['TrendingPost']['date'] = $this->request->params['named']['TrendingPost.date'];
+			}
+			if(isset($this->request->params['named']['TrendingPost.section'])) {
+
+
+				$this->Paginator->settings['TrendingPost']['conditions']['TrendingPost.section'] = 
+				$this->request->data['TrendingPost']['section'] = 
+				$this->request->params['named']['TrendingPost.section'];
+
+
+
+			}
+		}
 
 		$this->TrendingPost->recursive = 0;
 		$this->set('trendingPosts', $this->paginate());

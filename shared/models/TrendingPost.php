@@ -15,7 +15,9 @@ class TrendingPost extends AppModel {
 		$a = array(
 			"weekly"=>"Weekly",
 			"monthly"=>"Monthly",
-			"yearly"=>"Yearly"
+			"yearly"=>"Yearly",
+			"feat-news"=>"Featured News",
+			"feat-post"=>"Featured Post"
 		);
 
 		return $a;
