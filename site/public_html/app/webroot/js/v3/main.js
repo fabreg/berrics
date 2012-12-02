@@ -117,15 +117,22 @@ function initMediaDivs () {
 
 	});
 	//post thumb
-	$('.post-thumb .thumb').unbind().
-	hover(
-		function() { 
-			$(this).find('.overlay').fadeIn().parent().find('.play-button').animate({opacity:1});
-		},
-		function() { 
-			$(this).find('.overlay').fadeOut().parent().find('.play-button').animate({opacity:.6});;
+	$('.post-thumb .thumb').each(function() { 
+
+		if(!Modernizr.touch) {
+
+			$(this).unbind().hover(
+			function() { 
+				$(this).find('.overlay').fadeIn().parent().find('.play-button').animate({opacity:1});
+			},
+			function() { 
+				$(this).find('.overlay').fadeOut().parent().find('.play-button').animate({opacity:.6});;
+			})
+
 		}
-	)
+
+	});
+		
 
 
 
