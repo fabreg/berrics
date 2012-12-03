@@ -131,7 +131,7 @@ $(document).ready(function() {
 			<?php 
 					echo $this->Form->end();
 				
-				?>
+			?>
 		</div>
 		<div class='row-fluid'>
 			<?php while((strtotime($start_date)) <= (strtotime($end_date))): ?>
@@ -144,6 +144,12 @@ $(document).ready(function() {
 								<?php echo date("l",strtotime($start_date)); ?>
 								,
 								<?php echo date("F jS Y",strtotime($start_date)); ?>
+								<small>
+									<?php 
+										$uri = date("Y/m/d",strtotime($start_date));
+									?>
+									<a href="http://v3.theberrics.com/<?php echo $uri; ?>" class="btn btn-success btn-mini" target='_blank'>Preview Day</a>
+								</small>
 							</h4>
 						</th>
 					</tr>
