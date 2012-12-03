@@ -2,17 +2,15 @@
 $DailyopSection = ClassRegistry::init("DailyopSection");
 $sections_array = $DailyopSection->returnSections();
 $f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
-$batb['DailyopSection'] =  Array
-							                (
-							                    'name' => 'Battle At The Berrics',
-							                    'uri' => 'battle-at-the-berrics.html',
-							                    'sort_weight' => 0,
-							                    'icon_dark_file' => '08ad21c6f9da6bdf51ae0b971f43d96d.png',
-							                    'icon_light_file' => '03287fcce194dbd958c2ec5b33705912.png',
-							                    'nav_label' => ''
-							                );
-$yn['DailyopSection'] =  Array
-                (
+$batb['DailyopSection'] =  Array(
+			                    'name' => 'Battle At The Berrics',
+			                    'uri' => 'battle-at-the-berrics.html',
+			                    'sort_weight' => 0,
+			                    'icon_dark_file' => '08ad21c6f9da6bdf51ae0b971f43d96d.png',
+			                    'icon_light_file' => '03287fcce194dbd958c2ec5b33705912.png',
+			                    'nav_label' => ''
+			                );
+$yn['DailyopSection'] =  Array(
                     'name' => 'YOUnited Nations 3',
                     'uri' => 'younited-nations-3',
                     'sort_weight' => 0,
@@ -31,7 +29,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 		<a href="#">FEATURES</a>
 		<div id="top-dropdown-menu">
 			<div class="inner clearfix">
-				<ul>
+				<ul class='clearfix'>
 					<?php 
 
 
@@ -53,6 +51,9 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 							</a></li>
 					<?php endforeach;  ?>
 				</ul>
+				<div class="more-link clearfix">
+					<a href="/features.html">MORE...</a>
+				</div>
 			</div>
 		</div>
 	</li>

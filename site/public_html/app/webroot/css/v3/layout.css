@@ -238,6 +238,7 @@ h2 {
 		border: 2px solid #000;
 		border-top:0;
 		padding:8px;
+		padding-bottom:0;
 }
 
 #top-nav-div #top-nav-list #top-dropdown-menu ul {
@@ -258,6 +259,28 @@ h2 {
 	border-bottom:1px solid #000;
 	margin:0;
 	padding:2px;
+
+}
+
+#top-nav-div #top-nav-list #top-dropdown-menu .more-link {
+
+	font-size:12px;
+	font-style: italic;
+	color:#000;
+	text-align: right;
+	border-top:1px solid #000;
+
+}
+#top-nav-div #top-nav-list #top-dropdown-menu .more-link a {
+
+	color:#000;
+
+}
+
+#top-nav-div #top-nav-list #top-dropdown-menu ul li:last-child,
+#top-nav-div #top-nav-list #top-dropdown-menu ul li:nth-last-child(2)  {
+
+	border-bottom:none;
 
 }
 
