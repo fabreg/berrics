@@ -38,6 +38,13 @@ body a {
 
 	color:#000;
 
+
+}
+
+body p a {
+
+	border-bottom:1px dotted #333;
+	
 }
 
 header {
@@ -1549,8 +1556,8 @@ large post
 
 .featured-post {
 
-
-
+	max-width:1122px;
+	margin:auto;
 }
 
 .featured-post.post {
@@ -1559,18 +1566,23 @@ large post
 
 }
 
-.featured-post .media {
+.featured-post .post-media {
 
-	width:80%;
-	max-width:950px;
-	float:left;
+	width: 100%;
+	max-width:960px;
+	
 }
 
 .featured-post .social {
 
 	float:right;
-	width:18%;
-	margin-left: 1%;
+
+}
+
+.featured-post .social .tags {
+
+	display: none;
+
 }
 
 .featured-post .post-media-div {

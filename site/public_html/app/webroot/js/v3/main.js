@@ -34,6 +34,27 @@ $(function() {
 
 });
 
+function lazyLoad () {
+	
+	$('img.lazy').lazyload({
+
+			load:function(e) {
+
+				var img = $('img').eq(e);
+
+				$(img.get(0)).attr({
+
+					"width":"",
+					"height":""
+
+				});
+
+			}
+
+		});
+
+}
+
 function initTrending () {
 	
 	$("#trending-content .tab:not(.active)").click(function() { 
@@ -53,6 +74,7 @@ function initTrending () {
 			"success":function(d) {
 
 				$("#trending-content tbody.content").html(d);
+				lazyLoad();
 				initTrending();
 				$("#trending-content .loading").fadeOut('fast',function() { $("#trending-content .loading").remove(); });
 			}
