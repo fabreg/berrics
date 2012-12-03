@@ -78,30 +78,17 @@ function initMediaDivs () {
 
 	});
 
-
-
-	//video post
-	if(Modernizr.touch) {
-
-		
-
-	} else {
-
-
-
-	}
-
 	$('.post .post-media-div[data-media-type=bcove]:not(:has(video))').each(function(e) { 
 
 		$this = $(this);
-
+		$this.unbind();
 		if(!Modernizr.touch) {
 
 			$this.hover(
-			function() { 
+			function(e) { 
 				$this.find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
 			},
-			function() { 
+			function(e) { 
 				$this.find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
 			});
 

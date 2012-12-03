@@ -4,6 +4,8 @@ $TrendingPost = ClassRegistry::init("TrendingPost");
 
 $trending_posts = $TrendingPost->currentTrending('weekly');
 
+$trending_news = $TrendingPost->currentTrending('feat-news');
+
 ?>
 <div id="standard-right-column" style='clearfix'>
 	<!--Trending Content!-->
