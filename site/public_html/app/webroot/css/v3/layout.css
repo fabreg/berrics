@@ -34,6 +34,12 @@ body * {
 
 }
 
+body a {
+
+	color:#000;
+
+}
+
 header {
 
 	background-image:url(/img/v3/layout/top-header-bottom-edge.png);
@@ -1541,15 +1547,36 @@ large post
 #####################
 */
 
-.large-post {
+.featured-post {
 
 
 
 }
 
-.large-post .post-media-div {
+.featured-post.post {
+
+	border:none;
+
+}
+
+.featured-post .media {
+
+	width:80%;
+	max-width:950px;
+	float:left;
+}
+
+.featured-post .social {
+
+	float:right;
+	width:18%;
+	margin-left: 1%;
+}
+
+.featured-post .post-media-div {
 
 	min-height: 50px;
+	background-color:#000;
 
 }
 

@@ -10,6 +10,8 @@ $link = "/".$post['Dailyop']['DailyopSection']['uri']."/".$post['Dailyop']['uri'
 		<?php echo $this->Media->mediaThumb(array(
 			"MediaFile"=>$post['Dailyop']['DailyopMediaItem'][0]['MediaFile'],
 			"w"=>90,
+			"h"=>60,
+			"lazy"=>true
 		)); ?>
 		</a>
 	</td>

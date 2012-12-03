@@ -1966,6 +1966,17 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_featured() {
+		
+		$this->loadModel('TrendingPost');
+
+		$post = $this->TrendingPost->featuredPost();
+
+		die(print_r($post));
+		
+
+	}
+
 
 
 	

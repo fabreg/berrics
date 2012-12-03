@@ -66,17 +66,6 @@ function initTrending () {
 
 function initMediaDivs () {
 	
-	$('.large-post').each(function() { 
-
-		$(this).click(function() { 
-
-			$(this).videoDiv();
-			$(this).unbind('click');
-
-		});
-		
-
-	});
 
 	$('.post .post-media-div:not([data-init])').each(function() { 
 
@@ -114,23 +103,7 @@ function initMediaDivs () {
 
 	});
 
-	return;
-
-	$('.post .post-media-div[data-media-type=bcove]').each(function(e) { 
-
-		$this = $(this);
-
-		if($this.find("video").length>0) {
-
-			alert("Video Found");
-			return;
-		}
-
-		$this.unbind();
-		
-
-	});
-	//post thumb
+		//post thumb
 	$('.post-thumb .thumb').each(function() { 
 
 		if(!Modernizr.touch) {
@@ -146,9 +119,8 @@ function initMediaDivs () {
 		}
 
 	});
-		
 
-
+	return;
 
 }
 

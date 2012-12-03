@@ -88,4 +88,34 @@ class TrendingPost extends AppModel {
 		return $posts;
 
 	}
+
+	public function featuredPost() {
+		
+		$date = date('Y-m-d');
+
+		$token = "featured-post-".$date;
+
+		if(($tp = Cache::read($token,"1min")) === false) {
+
+
+			$tp = $this->find("first",array(
+				"conditions"=>array(
+					"TrendingPost.start_date <= NOW()",
+					"TrendingPost.end_date > NOW()",
+					"TrendingPost.section"=>"featured-post"
+				)
+			));
+
+			Cache::write($token,$tp,"1min");
+
+		}
+		
+		
+		$post = $this->Dailyop->returnPost(array(
+					"Dailyop.id"=>$tp['TrendingPost']['dailyop_id']
+				));
+
+		return $post;
+
+	}
 }
