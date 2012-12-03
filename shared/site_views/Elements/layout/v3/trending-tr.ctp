@@ -14,10 +14,10 @@ $link = "/".$post['Dailyop']['DailyopSection']['uri']."/".$post['Dailyop']['uri'
 		</a>
 	</td>
 	<td>
-		<?php echo $this->Text->truncate($post['Dailyop']['name'],36); ?>
+		<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($post['Dailyop']['name'],36); ?></a>
 		<div>
 			<small>
-				<?php echo $this->Text->truncate($post['Dailyop']['sub_title'],36); ?>&nbsp;
+				<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($post['Dailyop']['sub_title'],36); ?>&nbsp;</a>
 			</small>
 		</div>
 	</td>

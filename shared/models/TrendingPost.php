@@ -68,6 +68,11 @@ class TrendingPost extends AppModel {
 							"MediaFile",
 							"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
 							"limit"=>1
+						),
+						"DailyopTextItem"=>array(
+							"MediaFile",
+							"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+							"limit"=>1
 						)
 					)
 				),

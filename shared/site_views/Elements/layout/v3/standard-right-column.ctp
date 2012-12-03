@@ -4,8 +4,8 @@ $TrendingPost = ClassRegistry::init("TrendingPost");
 
 $trending_posts = $TrendingPost->currentTrending('weekly');
 
-$trending_news = $TrendingPost->currentTrending('feat-news');
-
+$trending_news = $TrendingPost->currentTrending('featured-news');
+//die(pr($trending_news));
 ?>
 <div id="standard-right-column" style='clearfix'>
 	<!--Trending Content!-->
@@ -31,11 +31,38 @@ $trending_news = $TrendingPost->currentTrending('feat-news');
 		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
 	</div>
 
-	<div id="news-headlines">
+	<div id="trending-news">
 		<h2>SHREDLINES:</h2>
-		<hr class='hr1' />
 		<div class="content">
-			
+			<table cellspacing="0">
+				<tbody class="content">
+					<?php foreach ($trending_news as $k => $v): 
+						$link = "/".$v['Dailyop']['DailyopSection']['uri']."/".$v['Dailyop']['uri'];
+					?>
+					<tr>
+						<td width='100'>
+							<a href='<?php echo $link; ?>'>
+							<?php 
+								$media_file = $v['Dailyop']['DailyopTextItem'][0]['MediaFile'];
+								echo $this->Media->mediaThumb(array(
+									"MediaFile"=>$media_file,
+									"w"=>90
+								));
+							?>
+							</a>
+						</td>
+						<td>
+							<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['name'],26); ?></a>
+							<div>
+								<small>
+									<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['sub_title'],36); ?>&nbsp;</a>
+								</small>
+							</div>
+						</td>
+					</tr>
+					<?php endforeach ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<hr class='hr1' />
