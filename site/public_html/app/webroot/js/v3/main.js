@@ -78,29 +78,56 @@ function initMediaDivs () {
 
 	});
 
-	$('.post .post-media-div[data-media-type=bcove]:not(:has(video))').each(function(e) { 
+	$('.post .post-media-div:not([data-init])').each(function() { 
 
+		$type = $(this).attr("data-media-type");
 		$this = $(this);
-		$this.unbind();
-		if(!Modernizr.touch) {
+		switch($type) {
 
-			$this.hover(
-			function(e) { 
-				$this.find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
-			},
-			function(e) { 
-				$this.find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
-			});
+			case 'bcove':
+
+				if(!Modernizr.touch) {
+
+					$this.hover(
+					function(e) { 
+						$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
+					},
+					function(e) { 
+						$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
+					});
+
+				}
+						
+
+				$this.click(function() { 
+					
+						$(this).videoDiv();
+						$(this).unbind('click');
+
+				});
+
+			break;
 
 		}
+
+		$(this).attr("data-init",1);
+
+	});
+
+	return;
+
+	$('.post .post-media-div[data-media-type=bcove]').each(function(e) { 
+
+		$this = $(this);
+
+		if($this.find("video").length>0) {
+
+			alert("Video Found");
+			return;
+		}
+
+		$this.unbind();
 		
-
-		$this.click(function() { 
-			
-				$(this).videoDiv();
-				$(this).unbind('click');
-
-		});
 
 	});
 	//post thumb
