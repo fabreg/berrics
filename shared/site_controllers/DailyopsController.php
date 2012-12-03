@@ -28,6 +28,8 @@ class DailyopsController extends LocalAppController {
 
 	public function index() {
 
+
+
 		$this->set("top_element","layout/v3/top_element_featured_post");
 
 		$title_for_layout = "The Berrics - Daily Ops";
@@ -51,7 +53,7 @@ class DailyopsController extends LocalAppController {
 
 		$token = "dailyops_{$dateIn}_{$home_mode}";
 
-		if(($posts=Cache::read($token,"1min"))===false) {
+		if(($posts=Cache::read($token,"1min"))===false || ($this->isAdmin() && isset($_GET['showall']))) {
 
 			if($home_mode) { //validate that the dateIn has posts, if not then shift it up
 
@@ -62,11 +64,21 @@ class DailyopsController extends LocalAppController {
 			$cond = array(
 				"Dailyop.active"=>1,
 				"Dailyop.hidden"=>0,
-				"DATE(Dailyop.publish_date) = '{$dateIn}'",
-				"Dailyop.publish_date <= NOW()"
+				"DATE(Dailyop.publish_date) = '{$dateIn}'"
+				
 			);
 
-			$posts = $this->Dailyop->find("all",array(
+			if($this->isAdmin() && isset($_GET['showall'])) {
+
+				
+
+			} else {
+
+				$cond[] = "Dailyop.publish_date <= NOW()";
+
+			}
+
+			$p = $this->Dailyop->find("all",array(
 				"conditions"=>$cond,
 				"contain"=>array(
 					"DailyopMediaItem"=>array(
@@ -91,6 +103,24 @@ class DailyopsController extends LocalAppController {
 					"Dailyop.publish_date"=>"DESC"
 				)
 			));
+
+			$posts = array();
+
+			foreach ($p as $k => $v) {
+				
+				if(preg_match('/(aberrican|news)/i',$v['DailyopSection']['name'])) {
+
+					$posts['news'][] = $v;
+
+				} else {
+
+					$posts['posts'][] = $v;
+
+				}
+
+			}
+
+			//Cache::write($token,$posts,"1min");
 
 		}
 

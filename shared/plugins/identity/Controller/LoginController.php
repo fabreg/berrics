@@ -202,9 +202,8 @@ class LoginController extends IdentityAppController {
 	
 	public function email_login() {
 		
-		
 		$login = $this->Auth->login();
-		
+
 		$goto = "/";
 		
 		if($this->Session->check("here")) $goto = $this->Session->read("here");
