@@ -1568,6 +1568,7 @@ standard post
 .news-post .image {
 
 	max-width:370px;
+	width:50%;
 	float:left;
 
 }
@@ -1575,9 +1576,61 @@ standard post
 .news-post .summary {
 
 	float:left;
-
+	width: 48%;
+	margin-left: 1%;
 }
 
+.news-post .summary h2 {
+
+	font-size:22px;
+	line-height: 22px;
+	padding:0;
+	margin: 0;
+
+
+}
+.news-post .summary p {
+
+	font-family: 'Times New Roman';
+	max-height: 100px;
+	overflow: hidden;
+	margin-top: 4px;
+
+}
+.news-post .summary h2 small {
+
+	font-size:18px;
+	font-family: 'Times New Roman';
+	font-style: italic;
+	color:#333;
+
+}
+/* Large desktop */
+@media (min-width: 1200px) {  
+
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  
+
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+		.news-post .image,
+	.news-post .summary {
+
+		width:100%;
+		clear:both;
+
+	}
+ }
 
 /*
 ##########################

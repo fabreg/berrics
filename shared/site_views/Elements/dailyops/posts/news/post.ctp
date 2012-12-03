@@ -1,4 +1,5 @@
 <div class='post news-post'>
+	<?php echo $this->element("dailyops/posts/news/post-top",array("post"=>$post)); ?>
 	<div class="clearfix">
 		<div class="image">
 			<?php 
@@ -13,7 +14,11 @@
 			?>
 		</div>
 		<div class="summary">
-			<h3><?php echo $post['Dailyop']['name']; ?> <br /> <small><?php echo $post['Dailyop']['sub_title']; ?>&nbsp;</small></h3>
+			<h2><?php echo $post['Dailyop']['name']; ?> <br /> <small><?php echo $post['Dailyop']['sub_title']; ?>&nbsp;</small></h2>
+			<p>
+				<?php echo $post['DailyopTextItem'][0]['text_content']; ?>
+			</p>
+			<?php echo $this->element("dailyops/posts/post-footer",array("dop"=>$post)) ?>
 		</div>
 	</div>
 </div>
