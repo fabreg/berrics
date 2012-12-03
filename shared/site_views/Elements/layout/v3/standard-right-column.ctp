@@ -27,10 +27,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 		</div>
 	</div>
 	<hr class='hr1' />
-	<div class='banner-300'>
-		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
-	</div>
-
+	<?php echo $this->element("banners/300x250") ?>
 	<div id="trending-news">
 		<h2>SHREDLINES:</h2>
 		<div class="content">
@@ -66,7 +63,5 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 		</div>
 	</div>
 	<hr class='hr1' />
-	<div class='banner-300'>
-		<img src="/img/v3/layout/banner300.jpg" alt="" border="0" />
-	</div>
+	<?php echo $this->element("banners/300x250") ?>
 </div>

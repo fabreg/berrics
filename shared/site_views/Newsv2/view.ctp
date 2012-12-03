@@ -1,6 +1,6 @@
 <?php 
 
-$misc = Arr::dailyopsMiscCategories();
+
 
 $url = "/".$post['DailyopSection']['uri']."/".$post['Dailyop']['uri'];
 
@@ -33,21 +33,13 @@ if($post['Dailyop']['best_of']) {
 }
 
 ?>
-<div id='news-article'>
+<div class='article article-standard' id='news-article'>
+	<?php echo $this->element("banners/728") ?>
 	<div>
 		<h1><?php echo $post['Dailyop']['name']; ?></h1>
-		<div class='publish-date'><?php echo $misc[$post['Dailyop']['misc_category']]; ?> | <?php echo date("M d, Y",strtotime($post['Dailyop']['publish_date'])); ?></div>
+		<div class='publish-date'><?php echo date("M d, Y",strtotime($post['Dailyop']['publish_date'])); ?></div>
 		<div>
-			<a href='<?php echo $back_to_link; ?>'>
-				<img src='/img/layout/news/back-home.jpg' border='0'/>
-			</a>
-			<div style='float:right'>
-				<fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like>
-			</div>
-			<div class='twitter' style='float:right; padding-right:5px;'>
-						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://".$_SERVER['SERVER_NAME'].$url; ?>" data-text='<?php echo addslashes($post['Dailyop']['name']." ".$post['Dailyop']['sub_title']); ?>' data-count="none" data-via="berrics">Tweet</a>
-					</div> 
-			<div style='clear:both;'></div>
+			<?php echo $this->element("dailyops/posts/post-footer",array("dop"=>$post)) ?>
 		</div>
 	</div>
 	<?php 
@@ -67,7 +59,7 @@ if($post['Dailyop']['best_of']) {
 								"w"=>700,
 								"h"=>640
 							))."<div class='play-button'></div><div class='overlay'></div>";
-					$vid_file = "<div class='video-file'>".$this->Berrics->postMediaDiv($mediaItem,array("MediaFile"=>array_merge($t['MediaFile'],array("Dailyop"=>$post))))."</div>";
+					$vid_file = "<div class='video-file img-polaroid'>".$this->Berrics->postMediaDiv($post,array("MediaFile"=>$t['MediaFile']))."</div>";
 					
 				} else {
 					
@@ -180,35 +172,9 @@ if($post['Dailyop']['best_of']) {
 		
 		?>
 	</div>
-	<div>
-			<a href='<?php echo $back_to_link; ?>'>
-				<img src='/img/layout/news/back-home.jpg' border='0'/>
-			</a>
-		</div>
+	
 </div>
-<div id='summary-col'>
-	<div class='inner'>
-		
-		<!-- Unified -->
-		<div class='heading'>
-			<img border='0' alt='' src='/img/layout/news/unified-header.jpg'/>
-		</div>
-		<div class='scroller'>
-			<?php foreach($unified as $p): ?>
-				<?php echo $this->element("newsv2/unified-bit",array("p"=>$p)); ?>
-			<?php endforeach; ?>
-		</div>
-		<?php echo $this->element("layout/right-col-social-buttons"); ?>
-		<div class='heading'>
-			<img border='0' alt='' src='/img/layout/news/upcoming-header.jpg'/>
-		</div>
-		<div class='scroller'>
-			<?php foreach($event_news as $p): ?>
-				<?php echo $this->element("newsv2/event-bit",array("p"=>$p)); ?>
-			<?php endforeach; ?>
-		</div>
-	</div>
-</div>
+
 <div style='clear:both;'></div>
 <?php 
 

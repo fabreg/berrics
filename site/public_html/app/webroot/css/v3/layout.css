@@ -1360,14 +1360,27 @@ GLOBAL POST ELEMENTS
 
 }
 
-.post .post-media-div .img-hover,
-.post .post-media-div .video-hover {
+
+/*
+#####################
+GLOBAL post media div 
+#####################
+*/
+
+.post-media-div {
+
+	position: relative;
+
+}
+
+.post-media-div .img-hover,
+.post-media-div .video-hover {
 
 	display: none;
 
 }
-.post .post-media-div .img-hover,
-.post .post-media-div .video-hover {
+.post-media-div .img-hover,
+.post-media-div .video-hover {
 
 	background-image:url(/img/v3/layout/blk-px.png);
 	top:0px;
@@ -1379,7 +1392,7 @@ GLOBAL POST ELEMENTS
 	z-index: 500;
 }
 
-.post .post-media-div .play-button {
+.post-media-div .play-button {
 
 	background-image:url(/img/v3/layout/play-button.png);
 	background-position: center center;
@@ -1394,12 +1407,11 @@ GLOBAL POST ELEMENTS
 	cursor: pointer;
 }	
 
-.post .post-media-div .play-button:hover {
+.post-media-div .play-button:hover {
 
 	
 
 }
-
 
 /*
 #####################
@@ -1543,7 +1555,8 @@ standard post
 
 }
 
-.standard-post .post-media-div {
+.standard-post .post-media-div,
+.standard-post .img-polaroid {
 
 	max-width:700px;
 	margin:auto;
@@ -1694,6 +1707,55 @@ standard post
 
 	}
  }
+/*
+##########################
+GLOBAL ARTICLE THUMBNAIL
+########################
+*/
+
+.article {
+
+
+}
+
+.article h1 {
+
+	font-size:22px;
+	font-weight: normal;
+	font-family: 'universcnb'
+
+}
+
+.article .video-file {
+
+	max-width: 700px;
+	margin:auto;
+
+}
+
+/*
+##########################
+ ARTICLE STANDARD
+########################
+*/
+
+.article-standard {
+
+
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
 
 /*
 ##########################

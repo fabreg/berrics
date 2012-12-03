@@ -89,7 +89,7 @@ function initTrending () {
 function initMediaDivs () {
 	
 
-	$('.post .post-media-div:not([data-init])').each(function() { 
+	$('.post-media-div:not([data-init])').each(function() { 
 
 		$type = $(this).attr("data-media-type");
 		$this = $(this);

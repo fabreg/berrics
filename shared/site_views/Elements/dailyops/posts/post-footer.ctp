@@ -24,7 +24,7 @@ $tumblr_source = "";
 ?>
 <div class="post-footer clearfix">
 	<div class="row-fluid">
-		<div class="social-media span6 pull-right">
+		<div class="social-media span4 pull-right">
 			<?php if(!empty($tumblr_source) && !$_SERVER['HTTPS']): ?>
 				<div class='tumblr'>
 					<a href="http://www.tumblr.com/share/photo?source=<?php echo urlencode($tumblr_source) ?>&caption=<?php echo urlencode($share_title) ?>&clickthru=<?php echo urlencode("http://theberrics.com".$url) ?>" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:61px; height:20px; background:url('http://platform.tumblr.com/v1/share_2.png') top left no-repeat transparent;">Share on Tumblr</a>

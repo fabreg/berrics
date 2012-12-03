@@ -420,7 +420,17 @@ class BerricsHelper extends AppHelper {
 		
 		$template = $Dailyop['Dailyop']['post_template'];
 
-		$MediaFile = $Dailyop['DailyopMediaItem'][0]['MediaFile'];
+		if(isset($opts['MediaFile'])) {
+
+			$MediaFile = $opts['MediaFile'];
+
+		} else {
+
+			$MediaFile = $Dailyop['DailyopMediaItem'][0]['MediaFile'];
+
+		}
+
+		
 
 		$opts = array_merge(array(
 			"data-media-file-id"=>$MediaFile['id'],
