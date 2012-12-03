@@ -18,6 +18,8 @@ class MediaHelper extends AppHelper {
 		}
 
 		$empty_img = '/loading-imgs/loading-lazy.jpg';
+		$lazy_w = false;
+		$lazy_h = false;
 		
 		$m = $opt['MediaFile'];
 		
@@ -32,6 +34,8 @@ class MediaHelper extends AppHelper {
 
 					case 'slim':
 						$opt['src'] = "/video/stills-slim/".$m['file_video_still_slim'];
+						$lazy_w = 700;
+						$lazy_h = 200;
 					break;
 					case 'large':
 						$opt['src'] = "/video/stills-large/".$m['file_video_still_large'];
@@ -76,6 +80,9 @@ class MediaHelper extends AppHelper {
 			
 			$size .="&h=".$opt['h'];
 			$height = $opt['h'];
+
+			if(!$lazy_h) $lazy_h = $opt['h'];
+
 		} else {
 			
 			//$size .="&h=1000";
@@ -86,7 +93,7 @@ class MediaHelper extends AppHelper {
 			
 			$size .= "&w=".$opt['w'];
 			$width = $opt['w'];
-			
+			if(!$lazy_w) $lazy_w = $opt['w'];
 		} else {
 			
 		//	$size.="&w=1000";
@@ -106,10 +113,15 @@ class MediaHelper extends AppHelper {
 		
 		if(isset($opt['lazy']) && $opt['lazy'] == true) {
 
+			$sz = '';
+			if($lazy_w) $sz.="&w=".$lazy_w;
+			if($lazy_h) $sz.= "&h=".$lazy_h;
+
 			$attr['data-original'] = $img_src_str;
-			$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$empty_img."&zc=1".$size;
+			$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$empty_img."&zc=1".$sz;
 			$attr['class'] = "lazy";
-			if(isset($width)) $attr['width'] = $width;
+			if(isset($lazy_w)) $attr['width'] = $lazy_w;
+			if(isset($lazy_h)) $attr['height'] = $lazy_h;
 		//	if(isset($height)) $attr['height'] = "height";
 
 		}

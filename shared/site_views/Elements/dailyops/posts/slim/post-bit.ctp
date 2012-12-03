@@ -7,7 +7,7 @@ if(isset($lazy)) $lz = $lazy;
 
 
 ?>
-<div class='post standard-post'>
+<div class='post slim-post'>
 	<?php echo $this->element("dailyops/posts/post-top",array("dop"=>$dop)); ?>
 	<?php 
 		

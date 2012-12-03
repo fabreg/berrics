@@ -6,6 +6,9 @@
 		case "large":
 			echo $this->element("dailyops/posts/featured/post",array("post"=>$dop,"lazy"=>$lazy));
 		break;
+		case "slim":
+			echo $this->element("dailyops/posts/slim/post",array("post"=>$dop,"lazy"=>$lazy));
+		break;
 		case "news":
 			echo $this->element("dailyops/posts/news/post",array("post"=>$dop,"lazy"=>$lazy));
 		break;

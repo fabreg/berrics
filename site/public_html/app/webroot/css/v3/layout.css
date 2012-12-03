@@ -1514,6 +1514,26 @@ standard post
 
 
 }
+/*
+#####################
+slim post 
+#####################
+*/
+
+.slim-post {
+
+
+
+}
+
+.slim-post .post-media-div {
+
+	max-width:700px;
+	margin:auto;
+	text-align: center;
+
+
+}
 
 /*
 #####################
@@ -1533,7 +1553,30 @@ large post
 
 }
 
+/*
+#####################
+standard post 
+#####################
+*/
 
+.news-post {
+
+
+
+}
+
+.news-post .image {
+
+	max-width:370px;
+	float:left;
+
+}
+
+.news-post .summary {
+
+	float:left;
+
+}
 
 
 /*
