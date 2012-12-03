@@ -52,7 +52,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 					<?php endforeach;  ?>
 				</ul>
 				<div class="more-link clearfix">
-					<a href="/features.html">MORE...</a>
+					<a href="/features.html">MORE &gt;</a>
 				</div>
 			</div>
 		</div>

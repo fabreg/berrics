@@ -67,7 +67,7 @@ if($post['Dailyop']['best_of']) {
 								"w"=>700,
 								"h"=>640
 							))."<div class='play-button'></div><div class='overlay'></div>";
-					$vid_file = "<div class='video-file'>".$this->Berrics->mediaFileDiv($mediaItem,array("MediaFile"=>array_merge($t['MediaFile'],array("Dailyop"=>$post))))."</div>";
+					$vid_file = "<div class='video-file'>".$this->Berrics->postMediaDiv($mediaItem,array("MediaFile"=>array_merge($t['MediaFile'],array("Dailyop"=>$post))))."</div>";
 					
 				} else {
 					

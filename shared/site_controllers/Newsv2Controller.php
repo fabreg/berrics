@@ -10,7 +10,7 @@ class Newsv2Controller extends DailyopsController {
 	private $section_id = 65;
 	
 	public function beforeFilter() {
-		
+
 	 	parent::beforeFilter();
 		
 	 	$this->Auth->allow();
