@@ -33,15 +33,10 @@ if($post['Dailyop']['best_of']) {
 }
 
 ?>
+<?php echo $this->element("banners/728") ?>
 <div class='article article-standard' id='news-article'>
-	<?php echo $this->element("banners/728") ?>
-	<div>
-		<h1><?php echo $post['Dailyop']['name']; ?></h1>
-		<div class='publish-date'><?php echo date("M d, Y",strtotime($post['Dailyop']['publish_date'])); ?></div>
-		<div>
-			<?php echo $this->element("dailyops/posts/post-footer",array("dop"=>$post)) ?>
-		</div>
-	</div>
+	
+	<?php echo $this->element("dailyops/articles/article-top",array("post"=>$post)); ?>
 	<?php 
 		
 		foreach($post['DailyopTextItem'] as $k=>$t):
@@ -108,9 +103,10 @@ if($post['Dailyop']['best_of']) {
 		<?php echo $vid_file; ?>
 		<div class='text-item'>
 			<?php echo $img_file; ?>
-			<?php 
+			<p><?php 
 				echo nl2br($t['text_content']); 
 			?>
+			</p>
 			<div style='clear:both;'></div>
 		</div>
 		

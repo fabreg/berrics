@@ -503,6 +503,26 @@ class BerricsHelper extends AppHelper {
 		return $this->Html->tag("div",$img,$opts);
 
 	}
+
+	public function parseTagLinks($tags) {
+		
+		$o = '';
+
+		foreach ($tags as $k => $t) {
+			
+			if(isset($t['Tag'])) $t = $t['Tag'];
+
+			$url = "/tags/{$t['slug']}";
+
+			if(isset($t['User']['id']) && !empty($t['User']['profile_uri']))
+					$url = "/profiles/".$t['User']['profile_uri']; 
+
+			$o.= $this->Html->link(strtoupper($t['name']),$url)."&nbsp;";
+		}
+
+		return $o;
+
+	}
 	
 }
 

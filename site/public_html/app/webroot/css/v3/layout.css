@@ -1662,7 +1662,8 @@ standard post
 	line-height: 22px;
 	padding:0;
 	margin: 0;
-
+	font-family: 'universcnb';
+	font-weight: normal;
 
 }
 .news-post .summary p {
@@ -1681,6 +1682,15 @@ standard post
 	color:#333;
 
 }
+
+.news-post .post-footer .tags,
+.news-post .post-footer .social-media {
+
+	width:100%;
+	float:left;
+
+}
+
 /* Large desktop */
 @media (min-width: 1200px) {  
 
@@ -1693,19 +1703,46 @@ standard post
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {  
 
+	.news-post .image {
+
+		width:30%;
+
+	}
+
+	.news-post .summary {
+
+		width:68%;
+
+
+	}
+
+	.news-post .summary h2 {
+
+		font-size: 14px;
+
+	}
+	.news-post .summary h2 small {
+
+		font-size: 11px;
+
+	}
+	.news-post .summary p {
+
+		display: none;
+
+	}
+	.news-post .post-footer .tags {
+
+		display:none;
+
+	}
 
 }
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
 
-		.news-post .image,
-	.news-post .summary {
 
-		width:100%;
-		clear:both;
-
-	}
  }
 /*
 ##########################
@@ -1722,15 +1759,20 @@ GLOBAL ARTICLE THUMBNAIL
 
 	font-size:22px;
 	font-weight: normal;
-	font-family: 'universcnb'
-
+	font-family: 'universcnb';
+	line-height: 26px;
+	padding: 0;
+	margin: 0;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .article .video-file {
 
 	max-width: 700px;
 	margin:auto;
-
+	margin-bottom:5px;
+	margin-top:5px;
 }
 
 /*
@@ -1741,7 +1783,25 @@ GLOBAL ARTICLE THUMBNAIL
 
 .article-standard {
 
+	border-top:1px solid #000;
+	margin-top:5px;
 
+}
+
+/*
+##########################
+ TEXT ITEM
+########################
+*/
+
+.dailyop-text-item {
+
+
+}
+
+.dailyop-text-item p {
+
+	font-family: 'Times New Roman';
 
 }
 
