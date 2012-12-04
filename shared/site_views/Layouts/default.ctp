@@ -43,19 +43,35 @@
 		<header>
 			<div class="container">
 				<div class="row-fluid top-row">
-					<div class="span8" >
+					<div class="span6" >
 						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
 					</div>
-					<div class="span3 social-media visible-desktop">
-						
-					</div>
-					<div class="span1 cart  visible-desktop">
+					<div class="span6 social-media visible-desktop">
+						<div class="cart">
+							<img src="/img/v3/layout/cart-header-icon.png" alt="" /> Cart 
+							<span class="label">
+								<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>
+							</span>
+						</div>
+						<div class="tumblr">
+							<a href="http://twitter.com/berrics" target='_blank'>
+								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
+							</a>
+						</div>
+						<div class="twitter">
+							<a href="http://twitter.com/berrics" target='_blank'>
+								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
+							</a>
+						</div>
+						<div class="facebook">
+							<div class="fb-like" data-href="http://www.facebook.com/pages/The-Berrics/123390707714463" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+						</div>
 						
 					</div>
 				</div>
 				<?php echo $this->element("layout/v3/top-nav-list"); ?>	
 			</div>
-					</header>
+		</header>
 		<div class="container" id='main-container'>
 			<div class="row-fluid" id='body-row'>
 				<div class="span12" id='body-div'>

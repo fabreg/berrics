@@ -62,6 +62,57 @@ header {
 
 }
 
+header .social-media {
+
+	padding-top:5px;
+	padding-right:14px;
+}
+
+header .social-media .twitter {
+
+	background-image:url(/img/v3/layout/social-media-header-sprite.png);
+	width:33px;
+	height:25px;
+	float:right;
+	background-repeat:no-repeat;
+	background-position: 0px 0px;
+
+}
+header .social-media .twitter img {
+
+		width:33px;
+	height:25px;
+}
+
+header .social-media .tumblr {
+
+	background-image:url(/img/v3/layout/social-media-header-sprite.png);
+	width:28px;
+	height:25px;
+	float:right;
+	background-repeat:no-repeat;
+	background-position: -40px 0px;
+
+}
+header .social-media .tumblr img {
+
+		width:33px;
+		height:25px;
+}
+
+header .social-media .facebook {
+
+	float:right;
+
+}
+
+header .social-media .cart {
+
+	float: right;
+	font-family: 'Courier';
+	color:#fff;
+}
+
 
 h2 {
 
