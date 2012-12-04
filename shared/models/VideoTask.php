@@ -214,6 +214,88 @@ class VideoTask extends AppModel {
 
 	}
 
+	public function mobile_mp4($VideoTask) {
+		
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			
+			"task_status"=>"working"
+		));
+
+		//import objects
+		$MediaFile = ClassRegistry::init("MediaFile");
+		App::import("Vendor","LLFTP",array("LLFTP.php"));
+		App::import("Vendor","getid3",array("file"=>"getid3/getid3.php"));
+
+		$video = $MediaFile->find("first",array(
+			"conditions"=>array(
+				"MediaFile.id"=>$VideoTask['VideoTask']['foreign_key']
+			),
+			"contain"=>array()
+		));
+
+		$llftp = new LLFTP();
+
+		$id3 = new getid3();
+
+		//let's download the video to tmp
+		$tmp_file = $MediaFile->downloadVideoToTmp($VideoTask['VideoTask']['foreign_key']);
+
+		//let's get the size of the FLV file
+
+		$vid = $id3->analyze($tmp_file);
+		$height = $vid['video']['resolution_y'];
+		$width = $vid['video']['resolution_x'];
+		$newFileName = str_replace(".mp4",".mobile.mp4",$video['MediaFile']['limelight_file']);
+		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
+
+		//determine height and width
+		if(($height == 394) || ($height == 720)) {
+
+			$height = 180;
+			$width = 320;
+
+		} else {
+
+			$height = 240;
+			$width = 320;
+
+		}
+
+
+		$cmd = "/usr/local/bin/ffmpeg -y -i {$tmp_file} -vcodec libx264 -vf 'scale={$width}:{$height}' {$newFilePath}";
+		
+		
+		SysMsg::add(array(
+						"category"=>"MobileMp4",
+						"from"=>"VideoTask",
+						"crontab"=>1,
+						"title"=>$cmd
+				));
+		$this->query("SET SESSION wait_timeout = 28800");
+		$this->getDatasource()->disconnect();
+		$output = `$cmd`;
+		$this->getDatasource()->connect();
+		
+		//ftp the file
+		$llftp->ftpFile($newFileName,$newFilePath);
+
+		//update the video file
+		$MediaFile->create();
+		$MediaFile->id = $video['MediaFile']['id'];
+		$MediaFile->save(array(
+			"limelight_file_mobile"=>$newFileName
+		));
+
+		$this->create();
+		$this->id = $VideoTask['VideoTask']['id'];
+		$this->save(array(
+			"task_status"=>"completed"
+		));
+
+	}
+
 	public function mp4_to_ogv($VideoTask) {
 		
 		$this->create();

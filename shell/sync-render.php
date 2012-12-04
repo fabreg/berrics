@@ -27,7 +27,7 @@ foreach($servers as $server) {
 }
 echo "Flushing mem1","\n";
 
-echo `ssh root@mem1 'echo "flush_all" | nc 127.0.0.1 11211';`,"\n";
+//echo `ssh root@mem1 'echo "flush_all" | nc 127.0.0.1 11211';`,"\n";
 
 echo "\n Done! :-)","\n","\n","\n","\n";
 ?>

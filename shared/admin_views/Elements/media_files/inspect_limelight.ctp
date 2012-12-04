@@ -43,6 +43,15 @@ function handleUpload() {
 	</div>
 	<div class="well">
 		<h4>MP4 MOBILE</h4>
+		<a href="<?php echo $this->Admin->url(array("controller"=>"media_files","action"=>"queue_mobile",$this->request->data['MediaFile']['id'])); ?>" class="btn btn-success btn-small">Queue Mobile Encoding</a>
+		<div>
+			<label>Direct URL</label>
+			<?php 
+				$ll_url = "http://berrics.vo.llnwd.net/o45/".$this->data['MediaFile']['limelight_file_mobile'];
+			?>
+			<a href='<?php echo $ll_url; ?>' target='_blank'><?php echo $ll_url; ?></a>
+		</div>
+
 	</div>
 	<div class="well">
 		<h4>MP4 MOBILE W/ADVERTISING</h4>

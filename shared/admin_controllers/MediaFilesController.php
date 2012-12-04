@@ -1678,6 +1678,27 @@ class MediaFilesController extends LocalAppController {
 		$this->redirect($cb);
 	}
 
+	public function queue_mobile($id) {
+		
+		//$this->encode_ogv($id);
+		$this->loadModel('VideoTask');
+		
+		$this->VideoTask->queueTask(array(
+
+			"model"=>"MediaFile",
+			"foreign_key"=>$id,
+			"task"=>"mobile_mp4",
+			"priority"=>1
+
+		));
+		$this->Session->setFlash("Video queued for Mobile conversion");
+
+		$cb = base64_decode($this->request->params['named']['cb']);
+
+		$this->redirect($cb);
+		
+	}
+
 	private function encode_ogv($id) {
 		
 		$this->loadModel('VideoTask');
@@ -1691,9 +1712,6 @@ class MediaFilesController extends LocalAppController {
 
 		));
 
-		
-
-		
 
 	}
 	
