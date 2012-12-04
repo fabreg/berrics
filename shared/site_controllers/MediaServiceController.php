@@ -75,7 +75,7 @@ class MediaServiceController extends LocalAppController {
 
 		$d['MediaFile'] =  $MediaFile['MediaFile'];
 		if(isset($Post)) $d['Dailyop'] = $Post;
-		if($handheld) $d['MediaFile']['limelight_file'] = $d['MediaFile']['limelight_file_mobile'];
+		if($handheld && !empty($d['MediaFile']['limelight_file_mobile'])) $d['MediaFile']['limelight_file'] = $d['MediaFile']['limelight_file_mobile'];
 
 		$data[] = $d;
 
