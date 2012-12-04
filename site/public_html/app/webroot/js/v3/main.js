@@ -28,6 +28,13 @@ $(function() {
 		return;
 
 	});
+
+	$('header .user-info').click(function() { 
+		//alert("user click");
+		openUserLogin();
+
+	});
+
 	initLayout();
 	initMediaDivs();
 	initTrending();
@@ -146,6 +153,29 @@ function initMediaDivs () {
 
 }
 
+function openUserLogin () {
+		
+	$('body').append("<div id='user-login-modal' class='modal hide'><div style='text-align:center; padding:15px;'><img border='0' src='/img/v3/layout/loader-clear.gif'/></div></div>");
+
+	var modal = $("#user-login-modal");
+	
+	//modal.modal({'backdrop':'static'});
+
+	$.ajax({
+
+		"url":"/identity/login/form",
+		"success":function(d) {
+
+			modal.html(d);
+
+		}
+
+	});
+
+	modal.modal('show');
+
+}
+
 function initNav () {
 	// body...
 
@@ -170,5 +200,4 @@ function initLayout() {
 	
 	initNav();
 	
-
 }

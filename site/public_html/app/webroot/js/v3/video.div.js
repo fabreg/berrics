@@ -2,6 +2,9 @@
 
   var methods = {
     LIMELIGHT_URL: "http://berrics.vo.llnwd.net/o45/",
+    isHandheld:function() { 
+      return navigator.userAgent.match(/(iPhone|iPod)/i);
+    },
     CONTROLS:function() { 
 
       var HTM = "<div class='controls'>\
@@ -126,6 +129,8 @@
         "autoplay":true
 
       });
+
+      if(methods.isHandheld()) $this.find('.controls').remove();
 
       console.log($data.parent);
 

@@ -53,6 +53,9 @@
 								<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>
 							</span>
 						</div>
+						<div class="user-info">
+							<i class="icon icon-white icon-user"></i>
+						</div>
 						<div class="tumblr">
 							<a href="http://twitter.com/berrics" target='_blank'>
 								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />

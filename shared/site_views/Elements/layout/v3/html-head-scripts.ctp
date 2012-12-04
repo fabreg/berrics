@@ -13,8 +13,8 @@
 			"v3/jquery.fullscreen-min",
 			"v3/respond.min.js",
 			"v3/jquery.lazyload.min",
-			"v3/jquery.writeCapture",
 			"v3/html5shiv",
+			//"v3/jquery.writeCapture",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
 			"https://platform.twitter.com/widgets.js",
 			//"https://www.google.com/uds/api/ima/1.8/84479ae78e2ae96fc191dae83ffb2033/default.IN.js",
@@ -52,10 +52,3 @@ node.parentNode.insertBefore(gads, node);
 })();
 </script>
 
-<script type='text/javascript'>
-googletag.cmd.push(function() {
-googletag.defineSlot('/5885/dailyops_p1', [[300, 250], [728, 90]], 'div-gpt-ad-1354572369062-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});
-</script>

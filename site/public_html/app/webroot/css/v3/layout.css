@@ -113,6 +113,13 @@ header .social-media .cart {
 	color:#fff;
 }
 
+header .user-info {
+
+	float:right;
+	margin-top:3px;
+	cursor: pointer;
+}
+
 
 h2 {
 
