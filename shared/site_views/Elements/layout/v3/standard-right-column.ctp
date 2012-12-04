@@ -10,7 +10,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 <div id="standard-right-column" style='clearfix'>
 	<!--Trending Content!-->
 	<div id="trending-content">
-		<h2>BANGIN! CONTENT: </h2>
+		<h2>HOT! HOT! HOT!</h2>
 		<div class="tab-row clearfix">
 			<div class="tab active" data-section='weekly'>The Week</div>
 			<div class="tab" data-section='monthly'>This Month</div>
@@ -29,7 +29,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 	<hr class='hr1' />
 	<?php echo $this->element("banners/300x250") ?>
 	<div id="trending-news">
-		<h2>SHREDLINES:</h2>
+		<h2>LATEST NEWS:</h2>
 		<div class="content">
 			<table cellspacing="0">
 				<tbody class="content">

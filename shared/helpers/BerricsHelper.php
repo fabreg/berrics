@@ -423,6 +423,7 @@ class BerricsHelper extends AppHelper {
 		if(isset($opts['MediaFile'])) {
 
 			$MediaFile = $opts['MediaFile'];
+			unset($opts['MediaFile']);
 
 		} else {
 
@@ -431,13 +432,14 @@ class BerricsHelper extends AppHelper {
 		}
 
 		
-
+		//merge in default attributes with sent in attr's
 		$opts = array_merge(array(
 			"data-media-file-id"=>$MediaFile['id'],
 			"data-dailyop-id"=>$Dailyop['Dailyop']['id'],
 			"data-media-type"=>$MediaFile['media_type'],
 			"class"=>"post-media-div"
 		),$opts);
+
 
 		//check for lazy load
 		$lazy = false;
@@ -446,6 +448,17 @@ class BerricsHelper extends AppHelper {
 			$lazy = $opts['lazy'];
 
 		}
+
+		$w = 700;
+		//do width adjustments based on the template
+		switch(strtolower($template)) {
+
+			case 'large':
+				$w=1114;
+			break;
+
+		}
+
 
 		unset($opts['lazy']);
 
@@ -470,7 +483,7 @@ class BerricsHelper extends AppHelper {
 
 		$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
-					"w"=>"700",
+					"w"=>$w,
 					"type"=>$template,
 					"lazy"=>$lazy
 				));

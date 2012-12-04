@@ -43,11 +43,11 @@ body a {
 
 body p a {
 
-	border-bottom:1px dotted #333;
+	border-bottom:1px dotted #000;
 	
 }
 
-header {
+header  {
 
 	background-image:url(/img/v3/layout/top-header-bottom-edge.png);
 	background-repeat: repeat-x;
@@ -836,7 +836,7 @@ MAIN UTILITY CLASSSES
 .content-column {
 
 	background-color:#fff;
-	box-shadow:0px 2px 3px #333;
+	box-shadow:0px 2px 3px #000;
 	padding:3px;
 }
 hr.hr1 {
@@ -894,7 +894,7 @@ BATTLE COMMANDER / UN / RECRUIT
 
 
 	font-family:'universcn';
-	border-top:1px solid #333;
+	border-top:1px solid #000;
 	margin-top:4px;
 
 }
@@ -1275,7 +1275,7 @@ VIDEO DIV PLUGIN
 
 .video-div .controls .volume .vol:hover {
 
-	border-color:#333;
+	border-color:#000;
 
 }
 
@@ -1294,9 +1294,10 @@ GLOBAL POST ELEMENTS
 
 .post {
 
-	margin-top:5px;
-	margin-bottom:5px;
-	border-top:1px solid #000;
+	margin-top:3px;
+	margin-bottom:0;
+	border-top:2px solid #000;
+	border-bottom:1px solid #000;
 }
 
 .post .post-top {
@@ -1349,7 +1350,7 @@ GLOBAL POST ELEMENTS
 .post .post-top h1 a,
 .post .post-top h2 a {
 
-	color:#333;
+	color:#000;
 
 }
 
@@ -1401,7 +1402,7 @@ GLOBAL POST ELEMENTS
 	text-align: justify;
 	font-size: 13px;
 	line-height: 16px;
-	color:#333;
+	color:#000;
 	font-family: 'Times New Roman'
 }
 
@@ -1512,7 +1513,7 @@ post section
 	margin:0;
 	padding-top:10px;
 	padding-bottom: 3px;
-	border-bottom:1px solid #333;
+	border-bottom:1px solid #000;
 	width:100%;
 	font-weight: normal;
 	font-size:24px;
@@ -1524,7 +1525,7 @@ post section
 	margin:0;
 	padding-top:10px;
 	padding-bottom: 3px;
-	border-bottom:1px solid #333;
+	border-bottom:1px solid #000;
 	width:100%;
 	font-weight: normal;
 	font-size:20px;
@@ -1546,7 +1547,7 @@ post section
 	margin:0;
 	padding-top:10px;
 	padding-bottom: 3px;
-	border-bottom:1px solid #333;
+	border-bottom:1px solid #000;
 	width:100%;
 	font-weight: normal;
 	font-size:20px;
@@ -1580,7 +1581,7 @@ border-bottom:2px dotted #ccc;
 #tags-section .pagination ul li a {
 
 	font-family: 'universcn';
-	color:#333;
+	color:#000;
 }
 
 
@@ -1644,7 +1645,7 @@ large post
 
 .featured-post {
 
-	max-width:1122px;
+	max-width:1114px;
 	margin:auto;
 }
 
@@ -1654,31 +1655,12 @@ large post
 
 }
 
-.featured-post .post-media {
+.featured-post .post-media-div img {
 
-	width: 100%;
-	max-width:960px;
-	
-}
-
-.featured-post .social {
-
-	float:right;
+	max-height: 200px;
 
 }
 
-.featured-post .social .tags {
-
-	display: none;
-
-}
-
-.featured-post .post-media-div {
-
-	min-height: 50px;
-	background-color:#000;
-
-}
 
 /*
 #####################
@@ -1688,7 +1670,7 @@ standard post
 
 .news-post {
 
-
+	padding-bottom:5px;
 
 }
 
@@ -1730,7 +1712,7 @@ standard post
 	font-size:18px;
 	font-family: 'Times New Roman';
 	font-style: italic;
-	color:#333;
+	color:#000;
 
 }
 
@@ -1753,6 +1735,12 @@ standard post
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {  
+
+	.news-post {
+
+		border-top:none;
+
+	}
 
 	.news-post .image {
 
@@ -1853,7 +1841,8 @@ GLOBAL ARTICLE THUMBNAIL
 .dailyop-text-item p {
 
 	font-family: 'Times New Roman';
-
+	max-width: 700px;
+	margin:auto;
 }
 
 /* Large desktop */
@@ -2069,7 +2058,7 @@ BOOTSTRAP OVERRIDES
 
 .nav-pills li a {
 
-	color:#333;
+	color:#000;
 
 }
 
