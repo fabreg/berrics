@@ -1346,6 +1346,7 @@ class MediaFilesController extends LocalAppController {
 			$this->MediaFile->save($udata);
 			
 			$this->encode_ogv($id);
+			$this->queue_mobile($id);
 
 			$this->Session->setFlash('File uploaded successfully');
 			
@@ -1696,7 +1697,7 @@ class MediaFilesController extends LocalAppController {
 		$cb = base64_decode($this->request->params['named']['cb']);
 
 		$this->redirect($cb);
-		
+
 	}
 
 	private function encode_ogv($id) {

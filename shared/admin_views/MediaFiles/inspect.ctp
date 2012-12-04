@@ -84,6 +84,7 @@ $tag_str = implode(",",$tag_array);
 							<th>Id</th>
 							<th>Created/Modified</th>
 							<th>TaskStatus</th>
+							<th>Server</th>
 							<th>Task</th>
 							<th>Options</th>
 						</tr>
@@ -94,6 +95,7 @@ $tag_str = implode(",",$tag_array);
 							<td><?php echo $v['VideoTask']['id']; ?></td>
 							<td><?php echo $this->Time->niceShort($v['VideoTask']['created']); ?> - <?php echo $this->Time->niceShort($v['VideoTask']['modified']); ?></td>
 							<td><span class="label label-info"> <?php echo strtoupper($v['VideoTask']['task_status']); ?></span></td>
+							<td><?php echo $v['VideoTask']['server'] ?></td>
 							<td><?php echo strtoupper($v['VideoTask']['task']) ?></td>
 							<td></td>
 						</tr>
