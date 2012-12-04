@@ -251,7 +251,7 @@ class VideoTask extends AppModel {
 		$newFilePath = "/home/sites/tmpfiles/".$newFileName;
 
 		//determine height and width
-		if(($height == 394) || ($height == 720)) {
+		if(($height == 394 && $width>640) || ($height == 720)) {
 
 			$height = 180;
 			$width = 320;
