@@ -37,6 +37,18 @@ class MediaServiceController extends LocalAppController {
 			"contain"=>array()
 		));
 
+		$handheld = false;
+
+		if(
+				$this->request->is('mobile') && 
+				preg_match('/(iPhone|iPod)/',$_SERVER['HTTP_USER_AGENT'])
+			) {
+
+			$handheld = true;
+
+		}
+
+
 		if(isset($this->request->data['dailyop_id'])) {
 
 			$Post = $this->Dailyop->returnPost(array(
@@ -47,12 +59,24 @@ class MediaServiceController extends LocalAppController {
 
 		if(!empty($MediaFile['MediaFile']['preroll_label'])) {
 
-			$data[]['AdUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
+			if($handheld) {
+
+				$data[]['AdUrl'] = 'http://pubads.g.doubleclick.net/gampad/ads?sz=320x180&iu=/5885/MVPRE001&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]';
+
+			} else {
+
+				$data[]['AdUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
+
+			}
+
+			
 
 		}
 
 		$d['MediaFile'] =  $MediaFile['MediaFile'];
 		if(isset($Post)) $d['Dailyop'] = $Post;
+		if($handheld) $d['MediaFile']['limelight_file'] = $d['MediaFile']['limelight_file_mobile'];
+
 		$data[] = $d;
 
 		if(!empty($MediaFile['MediaFile']['postroll_label'])) {
