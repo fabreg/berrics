@@ -684,7 +684,7 @@ TRENDING TABS
 	left:0px;
 	width:100%;
 	bottom:0px;
-	background-image: url(/img/v3/layout/blk-px.png);
+	background-image: url(/img/v3/layout/wht-px.png);
 	display: none;
 	
 }
@@ -699,7 +699,7 @@ TRENDING TABS
 
 	height:100%;
 	width:100%;
-	background-image: url(/img/v3/layout/loader-big.gif);
+	background-image: url(/img/v3/layout/loader-clear.gif);
 	background-repeat: no-repeat;
 	background-position: center center;
 
@@ -2052,6 +2052,53 @@ STANDARD THUMBNAIL
 	}
 
 
+
+}
+
+
+/*
+##########################
+PROFILE DETAILS WIDGET
+########################
+*/
+
+#profile-details {
+
+	
+	
+}
+
+#profile-details .info {
+
+	position: relative;
+
+}
+
+#profile-details .info .inner {
+
+	position: absolute;
+	bottom:0px;
+	left:0px;
+}
+
+#profile-details .img {
+
+	min-height: 250px;
+
+
+}
+
+#profile-details h1 {
+
+	font-weight: normal;
+	font-family: 'universcnb';
+
+}
+
+
+#profile-details .heading {
+
+	text-align: right;
 
 }
 

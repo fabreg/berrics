@@ -41,7 +41,8 @@ class MediaServiceController extends LocalAppController {
 
 		if(
 				$this->request->is('mobile') && 
-				preg_match('/(iPhone|iPod)/',$_SERVER['HTTP_USER_AGENT'])
+				preg_match('/(iPhone|iPod)/',$_SERVER['HTTP_USER_AGENT']) ||
+				isset($_GET['handheld'])
 			) {
 
 			$handheld = true;
@@ -85,8 +86,38 @@ class MediaServiceController extends LocalAppController {
 
 		}
 
+		$this->insertMediaHit($MediaFile['MediaFile']['id']);
+
 		$this->set(compact("data"));
 
+	}
+
+	private function insertMediaHit($id) {
+		
+		
+		$this->loadModel('MediaFileView');
+		
+		$mobile = false;
+		
+		if($this->RequestHandler->isMobile()) {
+			
+			$mobile = true;
+			
+		}
+		
+		$data = array();	
+		$data["geo_country"]=(isset($_SERVER['GEOIP_COUNTRY_CODE'])) ? $_SERVER['GEOIP_COUNTRY_CODE']:NULL;
+		$data["geo_region"]=(isset($_SERVER['GEOIP_REGION'])) ? $_SERVER['GEOIP_REGION']:NULL;
+		$data["geo_region_name"]=(isset($_SERVER['GEOIP_REGION_NAME'])) ? $_SERVER['GEOIP_REGION_NAME']:NULL;
+		$data["geo_dma_code"]=(isset($_SERVER['GEOIP_DMA_CODE'])) ? $_SERVER['GEOIP_DMA_CODE']:NULL;
+		$data["geo_postal_code"]=(isset($_SERVER['GEOIP_POSTAL_CODE'])) ? $_SERVER['GEOIP_POSTAL_CODE']:NULL;
+		$data["geo_city"]=(isset($_SERVER['GEOIP_CITY'])) ? $_SERVER['GEOIP_CITY']:NULL;
+		$data["ip_address"]=$_SERVER['GEOIP_ADDR'];
+		$data["mobile"] = $mobile;
+		$data['media_file_id'] = $id;
+		
+		$this->MediaFileView->save($data);
+		
 	}
 
 

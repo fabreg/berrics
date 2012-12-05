@@ -88,7 +88,10 @@ class CommanderController extends LocalAppController {
 						"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
 					),
 					"DailyopSection",
-					"Tag",
+					"Tag"=>array(
+						"User",
+						"Brand"
+					),
 					"User"
 				),
 				"order"=>array("Dailyop.publish_date"=>"DESC")
