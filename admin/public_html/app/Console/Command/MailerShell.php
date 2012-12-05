@@ -15,7 +15,11 @@ class MailerShell extends AppShell {
 		$emails = $this->EmailMessage->find("all",array(
 		
 				"conditions"=>array(
-						"EmailMessage.processed"=>0
+						"EmailMessage.processed"=>0,
+						"EmailMessage.to !="=>'',
+						"NOT"=>array(
+							"EmailMessage.to"=>null
+						)
 				),
 				"contain"=>array()
 					
