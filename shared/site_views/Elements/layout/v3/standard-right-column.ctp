@@ -33,11 +33,13 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 		<div class="content">
 			<table cellspacing="0">
 				<tbody class="content">
-					<?php foreach ($trending_news as $k => $v): 
+					<?php 
+						foreach ($trending_news as $k => $v): 
 						$link = "/".$v['Dailyop']['DailyopSection']['uri']."/".$v['Dailyop']['uri'];
+						$t = $v['Dailyop']['DailyopTextItem'][0];
 					?>
 					<tr>
-						<td width='100'>
+						<!-- <td width='100'>
 							<a href='<?php echo $link; ?>'>
 							<?php 
 								$media_file = $v['Dailyop']['DailyopTextItem'][0]['MediaFile'];
@@ -47,7 +49,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 								));
 							?>
 							</a>
-						</td>
+						</td> -->
 						<td>
 							<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['name'],26); ?></a>
 							<div>
@@ -55,6 +57,9 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 									<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['sub_title'],36); ?>&nbsp;</a>
 								</small>
 							</div>
+							<p>
+								<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($t['text_content'],60); ?></a>
+							</p>
 						</td>
 					</tr>
 					<?php endforeach ?>
