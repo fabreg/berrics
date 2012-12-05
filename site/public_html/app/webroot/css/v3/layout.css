@@ -1058,7 +1058,15 @@ DAILYOPS
 
 #dailyops .load-more-btn {
 
+	margin-top:15px;
 	margin-bottom:15px;
+	text-align: center;
+	width:100%;
+}
+
+#dailyops .load-more-btn img {
+
+	margin:auto;
 
 }
 

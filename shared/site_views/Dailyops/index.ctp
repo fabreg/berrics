@@ -23,13 +23,6 @@
 }
 
 
-.load-more-btn {
-
-
-
-}
-
-
 
 /*
 RESPONSIVE SHIT
@@ -66,8 +59,8 @@ var dailyops_date;
 var today_date = new Date(<?php echo strtotime(date("Y-m-d"))*1000; ?>);
 jQuery(document).ready(function($) {
 
-	$("#dailyops .load-more-btn").click(function() { 
-		alert("fuck");
+	$("#dailyops .load-more-btn").bind('click',function() { 
+		
 		loadNextPosts();
 		return false;
 	});
@@ -135,8 +128,7 @@ function loadNextPosts() {
 	
 	</div>
 	<div class='load-more-btn'>
-		
-		<img src="/img/v3/layout/load-more-posts-btn.png" border='0' alt="" />
-		
+		<img class='visible-desktop' src="/img/v3/layout/load-more-posts-btn.png" border='0' alt="" />
+		<img class='hidden-desktop' src="/img/v3/layout/load-more-posts-btn-mobile.png" border='0' alt="" />
 	</div>
 </div>
