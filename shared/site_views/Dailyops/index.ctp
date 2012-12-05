@@ -100,7 +100,7 @@ function loadNextPosts() {
 			$("#dailyops .content").append(d);
 			$('#dailyops .loading-div').hide();
 
-			$(window).scrollTop($(window).scrollTop()+300);
+			$(window).scrollTop($(window).scrollTop()+100);
 
 			
 
