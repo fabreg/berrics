@@ -66,8 +66,8 @@ var dailyops_date;
 var today_date = new Date(<?php echo strtotime(date("Y-m-d"))*1000; ?>);
 jQuery(document).ready(function($) {
 
-	$(".load-more-btn").click(function() { 
-
+	$("#dailyops .load-more-btn").click(function() { 
+		alert("fuck");
 		loadNextPosts();
 		return false;
 	});
@@ -97,12 +97,19 @@ function loadNextPosts() {
 
 	var d_str = "/"+d.getFullYear()+"/"+month+"/"+day;
 
+	$('#dailyops .loading-div').show();
+
 	$.ajax({
 
 		"url":d_str,
 		"success":function(d) {
 
-			$("#dailyops").append(d);
+			$("#dailyops .content").append(d);
+			$('#dailyops .loading-div').hide();
+
+			$(window).scrollTop($(window).scrollTop()+300);
+
+			
 
 			initMediaDivs();
 			FB.XFBML.parse();
@@ -121,10 +128,15 @@ function loadNextPosts() {
 </script>
 
 <div id="dailyops" class='clearfix'>
-	<?php echo $this->element("dailyops/dailyops-index"); ?>
-</div>
-<div class='load-more-btn-div'>
-	<a href='#'  class='load-more-btn' >
+	<div class="content">
+		<?php echo $this->element("dailyops/dailyops-index"); ?>	
+	</div>
+	<div class="loading-div">
+	
+	</div>
+	<div class='load-more-btn'>
+		
 		<img src="/img/v3/layout/load-more-posts-btn.png" border='0' alt="" />
-	</a>
+		
+	</div>
 </div>

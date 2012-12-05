@@ -1,4 +1,4 @@
-$(function() {
+$(function() {	
 
 	$(window).bind('resize.TopNav',function() { 
 

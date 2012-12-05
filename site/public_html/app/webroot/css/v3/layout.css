@@ -1030,6 +1030,43 @@ BATTLE COMMANDER / UN / RECRUIT
 
 /*
 #########################
+DAILYOPS
+#########################
+*/
+
+#dailyops {
+
+
+
+}
+
+#dailyops .content {
+
+
+
+}
+
+#dailyops .loading-div {
+
+	background-image:url(/img/v3/layout/loader-clear.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height:70px;
+	display: none;
+
+}
+
+#dailyops .load-more-btn {
+
+	margin-bottom:15px;
+
+}
+
+
+
+
+/*
+#########################
 VIDEO DIV PLUGIN
 #########################
 */
