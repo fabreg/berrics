@@ -155,11 +155,11 @@
       });
       
 
-      if(methods.isHandheld() || methods.isiPad()) //$this.find('.controls').remove();
+      if(methods.isHandheld() || methods.isiPad()) $this.find('.controls').remove();
 
       if(methods.isiPad()) { 
       
-       // video.attr('controls',true); 
+       video.attr('controls',true); 
 
         video.attr({
 
