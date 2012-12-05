@@ -1978,7 +1978,6 @@ STANDARD THUMBNAIL
 .thumb-collection .standard-post-thumb:nth-child(3n+3) {
 
 	float:right;
-	
 
 }
 
@@ -2064,41 +2063,63 @@ PROFILE DETAILS WIDGET
 
 #profile-details {
 
-	
-	
+	position: relative;
+	margin-bottom: 5px;
+}
+
+#profile-details .image {
+
+	float:left;
+	width:30%;
 }
 
 #profile-details .info {
 
-	position: relative;
+	float:right;
+	width:69%;
 
 }
 
-#profile-details .info .inner {
+#profile-details  h1 {
 
-	position: absolute;
-	bottom:0px;
-	left:0px;
-}
-
-#profile-details .img {
-
-	min-height: 250px;
-
-
-}
-
-#profile-details h1 {
-
+	font-size: 26px;
+	padding:0;
+	margin: 0;
+	line-height: 30px;
 	font-weight: normal;
-	font-family: 'universcnb';
+	font-family: 'universcnb'
+}
+
+#profile-details .info .line {
+
+	border-bottom:2px dotted #000;
+	padding-top:8px;
 
 }
 
+#profile-nav-tabs {
 
-#profile-details .heading {
+	border-bottom:1px solid #000;
+}
 
-	text-align: right;
+
+#profile-nav-tabs ul {
+
+	list-style: none;
+	margin:0;
+	padding:0;
+
+}
+
+#profile-nav-tabs ul li {
+
+	float:left;
+	border:1px solid #000;
+	border-bottom: none;
+	padding-left:10px;
+	padding-right: 10px;
+	margin-right: 5px;
+	font-family: 'universcnb'
 
 }
 

@@ -30,15 +30,11 @@
 }
 
 </style>
-<div id='instagram-profile'>
-<div class='profile-image'>
-<img src='<?php echo $profile['User']['instagram_profile_image']; ?>' border='0' width='100%' height='100%' />
-</div>
-@<?php echo $profile['User']['instagram_handle']; ?>
-</div>
-<div>
-
-	<?php foreach($instagram as $img):
+<div id='profile-instagram' class='profile'>
+	<?php echo $this->element("profiles/details"); ?>
+	<?php echo $this->element("profiles/tabs"); ?>
+	<div>
+			<?php foreach($instagram as $img):
 		$item = $img['InstagramImageItem'];
 		$images = unserialize($item['images']);
 	?>
@@ -54,5 +50,6 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
-	<div style='clear:both;'></div>
+	</div>
 </div>
+

@@ -40,6 +40,7 @@
 		echo $scripts_for_layout;
 	?>
 	<body>
+		<?php if (!isset($_GET['t'])): ?>
 		<header>
 			<div class="container">
 				<div class="row-fluid top-row">
@@ -75,6 +76,8 @@
 				<?php echo $this->element("layout/v3/top-nav-list"); ?>	
 			</div>
 		</header>
+		<?php endif ?>
+		
 		<div class="container" id='main-container'>
 			<div class="row-fluid" id='body-row'>
 				<div class="span12" id='body-div'>

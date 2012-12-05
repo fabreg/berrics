@@ -367,7 +367,10 @@ class User extends AppModel {
 				"UserProfileImage"=>array(
 					"order"=>array("UserProfileImage.default"=>"DESC")
 				),
-				"Tag"
+				"Tag"=>array(
+					"Brand",
+					"UnifiedStore"
+				)
 			)
 		
 		));
@@ -543,6 +546,37 @@ class User extends AppModel {
 		return $up;
 		
 	}
+
+
+	public function returnTaggedPostIds($User) {
+		
+		//get all the users tags
+		$tags = $this->Tag->find("all",array(
+					"conditions"=>array(
+						"Tag.user_id"=>$User['User']['id']
+					),
+					"contain"=>array()
+				));
+
+		$tag_ids = Set::extract("/Tag/id",$tags);
+
+
+
+		$tposts = $this->Dailyop->DailyopsTag->find('all',array(
+					"conditions"=>array(
+						"DailyopsTag.tag_id"=>$tag_ids
+					),
+					"contain"=>array()
+				));
+		//die(pr($tposts));
+		$post_ids = Set::extract("/DailyopsTag/dailyop_id",$tposts);
+
+		return $post_ids;
+
+	}
+
+
+	//validation methods
 	
 	public function checkDupeEmail($email) {
 		
@@ -596,6 +630,9 @@ class User extends AppModel {
 		return true;
 	
 	}
+
+
+
 	
 	
 }

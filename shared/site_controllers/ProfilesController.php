@@ -5,7 +5,7 @@ App::import("Controller","LocalApp");
 
 class ProfilesController extends LocalAppController {
 	
-	public $uses = array("User");
+	public $uses = array("User","Dailyop");
 	
 	private $profile = false;
 	
@@ -19,7 +19,8 @@ class ProfilesController extends LocalAppController {
 		
 		$this->theme = "profiles";
 		
-		$this->setProfile();
+		$this->profile = $this->setProfile();
+
 		
 	}
 	
@@ -32,8 +33,41 @@ class ProfilesController extends LocalAppController {
 	
 	public function view() {
 		
+		$this->media();
+		
+	}
+
+	public function media() {
 		
 		
+		$post_ids = $this->User->returnTaggedPostIds($this->profile);
+
+		$this->Paginator->settings = array();
+		$this->Paginator->settings['Dailyop']['conditions'] = array(
+					"Dailyop.id"=>$post_ids,
+					"Dailyop.active"=>1,
+					"Dailyop.publish_date < NOW()",
+					"Dailyop.promo"=>0
+				);
+		$this->Paginator->settings['Dailyop']['order'] = array("Dailyop.publish_date"=>"DESC");
+		$this->Paginator->settings['Dailyop']['contain'] = array(
+			"DailyopMediaItem"=>array(
+				"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+				"limit"=>1,
+				"MediaFile"
+			),
+			"DailyopSection",
+			"DailyopTextItem"=>array(
+				"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+				"limit"=>1,
+				"MediaFile"
+			)
+
+		);
+
+		$posts = $this->paginate("Dailyop");
+
+		$this->set(compact("posts"));
 	}
 	
 	public function instagram() {
@@ -66,7 +100,7 @@ class ProfilesController extends LocalAppController {
 			!isset($profile['User']['id'])	
 		) throw new NotFoundException();
 		
-		
+		return $profile;
 	}
 	
 }

@@ -129,9 +129,12 @@ if(preg_match('/\/profiles/',$_SERVER['REQUEST_URI'])) {
 			"action"=>"view"
 		));
 	
-	Router::connect("/profiles/:action/:uri",
+	Router::connect("/profiles/:action/:uri/*",
 		array(
 			"controller"=>"profiles"
+		),
+		array(
+			"uri"=>"[a-zA-Z0-9\.\-_]{5,}"
 		)
 	);
 	
