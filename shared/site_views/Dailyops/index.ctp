@@ -22,17 +22,12 @@
 
 }
 
-.load-btn {
 
-	background-color: #fff;
-	border:1px solid #333;
-	font-size: 18px;
-	text-align: center;
-	width:60%;
-	padding:20px;
+.load-more-btn {
+
+
 
 }
-
 
 
 
@@ -74,7 +69,7 @@ jQuery(document).ready(function($) {
 	$(".load-more-btn").click(function() { 
 
 		loadNextPosts();
-
+		return false;
 	});
 
 	var col = $("#dailyops");
@@ -129,5 +124,7 @@ function loadNextPosts() {
 	<?php echo $this->element("dailyops/dailyops-index"); ?>
 </div>
 <div class='load-more-btn-div'>
-	<button class='load-more-btn load-btn'>Load More</button>
+	<a href='#'  class='load-more-btn' >
+		<img src="/img/v3/layout/load-more-posts-btn.png" border='0' alt="" />
+	</a>
 </div>
