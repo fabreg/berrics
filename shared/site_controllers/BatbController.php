@@ -11,6 +11,8 @@ class BatbController extends DailyopsController {
 	
 	public function beforeFilter() {
 		
+		$this->body_element = "layout/v3/one-column";
+
 		parent::beforeFilter();
 		
 		//$this->initPermissions();
@@ -39,7 +41,7 @@ class BatbController extends DailyopsController {
 		}
 		
 		$this->theme = $this->request->params['section'];
-		
+		$this->set("title_for_layout","The Berrics - Battle At The Berrics");
 	}
 	
 	public function view() {	

@@ -47,9 +47,17 @@ body p a {
 	
 }
 
+
+h2 {
+
+	margin:2px;
+
+}
+
+
 header  {
 
-	background-image:url(/img/v3/layout/top-header-bottom-edge.png);
+	background-image:url(/img/v3/layout/header-bg.png);
 	background-repeat: repeat-x;
 	background-position: bottom center;
 	position:fixed;
@@ -58,7 +66,7 @@ header  {
 	width:100%;
 	z-index:10001;
 	margin:0;
-	padding-bottom:3px;
+	
 
 }
 
@@ -71,39 +79,40 @@ header .social-media {
 header .social-media .twitter {
 
 	background-image:url(/img/v3/layout/social-media-header-sprite.png);
-	width:33px;
-	height:25px;
+	width:28px;
+	height:21px;
 	float:right;
 	background-repeat:no-repeat;
 	background-position: 0px 0px;
-
+	margin-right:5px;
 }
 header .social-media .twitter img {
 
-		width:33px;
-	height:25px;
+		width:28px;
+	height:21px;
 }
 
 header .social-media .tumblr {
 
 	background-image:url(/img/v3/layout/social-media-header-sprite.png);
-	width:28px;
-	height:25px;
+	width:18px;
+	height:21px;
 	float:right;
 	background-repeat:no-repeat;
-	background-position: -40px 0px;
+	background-position: -36px 0px;
+	margin-right:5px;
 
 }
 header .social-media .tumblr img {
 
-		width:33px;
-		height:25px;
+		width:18px;
+		height:21px;
 }
 
 header .social-media .facebook {
 
 	float:right;
-
+	margin-right:8px;
 }
 
 header .social-media .cart {
@@ -120,17 +129,20 @@ header .user-info {
 	cursor: pointer;
 }
 
+header .top-row {
 
-h2 {
-
-	margin:2px;
-
+	padding-top:5px;
+	padding-bottom:5px;
+	
 }
+
+
+
+
 
 #berrics-heading-logo {
 
-	margin-top:5px;
-	margin-left:10px;
+	margin-top:4px;
 
 }
 
@@ -145,7 +157,7 @@ h2 {
 
 #body-row {
 
-	padding-top:70px;
+	padding-top:85px;
 
 }
 
@@ -162,7 +174,7 @@ h2 {
 #top-nav-div {
 
 	display:none;
-
+	padding-bottom:2px;
 }
 
 #top-nav-div #top-nav-list {
@@ -170,11 +182,12 @@ h2 {
 	list-style: none;
 	margin:0px;
 	padding:0px;
-	margin-top:4px;
+	
 	color:#fff;
 	font-family: 'universcn';
 	letter-spacing: 1px;
-	margin-bottom:5px;
+	margin-top:-1px;
+
 }
 
 #top-nav-div #top-nav-list li {
@@ -182,49 +195,64 @@ h2 {
 	float:left;
 	padding-left:14px;
 	padding-right:14px;
-	height:22px;
-	line-height:28px;
-	font-size:14px;
+	line-height:30px;
+	height:28px;
+	font-size:16px;
 	text-align:center;
 	cursor: pointer;
-
-}
-#top-nav-div #top-nav-list li.nav-btn:hover {
-
-	
-
-}
-#top-nav-div #top-nav-list li:hover a {
-
-	border-bottom:1px dotted #fff;
+	text-shadow: 1px 1px 1px #000000;
+    filter: dropshadow(color=#000000, offx=1, offy=1);
 	
 }
-
 #top-nav-div #top-nav-list li a {
 
 	color:#fff;
 
 }
+#top-nav-div #top-nav-list li.nav-btn:hover {
+
+	background-color: #fff;
+
+}
+#top-nav-div #top-nav-list li:hover a {
+
+	border-bottom:1px dotted #000;
+	color:#000;
+	text-shadow: none;
+	filter:none;
+}
+
+
 #top-nav-div #top-nav-list li a:hover {
 
-	color:#fff;
+	border-bottom:1px dotted #000;
+	color:#000;
+	text-shadow: none;
+	filter:none;
 	text-decoration:none;
 	
 
 }
+
 #top-nav-div #top-nav-list li.spacer {
 
 	width:2px;
 	background-image:url(/img/v3/layout/nav-spacer.png);
 	background-repeat: no-repeat;
-	background-position: center center;
 	padding:0;
-
+	padding-bottom:1px;
 }
+
 
 #top-nav-div #top-nav-list li.search {
 
 	float:right;
+
+}
+
+#top-nav-div #top-nav-list li.search:hover {
+
+	background-color:transparent;
 
 }
 
@@ -284,8 +312,8 @@ h2 {
 	position: absolute;
 	display: none;
 	width:450px;	
-	left:0px;
-	top:21px;
+	left:-1px;
+	top:25px;
 	padding-top:3px;
 	z-index: 10010;
 
@@ -293,7 +321,7 @@ h2 {
 #top-nav-div #top-nav-list #top-dropdown-menu .inner {
 
 		background-color: #fff;
-		border: 2px solid #000;
+		border: 2px solid #666;
 		border-top:0;
 		padding:8px;
 		padding-bottom:0;
@@ -313,10 +341,18 @@ h2 {
 	text-align: left;
 	font-size: 12px;
 	font-family: 'universcn';
-	line-height:18px;
+	line-height:20px;
+	height:20px;
 	border-bottom:1px solid #000;
 	margin:0;
 	padding:2px;
+	text-shadow: none;
+	filter:0;
+}
+
+#top-nav-div #top-nav-list #top-dropdown-menu ul li a {
+
+	border:none;
 
 }
 
@@ -498,9 +534,9 @@ TWO COLUMN BODY
 
 
 	header {
-
+		background-image:url(/img/v3/layout/top-header-bottom-edge.png);
 		position: absolute;
-		background-position: center -117px;
+		background-position: center -110px;
 		margin-bottom:15px;
 		height:auto;
 		top:0px;
@@ -523,9 +559,9 @@ TWO COLUMN BODY
 
 
 	header {
-
+		background-image:url(/img/v3/layout/top-header-bottom-edge.png);
 		position: absolute;
-		background-position: center -117px;
+		background-position: center -110px;
 		margin-bottom:15px;
 		height:auto;
 		top:0px;
@@ -555,9 +591,9 @@ TWO COLUMN BODY
 
 
 	header {
-
+		background-image:url(/img/v3/layout/top-header-bottom-edge.png);
 		position: absolute;
-		background-position: center -117px;
+		background-position: center -110px;
 		margin-bottom:15px;
 		height:auto;
 		top:0px;
@@ -597,14 +633,17 @@ STANDARD RIGHT COLUMN
 #standard-right-column h2 {
 
 
-		font-family: 'universcnb';
-	font-size:18px;
+	font-family: 'universcnb';
+	font-size:16px;
 	padding:4px;
 	padding-bottom:0px;
 	margin:0;
-	line-height:22px;
-	border-bottom:2px solid #000;
+	line-height:20px;
 	font-weight: normal;
+	background-color:#000;
+	color:#fff;
+	border:none;
+	
 
 }
 
@@ -707,37 +746,42 @@ TRENDING TABS
 
 #trending-content .tab-row {
 
-	margin-top:3px;
-
+		background-image: url(/img/v3/layout/side-tab-bg.png);
+		border-top:1px solid #000;
 }
 
 #trending-content .tab-row .tab  {
 
-	width:33.3%;
+	width:33%;
 	border:1px solid #000;
+	border-top:none;
 	border-right:none;
 	float:left;
 	text-align:center;
-	font-size: 14px;
+	font-size: 12px;
 	line-height:18px;
-	font-family: 'universcnb';
-	padding-top:4px;
+	height:18px;
+	font-family: 'universcn';
 
+	color:#fff;
 }
+#trending-content .tab-row .tab:last-child {
+
+	float:right;
+	width:34%;
+	border-right:1px solid #000;
+	
+}
+
 #trending-content .tab-row .tab.active,
 #trending-content .tab-row .tab:hover {
 
-	background-color:#000;
-	color:#fff;
+	background-color:#fff;
+	color:#000;
 	cursor: pointer;
 
 }
 
-#trending-content .tab-row .tab:last-child {
-
-	border-right:1px solid #000;
-	width:33.4%;
-}
 
 
 
@@ -1027,6 +1071,7 @@ VIDEO DIV PLUGIN
 	height:100%;
 	width:100%;
 	display:none;
+	z-index: 11000;
 
 }
 

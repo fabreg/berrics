@@ -2,6 +2,21 @@
 
 
 
+#posts .post,
+#posts .post-top h2 a {
+
+	background-color:black;
+	color:#fff;
+
+}
+
+#posts .post-top .date,
+#posts .post-top .time {
+
+	display:none;
+
+}
+
 #bodycontainer {
 
 	background-image:url(/img/layout/bg.jpg);	
@@ -69,7 +84,7 @@
 /******
 * BRACKETS STUFF
 *******/
-.spacer {
+#batb-view .spacer {
 
 	clear:both;
 	height:2px;

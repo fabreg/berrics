@@ -21,7 +21,8 @@ class ProfilesController extends LocalAppController {
 		
 		$this->profile = $this->setProfile();
 
-		
+				
+
 	}
 	
 	
@@ -33,6 +34,8 @@ class ProfilesController extends LocalAppController {
 	
 	public function view() {
 		
+
+
 		$this->media();
 		
 	}

@@ -25,6 +25,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 
 <div id="top-nav-div">
 <ul id='top-nav-list'>
+	<li class="spacer"></li>
 	<li class='nav-btn' id='top-dropdown'>
 		<a href="#">FEATURES</a>
 		<div id="top-dropdown-menu">

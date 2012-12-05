@@ -14,6 +14,7 @@
 			"v3/respond.min.js",
 			"v3/jquery.lazyload.min",
 			"v3/html5shiv",
+			"jquery.scrollTo",
 			//"v3/jquery.writeCapture",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
 			"https://platform.twitter.com/widgets.js",

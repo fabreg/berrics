@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 <div id='batb-view'>
 
-	<div class="header">
+	<div class="header" style='text-align:center;'>
  			<?php 
  			
  				echo $this->Html->image("layout/batbbracketnavhead.jpg");

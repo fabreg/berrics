@@ -92,6 +92,12 @@ class MediaServiceController extends LocalAppController {
 
 	}
 
+	public function end() {
+		
+		
+		
+	}
+
 	private function insertMediaHit($id) {
 		
 		

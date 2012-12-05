@@ -5,6 +5,11 @@
     isHandheld:function() { 
       return navigator.userAgent.match(/(iPhone|iPod)/i);
     },
+    isiPad:function() { 
+
+       return navigator.userAgent.match(/(iPad)/i);
+
+    },
     CONTROLS:function() { 
 
       var HTM = "<div class='controls'>\
@@ -44,6 +49,30 @@
 
       var service_uri = "/media_service/video_player_request";
 
+      var def = {
+
+        "beforeDataLoad":function(context) { console.log("Before Data Load"); },
+        "dataLoadSuccess":function(context) {console.log("Data Load Success"); },
+        "beforePlay":function(context) { console.log("Before Play"); },
+        "afterPlay":function(context) { console.log("After Play"); },
+        "allVideosFinished":function(context) { 
+          console.log("All Videos Finished"); 
+          methods.videoEndScreen($this);
+        },
+        "target":$this,
+        "parent":$that.parent(),
+        "request":false,
+        "bufferInterval":false,
+        "controlsTimeout":false,
+        "playingAd":false,
+        "GoogleAdsManager":false,
+        "videoFormat":"mp4",
+        "methods":this
+      };
+
+      if(options) $.extend(def,options);
+
+
       //build the request data for the video_play_request
       var req = {};
       req.data = {};
@@ -60,20 +89,13 @@
 
       }
 
-      var data = $.data($this,{
-
-            "target":$this,
-            "parent":$that.parent(),
-            "request":false,
-            "bufferInterval":false,
-            "controlsTimeout":false,
-            "playingAd":false,
-            "GoogleAdsManager":false,
-            "videoFormat":"mp4"
-
-          });
+      var data = $.data($this,def);
 
       methods.initHtml($this);
+
+      //beforeLoad Callback
+      data.beforeDataLoad.apply(this,$this);
+
       //get the video data
       $.ajax({
 
@@ -84,6 +106,8 @@
         "success":function(d) { 
 
           data.request = d;
+
+          data.dataLoadSuccess.apply(this,$this);
 
           //check if the browser supports h.264
           if(/(probably)/ig.test(Modernizr.video.h264)) {
@@ -129,10 +153,23 @@
         "autoplay":true
 
       });
+      
 
-      if(methods.isHandheld()) $this.find('.controls').remove();
+      if(methods.isHandheld() || methods.isiPad()) //$this.find('.controls').remove();
 
-      console.log($data.parent);
+      if(methods.isiPad()) { 
+      
+       // video.attr('controls',true); 
+
+        video.attr({
+
+          "width":"100%",
+          "height":"394"
+
+        });
+
+      }
+
 
       $this.find('.loader').show();
 
@@ -167,6 +204,10 @@
       
       var tracking_bar = $this.find('.tracking-bar');
 
+      var click_event = "click";
+
+      //if(methods.isiPad()) click_event = "touchstart";
+
       video.unbind().
       bind('loadstart',function(e) { }).
       bind('timeupdate',function(e) { 
@@ -197,14 +238,14 @@
 
       });
 
-      pause_overlay.unbind().bind('click',function() { 
+      pause_overlay.unbind().bind(click_event,function() { 
 
         video_ele.play();
 
       });
 
       //bind the play button
-      play_btn.unbind().bind('click',function() { 
+      play_btn.unbind().bind(click_event,function() { 
 
           if(play_btn.hasClass('paused')) {
 
@@ -227,7 +268,7 @@
 
       //bind the slow motion button
 
-     slowmo_btn.unbind().bind('click',function() { 
+     slowmo_btn.unbind().bind(click_event,function() { 
 
           var rate = 1;
           
@@ -254,9 +295,18 @@
      });
 
      fullscreen_btn.unbind().
-     bind('click',function(e) { 
+     bind(click_event,function(e) { 
 
-      $this.find('.video-div').toggleFullScreen();
+        if(methods.isiPad()) {
+
+          video_ele.webkitEnterFullscreen();
+
+        } else {
+
+          $this.find('.video-div').toggleFullScreen();
+
+        }
+       
       
         //$this.toggleFullScreen();
         //$this.get(0).webkitRequestFullscreen();
@@ -265,7 +315,7 @@
      });
 
      $this.find('.volume .vol').unbind().
-     bind('click',function(e) { 
+     bind(click_event,function(e) { 
 
       var ind = $(e.target).index();
 
@@ -337,7 +387,7 @@
 
       console.log("Mouse X: "+mx);
 
-    }).bind('click',function(e,ui) { 
+    }).bind(click_event,function(e,ui) { 
       
         var duration = video.get(0).duration;
        
@@ -368,6 +418,12 @@
           controls.fadeOut("normal");
 
         },1750);
+
+     });
+
+     $this.find('.click-element').click(function(e) { 
+
+        $(e.target).hide();
 
      });
 
@@ -575,11 +631,15 @@
 
       var video = false;
 
+      $data.beforePlay.apply(this,$this);
+
       if(req[0]) video = req[0];
 
       if(!video) {
-
+        clearInterval($data.bufferInterval);
+        $data.bufferInterval = false;
         console.log("No Request Data Found In Handle Video Play");
+        $data.allVideosFinished.apply(this,$this);
         return;
 
       }
@@ -597,6 +657,8 @@
         methods.playVideo(context);
 
       }
+
+      $data.afterPlay.apply(this,$this);
 
     },
     handleVideoEnd:function(context) {
@@ -642,6 +704,21 @@
         
         return min+":"+sec;
         
+    },
+    videoEndScreen:function(context) {
+
+      var $data = $.data(context);
+
+      var $this = $data.target;
+
+      var req = "";
+
+      if($this.attr("data-media-file-id")) req += "/media_file_id:"+$this.attr("data-media-file-id");
+
+      if($this.attr("data-dailyop-id")) req += "/dailyop_id:"+$this.attr("data-dailyop-id");
+
+      $this.load("/media_service/end"+req);
+
     }
 
   };
@@ -654,7 +731,7 @@
     } else if ( typeof method === 'object' || ! method ) {
       return methods.init.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.tooltip' );
+      $.error( 'Method ' +  method + ' does not exist on Berrics Video Div' );
     }    
   
   };
