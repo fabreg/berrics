@@ -164,7 +164,7 @@ class ReportsController extends LocalAppController {
 		$this->loadModel("MediaFileView");
 
 		$pages = $this->PageView->find('all',array(
-			"conditions"=>array('PageView.domain_name'=>'theberrics.com'),
+			"conditions"=>array('PageView.domain_name LIKE'=>'%theberrics.com'),
 			"contain"=>array(),
 			"order"=>array("PageView.id"=>"DESC"),
 			"limit"=>100

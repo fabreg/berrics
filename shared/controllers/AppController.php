@@ -329,6 +329,12 @@ class AppController extends Controller {
 			
 		}
 		
+		if($this->skip_page_view == true) {
+
+			return;
+
+		}
+
 		$this->loadModel("PageView");
 		
 		//check if we are mobile

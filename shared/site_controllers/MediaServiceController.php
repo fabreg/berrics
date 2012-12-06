@@ -23,6 +23,8 @@ class MediaServiceController extends LocalAppController {
 
 	public function video_player_request() {
 		
+		$this->skip_page_view = true;
+
 		$this->layout = "ajax";
 
 		$data = array();
