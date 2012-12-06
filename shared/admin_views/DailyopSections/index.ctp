@@ -16,7 +16,9 @@ $directives = DailyopSection::directives();
 			<th><?php echo $this->Paginator->sort('active'); ?></th>
 			<th><?php echo $this->Paginator->sort('featured'); ?></th>
 			<th><?php echo $this->Paginator->sort('sort_weight'); ?></th>
-			<th>Icons</th>
+			<th>LightIcon</th>
+			<th>DarkIcon</th>
+			<th>ColorIcon</th>
 			<th>Heading IMG</th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
@@ -58,41 +60,40 @@ $directives = DailyopSection::directives();
 		 ?></td>
 		<td><?php echo $dailyopSection['DailyopSection']['sort_weight']; ?></td>
 		<td>
-			<div style=' float:left; background-color:black;'>
-			<?php 
-			
-				if(!empty($dailyopSection['DailyopSection']['icon_light_file'])) {
-					
-					
-					//echo "<img src='http://img.theberrics.com/i.php?src=/berrics-icon/".$dailyopSection['DailyopSection']['icon_light_file']."&w=100&h=100' />";
-					echo $this->Media->sectionIcon(array(
-					
-						"DailyopSection"=>$dailyopSection['DailyopSection'],
-						"w"=>75,
-						"h"=>75	
-					
-					));
-				}
-			?>
-			</div>
-			<div class="" style="float:left;">
+			<?php if (empty($dailyopSection['DailyopSection']['icon_light_file'])): ?>
+				<span class="label label-important">NO LIGHT FILE</span>
+			<?php else: ?>
 				<?php 
-					if(!empty($dailyopSection['DailyopSection']['icon_dark_file'])) {
-						
-						
-						echo $this->Media->sectionIcon(array(
-						
-							"DailyopSection"=>$dailyopSection['DailyopSection'],
-							"w"=>75,
-							"h"=>75,
-							"dark"=>true	
-						
-						));
-						
-					}
-				
-				?>
-			</div>
+
+					$lnk = "http://img.theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_light_file'];
+
+				 ?>
+				 <a href="<?php echo $lnk ?>" target='_blank'>View Image</a>
+			<?php endif ?>
+		</td>
+		<td>
+			<?php if (empty($dailyopSection['DailyopSection']['icon_dark_file'])): ?>
+				<span class="label label-important">NO DARK FILE</span>
+			<?php else: ?>
+				<?php 
+
+					$lnk = "http://img.theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_dark_file'];
+
+				 ?>
+				 <a href="<?php echo $lnk ?>" target='_blank'>View Image</a>
+			<?php endif ?>
+		</td>
+		<td>
+			<?php if (empty($dailyopSection['DailyopSection']['icon_color_file'])): ?>
+				<span class="label label-important">NO COLOR FILE</span>
+			<?php else: ?>
+				<?php 
+
+					$lnk = "http://img.theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_color_file'];
+
+				 ?>
+				 <a href="<?php echo $lnk ?>" target='_blank'>View Image</a>
+			<?php endif ?>
 		</td>
 		<td>
 			<?php if (!empty($dailyopSection['DailyopSection']['section_heading_file'])): ?>
