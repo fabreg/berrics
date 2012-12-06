@@ -129,6 +129,7 @@ class DailyopsController extends LocalAppController {
 
 		if($this->request->is('ajax')) {
 
+			$this->beforeRender();
 			$this->render("/Elements/dailyops/dailyops-index");
 
 		}

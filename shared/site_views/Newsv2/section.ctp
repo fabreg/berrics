@@ -6,10 +6,16 @@
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	
+	$('.load-more-btn').bind('click',function() { 
+
+		loadNextPosts();
+
+	});
+
 });
 function loadNextPosts() {
 	
-	var nd = new Date(dailyops_date);
+	var nd = new Date($('.news-collection:last-child').attr("data-date"));
 	nd.setDate(nd.getDate()-1);
 	var d = new Date(nd);
 	
@@ -21,25 +27,39 @@ function loadNextPosts() {
 
 	if(month<10) month = "0"+month;
 
-	var d_str = "/"+d.getFullYear()+"/"+month+"/"+day;
+	var uri = window.location.href;
 
-	$('#dailyops .loading-div').show();
+	var d_str = "/datein:"+d.getFullYear()+"-"+month+"-"+day;
+
+	if(uri.match(/(\/datein:)([0-9]{4})(\-)([0-9]{2})(\-)([0-9]{2})/)) {
+
+		var newuri = uri.replace(/(\/datein:)([0-9]{4})(\-)([0-9]{2})(\-)([0-9]{2})/g,d_str);
+
+	} else {
+
+		var newuri = uri + d_str;
+
+	}
+
+	
+
+	$('#newsfeed .loading-div').show();
+
+	//return;
 
 	$.ajax({
 
-		"url":d_str,
+		"url":newuri,
 		"success":function(d) {
 
-			$("#dailyops .content").append(d);
-			$('#dailyops .loading-div').hide();
+			$("#newsfeed .content").append(d);
+			$('#newsfeed .loading-div').hide();
 
 			$(window).scrollTop($(window).scrollTop()+100);
-
-			
-
 			initMediaDivs();
+			lazyLoad();
 			FB.XFBML.parse();
-			history.pushState({},"Dailyops",d_str);
+			history.pushState({},"Dailyops",newuri);
 			$.ajax({ url: 'https://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
 		},
 		"dataType":"html"
@@ -52,7 +72,7 @@ function loadNextPosts() {
 	*/
 }
 </script>
-<div id="news-section">
+<div id="newsfeed">
 	<div class="content">
 		<?php echo $this->element("news/news-index"); ?>
 	</div>

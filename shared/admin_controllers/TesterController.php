@@ -1977,6 +1977,18 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_preg() {
+		
+		$str = "/news/tewte/etwsdf/twer/date:2012-03-12/asadsf/adsfasdf";
+
+		$s = preg_replace('/(\/date:)([0-9]{4})(\-)([0-9]{2})(\-)([0-9]{2})/','/@TEST@',$str);
+
+		die($s);
+
+
+	}
+
+
 
 
 	

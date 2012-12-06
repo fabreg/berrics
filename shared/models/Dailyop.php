@@ -1319,6 +1319,36 @@ class Dailyop extends AppModel {
 
 	}
 
+	public function validateNewsDateRoute($datein = false) {
+		
+		$token = "validate-news-date-route-".$datein;
+
+		if(($chk = Cache::read($token,"1min")) == false) {
+
+			$chk = $this->find("first",array(
+				"fields"=>array(
+					"Dailyop.publish_date"
+				),
+				"conditions"=>array(
+					"DATE(Dailyop.publish_date) <='{$datein}'",
+					"Dailyop.dailyop_section_id"=>65,
+					"Dailyop.active"=>1,
+					"Dailyop.publish_date < NOW()"
+				),
+				"contain"=>array(),
+				"order"=>array(
+					"Dailyop.publish_date"=>"DESC"
+				)
+			));
+
+			Cache::write($token,$chk,"1min");
+
+		}
+
+		return $chk['Dailyop']['publish_date'];
+
+	}
+
 	/**
 	 * $direction can either be "next"||"prev"
 	 */

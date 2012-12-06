@@ -51,6 +51,14 @@ class Newsv2Controller extends DailyopsController {
 
 		$this->set(compact("posts"));
 
+		if($this->request->is('ajax')) {
+
+			$this->beforeRender();
+			$this->render("/Elements/news/news-index");
+
+		}
+
+
 	}
 
 	public function __section() {
