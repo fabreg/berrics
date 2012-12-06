@@ -41,10 +41,13 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 								$nl = $v['DailyopSection']['name']; 
 
 								if(!empty($v['DailyopSection']['nav_label'])) $nl = $v['DailyopSection']['nav_label'];
+								$color = false;
+								if(!empty($v['DailyopSection']['icon_color_file'])) $color = true;
 								echo $this->Media->sectionIcon(array(
 									"DailyopSection"=>$v['DailyopSection'],
 									"dark"=>true,
-									"h"=>15
+									"h"=>15,
+									"color"=>$color
 								));
 								echo strtoupper($nl);
 

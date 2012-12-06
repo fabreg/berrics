@@ -234,7 +234,7 @@ class MediaHelper extends AppHelper {
 			
 		}
 
-		if(isset($options['color']) && $options['color'] == true) {
+		if(isset($s['color']) && $s['color'] == true) {
 
 			$img['src'] = $section['icon_color_file'];
 

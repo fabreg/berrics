@@ -407,12 +407,12 @@ header .user-info {
 }
 
 
-#top-nav-div #top-nav-list #top-dropdown-menu ul li:hover,
-#top-nav-div #top-nav-list #top-dropdown-menu ul li:hover a {
+#top-nav-div #top-nav-list #top-dropdown-menu ul li:hover {
 
 	background-color: #000;
 	color:#fff;
 	border:none;
+	text-decoration: none;
 }
 
 #top-nav-div #top-nav-list #top-dropdown-menu ul li:nth-child(even) {
@@ -764,7 +764,12 @@ NEWS HEADLINES
 	/*min-height:300px; */
 
 }
+#trending-news div.content table tr td:last-child {
 
+	padding-top:3px;
+	padding-bottom:3px;
+
+}
 
 
 /*
