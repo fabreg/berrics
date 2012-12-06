@@ -44,12 +44,17 @@
 		<header>
 			<div class="container">
 				<div class="row-fluid top-row">
-					<div class="span6" >
+					<div class="logo-div" >
 						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
 					</div>
-					<div class="span6 social-media visible-desktop">
+					<div class="social-media">
 						<div class="cart">
-							<img src="/img/v3/layout/cart-header-icon.png" alt="" /> Cart 
+								
+								<span class="cart-icon-img">
+									<img src="/img/v3/layout/cart-header-icon.png" alt="" />
+								</span>
+									
+							  Cart
 							<span class="label">
 								<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>
 							</span>
@@ -57,17 +62,17 @@
 						<div class="user-info">
 							<i class="icon icon-white icon-user"></i>
 						</div>
-						<div class="tumblr">
+						<div class="tumblr visible-desktop">
 							<a href="http://twitter.com/berrics" target='_blank'>
 								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
 							</a>
 						</div>
-						<div class="twitter">
+						<div class="twitter visible-desktop">
 							<a href="http://twitter.com/berrics" target='_blank'>
 								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
 							</a>
 						</div>
-						<div class="facebook">
+						<div class="facebook visible-desktop">
 							<div class="fb-like" data-href="http://www.facebook.com/pages/The-Berrics/123390707714463" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
 						</div>
 						
