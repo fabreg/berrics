@@ -63,12 +63,16 @@ class DailyopsController extends LocalAppController {
 		
 		if(!empty($this->request->params['named']['Dailyop.name'])) {
 			
+			$this->request->params['named']['Dailyop.name'] = urldecode($this->request->params['named']['Dailyop.name']);
+
 			$this->Paginator->settings['Dailyop']['conditions']['Dailyop.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['Dailyop.name'])."%";
 			$this->request->data['Dailyop']['name'] = $this->request->params['named']['Dailyop.name'];
 			
 		}
 		if(!empty($this->request->params['named']['Dailyop.sub_title'])) {
 			
+			$this->request->params['named']['Dailyop.sub_title'] = urldecode($this->request->params['named']['Dailyop.sub_title']);
+
 			$this->Paginator->settings['Dailyop']['conditions']['Dailyop.sub_title LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['Dailyop.sub_title'])."%";
 			$this->request->data['Dailyop']['sub_title'] = $this->request->params['named']['Dailyop.sub_title'];
 			
