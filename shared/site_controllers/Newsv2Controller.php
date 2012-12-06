@@ -23,13 +23,11 @@ class Newsv2Controller extends DailyopsController {
 			!isset($this->request->params['pass'][1]) && 
 			!isset($this->request->params['pass'][2]) && $this->request->params['action'] != "view") {
 	 		
-	 		$this->request->params['action'] = "archive";
+	 		//$this->request->params['action'] = "archive";
 	 		
 	 		
 	 	}
 
-
-	 	
 	}
 	
 	public function archive() {
@@ -46,8 +44,31 @@ class Newsv2Controller extends DailyopsController {
 
 		
 	}
-	
+
 	public function section() {
+		
+		$this->Paginator->settings = array(
+			"Dailyop"=>array(
+
+			),
+			"contain"=>array(
+				"DailyopTextItem"=>array(
+					"MediaFile",
+					"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+					"limit"=>1
+				),
+				"Tag"=>array(
+					"User",
+					"Brand"
+				),
+				"DailyopSection",
+				"User"
+			)
+		);
+
+	}
+
+	public function __section() {
 		
 		$this->loadModel("Dailyop");
 		//check for an incoming timestamp

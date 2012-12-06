@@ -15,7 +15,8 @@ $url = $this->Berrics->dailyopsPostUrl($post);
 				"MediaFile"=>$post['DailyopTextItem'][0]['MediaFile'],
 				"w"=>350,
 				"h"=>200,
-				"zc"=>1
+				"zc"=>1,
+				"lazy"=>true
 			)); 
 			?>
 			</a>

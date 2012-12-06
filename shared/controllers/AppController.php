@@ -54,7 +54,7 @@ class AppController extends Controller {
 		);
 		
 		//put the current URL in the session
-		if(!in_array(strtolower($this->request->params['controller']),array("login","img","media","css")) && (!$this->request->is('ajax'))) {
+		if(!in_array(strtolower($this->request->params['controller']),array("login","img","media","css"))) {
 			
 			$this->Session->write("here",$_SERVER['REQUEST_URI']);
 			$this->Auth->loginRedirect = $_SERVER['REQUEST_URI'];

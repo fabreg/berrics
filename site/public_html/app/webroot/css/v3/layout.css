@@ -147,6 +147,7 @@ header .user-info {
 	float:right;
 	margin-top:3px;
 	cursor: pointer;
+
 }
 
 
@@ -338,8 +339,8 @@ header .user-info {
 	position: absolute;
 	display: none;
 	width:450px;	
-	left:-1px;
-	top:25px;
+	left:-2px;
+	top:26px;
 	padding-top:3px;
 	z-index: 10010;
 
@@ -534,7 +535,6 @@ TWO COLUMN BODY
 
 	}
 
-
 }
 
  
@@ -644,6 +644,18 @@ TWO COLUMN BODY
 		width:100%;
 		margin:0;
 		margin-top:15px;
+	}
+
+	header .logo-div {
+
+		width:69%;
+
+	}
+
+	header .social-media {
+
+		width:30%;
+
 	}
 
 }
@@ -2312,6 +2324,12 @@ BOOTSTRAP OVERRIDES
 .nav-pills li.active a {
 
 	background-color:#ccc;
+
+}
+
+.modal {
+
+	z-index: 19000;
 
 }
 
