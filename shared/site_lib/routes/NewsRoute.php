@@ -13,9 +13,9 @@ class NewsRoute extends CakeRoute {
 		
 		if(count($params['pass'])<=0 && !isset($params['named']['datein'])) {
 
-			$params['named']['datein'] = $Dailyop->getNewsDate();
+			//$params['named']['datein'] = $Dailyop->getNewsDate();
 
-			return $params;
+			//return $params;
 
 		}
 
@@ -26,7 +26,7 @@ class NewsRoute extends CakeRoute {
 		}
 
 		//validate the date
-		$params['named']['datein'] = $Dailyop->validateNewsDateRoute($params['named']['datein']);
+		//$params['named']['datein'] = $Dailyop->validateNewsDateRoute($params['named']['datein']);
 
 		
 		

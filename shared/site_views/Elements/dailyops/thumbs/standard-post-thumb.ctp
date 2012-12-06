@@ -2,6 +2,13 @@
 <?php 
 
 	$media_file = $post['DailyopMediaItem'][0]['MediaFile'];
+
+	if($post['Dailyop']['dailyop_section_id'] == 65) {
+
+		$media_file = $post['DailyopTextItem'][0]['MediaFile'];
+
+	}
+
 	$url = $this->Berrics->dailyopsPostUrl($post);
 ?>
 	<div class="post-date">
@@ -14,13 +21,13 @@
 			<div class="play-button"></div>
 		<?php endif ?>
 		<?php 
-						echo $this->Media->mediaThumb(array(
-							"MediaFile"=>$media_file,
-							"w"=>350,
-							"h"=>200,
-							"zc"=>1,
-							"lazy"=>true
-						)); 
+			echo $this->Media->mediaThumb(array(
+				"MediaFile"=>$media_file,
+				"w"=>350,
+				"h"=>200,
+				"zc"=>1,
+				"lazy"=>true
+			)); 
 		?>
 		</a>
 	</div>

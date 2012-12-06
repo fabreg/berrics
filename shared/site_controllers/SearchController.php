@@ -53,11 +53,16 @@ class SearchController extends LocalAppController {
 					),
 					"limit"=>1
 				),
-				"DailyopSection"
+				"DailyopSection",
+				"DailyopTextItem"=>array(
+					"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+					"limit"=>1,
+					"MediaFile"
+				)
 			),
 			"conditions"=>array(
 				'Dailyop.id'=>$post_ids,
-				"Dailyop.dailyop_section_id !="=>65,
+				//"Dailyop.dailyop_section_id !="=>65,
 				"Dailyop.active"=>1,
 				"Dailyop.publish_date < NOW()",
 				"Dailyop.promo !="=>1
