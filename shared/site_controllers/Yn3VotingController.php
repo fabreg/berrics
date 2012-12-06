@@ -12,6 +12,8 @@ class Yn3VotingController extends DailyopsController {
 	
 	public function beforeFilter() {
 		
+		$this->body_element = "layout/v3/one-column";
+
 		parent::beforeFilter();
 
 		$this->theme = "yn3-finals";
