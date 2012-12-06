@@ -199,7 +199,7 @@ class DailyopsController extends LocalAppController {
 		
 		//set the title of the page
 		
-		$this->set("title_for_layout",stripslashes($entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']));
+		$this->set("title_for_layout","The Berrics - ".stripslashes($entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']));
 		
 		//build a list of tags for meta_k
 		

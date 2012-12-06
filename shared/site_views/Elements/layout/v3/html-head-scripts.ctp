@@ -11,9 +11,7 @@
 			"v3/bootstrap",
 			"v3/modernizr",
 			"v3/jquery.fullscreen-min",
-			"v3/respond.min.js",
 			"v3/jquery.lazyload.min",
-			"v3/html5shiv",
 			"jquery.scrollTo",
 			//"v3/jquery.writeCapture",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
@@ -38,6 +36,13 @@
  
 		*/
  ?>
+ <!--[if lt IE 9]>
+<script src="/js/v3/html5shiv"></script>
+<![endif]-->
+ <!--[if lt IE 9]>
+<script src="/js/v3/respond.min.js"></script>
+<![endif]-->
+
 <script type='text/javascript'>
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
