@@ -39,7 +39,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 						$t = $v['Dailyop']['DailyopTextItem'][0];
 					?>
 					<tr>
-						<!-- <td width='100'>
+						<td width='100'>
 							<a href='<?php echo $link; ?>'>
 							<?php 
 								$media_file = $v['Dailyop']['DailyopTextItem'][0]['MediaFile'];
@@ -49,7 +49,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 								));
 							?>
 							</a>
-						</td> -->
+						</td>
 						<td>
 							<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['name'],26); ?></a>
 							<div>

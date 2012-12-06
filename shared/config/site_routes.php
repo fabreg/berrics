@@ -141,6 +141,19 @@ if(preg_match('/\/profiles/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
+//news routes
+if(preg_match('/(\/news)/',$_SERVER["REQUEST_URI"]) && !preg_match('/(\.html)/',$_SERVER['REQUEST_URI'])) {
+
+	App::uses("NewsRoute",'routes');
+	//connect the articles
+	Router::connect("/news/*",
+					array("controller"=>"newsv2","action"=>"section"),
+					array("routeClass"=>"NewsRoute")
+			);
+
+}
+
+
 //accounts
 if(preg_match('/\/account/',$_SERVER['REQUEST_URI'])) {
 	

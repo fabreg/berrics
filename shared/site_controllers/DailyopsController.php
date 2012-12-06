@@ -120,7 +120,7 @@ class DailyopsController extends LocalAppController {
 
 			}
 
-			//Cache::write($token,$posts,"1min");
+			Cache::write($token,$posts,"1min");
 
 		}
 

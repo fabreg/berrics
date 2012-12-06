@@ -1268,6 +1268,102 @@ class Dailyop extends AppModel {
 
 	}	
 
+	public function newsFeed($dateIn = false,$tag_ids = false) {
+		
+		$cond = array(
+			"Dailyop.active"=>1,
+			"Dailyop.hidden"=>0,
+			"Dailyop.dailyop_section_id"=>65,
+			"Dailyop.publish_date < NOW()"
+		);
+
+		$contain = array(
+			"DailyopTextItem"=>array(
+				"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+				"limit"=>1,
+				"MediaFile"
+			),
+			"Tag"=>array(
+				"User",
+				"Brand"
+			),
+			"DailyopSection",
+			"User"
+		);
+
+		$order = array(
+			"Dailyop.publish_date"=>"DESC"
+		);
+		$limit = "25";
+		$page = "1";
+
+		if($dateIn) $cond[] = "DATE(Dailyop.publish_date) = '{$dateIn}'";
+
+		$token = "news-feed-".md5(serialize($cond).serialize($contain).serialize($order).$limit.$page);
+
+		if(($posts = Cache::read($token,"1min")) === false) {
+
+			$posts = $this->find("all",array(
+					"conditions"=>$cond,
+					"contain"=>$contain,
+					"order"=>$order,
+					"limit"=>$limit,
+					"page"=>$page
+				));
+
+			Cache::write($token,$posts,"1min");
+
+		}
+
+		return $posts;
+
+	}
+
+	/**
+	 * $direction can either be "next"||"prev"
+	 */
+	public function getNewsDate($dateIn = false,$direction="next") {
+		
+		$token = "get-news-date-".$dateIn."-".$direction;
+
+
+		if(!$dateIn) {
+
+			//if(($date == Cache::read($token,"1min")) === false) {
+
+				$d = $this->find("first",array(
+						"fields"=>array(
+							"Dailyop.publish_date"
+						),
+						"conditions"=>array(
+							"Dailyop.publish_date < NOW()",
+							"Dailyop.active"=>1,
+							"Dailyop.hidden"=>0,
+							"Dailyop.dailyop_section_id"=>65
+						),
+						"contain"=>array(),
+						"order"=>array(
+							"Dailyop.publish_date"=>"DESC"
+						),
+						"limit"=>1
+					));
+
+				$date = date("Y-m-d",strtotime($d['Dailyop']['publish_date']));
+
+				Cache::write($token,$date,"1min");
+
+			//}
+
+			return $date;
+
+		}
+
+
+
+		
+
+	}
+
 	public function extractSearchValues($Dailyop) {
 
 		$id = $Dailyop['Dailyop']['id'];
