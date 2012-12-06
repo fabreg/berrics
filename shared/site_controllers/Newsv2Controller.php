@@ -49,22 +49,34 @@ class Newsv2Controller extends DailyopsController {
 		
 		$this->Paginator->settings = array(
 			"Dailyop"=>array(
-
-			),
-			"contain"=>array(
-				"DailyopTextItem"=>array(
-					"MediaFile",
-					"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
-					"limit"=>1
+				"conditions"=>array(
+					"Dailyop.active"=>1,
+					"Dailyop.dailyop_section_id"=>65,
+					"Dailyop.publish_date < NOW()",
+					"Dailyop.misc_category"=>"news-general"
 				),
-				"Tag"=>array(
-					"User",
-					"Brand"
+				"contain"=>array(
+					"DailyopTextItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1
+					),
+					"Tag"=>array(
+						"User",
+						"Brand"
+					),
+					"DailyopSection",
+					"User"
 				),
-				"DailyopSection",
-				"User"
+				"order"=>array(
+					"Dailyop.publish_date"=>"DESC"
+				)
 			)
 		);
+
+		$posts = $this->paginate("Dailyop");
+
+		$this->set(compact("posts"));
 
 	}
 
