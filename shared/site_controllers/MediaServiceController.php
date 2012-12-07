@@ -96,6 +96,8 @@ class MediaServiceController extends LocalAppController {
 
 	public function end() {
 		
+		$token = "video-end-".md5(serialize($this->request->params['named']));
+
 		$this->loadModel('Dailyop');
 
 		$post = $this->Dailyop->returnPost(array(
@@ -103,7 +105,14 @@ class MediaServiceController extends LocalAppController {
 				));
 
 		$posts = $this->Dailyop->getRelatedItems($post,array(),true);
-			
+		//$posts = $this->Dailyop->postViewRelated($post,true);
+
+		if(count($posts)<=0) {
+
+			$posts = $this->Dailyop->getRecentPostsByPost($post);
+
+		}
+
 		$this->set(compact("posts","post"));
 		
 	}

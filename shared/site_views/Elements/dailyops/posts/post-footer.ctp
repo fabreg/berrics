@@ -9,7 +9,7 @@ $d = $dop['Dailyop'];
 if(!empty($dop['Dailyop']['fb_like_uri_override'])) $fb_like = $dop['Dailyop']['fb_like_uri_override'];
 
 $tumblr_source = "";
-	
+	/*
 	switch(strtolower($f['media_type'])) {
 		
 		case "bcove":
@@ -20,6 +20,7 @@ $tumblr_source = "";
 			$tumblr_source = "http://img.theberrics.com/images/".$f['file'];
 			break;
 	}
+	*/
 
 ?>
 <div class="post-footer clearfix">

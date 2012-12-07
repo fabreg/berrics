@@ -391,7 +391,7 @@ class BerricsHelper extends AppHelper {
 							
 						$tdoc = new DOMDocument();
 			
-						@$tdoc->loadHTML($this->_View->element("dailyops/post-bit",array("dop"=>$p)));
+						@$tdoc->loadHTML($this->_View->element("dailyops/post-bit",array("dop"=>$p,"lazy"=>false)));
 			
 						$e->parentNode->replaceChild($dom->importNode($tdoc->documentElement, TRUE),$e);
 			

@@ -202,20 +202,12 @@ class Newsv2Controller extends DailyopsController {
 		
 		$token = "article_".md5($this->request->params['uri']);
 
-		if(($post = Cache::read($token,"1min")) == false || $is_dev) {
-
-
-			$post = $this->Dailyop->returnPost(array(
+		$post = $this->Dailyop->returnPost(array(
 					
 						"Dailyop.uri"=>$this->request->params['uri'],
 						"DailyopSection.uri"=>$this->request->params['section']	
 					
 					),$this->isAdmin());
-
-
-			Cache::write($token,$post,"1min");
-		}
-
 		
 		if(isset($post['Dailyop']['publish_date'])) {
 			
@@ -223,24 +215,13 @@ class Newsv2Controller extends DailyopsController {
 			
 		}
 		
-		$this->set(compact("post"));
 		
-		//set the unified news
-		$this->setUnified();
+
 		
-		//set the events
-		$this->setNewsEvents();
-		
-		if($this->request->params['uri'] == "happy-birthday-eric-koston.html") {
-			
-			$this->loadModel("InstagramImageItem");
-			
-			$instagram = $this->InstagramImageItem->returnImagesByTagRaw("happybirthdayerickoston");
-			
-			$this->set(compact("instagram"));
-			
-		}
-		
+		$related = $this->Dailyop->postViewRelated($post);
+
+		$this->set(compact("post","related"));
+
 		$this->view = "view";
 		
 	}

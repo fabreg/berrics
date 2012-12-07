@@ -579,7 +579,11 @@ class Dailyop extends AppModel {
 
 		$sv = $this->extractSearchValues($post);
 
-		$str = $sv['title']." ".$sv['sub_title']." ".$sv['keywords'];
+		//$str = $sv['title']." ".$sv['sub_title']." ".$sv['keywords'];
+
+		$tags = Set::extract("/Tag/name",$post);
+
+		$str = implode(" ", $tags);
 
 		$exclude_ids[] = $post['Dailyop']['id'];
 		
@@ -1438,7 +1442,7 @@ class Dailyop extends AppModel {
 
 				Cache::write($token,$date,"1min");
 
-			//}
+		//}
 
 			return $date;
 
@@ -1447,6 +1451,138 @@ class Dailyop extends AppModel {
 
 
 		
+
+	}
+
+	public function getRecentPostsByPost($post) {
+		
+		$token = "get-recent-posts-by-post".$post['Dailyop']['id'];
+
+		if(($posts = Cache::read($token,"1min")) === false) {
+
+			$posts = $this->find("all",array(
+				"conditions"=>array(
+					"Dailyop.dailyop_section_id"=>$post['Dailyop']['dailyop_section_id'],
+					"Dailyop.id !="=>$post['Dailyop']['id'],
+					"Dailyop.active"=>1,
+					"Dailyop.hidden"=>0,
+					"Dailyop.publish_date <= NOW()"
+				),
+				"contain"=>array(
+					"DailyopSection",
+						"DailyopMediaItem"=>array(
+							"MediaFile",
+							"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+							"limit"=>1
+						),
+						"DailyopTextItem"=>array(
+							"MediaFile",
+							"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+							"limit"=>1
+						)
+				),
+				"limit"=>4,
+				"order"=>array(
+					"Dailyop.publish_date"=>"DESC"
+				)
+			));
+
+			Cache::write($token,$posts,"1min");
+
+		}
+
+		return $posts;
+
+	}
+
+	public function postViewRelated($post,$exclude_section = true) {
+
+		$SearchItem = ClassRegistry::init("SearchItem");
+
+		$posts = $this->find("all",array(
+			"conditions"=>array(
+				"Dailyop.dailyop_section_id"=>$post['Dailyop']['dailyop_section_id'],
+				"Dailyop.id !="=>$post['Dailyop']['id'],
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"Dailyop.publish_date <= NOW()"
+			),
+			"contain"=>array(
+				"DailyopSection",
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+						"limit"=>1
+					),
+					"DailyopTextItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1
+					)
+			),
+			"limit"=>4,
+			"order"=>array(
+				"Dailyop.publish_date"=>"DESC"
+			)
+		));
+
+		$tags = Set::extract("/Tag/name",$post);
+
+		$str = implode(" ",$tags);
+
+		$str .= " ".$post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];
+
+		if($exclude_section) {
+
+			$exclude_ids = Set::extract("/Dailyop/id",$posts);
+
+		}
+		
+
+		$exclude_ids[] = $post['Dailyop']['id'];
+
+		$cond = array(
+			"SearchItem.model"=>"Dailyop",
+			"NOT"=>array(
+				"SearchItem.foreign_key"=>$exclude_ids
+			)
+		);
+
+		$res = $SearchItem->run_search($str,false,$cond);
+
+		$ids = Set::extract("/SearchItem/foreign_key",$res);
+
+		$related = $this->find("all",array(
+			"conditions"=>array(
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"Dailyop.publish_date <= NOW()",
+				"Dailyop.dailyop_section_id !="=>65,
+				"Dailyop.id"=>$ids
+			),
+			"contain"=>array(
+				"DailyopSection",
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+						"limit"=>1
+					),
+					"DailyopTextItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+						"limit"=>1
+					)
+			),
+			"limit"=>4,
+			"order"=>array(
+				"Dailyop.publish_date"=>"DESC"
+			)
+		));
+
+		return array(
+			"recent_posts"=>$posts,
+			"related_posts"=>$related
+		);	
 
 	}
 
@@ -1476,7 +1612,7 @@ class Dailyop extends AppModel {
 		$s = array(
 			"title"=>$Dailyop['Dailyop']['name'],
 			"sub_title"=>$Dailyop['Dailyop']['sub_title'],
-			"keywords"=>$kw,
+			"keywords"=>$kw." ".$kw." ".$Dailyop['Dailyop']['name']." ".$Dailyop['Dailyop']['sub_title'],
 			"model"=>"Dailyop",
 			"foreign_key"=>$id
 		);

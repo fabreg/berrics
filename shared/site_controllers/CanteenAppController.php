@@ -13,9 +13,8 @@ class CanteenAppController extends LocalAppController {
 		
 		//time to set the currency
 		$this->theme = "canteen";
-		
 
-		
+		if(preg_match('/()/',$_SERVER['REQUEST_URI']))
 		
 	}
 	

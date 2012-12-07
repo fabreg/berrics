@@ -114,45 +114,7 @@ if($post['Dailyop']['best_of']) {
 	<?php 
 		endforeach;
 	?>
-	<?php if(isset($instagram)): ?>
-		<style>
-		.instagram-image-item {
-		
-			float:left;
-			padding:10px;
-			border:1px solid #999;
-			background-color:#bbb4a4;
-			margin-bottom:4px;
-			margin-left:5px;
-		}
-		
-		.instagram-image-item img {
-		
-			border:1px solid #999;
-			
-		
-		}
-		
-		.instagram-image-item:nth-child(odd) {
-		
-			float:right;
-			margin-right:5px;
-		}
-		</style>
-		<div>
-			<h2 style='padding-bottom:5px; margin-bottom:5px; border-bottom:1px solid #000;'>Instagram: happybirthdayerickoston</h2>
-			<?php foreach($instagram['data'] as $v): ?>
-				<div class='instagram-image-item'>
-					<img border='0' src='<?php echo $v['images']['low_resolution']['url']; ?>'/>
-					<div>
-						@<?php echo $v['user']['username']; ?> <br />
-						Likes: <?php echo $v['likes']['count']; ?>
-					</div>
-				</div>
-			<?php endforeach; ?>
-			<div style='clear:both;'></div>
-		</div>
-	<?php endif; ?>
+	
 	<div class='links'>
 		<?php 
 			
@@ -168,7 +130,7 @@ if($post['Dailyop']['best_of']) {
 		
 		?>
 	</div>
-	
+	<?php echo $this->element("dailyops/posts/recent-related-posts",$related) ?>
 </div>
 
 <div style='clear:both;'></div>

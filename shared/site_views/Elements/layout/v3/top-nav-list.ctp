@@ -82,6 +82,12 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 </div>
 <div class="" id="top-nav-mobile">
 	<div class="row-fluid">
+		<div class="span12 search">
+			<form method='post' action='/search' >
+			<input name='data[Search][term]' type='text' /><button></button></form>
+		</div>
+	</div>
+	<div class="row-fluid">
 		<div class="span12">
 			<select id='mobile-nav-select'>
 				<option value="">Navigation..</option>
@@ -98,10 +104,5 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 			</select>
 		</div>
 	</div>
-	<div class="row-fluid">
-		<div class="span12 search">
-			<form method='post' action='/search' >
-			<input name='data[Search][term]' type='text' /><button></button></form>
-		</div>
-	</div>
+
 </div>

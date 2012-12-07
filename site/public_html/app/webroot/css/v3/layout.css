@@ -129,6 +129,12 @@ header .social-media .facebook {
 	margin-right:8px;
 }
 
+header .social-media .fb-icon {
+
+	float:right;
+	margin-right:8px;
+}
+
 header .social-media .cart {
 
 	float: right;
@@ -174,7 +180,7 @@ header .user-info {
 
 #body-row {
 
-	padding-top:85px;
+	padding-top:70px;
 
 }
 
@@ -451,6 +457,17 @@ header .user-info {
 
 	width:100%;
 	
+}
+
+#top-nav-mobile .search form {
+
+	margin-bottom:0px;
+
+}
+
+#top-nav-mobile .search input[type=text] {
+
+	width:90%;
 
 }
 
@@ -465,6 +482,7 @@ header .user-info {
 	border:none;
 	background-color: transparent;
 	margin-bottom:10px;
+	margin-left:2%;
 }
 
 
@@ -484,7 +502,9 @@ TWO COLUMN BODY
 
 #two-column-body .left-column {
 
-	
+	background-color: #fff;
+		padding-top:15px;
+	padding-bottom:8px;
 
 }
 #two-column-body .left-column .inner {
@@ -496,7 +516,9 @@ TWO COLUMN BODY
 #two-column-body .right-column {
 
 	height:auto;
-	
+	background-color: #fff;
+	padding-top:15px;
+	padding-bottom:8px;
 }
 
 
@@ -504,20 +526,29 @@ TWO COLUMN BODY
 /* Large desktop */
 @media (min-width: 1200px) { 
 
+	body {
+
+		background-color:#ccc;
+		background-image: url(/img/v3/layout/body-bg.jpg);
+
+	}
 
 	#body-row {
 
-		border-right:2px dotted #ccc;
-		border-left:2px dotted #ccc;
+		/*border-right:2px dotted #ccc;
+		border-left:2px dotted #ccc;*/
 		
 
 	}
 
-	#two-column-body .right-column {
+	#two-column-body .right-column,
+	#two-column-body .left-column {
 
 		
-		border-left:2px dotted #ccc;
-		
+		/*border-left:2px dotted #ccc;*/
+		    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
 
 	}
 
@@ -535,13 +566,18 @@ TWO COLUMN BODY
 
 	}
 
+	header {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+
+	}
+
 }
 
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) { 
-
-
 
 	/*
 	Two Column Body
@@ -1174,6 +1210,7 @@ VIDEO DIV PLUGIN
 	height:100%;
 	width:100%;
 	display:none;
+	cursor: pointer;
 
 }
 .video-div .pause-overlay .play-icon {
@@ -1685,6 +1722,7 @@ post related
 	font-size:12px;
 	border-bottom:1px solid #666;
 	color:#999;
+	text-align: left;
 }
 
 .post-related .top {
@@ -1715,6 +1753,11 @@ post related
 .post-related .post-thumb:nth-child(4) {
 
 	display:none;
+
+}
+.post-related .thumb-collection {
+
+	margin-bottom:10px;
 
 }
 
@@ -1778,6 +1821,8 @@ post section
 #post-section .section-heading-div {
 
 	border-bottom:1px solid #000;
+	border-top:1px solid #000;
+	margin-top: 5px;
 
 }
 
@@ -1940,6 +1985,15 @@ large post
 #####################
 */
 
+.featured-post-div {
+
+	background-color: #fff;
+	padding-top:8px;
+	padding-bottom:8px;
+	margin-top:8px;
+
+}
+
 .featured-post {
 
 	max-width:1114px;
@@ -1957,7 +2011,27 @@ large post
 	max-height: 200px;
 
 }
+/* Large desktop */
+@media (min-width: 1200px) { 
 
+	.featured-post-div {
+
+		    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   	 -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   	 margin-bottom:8px;
+	}
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
 
 /*
 #####################
@@ -2080,6 +2154,25 @@ standard post
 
 
  }
+
+/*
+#####################
+RECENT REALTED POSTS
+######################
+*/
+.recent-related-posts {
+
+
+
+}
+
+.recent-related-posts h3 {
+
+	border-bottom:1px solid #000;
+
+}
+
+
 /*
 ##########################
 GLOBAL ARTICLE THUMBNAIL
@@ -2141,6 +2234,20 @@ GLOBAL ARTICLE THUMBNAIL
 	max-width: 700px;
 	margin:auto;
 }
+
+
+/*
+##########################
+ Article Top
+########################
+*/
+
+.article-top { 
+
+	border-bottom:1px solid #000;
+
+}
+
 
 /* Large desktop */
 @media (min-width: 1200px) {  }
@@ -2413,6 +2520,59 @@ PROFILE DETAILS WIDGET
 
 }
 
+/*
+##########################
+GALLERY VIEW
+########################
+*/
+
+#gallery-view {
+
+
+}
+
+#gallery-view .viewing {
+
+	text-align: center;
+
+}
+
+#gallery-view .thumbs {
+
+	padding:10px;
+
+}
+
+#gallery-view .thumbs .gallery-thumb {
+
+	float:left;
+	margin-right:10px;
+	margin-bottom:10px;
+	padding:4px;
+}	
+
+#gallery-view .thumbs .gallery-thumb.active {
+
+	background-color:#950202;
+
+}
+
+#gallery-view .gallery-nav {
+
+	padding-top:10px;
+
+}
+
+#gallery-view .gallery-nav .back-btn {
+
+	float:left;
+
+}
+#gallery-view .gallery-nav .next-btn {
+
+	float:right;
+
+}
 /*#############################################*/
 
 /*

@@ -104,6 +104,45 @@ class DailyopsController extends LocalAppController {
 				)
 			));
 
+			if(count($p)<=3 && $home_mode && !$this->request->is('ajax')) {
+
+
+				$dateIn = $this->checkHomeDateIn(date('Y-m-d',strtotime("-1 Day",strtotime($dateIn))));
+
+				$ep = $this->Dailyop->find("all",array(
+							"conditions"=>array(
+								"Dailyop.active"=>1,
+								"Dailyop.hidden"=>0,
+								"DATE(Dailyop.publish_date) = '{$dateIn}'"
+								
+							),
+							"contain"=>array(
+								"DailyopMediaItem"=>array(
+									"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+									"limit"=>1,
+									"MediaFile"
+								),
+								"DailyopTextItem"=>array(
+									"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+									"limit"=>1,
+									"MediaFile"
+								),
+								"DailyopSection",
+								"Tag"=>array(
+									"UnifiedStore",
+									"User",
+									"Brand"
+								)
+							),
+							"order"=>array(
+								"Dailyop.pinned"=>"DESC",
+								"Dailyop.publish_date"=>"DESC"
+							)
+					));
+
+				$p = array_merge($p,$ep);
+			}
+
 			$posts = array();
 
 			foreach ($p as $k => $v) {
@@ -177,14 +216,14 @@ class DailyopsController extends LocalAppController {
 		
 		$this->loadModel("DailyopSection");
 		
-		$entry = $this->Dailyop->returnPost(array(
+		$post = $this->Dailyop->returnPost(array(
 		
 			"DailyopSection.uri"=>$this->request->params['section'],
 			"Dailyop.uri"=>$this->request->params['uri']
 		
 		),$this->isAdmin());
 		
-		if(!$entry) {
+		if(!$post) {
 			
 			throw new NotFoundException();
 			
@@ -194,7 +233,7 @@ class DailyopsController extends LocalAppController {
 		
 		$this->setFacebookMetaData($entry);
 		
-		$this->set(compact("entry"));
+		$this->set(compact("post"));
 		
 		
 		//set the title of the page
@@ -218,12 +257,10 @@ class DailyopsController extends LocalAppController {
 			$this->set(compact("meta_k"));
 			
 		}
-		
-		$this->sectionRelated($entry);
+
 
 		$this->setRssFeed();
 	
-		
 	}
 
 	private function checkHomeDateIn($dateIn) {
@@ -242,100 +279,6 @@ class DailyopsController extends LocalAppController {
 
 		return $dateIn;
 	}
-
-
-
-	private function sectionRelated($post) {
-
-		$posts = $this->Dailyop->find("all",array(
-			"conditions"=>array(
-				"Dailyop.dailyop_section_id"=>$post['Dailyop']['dailyop_section_id'],
-				"Dailyop.id !="=>$post['Dailyop']['id'],
-				"Dailyop.active"=>1,
-				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= NOW()"
-			),
-			"contain"=>array(
-				"DailyopSection",
-					"DailyopMediaItem"=>array(
-						"MediaFile",
-						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
-						"limit"=>1
-					),
-					"DailyopTextItem"=>array(
-						"MediaFile",
-						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
-						"limit"=>1
-					)
-			),
-			"limit"=>4,
-			"order"=>array(
-				"Dailyop.publish_date"=>"DESC"
-			)
-		));
-
-		$tags = Set::extract("/Tag/name",$post);
-
-		$this->loadModel('SearchItem');
-
-		$str = implode(" ",$tags);
-
-		$str .= " ".$post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];
-
-		$exclude_ids = Set::extract("/Dailyop/id",$posts);
-
-		$exclude_ids[] = $post['Dailyop']['id'];
-	
-
-		$cond = array(
-			"SearchItem.model"=>"Dailyop",
-			"NOT"=>array(
-				"SearchItem.foreign_key"=>$exclude_ids
-			)
-		);
-
-		$res = $this->SearchItem->run_search($str,false,$cond);
-
-		$ids = Set::extract("/SearchItem/foreign_key",$res);
-
-		$related = $this->Dailyop->find("all",array(
-			"conditions"=>array(
-				"Dailyop.active"=>1,
-				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= NOW()",
-				"Dailyop.dailyop_section_id !="=>65,
-				"Dailyop.id"=>$ids
-			),
-			"contain"=>array(
-				"DailyopSection",
-					"DailyopMediaItem"=>array(
-						"MediaFile",
-						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
-						"limit"=>1
-					),
-					"DailyopTextItem"=>array(
-						"MediaFile",
-						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
-						"limit"=>1
-					)
-			),
-			"limit"=>4,
-			"order"=>array(
-				"Dailyop.publish_date"=>"DESC"
-			)
-		));
-
-		$this->set("recent_posts",$posts);
-		$this->set("related_posts",$related);
-
-
-	}
-
-
-
-
-
-
 	
 	public function index__() {
 	

@@ -19,6 +19,14 @@ class ImageGalleryController extends DailyopsController {
 		
 		
 	}
+
+	public function section() {
+		
+		parent::section();
+
+		$this->view = "/Dailyops/section";
+
+	}
 	
 
 	
@@ -48,9 +56,9 @@ class ImageGalleryController extends DailyopsController {
 		$conditions['Dailyop.uri'] = $this->request->params['uri'];
 	
 
-		$gallery = $this->Dailyop->returnPost($conditions,$this->isAdmin());
+		$post = $this->Dailyop->returnPost($conditions,$this->isAdmin());
 		
-		$title_for_layout = $gallery['DailyopSection']['name'].' - '.$gallery['Dailyop']['sub_title'];
+		$title_for_layout = "The Berrics - ".$post['DailyopSection']['name'].' - '.$post['Dailyop']['sub_title'];
 		
 
 		//build rows of 4
@@ -71,11 +79,11 @@ class ImageGalleryController extends DailyopsController {
 		if(isset($this->request->params['named']['view'])) {
 			
 			$view_id = $this->request->params['named']['view'];
-			$view_item = Set::extract("/DailyopMediaItem/MediaFile[id={$view_id}]",$gallery);
+			$view_item = Set::extract("/DailyopMediaItem/MediaFile[id={$view_id}]",$post);
 		
 		} else {
 			
-			$view_item = $gallery['DailyopMediaItem'][1];
+			$view_item = $post['DailyopMediaItem'][1];
 			$view_id = $view_item['MediaFile']['id'];
 			
 		}
@@ -83,7 +91,7 @@ class ImageGalleryController extends DailyopsController {
 		$prev_item = false;
 		$next_item = false;
 		
-		foreach($gallery['DailyopMediaItem'] as $key=>$item) {
+		foreach($post['DailyopMediaItem'] as $key=>$item) {
 			
 			$items[$index][] = $item;
 			
@@ -94,15 +102,15 @@ class ImageGalleryController extends DailyopsController {
 				$prev_key = $key - 1;
 				$next_key = $key + 1;
 				
-				if(isset($gallery['DailyopMediaItem'][$prev_key])) {
+				if(isset($post['DailyopMediaItem'][$prev_key])) {
 					
-					$prev_item = $gallery['DailyopMediaItem'][$prev_key];
+					$prev_item = $post['DailyopMediaItem'][$prev_key];
 					
 				}
 				
-				if(isset($gallery['DailyopMediaItem'][$next_key])) {
+				if(isset($post['DailyopMediaItem'][$next_key])) {
 					
-					$next_item = $gallery['DailyopMediaItem'][$next_key];
+					$next_item = $post['DailyopMediaItem'][$next_key];
 					
 				}
 				
@@ -128,9 +136,9 @@ class ImageGalleryController extends DailyopsController {
 			
 		}
 		
-		$this->setFacebookMetaImg($gallery['DailyopMediaItem'][0]['MediaFile']);
+		$this->setFacebookMetaImg($post['DailyopMediaItem'][0]['MediaFile']);
 		
-		$this->set(compact("gallery","items","view_row","view_id","view_item","title_for_layout","prev_item","next_item"));
+		$this->set(compact("post","items","view_row","view_id","view_item","title_for_layout","prev_item","next_item"));
 		
 	}
 	

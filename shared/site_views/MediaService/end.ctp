@@ -31,6 +31,9 @@
 	</div>
 </div>
 <script>
-lazyLoad();
+jQuery(document).ready(function($) {
+	lazyLoad();
 initMediaDivs();
+});
+
 </script>

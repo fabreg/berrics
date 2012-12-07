@@ -31,9 +31,9 @@ class SearchItem extends AppModel {
 		 $final = array();
 	    foreach (array_filter(preg_split('/[\s\'-]+/', $s)) as $word) {
 	            if ($strict) {
-	            	  $final[] = "+$word";
+	            	  $final[] = "+\"$word\"";
 	            } else {
-	            	  $final[] = "$word";
+	            	  $final[] = "\"$word\"";
 	            }
 	            
 	    }
@@ -51,9 +51,9 @@ class SearchItem extends AppModel {
 
 			$query = $this->formatString($str,$strict);
 
-			$match = "MATCH(title,sub_title,keywords) AGAINST('{$query}')";
+			$match = "MATCH(keywords) AGAINST('{$query}')";
 
-			$match_bool = "MATCH(title,sub_title,keywords) AGAINST('{$query}' IN BOOLEAN MODE)";
+			$match_bool = "MATCH(keywords) AGAINST('{$query}' IN BOOLEAN MODE)";
 
 			$result = $this->find("all",array(
 							"fields"=>array(

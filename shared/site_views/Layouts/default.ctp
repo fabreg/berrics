@@ -48,6 +48,7 @@
 						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
 					</div>
 					<div class="social-media">
+						<!--
 						<div class="cart">
 								
 								<span class="cart-icon-img">
@@ -62,12 +63,20 @@
 						<div class="user-info">
 							<i class="icon icon-white icon-user"></i>
 						</div>
+						-->
+						<div class="fb-icon">
+							<a href="http://www.facebook.com/pages/The-Berrics/123390707714463" target='_blank'>
+								<img src="/img/v3/layout/fb-header-icon.jpg" alt="" border='0' />
+							</a>
+						</div>
+						<!--
 						<div class="tumblr visible-desktop">
 							<a href="http://twitter.com/berrics" target='_blank'>
 								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
 							</a>
 						</div>
-						<div class="twitter visible-desktop">
+						-->
+						<div class="twitter">
 							<a href="http://twitter.com/berrics" target='_blank'>
 								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
 							</a>

@@ -668,6 +668,7 @@
       var video = $data.target.find("video");
 
       $data.target.find('.loader').show();
+      $data.target.find('.pause-overlay').hide();
 
       if($data.GoogleAdsManager) {
 
