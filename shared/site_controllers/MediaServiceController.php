@@ -96,7 +96,15 @@ class MediaServiceController extends LocalAppController {
 
 	public function end() {
 		
-		
+		$this->loadModel('Dailyop');
+
+		$post = $this->Dailyop->returnPost(array(
+					"Dailyop.id"=>$this->request->params['named']['dailyop_id']
+				));
+
+		$posts = $this->Dailyop->getRelatedItems($post,array(),true);
+			
+		$this->set(compact("posts","post"));
 		
 	}
 

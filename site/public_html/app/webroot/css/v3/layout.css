@@ -1660,7 +1660,108 @@ GLOBAL post media div
 
 }
 
+/*
+#####################
+post related
+#####################
+*/
 
+.post-related {
+
+	background-color: #000;
+	color:#fff;
+	padding:5px;
+	border:2px solid #666;
+}
+
+.post-related a {
+
+	color:#fff;
+
+}
+
+.post-related .heading {
+
+	font-size:12px;
+	border-bottom:1px solid #666;
+	color:#999;
+}
+
+.post-related .top {
+
+	text-align:left;
+
+}
+
+.post-related .top .post-title {
+
+	font-size: 22px;
+	font-family: 'universcnb';
+	line-height:28px;
+	margin-top:5px;
+	height:28px;
+
+}
+.post-related .top .sub-title {
+
+	font-family: 'Times New Roman';
+	font-style: italic;
+	font-size:16px;
+	line-height: 18px;
+	height: 18px;
+	margin-bottom:8px;
+}
+
+.post-related .post-thumb:nth-child(4) {
+
+	display:none;
+
+}
+
+.post-related .tag-collection {
+
+	margin-bottom:5px;
+
+}
+.post-related .tag-collection a {
+
+	font-size:12px;
+	color:#999;
+	border-bottom:1px solid #666;
+
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  
+
+	.post-related .post-thumb:nth-child(4) {
+
+		display:block;
+
+	}
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  
+
+
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+
+	.post-related .post-thumb:nth-child(+n2) {
+
+		display:none;
+
+	}
+
+}
 /*
 #####################
 post section
@@ -2133,7 +2234,7 @@ STANDARD THUMBNAIL
 
 .standard-post-thumb .post-title a {
 
-	color:#000;
+	
 
 }
 

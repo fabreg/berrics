@@ -572,6 +572,62 @@ class Dailyop extends AppModel {
 		return $posts;
 
 	}
+
+	public function getRelatedItems($post,$exclude_ids = array(),$strict = true) {
+		
+		$SearchItem = ClassRegistry::init("SearchItem");
+
+		$sv = $this->extractSearchValues($post);
+
+		$str = $sv['title']." ".$sv['sub_title']." ".$sv['keywords'];
+
+		$exclude_ids[] = $post['Dailyop']['id'];
+		
+		$exclude = array(
+			"SearchItem.model"=>"Dailyop",
+			"NOT"=>array(
+				"SearchItem.foreign_key"=>$exclude_ids
+			)
+			
+		);
+		
+		$sids = $SearchItem->run_search($str,$strict,$exclude);
+
+		$ids = Set::extract("/SearchItem/foreign_key",$sids);
+
+		$posts = $this->find("all",array(
+					"conditions"=>array(
+						"Dailyop.id"=>$ids,
+						"Dailyop.active"=>1,
+						"Dailyop.promo"=>0,
+						"Dailyop.publish_date < NOW()"
+					),
+					"contain"=>array(
+						"DailyopMediaItem"=>array(
+							"MediaFile",
+							"order"=>array(
+								"DailyopMediaItem.display_weight"=>"ASC"
+							),
+							"limit"=>1
+						),
+						"DailyopSection",
+						"DailyopTextItem"=>array(
+							"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+							"limit"=>1,
+							"MediaFile"
+						)
+					),
+					"limit"=>4,
+					"order"=>array(
+						"Dailyop.publish_date"=>"DESC"
+					)
+					
+
+				));
+
+		return $posts;
+
+	}
 	
 	public function trickipedia_list($noCache = false) {
 

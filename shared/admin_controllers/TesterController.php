@@ -1988,7 +1988,17 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_related() {
+		
+		$this->loadModel('Dailyop');
 
+		$post = $this->Dailyop->returnPost(array(
+					"Dailyop.id"=>6367
+				));
+		
+		$this->Dailyop->getRelatedItems($post);
+
+	}
 
 
 	

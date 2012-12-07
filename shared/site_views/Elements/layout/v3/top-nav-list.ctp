@@ -74,7 +74,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 	<li class="spacer"></li>
 	<li class='nav-btn'>HEADQUARTERS</li>
 	<li class="spacer"></li>
-	<li class='nav-btn'>MORE</li>
+	
 	
 	<li class='nav-btn search'><form method='post' action='/search' ><label for="">SEARCH</label>
 	<input name='data[Search][term]' type='text' /><button></button></form></li>

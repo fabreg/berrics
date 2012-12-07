@@ -36,7 +36,6 @@ class SearchItem extends AppModel {
 	            	  $final[] = "$word";
 	            }
 	            
-	          
 	    }
 	    $s = implode(' ', $final);
 

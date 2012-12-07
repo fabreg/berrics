@@ -282,9 +282,16 @@ class DailyopsController extends LocalAppController {
 
 		$str .= " ".$post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];
 
+		$exclude_ids = Set::extract("/Dailyop/id",$posts);
+
+		$exclude_ids[] = $post['Dailyop']['id'];
+	
+
 		$cond = array(
-			"model"=>"Dailyop",
-			"foreign_key !="=>$post['Dailyop']['id']
+			"SearchItem.model"=>"Dailyop",
+			"NOT"=>array(
+				"SearchItem.foreign_key"=>$exclude_ids
+			)
 		);
 
 		$res = $this->SearchItem->run_search($str,false,$cond);
