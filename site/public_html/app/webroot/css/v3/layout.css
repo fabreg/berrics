@@ -17,6 +17,12 @@
     font-weight: normal;
     font-style: normal;
 }
+html, body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 100%;
+}
 body {
 
 	background-color: #fff;
@@ -1404,7 +1410,7 @@ VIDEO DIV PLUGIN
 
 	height:40px;
 	position:absolute;
-	bottom:5px;
+	bottom:10px;
 	left:5px;
 	right:5px;
 	z-index: 5001;
