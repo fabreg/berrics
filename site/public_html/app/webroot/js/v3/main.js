@@ -59,12 +59,11 @@ function lazyLoad () {
 			}
 
 		});
-
 }
 
 function initTrending () {
 	
-	$("#trending-content .tab:not(.active)").click(function() { 
+	$("#trending-content .tab:not(.active)").unbind().bind('click',function() { 
 
 		$("#trending-content .loading").remove();
 
@@ -88,6 +87,28 @@ function initTrending () {
 
 
 		});
+
+	});
+
+	$("#calendar-widget .cal-nav a").unbind().bind('click',function() {
+
+		$("#calendar-widget").append($("<div class='loading' />").append($("<div class='spinner' />")));
+		$("#calendar-widget .loading").fadeIn('fast');
+
+		var uri = $(this).attr("href");
+
+		$.ajax({
+
+			"url":uri,
+			"success":function(d) {
+
+				$("#calendar-widget").html(d);
+				initTrending();
+				$("#calendar-widget .loading").fadeOut('fast',function() { $("#calendar-widget .loading").remove(); });
+			}
+
+		});
+		return false;
 
 	});
 

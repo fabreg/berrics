@@ -1614,7 +1614,8 @@ class Dailyop extends AppModel {
 							"Dailyop.sub_title",
 							"Dailyop.uri",
 							"DailyopSection.name",
-							"DailyopSection.uri"
+							"DailyopSection.uri",
+							"Dailyop.publish_date"
 						),
 						"conditions"=>array(
 							"YEAR(Dailyop.publish_date) = '{$year}'",

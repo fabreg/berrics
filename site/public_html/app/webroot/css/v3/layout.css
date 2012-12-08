@@ -888,13 +888,98 @@ TRENDING TABS
 
 }
 
+#calendar-widget {
+
+	margin-top: 5px;
+	position: relative;
+}
+
+#calendar-widget thead th {
+
+	text-align: center;
+
+}
+
+#calendar-widget tbody td {
+
+	text-align:center;
+
+}
+#calendar-widget tbody td a {
+
+	display:block;
+	height:100%;
+	width:100%;
+
+}
+#calendar-widget tbody td.active {
+
+
+}
+
+#calendar-widget tbody td.disabled {
+
+	background-color:#ccc;
+
+}
+
+#calendar-widget tbody td.disabled-day {
+
+	background-color:#e1e1e1;
+
+}
+
+#calendar-widget .cal-nav {
+
+
+}
+
+#calendar-widget .cal-nav .prev {
+
+	width:35%;
+	float:left;
+
+	text-align: right;
+}
+
+#calendar-widget .cal-nav .next {
+
+	width:35%;
+	float: right;
+
+}
+
+#calendar-widget .date-label {
+
+	margin-left:34.9%;
+	margin-right: 34.9%;
+	text-align: center;
+	font-family: 'universcnb'
+}
+
+#calendar-widget .loading {
+
+	position: absolute;
+	top:20px;
+	left:0px;
+	width:100%;
+	bottom:0px;
+	background-image: url(/img/v3/layout/wht-px.png);
+	display: none;
+	
+}
 
 
 
+#calendar-widget .loading .spinner {
 
+	height:100%;
+	width:100%;
+	background-image: url(/img/v3/layout/loader-clear.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
 
-
-
+}
 
 /* Large desktop */
 @media (min-width: 1200px) {  }
@@ -904,13 +989,19 @@ TRENDING TABS
 
 
 	#trending-content,
-	#trending-news {
+	#trending-news, {
 
 		float:left;
 		width:49%;
 		clear:left;
 	}
+	#calendar-widget {
 
+		float:none;
+		width:100%;
+		clear:both;
+		padding-top:5px;
+	}
 	#standard-right-column hr.hr1 {
 
 		display: none;
@@ -935,6 +1026,13 @@ TRENDING TABS
 		float:left;
 		width:49%;
 		clear:left;
+	}
+	#calendar-widget {
+
+		float:none;
+		width:100%;
+		clear:both;
+		padding-top:5px;
 	}
 
 	#standard-right-column hr.hr1 {
@@ -961,6 +1059,13 @@ TRENDING TABS
 		float:none;
 		width:100%;
 
+	}
+	#calendar-widget {
+
+		float:none;
+		width:100%;
+		clear:both;
+		padding-top:5px;
 	}
 
 	#standard-right-column hr.hr1 {

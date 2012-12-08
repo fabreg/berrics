@@ -70,8 +70,25 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 	<hr class='hr1' />
 	<?php echo $this->element("banners/300x250") ?>
 	<hr class='hr1' />
-	<h2>CONTENT CALENDAR</h2>
+	
 	<div id="calendar-widget">
-		<?php echo $this->element("dailyops/calendar-widget"); ?>
+		<?php 
+			
+			if(isset($dateIn)) {
+
+				$cal_params = array(
+					"year"=>date("Y",strtotime($dateIn)),
+					"month"=>date("m",strtotime($dateIn))
+				);
+
+			} else {
+
+				$cal_params = array();
+
+			}
+
+			echo $this->element("dailyops/calendar-widget",$cal_params); 
+
+		?>
 	</div>
 </div>
