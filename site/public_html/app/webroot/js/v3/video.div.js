@@ -718,7 +718,17 @@
 
       if($this.attr("data-dailyop-id")) req += "/dailyop_id:"+$this.attr("data-dailyop-id");
 
-      $this.load("/media_service/end"+req);
+      $this.load("/media_service/end"+req,function() { 
+
+          $('.post-media-div[data-media-file-id='+$this.attr("data-media-file-id")+']').find('.replay-btn').bind('click',function() { 
+
+
+              $this.videoDiv();
+              return false;
+
+          });
+
+      });
 
     }
 

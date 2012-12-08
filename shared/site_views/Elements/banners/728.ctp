@@ -3,8 +3,6 @@ $b_var = "banner-".md5(microtime().mt_rand(9999,99999));
 if(!isset($unit)) $unit = "dopsv3_728";
 ?>
 <?php if (!$this->request->is('ajax')): ?>
-	
-
 <div class="banner-728" id='<?php echo $b_var ?>'>
 	<!-- dopsv3_728 -->
 	<script type="text/javascript">
