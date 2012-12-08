@@ -939,11 +939,12 @@ class Arr {
 		
 			"BATB4"=>"BATB4",
 			"BATB5"=>"BATB5",
-			"PRE001"=>"PRE001",
+			"VPRE001"=>"VPRE001",
 			"LEVIS"=>"LEVIS",
-			"POST001"=>"POST001",
+			"VPOST001"=>"VPOST001",
 			"BYS3"=>"BYS3",
-			"YN3PRE"=>"YN3PRE"
+			"YN3PRE"=>"YN3PRE",
+			"PRE001"=>"PRE001"
 			
 		);
 		

@@ -8,6 +8,8 @@ class Batb4Controller extends DailyopsController {
 	public $batb_event_id = 50016;
 	public function beforeFilter() {
 		
+		$this->body_element = "layout/v3/one-column";
+
 		parent::beforeFilter();
 
 		$this->theme = 'battle-at-the-berrics-4';

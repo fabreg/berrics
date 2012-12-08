@@ -15,11 +15,7 @@ $cats = $ds->returnSections();
 $(document).ready(function() { 
 
 
-	$("#features .icon").css({
 
-		"opacity":.5
-
-	});
 	$("#features ul li").hover(
 
 		function() {
@@ -39,6 +35,8 @@ $(document).ready(function() {
 	
 });
 </script>
+<?php echo $this->element("banners/728") ?>
+<div style="height:20px"></div>
 <div id='features'>
 	
 	<div class='top'></div>
@@ -53,6 +51,7 @@ $(document).ready(function() {
 					<li>
 						<a href='/<?php echo $cat['DailyopSection']['uri']; ?>' title='<?php echo addslashes($cat['DailyopSection']['name']); ?>'>
 						<div class='icon'>
+							<a href='/<?php echo $cat['DailyopSection']['uri']; ?>' title='<?php echo addslashes($cat['DailyopSection']['name']); ?>'>
 							<?php 
 							
 								echo $this->Media->sectionIcon(array(
@@ -64,13 +63,17 @@ $(document).ready(function() {
 								),array("border"=>0));
 							
 							?>
+							</a>
 						</div>
+						<div class="link">
+							<a href='/<?php echo $cat['DailyopSection']['uri']; ?>' title='<?php echo addslashes($cat['DailyopSection']['name']); ?>'>
 						<?php 
 						
 							echo strtoupper($cat['DailyopSection']['name']);
 						
 						?>
 						</a>
+						</div>
 					</li>
 				<?php 
 						endif;

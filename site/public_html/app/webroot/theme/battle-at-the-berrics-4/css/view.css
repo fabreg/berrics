@@ -163,7 +163,7 @@
 /******
 * BRACKETS STUFF
 *******/
-.spacer {
+#brackets .spacer {
 
 	clear:both;
 	height:11px;
