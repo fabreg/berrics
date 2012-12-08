@@ -1,4 +1,3 @@
-legacy/
 logs
 upload
 uploads
