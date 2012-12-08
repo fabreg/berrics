@@ -12,9 +12,10 @@ $servers = array(
 			"w6",
 			"w7",
 			"w8",
-			"w9"
-		
-			
+			"w9",
+			"w10",
+			"w11",
+			"w12"
 		);
 
 foreach($servers as $server) {
