@@ -938,15 +938,17 @@ TRENDING TABS
 
 	width:35%;
 	float:left;
-
 	text-align: right;
+	line-height: 40px;
+	height:40px;
 }
 
 #calendar-widget .cal-nav .next {
 
 	width:35%;
 	float: right;
-
+	line-height: 40px;
+	height:40px;
 }
 
 #calendar-widget .date-label {
@@ -960,7 +962,7 @@ TRENDING TABS
 #calendar-widget .loading {
 
 	position: absolute;
-	top:20px;
+	top:25px;
 	left:0px;
 	width:100%;
 	bottom:0px;
@@ -1613,7 +1615,7 @@ GLOBAL POST ELEMENTS
 
 	margin-top:3px;
 	margin-bottom:0;
-	border-top:2px solid #000;
+
 	border-bottom:1px outset #000;
 }
 

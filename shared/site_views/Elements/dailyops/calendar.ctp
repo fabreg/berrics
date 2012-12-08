@@ -3,6 +3,14 @@
 if(!isset($year)) $year = date("Y");
 if(!isset($month)) $month = date("m");
 
+if($this->request->params['controller'] == "dailyops" && $this->request->params['action'] == "index") {
+
+	if(isset($this->request->params['year'])) $year = $this->request->params['year'];
+	if(isset($this->request->params['month'])) $month = $this->request->params['month'];
+
+}
+
+
 	$days = array(
 
 				"SUN",
@@ -21,6 +29,7 @@ $prev_link = "";
 
 $prev_link = "<a href='/dailyops/calendar/".date("Y/m",strtotime("-1 Month",strtotime("{$year}-{$month}-01")))."'>&lt;&lt;</a>";
 
+$next_link = "<a href='/dailyops/calendar/".date("Y/m",strtotime("+1 Month",strtotime("{$year}-{$month}-01")))."'>&gt;&gt;</a>";
 
 
 ?>
@@ -30,7 +39,7 @@ $prev_link = "<a href='/dailyops/calendar/".date("Y/m",strtotime("-1 Month",strt
 			<?php echo $prev_link ?>
 		</div>
 		<div class='next'>
-			&gt;&gt;
+			<?php echo $next_link ?>
 		</div>
 		<div class='date-label'>
 			<?php echo strtoupper(date("F",$dstamp)); ?> <br /> <?php echo date("Y",$dstamp) ?>
