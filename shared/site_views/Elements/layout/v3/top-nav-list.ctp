@@ -71,8 +71,10 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 	</li>
 	<li class="spacer"></li>
 	<li class='nav-btn'><a href='/canteen'>CANTEEN</a></li>
+	<!-- 
 	<li class="spacer"></li>
 	<li class='nav-btn'><a href="/headquarters">HEADQUARTERS</a></li>
+-->
 	<li class="spacer"></li>
 	
 	
