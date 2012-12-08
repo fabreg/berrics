@@ -23,6 +23,7 @@
 		
 	}
  ?>
+<!DOCTYPE html>
 <html>
 	<title>
 		<?php echo $title_for_layout; ?>
@@ -104,6 +105,16 @@
 				</div>
 			</div>
 		</div>
+		<footer>
+			<div class="container">
+				<div class="inner">
+					The Berrics - &copy; 2007-2013 | 
+					<a href="/dailyops">The Daily Ops</a> |
+					<a href="http://berricsunified" target='_blank'>The Berrics Unified</a> | 
+					<a href="/features.html">Features</a> | 
+				</div>
+			</div>
+		</footer>
 		<div style='text-align:right; font-size:10px; clear:both;'><?php echo php_uname('n'); ?></div>
 		<?php echo $this->element('sql_dump'); ?>
 		<?php echo $this->element("layout/v3/html-footer-scripts"); ?>

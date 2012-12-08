@@ -14,28 +14,9 @@ class SplashRoute extends CakeRoute {
 			return false;
 				
 		}
-		
-		$news = false;
-		
-		if(time()>=(strtotime("2011-08-14")) && in_array(strtoupper(date("D")),array("SUN"))) {
 
-			$news = true;
-			
-				
-			$params['controller'] = "newsv2";
-			$params['action'] = "section";
-			$params['pass'] = array(
-				date("Y"),
-				date("m"),
-				date("d")		
-			);
-			
-		} else {
-			
-			$params['plugin'] = $params['controller'] = "splash";
-			$params['action'] = "index";
-				
-		}		
+		$params['plugin'] = $params['controller'] = "splash";
+		$params['action'] = "index";	
 		
 		return $params;
 		

@@ -23,6 +23,10 @@ class CanteenController extends CanteenAppController {
 		die(print_r($_SERVER));
 		
 	}
+
+	public function working() {
+		
+	}
 	
 	public function index() {
 		

@@ -158,7 +158,24 @@ header .user-info {
 
 
 
+footer {
 
+	color:#666;
+
+}
+
+footer a {
+
+	color:#666;
+
+}
+
+footer .inner {
+
+	padding-top:10px;
+	padding-bottom: 10px;
+
+}
 
 
 
@@ -1620,7 +1637,7 @@ VIDEO DIV PLUGIN
 	margin-right: 4px;
 	width:5px;
 	border:1px solid #fff;
-	height:100%;
+	height:16px;
 	background-color:#fff;
 	cursor: pointer;
 }

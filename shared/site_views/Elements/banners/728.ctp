@@ -12,8 +12,8 @@ if(!isset($unit)) $unit = "dopsv3_728";
 	  document.write('<script type="text/javascript" src="https://ad.doubleclick.net/N5885/adj/<?php echo $unit; ?>;sz=728x90;ord=' + ord + '?"><\/script>');
 	</script>
 	<noscript>
-	<a href="https://ad.doubleclick.net/N5885/jump/dopsv3_728;sz=728x90;ord=[timestamp]?">
-	<img src="https://ad.doubleclick.net/N5885/ad/dopsv3_728;sz=728x90;ord=[timestamp]?" width="728" height="90" />
+	<a href="https://ad.doubleclick.net/N5885/jump/<?php echo $unit; ?>;sz=728x90;ord=[timestamp]?">
+	<img src="https://ad.doubleclick.net/N5885/ad/<?php echo $unit; ?>;sz=728x90;ord=[timestamp]?" width="728" height="90" />
 	</a>
 	</noscript>
 </div>
