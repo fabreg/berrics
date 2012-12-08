@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<div class='heading'>
-					JUST WATCHED:
+					RELATED:
 			</div>
 	<div class="thumb-collection clearfix">
 		<?php foreach ($posts as $k => $v): ?>

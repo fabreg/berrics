@@ -575,59 +575,71 @@ class Dailyop extends AppModel {
 
 	public function getRelatedItems($post,$exclude_ids = array(),$strict = true) {
 		
-		$SearchItem = ClassRegistry::init("SearchItem");
+		$token = "dailyops-related-items-".$post['Dailyop']['id'];
 
-		$sv = $this->extractSearchValues($post);
+		if(($posts = Cache::read($token,"1min")) === false) {
 
-		//$str = $sv['title']." ".$sv['sub_title']." ".$sv['keywords'];
+			$SearchItem = ClassRegistry::init("SearchItem");
 
-		$tags = Set::extract("/Tag/name",$post);
+			$sv = $this->extractSearchValues($post);
 
-		$str = implode(" ", $tags);
+			//$str = $sv['title']." ".$sv['sub_title']." ".$sv['keywords'];
 
-		$exclude_ids[] = $post['Dailyop']['id'];
-		
-		$exclude = array(
-			"SearchItem.model"=>"Dailyop",
-			"NOT"=>array(
-				"SearchItem.foreign_key"=>$exclude_ids
-			)
+			$tags = Set::extract("/Tag/name",$post);
+
+			$str = implode(" ", $tags);
+
+			$exclude_ids[] = $post['Dailyop']['id'];
 			
-		);
-		
-		$sids = $SearchItem->run_search($str,$strict,$exclude);
+			$exclude = array(
+				"SearchItem.model"=>"Dailyop",
+				"NOT"=>array(
+					"SearchItem.foreign_key"=>$exclude_ids
+				)
+				
+			);
+			
+			$sids = $SearchItem->run_search($str,$strict,$exclude);
 
-		$ids = Set::extract("/SearchItem/foreign_key",$sids);
+			if(count($sids)<=0) $sids = $SearchItem->run_search($str,false,$exclude);
 
-		$posts = $this->find("all",array(
-					"conditions"=>array(
-						"Dailyop.id"=>$ids,
-						"Dailyop.active"=>1,
-						"Dailyop.promo"=>0,
-						"Dailyop.publish_date < NOW()"
-					),
-					"contain"=>array(
-						"DailyopMediaItem"=>array(
-							"MediaFile",
-							"order"=>array(
-								"DailyopMediaItem.display_weight"=>"ASC"
-							),
-							"limit"=>1
+			$ids = Set::extract("/SearchItem/foreign_key",$sids);
+
+			$posts = $this->find("all",array(
+						"conditions"=>array(
+							"Dailyop.id"=>$ids,
+							"Dailyop.active"=>1,
+							"Dailyop.promo"=>0,
+							"Dailyop.publish_date < NOW()"
 						),
-						"DailyopSection",
-						"DailyopTextItem"=>array(
-							"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
-							"limit"=>1,
-							"MediaFile"
+						"contain"=>array(
+							"DailyopMediaItem"=>array(
+								"MediaFile",
+								"order"=>array(
+									"DailyopMediaItem.display_weight"=>"ASC"
+								),
+								"limit"=>1
+							),
+							"DailyopSection",
+							"DailyopTextItem"=>array(
+								"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+								"limit"=>1,
+								"MediaFile"
+							)
+						),
+						"limit"=>4,
+						"order"=>array(
+							"Dailyop.publish_date"=>"DESC"
 						)
-					),
-					"limit"=>4,
-					"order"=>array(
-						"Dailyop.publish_date"=>"DESC"
-					)
-					
+						
 
-				));
+					));
+
+			Cache::write($token,$posts,"1min");
+		
+		}
+
+		
 
 		return $posts;
 
@@ -1583,6 +1595,54 @@ class Dailyop extends AppModel {
 			"recent_posts"=>$posts,
 			"related_posts"=>$related
 		);	
+
+	}
+
+	public function publicContentCalendar($year = false,$month = false) {
+		
+		if(!$year) $year = date("Y");
+
+		if(!$month) $month = date("m");
+
+		$token = "pub-content-cal-{$year}-{$month}";
+
+		if(($content = Cache::read($token,"5min")) === false) {
+
+					$posts = $this->find("all",array(
+						"fields"=>array(
+							"Dailyop.name",
+							"Dailyop.sub_title",
+							"Dailyop.uri",
+							"DailyopSection.name",
+							"DailyopSection.uri"
+						),
+						"conditions"=>array(
+							"YEAR(Dailyop.publish_date) = '{$year}'",
+							"MONTH(Dailyop.publish_date) = '{$month}'",
+							"Dailyop.active"=>1,
+							"Dailyop.hidden"=>0,
+							"Dailyop.publish_date < NOW()"
+						),
+						"contain"=>array(
+							"DailyopSection"
+						)
+					));
+
+					$content = array();
+
+					foreach($posts as $p) {
+
+						$date = date("Y-m-d",strtotime($p['Dailyop']['publish_date']));
+
+						$content[$date][] = $p;
+
+					}
+
+			Cache::write($token,$content,"5min");
+		}
+
+		return $content;
+
 
 	}
 

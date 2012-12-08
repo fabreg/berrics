@@ -13,7 +13,7 @@
 	<?php endforeach ?>
 	<?php foreach ($posts['news'] as $k => $v): ?>
 		<?php if ($k%3): ?>
-			<?php echo $this->element("banners/728"); ?>
+			<?php //echo $this->element("banners/728"); ?>
 		<?php endif ?>
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
 	<?php endforeach ?>

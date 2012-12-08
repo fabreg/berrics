@@ -231,14 +231,14 @@ class DailyopsController extends LocalAppController {
 
 		//let's get the media item we want to show on facebook
 		
-		$this->setFacebookMetaData($entry);
+		$this->setFacebookMetaData($post);
 		
 		$this->set(compact("post"));
 		
 		
 		//set the title of the page
 		
-		$this->set("title_for_layout","The Berrics - ".stripslashes($entry['Dailyop']['name']." ".$entry['Dailyop']['sub_title']));
+		$this->set("title_for_layout","The Berrics - ".stripslashes($post['Dailyop']['name']." ".$post['Dailyop']['sub_title']));
 		
 		//build a list of tags for meta_k
 		
@@ -996,6 +996,24 @@ class DailyopsController extends LocalAppController {
 		
 	}
 
+
+	public function calendar($year = false,$month = false) {
+		
+		if(!$year) $year = date("Y");
+
+		if(!$month) $month = date("m");
+
+		$this->set(compact("year","month"));
+
+		//get the content for the month
+
+		$this->loadModel('Dailyop');
+		
+		$content = $this->Dailyop->publicContentCalendar($year,$month);
+
+		$this->set(compact("content"));
+
+	}
 
 
 

@@ -69,4 +69,9 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 	</div>
 	<hr class='hr1' />
 	<?php echo $this->element("banners/300x250") ?>
+	<hr class='hr1' />
+	<h2>CONTENT CALENDAR</h2>
+	<div id="calendar-widget">
+		<?php echo $this->element("dailyops/calendar-widget"); ?>
+	</div>
 </div>

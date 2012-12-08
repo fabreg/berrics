@@ -38,6 +38,8 @@ class SearchController extends LocalAppController {
 
 		$result = $this->SearchItem->run_search($search_label);
 
+		if(count($result)<=0) $result = $this->SearchItem->run_search($search_label,false);
+
 		$post_ids = Set::extract("/SearchItem[model=Dailyop]",$result);
 
 		$post_ids = Set::extract("/SearchItem/foreign_key",$post_ids);

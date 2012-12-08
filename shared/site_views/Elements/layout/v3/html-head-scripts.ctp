@@ -13,7 +13,7 @@
 			"v3/jquery.fullscreen-min",
 			"v3/jquery.lazyload.min",
 			"jquery.scrollTo",
-			//"v3/jquery.writeCapture",
+			"v3/writeCapture",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
 			"https://platform.twitter.com/widgets.js",
 			//"https://www.google.com/uds/api/ima/1.8/84479ae78e2ae96fc191dae83ffb2033/default.IN.js",
@@ -43,18 +43,4 @@
 <script src="/js/v3/respond.min.js"></script>
 <![endif]-->
 
-<script type='text/javascript'>
-var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') + 
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();
-</script>
 

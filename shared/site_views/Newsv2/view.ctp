@@ -88,7 +88,7 @@ if($post['Dailyop']['best_of']) {
 							));
 					//check to see if there is a link in the image
 					if(strlen($t['MediaFile']['url'])>0) $mediaItem = "<a href='{$t['MediaFile']['url']}'>{$mediaItem}</a>";
-					$img_file = "<div class='media-item' style='{$style}'>{$mediaItem}</div>";
+					$img_file = "<div class='media-item img-polaroid' style='{$style}'>{$mediaItem}</div>";
 							
 				}
 				

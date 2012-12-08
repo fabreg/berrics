@@ -65,11 +65,6 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 
-	var col = $("#dailyops");
-	$(window).scroll(function(){
-	   if (col.outerHeight() == (col.get(0).scrollHeight - col.scrollTop()))
-	   console.log("fic"); 
-	});
 
 
 

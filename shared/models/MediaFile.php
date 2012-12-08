@@ -204,7 +204,7 @@ class MediaFile extends AppModel {
 		
 		$url = self::$dfp_vast_url;
 
-		if($label) $url = str_replace("#LABEL#","V".$label,$url);
+		if($label) $url = str_replace("#LABEL#","".$label,$url);
 
 		return $url;
 

@@ -39,9 +39,12 @@ $tumblr_source = "";
 				</div> 
 			
 		</div>
-		<div class="tags span8">
-			TAGS// <?php echo $this->Berrics->parseTagLinks($dop['Tag']) ?>
-		</div>
+		<?php if (count($dop['Tag'])>0): ?>
+				<div class="tags span8">
+					TAGS// <?php echo $this->Berrics->parseTagLinks($dop['Tag']) ?>
+				</div>	
+		<?php endif ?>
+
 		
 	</div>
 </div>
