@@ -71,7 +71,9 @@ jQuery(document).ready(function($) {
 });
 function loadNextPosts() {
 	
-	var nd = new Date(dailyops_date);
+	var td = $('.dailyops-day:last-child').attr("data-date");
+
+	var nd = new Date(td);
 	nd.setDate(nd.getDate()-1);
 	var d = new Date(nd);
 	
