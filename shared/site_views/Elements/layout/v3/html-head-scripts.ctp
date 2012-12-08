@@ -36,8 +36,8 @@
  
 		*/
  ?>
- <!--[if lt IE 9]>
-<script src="/js/v3/html5shiv"></script>
+<!--[if IE]>
+<script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
  <!--[if lt IE 9]>
 <script src="/js/v3/respond.min.js"></script>

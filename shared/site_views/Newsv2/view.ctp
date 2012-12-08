@@ -114,6 +114,7 @@ if($post['Dailyop']['best_of']) {
 	<?php 
 		endforeach;
 	?>
+	<hr />
 	
 	<div class='links'>
 		<?php 

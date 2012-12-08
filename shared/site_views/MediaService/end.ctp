@@ -1,18 +1,28 @@
 <div class="post-related">
+
 	<div class="top">
 		<div class="logo">
 			<img src="/img/v3/player/related-logo.jpg" alt="" />
 		</div>
 			
-			<div class='heading'>
+		<div class='heading'>
 					JUST WATCHED:
-			</div>
-			
-		<div class="post-title">
-			<?php echo $post['Dailyop']['name']; ?>
 		</div>
-		<div class="sub-title">
-			<?php echo $post['Dailyop']['sub_title'];  ?>&nbsp;
+			
+		<div class='row-fluid'>
+			<div class="span8">
+				<div class="post-title">
+				<?php echo $post['Dailyop']['name']; ?>
+				</div>
+				<div class="sub-title">
+					<?php echo $post['Dailyop']['sub_title'];  ?>&nbsp;
+				</div>
+			</div>
+			<div class="span4">
+					<div class="replay-btn">
+			<a href="/<?php echo $post['DailyopSection']['uri'] ?>/<?php echo $post['Dailyop']['uri'] ?>" target='_blank'><img src="/img/v3/player/related-replay-btn.jpg" alt="" border='0'></a>
+		</div>
+			</div>
 		</div>
 	</div>
 	<div class='heading'>

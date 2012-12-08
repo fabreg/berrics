@@ -1902,6 +1902,13 @@ post related
 
 }
 
+.post-related .replay-btn {
+
+	float:right;
+	margin-right:15px;
+	line-height:50px;
+}
+
 .post-related .top .post-title {
 
 	font-size: 22px;
@@ -2419,7 +2426,18 @@ GLOBAL ARTICLE THUMBNAIL
 
 }
 
+.article-top .post-footer .tags {
 
+	display: none;
+
+}
+
+.article-top .post-footer .social-media .fb-like,
+.article-top .post-footer .social-media .twitter {
+
+	float:right;
+
+}
 /* Large desktop */
 @media (min-width: 1200px) {  }
  
