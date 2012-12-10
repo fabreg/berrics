@@ -671,7 +671,7 @@
 
       }
 
-      $data.afterPlay.apply(this,$this);
+      $data.afterPlay.apply(this,[$this]);
 
     },
     handleVideoEnd:function(context) {
