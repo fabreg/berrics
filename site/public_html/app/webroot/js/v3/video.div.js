@@ -94,7 +94,7 @@
       methods.initHtml($this);
 
       //beforeLoad Callback
-      data.beforeDataLoad.apply($this,$this);
+      data.beforeDataLoad.apply(this,[$this]);
 
       //get the video data
       $.ajax({
@@ -107,7 +107,7 @@
 
           data.request = d;
 
-          data.dataLoadSuccess.apply(this,$this);
+          data.dataLoadSuccess.apply(this,[$this]);
 
           //check if the browser supports h.264
           if(/(probably)/ig.test(Modernizr.video.h264)) {
