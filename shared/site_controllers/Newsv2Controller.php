@@ -52,7 +52,6 @@ class Newsv2Controller extends DailyopsController {
 			"Dailyop"=>array(
 				"conditions"=>array(
 					"Dailyop.active"=>1,
-					"Dailyop.hidden"=>0,
 					"Dailyop.dailyop_section_id"=>65,
 					"Dailyop.publish_date < NOW()"
 				),
@@ -61,6 +60,13 @@ class Newsv2Controller extends DailyopsController {
 						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
 						"limit"=>1,
 						"MediaFile"
+					),
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array(
+							"DailyopMediaItem.display_weight"=>"ASC"
+						),
+						"limit"=>1
 					),
 					"DailyopSection",
 					"Tag"=>array(

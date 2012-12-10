@@ -11,7 +11,7 @@ $link = "/".$post['Dailyop']['DailyopSection']['uri']."/".$post['Dailyop']['uri'
 			"MediaFile"=>$post['Dailyop']['DailyopMediaItem'][0]['MediaFile'],
 			"w"=>90,
 			"h"=>60,
-			"lazy"=>true
+			"lazy"=>false
 		)); ?>
 		</a>
 	</td>

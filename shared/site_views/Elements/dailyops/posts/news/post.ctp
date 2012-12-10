@@ -2,6 +2,8 @@
 
 $url = $this->Berrics->dailyopsPostUrl($post);
 
+if(!isset($lazy)) $lazy = true;
+
 ?>
 <div class='post news-post'>
 	<?php echo $this->element("dailyops/posts/news/post-top",array("post"=>$post)); ?>
@@ -16,7 +18,7 @@ $url = $this->Berrics->dailyopsPostUrl($post);
 				"w"=>350,
 				"h"=>200,
 				"zc"=>1,
-				"lazy"=>true
+				"lazy"=>$lazy
 			)); 
 			?>
 			</a>

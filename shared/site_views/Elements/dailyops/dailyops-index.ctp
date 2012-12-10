@@ -14,11 +14,14 @@
 			<?php echo $this->element("banners/728",array("unit"=>"dopsv3_728b")); ?>
 	<?php endif ?>
 	<?php endforeach ?>
-	<?php foreach ($posts['news'] as $k => $v): ?>
+	<?php 
+		$lazy = true;
+		foreach ($posts['news'] as $k => $v):
+	 ?>
 		<?php if ($k==2): ?>
 			<?php echo $this->element("banners/728",array("unit"=>"dopsv3_728b")); ?>
 		<?php endif ?>
-		<?php echo $this->element("dailyops/post-bit",array("dop"=>$v)); ?>
+		<?php echo $this->element("dailyops/post-bit",array("dop"=>$v,"lazy"=>$lazy)); ?>
 	<?php endforeach ?>
 
 </div>

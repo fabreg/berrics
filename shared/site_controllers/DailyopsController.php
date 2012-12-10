@@ -28,8 +28,6 @@ class DailyopsController extends LocalAppController {
 
 	public function index() {
 
-
-
 		$this->set("top_element","layout/v3/top_element_featured_post");
 
 		$title_for_layout = "The Berrics - Daily Ops";
@@ -146,6 +144,10 @@ class DailyopsController extends LocalAppController {
 			$posts = array();
 
 			foreach ($p as $k => $v) {
+
+				$posts['posts'][] = $v;
+
+				/*
 				
 				if(preg_match('/(aberrican|news)/i',$v['DailyopSection']['name'])) {
 
@@ -156,6 +158,7 @@ class DailyopsController extends LocalAppController {
 					$posts['posts'][] = $v;
 
 				}
+				*/
 
 			}
 

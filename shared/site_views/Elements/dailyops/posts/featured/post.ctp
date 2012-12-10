@@ -6,5 +6,6 @@
 				<?php echo $this->Berrics->postMediaDiv($post,array("lazy"=>false)); ?>
 			</div>	
 		</div>
+		<?php //echo $this->element("dailyops/posts/post-footer",array("dop"=>$post)); ?>
 	</div>
 </div>
