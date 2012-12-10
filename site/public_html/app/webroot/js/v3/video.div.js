@@ -94,7 +94,7 @@
       methods.initHtml($this);
 
       //beforeLoad Callback
-      data.beforeDataLoad.apply(this,$this);
+      data.beforeDataLoad.apply($this,$this);
 
       //get the video data
       $.ajax({
