@@ -644,7 +644,7 @@
 
       var video = false;
 
-      $data.beforePlay.apply(this,$this);
+      $data.beforePlay.apply(this,[$this]);
 
       if(req[0]) video = req[0];
 
