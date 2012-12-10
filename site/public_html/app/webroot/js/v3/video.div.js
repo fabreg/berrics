@@ -126,7 +126,7 @@
 
           if(browser && version) {
 
-            if(browser == "Safari" && verion > 6) {
+            if(browser == "Safari" && version > 6) {
 
               ///turn off google ads
               alert("Turn Off Ads");
