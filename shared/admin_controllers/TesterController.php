@@ -2000,6 +2000,12 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function jquery_browser() {
+		
+		
+		
+	}
+
 
 	
 }
