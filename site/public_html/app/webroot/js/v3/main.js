@@ -38,6 +38,7 @@ $(function() {
 	initLayout();
 	initMediaDivs();
 	initTrending();
+	lazyLoad();
 
 });
 
