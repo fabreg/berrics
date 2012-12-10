@@ -71,21 +71,8 @@ jQuery(document).ready(function($) {
 });
 function loadNextPosts() {
 	
-	var td = $('.dailyops-day:last-child').attr("data-date");
+	var d_str = $('.dailyops-day:last-child').attr("data-next-uri");
 
-	var nd = new Date(td);
-	nd.setDate(nd.getDate()-1);
-	var d = new Date(nd);
-	
-	var day = d.getDate();
-
-	if(day<10) day = "0"+day;
-
-	var month = (d.getMonth() + 1);
-
-	if(month<10) month = "0"+month;
-
-	var d_str = "/"+d.getFullYear()+"/"+month+"/"+day;
 
 	$('#dailyops .loading-div').show();
 
