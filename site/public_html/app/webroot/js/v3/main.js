@@ -160,6 +160,52 @@ function initMediaDivs () {
 
 	});
 
+	//large posts || ASSUME ALL ARE VIDEO
+	$('.featured-post .post-media-div').each(function() { 
+
+		$type = $(this).attr("data-media-type");
+		$this = $(this);
+		$this.unbind();
+		switch($type) {
+
+			case 'bcove':
+
+				if(!Modernizr.touch) {
+
+					$this.hover(
+					function(e) { 
+						$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
+					},
+					function(e) { 
+						$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
+					});
+
+				}
+
+				$this.click(function() { 
+					
+						$(this).videoDiv({
+							beforeDataLoad:function(context) {
+
+								var $data = $.data(context);
+
+								$data.target.parent().parent().find('.post-footer,.post-top').show();
+
+							}
+						});
+						$(this).unbind('click');
+
+				});
+
+			break;
+
+		}
+
+		$(this).attr("data-init",1);
+
+
+	});
+
 		//post thumb
 	$('.post-thumb .thumb').each(function() { 
 

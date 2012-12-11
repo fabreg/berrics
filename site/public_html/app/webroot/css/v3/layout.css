@@ -2195,6 +2195,15 @@ large post
 	max-height: 200px;
 
 }
+
+.featured-post .post-footer,
+.featured-post .post-top {
+
+	display: none;
+	max-width: 1114px;
+	
+}
+
 /* Large desktop */
 @media (min-width: 1200px) { 
 
