@@ -111,7 +111,7 @@
 
          var swf = false;
 
-         if(/(forceswf)/.test(window.location.href)) swf = true
+         if(/(forceswf)/.test(window.location.href)) swf = true;
 
           //check if the browser supports h.264
           if(Modernizr.video && !swf) {
