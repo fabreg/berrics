@@ -15,4 +15,15 @@ if(!isset($unit)) $unit = "dopsv3_728";
 	</a>
 	</noscript>
 </div>
-<?php endif ?>
+<?php elseif($this->request->is('ajax')): ?>
+<div class="banner-728" id='<?php echo $b_var ?>'>
+	<!-- dopsv3_728 -->
+
+
+</div>
+	<script type="text/javascript">
+	  var ord = window.ord || Math.floor(Math.random() * 1e16);
+	 $('#<?php echo $b_var ?>').writeCapture().html('<script type="text/javascript" src="https://ad.doubleclick.net/N5885/adj/<?php echo $unit; ?>;sz=728x90;ord=' + ord + '?"><\/script>');
+	</script>
+
+<?php endif; ?>

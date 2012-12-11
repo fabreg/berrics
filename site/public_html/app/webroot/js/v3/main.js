@@ -3,6 +3,10 @@ browser   = '',
 version   = 0;
 $(function() {	
 
+	//capture all ads 
+	$.writeCapture.autoAsync();
+
+
 	$(window).bind('resize.TopNav',function() { 
 
 		var $w = $(window).width();
@@ -140,7 +144,6 @@ function initMediaDivs () {
 					});
 
 				}
-						
 
 				$this.click(function() { 
 					
