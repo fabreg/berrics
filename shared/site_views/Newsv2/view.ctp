@@ -22,7 +22,13 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 	
 }
 
-$this->set("title_for_layout","Aberrican Times | ".$post['Dailyop']['name']);
+$title_for_layout = "The Berrics - News";
+
+if(!empty($post['Dailyop']['name'])) $title_for_layout.= " | ".$post['Dailyop']['name'];
+
+if(!empty($post['Dailyop']['sub_title'])) $title_for_layout .= " - ".$post['Dailyop']['sub_title'];
+
+$this->set("title_for_layout","The Berrics - News - ".$post['Dailyop']['name']);
 
 $back_to_link = "/news/".date("Y",strtotime($this->request->params['date_in']))."/".date("m",strtotime($this->request->params['date_in']))."/".date("d",strtotime($this->request->params['date_in']));
 
