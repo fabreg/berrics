@@ -114,38 +114,39 @@
          if(/(forceswf)/.test(window.location.href)) swf = true;
 
           //check if the browser supports h.264
-          if(Modernizr.video && !swf) {
+          if(!Modernizr.video || swf) {
 
-            if(/(probably)/ig.test(Modernizr.video.h264)) {
-            
-              console.log("USE H264");
-
-            } else {
               
-              console.log("USE OGV");
-              
-              data.videoFormat="ogv";
-              
-            }
-
-            methods.handleVideoPlay($this);
-
-          } else { //user flash
-
               $this.flash({
 
-                swf:"/swf/v3/BerricsPlayer.swf?t=v3",
-                flashvars:{
+                  swf:"/swf/v3/BerricsPlayer.swf?t=v3",
+                  flashvars:{
 
-                  override_data:encodeURIComponent(JSON.stringify(d))
+                    override_data:encodeURIComponent(JSON.stringify(d))
 
-                },
-                allowFullScreen:"true",
-                allowscriptaccess:"always",
-                width:"100%",
-                height:"100%"
+                  },
+                  allowFullScreen:"true",
+                  allowscriptaccess:"always",
+                  width:"100%",
+                  height:"100%"
 
               });
+
+          } else { //user flash
+              
+              if(/(probably)/ig.test(Modernizr.video.h264)) {
+            
+                console.log("USE H264");
+
+              } else {
+                
+                console.log("USE OGV");
+                
+                data.videoFormat="ogv";
+                
+              }
+
+              methods.handleVideoPlay($this);
 
           }
 
