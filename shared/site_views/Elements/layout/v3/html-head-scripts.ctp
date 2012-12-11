@@ -12,6 +12,8 @@
 			"v3/modernizr",
 			"v3/jquery.fullscreen-min",
 			"v3/jquery.lazyload.min",
+			"v3/jquery.swfobject",
+			"v3/json2",
 			"jquery.scrollTo",
 			"v3/writeCapture",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
@@ -24,7 +26,7 @@
 		/*
 
 
- <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
   //google.setOnLoadCallback(onSdkLoaded);
   google.load("ima", "1");

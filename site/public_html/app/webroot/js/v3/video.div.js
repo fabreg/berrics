@@ -109,20 +109,45 @@
 
           data.dataLoadSuccess.apply(this,[$this]);
 
+         var swf = false;
+
+         if(/(forceswf)/.test(window.location.href)) swf = true
+
           //check if the browser supports h.264
-          if(/(probably)/ig.test(Modernizr.video.h264)) {
-            
-            console.log("USE H264");
+          if(Modernizr.video && !swf) {
 
-          } else {
+            if(/(probably)/ig.test(Modernizr.video.h264)) {
             
-            console.log("USE OGV");
-            
-            data.videoFormat="ogv";
-            
+              console.log("USE H264");
+
+            } else {
+              
+              console.log("USE OGV");
+              
+              data.videoFormat="ogv";
+              
+            }
+
+            methods.handleVideoPlay($this);
+
+          } else { //user flash
+
+              $this.flash({
+
+                swf:"/swf/v3/BerricsPlayer.swf?t=v3",
+                flashvars:{
+
+                  override_data:encodeURIComponent(JSON.stringify(d))
+
+                },
+                allowFullScreen:"true",
+                allowscriptaccess:"always",
+                width:"100%",
+                height:"100%"
+
+              });
+
           }
-
-          methods.handleVideoPlay($this);
 
         }
 

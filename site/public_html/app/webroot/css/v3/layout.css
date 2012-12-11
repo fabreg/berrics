@@ -1808,6 +1808,12 @@ GLOBAL post media div
 
 }
 
+.post-media-div object {
+
+	max-height: 394px;
+
+}
+
 .post-media-div .img-hover,
 .post-media-div .video-hover {
 

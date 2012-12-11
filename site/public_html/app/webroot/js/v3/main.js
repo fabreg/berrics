@@ -233,6 +233,12 @@ function initLayout() {
 	
 }
 
+function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
+	
+
+
+}
+
 function initBrowserDetection () {
 
 	$.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
