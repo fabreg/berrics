@@ -222,6 +222,9 @@ function initNav () {
 	$("#top-nav-mobile").find("#top-dropdown-menu").show();
 	$("#top-nav-div #top-dropdown-menu").hide();
 
+	//features list
+	
+
 }
 
 function initLayout() {

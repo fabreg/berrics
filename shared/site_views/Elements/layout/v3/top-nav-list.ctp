@@ -27,7 +27,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 <ul id='top-nav-list'>
 	<li class="spacer"></li>
 	<li class='nav-btn' id='top-dropdown'>
-		<a href="#">FEATURES</a>
+		<a href="/features.html" id='featured-list-btn'>FEATURES</a>
 		<div id="top-dropdown-menu">
 			<div class="inner clearfix">
 				<ul class='clearfix'>
@@ -56,7 +56,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 					<?php endforeach;  ?>
 				</ul>
 				<div class="more-link clearfix">
-					<a href="/features.html">MORE &gt;</a>
+					<a href="/features.html">ALL FEATURES &gt;</a>
 				</div>
 			</div>
 		</div>
