@@ -98,7 +98,7 @@ class CommanderController extends LocalAppController {
 			
 			));
 			
-			//Cache::write($cache_token,$posts,"1min");
+			Cache::write($cache_token,$posts,"1min");
 			
 		}
 		
