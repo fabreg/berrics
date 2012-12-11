@@ -148,7 +148,7 @@ $(document).ready(function() {
 									<?php 
 										$uri = date("Y/m/d",strtotime($start_date));
 									?>
-									<a href="http://v3.theberrics.com/<?php echo $uri; ?>?showall" class="btn btn-success btn-mini" target='_blank'>Preview Day</a>
+									<a href="http://dev.theberrics.com/<?php echo $uri; ?>?showall" class="btn btn-success btn-mini" target='_blank'>Preview Day</a>
 								</small>
 							</h4>
 						</th>
