@@ -110,7 +110,7 @@
 				<div class="inner">
 					The Berrics - &copy; 2007-2013 | 
 					<a href="/dailyops">The Daily Ops</a> |
-					<a href="http://berricsunified" target='_blank'>The Berrics Unified</a> | 
+					<a href="http://berricsunified.com" target='_blank'>The Berrics Unified</a> | 
 					<a href="/features.html">Features</a> | 
 				</div>
 			</div>
