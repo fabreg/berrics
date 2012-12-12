@@ -746,7 +746,6 @@
 
           $('.post-media-div[data-media-file-id='+$this.attr("data-media-file-id")+']').find('.replay-btn').bind('click',function() { 
 
-
               $this.videoDiv();
               return false;
 

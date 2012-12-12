@@ -281,7 +281,11 @@ function initLayout() {
 
 function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 	
+	var div = $('.post-media-div[data-media-file-id="'+media_file_id+'"]').html();
 
+	console.log(media_file_id);
+	console.log(dailyop_id);
+	$(div).videoDiv('videoEndScreen',div);
 
 }
 
