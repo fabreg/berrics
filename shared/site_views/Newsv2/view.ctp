@@ -90,7 +90,8 @@ if($post['Dailyop']['best_of']) {
 					$mediaItem = $this->Media->mediaThumb(array(
 								"MediaFile"=>$t['MediaFile'],
 								"w"=>$imgw,
-								"h"=>$imgh
+								"h"=>$imgh,
+								"lazy"=>true
 							));
 					//check to see if there is a link in the image
 					if(strlen($t['MediaFile']['url'])>0) $mediaItem = "<a href='{$t['MediaFile']['url']}'>{$mediaItem}</a>";
