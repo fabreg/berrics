@@ -2,52 +2,10 @@
 $this->Html->script(array("jquery.cycle"),array("inline"=>false));
 ?>
 <script>
-var doormats = <?php echo json_encode($doormats); ?>;
+
 $(document).ready(function() { 
 
-	$("#doormat .main-window").cycle({
-		pager:$(".crumbs"),
-		pagerAnchorBuilder:function(i,e) {
-			$('.crumbs').append("<div class='crumb-thumb-"+i+" crumb-element' index='"+i+"'><img border='0' src='"+$(e).attr("thumb")+"' /><div>");
-
-			$('.crumb-thumb-'+i).click(function() { 
-
-				$("#doormat .main-window").cycle(i);
-
-			}).css({
-				"opacity":.4
-			});
-
-			if(i==0) {
-
-				$('.crumb-thumb-'+i).addClass('crumb-border');
-
-			}
-			
-		},
-		after:function(currSlideElement, nextSlideElement, options, forwardFlag) {
-
-			$('.crumb-element').removeClass("crumb-border").css({
-				'opacity':.4
-			});
-			$('.crumb-element[index='+$(nextSlideElement).attr('index')+']').addClass('crumb-border').css({
-				'opacity':1
-			});
-			
-		}
-	});
-
-	$('.doormat').click(function() { 
-
-		var l = $(this).attr('link');
-
-		if(l.length>0) {
-
-			document.location.href = l;
-
-		}
-		
-	});
+	
 	
 });
 </script>
@@ -143,47 +101,46 @@ $(document).ready(function() {
 }
 
 </style>
-<div id='canteen-home'>
-	<div id='doormat'>
-		<div class='main-window'>
-			<?php foreach($doormats as $k=>$d): ?>
-			<div class='doormat' thumb='<?php echo $this->Media->mediaThumbSrc(array("MediaFile"=>$d['MediaFile'],"w"=>220)); ?>' link='<?php echo $d['CanteenDoormat']['click_url']; ?>' index='<?php echo $k; ?>'>
-				<?php echo $this->Media->mediaThumb(array(
-					"MediaFile"=>$d['MediaFile'],
-					"w"=>700
-				)); ?>
+<div id='canteen-index'>
+	<div class="row-fluid column-shadow">
+		<div class="span12">
+			<div id="canteen-caro" class="carousel slide">
+			  <!-- Carousel items -->
+			  <div class="carousel-inner">
+			    
+			   	<?php foreach($doormats as $k=>$d): ?>
+						<div class="item <?php if($k==0) echo "active" ?>">
+							<?php echo $this->Media->mediaThumb(array(
+								"MediaFile"=>$d['MediaFile'],
+								"w"=>700
+							)); ?>
+						</div>
+					<?php endforeach; ?>
+			  </div>
+			  <!-- Carousel nav -->
+			  <a class="carousel-control left" href="#canteen-caro" data-slide="prev">&lsaquo;</a>
+			  <a class="carousel-control right" href="#canteen-caro" data-slide="next">&rsaquo;</a>
 			</div>
-			<?php endforeach; ?>
-		</div>
-		<div class='crumbs'>
-		
-		</div>
-		<div style='clear:both;'></div>
-	</div>
-	<div>
-		<div style='float:left; width:801px;' class='products'>
-			<div class='container'>
-				<div class='container-top'>
-					<div class='inner'>
-						<h2>NEW ARRIVALS</h2>
-					<?php foreach($new_products as $p) {
-						
-						echo $this->element("canteen/product-super-thumb",array("product"=>$p));
-						
-					} ?>
-					<div style='clear:both;'></div>
-					</div>
+
+			<div class="span5 top-banners">
+				<div class="clearfix">
+					SHIPPING BANNER
 				</div>
 			</div>
-			<div class='bottom'></div>
+
 		</div>
-		<div style='float:right;'>
-			<img border='0' src='/img/layout/canteen/home/free-shipping-banner.jpg' />
-			<br /><br />
-			<img border='0' src='/img/layout/canteen/home/Shipping_Worldwide.jpg' />
-		</div>
-		<div style='clear:both;'></div>
+		
 	</div>
+	<div id="new-arrivals">
+		<h2>NEW ARRIVALS</h2>
+		<?php foreach($new_products as $p) {
+			
+			echo $this->element("canteen/product-super-thumb",array("product"=>$p));
+			
+		} ?>
+	</div>
+	
+	
 	<?php /* ?>
 	<div class='brands'>
 		<div class='inner'>

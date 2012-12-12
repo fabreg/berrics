@@ -30,6 +30,8 @@ class CanteenController extends CanteenAppController {
 	
 	public function index() {
 		
+		$this->set("body_element","layout/v3/one-column");
+
 		$this->loadModel("CanteenCategory");
 		$this->loadModel("CanteenProduct");
 		$this->loadModel("CanteenDoormat");

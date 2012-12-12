@@ -16,7 +16,7 @@ class CanteenAppController extends LocalAppController {
 
 		if(!preg_match('/(\/canteen\/working)/',$_SERVER['REQUEST_URI'])) {
 
-			$this->redirect("/canteen/working");
+			//$this->redirect("/canteen/working");
 
 		}
 		

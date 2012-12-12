@@ -533,8 +533,29 @@ footer .inner {
 	margin-bottom:10px;
 	margin-left:2%;
 }
+/*
+##################
+ONE COLUMN BODY
+##################
+*/
 
+#one-column-body {
 
+	margin-top:8px;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
 /*
 ##################
 TWO COLUMN BODY
@@ -594,8 +615,8 @@ TWO COLUMN BODY
 		
 		/*border-left:2px dotted #ccc;*/
 		    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-    -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-    -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+  			  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   			 -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
 
 	}
 
@@ -1206,6 +1227,15 @@ hr.hr1 {
 	margin-top:3px;
 	margin-bottom:3px;
 }
+
+.column-shadow {
+
+	  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+  	 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   	background-color:#fff;
+}
+
 
 /*
 ################################
@@ -3342,6 +3372,66 @@ IDENTITY LOGIN FORM:
 
 /*#############################################*/
 
+
+/*
+##########################
+CANTEEN INDEX
+########################
+*/
+#canteen-index {
+
+
+
+}
+
+#canteen-index #canteen-caro {
+
+	max-width: 700px;
+	margin:10px;
+	float:left;
+}
+
+#canteen-index .top-banners {
+
+	float:right;
+	max-width:400px;
+
+}
+
+#canteen-index .top-banners img {
+
+	margin:10px;
+
+}
+
+#canteen-index .top-banners .left {
+
+	float:left;
+
+}
+
+#canteen-index .top-banners .right {
+
+	float:right;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+
+
+
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
 /*
 ##########################
 BOOTSTRAP OVERRIDES
@@ -3364,6 +3454,11 @@ BOOTSTRAP OVERRIDES
 
 	z-index: 19000;
 
+}
+.carousel .carousel-control {
+
+	font-family: 'Arial';
+	font-size:28px;
 }
 
 span.close {
