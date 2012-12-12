@@ -411,8 +411,6 @@
 
       $this.find('.seekhead').css({"left":(mx-1)+"px"});
 
-      console.log("Mouse X: "+mx);
-
     }).bind(click_event,function(e,ui) { 
       
         var duration = video.get(0).duration;
