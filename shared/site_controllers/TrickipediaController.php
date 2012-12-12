@@ -49,10 +49,43 @@ class TrickipediaController extends DailyopsController {
 			
 		}
 		
-		$video = $this->Dailyop->returnPost(array("Dailyop.uri"=>$uri,'Dailyop.dailyop_section_id'=>4),$this->isAdmin());
-		$this->setFacebookMetaData($video);
+		$post = $this->Dailyop->returnPost(array("Dailyop.uri"=>$uri,'Dailyop.dailyop_section_id'=>4),$this->isAdmin());
 		
-		$this->set(compact("posts","video"));
+		$this->setFacebookMetaData($post);
+		
+		$this->extractMenu($posts);
+
+		$this->set(compact("posts","post"));
+
+	}
+
+	private function extractMenu($posts) {
+		
+		$token = "trickipedia-select-menu";
+
+		if(($menu = Cache::read($token,"1min")) === false) {
+
+			$menu = array();
+
+			foreach($posts as $post) {
+
+				//get the trick meta tag
+				$trick = Set::extract("/Meta[key=/trick/i]/val",$post);
+
+				$menu[$post['Dailyop']['id']] = strtoupper($trick[0]);
+
+			}
+
+			sort($menu);
+
+			Cache::write($token,$menu,"1min");
+
+		}
+
+		$this->set("trick_menu",$menu);
+
+		return $menu;
+
 
 	}
 	
