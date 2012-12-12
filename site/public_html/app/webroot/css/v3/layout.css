@@ -2111,6 +2111,88 @@ border-bottom:2px dotted #ccc;
 }
 
 
+/*
+#####################
+TRICKIPEDIA
+#####################
+*/
+
+#trickipedia {
+
+
+
+}
+
+#trickipedia .select-menu {
+
+	padding-top:10px;
+
+}
+
+#trickipedia .trick-div {
+
+	width:49%;
+	float:left;
+	border:1px solid #ccc;
+	margin-bottom:8px;
+	box-shadow: 1px 1px 2px #000;
+	border-radius: 5px;
+	padding:10px;
+
+}
+
+#trickipedia .trick-div:nth-child(even) {
+
+	float:right;
+
+}
+
+#trickipedia .trick-div .img {
+
+	float:left;
+	
+}
+
+#trickipedia .trick-div .info {
+
+	float:left;
+	padding-left:10px;
+}
+#trickipedia .trick-div .info .trick {
+
+	font-family: 'universcnb'
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+
+	#trickipedia .trick-div {
+
+		width:100%;
+		float:none;
+		clear:both;
+	}
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+
+	#trickipedia .trick-div {
+
+		width:100%;
+		float:none;
+		clear:both;
+	}
+
+}
 
 /*
 #####################

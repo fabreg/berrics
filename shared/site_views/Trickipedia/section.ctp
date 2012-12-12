@@ -1,235 +1,90 @@
-<?php 
-
-$this->Html->script(array("dailyops/post-bit"),array("inline"=>false));
-
-$trick_array = Set::extract("/Meta[key=/trick/i]/val",$posts);
-
-sort($trick_array);
-
-$trick_menu = array();
-
-foreach($trick_array as $trick) {
-	
-	$trick_menu[md5($trick)] = $trick;
-	
-}
-
-?>
-<style>
-
-#menu-items {
-
-
-}
-
-
-
-#menu-items .trick {
-	
-	background-color:#000000;
-	float:left;
-	width:48%;
-	margin-right:1%;
-	margin-bottom:10px;
-	-webkit-box-shadow: 0px 0px 9px #000000;
-	-moz-box-shadow: 0px 0px 9px #000000;
-	box-shadow: 0px 0px 9px #000000;
-	border:1px solid #222222;
-}
-
-#menu-items .trick .inner {
-
-	padding:5px;
-
-}
-
-#menu-items .trick h2 {
-
-	font-family:'Times New Roman';
-	color:#666666;
-	font-size:100%;
-	font-weight:normal;
-	margin-bottom:4px;
-}
-
-
-#menu-items .trick h2 span {
-
-
-
-}
-
-#menu-items .trick h2 a {
-
-
-	color:inherit;
-	text-decoration:none;
-	border-bottom:2px dotted #647481;
-}
-
-
-
-#menu-items .trick h3 {
-
-	font-weight:normal;
-	font-size:140%;
-}
-
-#menu-items .trick .preview-thumb {
-
-	float:left;
-	padding:3px;
-}
-
-
-#TrickSelect {
-
-	background-color:#000;
-	color:white;
-
-}
-
-#menu label {
-	
-	
-	margin-right:3px;
-	line-height:30px;
-
-}
-
-#menu select {
-
-	font-size:100%;
-	
-
-}
-#menu {
-
-	padding:10px;
-
-}
-
-#menu div.select {
-
-	line-height:30px;
-
-}
-
-
-
-</style>
-<script>
-
-$(document).ready(function() { 
-
-	$("#TrickSelect").change(function() { 
-
-		var hash = $(this).val();
-
-		var href = $(".trick[hash="+hash+"]").attr("uri");
-
-		document.location.href = href;
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
 		
+		$("#trick_select").bind('change',function() { 
+
+			var uri = $(this).val();
+
+			document.location.href = uri;
+
+			return;
+
+		});
+
+
 	});
-
-
-});
-
-
+	
 </script>
-<div id='video'>
-
-		
-		<?php 
-		
-			echo $this->element("dailyops/post-bit",array("dop"=>$video));
-		
-		?>
-	
-</div>
-<div id='menu'>
-	<?php 
-	
-		echo $this->Form->input("TrickSelect",array("options"=>$trick_menu,"empty"=>"Choose a Trick","label"=>false));
-	
-	?>
-</div>
-<div id='menu-items'>
-
-	<?php 
-	
-		foreach($posts as $post):
-		
-		$meta = Set::extract("/Meta[key=/trick/i]/val",$post);
-		
-	?>
-	<div class='trick' post_id='<?php echo $post['Dailyop']['id']; ?>' uri='/<?php echo $this->request->params['section']."/".$post['Dailyop']['uri']; ?>' hash='<?php echo md5($meta[0]); ?>'>
-		<div class='inner'>
-			<div class='preview-thumb'>
-			<?php 
-			
-				if(isset($post['DailyopMediaItem'][1]['MediaFile'])) {
-					
-					$thumb = $this->Media->mediaThumb(array(
-					
-						"MediaFile"=>$post['DailyopMediaItem'][1]['MediaFile'],
-						"h"=>60,
-						"w"=>60,
-						"zc"=>1
-					
-					));
-					?>
-					<a href='/<?php echo $this->request->params['section']."/".$post['Dailyop']['uri']; ?>'><?php echo $thumb; ?></a>
-					 
-					<?php
-				} else {
-					
-					
-					echo $this->Html->image("layout/trickipedia/default-tricki.jpeg");
-					
-				}
-			
-			
-			
-			?>
-			</div>
-			<div class='skater'>
-				<div class='trick-name'>
-				<h2>
-				<a href='/<?php echo $this->request->params['section']."/".$post['Dailyop']['uri']; ?>'>
-				<?php 
-
-					echo $this->Text->truncate($meta[0],32);
-				
-				?>
-				</a>
-				</h2>
-			</div>
-				<h3><?php 
-					
-					$user = Set::extract("/Tag/User[id=/-/i]",$post);
-
-					$user = $user[0]['User'];
-					
-					$name = ucfirst($user['first_name'])." ".ucfirst($user['last_name']);
-	
-				?>
-				<?php echo $name; ?>
-				</h3>
-			</div>
-		
-		</div>
-	</div>
-	<?php 
-	
-		endforeach;
-	
-	?>
-
-</div>
-
 <?php 
 
+//get the trick
+$trick = Set::extract("/Meta[key=/trick/i]/val",$post);
+// get by who
+$who = Set::extract("/Tag/User",$post);
+foreach($who as $k=>$v) if(count($v['User'])<=0) unset($who[$k]);
+$who = array_values($who);
+//page title
+
+$t = "The Berrics - Trickipedia - ";
+
+$t .= strtoupper($trick[0]);
+
+$t .= " By: ".strtoupper($who[0]['User']['first_name']." ".$who[0]['User']['last_name']);
+
+$this->set("title_for_layout",$t);
+
+//meta and descrip
+
+$meta_k = Array();
+
+foreach($post['Tag'] as $t) {
+
+	$meta_k[] = $t['name'];
+
+}
+
+$meta_k = implode(",",$meta_k);
+
+$meta_d = strip_tags($post['Dailyop']['text_content']);
+
+$this->set(compact("meta_k","meta_d"));
+
+unset($t,$trick,$who,$meta_k,$meta_d);
 
 
 ?>
+<div id="trickipedia">
+	<div id="post">
+		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)) ?>
+	</div>
+	<div id="select-menu">
+		<?php echo $this->Form->input("trick_select",array("options"=>$trick_menu)) ?>
+	</div>
+	<div id="posts" class='clearfix'>
+		<?php 
+			foreach ($posts as $k => $v): 
+
+				$user = Set::extract("/Tag/User",$v);
+				$trick = Set::extract("/Meta[key=/trick/i]/val",$v);
+				$img = $v['DailyopMediaItem'][1]['MediaFile'];
+				$link = "/trickipedia/".$v['Dailyop']['uri'];
+
+		?>
+			<div class="trick-div clearfix">
+				<div class="img">
+					<a href="<?php echo $link; ?>">
+					<img src='http://img.theberrics.com/i.php?src=/loading-imgs/loading-700.jpg&amp;h=60&amp;w=60&amp;zc=1' data-original="http://img.theberrics.com/i.php?src=/images/<?php echo $img['file']; ?>&amp;w=60&amp;h=60&amp;zc=1" alt="" class='lazy' />
+					</a>
+				</div>
+				<div class="info">
+					<div class="trick">
+						<a href="<?php echo $link; ?>"><?php echo strtoupper($trick[0]); ?></a>
+					</div>
+					<div class="name">
+						<a href="<?php echo $link; ?>"><?php echo strtoupper($user[0]['User']['first_name']); ?> <?php echo strtoupper($user[0]['User']['last_name']); ?></a>
+					</div>
+				</div>
+			</div>
+		<?php endforeach ?>
+	</div>
+</div>
