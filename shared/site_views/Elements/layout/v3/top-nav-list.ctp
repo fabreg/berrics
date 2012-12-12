@@ -6,7 +6,7 @@ $batb['DailyopSection'] =  Array(
 			                    'name' => 'Battle At The Berrics',
 			                    'uri' => 'battle-at-the-berrics.html',
 			                    'sort_weight' => 0,
-			                    'icon_dark_file' => '08ad21c6f9da6bdf51ae0b971f43d96d.png',
+			                    'icon_dark_file' => '90de1564f8adce08df29ac944ce8b641.png',
 			                    'icon_light_file' => '03287fcce194dbd958c2ec5b33705912.png',
 			                    'nav_label' => ''
 			                );

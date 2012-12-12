@@ -817,15 +817,21 @@ NEWS HEADLINES
 
 }
 
-
 #trending-news .content {
 
 	/*min-height:300px; */
+	line-height:15px;
+}
+
+#trending-news .content p {
+
+	line-height:13px;
 
 }
+
 #trending-news div.content table tr td:last-child {
 
-	padding-top:3px;
+	padding-top:8px;
 	padding-bottom:3px;
 
 }

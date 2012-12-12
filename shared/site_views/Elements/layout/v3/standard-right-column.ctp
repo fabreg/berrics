@@ -54,7 +54,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 							<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['name'],26); ?></a>
 							<div>
 								<small>
-									<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['sub_title'],36); ?></a>
+									<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['sub_title'],54); ?></a>
 								</small>
 							</div>
 							<p>

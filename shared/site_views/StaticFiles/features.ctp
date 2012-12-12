@@ -53,13 +53,15 @@ $(document).ready(function() {
 						<div class='icon'>
 							<a href='/<?php echo $cat['DailyopSection']['uri']; ?>' title='<?php echo addslashes($cat['DailyopSection']['name']); ?>'>
 							<?php 
-							
+								$color = false;
+								if(!empty($cat['DailyopSection']['icon_color_file'])) $color = true;
 								echo $this->Media->sectionIcon(array(
 								
 									"DailyopSection"=>$cat['DailyopSection'],
 									"h"=>55,
 									"w"=>55,
-									"dark"=>true
+									"dark"=>true,
+									"color"=>$color
 								),array("border"=>0));
 							
 							?>
