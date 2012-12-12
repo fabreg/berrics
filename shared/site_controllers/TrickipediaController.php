@@ -24,8 +24,7 @@ class TrickipediaController extends DailyopsController {
 	
 	public function view() {
 		
-		die("You're Stupid");
-		
+		throw new NotFoundException("Invalid Request");
 	}
 	
 	public function section() {
@@ -72,11 +71,13 @@ class TrickipediaController extends DailyopsController {
 				//get the trick meta tag
 				$trick = Set::extract("/Meta[key=/trick/i]/val",$post);
 
-				$menu[$post['Dailyop']['id']] = strtoupper($trick[0]);
+				$link = "/trickipedia/".$post['Dailyop']['uri'];
+
+				$menu[$link] = strtoupper($trick[0]);
 
 			}
 
-			sort($menu);
+			asort($menu);
 
 			Cache::write($token,$menu,"1min");
 

@@ -30,8 +30,8 @@
 	</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name='keywords' content='<?php echo $meta_k; ?>' >
-	<meta name='decsription' content='<?php echo $meta_d; ?>' >
+	<meta name='keywords' content="<?php echo $meta_k; ?>" >
+	<meta name='decsription' content="<?php echo $meta_d; ?>" >
 	<meta property="fb:app_id" content="128870297181216">
 	<meta property="og:url" content="http://theberrics.com<?php echo $_SERVER['REQUEST_URI']; ?>">
 	<meta property="og:type" content="website">
