@@ -166,6 +166,16 @@ class DailyopsController extends LocalAppController {
 
 		}
 
+		//get the date from the last post
+
+		$post_total = count($posts['posts']);
+
+		$date_scope = $posts['posts'][($post_total-1)]['Dailyop']['publish_date'];
+
+		$dateIn = $this->checkHomeDateIn(date("Y-m-d",strtotime($date_scope)));
+
+
+
 		$this->set(compact("posts","home_mode"));
 		$this->set(compact("title_for_layout","dateIn"));
 
