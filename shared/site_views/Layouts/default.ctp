@@ -61,10 +61,11 @@
 								<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>
 							</span>
 						</div>
-						<div class="user-info">
-							<i class="icon icon-white icon-user"></i>
-						</div>
 						-->
+						<div class="user-info">
+							<img src="/img/v3/layout/top-user-icon.png" alt="" />
+						</div>
+						
 						<div class="fb-icon">
 							<a href="http://www.facebook.com/pages/The-Berrics/123390707714463" target='_blank'>
 								<img src="/img/v3/layout/fb-header-icon.jpg" alt="" border='0' />

@@ -40,10 +40,18 @@ $(document).ready(function() {
 
 }
 </style>
+<?php if ($this->request->is('ajax')): ?>
+<div class="modal-header">
+	<h3>Login to The Berrics</h3>
+</div>
+<div class="modal-body">
+<?php endif ?>
 <div id='identity-form' class='identity-container'>
+	<?php if (!$this->request->is('ajax')): ?>
 	<div class='heading'>
 		SIGN IN TO THE BERRICS
 	</div>
+	<?php endif ?>
 	<div class='social-connect-buttons'>
 		<a href='/identity/login/send_to_facebook' rel='no-ajax'>
 			<img border='0' src='/img/layout/login/fb-connect-grey.png' />
@@ -77,5 +85,10 @@ $(document).ready(function() {
 			Click Here To Create An Account
 		</a>
 	</div>
+</div>
+<?php if ($this->request->is('ajax')): ?>
+</div>
+<div class="modal-footer">
 	
 </div>
+<?php endif ?>

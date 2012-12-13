@@ -60,6 +60,12 @@ h2 {
 
 }
 
+h1,h2,h3,h4,h5 {
+
+	font-weight: normal;
+
+}
+
 
 header  {
 
@@ -157,7 +163,6 @@ header .social-media .cart .cart-icon-img {
 header .user-info {
 
 	float:right;
-	margin-top:3px;
 	cursor: pointer;
 
 }
