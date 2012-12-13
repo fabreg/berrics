@@ -22,9 +22,9 @@ $(document).ready(function() {
 
 </script>
 <div id='identity-register-success' class='identity-container'>
-<div class='heading'>
+<h2>
 	CHECK YO' EMAIL
-</div>
+</h2>
 <p>
 <?php echo ucfirst($user['User']['first_name']); ?>,
 </p>
@@ -33,9 +33,9 @@ $(document).ready(function() {
 </p>
 <p>
 Please allow a few minutes for it to reach you. Also, check your junk email folder 
-and then add theberrics.com to your safe listfor future correspondence.
+and then add theberrics.com to your safe list for future correspondence.
 </p>
 <div class='login-button'>
-	<input type='button' value='CLICK HERE TO SIGN IN' id='login-button'/>
+	<a href="/identity/login/form" class="btn">CLICK HERE TO SIGN IN</a>
 </div>
 </div>

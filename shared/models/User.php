@@ -457,7 +457,7 @@ class User extends AppModel {
 	public function setRegistrationValidation() {
 		
 		$v['first_name'] = array(
-					"rule"=>"notEmpty",
+					"rule"=>array("minLength",1),
 					"message"=>"First name cannot be empty"
 				);
 		

@@ -48,7 +48,13 @@ $(document).ready(function() {
 		</a>
 	</div>
 </div>
-<?php endif ?>
+<?php else: ?>
+	<div class="inner" style='text-align:center;'>
+		Not Registered? <a href='/identity/login/register' rel='register-link'>
+			Click Here To Create An Account
+		</a>
+	</div>
+<?php endif; ?>
 <?php	
 
 	echo $this->Form->end();

@@ -31,8 +31,10 @@ echo $this->Form->end("Reset Password");
 </div>
 <?php else: ?>
 <p style='text-align:center; padding:10px;'>Your password has been reset successfully</p>
-<div class='reset-link'>
-	<input type='button' value='GO TO THE DAILY OPS' id='back-button' />
+<div class='reset-link' style='text-align:center;'>
+	<a href='/dailyops' class='btn'>GO TO THE DAILY OPS</a> 
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href='/identity/login/form' class='btn'>CLICK HERE TO LOGIN</a>
 </div>
 <?php endif; ?>
 </div>

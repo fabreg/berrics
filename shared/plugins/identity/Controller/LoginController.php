@@ -241,7 +241,7 @@ class LoginController extends IdentityAppController {
 	
 	public function form($cb = false) {
 		
-		if(count($this->data)>0) {
+		if(count($this->request->data)>0) {
 			
 			if($this->Auth->login()) {
 				
@@ -287,17 +287,17 @@ class LoginController extends IdentityAppController {
 	
 	public function register() {
 		
-		if(count($this->data)>0) {
+		if(count($this->request->data)>0) {
 			
 			$this->User->setRegistrationValidation();
 			
-			$this->User->set($this->data);
+			$this->User->set($this->request->data);
 			
 			if($this->User->validates()) {
 				
-				$this->data['User']['passwd'] = $this->Auth->password($this->data['User']['new_passwd']);
+				$this->request->data['User']['passwd'] = $this->Auth->password($this->request->data['User']['new_passwd']);
 				
-				$res = $this->User->processUserFormRegistration($this->data);
+				$res = $this->User->processUserFormRegistration($this->request->data);
 				
 				if(!$res) { //this indicates the email address is registered and verified
 					
@@ -327,6 +327,8 @@ class LoginController extends IdentityAppController {
 				}
 				
 			}
+
+			//die(print_r($this->request));
 			
 		}
 		
@@ -334,13 +336,13 @@ class LoginController extends IdentityAppController {
 	
 	public function reset_password() {
 		
-		if(count($this->data)>0) {
+		if(count($this->request->data)>0) {
 			
 			$this->loadModel("UserPasswdReset");
 			
 			if(
-				(!empty($this->data['User']['email'])) && 
-				($user = $this->UserPasswdReset->process_reset_reqeust($this->data['User']['email']))
+				(!empty($this->request->data['User']['email'])) && 
+				($user = $this->UserPasswdReset->process_reset_reqeust($this->request->data['User']['email']))
 			) {
 				
 				$this->Session->setFlash("An email has been sent to you with a link to reset your password. It may take a few minutes to reach you. Also check your junk email folder and approve theberrics.com for future emails.");
@@ -372,11 +374,11 @@ class LoginController extends IdentityAppController {
 		
 		if(empty($record['User']['id'])) return $this->cakeError("error404");
 		
-		if(count($this->data)>0) {
+		if(count($this->request->data)>0) {
 			
 			if(
-					strlen($this->data['User']['new_passwd']) >=6 && 
-					($this->data['User']['new_passwd'] == $this->data['User']['passwd_confirm'])
+					strlen($this->request->data['User']['new_passwd']) >=6 && 
+					($this->request->data['User']['new_passwd'] == $this->request->data['User']['passwd_confirm'])
 					) {
 				
 				$this->loadModel("User");
@@ -385,7 +387,7 @@ class LoginController extends IdentityAppController {
 				
 				$this->User->id = $record['User']['id'];
 				
-				$this->User->save(array("passwd"=>$this->Auth->password($this->data['User']['new_passwd'])));
+				$this->User->save(array("passwd"=>$this->Auth->password($this->request->data['User']['new_passwd'])));
 				
 				$this->UserPasswdReset->create();
 				
@@ -398,7 +400,7 @@ class LoginController extends IdentityAppController {
 			} else {
 			
 				$this->Session->setFlash("Please make sure your passwords match and that your password is at least 6 characters.");
-				$this->data['User'] = array();
+				$this->request->data['User'] = array();
 			}
 				
 		}

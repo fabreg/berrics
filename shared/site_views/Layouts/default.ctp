@@ -63,7 +63,9 @@
 						</div>
 						-->
 						<div class="user-info">
-							<img src="/img/v3/layout/top-user-icon.png" alt="" />
+							<a href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
+								<img src="/img/v3/layout/top-user-icon.png" alt="" />
+							</a>
 						</div>
 						
 						<div class="fb-icon">

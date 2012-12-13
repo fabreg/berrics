@@ -2915,6 +2915,25 @@ IDENTITY LOGIN FORM:
 
 }
 
+/*
+##########################
+IDENTITY LOGIN FORM:
+########################
+*/
+
+#identity-register {
+
+
+}
+
+
+#identity-register .form-inner {
+
+	width:95%;
+	margin:auto;
+
+}
+
 
 /*#############################################*/
 

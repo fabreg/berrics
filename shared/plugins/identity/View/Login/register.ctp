@@ -33,25 +33,28 @@ $(document).ready(function() {
 }
 </style>
 <div id='identity-register' class='identity-container'>
-<div class='heading'>
-	THE BERRICS REGISTRATION FORM
-</div>
+<h2>BERRICS ACCOUNT REGISTRATION</h2>
 <?php echo $this->Session->flash(); ?>
 <?php echo $this->Form->create("User",array("url"=>$this->here,"id"=>"identity-register-form")); ?>
-	<div class='required-fields'>
-		<div class='form-heading'>Required Information</div>
+	<h4>Required Information</h4>
+	<div class='form-inner'>
+		
 		<?php 
-					echo $this->Form->input("User.first_name");
-					echo $this->Form->input("User.last_name");
-					echo $this->Form->input("User.email");
+
+					echo $this->Form->input("first_name");
+					echo $this->Form->input("last_name");
+					echo $this->Form->input("email");
 					echo $this->Form->input("new_passwd",array("label"=>"Password","type"=>"password"));
 					echo $this->Form->input("new_passwd_confirm",array("label"=>"Confirm Password","type"=>"password"));
 					echo $this->Form->input("country",array("options"=>Arr::countries()));
 					echo $this->Form->input("city");
+
 		?>
+		
 	</div>
-	<div class='optional-fields'>
-		<div class='form-heading'>Optional Skate Information</div>
+	<h4>Optional Skate Information</h4>
+	<div class='form-inner'>
+		
 		<?php 
 				
 				echo $this->Form->input("UserProfile.stance",array("options"=>User::stanceSelect()));
