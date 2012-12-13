@@ -276,6 +276,15 @@ function initNav () {
 function initLayout() {
 	
 	initNav();
+
+
+	//format flash messages to alert
+
+	$("#flashMessage.message").each(function() { 
+
+		$(this).addClass("alert").addClass("alert-info");
+
+	});
 	
 }
 

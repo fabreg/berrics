@@ -14,9 +14,9 @@ $(document).ready(function() {
 
 </script>
 <div id='identity-password-reset' class='identity-container'>
-<div class='heading'>
+<h1>
 	PASSWORD RESET
-</div>
+</h1>
 <?php if($record['UserPasswdReset']['active']==1): ?>
 <?php echo $this->Session->flash(); ?>
 <div class='reset-form'>

@@ -8,7 +8,7 @@
 
 </style>
 <div id='identity-reset-password' class='identity-container'>
-	<div class='heading'>RESET YO' PASSWORD</div>
+	<h1>RESET YO' PASSWORD</h1>
 	<div style=''>
 		<?php echo $this->Session->flash(); ?>
 		<p style='text-align:center;'>Enter your email address below to reset your password</p>

@@ -21,7 +21,11 @@ class LoginController extends IdentityAppController {
 	
 	public function index() {
 		
-		
+		if(preg_match('/^(theberrics.com)/',$_SERVER['HTTP_HOST'])) {
+
+			$this->redirect(array("action"=>'form'));
+
+		}
 		
 	}
 	
@@ -260,16 +264,14 @@ class LoginController extends IdentityAppController {
 					
 				}
 				
-				$res = array("url"=>$callback);
+				$this->redirect($callback);
 				
 				
 			} else {
 				
-				$res = array("error"=>"Unable to login. Please try again");
+				$this->Session->setFlash("Unable to login. Please try again.");
 				
 			}
-
-			die(json_encode($res));
 			
 		}
 		

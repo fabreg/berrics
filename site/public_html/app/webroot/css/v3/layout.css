@@ -2870,6 +2870,52 @@ GALLERY VIEW
 	float:right;
 
 }
+
+
+/*
+##########################
+IDENTITY LOGIN FORM:
+########################
+*/
+
+#identity-form {
+
+
+}
+
+#identity-form h4 {
+
+	margin:2px;
+
+}
+
+#identity-form .social-network-logins {
+
+	text-align: center;
+
+}
+
+#identity-form .email-submit-div {
+
+
+
+}
+
+
+#identity-form .email-submit-div button[type=submit] {
+
+	float:left;
+
+}
+#identity-form .email-submit-div .reset-password-link {
+
+	line-height: 32px;
+	padding-left:10px;
+	float:left;
+
+}
+
+
 /*#############################################*/
 
 /*
