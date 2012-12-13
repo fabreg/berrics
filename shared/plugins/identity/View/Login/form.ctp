@@ -1,47 +1,24 @@
 <script>
 $(document).ready(function() { 
-	$("#identity-form form").ajaxForm({
-
-		"success":function(d) {
-			console.log(d);
-
-			$("#identity-form form input[type=submit]").attr("disabled",false);
-
-			if(d['url']) {
-
-				document.location.href = d['url'];
-
-			} else {
-
-				alert(d['error']);
-					
-			}
-			
-		},
-		"beforeSubmit":function() { 
-
-			$("#identity-form form input[type=submit]").attr("disabled",true);
 	
-			return true;
-		},
-		"type":"post",
-		"dataType":"json"
-	});
-
-	$("#UserEmail").get(0).focus;
+	$("#UserEmail").get(0).focus();
 	
 });
 </script>
 <?php echo $this->Form->create("User",array("url"=>"/identity/login/form","rel"=>"no-ajax","class"=>"form modal-form")); ?>
 <?php if ($this->request->is('ajax')): ?>
 <div class="modal-header">
-	<h4>Login to The Berrics</h4>
+	<span class="close" style='float:right;' data-dismiss='modal'>x</span>
+	<h4>Login to The Berrics </h4>
 </div>
 <div class="modal-body">
 <?php endif ?>
 <div class="row-fluid" id='identity-form'>
 	<div class="span12">
 		<div class="inner">
+			<?php if (!$this->request->is('ajax')): ?>
+				<h3>Login to The Berrics</h3>
+			<?php endif ?>
 			<div class="social-network-logins">
 				<a href='/identity/login/send_to_facebook' rel='no-ajax'>
 					<img border='0' src='/img/layout/login/fb-connect-grey.png' />
@@ -65,7 +42,11 @@ $(document).ready(function() {
 <?php if ($this->request->is('ajax')): ?>
 </div>
 <div class="modal-footer">
-	
+	<div class="inner" style='text-align:center;'>
+		Not Registered? <a href='/identity/login/register' rel='register-link'>
+			Click Here To Create An Account
+		</a>
+	</div>
 </div>
 <?php endif ?>
 <?php	

@@ -712,13 +712,13 @@ TWO COLUMN BODY
 
 	header .logo-div {
 
-		width:69%;
+		width:58%;
 
 	}
 
 	header .social-media {
 
-		width:30%;
+		width:40%;
 
 	}
 
@@ -2939,6 +2939,12 @@ BOOTSTRAP OVERRIDES
 .modal {
 
 	z-index: 19000;
+
+}
+
+span.close {
+
+	font-family: 'Arial';
 
 }
 
