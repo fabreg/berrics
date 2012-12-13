@@ -10,6 +10,6 @@ echo $this->element("featured-post");
 <div style='height:15px;'></div>
 <div id='featured-canteen-product'>
 	<div class='inner'>
-		<?php echo $this->element("canteen/product-super-thumb",array("product"=>$home_random_product)); ?>
+		<?php echo $this->element("canteen/product-thumb",array("product"=>$home_random_product)); ?>
 	</div>
 </div>

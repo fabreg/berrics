@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 }
 
-.canteen-product-super-thumb {
+.canteen-product-thumb {
 
 	float:left;
 	margin-left:3px;
@@ -131,13 +131,15 @@ $(document).ready(function() {
 		</div>
 		
 	</div>
-	<div id="new-arrivals">
+	<div id="new-arrivals" class='column-shadow'>
 		<h2>NEW ARRIVALS</h2>
-		<?php foreach($new_products as $p) {
-			
-			echo $this->element("canteen/product-super-thumb",array("product"=>$p));
-			
-		} ?>
+		<div class="product-thumb-collection clearfix">
+			<?php foreach($new_products as $p) {
+				
+				echo $this->element("canteen/product-thumb",array("product"=>$p));
+				
+			} ?>
+		</div>
 	</div>
 	
 	

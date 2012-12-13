@@ -7,7 +7,7 @@ $this->set("title_for_layout",strtoupper($category['Parent']['name'])." // ".str
 
 ?>
 <style>
-.canteen-product-thumb,.canteen-product-super-thumb {
+.canteen-product-thumb,.canteen-product-thumb {
 
 	float:left;
 	margin-left:3px;
@@ -39,7 +39,7 @@ $this->set("title_for_layout",strtoupper($category['Parent']['name'])." // ".str
 					<?php 
 						foreach($products as $p):
 					?>
-						<?php echo $this->element("canteen/product-super-thumb",array("product"=>$p)); ?>
+						<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
 					<?php 
 						endforeach;
 					?>

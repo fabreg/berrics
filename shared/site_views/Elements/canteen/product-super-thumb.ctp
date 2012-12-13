@@ -3,7 +3,7 @@
 $price = Set::extract("/CanteenProductPrice[currency_id={$user_currency_id}]",$product);
 
 ?>
-<div class='canteen-product-super-thumb'>
+<div class='canteen-product-thumb'>
 	<div class='info'>
 		<?php if(count($product['RelatedStyles'])): ?>
 			<div class='style-label'><?php echo strtoupper($product['CanteenProduct']['style_code_label']); ?></div>
