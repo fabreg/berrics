@@ -36,7 +36,7 @@ $(function() {
 
 	});
 
-	$('header .user-info a').click(function() { 
+	$('header .user-info a.login-link').click(function() { 
 		//alert("user click");
 		openUserLogin($(this).attr("href"));
 		return false;
@@ -231,7 +231,7 @@ function initMediaDivs () {
 function openUserLogin () {
 		
 	var uri = arguments[0] || "/identity/login/form";
-	
+
 	$('body').append("<div id='user-login-modal' class='modal hide'><div style='text-align:center; padding:15px;'><img border='0' src='/img/v3/layout/loader-clear.gif'/></div></div>");
 
 	var modal = $("#user-login-modal");

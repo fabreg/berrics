@@ -63,9 +63,24 @@
 						</div>
 						-->
 						<div class="user-info">
-							<a href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
-								<img src="/img/v3/layout/top-user-icon.png" alt="" />
-							</a>
+							<?php if (CakeSession::check("Auth.User.id")): ?>
+								<div class="dropdown">
+									<button class="btn btn-mini" data-toggle='dropdown'>
+										<i class="icon icon-user"></i> <b class="caret"></b>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li>
+											<a href="/identity/login/logout/<?php echo base64_encode($this->here) ?>">Logout</a>
+										</li>
+									</ul>
+								</div>
+								
+							<?php else: ?>
+								<a class='login-link' href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
+									<img src="/img/v3/layout/top-user-icon.png" alt="" />
+								</a>
+							<?php endif ?>
+							
 						</div>
 						
 						<div class="fb-icon">
