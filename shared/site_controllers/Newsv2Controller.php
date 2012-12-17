@@ -221,9 +221,6 @@ class Newsv2Controller extends DailyopsController {
 			
 		}
 		
-		
-
-		
 		$related = $this->Dailyop->postViewRelated($post);
 
 		$this->set(compact("post","related"));
