@@ -59,6 +59,7 @@ $(document).ready(function() {
 					<?php 
 						echo $this->Form->create("MediaFile",array("url"=>$url,"class"=>"form image-form"));
 						echo $this->Form->input("name");
+						echo $this->Form->input("caption");
 						echo $this->Form->input("tags");
 						echo $this->Form->input("tmp_image",array("type"=>"hidden","value"=>$v));
 						echo $this->Form->input("tmp_id",array("type"=>"hidden","value"=>$id));

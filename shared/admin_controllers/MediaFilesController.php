@@ -1556,7 +1556,6 @@ class MediaFilesController extends LocalAppController {
 		
 		foreach($scan as $v) {
 			
-			
 			if(preg_match("/^({$uid})/i",$v)) $files[]=$v;
 			
 		}
