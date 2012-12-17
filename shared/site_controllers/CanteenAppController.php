@@ -7,7 +7,7 @@ class CanteenAppController extends LocalAppController {
 
 	public function beforeFilter() {
 	
-		$this->body_element = "layout/v3/two-column";
+		$this->body_element = "layout/v3/canteen-body";
 
 		parent::beforeFilter();
 		

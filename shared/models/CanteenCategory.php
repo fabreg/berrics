@@ -90,7 +90,7 @@ class CanteenCategory extends AppModel {
 		if(($cats = Cache::read($token,"5min")) === false) {
 			
 			$tree = $this->find("all",array(
-			
+				
 				"order"=>array("CanteenCategory.parent_id"=>"ASC","CanteenCategory.lft"=>"ASC"),
 				"contain"=>array()
 			

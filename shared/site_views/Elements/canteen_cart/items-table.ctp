@@ -1,5 +1,5 @@
 <div class='cart-items'>
-	<table cellspacing='0'>
+	<table cellspacing='0' class='table table-striped table-bordered'>
 		<thead>
 			<tr>
 				<th width='1%'>&nbsp;</th>

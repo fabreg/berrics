@@ -603,6 +603,18 @@ TWO COLUMN BODY
 
 	}
 
+	header .social-media .cart .cart-icon-img {
+
+		display:inline;
+
+	}
+
+	header {
+   	 	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+        -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+        -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	}
+
 	#body-row {
 
 		padding-top:100px;
@@ -628,7 +640,6 @@ TWO COLUMN BODY
 
 	}
 
-
 	header {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
     -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
@@ -636,30 +647,13 @@ TWO COLUMN BODY
 
 	}
 
+
 }
 
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) { 
 
-	/*
-	Two Column Body
-	*/
-	#two-column-body .left-column {
-
-		clear:both;
-		width:100%;
-
-
-	}
-
-	#two-column-body .right-column {
-
-		clear:both;
-		width:100%;
-		margin:0;
-		margin-top:15px;
-	}
 
 
 
@@ -681,6 +675,24 @@ TWO COLUMN BODY
 
 	}
 	
+	/*
+	Two Column Body
+	*/
+	#two-column-body .left-column {
+
+		clear:both;
+		width:100%;
+
+
+	}
+
+	#two-column-body .right-column {
+
+		clear:both;
+		width:100%;
+		margin:0;
+		margin-top:15px;
+	}
 
 
 }
@@ -757,7 +769,7 @@ header {
 		left:0px;
 		width:100%;
 
-	}
+}
 
 	header .top-row .logo-div {
 
@@ -774,6 +786,7 @@ header {
 		width:auto;
 		
 	}
+
 
 	header .social-media .top {
 
@@ -799,6 +812,7 @@ header {
 		margin:0;
 		margin-top:15px;
 	}
+
 
 
 
@@ -1236,6 +1250,27 @@ hr.hr1 {
    	background-color:#fff;
 }
 
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+
+	.column-shadow {
+
+		box-shadow:none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+
+	}
+
+}
 
 /*
 ################################
@@ -3550,6 +3585,7 @@ CANTEEN INDEX
 	padding:10px;
 }
 
+
 /* Large desktop */
 @media (min-width: 1200px) {  }
  
@@ -3566,6 +3602,119 @@ CANTEEN INDEX
  
 /* Landscape phones and down */
 @media (max-width: 480px) {  }
+
+/*
+##########################
+CANTEEN NAVIGATION
+########################
+*/
+
+#canteen-nav {
+
+	margin-top:15px;
+	margin-bottom: 10px;
+	background-color:#fff;
+	padding:5px;
+
+}
+
+
+#canteen-nav ul {
+
+	list-style:none;
+	border:0px;
+	margin:0px;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#canteen-nav ul li {
+
+	float:left;
+	position: relative;
+	padding-left:10px;
+	padding-right:10px;
+	line-height: 32px;
+	height:30px;
+}
+
+#canteen-nav ul li ul {
+
+	position: absolute;
+	display: none;
+
+}
+
+#canteen-nav ul li ul li {
+
+
+
+}
+
+/*
+##########################
+CANTEEN PRODUCT
+########################
+*/
+
+#canteen-product {
+
+	padding:10px;
+
+}
+
+#canteen-product h1 small {
+
+	clear:both;
+	display: block;
+}
+
+#canteen-product .price {
+
+	font-family: 'Courier';
+	font-size: 28px;
+	margin-top:10px;
+
+}
+
+#canteen-product .option-box {
+
+	margin-top:15px;
+
+}
+
+#canteen-product .option-box label {
+
+	font-size:18px;
+	border-bottom:1px solid #000;
+	display: block;
+	clear:both;
+}
+
+#canteen-product .meta-item {
+
+	float:left;
+	font-family: 'Courier';
+	border-bottom:1px solid #ccc;
+	border-right:4px;
+	padding:5px;
+	padding-bottom:0px;
+	color:#666;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
+
 /*
 ##########################
 BOOTSTRAP OVERRIDES

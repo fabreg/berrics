@@ -270,9 +270,11 @@ class CanteenCartController extends CanteenAppController {
 		
 		if(count($this->request->data)>0) {
 			
+			
+
 			$cart = $this->Session->read("CanteenOrder");
 			
-			if(!isset($cart['CateenOrder'])) {
+			if(!isset($cart['CanteenOrder'])) {
 				
 				$cart['CanteenOrder'] = array();
 				
