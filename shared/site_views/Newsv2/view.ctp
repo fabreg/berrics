@@ -1,6 +1,9 @@
 <?php 
 
-
+//css file
+$this->Html->css(array("v3/article-view"),"stylesheet",array("inline"=>false));
+//js file
+$this->Html->script(array("v3/article-view"),array("inline"=>false));
 
 $url = "/".$post['DailyopSection']['uri']."/".$post['Dailyop']['uri'];
 
@@ -48,6 +51,12 @@ if($post['Dailyop']['best_of']) {
 		foreach($post['DailyopTextItem'] as $k=>$t):
 			if($k==0) continue;
 			
+			if($t['media_gallery'] == 1) {
+
+				echo $this->element("news/media-gallery",array("post"=>$post));
+				continue;
+			}
+
 			$img_file = '';
 			$vid_file = '';
 			
@@ -110,13 +119,13 @@ if($post['Dailyop']['best_of']) {
 		<?php echo $vid_file; ?>
 		<div class='text-item'>
 			<?php echo $img_file; ?>
-			<p><?php 
+			<p>
+			<?php 
 				echo nl2br($t['text_content']); 
 			?>
 			</p>
 			<div style='clear:both;'></div>
 		</div>
-		
 	</div>
 	<?php 
 		endforeach;

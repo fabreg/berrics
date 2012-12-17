@@ -109,8 +109,11 @@ foreach($this->request->data['DailyopTextItem'] as $k=>$v):
 <div class='row-fluid text-item'>
 	
 	<div class='well clearfix'>
+
 	<div class='span8' style='margin-bottom:3px;'>
+				
 		<?php 
+			echo $this->Form->input("DailyopTextItem.{$k}.media_gallery");
 			$this->Form->formSpan = "span12";
 			echo $this->Form->input("DailyopTextItem.{$k}.id");
 			echo $this->Form->input("DailyopTextItem.{$k}.display_weight",array("options"=>$sort));

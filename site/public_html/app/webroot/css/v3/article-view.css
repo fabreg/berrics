@@ -1,0 +1,110 @@
+/*
+#################
+MEDIA GALLERY
+#################
+*/
+
+.article-media-gallery {
+
+	margin-top:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin-bottom: 10px;
+	border:1px solid #ccc;
+	border-left: none;
+	border-right: none;
+
+}
+
+.article-media-gallery .viewing-div {
+
+	position: relative;
+
+}
+
+.article-media-gallery .viewing-div .loader {
+
+	background-image: url(/img/v3/layout/loader-big.gif);
+	background-position: center center;
+	position: absolute;
+	top: 0px;
+	left:0px;
+	height:100%;
+	width: 100%;
+	display: none;
+	background-repeat: no-repeat;
+	background-color:#333;
+
+}
+
+.article-media-gallery .viewing-div .media-file {
+
+	max-width: 700px;
+	margin:auto;
+	text-align: center;
+
+}
+
+
+.article-media-gallery .viewing-div .title {
+
+	text-align: center;
+	padding:5px;
+	font-family: 'universcnb';
+}
+
+.article-media-gallery .viewing-div .caption {
+
+	text-align: center;
+	padding:5px;
+
+}
+
+.article-media-gallery .viewing-div .caption a {
+
+	border-bottom:1px dotted #666;
+
+}
+
+.article-media-gallery .thumbs {
+
+	text-align: center;
+
+}
+
+.article-media-gallery .thumbs .media-thumb {
+
+	padding:5px;
+	border:1px solid #ccc;
+	background-color:#fff;
+	margin:4px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	cursor: pointer;
+}
+
+.article-media-gallery .thumbs .media-thumb:hover {
+
+	background-color: #e9e9e9;
+
+}
+
+.article-media-gallery .thumbs .media-thumb.active {
+
+	background-color:#ccc;
+
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
