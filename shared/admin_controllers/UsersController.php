@@ -475,7 +475,55 @@ class UsersController extends LocalAppController {
 		return $this->redirect("/users");
 		
 	}
-	
+
+	public function manage_profiles() {
+		
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['User'] = array(
+
+			"conditions"=>array(
+				"User.pro_skater"=>1,
+				"User.am_skater"=>1
+			),
+			"contain"=>array()
+
+		);
+
+		$users = $this->paginate("User");
+
+		$this->set(compact("users"));
+
+	}
+
+	public function edit_profile($id = false) {
+		
+	}
+
+	public function manage_employees() {
+		
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['User'] = array(
+
+			"conditions"=>array(
+				"User.berrics_employee"=>1
+			),
+			"contain"=>array()
+
+		);
+
+		$users = $this->paginate("User");
+
+		$this->set(compact("users"));
+
+	}
+
+	public function edit_employee($id = false) {
+		
+	}
+
+
 
 }
 ?>
