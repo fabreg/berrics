@@ -635,7 +635,14 @@
             
             //play the ad
             $data.GoogleAdsManager.play($data.target.find("video").get(0));
-    
+            
+            if(methods.isAndroid()) {
+
+              $data.target.find('video').load();
+              
+
+            }
+
           },
           false);
 
