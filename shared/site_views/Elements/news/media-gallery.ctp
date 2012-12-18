@@ -35,7 +35,7 @@
 							"w"=>700
 						)),
 						"data-media-file-name"=>base64_encode($v['MediaFile']['name']),
-						"data-media-file-caption"=>base64_encode($v['MediaFile']['caption']),
+						"data-media-file-caption"=>base64_encode(nl2br($v['MediaFile']['caption'])),
 						"class"=>"media-thumb"
 					)); ?>
 				
