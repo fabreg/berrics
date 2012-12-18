@@ -638,8 +638,9 @@
             
             if(methods.isAndroid()) {
 
-              $data.target.find('video').trigger('click');
-              alert('isAndroid');
+              $data.target.find('video').load();
+             
+              $data.target.find('video').play();
 
             }
 
