@@ -13,7 +13,7 @@ $cats = $CanteenCategory->treeArray();
 				<ul>
 					<?php foreach ($v['sub_categories'] as $kk => $vv): ?>
 					<li>
-						<?php echo $vv['name']; ?>
+						<a href='/canteen/<?php echo $vv['uri']; ?>'><?php echo $vv['name']; ?></a>
 					</li>
 					<?php endforeach ?>
 				</ul>

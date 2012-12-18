@@ -55,14 +55,18 @@ echo $this->element("canteen_product/standard-view");
 			</div>
 			<?php if (!empty($p['description'])): ?>
 			<div class="product-description option-box">
-				<label>Description</label>
+				<div class='legend'>
+					<div>Description</div>
+				</div>
 				<p>
 					<?php echo $p['description']; ?>
 				</p>
 			</div>
 			<?php endif ?>
 			<div class="product-options option-box">
-				<label>Select An Option:</label>
+				<div class='legend'>
+					<div>Select An Option:</div>
+				</div>
 				<?php 
 					echo $this->Form->create('CanteenOrderItem',array(
 						"id"=>'CanteenOrderItemForm',
@@ -96,7 +100,9 @@ echo $this->element("canteen_product/standard-view");
 			</div>
 			<?php if (count($product['Meta'])>0): ?>
 			<div class="meta-data option-box clearfix">
-				<label>Specifications</label>
+				<div class='legend'>
+					<div>Specs</div>
+				</div>
 				<?php foreach ($product['Meta'] as $k => $v): ?>
 				<div class='meta-item'>
 				<strong><?php echo $v['key'] ?></strong>:<strong><?php echo $v['val']; ?></strong>
@@ -106,10 +112,13 @@ echo $this->element("canteen_product/standard-view");
 			<?php endif ?>
 			
 			<?php if (count($product['RelatedStyles'])>0): ?>
-			<div class="additional-styles option-box">
-				<label><?php echo (empty($p['style_code_label'])) ? $product['CanteenProduct']['style_code_label']:"Additional Colors"; ?></label>
+			<div class='additional-styles option-box'>
+				<div class='legend'>
+					<div><?php echo (empty($product['CanteenProduct']['style_code_label'])) ? $product['CanteenProduct']['style_code_label']:"Additional Colors"; ?></div>
+				</div>
+				
 				<?php 
-					foreach ($product['RelatedStyles'] as $k => $v): 
+				foreach ($product['RelatedStyles'] as $k => $v): 
 					$img = $v['CanteenProduct']['style_code_image'];
 				?>
 					<div class="related-style">
@@ -118,8 +127,11 @@ echo $this->element("canteen_product/standard-view");
 						</a>
 					</div>
 				<?php endforeach ?>
+				
 			</div>
 			<?php endif ?>
+
+			
 
 		</div>
 	</div>

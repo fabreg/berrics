@@ -12,7 +12,7 @@
 			<tr>
 				<td align="center" valign="center">
 				<div class='delete' hash='<?php echo $item['hash']; ?>'>
-					<img border='0' src='/img/layout/canteen/cart/remove-item-icon.png' />
+					<img src="/img/v3/layout/minus.png" alt="" border='0' width='16' height='16' style='width:16px; height:16px;'/>
 				</div>
 				</td>
 				<td valign='top' >
