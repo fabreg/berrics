@@ -1,5 +1,13 @@
 <?php 
 
+//set the facebook meta image
+
+$fb_meta_img = $post['DailyopTextItem'][0]['MediaFile']['file'];
+
+$fb_meta_img = "<meta property='og:image' content='http://img.theberrics.com/images/{$fb_meta_img}' />";
+
+$this->set(compact("fb_meta_img"));
+
 //css file
 $this->Html->css(array("v3/article-view"),"stylesheet",array("inline"=>false));
 //js file
