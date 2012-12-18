@@ -188,7 +188,7 @@
 
       if(methods.isHandheld() || methods.isiPad() || methods.isAndroid()) $this.find('.controls').remove();
 
-      if(methods.isiPad() || methods.isAndroid()) { 
+      if(methods.isiPad()) { 
       
        video.attr('controls',true); 
 
@@ -198,6 +198,13 @@
           "height":"394"
 
         });
+
+      }
+
+      if(methods.isAndroid()) {
+
+        video.attr('controls',true);
+        video.trigger('click');
 
       }
 
