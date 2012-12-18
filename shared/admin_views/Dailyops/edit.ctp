@@ -177,7 +177,9 @@ span.msg {
 	<div class='page-header'>
 		<h1>Edit Post <small>ID: <?php echo $this->request->data['Dailyop']['id']; ?></small> <a class='btn btn-primary btn-mini' href='<?php echo $backUrl; ?>'><i class='icon icon-white icon-circle-arrow-left'></i> Back to listing</a></h1>
 		<strong>Author:</strong> <?php echo $this->data['User']['first_name']; ?> <?php echo $this->data['User']['last_name']; ?> ( <?php echo $this->Time->niceShort($this->data['Dailyop']['created']); ?> )
-		
+		<a href="/dailyops/post_edit_author/<?php echo $this->request->data['Dailyop']['id']; ?>" class="btn btn-primary btn-mini">
+			<i class="icon icon-white icon-user"></i> Edit Author
+		</a>
 	</div>
 	<div style='padding:10px;'>
 		

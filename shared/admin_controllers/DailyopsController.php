@@ -1310,5 +1310,49 @@ class DailyopsController extends LocalAppController {
 
 	}
 	
+	public function post_edit_author($dailyop_id = false) {
+		
+
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$this->Dailyop->create();
+
+			$this->Dailyop->id = $dailyop_id;
+
+			$this->Dailyop->save(array(
+
+				"user_id"=>$this->request->data["Dailyop"]['user_id']
+
+			));
+
+			$this->redirect("/dailyops/edit/".$dailyop_id);
+		
+		}
+
+		//get the post
+		$post = $this->Dailyop->find("first",array(
+					"conditions"=>array(
+						'Dailyop.id'=>$dailyop_id
+					),
+					"contain"=>array()
+				));
+		$this->set(compact("post"));
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 }
