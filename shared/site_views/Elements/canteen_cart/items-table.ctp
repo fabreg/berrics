@@ -10,7 +10,7 @@
 		<tbody>
 			<?php foreach($this->data['CanteenOrderItem'] as $k=>$item): ?>
 			<tr>
-				<td align="center" valign="center">
+				<td align="center" valign="middle">
 				<div class='delete' hash='<?php echo $item['hash']; ?>'>
 					<img src="/img/v3/layout/minus.png" alt="" border='0' width='16' height='16' style='width:16px; height:16px;'/>
 				</div>

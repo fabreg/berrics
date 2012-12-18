@@ -114,7 +114,7 @@ echo $this->element("canteen_product/standard-view");
 			<?php if (count($product['RelatedStyles'])>0): ?>
 			<div class='additional-styles option-box'>
 				<div class='legend'>
-					<div><?php echo (empty($product['CanteenProduct']['style_code_label'])) ? $product['CanteenProduct']['style_code_label']:"Additional Colors"; ?></div>
+					<div><?php echo (!empty($product['CanteenProduct']['style_code_label'])) ? $product['CanteenProduct']['style_code_label']:"Additional Colors"; ?></div>
 				</div>
 				
 				<?php 
@@ -135,8 +135,20 @@ echo $this->element("canteen_product/standard-view");
 
 		</div>
 	</div>
-	<?php if (CakeSession::read("is_admin")): ?>
-		<a href="//cp.theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>" class='btn btn-primary' target='_blank'>Admin Edit</a>
+	<?php 
+
+		if (CakeSession::read("is_admin") == 1): 
+
+		$prefix = "cp.";
+
+		if(preg_match('//',$_SERVER['HTTP_HOST'])) {
+
+			$prefix = "v3.admin.";
+
+		}
+
+	?>
+		<a href="//<?php echo $prefix ?>theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>" class='btn btn-primary' target='_blank'>Admin Edit</a>
 	<?php endif ?>
 </div>
 <?php 

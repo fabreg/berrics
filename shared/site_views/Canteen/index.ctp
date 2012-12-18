@@ -1,5 +1,13 @@
 <?php 
 $this->Html->script(array("jquery.cycle"),array("inline"=>false));
+
+
+$title_for_layout = "The Berrics Canteen";
+
+
+$this->set(compact("title_for_layout"));
+
+
 ?>
 <script>
 
