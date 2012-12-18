@@ -204,7 +204,7 @@
       if(methods.isAndroid()) {
 
         video.attr('controls',true);
-        video.trigger('click');
+
 
       }
 
@@ -596,6 +596,12 @@
 
       video.load();
 
+      if(methods.isAndroid()) {
+
+        video.trigger('click');
+
+      }
+
       //video.get(0).play();
 
     },
@@ -693,6 +699,7 @@
         methods.playVideo(context);
 
       }
+
 
       $data.afterPlay.apply(this,[$this]);
 
