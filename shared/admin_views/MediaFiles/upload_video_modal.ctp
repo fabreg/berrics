@@ -3,14 +3,14 @@ $(document).ready(function() {
 
 	$("#upload-video-form").ajaxForm({
 
-		
-		'dataType':'json',
+		dataType:"json",
 		'success':function(d) {
-
-			$("#video-upload-modal").html(d);
+			alert(d);
+			//$("#video-upload-modal").html(d);
 			
-			$(document).trigger('videoFileUploadComplete',d);
-
+			//$(document).trigger('videoFileUploadComplete',d);
+			
+			document.location.href = "/media_files/inspect/"+d.MediaFile.id;
 			
 		},
 		uploadProgress: function(event, position, total, percentComplete) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 	$(document).bind('videoFileUploadComplete',function(e,d) { 
 
-		$(body).prepend(d);
+		$('body').prepend(d);
 		
 	});
 

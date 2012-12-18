@@ -1346,7 +1346,7 @@ class MediaFilesController extends LocalAppController {
 			$this->MediaFile->save($udata);
 			
 			$this->encode_ogv($id);
-			$this->queue_mobile($id);
+			//$this->queue_mobile($id);
 
 			$this->Session->setFlash('File uploaded successfully');
 			
@@ -1691,11 +1691,7 @@ class MediaFilesController extends LocalAppController {
 			"priority"=>1
 
 		));
-		$this->Session->setFlash("Video queued for Mobile conversion");
 
-		$cb = base64_decode($this->request->params['named']['cb']);
-
-		$this->redirect($cb);
 
 	}
 
