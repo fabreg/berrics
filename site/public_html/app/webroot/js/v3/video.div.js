@@ -188,7 +188,7 @@
 
       if(methods.isHandheld() || methods.isiPad() || methods.isAndroid()) $this.find('.controls').remove();
 
-      if(methods.isiPad()) { 
+      if(methods.isiPad() || methods.isAndroid()) { 
       
        video.attr('controls',true); 
 
