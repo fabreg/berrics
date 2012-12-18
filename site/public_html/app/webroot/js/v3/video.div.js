@@ -10,6 +10,11 @@
        return navigator.userAgent.match(/(iPad)/i);
 
     },
+    isAndroid:function() { 
+
+       return navigator.userAgent.match(/(Android)/i);
+
+    },
     CONTROLS:function() { 
 
       var HTM = "<div class='controls'>\
@@ -181,7 +186,7 @@
       });
       
 
-      if(methods.isHandheld() || methods.isiPad()) $this.find('.controls').remove();
+      if(methods.isHandheld() || methods.isiPad() || methods.isAndroid()) $this.find('.controls').remove();
 
       if(methods.isiPad()) { 
       
