@@ -6,13 +6,13 @@
 		<thead>
 			<tr>
 				<th>
-					<?php echo $this->Paginator->sort("id") ?>
+					<?php echo $this->Paginator->sort("id"); ?>
 				</th>
 				<th>
-					<?php echo $this->Paginator->sort("modified") ?>
+					<?php echo $this->Paginator->sort("modified"); ?>
 				</th>
 				<th>Name</th>
-				<th></th>
+				<th><?php echo $this->Paginator->sort("berrics_email"); ?></th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -29,10 +29,12 @@
 					<?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?>
 				</td>
 				<td>
-					
+					<?php echo $u['berrics_email']; ?>
 				</td>
 				<td></td>
-				<td></td>
+				<td class='actions'>
+					<a href="<?php echo $this->Admin->url(array("action"=>"edit",$u['id'])); ?>" class="btn btn-primary btm-small"><i class="icon icon-white icon-edit"></i> Edit</a>
+				</td>
 			</tr>
 			<?php endforeach ?>
 		</tbody>

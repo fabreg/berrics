@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 }
 </style>
 <div class="page-header">
-	<h1>Edit User</h1>
+	<h1>Edit User <a href="<?php echo base64_decode($this->request->params['named']['cb']) ?>" class="btn btn-primary"> Back To Listing</a> </h1>
 </div>
 <?php echo $this->Form->create('User',array("url"=>$this->here,"enctype"=>"multipart/form-data"));?>
 <div class="tabbable">
@@ -70,8 +70,8 @@ jQuery(document).ready(function($) {
 				echo $this->Form->input("pro_skater");
 				echo $this->Form->input("am_skater");
 				echo $this->Form->input("title");
+				echo $this->Form->input("berrics_email");
 				echo $this->Form->input('user_group_id');
-				
 				echo $this->Form->input("profile_uri",array("label"=>"Profile Uri <span>(Must end in .html)</span>"));
 
 				
@@ -163,4 +163,11 @@ jQuery(document).ready(function($) {
 		<i class="icon icon-edit icon-white"></i> Update
 	</button>
 </div>
-<?php echo $this->Form->end();?>
+<?php 
+
+echo $this->Form->input("tab",array("type"=>"hidden"));
+
+echo $this->Form->end();
+
+
+?>

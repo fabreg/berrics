@@ -509,7 +509,8 @@ class UsersController extends LocalAppController {
 			"conditions"=>array(
 				"User.berrics_employee"=>1
 			),
-			"contain"=>array()
+			"contain"=>array(),
+			"limit"=>50
 
 		);
 
@@ -521,6 +522,8 @@ class UsersController extends LocalAppController {
 
 	public function edit_employee($id = false) {
 		
+
+
 	}
 
 
