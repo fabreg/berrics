@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 		dataType:"json",
 		'success':function(d) {
-			alert(d);
+			
 			//$("#video-upload-modal").html(d);
 			
 			//$(document).trigger('videoFileUploadComplete',d);
