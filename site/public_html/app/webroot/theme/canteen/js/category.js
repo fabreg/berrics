@@ -1,6 +1,6 @@
 $(document).ready(function() { 
 
-	$("img[data-original]").lazyload({effect : "fadeIn"});
+	//$("img[data-original]").lazyload({effect : "fadeIn"});
 	
 
 
@@ -53,7 +53,7 @@ function initCheckboxes() {
 
 	$("#filter-form input[type=checkbox]:checked").each(function() {
 
-		$(this).parent().addClass("checkbox-checked");
+		//$(this).parent().addClass("checkbox-checked");
 		
 	});
 	

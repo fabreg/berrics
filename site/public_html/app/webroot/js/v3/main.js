@@ -7,7 +7,6 @@ $(function() {
 	//capture all ads 
 	$.writeCapture.autoAsync();
 
-
 	$(window).bind('resize.TopNav',function() { 
 
 		var $w = $(window).width();
@@ -25,6 +24,8 @@ $(function() {
 		}
 		
 	}).trigger('resize');
+
+	$(document,window,'html','body').trigger('resize');
 
 	$("#mobile-nav-select").change(function() { 
 

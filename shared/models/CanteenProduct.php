@@ -539,5 +539,46 @@ class CanteenProduct extends AppModel {
 		
 	}
 
+	public function productViewSimilarProducts($category_id,$limit = 4,$exclude_ids = array()) {
+		
+		$token = "prodview-similar-{$category_id}-{$limit}-".serialize($exclude_ids);
+
+		if(($products = Cache::read($token,"5min")) === false) {
+
+			$pids = $this->find('all',array(
+						"fields"=>array(
+							"CanteenProduct.id"
+						),
+						"conditions"=>array(
+							"CanteenProduct.canteen_category_id"=>$category_id,
+							"CanteenProduct.active"=>1,
+							"CanteenProduct.publish_date < NOW()",
+							"NOT"=>array(
+								"CanteenProduct.id"=>$exclude_ids
+							)
+						),
+						"contain"=>array(),
+						"order"=>array("RAND()"),
+						"limit"=>$limit
+					));
+
+			$products = array();
+
+			foreach($pids as $id) {
+
+				$products[] = $this->returnProduct(array(
+									"conditions"=>array("CanteenProduct.id"=>$id['CanteenProduct']['id'])
+								));
+
+			}
+
+			//Cache::write($token,$products,"5min");
+
+		}
+
+		return $products;
+
+	}
+
 	
 }

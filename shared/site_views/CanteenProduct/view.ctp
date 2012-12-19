@@ -44,7 +44,7 @@ echo $this->element("canteen_product/standard-view");
 	</div>
 	<div class="row-fluid">
 		<div class="span5">
-			<?php echo $this->Media->productThumb($i[0],array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$i[0]['file_name']));  ?>
+			<?php echo $this->Media->productListThumb($product,array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$i[0]['file_name']));  ?>
 		</div>
 		<div class="span7">
 			<div class="title visible-desktop visible-tablet">
@@ -101,7 +101,7 @@ echo $this->element("canteen_product/standard-view");
 			<?php if (count($product['Meta'])>0): ?>
 			<div class="meta-data option-box clearfix">
 				<div class='legend'>
-					<div>Specs</div>
+					<div>Details</div>
 				</div>
 				<?php foreach ($product['Meta'] as $k => $v): ?>
 				<div class='meta-item'>
@@ -123,7 +123,7 @@ echo $this->element("canteen_product/standard-view");
 				?>
 					<div class="related-style">
 						<a href="/canteen/item/<?php echo $v['CanteenProduct']['uri']; ?>">
-							<img src="//img.theberrics.com/i.php?src=/product-img/<?php echo $v['CanteenProduct']['style_code_image']; ?>&amp;w=50&amp;h=50&amp;zc=1" alt="" border='0' />
+							<img src="//img.theberrics.com/i.php?src=/product-img/<?php echo $v['CanteenProduct']['style_code_image']; ?>&amp;w=70&amp;h=70&amp;zc=1" alt="" border='0' />
 						</a>
 					</div>
 				<?php endforeach ?>
@@ -135,6 +135,10 @@ echo $this->element("canteen_product/standard-view");
 
 		</div>
 	</div>
+
+
+
+
 	<?php 
 
 		if (CakeSession::read("is_admin") == 1): 
@@ -151,6 +155,20 @@ echo $this->element("canteen_product/standard-view");
 		<a href="//<?php echo $prefix ?>theberrics.com/canteen_products/edit/<?php echo $product['CanteenProduct']['id']; ?>" class='btn btn-primary' target='_blank'>Admin Edit</a>
 	<?php endif ?>
 </div>
+<?php if (count($similar)>0): ?>
+<div class="column-shadow" id='canteen-product-similar' >
+	<div class="row-fluid">
+		<div class="span12">
+			<h2>More <?php echo Inflector::pluralize($product['CanteenCategory']['name']) ?></h2>
+			<div class="product-thumb-collection">
+				<?php foreach ($similar as $k => $v): ?>
+					<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
+				<?php endforeach ?>
+			</div>
+		</div>
+	</div>
+</div>
+<?php endif ?>
 <?php 
-pr($product['ChildCanteenProduct']);
+pr($similar);
 ?>

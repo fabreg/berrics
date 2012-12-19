@@ -352,6 +352,8 @@ class MediaHelper extends AppHelper {
 	
 	public function productThumb($canteenImage = array(),$size = array(),$opt = array()) {
 		
+		$lazy_query = http_build_query($size);
+
 		$size['src'] = "/product-img/".$canteenImage['file_name'];
 		
 		$query = http_build_query($size);
@@ -364,7 +366,7 @@ class MediaHelper extends AppHelper {
 			
 		}
 		
-		return "<img src='{$proto}://img.theberrics.com/i.php?".$query."' border='0' />";
+		return "<img  src='//img.theberrics.com/i.php?".$query."' border='0' alt='' />";
 		
 	}
 	
@@ -377,6 +379,9 @@ class MediaHelper extends AppHelper {
 		if(count($img)<=0) $img = Set::extract("CanteenProductImage[front_image=1]/",$canteen_product);
 		
 		if(count($img)<=0) $img[0] = $canteen_product['CanteenProductImage'][0];
+
+		$lazy_query = http_build_query($size);
+
 
 		$size['src'] = "/product-img/".$img[0]['file_name'];
 		
@@ -391,7 +396,21 @@ class MediaHelper extends AppHelper {
 			
 		}
 		
-		return "<img alt='' border='0' src='{$proto}://img.theberrics.com/i.php?{$q}'/>";
+		$lazy = false;
+
+		if($size['lazy'] == true) $lazy = true;
+
+		if($lazy) {
+
+			return "<img src='//img.theberrics.com/i.php?src=/loading-imgs/loading-lazy.jpg' class='lazy' alt='' border='0' data-original='//img.theberrics.com/i.php?{$q}'  />";
+
+		} else {
+
+			return "<img class='lazy' alt='' border='0' src='//img.theberrics.com/i.php?{$q}'/>";
+
+		}
+
+		
 		
 	}
 	

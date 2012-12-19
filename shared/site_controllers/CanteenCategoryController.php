@@ -8,6 +8,8 @@ class CanteenCategoryController extends CanteenAppController {
 	
 	public $category = false;
 	
+	public $helpers = array("Form");	
+
 	public function beforeFilter() {
 		
 		parent::beforeFilter();
