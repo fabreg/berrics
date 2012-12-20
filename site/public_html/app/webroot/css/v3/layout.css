@@ -1288,6 +1288,40 @@ FEATURES
 	margin-left:8px;
 	font-size: 24px;
 	line-height: 55px;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+
+	#features ul li .link {
+
+		float:left;
+		margin-left:8px;
+		font-size: 18px;
+		line-height:32px;
+
+	}
+
+	#features ul li {
+
+
+
+		height:32px;
+		border-bottom:2px dotted #ccc;
+		clear:both;
+		margin-bottom: 8px;
+	}
+
 }
 
 /*

@@ -97,6 +97,7 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 				<option value="/canteen">CANTEEN</option>
 				<option value="/headquarters.html">HEADQUARTERS</option>
 				<optgroup label='Features'>
+					<option value="/features.html">All Features..</option>
 					<?php 
 					
 					foreach ($f_sections as $k => $v): ?>

@@ -38,7 +38,6 @@ $(document).ready(function() {
 <?php echo $this->element("banners/728") ?>
 <div style="height:20px"></div>
 <div id='features'>
-	
 	<div class='top'></div>
 	<div class='center'>
 		<div class='content'>
@@ -50,7 +49,7 @@ $(document).ready(function() {
 				?>
 					<li>
 						<a href='/<?php echo $cat['DailyopSection']['uri']; ?>' title='<?php echo addslashes($cat['DailyopSection']['name']); ?>'>
-						<div class='icon'>
+						<div class='icon hidden-phone'>
 							<a href='/<?php echo $cat['DailyopSection']['uri']; ?>' title='<?php echo addslashes($cat['DailyopSection']['name']); ?>'>
 							<?php 
 								$color = false;
