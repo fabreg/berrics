@@ -96,7 +96,7 @@ class CanteenCartController extends CanteenAppController {
 			} else {
 				
 				$this->Session->setFlash("Please correct all fields marked in red");
-				
+				//die(print_r($this->CanteenOrder->ShippingAddress->validationErrors));
 			}
 			
 			

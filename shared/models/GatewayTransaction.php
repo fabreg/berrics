@@ -25,7 +25,7 @@ class GatewayTransaction extends AppModel {
 			
 		}
 		
-		//make a new transactions
+		//make a new transaction
 		$nd = $Trans;
 		unset($nd['id'],$nd['created'],$nd['modified'],$nd['approved'],$nd['method']);
 		

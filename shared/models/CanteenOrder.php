@@ -143,7 +143,7 @@ class CanteenOrder extends AppModel {
 	/***************/
 	
 	/**
-	 * Calculate a the cart and format it to be inserted into
+	 * Calculate the cart and format it to be inserted into
 	 * the database
 	 * 
 	 * @param $CanteenOrder

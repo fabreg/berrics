@@ -143,6 +143,23 @@ header .social-media .top .login-top .icon {
 
 		margin-top:-2px;
 
+	float: right;
+	font-family: 'Courier';
+	color:#fff;
+
+}
+
+header .social-media .cart a {
+
+	color:#fff;
+	text-decoration:none;
+}
+
+header .social-media .cart img.cart-icon-img {
+
+	width:24px;
+
+
 	}
 }
 
@@ -532,6 +549,54 @@ footer .inner {
 	margin-bottom:10px;
 	margin-left:2%;
 }
+
+/*
+#####################
+CANTEEN DROPDOWN 
+#####################
+*/
+
+#canteen-dropdown {
+
+	position:relative;
+
+}
+
+#canteen-dropdown-menu {
+
+	display: none;
+	position: absolute;
+}
+
+#canteen-dropdown-menu .inner {
+
+	background-color:white;
+
+}
+
+#canteen-dropdown-menu ul {
+
+
+}
+#canteen-dropdown-menu ul li {
+
+
+
+}
+
+#canteen-dropdown-menu ul li ul {
+
+
+}
+
+#canteen-dropdown-menu ul li ul li {
+
+
+
+}
+
+
+
 /*
 ##################
 ONE COLUMN BODY
@@ -3675,6 +3740,45 @@ CANTEEN PRODUCT
 	display: block;
 }
 
+#canteen-product .product-img {
+
+	position: relative;
+
+}
+
+#canteen-product .product-img .loading {
+
+	position: absolute;
+	height:100%;
+	width:100%;
+	top:0px;
+	left:0px;
+	background-image:url(/img/v3/layout/loader-clear.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-color: #999;
+	display: none;
+
+}
+
+
+#canteen-product .product-img-thumbs {
+
+	text-align: center;
+	padding-top:5px;
+}
+
+#canteen-product .product-img-thumbs img {
+
+	padding:5px;
+	border:1px solid #ccc;
+	border-radius:5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+
+}
+
+
 #canteen-product .price {
 
 	font-family: 'Courier';
@@ -3898,6 +4002,170 @@ CANTEEN CATEGORY VIEW
 
 
 }
+
+/*
+##########################
+CANTEEN CART
+########################
+*/
+
+#canteen-cart {
+
+	padding:8px;
+
+}
+
+
+#canteen-cart .heading {
+
+
+}
+
+#canteen-cart .header h1 {
+
+
+
+
+}
+
+#canteen-cart .cart-items {
+
+
+
+}
+#canteen-cart .cart-items table {
+
+	margin-bottom:0;
+
+}
+
+#canteen-cart .cart-items .item-wrapper {
+
+	line-height:15px;
+
+}
+
+#canteen-cart .cart-items .item-wrapper .img-thumb {
+
+	float:left;
+	margin-right:4px;
+}
+
+#canteen-cart .cart-items .delete {
+
+
+}
+
+#canteen-cart .cart-items .delete img {
+
+	max-width:16px;
+	max-height:16px;
+
+}
+
+#canteen-cart .checkout-row {
+
+
+}
+
+#canteen-cart .checkout-row .checkout-form {
+
+	
+
+}
+
+#canteen-cart .checkout-row .totals-cell {
+
+	
+
+}
+
+#canteen-cart .checkout-form h2 {
+
+	text-align:center;
+
+}
+
+#canteen-cart label.control-label {
+
+	max-width:100px;
+
+}
+
+#canteen-cart .form-horizontal .controls {
+
+	margin-left:110px;
+
+}
+
+#canteen-cart input.form-error {
+
+
+	border-color:red;
+
+}
+
+#canteen-cart .checkout-form h3 {
+
+	font-size:20px;
+	font-family: 'universcnb';
+	text-align:center;
+
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+	#canteen-cart .checkout-row .checkout-form {
+
+		float:left;
+		max-width:75%;
+	}
+
+	#canteen-cart .checkout-row .totals-cell {
+
+		float:right;
+		max-width:40%;
+	}
+
+
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  
+
+	
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  
+
+
+
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+
+
+	#canteen-cart label.control-label {
+
+		max-width:100%;
+
+	}
+
+	#canteen-cart .form-horizontal .controls {
+
+		margin-left:0px;
+
+	}
+
+}
+
 
 /*
 ##########################

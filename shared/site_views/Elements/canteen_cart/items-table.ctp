@@ -12,13 +12,13 @@
 			<tr>
 				<td align="center" valign="middle">
 				<div class='delete' hash='<?php echo $item['hash']; ?>'>
-					<img src="/img/v3/layout/minus.png" alt="" border='0' width='16' height='16' style='width:16px; height:16px;'/>
+					<img src="/img/v3/layout/minus.png" alt="" border='0' />
 				</div>
 				</td>
 				<td valign='top' >
 					
 					<?php foreach($item['ChildCanteenOrderItem'] as $key=>$c): ?>
-						<div class='item-wrapper'>
+						<div class='item-wrapper clearfix'>
 							<div class='img-thumb'>
 								<?php 
 									echo $this->Media->productThumb($c['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>45,"h"=>45));							
@@ -29,12 +29,12 @@
 								echo $c['title']; 
 
 								if(!empty($c['brand_label'])):
-							?>
-							<span class='brand'>BY: <?php echo strtoupper($c['brand_label']); ?></span>
-							<?php 
-								endif;
-							?>
-							
+								?>
+								<span class='brand'>BY: <?php echo strtoupper($c['brand_label']); ?></span>
+								<?php 
+									endif;
+								?>
+								
 							<?php if(!empty($c['sub_title'])): ?> 
 							<br /><span class='product-option'><?php echo $c['sub_title']; ?></span>
 							<?php endif; ?>

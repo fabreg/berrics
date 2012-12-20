@@ -77,6 +77,7 @@ function toggleBilling(check) {
 
 	}
 
+	/*
 	$('.form input[type=text],.form select').bind('blur keyup change',function() { 
 
 		var id = $(this).attr("id");
@@ -128,6 +129,8 @@ function toggleBilling(check) {
 		
 		
 	});
+
+	*/
 	
 }
 

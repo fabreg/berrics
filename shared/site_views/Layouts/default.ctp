@@ -52,6 +52,7 @@
 					</div>
 					<div class="social-media">
 						<div class="top">
+
 							<?php if (CakeSession::check("Auth.User.id")): ?>
 								<div class="dropdown account-top">
 									<a href='#' data-toggle='dropdown' class='dropdown-toggle'><i class="icon icon-caret-down icon-white"></i> <?php //echo CakeSession::read("Auth.User.first_name"); ?> <?php //echo CakeSession::read("Auth.User.last_name"); ?>Logged In</a>

@@ -240,21 +240,18 @@ function initNav () {
 
 	//features list
 	
-	//canteen navigation
-	$("#canteen-nav>ul>li").hover(
+	
+	//canteen dropdown menu
 
-		function() {
-
-			$(this).find('ul').show();
-
+	$("#canteen-dropdown").hover(
+		function() { 
+			$(this).find('#canteen-dropdown-menu').show();
 		},
-		function() {
-
-			$(this).find('ul').hide();
-
+		function() { 
+			$(this).find('#canteen-dropdown-menu').hide();
 		}
-
 	);
+
 
 }
 

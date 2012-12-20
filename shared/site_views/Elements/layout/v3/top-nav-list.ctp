@@ -1,7 +1,13 @@
 <?php 
+//load up models
 $DailyopSection = ClassRegistry::init("DailyopSection");
+$CanteenCategory = ClassRegistry::init("CanteenCategory");
+
+$canteen_array = $CanteenCategory->treeArray();
 $sections_array = $DailyopSection->returnSections();
+
 $f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);
+
 $batb['DailyopSection'] =  Array(
 			                    'name' => 'Battle At The Berrics',
 			                    'uri' => 'battle-at-the-berrics.html',
@@ -36,12 +42,15 @@ $total_per_row = ceil(count($f_sections)/3);
 				
 					<?php 
 
+
 						$c = 1;
 						$i = 0;
+
 						foreach ($f_sections as $k => $v): 
 						$i++;
 						if($c <= 1) echo "<ul class='clearfix'>";
 					?>
+
 						<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
 							<?php 
 

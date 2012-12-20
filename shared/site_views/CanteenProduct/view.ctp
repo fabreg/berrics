@@ -1,41 +1,61 @@
 <?php 
 
-$title_for_layout = "The Berrics Canteen - {$product['CanteenProduct']['name']} - {$product['CanteenProduct']['sub_title']} By: {$product['Brand']['name']}";
-
-$this->set(compact("title_for_layout"));
-
 $p = $product['CanteenProduct'];
 $i = $product['CanteenProductImage'];
 $b = $product['Brand'];
 $o = $product['ChildCanteenProduct'];
 
-$user_currency = CanteenConfig::returnUserCurrencyId($_SERVER['GEOIP_COUNTRY_CODE']);
 
+$title_for_layout = "The Berrics Canteen - {$product['CanteenProduct']['name']} - {$product['CanteenProduct']['sub_title']} By: {$product['Brand']['name']}";
+
+$meta_d = '';
+$meta_k = '';
+
+if(!empty($p['description'])) $meta_d = $p['description'];
+
+$this->set(compact("title_for_layout","meta_d","meta_k"));
+
+
+
+$user_currency = CanteenConfig::returnUserCurrencyId($_SERVER['GEOIP_COUNTRY_CODE']);
 
 $price = Set::extract("/CanteenProductPrice[currency_id=USD]",$product);
 
 $price = $price[0]['CanteenProductPrice'];
 
+//check stock
 $in_stock = false;
 
-foreach($product['ChildCanteenProduct'] as $p) {
+foreach($product['ChildCanteenProduct'] as $v) {
 
-	$qty = $p['CanteenProductInventory'][0]['CanteenInventoryRecord']['quantity'] - $p['CanteenProductInventory'][0]['CanteenInventoryRecord']['allocated'];
+	$qty = $v['CanteenProductInventory'][0]['CanteenInventoryRecord']['quantity'] - $v['CanteenProductInventory'][0]['CanteenInventoryRecord']['allocated'];
 
 	if($qty>0) $in_stock = true;
 
 }
 
-//check stock
-
-/*
-$merch_template = $p['merch_template'];
-
-$this->set(compact("price","user_currency"));
-
-echo $this->element("canteen_product/standard-view");
-*/
 ?>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	
+
+	$('.product-img-thumb a').each(function() { 
+
+		//$(this).attr('href','');
+
+		return false;
+
+	});
+
+});
+
+function viewProductImage($file_name) {
+	
+
+
+}
+
+</script>
 <div id="canteen-product" class='column-shadow'>
 	<div class="row-fluid mobile-title visible-phone">
 		<div class="span12">
@@ -44,7 +64,16 @@ echo $this->element("canteen_product/standard-view");
 	</div>
 	<div class="row-fluid">
 		<div class="span5">
-			<?php echo $this->Media->productListThumb($product,array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$i[0]['file_name']));  ?>
+			<div class="product-img">
+				<?php echo $this->Media->productListThumb($product,array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$i[0]['file_name']));  ?>
+			</div>
+			<div class="product-img-thumbs">
+				<?php foreach ($product['CanteenProductImage'] as $k => $v): ?>
+					<a href="#">
+						<img src='//img.theberrics.com/i.php?src=/loading-imgs/loading-lazy.jpg&amp;w=45&amp;h=45&amp;zc=1' data-original="//img.theberrics.com/i.php?src=/product-img/<?php echo $v['file_name']; ?>&amp;w=45&amp;h=45&amp;zc=1" alt="" data-full-image='//img.theberrics.com/i.php?src=/product-img/<?php echo $v['file_name']; ?>&amp;h=485&amp;h=485&amp;zc=1' class='lazy' />
+					</a>
+				<?php endforeach ?>
+			</div>
 		</div>
 		<div class="span7">
 			<div class="title visible-desktop visible-tablet">
@@ -59,7 +88,7 @@ echo $this->element("canteen_product/standard-view");
 					<div>Description</div>
 				</div>
 				<p>
-					<?php echo $p['description']; ?>
+					<?php echo $product['CanteenProduct']['description']; ?>
 				</p>
 			</div>
 			<?php endif ?>
@@ -159,7 +188,7 @@ echo $this->element("canteen_product/standard-view");
 <div class="column-shadow" id='canteen-product-similar' >
 	<div class="row-fluid">
 		<div class="span12">
-			<h2>More <?php echo Inflector::pluralize($product['CanteenCategory']['name']) ?></h2>
+			<h3>More <?php echo Inflector::pluralize($product['CanteenCategory']['name']) ?></h3>
 			<div class="product-thumb-collection">
 				<?php foreach ($similar as $k => $v): ?>
 					<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
@@ -169,6 +198,6 @@ echo $this->element("canteen_product/standard-view");
 	</div>
 </div>
 <?php endif ?>
-<?php 
-pr($similar);
-?>
+<pre>
+	<?php print_r($p); ?>
+</pre>
