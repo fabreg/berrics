@@ -46,7 +46,9 @@
 			<div class="container">
 				<div class="row-fluid top-row">
 					<div class="logo-div" >
-						<a href='/dailyops'><img id='berrics-heading-logo' src="/img/v3/layout/berrics-heading-logo.png" border='0' alt="The Berrics -  Inside Eric Koston's and Steve Berra's Skatepark" /></a>
+						<a href='/dailyops'>
+							<?php echo $this->Html->image('v3/layout/berrics-heading-logo.png',array("border"=>0,"alt"=>"The Berrics - Inside Eric Koston's and Steve Berra's Skatepark","id"=>"berrics-heading-logo")); ?>
+						</a>
 					</div>
 					<div class="social-media">
 						<!--

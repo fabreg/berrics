@@ -174,8 +174,13 @@ class DailyopsController extends LocalAppController {
 
 		$dateIn = $this->checkHomeDateIn(date("Y-m-d",strtotime($date_scope)));
 
+		//check to see if any of the posts have a theme override
 
+		foreach($posts as $post) 
+			if(!empty($post['Dailyop']['theme_override'])) $this->theme = $post['Dailyop']['theme_override'];
 
+		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
+		
 		$this->set(compact("posts","home_mode"));
 		$this->set(compact("title_for_layout","dateIn"));
 
