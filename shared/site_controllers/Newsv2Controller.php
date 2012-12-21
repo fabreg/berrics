@@ -17,7 +17,7 @@ class Newsv2Controller extends DailyopsController {
 		
 	 	//force the newsv2 theme
 	 	
-	 	$this->theme = "newsv2";
+	 	//$this->theme = "newsv2";
 	 	
 	 	if(	!isset($this->request->params['pass'][0]) && 
 			!isset($this->request->params['pass'][1]) && 
@@ -301,6 +301,56 @@ class Newsv2Controller extends DailyopsController {
 		
 		
 		
+	}
+
+
+	public function gallery_video($dailyop_id = false,$media_file_id = false) {
+		
+		$this->loadModel('Dailyop');
+		$this->loadModel('MediaFile');
+		
+		
+
+		/*$post = $this->Dailyop->find("first",array(
+					"conditions"=>array(
+						"Dailyop.id"=>$dailyop_id
+					),
+					"contain"=>array()
+				));
+		*/
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>$dailyop_id));
+
+		$video = Set::extract("/DailyopMediaItem[media_file_id={$media_file_id}]/MediaFile",$post);
+
+		$post['DailyopMediaItem'][0]['MediaFile'] = $video[0]['MediaFile'];
+
+		$post['Dailyop']['post_template'] = "";
+
+		$this->set("dop",$post);
+
+		$this->render("/Elements/dailyops/post-bit");
+
+		return;
+
+		if(!$post['Dailyop']['id']) throw new NotFoundException("Invalid Post");
+
+		//get the video file
+
+		$video = $this->MediaFile->find("first",array(
+					"conditions"=>array(
+						"MediaFile.id"=>$media_file_id
+					),
+					"contain"=>array()
+				));
+
+		if(!$video['MediaFile']['id']) throw new NotFoundException("Invalid Video");
+
+		$post['DailyopMediaItem'][0]['MediaFile'] = $video['MediaFile'];
+
+		$this->set("dop",$post);
+
+		$this->render("/Elements/dailyops/post-bit");
+
 	}
 	
 	

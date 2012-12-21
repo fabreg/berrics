@@ -36,6 +36,7 @@
 						)),
 						"data-media-file-name"=>base64_encode($v['MediaFile']['name']),
 						"data-media-file-caption"=>base64_encode(nl2br($v['MediaFile']['caption'])),
+						"data-dailyop-id"=>$post['Dailyop']['id'],
 						"class"=>"media-thumb"
 					)); ?>
 				
