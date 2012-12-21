@@ -245,10 +245,10 @@ function initNav () {
 
 	$("#canteen-dropdown").hover(
 		function() { 
-			$(this).find('#canteen-dropdown-menu').show();
+			$('#canteen-dropdown-menu').show();
 		},
 		function() { 
-			$(this).find('#canteen-dropdown-menu').hide();
+			$('#canteen-dropdown-menu').hide();
 		}
 	);
 

@@ -566,6 +566,9 @@ CANTEEN DROPDOWN
 
 	display: none;
 	position: absolute;
+	width:600px;
+	left:-240px;
+
 }
 
 #canteen-dropdown-menu .inner {
@@ -574,28 +577,21 @@ CANTEEN DROPDOWN
 
 }
 
+#canteen-dropdown-menu .menu-block {
+
+	float:left;
+	min-width: 20%
+}
+
 #canteen-dropdown-menu ul {
 
-
+	
 }
 #canteen-dropdown-menu ul li {
 
 
 
 }
-
-#canteen-dropdown-menu ul li ul {
-
-
-}
-
-#canteen-dropdown-menu ul li ul li {
-
-
-
-}
-
-
 
 /*
 ##################

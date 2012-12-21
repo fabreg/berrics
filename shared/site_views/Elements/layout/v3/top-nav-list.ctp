@@ -17,13 +17,13 @@ $batb['DailyopSection'] =  Array(
 			                    'nav_label' => ''
 			                );
 $yn['DailyopSection'] =  Array(
-                    'name' => 'YOUnited Nations 3',
-                    'uri' => 'younited-nations-3',
-                    'sort_weight' => 0,
-                    'icon_dark_file' => 'yn-featured.png',
-                    'icon_light_file' => 'yn-featured.png',
-                    'nav_label' => ''
-                );
+		                    'name' => 'YOUnited Nations 3',
+		                    'uri' => 'younited-nations-3',
+		                    'sort_weight' => 0,
+		                    'icon_dark_file' => 'yn-featured.png',
+		                    'icon_light_file' => 'yn-featured.png',
+		                    'nav_label' => ''
+		                );
 array_unshift($f_sections,$yn);          
 array_unshift($f_sections,$batb);
 $f_sections = Set::sort($f_sections,"{n}.DailyopSection.name","asc");
@@ -97,7 +97,7 @@ $total_per_row = ceil(count($f_sections)/3);
 		<a href="/news">NEWS</a>
 	</li>
 	<li class="spacer"></li>
-	<li class='nav-btn'>
+	<li class='nav-btn' >
 		<a href="http://berricsunified.com" target='_blank'>UNIFIED</a>	
 	</li>
 	<li class="spacer"></li>

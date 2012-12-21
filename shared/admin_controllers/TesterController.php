@@ -2101,6 +2101,7 @@ class TesterController extends LocalAppController {
 
 	}
 
+
 	public function user_profile_check() {
 		
 		$this->loadModel('User');
