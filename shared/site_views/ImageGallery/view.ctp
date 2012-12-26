@@ -20,12 +20,18 @@
 			"w"=>728
 		)) ?>
 		<div class="gallery-nav clearfix">
+			<div style='clear:both;'>
+				<p>
+					<?php echo $view_item['MediaFile']['caption']; ?>
+				</p>
+			</div>
 			<?php if (!empty($prev_item)): ?>
 			<div class="back-btn">
 				<a href='/<?php echo $post['DailyopSection']['uri']; ?>/<?php echo $post['Dailyop']['uri'] ?>/view:<?php echo $prev_item['MediaFile']['id']; ?>'>
 					<img src="/img/v3/layout/gallery-back-button.jpg" alt="">
 				</a>	
 			</div>
+			
 			<?php endif ?>
 			<?php if (!empty($next_item)): ?>
 			<div class="next-btn">
