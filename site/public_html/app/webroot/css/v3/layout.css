@@ -1866,6 +1866,7 @@ GLOBAL post media div
 	display:block;
 	background-color:#000;
 	width:100%;
+	z-index: 499;
 }
 
 .post-media-div .img-hover,
