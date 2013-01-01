@@ -146,12 +146,26 @@ function initMediaDivs () {
 
 				}
 
-				$this.click(function() { 
-						
-						$(this).videoDiv();
-						$(this).unbind('click');
+				if($this.find('video').length>0) {
 
-				});
+					$this.find('video').click(function() { 
+
+						$this.videoDiv();
+						$this.find('video').unbind('click');
+
+					});
+
+				} else {
+
+
+					$this.click(function() { 
+							
+							$(this).videoDiv();
+							$(this).unbind('click');
+
+					});
+
+				}
 
 			break;
 
