@@ -475,7 +475,7 @@ class BerricsHelper extends AppHelper {
 			
 			if(!$MobileDetect->isIphone()) {
 
-				$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
+				//$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
 
 			}
 			
