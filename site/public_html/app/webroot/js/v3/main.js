@@ -315,7 +315,26 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 
 function handleVideoEnd() {
 
-alert("video End");
+	var obj = JSON.parse(arguments[0]);
+
+	//console.log(obj);
+
+	var media_file_id = obj.MediaFile.id;
+	var dailyop_id = obj.Dailyop.id;
+
+	$(".post-media-div[data-media-file-id="+media_file_id+"][data-dailyop-id="+dailyop_id+"]").load(
+		"/media_service/end/media_file_id:"+media_file_id+"/dailyop_id:"+dailyop_id,
+		function(d) { 
+
+			$(".post-media-div[data-media-file-id="+media_file_id+"][data-dailyop-id="+dailyop_id+"]").find('.replay-btn').bind('click',function(e) { 
+
+              $(".post-media-div[data-media-file-id="+media_file_id+"][data-dailyop-id="+dailyop_id+"]").videoDiv();
+              return false;
+
+          });
+
+		}
+	);
 
 }
 

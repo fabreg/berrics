@@ -78,7 +78,7 @@
 
               $this.flash({
 
-                  swf:"/swf/v3/VideoPlayer.swf",
+                  swf:"/swf/v3/VideoPlayer.swf?adf",
                   FlashVars:{
 
                     'jsonData':d
