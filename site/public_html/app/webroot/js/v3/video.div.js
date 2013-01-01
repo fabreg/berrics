@@ -66,9 +66,13 @@
 
             var dd = JSON.parse(urldecode(d));
 
-            $this.find('video').attr("src",LIMELIGHT_URL+dd.MediaFile.limelight_file);
+            $this.find('video').attr({
+              "src":methods.LIMELIGHT_URL+dd.MediaFile.limelight_file,
+              "controls":1
+            });
             $this.find('video').get(0).load();
             $this.find('video').get(0).play();
+            $this.find('.play-button,.video-hover').remove();
 
           } else {
 

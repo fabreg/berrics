@@ -480,6 +480,7 @@ class BerricsHelper extends AppHelper {
 				));
 
 		}
+
 		
 		/*
 		$img = $this->Media->mediaThumb(array(
