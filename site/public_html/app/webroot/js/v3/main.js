@@ -147,11 +147,11 @@ function initMediaDivs () {
 				}
 
 				$this.click(function() { 
-							
+								
 							$(this).videoDiv();
 							$(this).unbind('click');
 
-					});
+				});
 
 			break;
 
@@ -225,6 +225,18 @@ function initMediaDivs () {
 	});
 
 	return;
+
+}
+
+function flashVideo() {
+
+
+
+}
+
+function initHtml5Video($div) {
+
+
 
 }
 

@@ -465,12 +465,15 @@ class BerricsHelper extends AppHelper {
 
 		unset($opts['lazy']);
 
+		$poster = $this->Media->mediaThumbSrc(array(
+			"MediaFile"=>$MediaFile,
+			"w"=>$w,
+			"type"=>$template
+		));
+
 		if($MobileDetect->isTablet()) {
-			$poster = $this->Media->mediaThumbSrc(array(
-					"MediaFile"=>$MediaFile,
-					"w"=>$w,
-					"type"=>$template
-				));
+			
+
 			$img = "<div class='video-div video-div-html5'>";
 			
 			$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
@@ -490,6 +493,9 @@ class BerricsHelper extends AppHelper {
 
 		}
 
+		$opts['data-poster-file'] = $poster;
+		$opts['data-mobile'] = $MobileDetect->isMobile();
+		$opts['data-tablet'] = $MobileDetect->isTablet();
 		
 		/*
 		$img = $this->Media->mediaThumb(array(

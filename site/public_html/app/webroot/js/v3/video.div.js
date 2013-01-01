@@ -72,7 +72,7 @@
             });
             $this.find('video').get(0).load();
             $this.find('video').get(0).play();
-            $this.find('.play-button,.video-hover').remove();
+            $this.find('.play-button,.video-hover,img.html5').remove();
 
           } else {
 

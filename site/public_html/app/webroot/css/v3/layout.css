@@ -1869,6 +1869,15 @@ GLOBAL post media div
 	z-index: 499;
 }
 
+.featured-post .post-media-div object {
+
+	height: 600px;
+	display:block;
+	background-color:#000;
+	width:100%;
+	z-index: 499;
+}
+
 .post-media-div .img-hover,
 .post-media-div .video-hover {
 
