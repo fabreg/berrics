@@ -62,7 +62,7 @@
           
           //
 
-          if($this.find('.video-div-html5').length>0) {
+          if($this.find('img.html5').length>0 || $this.find('video').length>0) {
 
             if($this.find('video').length<=0) $this.append($("<video />"));
             var dd = JSON.parse(urldecode(d));

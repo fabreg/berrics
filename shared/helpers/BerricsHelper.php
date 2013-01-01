@@ -465,7 +465,7 @@ class BerricsHelper extends AppHelper {
 
 		unset($opts['lazy']);
 
-		if($this->request->is("mobile")) {
+		if($MobileDetect->isTablet()) {
 			$poster = $this->Media->mediaThumbSrc(array(
 					"MediaFile"=>$MediaFile,
 					"w"=>$w,
@@ -473,11 +473,7 @@ class BerricsHelper extends AppHelper {
 				));
 			$img = "<div class='video-div video-div-html5'>";
 			
-			if(!$MobileDetect->isIphone()) {
-
-				//$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
-
-			}
+			$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
 			
 			$img .= "</div>";
 
@@ -488,24 +484,11 @@ class BerricsHelper extends AppHelper {
 					"w"=>$w,
 					"type"=>$template,
 					"lazy"=>$lazy
-				));
+			),array(
+				"class"=>($MobileDetect->isMobile()) ? "html5":"swf"
+			));
 
 		}
-
-		$poster = $this->Media->mediaThumbSrc(array(
-					"MediaFile"=>$MediaFile,
-					"w"=>$w,
-					"type"=>$template
-				));
-			$img = "<div class='video-div video-div-html5'>";
-			
-			if(!$MobileDetect->isTablet()) {
-
-				$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
-
-			}
-			
-			$img .= "</div>";
 
 		
 		/*
