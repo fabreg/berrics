@@ -1859,7 +1859,8 @@ GLOBAL post media div
 
 }
 
-.post-media-div object {
+.post-media-div object,
+.post-media-div video {
 
 	height: 394px;
 	display:block;
