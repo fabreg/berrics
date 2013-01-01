@@ -147,7 +147,7 @@ function initMediaDivs () {
 				}
 
 				$this.click(function() { 
-						alert("fuck");
+						
 						$(this).videoDiv();
 						$(this).unbind('click');
 
