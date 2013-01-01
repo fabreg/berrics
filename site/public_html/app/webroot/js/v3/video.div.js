@@ -60,9 +60,19 @@
         "success":function(d) { 
 
           
-          //JSON.parse(urldecode(d))
+          //
 
-          $this.flash({
+          if($this.find('video').length>0) {
+
+            var dd = JSON.parse(urldecode(d));
+
+            $this.find('video').attr("src",LIMELIGHT_URL+dd.MediaFile.limelight_file);
+            $this.find('video').get(0).load();
+            $this.find('video').get(0).play();
+
+          } else {
+
+              $this.flash({
 
                   swf:"/swf/v3/VideoPlayer.swf",
                   FlashVars:{
@@ -78,6 +88,10 @@
                   wmode:"gpu"
 
               });
+
+
+          }
+        
 
         },
         "dataType":"text"
