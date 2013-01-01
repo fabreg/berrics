@@ -1,0 +1,1 @@
+<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>

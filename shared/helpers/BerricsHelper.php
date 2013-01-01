@@ -481,13 +481,14 @@ class BerricsHelper extends AppHelper {
 
 		}
 		
+		/*
 		$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
 					"w"=>$w,
 					"type"=>$template,
 					"lazy"=>$lazy
 				));
-		
+		*/
 		
 		switch(strtolower($MediaFile['media_type'])) {
 

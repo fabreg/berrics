@@ -301,6 +301,12 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 
 }
 
+function handleVideoEnd() {
+
+alert("video End");
+
+}
+
 function initBrowserDetection () {
 
 	$.browser.chrome = /chrome/.test(navigator.userAgent.toLowerCase());
@@ -489,5 +495,8 @@ var Base64 = {
 		return string;
 	}
  
+}
+function urldecode(str) {
+   return decodeURIComponent((str+'').replace(/\+/g, '%20'));
 }
 

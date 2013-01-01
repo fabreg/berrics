@@ -626,6 +626,32 @@ class TesterController extends LocalAppController {
 		
 		
 	}
+
+	public function get_post($id) {
+
+		$this->loadModel('Dailyop');
+		$post = $this->Dailyop->returnPost(array(
+					"Dailyop.id"=>$id
+				));
+
+		print "<pre>";
+		print_r($post);
+		print "</pre>";
+		die();
+		
+
+	}
+
+	public function test_new_video() {
+		
+		$this->loadModel('Dailyop');
+
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>5102));
+
+		$this->set(compact("post"));
+		
+
+	}
 	
 	
 }

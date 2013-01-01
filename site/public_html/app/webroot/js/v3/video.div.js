@@ -46,7 +46,51 @@
         return HTM;
 
     },
-    init : function( options ) { 
+    init:function(options) {
+
+      var $this = this;
+
+      var media_file_id = $this.attr("data-media-file-id");
+
+      var dailyop_id = $this.attr("data-dailyop-id");
+
+      var o = {
+
+        "url":"/media_service/video_player_requestv2/media_file_id:"+media_file_id+"/dailyop_id:"+dailyop_id,
+        "success":function(d) { 
+
+          
+          //JSON.parse(urldecode(d))
+
+          $this.flash({
+
+                  swf:"/swf/v3/VideoPlayer.swf",
+                  FlashVars:{
+
+                    'jsonData':d
+
+                  },
+                  allowFullScreen:"true",
+                  allowscriptaccess:"always",
+                  width:"100%",
+                  height:"100%",
+                  play:true,
+                  wmode:"gpu"
+
+              });
+
+        },
+        "dataType":"text"
+
+      };
+
+      $this.find('.play-button').css({
+        "background-image":"url(/img/v3/layout/loader-big.gif)"
+      });
+      $.ajax(o);
+
+    },
+    _init : function( options ) { 
 
       var $this = this;
 
