@@ -62,10 +62,10 @@
           
           //
 
-          if($this.find('video').length>0) {
+          if($this.find('.video-div-html5').length>0) {
 
+            if($this.find('video').length<=0) $this.append($("<video />"));
             var dd = JSON.parse(urldecode(d));
-
             $this.find('video').attr({
               "src":methods.LIMELIGHT_URL+dd.MediaFile.limelight_file,
               "controls":1

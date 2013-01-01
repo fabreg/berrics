@@ -418,6 +418,9 @@ class BerricsHelper extends AppHelper {
 
 	public function postMediaDiv($Dailyop,$opts = array()) {
 		
+		App::import("Vendor","Mobile_Detect",array("file"=>"Mobile_Detect.php"));
+		$MobileDetect = new Mobile_Detect();
+
 		$template = $Dailyop['Dailyop']['post_template'];
 
 		if(isset($opts['MediaFile'])) {
@@ -468,7 +471,15 @@ class BerricsHelper extends AppHelper {
 					"w"=>$w,
 					"type"=>$template
 				));
-			$img = "<div class='video-div'><video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video></div>";
+			$img = "<div class='video-div video-div-html5'>";
+			
+			if(!$MobileDetect->isTablet()) {
+
+				$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
+
+			}
+			
+			$img .= "</div>";
 
 		} else {
 
@@ -480,6 +491,21 @@ class BerricsHelper extends AppHelper {
 				));
 
 		}
+
+		$poster = $this->Media->mediaThumbSrc(array(
+					"MediaFile"=>$MediaFile,
+					"w"=>$w,
+					"type"=>$template
+				));
+			$img = "<div class='video-div video-div-html5'>";
+			
+			if(!$MobileDetect->isTablet()) {
+
+				$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
+
+			}
+			
+			$img .= "</div>";
 
 		
 		/*
