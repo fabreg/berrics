@@ -20,7 +20,10 @@ $yn['DailyopSection'] =  Array(
                 );
 array_unshift($f_sections,$yn);          
 array_unshift($f_sections,$batb);
-$f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
+$f_sections = Set::sort($f_sections,"{n}.DailyopSection.name","asc");
+
+$total_per_row = ceil(count($f_sections)/3);
+
 ?>
 
 <div id="top-nav-div">
@@ -30,11 +33,13 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 		<a href="/features.html" id='featured-list-btn'>FEATURES</a>
 		<div id="top-dropdown-menu">
 			<div class="inner clearfix">
-				<ul class='clearfix'>
+				
 					<?php 
 
-
-					foreach ($f_sections as $k => $v): ?>
+						$c = 0;
+						foreach ($f_sections as $k => $v): 
+						if($c <= 0) echo "<ul class='clearfix'>";
+					?>
 						<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
 							<?php 
 
@@ -46,19 +51,34 @@ $f_sections = Set::sort($f_sections,"{n}.DailyopSection.sort_weight","asc");
 								echo $this->Media->sectionIcon(array(
 									"DailyopSection"=>$v['DailyopSection'],
 									"dark"=>true,
-									"h"=>15,
+									"h"=>20,
 									"color"=>$color
 								));
-								echo strtoupper($nl);
+								echo "&nbsp;".strtoupper(trim($nl));
 
 							?>
 							</a></li>
-					<?php endforeach;  ?>
-				</ul>
-				<div class="more-link clearfix">
-					<a href="/features.html">ALL FEATURES &gt;</a>
-				</div>
+					<?php 
+
+						if($c>=$total_per_row || (($k+1)==count($f_sections)) ) {
+
+							echo "</ul>";
+							$c = 0;
+
+						} else {
+
+							$c++;
+
+						}
+
+						endforeach;  
+					?>
+				
+					<div class="more-link clearfix">
+						<a href="/features.html">VIEW ALL FEATURES</a>
+					</div>
 			</div>
+			
 		</div>
 	</li>
 	<li class="spacer"></li>

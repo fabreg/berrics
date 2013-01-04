@@ -378,7 +378,7 @@ footer .inner {
 
 	position: absolute;
 	display: none;
-	width:450px;	
+	width:630px;	
 	left:-2px;
 	top:26px;
 	padding-top:3px;
@@ -392,29 +392,38 @@ footer .inner {
 		border-top:0;
 		padding:8px;
 		padding-bottom:0;
+
 }
 
 #top-nav-div #top-nav-list #top-dropdown-menu ul {
 
 	padding:0;
 	margin: 0;
+	width:33%;
+	float:left;
+	margin-right:.25%;
 
 }
+#top-nav-div #top-nav-list #top-dropdown-menu ul:last-child {
 
+	float:right;
+	margin-right:0;
+}
 #top-nav-div #top-nav-list #top-dropdown-menu ul li {
 
-	width:49%;
-	float:left;
+	width:100%;
+	float:none;
 	text-align: left;
-	font-size: 12px;
+	font-size: 14px;
 	font-family: 'universcn';
-	line-height:20px;
-	height:20px;
+	line-height:24px;
+	height:24px;
 	border-bottom:1px solid #000;
 	margin:0;
 	padding:2px;
 	text-shadow: none;
 	filter:0;
+
 }
 
 #top-nav-div #top-nav-list #top-dropdown-menu ul li a {
@@ -425,24 +434,27 @@ footer .inner {
 
 #top-nav-div #top-nav-list #top-dropdown-menu .more-link {
 
-	font-size:12px;
-	font-style: italic;
-	color:#000;
-	text-align: right;
-	border-top:1px dotted #000;
-	font-family: 'universcnb';
+	clear:both;
+	padding:5px;
+	padding-right: 0px;
+	padding-left: 0px;
 
 }
 #top-nav-div #top-nav-list #top-dropdown-menu .more-link a {
 
-	color:#000;
+	display: block;
+	width:100%;
+	margin:auto;
+	color:#fff;
+	background-color:#000;
+	text-align: center;
+
 
 }
 
-#top-nav-div #top-nav-list #top-dropdown-menu ul li:last-child,
-#top-nav-div #top-nav-list #top-dropdown-menu ul li:nth-last-child(2)  {
+#top-nav-div #top-nav-list #top-dropdown-menu ul li:last-child  {
 
-	border-bottom:none;
+	
 
 }
 
@@ -455,11 +467,6 @@ footer .inner {
 	text-decoration: none;
 }
 
-#top-nav-div #top-nav-list #top-dropdown-menu ul li:nth-child(even) {
-
-	float:right;
-
-}
 
 #top-nav-div #top-nav-list #top-dropdown-menu ul li img {
 
