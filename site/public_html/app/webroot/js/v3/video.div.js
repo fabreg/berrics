@@ -46,7 +46,7 @@
         return HTM;
 
     },
-    init:function(options) {
+    __init:function(options) {
 
       var $this = this;
 
@@ -108,7 +108,7 @@
       $.ajax(o);
 
     },
-    _init : function( options ) { 
+    init : function( options ) { 
 
       var $this = this;
 
