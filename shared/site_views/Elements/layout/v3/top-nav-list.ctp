@@ -1,9 +1,7 @@
 <?php 
 //load up models
 $DailyopSection = ClassRegistry::init("DailyopSection");
-$CanteenCategory = ClassRegistry::init("CanteenCategory");
 
-$canteen_array = $CanteenCategory->treeArray();
 $sections_array = $DailyopSection->returnSections();
 
 $f_sections = Set::extract("/DailyopSection[featured=1]",$sections_array);

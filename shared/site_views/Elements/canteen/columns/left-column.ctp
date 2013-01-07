@@ -1,0 +1,1 @@
+<?php echo $this->element("canteen/columns/category-nav") ?>

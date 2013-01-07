@@ -108,7 +108,7 @@ $(document).ready(function() {
 
 </style>
 <div id='canteen-index'>
-	<div class="row-fluid column-shadow">
+	<div class="row-fluid">
 		<div class="span12">
 			<div id="canteen-caro" class="carousel slide">
 			  <!-- Carousel items -->
@@ -137,7 +137,7 @@ $(document).ready(function() {
 		</div>
 		
 	</div>
-	<div id="new-arrivals" class='column-shadow'>
+	<div id="new-arrivals" class=''>
 		<h2>NEW ARRIVALS</h2>
 		<div class="product-thumb-collection clearfix">
 			<?php foreach($new_products as $p) {
