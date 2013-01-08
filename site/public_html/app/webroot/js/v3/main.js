@@ -123,45 +123,60 @@ function initTrending () {
 
 }
 
-function initMediaDivs () {
+function initJWPlayer($ele) {
+
+	
+	var $div = $("#"+$ele);
+	//alert($div.attr("data-media-file-id"));
+	//return;
+
+	var $media_file_id = $div.attr("data-media-file-id");
+
+	var $dailyop_id = $div.attr("data-dailyop-id");
+
+	var $poster = $div.attr("data-poster-file");
+
+	var $container = "media-file-div-"+$media_file_id;
+
+	//media service v2 request
+
+	var $ms_uri = "/media_service/video_player_requestv2/media_file_id:"+$media_file_id;
+
+	if($dailyop_id.length>0) $ms_uri += "/dailyop_id:"+$dailyop_id;
 	
 
-	$('.post-media-div:not([data-init])').each(function() { 
+	$.ajax({
 
-		$type = $(this).attr("data-media-type");
-		$this = $(this);
-		switch($type) {
+		url:$ms_uri,
+		dataType:'json',
+		success:function($d) { 
 
-			case 'bcove':
+			jwplayer($container).setup({
 
-				if(!Modernizr.touch) {
+		        file: $d.MediaFile.jw_url,
+		        height: 396,
+		        image: $poster,
+		        width: "100%",
+		        autostart:true,
+		        primary:'flash'
 
-					$this.hover(
-					function(e) { 
-						$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
-					},
-					function(e) { 
-						$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
-					});
-
-				}
-
-				$this.click(function() { 
-								
-							$(this).videoDiv();
-							$(this).unbind('click');
-
-				});
-
-			break;
+		    });
 
 		}
 
-		$(this).attr("data-init",1);
-
 	});
 
+	//alert($ms_uri);
+
+}
+
+function initMediaDivs () {
+	
+
+	
 	//large posts || ASSUME ALL ARE VIDEO
+	
+	/*
 	$('.featured-post .post-media-div').each(function() { 
 
 		$type = $(this).attr("data-media-type");
@@ -206,6 +221,48 @@ function initMediaDivs () {
 
 
 	});
+	*/
+
+	$('.post-media-div:not([data-init])').each(function() { 
+
+		$type = $(this).attr("data-media-type");
+		$this = $(this);
+		switch($type) {
+
+			case 'bcove':
+
+				if(!Modernizr.touch) {
+
+					$this.hover(
+					function(e) { 
+						$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
+					},
+					function(e) { 
+						$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
+					});
+
+				}
+
+				$this.bind('click',function(ev) { 
+							
+							
+
+							initJWPlayer($(this).attr("id"));
+
+							//$(this).videoDiv();
+							//$(this).unbind('click');
+
+				});
+
+			break;
+
+		}
+
+		$(this).attr("data-init",1);
+
+	});
+
+	
 
 		//post thumb
 	$('.post-thumb .thumb').each(function() { 

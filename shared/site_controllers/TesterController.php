@@ -653,6 +653,12 @@ class TesterController extends LocalAppController {
 
 	}
 	
+	public function jw_test() {
+
+		
+		
+	}
+
 	
 }
 

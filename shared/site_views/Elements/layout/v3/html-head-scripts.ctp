@@ -21,6 +21,7 @@
 			//"https://www.google.com/uds/api/ima/1.8/84479ae78e2ae96fc191dae83ffb2033/default.IN.js",
 			"https://www.google.com/uds?file=ima&v=1&nodependencyload=true",
 			"v3/video.div",
+			"/jwplayer/jwplayer.js",
 			"v3/main"
 		));
 		/*
@@ -44,10 +45,4 @@
  <!--[if lt IE 9]>
 <script src="/js/v3/respond.min.js"></script>
 <![endif]-->
-
-
-<script src="http://www.causes.com/moment_of_silence.js">
-	showText: true;  
-	text: 'Find out how you can stay involved'; 
-	url: 'http://causes.com/momentforsandyhook'; 
-</script>
+<script>jwplayer.key="5M9e7S8nhNy40tcoSKaLIv8rXW+fQw8iZLH9XQ=="</script>

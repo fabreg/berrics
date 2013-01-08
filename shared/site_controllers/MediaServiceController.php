@@ -177,6 +177,7 @@ class MediaServiceController extends LocalAppController {
 
 		}
 		unset($MediaFile['MediaFile']['created'],$MediaFile['MediaFile']['modified']);
+		$MediaFile['MediaFile']['jw_url'] = "http://berrics.vo.llnwd.net/o45/".$MediaFile['MediaFile']['limelight_file'];
 		$data['MediaFile'] =  $MediaFile['MediaFile'];
 		if(isset($Post)) { 
 		
@@ -195,7 +196,7 @@ class MediaServiceController extends LocalAppController {
 
 		$this->set(compact("data"));
 
-		die(urlencode(json_encode($data)));
+		die(json_encode($data));
 
 	}
 
