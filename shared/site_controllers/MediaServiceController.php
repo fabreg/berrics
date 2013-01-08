@@ -41,7 +41,7 @@ class MediaServiceController extends LocalAppController {
 
 		$handheld = false;
 
-		if(
+		if(		
 				$this->request->is('mobile') && 
 				preg_match('/(iPhone|iPod)/',$_SERVER['HTTP_USER_AGENT']) ||
 				isset($_GET['handheld'])
@@ -55,7 +55,14 @@ class MediaServiceController extends LocalAppController {
 		if(isset($this->request->data['dailyop_id'])) {
 
 			$Post = $this->Dailyop->find("first",array(
-
+						"fields"=>array(
+							"Dailyop.id",
+							"Dailyop.name",
+							"Dailyop.sub_title",
+							"Dailyop.uri",
+							"DailyopSection.name",
+							"DailyopSection.uri"
+						),
 						"conditions"=>array(
 							"Dailyop.id"=>$this->request->data['dailyop_id']
 						),
@@ -123,7 +130,7 @@ class MediaServiceController extends LocalAppController {
 
 		if(
 				$this->request->is('mobile') && 
-				preg_match('/(iPhone|iPod)/',$_SERVER['HTTP_USER_AGENT']) ||
+				preg_match('/(iPhone|iPod)/',$_SERVER['HTTP_USER_AGENT']) || 
 				isset($_GET['handheld'])
 			) {
 
