@@ -151,6 +151,43 @@ function initJWPlayer($ele) {
 		dataType:'json',
 		success:function($d) { 
 
+			var adObj = {
+
+				"client":"googima",
+				schedule:{}
+
+			};
+
+			if($d.prerollUrl) {
+
+				adObj.schedule.adBreak1 = {
+
+					offset:'pre',
+					tag:$d.prerollUrl
+
+				}
+
+			} 
+
+			adObj.schedule.adBreak1 = {
+
+					offset:'pre',
+					tag:$d.prerollUrl
+
+				}
+			/*
+			if($d.postrollUrl) {
+
+				adObj.schedule.adBreak2 = {
+
+					offset:'post',
+					tag:$d.postrollUrl
+
+				}
+
+			}
+			*/
+
 			jwplayer($container).setup({
 
 		        file: $d.MediaFile.jw_url,
@@ -158,7 +195,15 @@ function initJWPlayer($ele) {
 		        image: $poster,
 		        width: "100%",
 		        autostart:true,
-		        primary:'flash'
+		        primary:'flash',
+		        advertising:adObj
+
+
+		    });
+
+		    jwplayer($container).onComplete(function() {
+
+		        	alert($media_file_id);
 
 		    });
 
@@ -244,13 +289,10 @@ function initMediaDivs () {
 				}
 
 				$this.bind('click',function(ev) { 
-							
-							
+						
+						//initJWPlayer($(this).attr("id"));
 
-							initJWPlayer($(this).attr("id"));
-
-							//$(this).videoDiv();
-							//$(this).unbind('click');
+						initVideo($(this).attr("id"));
 
 				});
 
@@ -285,15 +327,20 @@ function initMediaDivs () {
 
 }
 
-function flashVideo() {
+function initVideo ($ele_id) {
+	
 
+	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
+	if(isMobile) {
 
-}
+		$("#"+$ele_id).videoDiv();
 
-function initHtml5Video($div) {
+	} else {
 
+		initJWPlayer($ele_id)
 
+	}
 
 }
 
