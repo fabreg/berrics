@@ -17,31 +17,32 @@
     },
     CONTROLS:function() { 
 
-      var HTM = "<div class='controls'>\
-                  <div class='inner'>\
-                    <div class='play-btn'></div>\
-                    <div class='slowmo-btn'></div>\
-                    <div class='slider'>\
-                      <div class='tracking-bar'>\
-                        <div class='buffer'></div>\
-                        <div class='prog-bar'></div>\
-                        <div class='seekhead'><div class='time-bubble'><div class='inner'></div></div></div>\
-                        <div class='playhead'><div class='time-bubble'><div class='inner'></div></div></div>\
-                      </div>\
-                    </div>\
-                    <div class='volume'>\
-                      <div class='inner'>\
-                        <div class='vol'></div>\
-                        <div class='vol'></div>\
-                        <div class='vol'></div>\
-                        <div class='vol'></div>\
-                        <div class='vol'></div>\
-                        <div class='vol'></div>\
-                      </div>\
-                    </div>\
-                    <div class='fullscreen-btn'></div>\
-                  </div>\
-                </div>";
+
+        var HTM = "<div class='controls'>";
+            HTM += "<div class='inner'>";
+            HTM += "<div class='play-btn'></div>";
+            HTM += "<div class='slowmo-btn'></div>";
+            HTM += "<div class='slider'>";
+            HTM += "<div class='tracking-bar'>";
+            HTM += "<div class='buffer'></div>";
+            HTM += "<div class='prog-bar'></div>";
+            HTM += "<div class='seekhead'><div class='time-bubble'><div class='inner'></div></div></div>";
+            HTM += "<div class='playhead'><div class='time-bubble'><div class='inner'></div></div></div>";
+            HTM += "</div>";
+            HTM += "</div>";
+            HTM += "<div class='volume'>";
+            HTM += "<div class='inner'>";
+            HTM += "<div class='vol'></div>";
+            HTM += "<div class='vol'></div>";
+            HTM += "<div class='vol'></div>";
+            HTM += "<div class='vol'></div>";
+            HTM += "<div class='vol'></div>";
+            HTM += "<div class='vol'></div>";
+            HTM += "</div>";
+            HTM += "</div>";
+            HTM += "<div class='fullscreen-btn'></div>";
+            HTM += "</div>";
+            HTM += "</div>";
 
         return HTM;
 
@@ -860,3 +861,31 @@
   };
 
 })( jQuery );
+/*
+
+      var HTM = "<div class='controls'>\
+                  <div class='inner'>\
+                    <div class='play-btn'></div>\
+                    <div class='slowmo-btn'></div>\
+                    <div class='slider'>\
+                      <div class='tracking-bar'>\
+                        <div class='buffer'></div>\
+                        <div class='prog-bar'></div>\
+                        <div class='seekhead'><div class='time-bubble'><div class='inner'></div></div></div>\
+                        <div class='playhead'><div class='time-bubble'><div class='inner'></div></div></div>\
+                      </div>\
+                    </div>\
+                    <div class='volume'>\
+                      <div class='inner'>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                        <div class='vol'></div>\
+                      </div>\
+                    </div>\
+                    <div class='fullscreen-btn'></div>\
+                  </div>\
+                </div>";
+*/
