@@ -20,7 +20,7 @@
 			</div>
 			<div class="span4">
 				<div class="replay-btn">
-					<a href="/<?php echo $post['DailyopSection']['uri'] ?>/<?php echo $post['Dailyop']['uri'] ?>" target='_blank'><img src="/img/v3/player/related-replay-btn.jpg" alt="" border='0'></a>
+					<a href="/<?php echo $post['DailyopSection']['uri'] ?>/<?php echo $post['Dailyop']['uri'] ?>"><img src="/img/v3/player/related-replay-btn.jpg" alt="" border='0'></a>
 				</div>
 			</div>
 		</div>

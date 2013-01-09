@@ -157,7 +157,7 @@ function initJWPlayer($ele) {
 				schedule:{}
 
 			};
-
+			
 			if($d.prerollUrl) {
 
 				adObj.schedule.adBreak1 = {
@@ -168,13 +168,6 @@ function initJWPlayer($ele) {
 				}
 
 			} 
-
-			adObj.schedule.adBreak1 = {
-
-					offset:'pre',
-					tag:$d.prerollUrl
-
-				}
 			/*
 			if($d.postrollUrl) {
 
@@ -187,6 +180,7 @@ function initJWPlayer($ele) {
 
 			}
 			*/
+			
 
 			jwplayer($container).setup({
 
@@ -196,14 +190,18 @@ function initJWPlayer($ele) {
 		        width: "100%",
 		        autostart:true,
 		        primary:'flash',
-		        advertising:adObj
+		        advertising:adObj,
+		        events:{
 
+		        	onComplete:function() {
 
-		    });
+		        		jwplayer($container).remove();
+		        		handleVideoEnd($d);
 
-		    jwplayer($container).onComplete(function() {
+		        	}
 
-		        	alert($media_file_id);
+		        }
+
 
 		    });
 
@@ -419,23 +417,34 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 
 function handleVideoEnd() {
 
-	var obj = JSON.parse(arguments[0]);
+	var obj = arguments[0];
 
-	//console.log(obj);
+	console.log(obj);
+	
+	//alert("handle video end method");
 
 	var media_file_id = obj.MediaFile.id;
 	var dailyop_id = obj.Dailyop.id;
 
-	$(".post-media-div[data-media-file-id="+media_file_id+"][data-dailyop-id="+dailyop_id+"]").load(
+	//alert($(".post-media-div[data-media-file-id="+media_file_id+"]").html());
+
+	$("#media-file-div-"+media_file_id).load(
 		"/media_service/end/media_file_id:"+media_file_id+"/dailyop_id:"+dailyop_id,
 		function(d) { 
 
-			$(".post-media-div[data-media-file-id="+media_file_id+"][data-dailyop-id="+dailyop_id+"]").find('.replay-btn').bind('click',function(e) { 
+			$("#media-file-div-"+media_file_id).attr(
+			{
 
-              $(".post-media-div[data-media-file-id="+media_file_id+"][data-dailyop-id="+dailyop_id+"]").videoDiv();
-              return false;
+				"data-media-file-id":media_file_id,
+				"data-dailyop-id":dailyop_id
 
-          });
+			}
+			).find('.replay-btn a').bind('click',function(e) { 
+
+             	initVideo("#media-file-div-"+media_file_id);
+              	return false;
+
+          	});
 
 		}
 	);
