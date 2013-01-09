@@ -153,20 +153,22 @@ function initJWPlayer($ele) {
 
 			var adObj = {
 
-				"client":"googima",
+				client:"googima",
 				schedule:{}
 
 			};
 			
 			if($d.prerollUrl) {
 
+				//adObj.tag = $d.prerollUrl
+				
 				adObj.schedule.adBreak1 = {
 
-					offset:'pre',
+					offset:0,
 					tag:$d.prerollUrl
 
 				}
-
+				
 			} 
 			/*
 			if($d.postrollUrl) {
@@ -186,7 +188,7 @@ function initJWPlayer($ele) {
 
 		        file: $d.MediaFile.jw_url,
 		        height: 396,
-		        image: $poster,
+		       // image: $poster,
 		        width: "100%",
 		        autostart:true,
 		        primary:'flash',
