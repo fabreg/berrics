@@ -160,6 +160,7 @@ class TagsController extends LocalAppController {
 		));
 
 		$this->set(compact("tag"));
+		
 	}
 
 	public function remove_user($tag_id = false) {

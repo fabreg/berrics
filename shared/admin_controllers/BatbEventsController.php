@@ -144,6 +144,19 @@ class BatbEventsController extends LocalAppController {
 		}
 		
 	}
+
+	public function attach_user_to_match($match_id = false, $position = 1) {
+		
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			
+		
+		}
+
+		
+
+
+	}
 	
 	public function update_match_winners() {
 		
