@@ -1,0 +1,327 @@
+body {
+
+	background-image:url(/theme/battle-at-the-berrics-6/img/bg.png);
+
+
+}
+
+#batb6-body {
+
+	padding-top:15px;
+	-moz-box-shadow: 0px 5px 5px #888;
+	-webkit-box-shadow: 0px 5px 5px #888;
+	box-shadow: 0px 5px 5px #888;
+	background-color: #fff;
+
+}
+
+#batb6-body .top-header {
+
+
+}
+#batb6-body .top-header .top-dc-flag {
+
+	float:left;
+	margin-left:35px;
+}
+
+#batb6-body .top-header .top-banner {
+
+	width:728px;
+	height:90px;
+	background-color:red;
+	float:left;
+	margin-left:10px;
+
+}
+
+#batb6-body .top-header .top-lrg-logo {
+
+	float:left;
+	margin-left:10px;
+}
+
+#batb6-body .main-logo {
+
+	margin-top:8px;
+	text-align: center;
+
+}
+
+#batb6-body .voting-div {
+
+	background-color:#147ec2;
+
+}
+#batb6-body .voting-div .inner {
+
+	padding-left:30px;
+	padding-right:30px;
+	padding-top:15px;
+
+}
+#batb6-body .voting-div .rules .left {
+
+	float:left;
+
+}
+
+#batb6-body .voting-div .rules .right {
+
+	width:300px;
+	height:250px;
+	background-color:red;
+	float:right;
+
+}
+
+#batb6-body .bracket-div {
+
+	background-image:url(/theme/battle-at-the-berrics-6/img/bracket-heading.png);
+	background-position: top center;
+	background-repeat:no-repeat;
+	min-height:400px;
+
+}
+
+#batb6-body .bracket-div .shim {
+
+	height:185px;
+
+}
+
+#batb6-body .bracket-div .bracket {
+
+	background-image:url(/theme/battle-at-the-berrics-6/img/bracket.png);
+	background-position: top center;
+	background-repeat: no-repeat;
+	height:424px;
+	
+	margin:auto;
+	position:relative;
+
+}
+
+#batb6-body .bracket-div .bracket .col {
+
+
+
+}
+
+#batb6-body .bracket-div .bracket .col1 {
+
+	float:left;
+	width:145px;
+	border:1px solid red;
+
+}
+#batb6-body .bracket-div .bracket .col2 {
+
+	float:left;
+	width:137px;
+	border:1px solid red;
+	
+}
+#batb6-body .bracket-div .bracket .col3 {
+
+	float:left;
+	width:110px;
+	border:1px solid red;
+	
+}
+#batb6-body .bracket-div .bracket .col4 {
+
+	float:left;
+	width:110px;
+	border:1px solid red;
+	
+}
+#batb6-body .bracket-div .bracket .col5 {
+
+	float:left;
+	width:155px;
+	border:1px solid red;
+	
+}
+#batb6-body .bracket-div .bracket .col6 {
+
+	float:left;
+	width:110px;
+	border:1px solid red;
+	margin-left:10px;
+}
+#batb6-body .bracket-div .bracket .col6 .match .player,
+#batb6-body .bracket-div .bracket .col7 .match .player,
+#batb6-body .bracket-div .bracket .col8 .match .player,
+#batb6-body .bracket-div .bracket .col9 .match .player   {
+
+	text-align:left;
+
+}
+
+#batb6-body .bracket-div .bracket .col7 {
+
+	float:left;
+	width:110px;
+	border:1px solid red;
+	
+}
+
+#batb6-body .bracket-div .bracket .col8 {
+
+	float:left;
+	width:130px;
+	border:1px solid red;
+	
+}
+
+
+#batb6-body .bracket-div .bracket .col9 {
+
+	float:left;
+	width:110px;
+	border:1px solid red;
+	margin-left:5px;
+}
+
+#batb6-body .bracket-div .bracket .match {
+
+
+
+}
+#batb6-body .bracket-div .bracket .match .player {
+
+	text-align:right;
+	font-size:14px;
+
+}
+
+
+
+
+/*
+BRACKET>MATCH POSITION
+*/
+ #batb6-body .bracket-div .bracket .bracket-5 {
+
+ 	left:85px;
+
+ }
+ #batb6-body .bracket-div .bracket .bracket-5 .mspacer {}
+ #batb6-body .bracket-div .bracket .bracket-4 {}
+ #batb6-body .bracket-div .bracket .bracket-4 .mspacer {}
+ #batb6-body .bracket-div .bracket .bracket-3 {}
+ #batb6-body .bracket-div .bracket .bracket-3 .mspacer {}
+ #batb6-body .bracket-div .bracket .bracket-2 {}
+ #batb6-body .bracket-div .bracket .bracket-2 .mspacer {}
+ #batb6-body .bracket-div .bracket .bracket-1 {}
+ #batb6-body .bracket-div .bracket .bracket-1 .mspacer {}
+
+/*
+MATCHES
+*/
+
+#batb6-body .bracket-div .bracket .match-5-0 { 
+
+	top:-4px;
+
+}
+#batb6-body .bracket-div .bracket .match-5-0 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-1 { 
+
+	top:50px;
+
+}
+#batb6-body .bracket-div .bracket .match-5-1 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-2 { }
+#batb6-body .bracket-div .bracket .match-5-2 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-3 { }
+#batb6-body .bracket-div .bracket .match-5-3 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-4 { }
+#batb6-body .bracket-div .bracket .match-5-4 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-5 { }
+#batb6-body .bracket-div .bracket .match-5-5 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-6 { }
+#batb6-body .bracket-div .bracket .match-5-6 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-7 { }
+#batb6-body .bracket-div .bracket .match-5-7 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-8 { }
+#batb6-body .bracket-div .bracket .match-5-8 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-9 { }
+#batb6-body .bracket-div .bracket .match-5-9 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-10 { }
+#batb6-body .bracket-div .bracket .match-5-10 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-11 { }
+#batb6-body .bracket-div .bracket .match-5-11 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-12 { }
+#batb6-body .bracket-div .bracket .match-5-12 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-13 { }
+#batb6-body .bracket-div .bracket .match-5-13 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-14 { }
+#batb6-body .bracket-div .bracket .match-5-14 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-5-15 { }
+#batb6-body .bracket-div .bracket .match-5-15 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-0 { }
+#batb6-body .bracket-div .bracket .match-4-0 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-1 { }
+#batb6-body .bracket-div .bracket .match-4-1 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-2 { }
+#batb6-body .bracket-div .bracket .match-4-2 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-3 { }
+#batb6-body .bracket-div .bracket .match-4-3 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-4 { }
+#batb6-body .bracket-div .bracket .match-4-4 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-5 { }
+#batb6-body .bracket-div .bracket .match-4-5 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-6 { }
+#batb6-body .bracket-div .bracket .match-4-6 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-4-7 { }
+#batb6-body .bracket-div .bracket .match-4-7 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-3-0 { }
+#batb6-body .bracket-div .bracket .match-3-0 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-3-1 { }
+#batb6-body .bracket-div .bracket .match-3-1 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-3-2 { }
+#batb6-body .bracket-div .bracket .match-3-2 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-3-3 { }
+#batb6-body .bracket-div .bracket .match-3-3 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-2-0 { }
+#batb6-body .bracket-div .bracket .match-2-0 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-2-1 { }
+#batb6-body .bracket-div .bracket .match-2-1 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-1-0 { }
+#batb6-body .bracket-div .bracket .match-1-0 .mspacer { }
+
+#batb6-body .bracket-div .bracket .match-0-0 { }
+#batb6-body .bracket-div .bracket .match-0-0 .mspacer { }
+

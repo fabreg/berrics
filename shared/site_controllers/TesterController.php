@@ -1,3 +1,4 @@
+
 <?php
 
 App::import("Controller","LocalApp");
@@ -657,6 +658,28 @@ class TesterController extends LocalAppController {
 
 		
 		
+	}
+
+	public function build_css() {
+		
+		$this->loadModel('BatbEvent');
+		
+		$event = $this->BatbEvent->returnEvent(50018);
+
+		foreach($event['Brackets'] as $bracket_num=>$bracket) {
+
+			foreach ($bracket as $match_num => $match) {
+					
+				echo "#batb6-body .bracket-div .bracket .match-{$bracket_num}-{$match_num} { }";
+				echo "\n";
+				echo "#batb6-body .bracket-div .bracket .match-{$bracket_num}-{$match_num} .mspacer { }";
+				echo "\n";
+				echo "\n";
+			}
+
+		}
+
+		die();
 	}
 
 	
