@@ -10,7 +10,11 @@
 		<?php foreach($pages as $p): ?>
 		<tr>
 			<td>
-				<small><?php echo $p['page_views']['script_url']; ?></small>
+				<small>
+					<a href='<?php echo $p['page_views']['script_url']; ?>' target='_blank'>
+						<?php echo $this->Text->truncate($p['page_views']['script_url'],50); ?>
+					</a>
+				</small>
 			</td>
 			<td>
 			<?php echo number_format($p[0]['total']); ?>
