@@ -330,7 +330,7 @@ function initMediaDivs () {
 function initVideo ($ele_id) {
 	
 
-	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+	var isMobile = /webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
 	if(isMobile) {
 
