@@ -39,8 +39,8 @@ $this->set(compact("title_for_layout"));
 <div class="bracket-div">
 	<div class="shim"></div>
 	<div class="bracket">
+		<!-- Bracket 5 -->
 		<div class="col col1">
-			<!-- BRACKET 5 MATCH 0 > 7 -->
 			<?php 
 
 				foreach ($event['Brackets'][5] as $k => $v): 
@@ -51,7 +51,20 @@ $this->set(compact("title_for_layout"));
 				<?php echo $this->element("match",array("match"=>$v,"bracket"=>5)); ?>
 			<?php endforeach ?>
 		</div>
-		<div class="col col2">
+			<div class="col col2">
+				<?php 
+
+					foreach ($event['Brackets'][5] as $k => $v): 
+					if($k<8) continue;
+
+				?>	
+					<?php //print_r($v); die(); ?>
+					<?php echo $this->element("match",array("match"=>$v,"bracket"=>5)); ?>
+				<?php endforeach ?>
+			</div>
+
+		<!-- Bracket 4 -->
+		<div class="col col3">
 			<?php 
 				foreach ($event['Brackets'][4] as $k => $v): 
 				if($k>3) continue;
@@ -59,47 +72,7 @@ $this->set(compact("title_for_layout"));
 				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
 			<?php endforeach ?>
 		</div>
-		<div class="col col3">
-			<?php 
-				foreach ($event['Brackets'][3] as $k => $v): 
-				if($k>1) continue;
-			?>
-				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
-			<?php endforeach ?>
-		</div>
 		<div class="col col4">
-			<?php 
-				foreach ($event['Brackets'][2] as $k => $v): 
-				if($k>0) continue;
-			?>
-				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
-			<?php endforeach ?>
-		</div>
-		<div class="col col5">
-			<?php 
-				foreach ($event['Brackets'][1] as $k => $v): 
-				
-			?>
-				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
-			<?php endforeach ?>
-		</div>
-		<div class="col col6">
-			<?php 
-				foreach ($event['Brackets'][2] as $k => $v): 
-				if($k<1) continue;
-			?>
-				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
-			<?php endforeach ?>
-		</div>
-		<div class="col col7">
-			<?php 
-				foreach ($event['Brackets'][3] as $k => $v): 
-				if($k<2) continue;
-			?>
-				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
-			<?php endforeach ?>
-		</div>
-		<div class="col col8">
 			<?php 
 				foreach ($event['Brackets'][4] as $k => $v): 
 				if($k<4) continue;
@@ -107,15 +80,51 @@ $this->set(compact("title_for_layout"));
 				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
 			<?php endforeach ?>
 		</div>
+
+		<!-- Bracket 3 -->
+		<div class="col col5">
+			<?php 
+				foreach ($event['Brackets'][3] as $k => $v): 
+				if($k>1) continue;
+			?>
+				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
+			<?php endforeach ?>
+		</div>
+		<div class="col col6">
+			<?php 
+				foreach ($event['Brackets'][3] as $k => $v): 
+				if($k<2) continue;
+			?>
+				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
+			<?php endforeach ?>
+		</div>
+
+		<!-- Bracket 2 -->
+		<div class="col col7">
+			<?php 
+				foreach ($event['Brackets'][2] as $k => $v): 
+				if($k>0) continue;
+			?>
+				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
+			<?php endforeach ?>
+		</div>
+		<div class="col col8">
+			<?php 
+				foreach ($event['Brackets'][2] as $k => $v): 
+				if($k<1) continue;
+			?>
+				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
+			<?php endforeach ?>
+		</div>
+
+		<!-- Bracket 1 -->
+
 		<div class="col col9">
 			<?php 
-
-				foreach ($event['Brackets'][5] as $k => $v): 
-				if($k<8) continue;
-
-			?>	
-				<?php //print_r($v); die(); ?>
-				<?php echo $this->element("match",array("match"=>$v,"bracket"=>5)); ?>
+				foreach ($event['Brackets'][1] as $k => $v): 
+				
+			?>
+				<?php echo $this->element("match",array("match"=>$v,"bracket"=>4)); ?>
 			<?php endforeach ?>
 		</div>
 	</div>

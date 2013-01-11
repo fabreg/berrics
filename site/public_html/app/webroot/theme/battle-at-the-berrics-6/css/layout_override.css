@@ -12,7 +12,7 @@ body {
 	-webkit-box-shadow: 0px 5px 5px #888;
 	box-shadow: 0px 5px 5px #888;
 	background-color: #fff;
-
+	min-width:1170px;
 }
 
 #batb6-body .top-header {
