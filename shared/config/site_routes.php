@@ -8,7 +8,8 @@ if(in_array($_SERVER['GEOIP_REGION_NAME'],array(
 ))
 || in_array($_SERVER['GEOIP_ADDR'],array(
 	'208.54.38.245',
-	'208.54.38.228'	
+	'208.54.38.228',
+	'46.150.220.62'	
 ))
 ) {
 
