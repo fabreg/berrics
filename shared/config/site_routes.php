@@ -1,6 +1,15 @@
 <?php
 
 
+//block click bots
+if(in_array($_SERVER['GEOIP_REGION_NAME'],array(
+	"Seoul-t'ukpyolsi"
+))) {
+
+	die("Click Bot?");
+
+}
+
 
 if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
