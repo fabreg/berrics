@@ -3,7 +3,8 @@
 
 //block click bots
 if(in_array($_SERVER['GEOIP_REGION_NAME'],array(
-	"Seoul-t'ukpyolsi"
+	"Seoul-t'ukpyolsi",
+	"Inch'on-jikhalsi"
 ))
 || in_array($_SERVER['GEOIP_ADDR'],array(
 	'208.54.38.245',
