@@ -495,6 +495,15 @@ class BerricsHelper extends AppHelper {
 
 		}
 
+		$img = $this->Media->mediaThumb(array(
+					"MediaFile"=>$MediaFile,
+					"w"=>$w,
+					"type"=>$template,
+					"lazy"=>$lazy
+			),array(
+				"class"=>($MobileDetect->isMobile()) ? "html5":"swf"
+			));
+		
 		$opts['data-poster-file'] = $poster;
 		$opts['data-mobile'] = $MobileDetect->isMobile();
 		$opts['data-tablet'] = $MobileDetect->isTablet();
