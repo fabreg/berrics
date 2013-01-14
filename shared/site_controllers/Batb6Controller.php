@@ -368,7 +368,7 @@ class Batb6Controller extends DailyopsController {
 		if(!isset($profile['User']['id'])) throw new NotFoundException();
 		
 		//page title
-		$title_for_layout = "DC Shoes Presents: Battle At The Berrics 5 - ".$profile['User']['first_name']." ".$profile['User']['last_name'];
+		$title_for_layout = "DC Shoes Presents: Battle At The Berrics 6 - ".$profile['User']['first_name']." ".$profile['User']['last_name'];
 		
 
 		//get all the users votes
