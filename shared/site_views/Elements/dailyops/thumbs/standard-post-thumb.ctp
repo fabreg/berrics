@@ -1,4 +1,4 @@
-<div class='post-thumb standard-post-thumb'>
+<div class='post-thumb standard-post-thumb' data-dailyop-id='<?php echo $post['Dailyop']['id']; ?>'>
 <?php 
 
 	$media_file = $post['DailyopMediaItem'][0]['MediaFile'];

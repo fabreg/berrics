@@ -102,10 +102,12 @@ class BatbEvent extends AppModel {
 			
 						))
 					
-					)
+					),
+					"Player1User",
+					"Player2User"
 				);
 				
-				$contain = array();
+				//$contain = array();
 				
 			}
 			

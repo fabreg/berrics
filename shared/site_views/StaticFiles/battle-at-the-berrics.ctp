@@ -17,6 +17,11 @@ $this->set("meta_d",$d);
 <div class="batb-index">
 	<div class='row-fluid'>
 		<div class="span12">
+			<a href="/battle-at-the-berrics-6"><img src="/img/v3/layout/BATB6.jpg" border='0' alt=""></a>
+		</div>
+	</div>
+	<div class='row-fluid'>
+		<div class="span12">
 			<a href="/battle-at-the-berrics-5"><img src="/img/v3/layout/BATB5.jpg" border='0' alt=""></a>
 		</div>
 	</div>

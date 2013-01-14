@@ -91,6 +91,8 @@ $total_per_row = ceil(count($f_sections)/3);
 	</li>
 	<li class="spacer"></li>
 	<li class='nav-btn'><a href='/canteen'>CANTEEN</a></li>
+	<li class="spacer"></li>
+	<li class='nav-btn'><a href='/battle-at-the-berrics-6'>BATB VI</a></li>
 	<!-- 
 	<li class="spacer"></li>
 	<li class='nav-btn'><a href="/headquarters">HEADQUARTERS</a></li>
@@ -115,7 +117,7 @@ $total_per_row = ceil(count($f_sections)/3);
 				<option value="">Navigation..</option>
 				<option value="/dailyops">DAILY OPS</option>
 				<option value="/canteen">CANTEEN</option>
-				<option value="/headquarters.html">HEADQUARTERS</option>
+				<option value="/battle-at-the-berrics-6">BATB VI</option>
 				<optgroup label='Features'>
 					<option value="/features.html">All Features..</option>
 					<?php 
