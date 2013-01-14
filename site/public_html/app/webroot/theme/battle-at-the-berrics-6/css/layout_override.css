@@ -61,10 +61,17 @@ body {
 
 }
 
+#batb6-body .voting-div ul {
+
+	margin-top: 10px;
+	width:520px;
+}
+
 #batb6-body .voting-div ul li {
 
 	color:#fff;
-
+	font-size: 16px;
+	margin-bottom:3px;
 }
 
 #batb6-body .voting-div table {

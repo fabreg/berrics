@@ -189,7 +189,7 @@ $this->set(compact("title_for_layout"));
 						<li>Place your predictions on the two upcoming battles listed below.</li>
 						<li>Your prediction will be saved and your score will be calculated at the end of each battle.</li>
 						<li>Whomever has the highest weekly score will win a $25 Gift Certificate from LRG. </li>
-						<li>Whomever has the most points at the end of BATB6 will win top secret prize package courtesy of LRG, <br />a year’s supply of DC Shoes, and all expense paid trip to BATB7 Finals.. </li>
+						<li>Whomever has the most points at the end of BATB6 will win top secret prize package courtesy of LRG, a year’s supply of DC Shoes, and all expense paid trip to BATB7 Finals.. </li>
 						<li>In the case of a tie, first place names will be entered and winner will be randomly selected.  </li>
 						
 					</ul>
