@@ -8,7 +8,9 @@
 </head>
 <body>
 
-<p><a href="<?php echo $url; ?>"><?php echo $message; ?></a></p>
+<div style="text-align:center;">
+	<p><a href="<?php echo $url; ?>"><?php echo $message; ?></a></p>
 <p><a href="<?php echo $url; ?>">Click Here If You Are Not Redirected</a></p>
+</div>
 </body>
 </html>
