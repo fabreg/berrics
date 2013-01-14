@@ -250,7 +250,7 @@ class Batb6Controller extends DailyopsController {
 		//load the stats
 		$this->leaderboard($type);
 		
-		return $this->render("/elements/leader-summary");
+		return $this->render("/Elements/leader-summary");
 		
 	}
 	
