@@ -64,6 +64,7 @@ class DailyopSection extends AppModel {
 			"batb"=>"Battle at the Berrics",
 			"batb4"=>"Battle at the Berrics 4",
 			"batb5"=>"Battle at the berrics 5",
+			"batb6"=>"Battle at the berrics 6",
 			"trajectory"=>"Trajectory",
 			"bangyoself"=>"Bang Yoself 3",
 			"news"=>"Aberrican News",
