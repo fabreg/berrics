@@ -2944,6 +2944,81 @@ GALLERY VIEW
 
 }
 
+/*
+#######################
+INSTGRAM OF THE WEEK
+#######################
+*/
+
+.post-media-div .igotw-loading-div {
+
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-image:url(/img/v3/layout/blk-px.png);
+	top:0px;
+	left:0px;
+	z-index: 800;
+
+}
+
+.post-media-div .igotw-loading-div .spinner {
+
+	background-image:url(/img/v3/layout/loader-big.gif);
+	background-position: center center;
+	background-repeat: no-repeat;
+	position: absolute;
+	height:100%;
+	width:100%;
+	z-index: 801;
+
+}
+
+.igotw-item {
+
+
+
+}
+
+.igotw-item .image-item {
+
+	text-align: center;
+
+}
+
+.igotw-item .heading {
+
+	height:30px;
+	background-color:#3b6a91;
+	background-image:url(/img/v3/layout/igotw-heading-bg.jpg);
+	text-align:center;
+
+}
+
+.igotw-item .footer {
+
+	background-image:url(/img/v3/layout/igotw-footer-bg.jpg);
+	height:30px;
+	text-align: center;
+
+}
+
+.igotw-item .prev-link {
+
+	float:left;
+	margin-left:10px;
+	width: 65px;
+	height:30px;
+}
+
+.igotw-item .next-link {
+
+	float:right;
+	margin-right:10px;
+	width: 65px;
+	height:30px;
+}
+
 
 /*
 ##########################

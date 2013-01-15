@@ -1,5 +1,5 @@
 <?php 
-//lets use the media helps and get some html for the interface
+//lets use the media help and get some html for the interface
 
 $img_html = $this->Media->mediaThumb(array(
 	"MediaFile"=>$data['MediaFile'],

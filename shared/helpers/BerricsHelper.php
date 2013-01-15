@@ -440,7 +440,9 @@ class BerricsHelper extends AppHelper {
 		$opts = array_merge(array(
 			"data-media-file-id"=>$MediaFile['id'],
 			"data-dailyop-id"=>$Dailyop['Dailyop']['id'],
+			"data-dailyop-section-id"=>$Dailyop['Dailyop']['dailyop_section_id'],
 			"data-media-type"=>$MediaFile['media_type'],
+			"data-slide-show"=>$Dailyop['Dailyop']['slide_show'],
 			"class"=>"post-media-div",
 			"id"=>"media-file-div-".$MediaFile['id']
 		),$opts);

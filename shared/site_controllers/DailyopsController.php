@@ -1010,11 +1010,6 @@ class DailyopsController extends LocalAppController {
 
 	}
 
-	public function video_controls() {
-		
-	}
-
-
 	public function calendar($year = false,$month = false) {
 		
 		if(!$year) $year = date("Y");
@@ -1033,8 +1028,48 @@ class DailyopsController extends LocalAppController {
 
 	}
 
+	public function slideshow_request($dailyop_id = false, $page = 2) {
+		
+		if(isset($this->request->params['named']['page'])) $page = $this->request->params['named']['page'];
 
+		$token = "slideshowRequestPaginate-".$dailyop_id."-".$page;
 
+		if(($data = Cache::read($token,"1min")) === false) {
+
+			
+
+			Cache::write($token,$data,"1min");
+
+		}
+
+		$this->loadModel('DailyopMediaItem');
+			
+			$this->Paginator->settings = array(
+				"DailyopMediaItem"=>array(
+					"page"=>$page,
+					"limit"=>1,
+					"contain"=>array(
+						"MediaFile",
+						"Dailyop"=>array(
+							"DailyopSection"
+						)
+					),
+					"conditions"=>array(
+						"DailyopMediaItem.dailyop_id"=>$dailyop_id
+					),
+					"order"=>array(
+						"DailyopMediaItem.display_weight"=>"ASC"
+					)
+				)
+			);
+
+			$data = $this->paginate("DailyopMediaItem");
+
+		$this->theme = $data[0]['Dailyop']['DailyopSection']['uri'];
+
+		$this->set(compact("data"));
+
+	}
 
 	
 	

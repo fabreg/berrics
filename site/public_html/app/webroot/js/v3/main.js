@@ -274,7 +274,7 @@ function initMediaDivs () {
 		$this = $(this);
 		switch($type) {
 
-			case 'bcove':
+			case 'bcove': //bind video events
 
 				if(!Modernizr.touch) {
 
@@ -298,6 +298,19 @@ function initMediaDivs () {
 
 			break;
 
+			case "img":
+				if($this.attr("data-slide-show") == 1) {
+
+					$this.bind('click',function() { 
+
+						handleSlideShow($(this).attr("data-dailyop-id"));
+						$(this).unbind('click');
+
+					});
+
+				}
+			break;
+
 		}
 
 		$(this).attr("data-init",1);
@@ -306,7 +319,11 @@ function initMediaDivs () {
 
 	
 
-		//post thumb
+
+	/*
+	THUMBNAILS
+	*/
+	//post thumb
 	$('.post-thumb .thumb').each(function() { 
 
 		if(!Modernizr.touch) {
@@ -370,7 +387,7 @@ function openUserLogin () {
 }
 
 function initNav () {
-	// body...
+	
 
 	$("#top-dropdown").unbind();
 
@@ -405,6 +422,26 @@ function initLayout() {
 
 	});
 	
+}
+
+function handleSlideShow ($dailyop_id,$page) {
+	
+	var dailyop_id = $dailyop_id;
+	var page = $page || false;
+	var ele = $(".post-media-div[data-dailyop-id="+dailyop_id+"]");
+
+	var uri = "/dailyops/slideshow_request/"+dailyop_id;
+
+	ele.append("<div class='igotw-loading-div'><div class='spinner'></div></div>");
+
+	if(page) uri += "/"+page;
+
+	ele.load(uri,function() {
+
+		$(this).find('.igotw-loading-div').remove();
+
+	});
+
 }
 
 function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
