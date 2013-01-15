@@ -44,11 +44,36 @@ $(function() {
 	});
 	initBrowserDetection();
 	initLayout();
+	initVideoDivs();
 	initMediaDivs();
 	initTrending();
 	lazyLoad();
 
 });
+
+function initVideoDivs () {
+	
+	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+
+	isMobile = true;
+
+	$('div[data-media-type=bcove]').each(function() { 
+
+		if(isMobile) {
+
+			var videoTag = $("<video />").attr({
+
+				poster:$(this).attr("data-poster-file")
+
+			});
+
+			$(this).html(videoTag);
+
+		}
+
+	});
+
+}
 
 function lazyLoad () {
 	
@@ -125,10 +150,7 @@ function initTrending () {
 
 function initJWPlayer($ele) {
 
-	
 	var $div = $("#"+$ele);
-	//alert($div.attr("data-media-file-id"));
-	//return;
 
 	var $media_file_id = $div.attr("data-media-file-id");
 
@@ -144,7 +166,6 @@ function initJWPlayer($ele) {
 
 	if($dailyop_id.length>0) $ms_uri += "/dailyop_id:"+$dailyop_id;
 	
-
 	$.ajax({
 
 		url:$ms_uri,
@@ -292,7 +313,11 @@ function initMediaDivs () {
 						
 						//initJWPlayer($(this).attr("id"));
 
-						initVideo($(this).attr("id"));
+						//initVideo($(this).attr("id"));
+
+						handleLoadVideo($(this).attr("id"));
+
+						$(this).unbind("click");
 
 				});
 
@@ -317,9 +342,6 @@ function initMediaDivs () {
 
 	});
 
-	
-
-
 	/*
 	THUMBNAILS
 	*/
@@ -342,6 +364,83 @@ function initMediaDivs () {
 
 	return;
 
+}
+
+function handleLoadVideo ($id) {
+	
+	var ele = $("#"+$id);
+
+	var media_file_id = ele.attr("data-media-file-id");
+
+	var dailyop_id = ele.attr("data-dailyop-id") || false;
+
+	var uri = "/media_service/video_player_requestv2/media_file_id:"+media_file_id;
+
+	if(dailyop_id) uri += "/dailyop_id:"+dailyop_id;
+
+	var $o = {
+
+		url:uri,
+		dataType:'json',
+		success:function(d) {
+
+			$.data(ele,{
+
+				videoRequest:d
+
+			});
+			displayVideo(ele);
+
+		}
+
+	};
+
+	$.ajax($o);
+
+}
+
+function displayVideo($ele) {
+
+
+	displaySwfVideo($ele);
+
+}
+
+function displaySwfVideo ($ele) {
+	
+	var $data = $.data($ele);
+
+	var flashVars = {};
+
+	flashVars.file = $data.videoRequest.MediaFile.limelight_file;
+
+	if($data.videoRequest.Dailyop.id) flashVars.dailyop_id = $data.videoRequest.Dailyop.id;
+
+	if($data.videoRequest.prerollUrl) flashVars.prerollUrl = encodeURIComponent($data.videoRequest.prerollUrl);
+
+	if($data.videoRequest.postrollUrl) flashVars.postrollUrl = encodeURIComponent($data.videoRequest.postrollUrl);
+
+	console.log(flashVars);
+
+	var swfDiv = $("<div />").attr("id","swf-"+$ele.attr("id"));
+
+	$ele.html(swfDiv);
+
+	swfobject.embedSWF(
+						"/swf/v3/VideoPlayer.swf?t=e",
+						swfDiv.attr("id"),
+						"100%",
+						"394",
+						"11",
+						"/js/v3/expressInstall.swf",
+						flashVars,
+						{
+							"allowScriptAccess":true,
+							"allowFullScreen":true,
+							"wmode":"direct",
+							"quality":"autohigh"
+						}
+						);
 }
 
 function initVideo ($ele_id) {
@@ -454,16 +553,7 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 
 }
 
-function handleVideoEnd() {
-
-	var obj = arguments[0];
-
-	console.log(obj);
-	
-	//alert("handle video end method");
-
-	var media_file_id = obj.MediaFile.id;
-	var dailyop_id = obj.Dailyop.id;
+function handleVideoEnd(media_file_id,dailyop_id) {
 
 	//alert($(".post-media-div[data-media-file-id="+media_file_id+"]").html());
 

@@ -9,6 +9,7 @@
 		echo $this->Html->script(array(
 			"https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js",
 			"v3/bootstrap",
+			"v3/swfobject",
 			"v3/modernizr",
 			"v3/jquery.fullscreen-min",
 			"v3/jquery.lazyload.min",
