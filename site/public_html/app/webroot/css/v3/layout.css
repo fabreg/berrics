@@ -1837,6 +1837,7 @@ GLOBAL POST ELEMENTS
 	margin:auto;
 	margin-bottom:14px;
 	margin-top: 14px;
+
 }
 
 .post .post-text .text-content p {
@@ -1845,7 +1846,8 @@ GLOBAL POST ELEMENTS
 	font-size: 13px;
 	line-height: 16px;
 	color:#000;
-	font-family: 'Times New Roman'
+	font-family: 'Times New Roman';
+
 }
 
 .post .post-media-div {
