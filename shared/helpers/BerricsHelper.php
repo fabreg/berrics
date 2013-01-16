@@ -434,6 +434,18 @@ class BerricsHelper extends AppHelper {
 
 		}
 
+		$platform = "computer";
+
+		//do some platform detection
+		if($MobileDetect->isAndroid()) {
+
+			$platform = "android";
+
+		} else if($MobileDetect->isiOS()) {
+
+			$platform = "ios";
+
+		}
 
 		
 		//merge in default attributes with sent in attr's
@@ -443,6 +455,7 @@ class BerricsHelper extends AppHelper {
 			"data-dailyop-section-id"=>$Dailyop['Dailyop']['dailyop_section_id'],
 			"data-media-type"=>$MediaFile['media_type'],
 			"data-slide-show"=>$Dailyop['Dailyop']['slide_show'],
+			"data-platform"=>$platform,
 			"class"=>"post-media-div",
 			"id"=>"media-file-div-".$MediaFile['id']
 		),$opts);
@@ -475,27 +488,6 @@ class BerricsHelper extends AppHelper {
 			"type"=>$template
 		));
 
-		if($MobileDetect->isTablet()) {
-			
-
-			$img = "<div class='video-div video-div-html5'>";
-			
-			$img .= "<video poster='{$poster}' class='mobile-video-tag' data-post-template='{$template}'></video>";
-			
-			$img .= "</div>";
-
-		} else {
-
-			$img = $this->Media->mediaThumb(array(
-					"MediaFile"=>$MediaFile,
-					"w"=>$w,
-					"type"=>$template,
-					"lazy"=>$lazy
-			),array(
-				"class"=>($MobileDetect->isMobile()) ? "html5":"swf"
-			));
-
-		}
 
 		$img = $this->Media->mediaThumb(array(
 					"MediaFile"=>$MediaFile,
@@ -507,8 +499,6 @@ class BerricsHelper extends AppHelper {
 			));
 		
 		$opts['data-poster-file'] = $poster;
-		$opts['data-mobile'] = $MobileDetect->isMobile();
-		$opts['data-tablet'] = $MobileDetect->isTablet();
 		
 		/*
 		$img = $this->Media->mediaThumb(array(
