@@ -44,33 +44,22 @@ $(function() {
 	});
 	initBrowserDetection();
 	initLayout();
-	initVideoDivs();
+	initMobileVideoDivs();
 	initMediaDivs();
 	initTrending();
 	lazyLoad();
 
 });
 
-function initVideoDivs () {
-	
-	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+function initMobileVideoDivs () {
 
+	var android = $("div[data-media-type='bcove'][data-platform='android']");
 
-	$('div[data-media-type=bcove]').each(function() { 
+	android.each(function() { });
 
-		if(isMobile) {
+	var ios = $("div[data-media-type='bcove'][data-platform='ios']");
 
-			var videoTag = $("<video />").attr({
-
-				poster:$(this).attr("data-poster-file")
-
-			});
-
-			$(this).html(videoTag);
-
-		}
-
-	});
+	ios.each(function() { });
 
 }
 

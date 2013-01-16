@@ -419,6 +419,7 @@ class BerricsHelper extends AppHelper {
 	public function postMediaDiv($Dailyop,$opts = array()) {
 		
 		App::import("Vendor","Mobile_Detect",array("file"=>"Mobile_Detect.php"));
+
 		$MobileDetect = new Mobile_Detect();
 
 		$template = $Dailyop['Dailyop']['post_template'];
@@ -500,14 +501,6 @@ class BerricsHelper extends AppHelper {
 		
 		$opts['data-poster-file'] = $poster;
 		
-		/*
-		$img = $this->Media->mediaThumb(array(
-					"MediaFile"=>$MediaFile,
-					"w"=>$w,
-					"type"=>$template,
-					"lazy"=>$lazy
-				));
-		*/
 		
 		switch(strtolower($MediaFile['media_type'])) {
 
@@ -535,6 +528,17 @@ class BerricsHelper extends AppHelper {
 		}
 
 		return $this->Html->tag("div",$img,$opts);
+
+	}
+
+	public function postMediaDivAndroid() {
+
+
+
+	}
+
+	public function postMediaDivApple() {
+
 
 	}
 
