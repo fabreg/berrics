@@ -430,7 +430,7 @@ function displayAndroidVideo($ele) {
 
 	}).load();
 
-	$ele.find('video').play();
+	$ele.find('video').get(0).play();
 }
 
 
