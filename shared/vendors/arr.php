@@ -936,16 +936,13 @@ class Arr {
 	static function adLabels() {
 		
 		$a = array(
-		
-			"BATB4"=>"BATB4",
-			"BATB5"=>"BATB5",
 			"VPRE001"=>"VPRE001",
-			"LEVIS"=>"LEVIS",
 			"VPOST001"=>"VPOST001",
+			"VBATB"=>"VBATB",
+			"VBATB5"=>"VBATB5",
+			"VBATB6"=>"VBATB6",
 			"BYS3"=>"BYS3",
 			"YN3PRE"=>"YN3PRE",
-			"PRE001"=>"PRE001"
-			
 		);
 		
 		return $a;
