@@ -426,7 +426,7 @@ function displayAndroidVideo($ele) {
 
 	$ele.find('video').attr({
 
-		"src":"http://berrics.vo.llnwd.net/o45/"+videoRequest.MediaFile.limelight_file
+		"src":"http://berrics.vo.llnwd.net/o45/"+$vdata.MediaFile.limelight_file
 
 	}).load();
 
