@@ -55,7 +55,6 @@ function initVideoDivs () {
 	
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
 
-	isMobile = true;
 
 	$('div[data-media-type=bcove]').each(function() { 
 
@@ -401,8 +400,43 @@ function handleLoadVideo ($id) {
 
 function displayVideo($ele) {
 
+	if(/Android/i.test(navigator.userAgent)) {
 
-	displaySwfVideo($ele);
+		displayAndroidVideo($ele);
+
+	} else if (/iPad|iPod|iPhone/i.test(navigator.userAgent)) {
+
+
+
+	} else {
+
+		displaySwfVideo($ele);
+
+	}
+
+
+
+}
+
+function displayAndroidVideo($ele) {
+
+	var $data = $.data($ele);
+
+	var $vdata = $data.videoRequest;
+
+	$ele.find('video').attr({
+
+		"src":"http://berrics.vo.llnwd.net/o45/"+videoRequest.MediaFile.limelight_file
+
+	}).load();
+
+	$ele.find('video').play();
+}
+
+
+function displayAppleVideo($ele) {
+
+
 
 }
 
