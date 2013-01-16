@@ -437,7 +437,7 @@ class BerricsHelper extends AppHelper {
 		$platform = "computer";
 
 		//do some platform detection
-		if($MobileDetect->isAndroid()) {
+		if($MobileDetect->isAndroidOS()) {
 
 			$platform = "android";
 
