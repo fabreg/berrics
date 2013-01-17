@@ -35,14 +35,14 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 				<tbody class="content">
 					<?php 
 						foreach ($trending_news as $k => $v): 
-						$link = "/".$v['Dailyop']['DailyopSection']['uri']."/".$v['Dailyop']['uri'];
-						$t = $v['Dailyop']['DailyopTextItem'][0];
+						$link = "/".$v['DailyopSection']['uri']."/".$v['Dailyop']['uri'];
+						$t = $v['DailyopTextItem'][0];
 					?>
 					<tr>
 						<td width='100'>
 							<a href='<?php echo $link; ?>'>
 							<?php 
-								$media_file = $v['Dailyop']['DailyopTextItem'][0]['MediaFile'];
+								$media_file = $v['DailyopTextItem'][0]['MediaFile'];
 								echo $this->Media->mediaThumb(array(
 									"MediaFile"=>$media_file,
 									"w"=>90

@@ -55,31 +55,56 @@ class TrendingPost extends AppModel {
 
 		if(($posts = Cache::read($token,"5min"))===false) {
 
-			$posts = $this->find("all",array(
-				"conditions"=>array(
-					"TrendingPost.section"=>$section,
-					"TrendingPost.start_date < NOW()",
-					"TrendingPost.end_date > NOW()"
-				),
-				"contain"=>array(
-					"Dailyop"=>array(
+			switch($section) {
+
+				case "featured-news":
+				$Dailyop = ClassRegistry::init("Dailyop");
+				$posts = $Dailyop->find("all",array(
+					"conditions"=>array(
+						"Dailyop.publish_date < NOW()",
+						"Dailyop.active"=>1,
+						"Dailyop.dailyop_section_id"=>65
+					),
+					"contain"=>array(
 						"DailyopSection",
-						"DailyopMediaItem"=>array(
-							"MediaFile",
-							"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
-							"limit"=>1
-						),
 						"DailyopTextItem"=>array(
 							"MediaFile",
 							"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
 							"limit"=>1
 						)
-					)
-				),
-				"order"=>array(
-					"TrendingPost.display_weight"=>"ASC"
-				)
-			));
+					),
+					"order"=>array(
+						"Dailyop.publish_date"=>"DESC"
+					),
+					"limit"=>5
+				));
+				break;
+				default:
+				$posts = $this->find("all",array(
+							"conditions"=>array(
+								"TrendingPost.section"=>$section,
+								"TrendingPost.start_date < NOW()",
+								"TrendingPost.end_date > NOW()"
+							),
+							"contain"=>array(
+								"Dailyop"=>array(
+									"DailyopSection",
+									"DailyopMediaItem"=>array(
+										"MediaFile",
+										"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+										"limit"=>1
+									)
+								)
+							),
+							"order"=>array(
+								"TrendingPost.display_weight"=>"ASC"
+							)
+						));
+				break;
+
+			}
+
+			
 
 			Cache::write($token,$posts,"1min");
 

@@ -1,13 +1,21 @@
 <?php 
 
-if(!isset($unit)) $unit = "dopsv3_300";
+if(!isset($unit))  { 
+
+	$unit = "dopsv3_300";
+	$tile = "tile=2;";
+} else {
+
+	$tile = "tile=4;";
+
+}
 
 ?>
 <div class='banner-300'>
 <!-- dopsv3_300 -->
 <script type="text/javascript">
   var ord = window.ord || Math.floor(Math.random() * 1e16);
-  document.write('<script type="text/javascript" src="https://ad.doubleclick.net/N5885/adj/<?php echo $unit; ?>;sz=300x250;ord=' + ord + '?"><\/script>');
+  document.write('<script type="text/javascript" src="https://ad.doubleclick.net/N5885/adj/<?php echo $unit; ?>;<?php echo $tile; ?>sz=300x250;ord=' + ord + '?"><\/script>');
 </script>
 <noscript>
 <a href="https://ad.doubleclick.net/N5885/jump/<?php echo $unit; ?>;sz=300x250;ord=[timestamp]?">
