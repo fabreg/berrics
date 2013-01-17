@@ -3,6 +3,12 @@
 
 $link = "/".$post['Dailyop']['DailyopSection']['uri']."/".$post['Dailyop']['uri'];
 
+if($post['Dailyop']['DailyopSection']['uri'] != "news") {
+
+	$link .= "?autoplay";
+
+}
+
  ?>
 <tr>
 	<td width='100'>
