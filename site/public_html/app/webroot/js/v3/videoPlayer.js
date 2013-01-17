@@ -49,6 +49,15 @@
 
       $data.target.bind('click',function() {
 
+         if($(this).parent().parent().hasClass('featured-post')) {
+
+          $(this).parent().parent().find('.post-top').show();
+
+          $(this).parent().parent().find('.post-footer').show();
+
+        }
+
+
         methods.playAppleVideo($context);
 
         $(this).unbind('click');
@@ -269,6 +278,14 @@
       var $data = $context.data('videoPlayer');
 
       $data.target.bind('click',function() { 
+
+        if($(this).parent().parent().hasClass('featured-post')) {
+
+          $(this).parent().parent().find('.post-top').show();
+
+          $(this).parent().parent().find('.post-footer').show();
+
+        }
 
         methods.playSwfVideo($context);
 
