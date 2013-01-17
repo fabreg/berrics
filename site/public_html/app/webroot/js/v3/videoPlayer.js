@@ -346,11 +346,11 @@
               $data.target.html(swfDiv);
               
               swfobject.embedSWF(
-                        "/swf/v3/VideoPlayer.swf?t=g",
+                        "/swf/v3/VideoPlayer.swf?t=h",
                         swfDiv.attr("id"),
                         "100%",
                         "394",
-                        "11",
+                        "10",
                         "/js/v3/expressInstall.swf",
                         flashVars,
                         {
