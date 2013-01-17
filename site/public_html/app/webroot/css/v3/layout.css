@@ -1869,6 +1869,19 @@ GLOBAL post media div
 
 }
 
+.post-media-div .android-play-button {
+
+	position: absolute;
+	height:100%;
+	width:100%;
+	background-image:url(/img/v3/layout/play-button.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	display:none;
+	z-index:500;
+
+}
+
 .post-media-div object,
 .post-media-div video {
 
@@ -1881,7 +1894,7 @@ GLOBAL post media div
 
 .featured-post .post-media-div object {
 
-	height: 700px;
+	height: 600px;
 	display:block;
 	background-color:#000;
 	width:100%;

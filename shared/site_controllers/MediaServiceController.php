@@ -116,6 +116,8 @@ class MediaServiceController extends LocalAppController {
 
 		$data = array();
 
+		$data['playlist'] = array();
+
 		$media_file_id = (isset($this->request->params['named']['media_file_id'])) ? 
 				$this->request->params['named']['media_file_id']:'4d6ed946-4d48-4735-8272-37a20ab5431b';
 
@@ -163,32 +165,24 @@ class MediaServiceController extends LocalAppController {
 
 		if(!empty($MediaFile['MediaFile']['preroll_label'])) {
 
-			if($handheld) {
-
-				$data['prerollUrl'] = 'http://pubads.g.doubleclick.net/gampad/ads?sz=320x180&iu=/5885/MVPRE001&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]';
-
-			} else {
-
-				$data['prerollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
-
-			}
-
-			
-
+			$data['playlist'][]['prerollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
+		
 		}
+
 		unset($MediaFile['MediaFile']['created'],$MediaFile['MediaFile']['modified']);
-		$MediaFile['MediaFile']['jw_url'] = "http://berrics.vo.llnwd.net/o45/".$MediaFile['MediaFile']['limelight_file'];
-		$data['MediaFile'] =  $MediaFile['MediaFile'];
-		if(isset($Post)) { 
-		
-			$data['Dailyop'] = $Post['Dailyop'];
-		
-		}
-		if($handheld && !empty($d['MediaFile']['limelight_file_mobile'])) $d['MediaFile']['limelight_file'] = $d['MediaFile']['limelight_file_mobile'];
+		$MediaFile['MediaFile']['jw_url'] = $MediaFile['MediaFile']['file_url'] = "http://berrics.vo.llnwd.net/o45/".$MediaFile['MediaFile']['limelight_file'];
+		$data['playlist'][] = array(
+
+			"Video"=>array(
+				"MediaFile"=>$MediaFile['MediaFile'],
+				'Dailyop'=> (isset($Post['Dailyop']['id'])) ? false:$Post['Dailyop']
+			)
+
+		);
 
 		if(!empty($MediaFile['MediaFile']['postroll_label'])) {
 
-			$data['postrollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['postroll_label']);
+			$data['playtlist'][]['postrollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['postroll_label']);
 
 		}
 
@@ -196,7 +190,7 @@ class MediaServiceController extends LocalAppController {
 
 		$this->set(compact("data"));
 
-		die(json_encode($data));
+		die(json_encode($data['playlist']));
 
 	}
 

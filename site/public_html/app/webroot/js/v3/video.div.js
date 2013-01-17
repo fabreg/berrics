@@ -317,7 +317,7 @@
       bind('pause',function(e) {
 
           
-            play_btn.removeClass('paused');
+          play_btn.removeClass('paused');
           pause_overlay.show();
 
       }).

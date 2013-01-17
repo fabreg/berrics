@@ -1,6 +1,7 @@
 var userAgent = navigator.userAgent.toLowerCase(),
 browser   = '',
-version   = 0;
+version   = 0,
+videoData = {};
 $(function() {	
 
 	//capture all ads 
@@ -44,24 +45,12 @@ $(function() {
 	});
 	initBrowserDetection();
 	initLayout();
-	initMobileVideoDivs();
 	initMediaDivs();
 	initTrending();
 	lazyLoad();
 
 });
 
-function initMobileVideoDivs () {
-
-	var android = $("div[data-media-type='bcove'][data-platform='android']");
-
-	android.each(function() { });
-
-	var ios = $("div[data-media-type='bcove'][data-platform='ios']");
-
-	ios.each(function() { });
-
-}
 
 function lazyLoad () {
 	
@@ -136,193 +125,30 @@ function initTrending () {
 
 }
 
-function initJWPlayer($ele) {
-
-	var $div = $("#"+$ele);
-
-	var $media_file_id = $div.attr("data-media-file-id");
-
-	var $dailyop_id = $div.attr("data-dailyop-id");
-
-	var $poster = $div.attr("data-poster-file");
-
-	var $container = "media-file-div-"+$media_file_id;
-
-	//media service v2 request
-
-	var $ms_uri = "/media_service/video_player_requestv2/media_file_id:"+$media_file_id;
-
-	if($dailyop_id.length>0) $ms_uri += "/dailyop_id:"+$dailyop_id;
-	
-	$.ajax({
-
-		url:$ms_uri,
-		dataType:'json',
-		success:function($d) { 
-
-			var adObj = {
-
-				client:"googima",
-				schedule:{}
-
-			};
-			
-			if($d.prerollUrl) {
-
-				//adObj.tag = $d.prerollUrl
-				
-				adObj.schedule.adBreak1 = {
-
-					offset:0,
-					tag:$d.prerollUrl
-
-				}
-				
-			} 
-			/*
-			if($d.postrollUrl) {
-
-				adObj.schedule.adBreak2 = {
-
-					offset:'post',
-					tag:$d.postrollUrl
-
-				}
-
-			}
-			*/
-			
-
-			jwplayer($container).setup({
-
-		        file: $d.MediaFile.jw_url,
-		        height: 396,
-		       // image: $poster,
-		        width: "100%",
-		        autostart:true,
-		        primary:'flash',
-		        advertising:adObj,
-		        events:{
-
-		        	onComplete:function() {
-
-		        		jwplayer($container).remove();
-		        		handleVideoEnd($d);
-
-		        	}
-
-		        }
-
-
-		    });
-
-		}
-
-	});
-
-	//alert($ms_uri);
-
-}
-
 function initMediaDivs () {
 	
 
-	
-	//large posts || ASSUME ALL ARE VIDEO
-	
-	/*
-	$('.featured-post .post-media-div').each(function() { 
+	var videoDivs = $("div[data-media-type='bcove']");
 
-		$type = $(this).attr("data-media-type");
-		$this = $(this);
-		$this.unbind();
-		switch($type) {
+	videoDivs.each(function() { 
 
-			case 'bcove':
-
-				if(!Modernizr.touch) {
-
-					$this.hover(
-					function(e) { 
-						$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
-					},
-					function(e) { 
-						$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
-					});
-
-				}
-
-				$this.click(function() { 
-					
-						$(this).videoDiv({
-							beforeDataLoad:function(context) {
-
-								var $data = $.data(context);
-
-								$data.target.parent().parent().find('.post-footer,.post-top').show();
-
-							}
-						});
-						$(this).unbind('click');
-
-				});
-
-			break;
-
-		}
-
-		$(this).attr("data-init",1);
-
+		$(this).videoPlayer();
 
 	});
-	*/
+	
 
-	$('.post-media-div:not([data-init])').each(function() { 
+	var imgs = $("div[data-media-type=img]:not([data-init])");
 
-		$type = $(this).attr("data-media-type");
-		$this = $(this);
-		switch($type) {
+	imgs.each(function() { 
 
-			case 'bcove': //bind video events
+		if($(this).attr("data-slide-show") == 1) {
 
-				if(!Modernizr.touch) {
+			$(this).bind('click',function() { 
 
-					$this.hover(
-					function(e) { 
-						$(this).find('.video-hover').fadeIn().parent().find('.play-button').animate({opacity:1});
-					},
-					function(e) { 
-						$(this).find('.video-hover').fadeOut().parent().find('.play-button').animate({opacity:.6});
-					});
+				handleSlideShow($(this).attr("data-dailyop-id"));
+				$(this).unbind('click');
 
-				}
-
-				$this.bind('click',function(ev) { 
-						
-						//initJWPlayer($(this).attr("id"));
-
-						//initVideo($(this).attr("id"));
-
-						handleLoadVideo($(this).attr("id"));
-
-						$(this).unbind("click");
-
-				});
-
-			break;
-
-			case "img":
-				if($this.attr("data-slide-show") == 1) {
-
-					$this.bind('click',function() { 
-
-						handleSlideShow($(this).attr("data-dailyop-id"));
-						$(this).unbind('click');
-
-					});
-
-				}
-			break;
+			});
 
 		}
 
@@ -351,135 +177,6 @@ function initMediaDivs () {
 	});
 
 	return;
-
-}
-
-function handleLoadVideo ($id) {
-	
-	var ele = $("#"+$id);
-
-	var media_file_id = ele.attr("data-media-file-id");
-
-	var dailyop_id = ele.attr("data-dailyop-id") || false;
-
-	var uri = "/media_service/video_player_requestv2/media_file_id:"+media_file_id;
-
-	if(dailyop_id) uri += "/dailyop_id:"+dailyop_id;
-
-	var $o = {
-
-		url:uri,
-		dataType:'json',
-		success:function(d) {
-
-			$.data(ele,{
-
-				videoRequest:d
-
-			});
-			displayVideo(ele);
-
-		}
-
-	};
-
-	$.ajax($o);
-
-}
-
-function displayVideo($ele) {
-
-	if(/Android/i.test(navigator.userAgent)) {
-
-		displayAndroidVideo($ele);
-
-	} else if (/iPad|iPod|iPhone/i.test(navigator.userAgent)) {
-
-
-
-	} else {
-
-		displaySwfVideo($ele);
-
-	}
-
-
-
-}
-
-function displayAndroidVideo($ele) {
-
-	var $data = $.data($ele);
-
-	var $vdata = $data.videoRequest;
-
-	$ele.find('video').attr({
-
-		"src":"http://berrics.vo.llnwd.net/o45/"+$vdata.MediaFile.limelight_file
-
-	}).load();
-
-	$ele.find('video').get(0).play();
-}
-
-
-function displayAppleVideo($ele) {
-
-
-
-}
-
-function displaySwfVideo ($ele) {
-	
-	var $data = $.data($ele);
-
-	var flashVars = {};
-
-	flashVars.file = $data.videoRequest.MediaFile.limelight_file;
-
-	if($data.videoRequest.Dailyop.id) flashVars.dailyop_id = $data.videoRequest.Dailyop.id;
-
-	if($data.videoRequest.prerollUrl) flashVars.prerollUrl = encodeURIComponent($data.videoRequest.prerollUrl);
-
-	if($data.videoRequest.postrollUrl) flashVars.postrollUrl = encodeURIComponent($data.videoRequest.postrollUrl);
-
-	console.log(flashVars);
-
-	var swfDiv = $("<div />").attr("id","swf-"+$ele.attr("id"));
-
-	$ele.html(swfDiv);
-
-	swfobject.embedSWF(
-						"/swf/v3/VideoPlayer.swf?t=e",
-						swfDiv.attr("id"),
-						"100%",
-						"394",
-						"11",
-						"/js/v3/expressInstall.swf",
-						flashVars,
-						{
-							"allowScriptAccess":true,
-							"allowFullScreen":true,
-							"wmode":"direct",
-							"quality":"autohigh"
-						}
-						);
-}
-
-function initVideo ($ele_id) {
-	
-
-	var isMobile = /webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-
-	if(isMobile) {
-
-		$("#"+$ele_id).videoDiv();
-
-	} else {
-
-		initJWPlayer($ele_id)
-
-	}
 
 }
 
@@ -570,34 +267,36 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 	
 	var div = $('.post-media-div[data-media-file-id="'+media_file_id+'"]').html();
 
-	console.log(media_file_id);
-	console.log(dailyop_id);
 	$(div).videoDiv('videoEndScreen',div);
 
 }
 
-function handleVideoEnd(media_file_id,dailyop_id) {
+function handleVideoEnd(media_file_id) {
 
 	//alert($(".post-media-div[data-media-file-id="+media_file_id+"]").html());
+	var div = $("div[data-media-file-id="+media_file_id+"]");
 
-	$("#media-file-div-"+media_file_id).load(
+	var dailyop_id = div.attr("data-dailyop-id");
+
+	div.load(
 		"/media_service/end/media_file_id:"+media_file_id+"/dailyop_id:"+dailyop_id,
 		function(d) { 
+			div.find('.replay-btn a').bind('click',function() { 
 
-			$("#media-file-div-"+media_file_id).attr(
-			{
+				switch(div.attr("data-platform")) {
 
-				"data-media-file-id":media_file_id,
-				"data-dailyop-id":dailyop_id
+					case 'ios':
+						div.videoPlayer('playAppleVideo');
+					break;
+					default:
+						div.videoPlayer('playSwfVideo');
+					break;
 
-			}
-			).find('.replay-btn a').bind('click',function(e) { 
+				}
 
-             	initVideo("#media-file-div-"+media_file_id);
-              	return false;
+				return false;
 
-          	});
-
+			});
 		}
 	);
 
