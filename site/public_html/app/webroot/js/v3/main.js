@@ -49,6 +49,20 @@ $(function() {
 	initTrending();
 	lazyLoad();
 
+	var _autoCheck = document.location.href.split("?");
+	
+	if(_autoCheck[1] != undefined) {
+		
+		if(_autoCheck[1].match(/^(autoplay)$/)) {
+			
+			var _autoDiv = $("div[data-media-type='bcove']:first");
+
+			_autoDiv.click();
+			
+		}
+		
+	}
+
 });
 
 

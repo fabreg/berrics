@@ -10,6 +10,8 @@
 	}
 
 	$url = $this->Berrics->dailyopsPostUrl($post);
+
+	if($media_file['media_type'] == "bcove") $url .= "?autoplay";
 ?>
 	<div class="post-date">
 		<?php echo date("m.d.Y",strtotime($post['Dailyop']['publish_date'])) ?>
@@ -32,7 +34,7 @@
 		</a>
 	</div>
 	<div class="post-title">
-		<a href='<?php echo $this->Berrics->dailyopsPostUrl($post); ?>'><?php echo $this->Text->truncate(strtoupper($post['Dailyop']['name']),25); ?></a>
+		<a href='<?php echo $url; ?>'><?php echo $this->Text->truncate(strtoupper($post['Dailyop']['name']),25); ?></a>
 	</div>
 	<div class="post-sub-title">
 		<?php echo $this->Text->truncate($post['Dailyop']['sub_title'],50); ?>&nbsp;
