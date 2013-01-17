@@ -105,7 +105,8 @@
 
               videoTag.attr({
 
-                "src":frag.Video.MediaFile.file_url
+                "src":frag.Video.MediaFile.file_url,
+                "autoplay":true
 
               });
 
