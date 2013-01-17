@@ -67,7 +67,7 @@
         'background-image':"url(/img/v3/layout/loader-big.gif)"
 
       });
-      
+
       methods.loadData($context,{
 
           success:function($ele) {
@@ -136,7 +136,7 @@
 
       } else if(frag.postrollUrl) {
 
-        methods.loadGoogleAd($context,frag.prerollUrl);
+        methods.loadGoogleAd($context,frag.postrollUrl);
 
       } else if(frag.Video) {
 
@@ -243,7 +243,7 @@
 
       if(!frag) {
 
-        alert("Show Android Video End");
+       
 
       } else if(frag.postrollUrl) {
 

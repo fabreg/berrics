@@ -182,7 +182,7 @@ class MediaServiceController extends LocalAppController {
 
 		if(!empty($MediaFile['MediaFile']['postroll_label'])) {
 
-			$data['playtlist'][]['postrollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['postroll_label']);
+			$data['playlist'][]['postrollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['postroll_label']);
 
 		}
 
