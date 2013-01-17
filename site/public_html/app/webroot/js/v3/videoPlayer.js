@@ -346,7 +346,7 @@
               $data.target.html(swfDiv);
               
               swfobject.embedSWF(
-                        "/swf/v3/VideoPlayer.swf?t=h",
+                        "/swf/v3/VideoPlayer.swf?t=i",
                         swfDiv.attr("id"),
                         "100%",
                         "394",
