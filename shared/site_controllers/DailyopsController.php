@@ -219,6 +219,18 @@ class DailyopsController extends LocalAppController {
 
 		$posts = $this->Dailyop->getPostsBySectionYear($section,$year);
 
+		if(count($posts<5)) {
+			
+			$extra = $this->Dailyop->getPostsBySectionYear($section,date("Y",strtotime("-1 Year",strtotime($year."-01-01"))));
+
+			if(count($extra)>0) {
+
+				$posts = array_merge($posts,$extra);
+
+			}
+
+		}
+
 		$year_select = $this->Dailyop->getYearsBySection($section['id']);
 
 		$year_select = array_combine($year_select, $year_select);

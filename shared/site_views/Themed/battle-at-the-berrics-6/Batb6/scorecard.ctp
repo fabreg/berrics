@@ -6,7 +6,7 @@ $this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
 <div id='scorecard'>
 <div class="top-header clearfix">
 	<div class='top-dc-flag'>
-		<img src="/theme/battle-at-the-berrics-6/img/dc-top-flag.png" alt="DC Shoes" />
+		<img src="/theme/battle-at-the-berrics-6/img/dc-top-flag.jpg" alt="DC Shoes" />
 	</div>
 	<div class="top-banner">
 		<script type="text/javascript">

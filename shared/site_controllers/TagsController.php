@@ -57,7 +57,7 @@ class TagsController extends LocalAppController {
 							"conditions"=>array(
 								"Dailyop.active"=>1,
 								"Dailyop.publish_date < NOW()",
-								"Dailyop.dailyop_section_id !="=>65,
+								//"Dailyop.dailyop_section_id !="=>65,
 								"Dailyop.id"=>$ids
 							),
 							"contain"=>array(),
@@ -84,6 +84,13 @@ class TagsController extends LocalAppController {
 								"order"=>array(
 										"DailyopMediaItem.display_weight"=>"ASC"
 								)
+						),
+						"DailyopTextItem"=>array(
+							"MediaFile",
+							"limit"=>1,
+							"order"=>array(
+								"DailyopTextItem.display_weight"=>"ASC"
+							)
 						),
 						"DailyopSection"
 					),
