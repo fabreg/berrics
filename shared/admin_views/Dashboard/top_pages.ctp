@@ -11,7 +11,7 @@
 		<tr>
 			<td>
 				<small>
-					<a href='<?php echo $p['page_views']['script_url']; ?>' target='_blank'>
+					<a href='http://theberrics.com<?php echo $p['page_views']['script_url']; ?>' target='_blank'>
 						<?php echo $this->Text->truncate($p['page_views']['script_url'],50); ?>
 					</a>
 				</small>
