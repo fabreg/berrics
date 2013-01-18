@@ -219,8 +219,8 @@ class DailyopsController extends LocalAppController {
 
 		$posts = $this->Dailyop->getPostsBySectionYear($section,$year);
 
-		if(count($posts<5)) {
-			
+		if(count($posts)<6) {
+
 			$extra = $this->Dailyop->getPostsBySectionYear($section,date("Y",strtotime("-1 Year",strtotime($year."-01-01"))));
 
 			if(count($extra)>0) {
