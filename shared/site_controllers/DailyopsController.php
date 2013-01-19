@@ -166,6 +166,32 @@ class DailyopsController extends LocalAppController {
 
 		}
 
+
+
+		//check to see if any of the posts have a theme override
+
+		foreach($posts['posts'] as $post) //if(!empty($post['Dailyop']['theme_override'])) die($post['Dailyop']['theme_override']);
+			if(!empty($post['Dailyop']['theme_override'])) $this->theme = $post['Dailyop']['theme_override'];
+
+		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
+		
+		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("SAT","SUN")) && $home_mode) {
+
+			//only show posts that are from saturday or sunday
+
+			foreach($posts['posts'] as $k=>$v) {
+
+				if(!in_array(strtoupper(date("D",strtotime($v['Dailyop']['publish_date']))),array("SAT","SUN"))) {
+
+					unset($posts['posts'][$k]);
+
+				}
+
+			}
+
+
+		}
+
 		//get the date from the last post
 
 		$post_total = count($posts['posts']);
@@ -173,14 +199,6 @@ class DailyopsController extends LocalAppController {
 		$date_scope = $posts['posts'][($post_total-1)]['Dailyop']['publish_date'];
 
 		$dateIn = $this->checkHomeDateIn(date("Y-m-d",strtotime($date_scope)));
-
-		//check to see if any of the posts have a theme override
-
-		foreach($posts as $post) 
-			if(!empty($post['Dailyop']['theme_override'])) $this->theme = $post['Dailyop']['theme_override'];
-
-		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
-		
 		$this->set(compact("posts","home_mode"));
 		$this->set(compact("title_for_layout","dateIn"));
 
@@ -190,6 +208,8 @@ class DailyopsController extends LocalAppController {
 			$this->render("/Elements/dailyops/dailyops-index");
 
 		}
+
+
 
 	}
 
