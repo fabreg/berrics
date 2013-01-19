@@ -23,7 +23,7 @@ array_unshift($f_sections,$batb);
 $f_sections = Set::sort($f_sections,"{n}.DailyopSection.name","asc");
 
 $total_per_row = ceil(count($f_sections)/3);
-
+echo $total_per_row;
 ?>
 
 <div id="top-nav-div">
@@ -36,9 +36,11 @@ $total_per_row = ceil(count($f_sections)/3);
 				
 					<?php 
 
-						$c = 0;
+						$c = 1;
+						$i = 0;
 						foreach ($f_sections as $k => $v): 
-						if($c <= 0) echo "<ul class='clearfix'>";
+						$i++;
+						if($c <= 1) echo "<ul class='clearfix'>";
 					?>
 						<li><a href='/<?php echo $v['DailyopSection']['uri'] ?>' title='<?php echo addslashes($v['DailyopSection']['name']); ?>'>
 							<?php 
@@ -60,10 +62,10 @@ $total_per_row = ceil(count($f_sections)/3);
 							</a></li>
 					<?php 
 
-						if($c>=$total_per_row || (($k+1)==count($f_sections)) ) {
+						if($c>=$total_per_row || ($i==count($f_sections)) ) {
 
 							echo "</ul>";
-							$c = 0;
+							$c = 1;
 
 						} else {
 
