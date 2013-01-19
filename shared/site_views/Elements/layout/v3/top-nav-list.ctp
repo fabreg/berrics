@@ -120,6 +120,7 @@ $total_per_row = ceil(count($f_sections)/3);
 				<option value="/dailyops">DAILY OPS</option>
 				<option value="/canteen">CANTEEN</option>
 				<option value="/battle-at-the-berrics-6">BATB VI</option>
+				<option value="/support">SUPPORT</option>
 				<optgroup label='Features'>
 					<option value="/features.html">All Features..</option>
 					<?php 
