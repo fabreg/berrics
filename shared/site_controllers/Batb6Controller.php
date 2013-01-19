@@ -19,7 +19,7 @@ class Batb6Controller extends DailyopsController {
 
 
 			$this->request->params['action'] = "section";
-			$this->request->params['view'] = "section";
+			$this->view = "section";
 
 		}
 
