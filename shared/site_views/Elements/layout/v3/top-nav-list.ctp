@@ -23,7 +23,7 @@ array_unshift($f_sections,$batb);
 $f_sections = Set::sort($f_sections,"{n}.DailyopSection.name","asc");
 
 $total_per_row = ceil(count($f_sections)/3);
-echo $total_per_row;
+
 ?>
 
 <div id="top-nav-div">
