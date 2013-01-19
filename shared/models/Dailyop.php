@@ -936,7 +936,7 @@ class Dailyop extends AppModel {
 		$posts = $this->find("all",array(
 		
 			"conditions"=>array(
-				"Dailyop.dailyop_section_id"=>array(7,38,44,47,74)
+				"Dailyop.dailyop_section_id"=>array(7,38,44,47,74,83)
 			),
 			"contain"=>array(
 				"DailyopSection"
