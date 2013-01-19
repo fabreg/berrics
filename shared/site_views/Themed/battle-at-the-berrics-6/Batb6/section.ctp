@@ -245,6 +245,9 @@ $this->set(compact("title_for_layout"));
 		<div class="heading">
 			BATB VI Leaderboard Presented By LRG Clothing
 		</div>
+		<div class="my-score-btn">
+			<a href='/battle-at-the-berrics-6/my_scorecard'>CLICK HERE TO VIEW YOUR SCORECARD</a>
+		</div>
 		<div class="inner">
 			<div class="weekly"></div>
 			<div class="overall"></div>

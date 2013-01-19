@@ -121,9 +121,11 @@ class Batb6Controller extends DailyopsController {
 
 				"conditions"=>array(
 					"BatbMatch.id"=>$match_id
-				)
+				),
+				"contain"=>array()
 				
 			));
+
 			
 			if(empty($match['BatbMatch']['id'])) {
 				
@@ -134,7 +136,8 @@ class Batb6Controller extends DailyopsController {
 			//check for pregame
 			
 			if(!empty($match['BatbMatch']['pregame_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['pregame_dailyop_id']));
-						
+			
+
 			//check for battle
 			
 			if(!empty($match['BatbMatch']['battle_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['battle_dailyop_id']));
@@ -404,7 +407,7 @@ class Batb6Controller extends DailyopsController {
 		
 		if(!$this->Session->check("Auth.User.id")) {
 			
-			return $this->redirect("/identity/login/send_to_facebook/".base64_encode($this->request->here));
+			return $this->redirect("/identity/login/form/".base64_encode($this->request->here));
 			
 		} else {
 			

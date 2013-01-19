@@ -15,6 +15,25 @@ body {
 	min-width:1170px;
 }
 
+#batb6-body .my-score-btn {
+
+	padding:10px;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom:5px;
+	background-color:#147ec2;
+
+}
+
+#batb6-body .my-score-btn a {
+
+	display: block;
+	color:#fff;
+	font-size:18px;
+	font-family: 'universcnb'
+
+}
+
 #batb6-body .top-header {
 
 
@@ -362,6 +381,7 @@ body {
 	
 
 }
+
 
 #batb6-body .bracket .match a {
 
