@@ -135,12 +135,32 @@ class Batb6Controller extends DailyopsController {
 			
 			//check for pregame
 			
-			if(!empty($match['BatbMatch']['pregame_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['pregame_dailyop_id']));
+			if(!empty($match['BatbMatch']['pregame_dailyop_id']))  {
+
+				$p = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['pregame_dailyop_id']));
+
+				if(isset($p['Dailyop']['id'])) {
+
+					$posts[] = $p;
+
+				}
+
+			}
 			
 
 			//check for battle
 			
-			if(!empty($match['BatbMatch']['battle_dailyop_id'])) $posts[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['battle_dailyop_id']));
+			if(!empty($match['BatbMatch']['battle_dailyop_id']))  {
+
+				$p = $this->Dailyop->returnPost(array("Dailyop.id"=>$match['BatbMatch']['battle_dailyop_id']));
+
+				if(isset($p['Dailyop']['id'])) {
+
+					$posts[] = $p;
+
+				}
+
+			}
 			
 			//check postgame
 			
