@@ -35,6 +35,7 @@
 </script>
 <div class="page-header">
 	<h1>Realtime </h1>
+	<a href="/reports/realtime" class="btn btn-primary">Refresh</a>
 </div>
 <div class="row-fluid">
 	<div class="span6" id='realtime-pages'>
