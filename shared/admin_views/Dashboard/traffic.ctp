@@ -1,6 +1,8 @@
-<h3>Realtime Traffic <small><a href="<?php echo $this->Html->url(array("controller"=>"reports","action"=>"realtime")); ?>">
-		<i class="icon-zoom-in"></i> View
-	</a></small>	</h3>
+<h3>Realtime Traffic 
+	<a href="/reports/realtime_videos" class="btn btn-mini btn-primary">Videos</a>
+	<a href="/reports/realtime_pages" class="btn btn-mini btn-primary">Pages</a>
+	<a href="/reports/realtime" class="btn btn-mini btn-primary">Both</a>
+</h3>
 <table cellspacing='0'>
 	<tr>
 		<td>Page Views</td>

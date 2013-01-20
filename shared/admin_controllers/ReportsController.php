@@ -181,6 +181,36 @@ class ReportsController extends LocalAppController {
 
 
 	}
+
+	public function realtime_videos($limit=100) {
+		
+		$this->loadModel("MediaFileView");
+
+		$media = $this->MediaFileView->find('all',array(
+			"conditions"=>array(),
+			"contain"=>array('MediaFile'),
+			'order'=>array("MediaFileView.id"=>"DESC"),
+			"limit"=>$limit
+		));
+
+		$this->set(compact("media"));
+
+	}
+
+	public function realtime_pages($limit=100) {
+		
+		$this->loadModel("PageView");
+		
+		$pages = $this->PageView->find('all',array(
+			"conditions"=>array('PageView.domain_name LIKE'=>'%theberrics.com'),
+			"contain"=>array(),
+			"order"=>array("PageView.id"=>"DESC"),
+			"limit"=>$limit
+		));
+	
+		$this->set(compact("pages"));
+
+	}
 	
 	public function top_videos() {
 		
