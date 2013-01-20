@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1>Video Views <small>Generated: <?php echo date('g:i:s a'); ?></small></h1>
+	<h1>Videos<small>Generated: <?php echo date('g:i:s a'); ?></small></h1>
 	<?php if (!$this->request->is("ajax")): ?>
 	<a href="/reports/realtime_videos" class="btn btn-primary">Refresh</a>
 	<?php endif; ?>
