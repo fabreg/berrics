@@ -1,7 +1,7 @@
 <div class="page-header">
 	<h1>Page Views <small>Generated: <?php echo date('g:i:s a'); ?></small></h1>
 	<?php if (!$this->request->is("ajax")): ?>
-	<a href="/reports/realtime_videos" class="btn btn-primary">Refresh</a>
+	<a href="/reports/realtime_pages" class="btn btn-primary">Refresh</a>
 	<?php endif; ?>
 </div>
 		<table>
