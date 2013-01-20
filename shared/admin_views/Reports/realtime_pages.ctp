@@ -22,7 +22,11 @@
 				<tr>
 					
 					<td><span class="label label-info"><?php echo date('g:i:s a',strtotime($p['created'])); ?></span></td>
-					<td><a href="http://theberrics.com<?php echo $p['script_url']; ?>" target='_blank'><?php echo $this->Text->truncate($p['script_url'],60); ?></a></td>
+					<td>
+						<?php if ($p['mobile']): ?>
+							  	 <i class="icon icon-mobile-phone"></i>
+						<?php endif; ?>
+						<a href="http://theberrics.com<?php echo $p['script_url']; ?>" target='_blank'><?php echo $this->Text->truncate($p['script_url'],60); ?></a></td>
 					<td><?php echo $p['geo_country']; ?></td>
 					<td><?php echo $p['geo_region_name']; ?></td>
 					

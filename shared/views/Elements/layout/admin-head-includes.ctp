@@ -3,6 +3,7 @@ echo $this->Html->meta('icon');
 
 echo $this->Html->css(array(
 		'bootstrap',
+		'font-awesome.min',
 		'main-v3',
 		'bootstrap-responsive',
 		'top-nav',

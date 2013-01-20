@@ -21,8 +21,12 @@
 			<tbody>
 				<tr>
 					
-					<td><span class="label label-info"><?php echo date('g:i:s a',strtotime($v['created'])); ?></span></td>
-					<td><?php echo $m['name']; ?></td>
+					<td><span class="label label-info"><?php echo date('g:i:s a',strtotime($v['created'])); ?></span>
+						
+					</td>
+					<td><?php if ($v['mobile']): ?>
+							  	 <i class="icon icon-mobile-phone"></i>
+						<?php endif; ?><?php echo $m['name']; ?></td>
 					<td><?php echo $v['geo_country']; ?></td>
 					<td><?php echo $v['geo_region_name']; ?></td>
 				</tr>
