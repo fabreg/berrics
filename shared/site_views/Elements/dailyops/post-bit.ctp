@@ -12,6 +12,9 @@
 		case "news":
 			echo $this->element("dailyops/posts/news/post",array("post"=>$dop,"lazy"=>$lazy));
 		break;
+		case "news-large":
+			echo $this->element("dailyops/posts/news-large/post",array("post"=>$dop,"lazy"=>$lazy));
+		break;
 		case 'legacy':
 		default:
 			echo $this->element("dailyops/posts/legacy/post-bit",array("dop"=>$dop,"lazy"=>$lazy));

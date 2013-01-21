@@ -2529,6 +2529,38 @@ standard post
 
 /*
 #####################
+NEWS HYBRID POST
+######################
+*/
+.news-large {
+
+
+
+}
+
+.news-large .post-media-div {
+
+	max-width:700px;
+	margin:auto;
+	text-align: center;
+	margin-bottom:5px;
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
+/*
+
+#####################
 RECENT REALTED POSTS
 ######################
 */

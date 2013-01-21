@@ -414,7 +414,10 @@ class BerricsHelper extends AppHelper {
 		return $htm;
 		
 	}
-	
+	/**
+	 * Post Media Div - Media Div For Posts That Auto-bootstraps
+	 * OPTS: $opts['link'] = array("href"=>"","target"=>""); - Link Override For Image Post
+	 */
 
 	public function postMediaDiv($Dailyop,$opts = array()) {
 		
@@ -509,12 +512,20 @@ class BerricsHelper extends AppHelper {
 				$hover = "<div class='img-hover'></div>";
 				$img = $hover.$img;
 
-				if(!empty($Dailyop['Dailyop']['url'])) {
+				if(!empty($Dailyop['Dailyop']['url']) || isset($opts['link'])) {
 
-					$href=$Dailyop['Dailyop']['url'];
-					$target = $Dailyop['Dailyop']['window_target'];
+					if(isset($opts['link'])) {
+
+						$href = $opts['link']['href'];
+						$target = $opts['link']['target'];
+
+					} else {
+						
+						$href=$Dailyop['Dailyop']['url'];
+						$target = $Dailyop['Dailyop']['window_target'];
+
+					}
 					
-
 					$img = "<a href='{$href}' target='{$target}' >{$img}</a>";
 
 				}

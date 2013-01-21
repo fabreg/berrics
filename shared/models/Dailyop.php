@@ -1285,6 +1285,7 @@ class Dailyop extends AppModel {
 			"post-bit"=>"Legacy ( Original Version 2 Template )",
 			"slim"=>"Slim Post",
 			"news"=>"Standard News",
+			"news-large"=>"News Post With Large Image On Dailyops"
 
 		);
 
