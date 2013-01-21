@@ -2,15 +2,36 @@
 <?php 
 
 
- $this->Html->css(array("search"),"stylesheet",array("inline"=>false));
+ //$this->Html->css(array("search"),"stylesheet",array("inline"=>false));
 
 
 ?>
-<div class='redirect'>
+<style type="text/css">
+	
+.redirect {
 
-	Searching The Berrics For <span class='term'>"<?php echo base64_decode($token); ?>"</span>
-	<div>This may take a few seconds</div>
+	text-align: center;
+	
+	width:80%;
+	margin:auto;
 
+
+}
+
+#search-redirect {
+
+	min-height: 500px;
+
+}
+
+</style>
+<div id="search-redirect">
+	<div class='redirect alert alert-success'>
+
+		Searching The Berrics For <span class='term'><b>"<?php echo base64_decode($token); ?>"</b></span>
+		<div>This may take a few seconds</div>
+
+	</div>
 </div>
 <script>
 setTimeout(function() { 
