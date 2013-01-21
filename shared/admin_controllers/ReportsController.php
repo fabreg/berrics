@@ -242,6 +242,25 @@ class ReportsController extends LocalAppController {
 
 		$ids = CakeSession::read("MediaFileReportQueue");
 
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			
+			$this->Report->queued_videos(
+				$ids,
+				$this->request->data['Report']['start_date'],
+				$this->request->data['Report']['end_date'],
+				$this->request->data['Report']['title']
+			);
+
+			$this->Session->setFlash("Queued Video Report Started Successfully");
+		
+			return $this->redirect(array(
+						"controller"=>"reports",
+						"action"=>"index"
+					));
+
+		}
+
 		if(count($ids)>0) {
 
 			$videos = $this->MediaFile->find('all',array(

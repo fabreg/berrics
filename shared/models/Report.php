@@ -341,6 +341,58 @@ class Report extends AppModel {
 		return $report;
 	}	
 	
+	public function queued_videos($ids = array(),$start_date,$end_date,$title = "QUEUED VIDEOS") {
+	
+		$params = serialize(array(
+				"url"=>$uri,
+				"start_date"=>$start_date,
+				"end_date"=>$end_date
+		));
+	
+		$jobs = array();
+	
+		$data = array(
+				"report_type"=>"queued_videos",
+				"params_data"=>$params,
+				"user_id"=>CakeSession::read("Auth.User.id"),
+				"report_status"=>"pending",
+				"title"=>$title
+		);
+		
+		$mids = '';
+
+		foreach($ids as $v) $mids .= "'{$v}',";
+
+		$mids = rtrim($mids,",");
+
+		$bq = new BigQueryApi();
+	
+		$start_ts = strtotime($start_date);
+		$end_ts = strtotime($end_date." 23:59:59");
+	
+		$mvt_sql = "select count(*) as total,media_file_id FROM traffic.media_live where ts >= {$start_ts} AND ts <= {$end_ts} AND media_file_id IN ({$mids}) GROUP BY media_file_id ORDER BY total DESC ";
+		
+		$jobs['total_views'] = $bq->addJobQuery($mvt_sql);
+		
+		$mvt_sql = "select count(*) as total,media_file_id FROM traffic.media_live where ts >= {$start_ts} AND ts <= {$end_ts} AND media_file_id IN ({$mids}) AND mobile=1 GROUP BY media_file_id ORDER BY total DESC ";
+		
+		$jobs['total_mobile'] = $bq->addJobQuery($mvt_sql);
+		
+	
+		$data['job_data'] = serialize($jobs);
+	
+		$this->create();
+	
+		$this->save($data);
+	
+		$_SERVER['FORCEMASTER'] = true;
+		$report = $this->findById($this->id);
+		unset($_SERVER['FORCEMASTER']);
+	
+		return $report;
+	
+	}
+
 	public function refresh_report_status($report_id = false) {
 		
 		//get the report

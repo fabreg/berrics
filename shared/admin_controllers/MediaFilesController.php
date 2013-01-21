@@ -969,10 +969,14 @@ class MediaFilesController extends LocalAppController {
 
 		$videos = $this->Session->read("MediaFileReportQueue");
 		
-		$videos[] = $id;
+		 if(!in_array($videos,$id)) {
+
+		 	$videos[] = $id;
 		
-		$this->Session->write("MediaFileReportQueue",$videos);
-		
+			$this->Session->write("MediaFileReportQueue",$videos);
+
+		 }
+
 		return $this->redirect(base64_decode($post_back));
 		
 	}
@@ -1005,6 +1009,16 @@ class MediaFilesController extends LocalAppController {
 		
 		
 	} 
+
+	public function clear_report_queue($post_back) {
+		
+		$post_back = base64_decode($post_back);
+
+		CakeSession::delete('MediaFileReportQueue');
+
+		return $this->redirect($post_back);
+
+	}
 	
 	
 	/*

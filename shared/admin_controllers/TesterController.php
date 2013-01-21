@@ -2000,12 +2000,39 @@ class TesterController extends LocalAppController {
 
 	}
 
-	public function jquery_browser() {
+	public function txt_yoself_report() {
 		
-		
-		
-	}
+		CakeSession::delete("MediaFileReportQueue");
 
+		$this->loadModel('Dailyop');
+
+		$posts = $this->Dailyop->find("all",array(
+				"conditions"=>array(
+					'Dailyop.dailyop_section_id'=>'10',
+					"DATE(Dailyop.publish_date) > '2011-12-15'"
+				),
+				"contain"=>array(
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"limit"=>1,
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
+					)
+				)
+			));
+
+		$ids = array();
+
+		foreach ($posts as $k => $v) {
+			
+			$ids[] = $v['DailyopMediaItem'][0]['MediaFile']['id'];
+
+		}
+		
+		CakeSession::write("MediaFileReportQueue",$ids);
+
+		die(print_r(CakeSession::read()));
+
+	}
 
 	
 }

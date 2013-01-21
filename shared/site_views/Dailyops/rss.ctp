@@ -12,7 +12,7 @@
       <?php echo $this->Time->nice($post['Dailyop']['publish_date']) . ' GMT'; ?> 
        <pubDate><?php echo $this->Time->nice($this->Time->gmt($post['Dailyop']['publish_date'])) . ' GMT'; ?></pubDate> 
       <guid><![CDATA[http://<?php echo $_SERVER['SERVER_NAME']; ?>/<?php echo $post['DailyopSection']['uri']; ?>/<?php echo $post['Dailyop']['uri']; ?>]]></guid> 
-     
+      
 </item> 
 <?php 
 

@@ -38,7 +38,7 @@
     <image>
     	<title><?php $title_for_feed; ?></title>
     	<link><?php echo $link_for_feed; ?></link>
-    	<url>http://<?php echo $_SERVER['SERVER_NAME']; ?>/img/theberrics-header-logo.png</url>
+    	<url>http://<?php echo $_SERVER['SERVER_NAME']; ?>/dailyops</url>
     </image>
    	<?php 
    	
