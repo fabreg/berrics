@@ -11,8 +11,8 @@ $servers = array(
 			"w5",
 			"w6",
 			"w7",
-			"w8",
-			"w9"
+			//"w8",
+			//"w9"
 		);
 
 foreach($servers as $server) {
