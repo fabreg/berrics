@@ -3881,6 +3881,18 @@ CANTEEN CATEGORY VIEW
 
 }
 
+#canteen-category .category-title h1 {
+
+	width:100%;
+	color:#fff;
+	background-color:#000;
+	padding:5px;
+	font-size:28px;
+	height:36px;
+	line-height: 32px;
+	border-radius:4px;
+
+}
 
 #canteen-category .products {
 
@@ -3903,48 +3915,40 @@ CANTEEN CATEGORY VIEW
 
 }
 
-#canteen-category .sorting {
+#canteen-left-column .sorting {
 
-	padding:8px;
 
-}
-
-#canteen-category .sorting .heading {
-
-	padding:5px;
-	background-color:#000;
-	color:#fff;
-	margin-bottom:5px;
-	font-size: 18px;
-	font-family: 'universcnb'
 
 }
 
-#canteen-category .sorting .control-group {
+
+#canteen-left-column .sorting .control-group {
 
 	clear:both;
 
 }
 
-#canteen-category .sorting .control-group label {
+#canteen-left-column .sorting .control-group label {
 
 	float:left;
 
 }
 
-#canteen-category .sorting .control-group .controls {
+#canteen-left-column .sorting .control-group .controls {
 
 	float:left;
 	margin-left:10px;
 }
 
-#canteen-category .sorting .filter-heading {
+#canteen-left-column .sorting .filter-heading {
 
 	clear:both;
 	font-size:16px;
 	font-family: 'universcnb';
 
 }
+
+
 
 /* Large desktop */
 @media (min-width: 1200px) {  
@@ -4183,7 +4187,10 @@ CANTEEN BODY
 	font-family: 'universcnb';
 	color:#fff;
 	padding:5px;
-
+	height:25px;
+	line-height: 20px;
+	margin-bottom:5px;
+	border-radius:4px;
 }
 
 

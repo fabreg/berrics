@@ -10,13 +10,19 @@ $canteen_array = $CanteenCategory->treeArray();
 	CATEGORIES
 	</div>
 	<ul>
-		<?php foreach ($canteen_array as $k => $v): ?>
+		<?php 
+
+			foreach ($canteen_array as $k => $v):
+				if($v['active'] == 0) continue;
+		 ?>	
 		<li>
 			<?php echo $v['name']; ?>
 			<?php if (count($v['sub_categories'])>0): ?>
 				<ul>
-				<?php foreach ($v['sub_categories'] as $kk => $vv): ?>
-					<li><?php echo $vv['name']; ?></li>
+				<?php foreach ($v['sub_categories'] as $kk => $vv): 
+						if($vv['active'] == 0) continue;
+				?>
+					<li><a href='/canteen/<?php echo $vv['uri']; ?>'><?php echo $vv['name']; ?></a></li>
 				<?php endforeach ?>
 				</ul>
 			<?php endif ?>
@@ -24,4 +30,3 @@ $canteen_array = $CanteenCategory->treeArray();
 		<?php endforeach ?>
 	</ul>
 </div>
-<?php pr($canteen_array); ?>
