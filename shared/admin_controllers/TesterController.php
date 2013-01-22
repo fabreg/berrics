@@ -2034,5 +2034,36 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function user_profile_check() {
+		
+		$this->loadModel('User');
+
+		$total = $this->User->find('count');
+
+		for($i=1;$i<$total;$i++) {
+
+			echo $i;
+			echo "<br />";
+
+		}
+
+	}
+
+	public function check_batb_scores($value='') {
+
+		$this->loadModel('BatbVote');
+		
+		$votes = $this->BatbVote->find("all",array(
+					"conditions"=>array(
+						"BatbVote.batb_match_id"=>510,
+						"BatbVote.winner_letters"=>4,
+						"BatbVote.letters_points"=>0
+					),
+					//'limit'=>1
+				));
+
+	}
+
+
 	
 }
