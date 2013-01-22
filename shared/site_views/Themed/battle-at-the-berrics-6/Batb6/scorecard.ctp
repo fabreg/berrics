@@ -1,6 +1,6 @@
 <?php 
 
-$this->Html->css(array("scorecard"),"stylesheet",array("inline"=>false));
+
 
 ?>
 <div id='scorecard'>
