@@ -101,7 +101,10 @@ class BatbEventsController extends LocalAppController {
 		
 		$userSelect = $this->User->userSelectList(array(
 		
-			"User.user_group_id"=>array(10,40,50)	
+			"OR"=>array(
+				"User.pro_skater"=>1,
+				"User.am_skater"=>1
+			)	
 		
 		));
 		

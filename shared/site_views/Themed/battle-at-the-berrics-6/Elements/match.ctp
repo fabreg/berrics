@@ -18,11 +18,11 @@ if(!empty($match['BatbMatch']['battle_dailyop_id']) || !empty($match['BatbMatch'
 ?>
 <div class="match">
 	<div class="player player1">
-		<?php echo $player1; ?>
+		<?php echo $player1; ?>&nbsp;
 	</div>
 	<div class="mspacer"></div>
 	<div class="player player2">
-		<?php echo $player2; ?>
+		<?php echo $player2; ?>&nbsp;
 	</div>
 </div>
 <?php 

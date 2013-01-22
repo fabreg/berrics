@@ -33,7 +33,7 @@
 			<div class="social-networking">
 				<div class="fb-like" data-href="<?php echo urlencode("http://theberrics.com".$this->here); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style=''></div>
 				<div class='twitter'>
-						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://theberrics.com".$this->here; ?>" data-text='Battle At The Berrics 5 Scorecard: <?php echo $profile['User']['first_name']." ".$profile['User']['last_name']; ?>' data-count="none" data-via="berrics">Tweet</a>
+						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://theberrics.com".$this->here; ?>" data-text='Battle At The Berrics 6 Scorecard: <?php echo $profile['User']['first_name']." ".$profile['User']['last_name']; ?>' data-count="none" data-via="berrics">Tweet</a>
 				</div> 
 			</div>
 			<table cellspacing='0'>
