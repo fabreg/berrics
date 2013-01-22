@@ -2057,10 +2057,13 @@ class TesterController extends LocalAppController {
 					"conditions"=>array(
 						"BatbVote.batb_match_id"=>510,
 						"BatbVote.winner_letters"=>4,
-						"BatbVote.letters_points"=>0
+						"BatbVote.letters_points"=>0,
+						"BatbVote.match_points >"=>0
 					),
 					//'limit'=>1
 				));
+
+		die(pr($votes));
 
 	}
 
