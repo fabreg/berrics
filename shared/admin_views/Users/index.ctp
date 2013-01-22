@@ -124,7 +124,7 @@ $(document).ready(function() {
 			<?php if ($this->request->is("ajax")): ?>
 				<button class="btn btn-success btn-small attach-user-btn" type="button" value='<?php echo $user['User']['id']; ?>'><i class="icon icon-plus icon-white"></i> Attach User</button>
 			<?php else: ?>
-				<?php echo $this->Admin->link("Edit Account", array('action' => 'edit', $user['User']['id'],base64_encode($this->here))); ?>
+				<?php echo $this->Admin->link("Edit Account", array('action' => 'edit', $user['User']['id'],"cb"=>base64_encode($this->here))); ?>
 				<?php echo $this->Admin->link(__('Delete', true), array('action' => 'delete', $user['User']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
 				<?php echo $this->Admin->link("Update Password",array("controller"=>"users","action"=>"update_password",$user['User']['id'])); ?>
 				<a href='/users/force_login/<?php echo $user['User']['id']; ?>'>Login AS</a>

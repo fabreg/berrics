@@ -96,6 +96,10 @@
 				<?php echo $this->Admin->link("Add User",array("controller"=>"users","action"=>"add")); ?>
 			</li>
 			<li>
+				<?php echo $this->Admin->link("Manage Employees",array("controller"=>"users","action"=>"manage_employees")); ?>
+			</li>
+			<li class='nav-header'>User Groups</li>
+			<li>
 				<?php echo $this->Admin->link("View Users Groups",array("controller"=>"user_groups","action"=>"index")); ?>
 			</li>
 			<li>

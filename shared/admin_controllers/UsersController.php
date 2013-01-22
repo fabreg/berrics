@@ -240,7 +240,7 @@ class UsersController extends LocalAppController {
 				
 				$this->Session->setFlash(__('The user has been saved'));
 				
-				//if($callback) return $this->redirect(base64_decode($callback));
+				if(isset($this->request->params['named']['cb'])) return $this->redirect(base64_decode($this->request->params['named'] ['cb']));
 				
 				$this->redirect($this->request->here);
 				
