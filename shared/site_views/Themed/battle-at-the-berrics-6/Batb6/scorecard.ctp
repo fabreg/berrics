@@ -31,7 +31,7 @@
 				<a href='http://facebook.com/profile.php?id=<?php echo $profile['User']['facebook_account_num']; ?>' target='_blank'><?php echo strtoupper($profile['User']['first_name']." ".$profile['User']['last_name']); ?><span style='font-size:14px;'>(#<?php echo $score_total['BatbScore']['rank_number']; ?>)</span></a>
 			</div>
 			<div class="social-networking">
-				<div class="fb-like" data-href="<?php echo urlencode("http://theberrics.com".$this->here); ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style=''></div>
+				<div class="fb-like" data-href="<?php echo "http://theberrics.com".$this->here; ?>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" style=''></div>
 				<div class='twitter'>
 						<a href="http://twitter.com/share" class="twitter-share-button" data-url="<?php echo "http://theberrics.com".$this->here; ?>" data-text='Battle At The Berrics 6 Scorecard: <?php echo $profile['User']['first_name']." ".$profile['User']['last_name']; ?>' data-count="none" data-via="berrics">Tweet</a>
 				</div> 
