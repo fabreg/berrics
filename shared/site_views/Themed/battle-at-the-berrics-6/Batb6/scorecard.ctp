@@ -184,7 +184,7 @@
 								</td>
 								<td>
 								<?php 
-									if($v['BatbVote']['match_winner_user_id'] == $p2['id']) echo $letters_drop[$v['BatbMatch']['winner_letters']];
+									if($v['BatbVote']['match_winner_user_id'] == $p2['id']) echo $letters_drop[$v['BatbVote']['winner_letters']];
 								?>
 								</td>
 								<td></td>
