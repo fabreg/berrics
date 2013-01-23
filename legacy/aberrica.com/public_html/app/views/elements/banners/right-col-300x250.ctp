@@ -1,1 +1,0 @@
-<div class='banner-300x250' id='banner-img'></div>

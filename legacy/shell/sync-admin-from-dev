@@ -1,4 +1,0 @@
-#!/bin/bash
-
-rsync -vaz --delete --exclude-from /home/sites/berrics.dev/shell/exclude.txt  /home/sites/berrics.dev/ /home/sites/berrics/
-/home/sites/berrics/shell/chmod-self;

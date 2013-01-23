@@ -1,1 +1,0 @@
-<script src='http://theberrics.com/media/embed/#MEDIA_FILE_ID#/#HEIGHT#/#WIDTH#' type='text/javascript'></script>

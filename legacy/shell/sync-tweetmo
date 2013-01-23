@@ -1,1 +1,0 @@
-rsync -vaz --delete '/home/sites/tweetmo/' 'root@web2:/home/sites/tweetmo/'

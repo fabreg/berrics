@@ -1,3 +1,0 @@
-<div style='padding:20px; text-align:center;'>
-	Sign-ups are now closed. :( Sorry, but hey! next pizza party is right around the corner!! Stay tuned..........
-</div>

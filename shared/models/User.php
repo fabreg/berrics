@@ -77,6 +77,21 @@ class User extends AppModel {
 		"Tag"
 	);
 	
+	public static function employeeGroups() {
+		
+		$a = array(
+			"founders"=>"Founders",
+			"website"=>"Website",
+			"bizdev"=>"BizDev & Advertising",
+			"unified"=>"Unified & Retail",
+			"video"=>"Video",
+			"general"=>"General Contacts"
+		);
+
+		return $a;
+
+	}
+
 	public function beforeSave() {
 		
 		parent::beforeSave();
