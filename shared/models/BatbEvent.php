@@ -208,8 +208,8 @@ class BatbEvent extends AppModel {
 			break;
 		}
 		
-		
 		$this->id = $match['BatbMatch']['batb_event_id'];
+
 		$this->save($updateData);
 		
 	}
@@ -236,12 +236,44 @@ class BatbEvent extends AppModel {
 			case 2:
 				$updateData['featured_stats2_id'] = $match_id;
 			break;
+
 		}
 		
 		
 		$this->id = $match['BatbMatch']['batb_event_id'];
 		$this->save($updateData);
 		
+	}
+
+	public function calcUser($user_id = false,$batb_event_id = false) {
+
+		$User = ClassRegistry::init("User");
+		$BatbScore = ClassRegistry::init("BabtScore");
+
+		$user = $User->returnProfile($user_id);
+
+		//get all the votes from the event
+
+		$votes = $this->BatbVote->find("all",array(
+				"conditions"=>array(
+					"BatbVote.batb_event_id"=>$batb_event_id,
+					"BatbVote.user_id"=>$user_id
+				),
+				"contain"=>array(
+					"BatbMatch"=>array(
+						"Player1User",
+						"PLayer2User"
+					)
+				)
+		));
+
+		$score = $BatbScore->find("first",array(
+					"conditions"=>array(
+						""
+					),
+					"contain"=>array()
+			));
+
 	}
 	
 	
