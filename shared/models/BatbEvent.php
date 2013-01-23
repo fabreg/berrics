@@ -239,8 +239,8 @@ class BatbEvent extends AppModel {
 
 		}
 		
-		
 		$this->id = $match['BatbMatch']['batb_event_id'];
+
 		$this->save($updateData);
 		
 	}
@@ -248,13 +248,17 @@ class BatbEvent extends AppModel {
 	public function calcUser($user_id = false,$batb_event_id = false) {
 
 		$User = ClassRegistry::init("User");
-		$BatbScore = ClassRegistry::init("BabtScore");
+		$BatbScore = ClassRegistry::init("BatbScore");
+		$BatbVote = ClassRegistry::init("BatbVote");
 
-		$user = $User->returnProfile($user_id);
+		//$user = $User->returnProfile($user_id);
+
+		//get the users score row
+		$score = $BatbScore->ensureScoreRow($user_id,$batb_event_id);
 
 		//get all the votes from the event
 
-		$votes = $this->BatbVote->find("all",array(
+		$votes = $BatbVote->find("all",array(
 				"conditions"=>array(
 					"BatbVote.batb_event_id"=>$batb_event_id,
 					"BatbVote.user_id"=>$user_id
@@ -262,17 +266,87 @@ class BatbEvent extends AppModel {
 				"contain"=>array(
 					"BatbMatch"=>array(
 						"Player1User",
-						"PLayer2User"
+						"Player2User"
 					)
 				)
 		));
 
-		$score = $BatbScore->find("first",array(
-					"conditions"=>array(
-						""
-					),
-					"contain"=>array()
-			));
+		$scoreData = array(
+			"rps_score"=>0,
+			"match_score"=>0,
+			"letters_score"=>0
+		);
+
+		//recalc each vote
+
+		foreach($votes as $vote) {
+
+			//check to see if the attached match has a winner
+
+			if(
+				!empty($vote['BatbMatch']['match_winner_user_id']) && 
+				!empty($vote['BatbMatch']['rps_winner_user_id']) && 
+				!empty($vote['BatbMatch']['winner_letters'])
+			) {
+
+				$voteData = array();
+
+				//check rps winner and assign points
+				if($vote['BatbVote']['rps_winner_user_id'] == $vote['BatbMatch']['rps_winner_user_id']) {
+
+					$voteData['rps_points'] = 1;
+
+				} else {
+
+					$voteData['rps_points'] = 0;
+
+				}
+
+				//check the match winner and assign points
+				if($vote['BatbVote']['match_winner_user_id'] == $vote['BatbMatch']['match_winner_user_id']) { 
+
+					$voteData['match_points'] = 10;
+
+				} else {
+
+					$voteData['match_points'] = 0;
+
+				}
+
+				//check the letters points
+
+				if($vote['BatbVote']['winner_letters'] == $vote['BatbMatch']['winner_letters']) {
+
+					$voteData['letter_points'] = 15;
+
+				} else {
+
+					$voteData['letter_points'] = 0;
+
+				}
+
+				$BatbVote->id = $vote['BatbVote']['id'];
+				print_r($voteData);
+				//$BatbVote->save($voteData);
+
+				$scoreData['rps_score'] += $voteData['rps_points'];
+				$scoreData['match_score'] += $voteData['match_points'];
+				$scoreData['letters_score'] += $voteData['letter_points'];
+
+
+			} else {
+
+				continue;
+
+			}
+
+		}
+
+		print_r($scoreData);
+
+
+		die(pr($votes));
+
 
 	}
 	

@@ -2068,5 +2068,18 @@ class TesterController extends LocalAppController {
 	}
 
 
+	public function recalc_batb_user($user_id = false) {
+		
+		$event_id = 50019;
+
+		$this->loadModel('BatbEvent');
+
+		$result = $this->BatbEvent->calcUser($user_id,$event_id);
+
+		die();
+
+	}
+
+
 	
 }

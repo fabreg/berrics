@@ -12,7 +12,6 @@ class BatbScore extends AppModel {
 	
 	public function ensureScoreRow($user_id,$batb_event_id) {
 		
-		
 		//check to see if there is a scoring row for the user and event
 		$check = $this->find("first",array(
 			"conditions"=>array(
@@ -29,10 +28,20 @@ class BatbScore extends AppModel {
 				"user_id"=>$user_id,
 				"batb_event_id"=>$batb_event_id
 			));
+
+			$_SERVER['FORCEMASTER'] = true;
+			$check = $this->find("first",array(
+					"conditions"=>array(
+						"BatbScore.id"=>$this->id
+					),
+					"contain"=>array()
+			));
+			$_SERVER['FORCEMASTER'] = false;
 			
 		}
 		
-		
+		return $check;
+
 	}
 	
 	
