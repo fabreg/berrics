@@ -16,13 +16,13 @@ $canteen_array = $CanteenCategory->treeArray();
 				if($v['active'] == 0) continue;
 		 ?>	
 		<li>
-			<?php echo $v['name']; ?>
+			// <?php echo $v['name']; ?>
 			<?php if (count($v['sub_categories'])>0): ?>
 				<ul>
 				<?php foreach ($v['sub_categories'] as $kk => $vv): 
 						if($vv['active'] == 0) continue;
 				?>
-					<li><a href='/canteen/<?php echo $vv['uri']; ?>'><?php echo $vv['name']; ?></a></li>
+					<li> - <a href='/canteen/<?php echo $vv['uri']; ?>'><?php echo $vv['name']; ?></a></li>
 				<?php endforeach ?>
 				</ul>
 			<?php endif ?>
