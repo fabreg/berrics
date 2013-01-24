@@ -60,6 +60,8 @@ class UsersController extends LocalAppController {
 		
 		if(isset($this->request->params['named']['search'])) {
 			
+			foreach($this->request->params['named'] as $k=>$v) $this->request->params['named'][$k] = urldecode($v);
+
 			if(isset($this->request->params['named']['User.first_name'])) {
 				
 				$cond['User.first_name LIKE'] = str_replace(" ","%",$this->request->params['named']['User.first_name'])."%";
