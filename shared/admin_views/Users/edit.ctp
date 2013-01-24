@@ -69,6 +69,7 @@ jQuery(document).ready(function($) {
 				echo $this->Form->input("berrics_employee");
 				echo $this->Form->input("pro_skater");
 				echo $this->Form->input("am_skater");
+				echo $this->Form->input("employee_group",array("options"=>User::employeeGroups(),"empty"=>true));
 				echo $this->Form->input("title");
 				echo $this->Form->input("berrics_email");
 				echo $this->Form->input('user_group_id');

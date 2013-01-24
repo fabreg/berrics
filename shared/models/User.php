@@ -85,7 +85,8 @@ class User extends AppModel {
 			"bizdev"=>"BizDev & Advertising",
 			"unified"=>"Unified & Retail",
 			"video"=>"Video",
-			"general"=>"General Contacts"
+			"general"=>"General Contacts",
+			"canteen"=>"The Berrics Canteen"
 		);
 
 		return $a;

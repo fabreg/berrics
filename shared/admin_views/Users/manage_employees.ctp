@@ -1,3 +1,8 @@
+<?php 
+
+$eg = User::employeeGroups();
+
+?>
 <div class="page-header">
 	<h1>Manage Employees</h1>
 </div>
@@ -11,6 +16,7 @@
 				<th>
 					<?php echo $this->Paginator->sort("modified"); ?>
 				</th>
+				<th>Group</th>
 				<th>Name</th>
 				<th><?php echo $this->Paginator->sort("berrics_email"); ?></th>
 				<th></th>
@@ -25,6 +31,7 @@
 			<tr>
 				<td><?php echo $u['id'] ?></td>
 				<td><?php echo $this->Time->niceShort($u['modified']) ?></td>
+				<td><?php echo $eg[$u['employee_group']]; ?></td>
 				<td>
 					<?php echo $u['first_name']; ?> <?php echo $u['last_name']; ?>
 				</td>
