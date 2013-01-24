@@ -81,10 +81,10 @@ class User extends AppModel {
 		
 		$a = array(
 			"founders"=>"Founders",
-			"website"=>"Website",
-			"bizdev"=>"BizDev & Advertising",
+			"website"=>"Website & Art",
+			"bizdev"=>"Business Development & Advertising",
 			"unified"=>"Unified & Retail",
-			"video"=>"Video",
+			"video"=>"Video & Editing",
 			"general"=>"General Contacts",
 			"canteen"=>"The Berrics Canteen"
 		);

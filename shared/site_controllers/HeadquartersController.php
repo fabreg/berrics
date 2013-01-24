@@ -23,10 +23,12 @@ class HeadquartersController extends LocalAppController {
 		$users = $this->User->find("all",array(
 					"conditions"=>array(
 						"User.berrics_employee"=>1,
-						"User.active"=>1
 					),
 					"contain"=>array(),
-					"group"=>array("User.employee_group")
+					"order"=>array(
+						"User.employee_group"=>"ASC",
+						"User.first_name"=>"ASC"
+					)
 				));
 		
 		$groups = array();
@@ -37,6 +39,47 @@ class HeadquartersController extends LocalAppController {
 
 		}
 
+		//push in the canteen
+		$groups['unified'][] = array(
+								"User"=>array(
+									"first_name"=>"The Berrics",
+									"last_name"=>"Canteen",
+									"berrics_email"=>"canteen@theberrics.com"
+								)
+							);
+
+		$groups['general'][] = array(
+								"User"=>array(
+									"first_name"=>"Trickipedia",
+									"last_name"=>"Request",
+									"berrics_email"=>"trickipedia@theberrics.com"
+								)
+							);
+
+		$groups['general'][] = array(
+								"User"=>array(
+									"first_name"=>"Watch",
+									"last_name"=>"This",
+									"berrics_email"=>"watchthis@theberrics.com"
+								)
+							);
+
+		//push in support
+		$groups['website'][] = array(
+								"User"=>array(
+									"first_name"=>"Website",
+									"last_name"=>"Support",
+									"berrics_email"=>"support@theberrics.com"
+								)
+							);
+
+		$groups['bizdev'][] = array(
+								"User"=>array(
+									"first_name"=>"Advertising",
+									"last_name"=>"Inquiries",
+									"berrics_email"=>"advertising@theberrics.com"
+								)
+							);
 
 		$this->set(compact("groups"));
 

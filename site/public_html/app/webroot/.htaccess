@@ -19,6 +19,12 @@
 	#REDIRECT WEBMAIL
 	RewriteRule (webmail)(.*) http://mail.google.com/a/theberrics.com [R,L]
 	
+
+
+    #battle at the berrics 6
+     RewriteRule ^(batb6) /battle-at-the-berrics-6 [R=301,L]
+    #battle at the berrics 5
+     RewriteRule ^(batb5) /battle-at-the-berrics-5 [R=301,L]
     # Battle at the berrics 4
     RewriteRule ^(batb4|batb4\.php) /battle-at-the-berrics-4 [R=301,L]
     # Battle at the berrics 3
@@ -29,6 +35,10 @@
     RewriteRule ^(batb\.php) /battle-at-the-berrics-1 [R=301,L]
 	# Battle at the Berrics Index
     RewriteRule ^(batb) /battle-at-the-berrics.html [R=301,L]
+
+    #header quarters legacy
+    RewriteRule ^(headquarters\.php) /headquarters [R=301,L]
+
     
     
     # Battle Commanders

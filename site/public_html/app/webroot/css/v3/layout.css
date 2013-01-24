@@ -3066,6 +3066,148 @@ INSTGRAM OF THE WEEK
 	height:30px;
 }
 
+/*
+##########################
+HEADQUARTERS:
+########################
+*/
+
+#headquarters {
+
+
+
+}
+
+#headquarters .contact-group {
+
+
+
+}
+
+#headquarters .contact-group .inner {
+
+	padding:10px;
+
+}
+
+#headquarters .contact-group .heading {
+
+	clear:both;
+	margin-bottom:8px;
+}
+
+#headquarters .contact-group .heading h2 {
+
+	background-color:#000;
+	color:#fff;
+	font-size:22px;
+	height:36px;
+	line-height: 30px;
+	padding:5px;
+	border-radius:4px;
+}
+
+#headquarters .contact-group .user-contact {
+
+	margin-bottom:8px;
+
+}
+
+#headquarters .contact-group .user-contact .name {
+
+	font-size:20px;
+
+}
+
+#headquarters .contact-group .user-contact .email {
+
+	
+
+}
+
+
+#headquarters .contact-group .user-contact .email a {
+
+	border-bottom:1px dotted #999;
+
+}
+
+
+#headquarters .contact-group .user-contact .email a:hover {
+
+	text-decoration:none;
+
+}
+
+	#headquarters .contact-group .user-contact {
+
+		width:32%;
+		float:left;
+		margin-right:1%;
+
+	}
+
+	#headerquarters .contact-group .user-contact:nth-child(2n+2) {
+
+		width:32%;
+		float:left;
+
+
+	}
+
+
+	#headquarters .contact-group .user-contact:nth-child(3n+3) {
+
+		margin-right:0;
+		float:right;
+
+	}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+
+
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+
+
+	#headquarters .contact-group .user-contact,
+	#headerquarters .contact-group .user-contact:nth-child(2n+2),
+	#headquarters .contact-group .user-contact:nth-child(3n+3)  {
+
+		width:100%;
+		clear:both;
+		margin-right:0;
+
+	}
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+	#headquarters .contact-group .user-contact,
+	#headerquarters .contact-group .user-contact:nth-child(2n+2),
+	#headquarters .contact-group .user-contact:nth-child(3n+3)  {
+
+		width:100%;
+		clear:both;
+		margin-right:0;
+
+	}
+
+ }
+
 
 /*
 ##########################
