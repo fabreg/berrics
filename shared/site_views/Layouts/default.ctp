@@ -132,6 +132,8 @@
 					<a href="/dailyops">The Daily Ops</a> |
 					<a href="http://berricsunified.com" target='_blank'>The Berrics Unified</a> | 
 					<a href="/features.html">Features</a> | 
+					<a href="/headquarters">Headquarters</a> | 
+					<a href="/battle-at-the-berrics-6">Battle At The Berrics 6</a>
 				</div>
 			</div>
 		</footer>
