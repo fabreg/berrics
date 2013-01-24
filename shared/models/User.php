@@ -646,6 +646,21 @@ class User extends AppModel {
 	
 	}
 
+	public function disambig_user_by_email($email) {
+		
+		//lets get all the accounts and order them by date ASC to get the oldest one
+		
+		$accounts = $this->find("all",array(
+						"conditions"=>array(
+							"User.email"=>$email
+						),
+						"contain"=>array()
+					));
+
+		
+		
+	}
+
 
 
 	

@@ -2080,6 +2080,54 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function disambig_users() {
+		
+		$this->loadModel('User');
+		
+		$users = $this->User->find("all",array(
+					"fields"=>array(
+						"COUNT(*) as total",
+						"User.email",
+						"User.created"
+					),
+					"conditions"=>array(
+						"OR"=>array(
+							"User.email !="=>"none@none.com",
+							"User.email !="=>''
+						)
+					),
+					"contain"=>array(),
+					"group"=>array("User.email HAVING COUNT(User.id) > 1"),
+					"order"=>array("total"=>"DESC","User.created"=>"DESC")
+				));
+
+		$emails = Set::extract("/User/email",$users);
+
+		$usr_check = $this->User->find("all",array(
+				"fields"=>array(
+					"User.email",
+					"User.created",
+					"User.id"
+				),
+				"conditions"=>array(
+					"User.email"=>$emails,
+					//"YEAR(User.created) >=2012"
+				),
+				"contain"=>array()
+		));
+
+		$uids = Set::extract("/User/id",$usr_check);
+
+		die(pr($uids));
+
+		die(pr($usr_check));
+
+		die(pr($emails));
+
+	}
+
+
+
 
 	
 }
