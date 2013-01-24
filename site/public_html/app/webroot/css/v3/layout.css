@@ -3610,9 +3610,8 @@ CANTEEN INDEX
 
 #canteen-index #canteen-caro {
 
-	max-width: 700px;
 	margin:10px;
-	float:left;
+
 }
 
 #canteen-index .top-banners {
@@ -3677,28 +3676,36 @@ CANTEEN CATEGORY NAVIGATION
 }
 
 
-#canteen-category-nav ul {
+#canteen-category-nav>ul {
 
 	list-style: none;
-
+	margin:0;
 
 }
 
 #canteen-category-nav ul li {
 
-
-
+	font-size:20px;
+	font-family: 'universcnb';
 }
 
 #canteen-category-nav ul li ul  {
 
 	list-style: none;
+	margin-left:20px;
 
 }
 
 #canteen-category-nav ul li ul li {
 
+	font-size:16px;	
+	font-family: 'universcn';
 
+}
+
+#canteen-category-nav ul li ul li a {
+
+	display: block;
 
 }
 
@@ -3911,7 +3918,7 @@ CANTEEN CATEGORY VIEW
 
 #canteen-left-column .sorting {
 
-
+	margin-top:15px;
 
 }
 

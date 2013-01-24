@@ -22,7 +22,7 @@ $canteen_array = $CanteenCategory->treeArray();
 				<?php foreach ($v['sub_categories'] as $kk => $vv): 
 						if($vv['active'] == 0) continue;
 				?>
-					<li> - <a href='/canteen/<?php echo $vv['uri']; ?>'><?php echo $vv['name']; ?></a></li>
+					<li><a href='/canteen/<?php echo $vv['uri']; ?>'> - <?php echo $vv['name']; ?></a></li>
 				<?php endforeach ?>
 				</ul>
 			<?php endif ?>

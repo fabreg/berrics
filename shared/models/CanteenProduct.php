@@ -370,7 +370,7 @@ class CanteenProduct extends AppModel {
 		return $a;
 	}
 	
-	public function returnNewProducts($limit = 8,$categories = false) {
+	public function returnNewProducts($limit = 9,$categories = false) {
 		
 		$ids = $this->find("all",array(
 			"fields"=>array(

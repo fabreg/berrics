@@ -118,7 +118,7 @@ $(document).ready(function() {
 						<div class="item <?php if($k==0) echo "active" ?>">
 							<?php echo $this->Media->mediaThumb(array(
 								"MediaFile"=>$d['MediaFile'],
-								"w"=>700
+								"w"=>850
 							)); ?>
 						</div>
 					<?php endforeach; ?>
