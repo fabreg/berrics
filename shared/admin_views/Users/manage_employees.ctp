@@ -16,7 +16,7 @@ $eg = User::employeeGroups();
 				<th>
 					<?php echo $this->Paginator->sort("modified"); ?>
 				</th>
-				<th>Group</th>
+				<th><?php echo $this->Paginator->sort("employee_group"); ?></th>
 				<th>Name</th>
 				<th><?php echo $this->Paginator->sort("berrics_email"); ?></th>
 				<th></th>
