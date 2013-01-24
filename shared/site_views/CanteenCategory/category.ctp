@@ -35,7 +35,7 @@ $this->set("title_for_layout",strtoupper($category['Parent']['name'])." // ".str
 	<div class="row-fluid">
 		<div class="span12">
 			<div class='products column-shadow clearfix'>
-				<div class="category-title">
+				<div class="large-heading">
 					<h1>
 						<?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?>
 					</h1>

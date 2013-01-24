@@ -188,7 +188,11 @@ function viewProductImage($file_name) {
 <div class="column-shadow" id='canteen-product-similar' >
 	<div class="row-fluid">
 		<div class="span12">
-			<h3>More <?php echo Inflector::pluralize($product['CanteenCategory']['name']) ?></h3>
+			<div class="large-heading">
+				<h1>
+					More <?php echo Inflector::pluralize($product['CanteenCategory']['name']) ?>
+				</h1>
+			</div>
 			<div class="product-thumb-collection">
 				<?php foreach ($similar as $k => $v): ?>
 					<?php echo $this->element("canteen/product-thumb",array("product"=>$v)); ?>
