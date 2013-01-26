@@ -39,9 +39,30 @@ foreach($product['ChildCanteenProduct'] as $v) {
 jQuery(document).ready(function($) {
 	
 
-	$('.product-img-thumb a').each(function() { 
+	$('.product-img-thumbs a').bind('click',function() { 
+
+		var container = $('.product-img .inner');
+
+		container.append($("<div class='loading-img' />").css({opacity:.6}));
 
 		//$(this).attr('href','');
+		var full_img = $(this).find('img').attr("data-full-image");
+
+		var img = $(new Image());
+
+		img.bind('load',function() { 
+
+			container.find('.loading-img').remove();
+
+			container.find('img').remove();
+
+			container.append(img);
+
+		});
+
+		img.get(0).src = full_img;
+
+
 
 		return false;
 
@@ -65,7 +86,9 @@ function viewProductImage($file_name) {
 	<div class="row-fluid">
 		<div class="span5">
 			<div class="product-img">
-				<?php echo $this->Media->productListThumb($product,array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$i[0]['file_name']));  ?>
+				<div class="inner">
+					<?php echo $this->Media->productListThumb($product,array("w"=>485,"h"=>485,"zc"=>1),array("img"=>$i[0]['file_name']));  ?>
+				</div>
 			</div>
 			<div class="product-img-thumbs">
 				<?php foreach ($product['CanteenProductImage'] as $k => $v): ?>
@@ -76,6 +99,7 @@ function viewProductImage($file_name) {
 			</div>
 		</div>
 		<div class="span7">
+			
 			<div class="title visible-desktop visible-tablet">
 				<?php echo $this->element("canteen_product/product-title",array("product"=>$product)); ?>
 			</div>
@@ -88,7 +112,7 @@ function viewProductImage($file_name) {
 					<div>Description</div>
 				</div>
 				<p>
-					<?php echo $product['CanteenProduct']['description']; ?>
+					<?php echo nl2br($product['CanteenProduct']['description']); ?>
 				</p>
 			</div>
 			<?php endif ?>
@@ -119,7 +143,7 @@ function viewProductImage($file_name) {
 						<?php endforeach ?>
 						</select>
 						<div>
-							<button class='btn' type='submit'>Add To Cart</button>
+							<button class='btn btn-success' type='submit'>Add To Cart</button>
 						</div>
 					<?php else: ?>
 						<button type='submit' disabled='disabled' class='btn'>Out Of Stock</button>
@@ -133,8 +157,8 @@ function viewProductImage($file_name) {
 					<div>Details</div>
 				</div>
 				<?php foreach ($product['Meta'] as $k => $v): ?>
-				<div class='meta-item'>
-				<strong><?php echo $v['key'] ?></strong>:<strong><?php echo $v['val']; ?></strong>
+				<div class='meta-item well well-small'>
+				<strong><?php echo $v['key'] ?></strong>:<?php echo $v['val']; ?>
 				</div>
 				<?php endforeach ?>
 			</div>

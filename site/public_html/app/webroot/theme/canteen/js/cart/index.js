@@ -39,6 +39,14 @@ $(document).ready(function() {
 		$(this).removeClass('form-error');
 		
 	});
+
+	$('.checkout-form .actions input[type=submit]').bind('click',function() {
+
+		$(this).attr({'disabled':true});
+
+		
+
+	});
 	
 	
 });

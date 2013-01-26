@@ -1,6 +1,6 @@
 <?php echo $this->element("canteen/columns/category-nav") ?>
 <?php if ($this->request->params['controller'] == "canteen_category"): ?>
-<div class='sorting clearfix'>
+<div class='sorting clearfix hidden-phone'>
 	<div class='wrapper'>
 		<div class='heading'>
 			
@@ -12,7 +12,7 @@
 			<div class='filter-menu'>
 				<?php if(isset($_GET['data']) && count($_GET['data'])>0): ?>
 				<div class='reset-link'>
-					<a href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
+					<a class='btn btn-primary' href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
 				</div>
 				<?php endif;?>
 				<div class='filter-heading'> // BRANDS</div>
@@ -27,11 +27,11 @@
 			<?php foreach($filters['Meta'] as $k=>$v): ?>
 			<div class='filter-menu'>
 				<div class='filter-heading'> // <?php echo strtoupper($k); ?></div>
-				<?php if(isset($_GET['data']) && count($_GET['data'])>0): ?>
+				<?php /*if(isset($_GET['data']) && count($_GET['data'])>0): ?>
 				<div class='reset-link'>
 					<a href='/canteen/<?php echo $category['CanteenCategory']['uri']; ?>'>RESET FILTERS</a>
 				</div>
-				<?php endif;?>
+				<?php endif; */?>
 				<div class='filter-options'>
 					<?php 
 						foreach($v as $key=>$val):

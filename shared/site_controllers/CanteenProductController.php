@@ -22,7 +22,7 @@ class CanteenProductController extends CanteenAppController {
 		)),$this->isAdmin());
 		
 		
-		$similar = $this->CanteenProduct->productViewSimilarProducts($product['CanteenProduct']['canteen_category_id'],4,array($product['CanteenProduct']['id']));
+		$similar = $this->CanteenProduct->productViewSimilarProducts($product['CanteenProduct']['canteen_category_id'],3,array($product['CanteenProduct']['id']));
 
 		$this->set(compact("product","similar"));
 		

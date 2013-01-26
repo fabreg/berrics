@@ -3685,14 +3685,14 @@ CANTEEN CATEGORY NAVIGATION
 
 #canteen-category-nav ul li {
 
-	font-size:20px;
+	font-size:18px;
 	font-family: 'universcnb';
 }
 
 #canteen-category-nav ul li ul  {
 
 	list-style: none;
-	margin-left:20px;
+	margin-left:10px;
 
 }
 
@@ -3736,7 +3736,7 @@ CANTEEN PRODUCT
 #canteen-product h1 {
 
 	font-size:28px;
-
+	line-height: 30px;
 }
 
 #canteen-product h1 small {
@@ -3748,30 +3748,41 @@ CANTEEN PRODUCT
 
 #canteen-product .product-img {
 
+	
+
+}
+
+#canteen-product .product-img .inner {
+
 	position: relative;
 
 }
 
-#canteen-product .product-img .loading {
+#canteen-product .product-img .inner .loading-img {
 
 	position: absolute;
 	height:100%;
 	width:100%;
-	top:0px;
-	left:0px;
 	background-image:url(/img/v3/layout/loader-clear.gif);
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-color: #999;
-	display: none;
-
+	top:0px;
+	left:0px;
+	background-color:#fff;
 }
+
 
 
 #canteen-product .product-img-thumbs {
 
 	text-align: center;
 	padding-top:5px;
+}
+
+#canteen-product .product-img-thumbs a {
+
+	text-decoration:none;
+
 }
 
 #canteen-product .product-img-thumbs img {
@@ -3813,11 +3824,16 @@ CANTEEN PRODUCT
 	background-color: #000;
 	color:#fff;
 	font-size: 14px;
-	
 	font-family: 'universcnb';
-	
 	padding:6px;
 	padding-bottom:3px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+
 }
 
 #canteen-product .option-box label span {
@@ -3827,17 +3843,22 @@ CANTEEN PRODUCT
 	padding:10px;
 	font-size:18px;
 
+
 }
 
 #canteen-product .meta-item {
 
 	float:left;
-	font-family: 'Courier';
-	border-bottom:1px solid #ccc;
-	border-right:4px;
 	padding:5px;
 	padding-bottom:0px;
+	height:24px;
 	color:#666;
+	
+	margin-right:4px;
+
+	font-family: 'Courier';
+	font-size: 14px;
+	line-height: 14px;
 
 }
 
@@ -3880,7 +3901,11 @@ CANTEEN PRODUCT
 @media (max-width: 767px) {  }
  
 /* Landscape phones and down */
-@media (max-width: 480px) {  }
+@media (max-width: 480px) { 
+
+
+
+}
 
 
 /*
@@ -3916,6 +3941,12 @@ CANTEEN CATEGORY VIEW
 
 }
 
+#canteen-left-column .sorting .reset-link a {
+
+	color:white;
+
+}
+
 #canteen-left-column .sorting {
 
 	margin-top:15px;
@@ -3938,7 +3969,7 @@ CANTEEN CATEGORY VIEW
 #canteen-left-column .sorting .control-group .controls {
 
 	float:left;
-	margin-left:10px;
+	margin-left:30px;
 }
 
 #canteen-left-column .sorting .filter-heading {
@@ -4060,14 +4091,21 @@ CANTEEN CART
 
 }
 
-#canteen-cart .checkout-row {
+#canteen-cart .checkout-form {
 
+	
 
 }
 
-#canteen-cart .checkout-row .checkout-form {
+#canteen-cart .checkout-form .control-group {
 
-	
+	margin-bottom:5px;
+
+}
+
+#canteen-cart .checkout-row {
+
+	margin-top:10px;
 
 }
 
@@ -4077,9 +4115,17 @@ CANTEEN CART
 
 }
 
+#canteen-cart .checkout-row .totals-cell table tr td:first-child {
+
+
+	font-family: 'universcnb';
+
+}
+
 #canteen-cart .checkout-form h2 {
 
 	text-align:center;
+
 
 }
 
@@ -4102,11 +4148,37 @@ CANTEEN CART
 
 }
 
+#canteen-cart .checkout-form .cc-icons {
+
+	text-align:center;
+	padding:5px;
+
+}
+
 #canteen-cart .checkout-form h3 {
 
-	font-size:20px;
-	font-family: 'universcnb';
+	font-size:18px;
+	line-height:36px;
+	background-color:#000;
 	text-align:center;
+	border-radius: 8px;
+	padding:0px;
+	color:#e9e9e9;
+	font-weight: normal;
+	text-shadow:0px 2px 3px #000;
+	height:32px;
+
+}
+
+#catneen-cart #same-as-shipping-div {
+
+	text-align: center;
+
+}
+
+#canteen-cart .continue-shopping {
+
+	padding-bottom:5px;
 
 }
 
@@ -4123,7 +4195,8 @@ CANTEEN CART
 	#canteen-cart .checkout-row .totals-cell {
 
 		float:right;
-		max-width:40%;
+		max-width:25%;
+		width:200px;
 	}
 
 
@@ -4191,6 +4264,7 @@ CANTEEN BODY
 #canteen-left-column { 
 
 	padding:5px;
+	margin-bottom:10px;
 
 }
 
@@ -4205,6 +4279,7 @@ CANTEEN BODY
 	line-height: 20px;
 	margin-bottom:5px;
 	border-radius:4px;
+
 }
 
 

@@ -21,7 +21,7 @@
 						<div class='item-wrapper clearfix'>
 							<div class='img-thumb'>
 								<?php 
-									echo $this->Media->productThumb($c['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>45,"h"=>45));							
+									echo $this->Media->productThumb($c['CanteenProduct']['ParentCanteenProduct']['CanteenProductImage'][0],array("w"=>45,"h"=>45),array("lazy"=>true));							
 								?>
 							</div>
 							<?php 
