@@ -143,7 +143,7 @@ function viewProductImage($file_name) {
 						<?php endforeach ?>
 						</select>
 						<div>
-							<button class='btn btn-success' type='submit'>Add To Cart</button>
+							<button class='btn btn-success' type='submit'> <i class="icon icon-plus-sign"></i> Add To Cart</button>
 						</div>
 					<?php else: ?>
 						<button type='submit' disabled='disabled' class='btn'>Out Of Stock</button>

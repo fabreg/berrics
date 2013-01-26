@@ -12,7 +12,7 @@
 			<tr>
 				<td align="center" valign="middle">
 				<div class='delete' hash='<?php echo $item['hash']; ?>'>
-					<img src="/img/v3/layout/minus.png" alt="" border='0' />
+					<i class="icon icon-remove-circle"></i>
 				</div>
 				</td>
 				<td valign='top' >
