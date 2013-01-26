@@ -170,7 +170,7 @@ class User extends AppModel {
 			"conditions"=>array(
 		
 				"OR"=>array(
-					"User.email"=>$data['email'],
+					//"User.email"=>$data['email'],
 					"User.facebook_account_num"	=> $data['facebook_account_num']
 				)
 		
