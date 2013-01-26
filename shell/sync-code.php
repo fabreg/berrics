@@ -14,7 +14,8 @@ $servers = array(
 			"w8",
 			"w9",
 			"w10",
-			"w11"
+			"w11",
+			"w12"
 		);
 
 foreach($servers as $server) {
