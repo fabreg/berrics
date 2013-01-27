@@ -25,7 +25,10 @@ $servers = array(
 			"w19",
 			"w20",
 			"w21",
-			"w22"
+			"w22",
+			"w23",
+			"w24",
+			"w25"
 		);
 
 foreach($servers as $server) {
