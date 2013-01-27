@@ -12,7 +12,9 @@
 			<tr>
 				<td align="center" valign="middle">
 				<div class='delete' hash='<?php echo $item['hash']; ?>'>
-					<i class="icon icon-remove-circle"></i>
+					<button class="btn btn-danger">
+						<i class="icon icon-remove-sign"></i>
+					</button>
 				</div>
 				</td>
 				<td valign='top' >
