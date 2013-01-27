@@ -1,0 +1,334 @@
+@CHARSET "UTF-8";
+
+body {
+
+	height:100%;	
+	
+}
+
+#page-container {
+
+	background-image:url(/theme/sls-voting/img/grip-bg.jpg);
+	background-repeat:repeat-y;
+	background-position:center top;
+	padding-top:130px;
+}
+
+#footer {
+
+	width:900px;
+	margin:auto;	
+	margin-top:25px;
+	margin-bottom:25px;
+}
+
+#footer .inner {
+
+	color:#e9e9e9;	
+	
+}
+
+#footer .links a {
+
+	color:#e9e9e9;	
+	
+}
+
+#sls-qualifying-body { 
+
+	margin-top:-40px;
+		
+}
+
+
+#sls-voting-section {
+
+	background-image:url(/theme/sls-voting/img/blk-px.png);
+	width:975px;
+	margin:auto;
+	font-family:'Arial';
+	font-size:14px;
+}
+
+#sls-voting-section .inner {
+
+	padding:5px;
+
+}
+	
+#sls-voting-section .voting-heading {
+
+}
+
+#sls-voting-section .vote-section {
+
+}
+
+#sls-voting-section .vote-section .entries {
+
+	width:49%;
+	float:left;
+	
+}
+
+#sls-voting-section .vote-section .voting {
+
+	width:49%;
+	float:right;
+	position:realtive;
+}
+
+#sls-voting-section .rules {
+
+	
+	width:450px;
+	margin:auto;
+	background-color:#000;
+
+}
+#sls-voting-section .rules .inner {
+	padding:13px;
+	font-size:15px;
+	text-align:justify;
+}
+#sls-voting-section .entry-div-wrapper {
+	
+
+}
+
+#sls-voting-section .entry-div {
+
+	background-repeat:no-repeat;
+	height:102px;
+	width:433px;
+	margin:auto;
+	position:relative;
+	
+}
+#sls-voting-section .entry-spacer {
+
+	width:65%;
+	height:2px;
+	background-color:#fff;
+	margin:auto;
+	margin-top:6px;
+	margin-bottom:6px;	
+	
+}
+
+#sls-voting-section .entry-div .play-button {
+	
+	width:125px;
+	height:30px;
+	line-height:30px;
+	background-color:#fff;
+	border:1px solid #000;	
+	color:#000;
+	text-align:center;
+	position:absolute;
+	top:60px;
+	left:120px;
+	z-index:104;
+	font-family:'Arial Black';
+	font-size:16px;
+}
+
+#sls-voting-section .entry-div .play-button a {
+
+	color:inherit;	
+	text-decoration:none;
+	
+}
+
+#sls-voting-section .entry-div .vote-button {
+	
+	width:125px;
+	height:30px;
+	line-height:30px;
+	color:#000;
+	text-align:center;
+	position:absolute;
+	top:60px;
+	left:265px;
+	z-index:105;
+	font-family:'Arial Black';
+}
+#sls-voting-section .entry-div .vote-placed {
+	
+	background-color:#d2232a;
+	width:125px;
+	height:30px;
+	line-height:30px;
+	color:#000;
+	text-align:center;
+	z-index:105;
+	font-family:'Arial Black';
+}
+
+#sls-voting-section .entry-div .vote-button input {
+
+	width:100%;
+	font-family:'Arial Black';
+	line-height:30px;
+	background-color:#fff;
+	height:30px;
+	font-size:16px;
+	border:none;
+	margin-top:1px;
+	cursor:pointer;
+}
+
+
+#sls-voting-section .voting-form {
+	
+	background-color:black;	
+	width:450px;
+	margin:auto;
+}
+
+#sls-voting-section .voting-form .inner {
+
+	padding:13px;
+	font-size:14px;
+		text-align:justify;
+}
+
+#sls-voting-section .vote-result-div {
+
+	height:84px;
+	width:375px;
+	position:relative;	
+	
+}
+#sls-voting-section .vote-result-div .delete-form {
+	
+	z-index:1002;
+	position:absolute;
+	top:60px;
+	left:90px;
+	
+}
+
+#sls-voting-section .vote-result-div .delete-form input {
+
+	background-color:transparent;
+	cursor:pointer;
+	border:none;
+	color:#fff;
+	font-size:11px;
+	font-family:'Arial Black';	
+	text-decoration:underline;
+}
+
+#sls-voting-section .vote-result-div .x-out {
+
+	position:absolute;	
+	z-index:1001;
+}
+
+#sls-voting-section  .no-vote {
+
+	margin-top:3px;	
+	margin-bottom:3px;
+	height:70px;
+	background-image:url(/theme/sls-voting/img/no-vote.jpg);
+	background-repeat:no-repeat;
+	background-position:10px 10px;
+}
+
+.sls-video-post {
+
+	width:728px;
+	margin:auto;	
+	
+}
+
+.sls-video-post .post-bit {
+
+		
+	
+}
+
+.sls-video-post .d-post-bit .container,
+.sls-video-post .d-post-bit .container-top,
+.sls-video-post .d-post-bit .bottom 
+ {
+
+	background-image:none;
+	background-color:#000;
+	
+}
+
+
+#sls-voting-section .sls-video-post .entry-div {
+
+	background-color:#000;	
+	margin-top:50px;
+	margin-bottom:40px;
+}
+
+#sls-voting-section .sls-video-post .entry-div .play-button {
+
+	display:none;	
+	
+}
+
+/*overlay*/
+#video-overlay { 
+
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:100%;
+	width:100%;
+	background-image:url(/img/layout/blk-px.png);
+	z-index:1499;
+
+}
+
+#video-overlay .inner {
+	
+	position:relative;
+	height:100%;
+	width:100%;
+}
+
+#video-overlay .loading {
+
+	height:100%;
+	width:100%;
+	background-image:url(/theme/sls-voting/img/loading.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+	
+}
+
+#video-overlay .sls-video-post .d-post-bit {
+
+	margin-bottom:0px;	
+	
+}
+
+#video-overlay .sls-video-post {
+	width:728px;
+	margin:auto;	
+	display:none;
+}
+
+#video-overlay .sls-video-post .d-post-bit .bottom {
+	
+	min-height:25px;
+		
+}
+
+#video-overlay .sls-video-post .bottom .tags,
+#video-overlay .sls-video-post .bottom .date-info,
+#video-overlay .sls-video-post .container hr,
+#video-overlay .sls-video-post .title
+ {
+
+	display:none;	
+	
+}
+
+

@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+
+#posts {
+
+	margin-top:10px;
+
+}b .img {
+
+	text-align:center;
+
+}
+
+#posts .posts-title {
+	
+	font-size:130%;
+	font-family:'Times New Roman';
+	color:#666666;
+
+}
+
+#posts .posts-title .posts-total {
+
+	font-size:80%;
+
+}
+
+#posts .posts-paginate-menu {
+
+	float:right;
+	text-align:right;
+	font-size:16px;
+	color:#666;
+	height:30px;
+	line-height:30px;
+}
+#posts .posts-paginate-menu a {
+
+	text-decoration:none;
+	color:inherit;
+
+}
+
+#posts .posts-paginate-menu .current {
+
+	color:#fff;
+
+}

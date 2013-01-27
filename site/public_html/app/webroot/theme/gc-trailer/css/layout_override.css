@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+body {
+
+	background-image:url(/theme/gc-trailer/img/gc-bg.jpg);
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:center 50px;
+	
+}
+
+#main-container {
+
+
+	min-height:2400px;
+
+}

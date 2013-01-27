@@ -1,0 +1,177 @@
+@CHARSET "UTF-8";
+
+/*
+	SCORECARD
+	
+*/
+
+#left_col,#body-container {
+	
+	width:1000px;
+	margin:auto;	
+	
+}
+
+#body-container {
+	
+	margin-top:-40px;	
+	
+}
+
+#right_col {
+	
+	display:none;
+	
+}
+
+#scorecard {
+	
+	width:1000px;
+	margin:auto;
+	
+}
+
+
+#scorecard .main-heading {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/heading.jpg);
+	height:112px;
+	background-repeat:no-repeat;
+	cursor:pointer;
+}
+
+
+#scorecard .card-heading {
+	
+	background-color:#1e2128;
+	background-image:url(/theme/battle-at-the-berrics-5/img/rules-header.jpg);
+	background-repeat:no-repeat;
+	background-position:30px top;
+	font-family:'Arial';
+	
+}
+
+
+
+#scorecard .card-heading .profile {
+	
+	float:left;
+	margin-left:88px;
+	width:601px;
+	height:200px;
+	margin-top:95px;
+	
+}
+
+#scorecard .card-heading .profile .name {
+	
+	font-size:32px;
+	font-weight:bold;
+	color:#f7f7f7;	
+	border-bottom:4px solid #fff;
+	
+}
+
+#scorecard .card-heading .profile .name a {
+
+	text-decoration:none;
+	color:inherit;	
+	
+}
+
+#scorecard .card-heading .profile  .fb-like {
+
+	float:right;	
+	width:55px;
+	margin-top:-7px;
+}
+#scorecard .card-heading .profile  .twitter {
+
+	float:right;	
+	margin-right:4px;
+}
+
+#scorecard .card-heading .profile table {
+
+	width:100%;	
+	
+}
+
+#scorecard .card-heading .profile table td {
+	
+	height:28px;
+	border-bottom:2px solid #fff;	
+	
+}
+#scorecard .card-heading .profile table .total {
+	
+	font-weight:bold;
+	text-align:right;
+	padding-right:8px;	
+	
+}
+
+#scorecard .card-heading .right-banner {
+	
+	width:300px;
+	height:250px;
+	float:right;
+	margin-top:5px;
+	margin-right:5px;
+	
+}
+
+#scorecard .votes {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/scorecard-bg.jpg);
+	min-height:500px;
+	color:#333;
+	
+}
+.battle-card {
+
+	width:98%;
+	margin:auto;	
+	color:#f7f7f7;
+	font-family:'Arial';
+	
+}
+.battle-card .inner {
+	
+	padding:5px;	
+	
+}
+
+.battle-card table {
+	
+	width:100%;	
+	
+}
+
+.battle-card table td {
+	
+	text-align:center;
+	
+}
+
+.battle-card table .points-cell {
+	
+	font-size:32px;
+	font-weight:bold;	
+}
+
+.team-berra-card {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/score-team-berra-bg.jpg);
+	
+}
+
+
+.team-koston-card {
+	
+	background-image:url(/theme/battle-at-the-berrics-5/img/score-team-koston-bg.jpg);
+	
+}
+
+
+
