@@ -33,10 +33,10 @@ foreach($files as $file) {
 	switch(strtolower(pathinfo($f[1],PATHINFO_EXTENSION))) {
 		
 		case "css":
-			echo `java -jar $cdir/yuicompressor-2.4.7.jar --type css -o $newFileName $f[1];`;
+			echo `java -jar $cdir/yuicompressor-2.4.8.jar --type css -o $newFileName $f[1];`;
 		break;
 		case "js":
-			echo `java -jar $cdir/yuicompressor-2.4.7.jar --type js --nomunge --preserve-semi -o $newFileName $f[1];`;
+			echo `java -jar $cdir/yuicompressor-2.4.8.jar --type js --nomunge --preserve-semi -o $newFileName $f[1];`;
 		break;
 		
 	}
