@@ -2210,7 +2210,9 @@ class TesterController extends LocalAppController {
 
 
 
-
+	public function static_test() {
+		
+	}
 
 	
 }
