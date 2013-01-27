@@ -16,7 +16,7 @@ $files = explode("\n",trim($diffFiles));
 foreach($files as $file) {
 	
 	$f = explode("\t",$file);
-	
+	if(count($f)<=0) continue;
 	//dont want deleted files
 	if(strtoupper($f[0])=="D") continue;
 	//gotta be css or js
