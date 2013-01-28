@@ -104,7 +104,7 @@ $total_per_row = ceil(count($f_sections)/3);
 	<li class="spacer"></li>
 	
 	
-	<li class='nav-btn search'><form method='post' action='/search' ><label for="">SEARCH</label>
+	<li class='nav-btn search clearfix'><form method='post' action='/search' ><label for="">SEARCH</label>
 	<input name='data[Search][term]' type='text' /><button></button></form></li>
 </ul>			
 </div>

@@ -1,6 +1,7 @@
 <?php 
 		echo $this->Html->css(array(
 			"v3/bootstrap",
+			"v3/font-awesome",
 			"v3/layout",
 			"layout_override",
 			"v3/bootstrap-responsive"

@@ -47,65 +47,51 @@
 				<div class="row-fluid top-row">
 					<div class="logo-div" >
 						<a href='/dailyops'>
-							<?php echo $this->Html->image('v3/layout/berrics-heading-logo.png',array("border"=>0,"alt"=>"The Berrics - Inside Eric Koston's and Steve Berra's Skatepark","id"=>"berrics-heading-logo")); ?>
+							<?php echo $this->Html->image('v3/layout/berrics-header-logo-blk.png',array("border"=>0,"alt"=>"The Berrics - Inside Eric Koston's and Steve Berra's Skatepark","id"=>"berrics-heading-logo")); ?>
 						</a>
 					</div>
 					<div class="social-media">
-						<!--
-						<div class="cart">
-								
-								<span class="cart-icon-img">
-									<img src="/img/v3/layout/cart-header-icon.png" alt="" />
-								</span>
-									
-							  Cart
-							<span class="label">
-								<?php echo count($this->Session->read("CanteenOrder.CanteenOrderItem")); ?>
-							</span>
-						</div>
-						-->
-						<div class="user-info">
+						<div class="top">
 							<?php if (CakeSession::check("Auth.User.id")): ?>
-								<div class="dropdown">
-									<button class="btn btn-mini" data-toggle='dropdown'>
-										<i class="icon icon-user"></i> <b class="caret"></b>
-									</button>
+								<div class="dropdown account-top">
+									<a href='#' data-toggle='dropdown' class='dropdown-toggle'><i class="icon icon-caret-down icon-white"></i> <?php //echo CakeSession::read("Auth.User.first_name"); ?> <?php //echo CakeSession::read("Auth.User.last_name"); ?>Logged In</a>
 									<ul class="dropdown-menu pull-right">
 										<li>
-											<a href="/identity/login/logout/<?php echo base64_encode($this->here) ?>">Logout</a>
+											<a href="/identity/login/logout/<?php echo base64_encode($this->request->here); ?>"><i class="icon icon-off"></i> Logout</a>
 										</li>
 									</ul>
 								</div>
 								
 							<?php else: ?>
-								<a class='login-link' href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
-									<img src="/img/v3/layout/top-user-icon.png" alt="" />
-								</a>
+								<div class="login-top">
+									<a class='login-link' href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
+										<i class="icon icon-caret-down"></i> Account Login
+									</a>
+								</div>
 							<?php endif ?>
+						</div>
+						<div class="bottom clearfix">
+							<div class="instagram">
+								<a href="http://instagram.com/berrics" target='_blank'>
+									<img src="/img/v3/layout/instagram-top-icon.png" alt="" border='0' />
+								</a>
+							</div>
 							
+							<div class="twitter">
+								<a href="http://twitter.com/berrics" target='_blank'>
+									<img src="/img/v3/layout/twitter-top-icon.png"  alt="The Berrics Twitter" />
+								</a>
+							</div>
+							<div class="fb-icon">
+								<a href="http://www.facebook.com/pages/The-Berrics/123390707714463" target='_blank'>
+									<img src="/img/v3/layout/fb-header-icon.jpg" alt="" border='0' />
+								</a>
+							</div>
+							<div class="facebook hidden-phone">
+								<div class="fb-like" data-href="http://www.facebook.com/pages/The-Berrics/123390707714463" data-send="false" data-layout="button_count" data-width="100" data-show-faces="true"></div>
+							</div>
+
 						</div>
-						
-						<div class="fb-icon">
-							<a href="http://www.facebook.com/pages/The-Berrics/123390707714463" target='_blank'>
-								<img src="/img/v3/layout/fb-header-icon.jpg" alt="" border='0' />
-							</a>
-						</div>
-						<!--
-						<div class="tumblr visible-desktop">
-							<a href="http://twitter.com/berrics" target='_blank'>
-								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
-							</a>
-						</div>
-						-->
-						<div class="twitter">
-							<a href="http://twitter.com/berrics" target='_blank'>
-								<img src="/img/v3/layout/px.png" height='25' width='33' alt="" />
-							</a>
-						</div>
-						<div class="facebook visible-desktop">
-							<div class="fb-like" data-href="http://www.facebook.com/pages/The-Berrics/123390707714463" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-						</div>
-						
 					</div>
 				</div>
 				<?php echo $this->element("layout/v3/top-nav-list"); ?>	
