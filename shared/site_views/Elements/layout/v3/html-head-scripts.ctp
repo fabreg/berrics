@@ -4,7 +4,6 @@
 			"v3/font-awesome",
 			"v3/layout",
 			"layout_override",
-			'v3/font-awesome',
 			"v3/bootstrap-responsive"
 		),"stylesheet");
 
