@@ -5,6 +5,13 @@ class CanteenCategory extends AppModel {
 	public $actsAs = array("GroupTree");
 	
 	public $hasMany = array("CanteenProduct");
+
+	public $belongsTo = array(
+		"ParentCanteenCategory"=>array(
+			"className"=>"CanteenCategory",
+			"foreignKey"=>"parent_id"
+		)
+	);
 	
 	public function treeList() {
 		

@@ -1304,15 +1304,23 @@ hr.hr1 {
 
 .column-shadow {
 
-	  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-  	 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
    	background-color:#fff;
    	border-radius: 4px;
 }
 
 /* Large desktop */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) { 
+
+	.column-shadow {
+
+		  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	  	 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	   	background-color:#fff;
+	   	border-radius: 4px;
+	}
+
+}
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {  }
@@ -1325,7 +1333,7 @@ hr.hr1 {
 
 	.column-shadow {
 
-		box-shadow:none;
+	box-shadow:none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 
@@ -3730,7 +3738,14 @@ CANTEEN PRODUCT
 
 #canteen-product {
 
-	padding:10px;
+	padding:5px;
+
+}
+
+#canteen-product .product-row {
+
+	padding-left:5px;
+	padding-right:5px;
 
 }
 
@@ -3747,9 +3762,39 @@ CANTEEN PRODUCT
 	font-size:22px;
 }
 
+
+#canteen-product .bread-crumb {
+
+	padding:4px;
+	background-color:#000;
+	border-radius: 5px;
+	margin-bottom:5px;
+
+}
+
+#canteen-product .bread-crumb h2 {
+
+	color:#fff;
+	padding:0px;
+	margin:0;
+	font-size:20px;
+	line-height:28px;
+	height:24px;
+	text-indent: 8px;
+	font-weight: normal;
+}
+
+#canteen-product .bread-crumb h2 a {
+
+	color:#fff;
+	text-decoration: none;
+	border-bottom:1px dotted #fff;
+
+}
+
 #canteen-product .product-img {
 
-	
+	text-align: center;
 
 }
 
@@ -3802,6 +3847,7 @@ CANTEEN PRODUCT
 	font-family: 'Courier';
 	font-size: 28px;
 	margin-top:10px;
+	text-align: center;
 
 }
 
@@ -3893,13 +3939,28 @@ CANTEEN PRODUCT
 
 
 /* Large desktop */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {  
+
+	#canteen-product .price {
+
+		text-align: left;
+
+	}
+
+}
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {  }
+@media (min-width: 768px) and (max-width: 979px) { 
+
+
+
+ }
  
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {  }
+@media (max-width: 767px) { 
+
+
+}
  
 /* Landscape phones and down */
 @media (max-width: 480px) { 
@@ -4245,7 +4306,7 @@ CANTEEN BODY
 
 #canteen-body {
 
-	margin-top:20px;
+	
 
 }
 
@@ -4255,11 +4316,12 @@ CANTEEN BODY
 	color:#fff;
 	background-color:#000;
 	padding:5px;
-	font-size:28px;
-	height:36px;
-	line-height: 32px;
+	font-size:26px;
+	height:34px;
+	line-height: 30px;
 	border-radius:4px;
 	margin-top:0;
+	text-indent: 8px;
 }
 
 #canteen-left-column { 

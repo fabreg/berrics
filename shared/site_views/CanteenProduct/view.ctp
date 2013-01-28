@@ -4,7 +4,7 @@ $p = $product['CanteenProduct'];
 $i = $product['CanteenProductImage'];
 $b = $product['Brand'];
 $o = $product['ChildCanteenProduct'];
-
+$c = $product['CanteenCategory'];
 
 $title_for_layout = "The Berrics Canteen - {$product['CanteenProduct']['name']} - {$product['CanteenProduct']['sub_title']} By: {$product['Brand']['name']}";
 
@@ -78,12 +78,15 @@ function viewProductImage($file_name) {
 
 </script>
 <div id="canteen-product" class='column-shadow'>
+	<div class="bread-crumb">
+		<h2><?php echo $c['ParentCanteenCategory']['name']; ?> // <a href='/canteen/<?php echo $c['uri']; ?>'><?php echo $c['name']; ?></a></h2>
+	</div>
 	<div class="row-fluid mobile-title visible-phone">
 		<div class="span12">
 			<?php echo $this->element("canteen_product/product-title",array("product"=>$product)); ?>
 		</div>
 	</div>
-	<div class="row-fluid">
+	<div class="row-fluid product-row">
 		<div class="span5">
 			<div class="product-img">
 				<div class="inner">

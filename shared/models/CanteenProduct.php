@@ -140,7 +140,9 @@ class CanteenProduct extends AppModel {
 						"CanteenProductPrice"=>array(
 							"Currency"
 						),
-						"CanteenCategory",
+						"CanteenCategory"=>array(
+							"ParentCanteenCategory"
+						),
 						"Brand",
 						"CanteenProductImage"=>array(	
 							"order"=>array(
