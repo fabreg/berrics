@@ -3076,7 +3076,7 @@ INSTGRAM OF THE WEEK
 .igotw-item .image-item {
 
 	text-align: center;
-
+	min-height: 300px;
 }
 
 .igotw-item .heading {
