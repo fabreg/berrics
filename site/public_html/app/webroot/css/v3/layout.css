@@ -99,7 +99,7 @@ header .social-media {
 
 	padding-right:14px;
 	float:right;
-	width:250px;
+	width:320px;
 }
 
 header .social-media .top {
@@ -107,6 +107,11 @@ header .social-media .top {
 	height:30px;
 	color:#fff;
 	font-family: 'Courier';
+}
+header .social-media .top .seperator {
+
+	float:right;
+
 }
 header .social-media .top .account-top {
 
@@ -139,37 +144,33 @@ header .social-media .top .login-top .icon {
 }
 
 @-moz-document url-prefix() {
+
     header .social-media .top .login-top .icon {
 
 		margin-top:-2px;
-
-	float: right;
-	font-family: 'Courier';
-	color:#fff;
-
-}
-
-header .social-media .cart a {
-
-	color:#fff;
-	text-decoration:none;
-}
-
-header .social-media .cart img.cart-icon-img {
-
-	width:24px;
-
+		float: right;
+		font-family: 'Courier';
+		color:#fff;
 
 	}
+
+}
+
+header .social-media .top .cart-widget {
+
+	float:right;
+
 }
 
 
-header .social-media .top .login-top a {
+header .social-media .top .cart-widget a,
+header .social-media .top .login-top a,
+header .social-media .top .account-top a {
 	height:20px;
 	line-height: 24px;
 	color:#fff;
 	text-decoration: none;
-	display: block
+	
 }
 
 header .social-media .bottom {
@@ -4232,11 +4233,47 @@ CANTEEN CART
 
 }
 
-#catneen-cart #same-as-shipping-div {
+#canteen-cart .same-as-shipping-div {
 
 	text-align: center;
 
 }
+
+#canteen-cart .same-as-shipping-div label {
+
+	height:18px;
+	line-height: 24px;
+
+}
+
+#canteen-cart .same-as-shipping-div input[type=checkbox] { 
+ width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: -5px;
+    *overflow: hidden;
+}
+
+#canteen-cart #grand-total {
+
+	text-align:center;
+	font-size:22px;
+	font-family: 'universcnb';
+	padding:8px;
+}
+
+#canteen-cart #grand-total span {
+
+	color:#256406;
+	border-bottom:1px dotted #000;
+	font-family: 'universcn'
+
+}
+
+
 
 #canteen-cart .continue-shopping {
 

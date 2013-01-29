@@ -21,9 +21,7 @@ $(document).ready(function() {
 	
 	$("select[name*='[country_code]'],select[name*='[state]'],select[name='data[CanteenOrder][shipping_method]']").bind("change",function(e) { 
 		
-	
 		calculateCart();
-		
 		
 	});
 	$("#CanteenOrderPostal").bind("keyup",function(e) {
@@ -40,11 +38,9 @@ $(document).ready(function() {
 		
 	});
 
-	$('.checkout-form .actions input[type=submit]').bind('click',function() {
+	$('.checkout-form form').submit(function() { 
 
-		$(this).attr({'disabled':true});
-
-		
+		$('#checkout-submit').attr("disabled","disabled");
 
 	});
 	

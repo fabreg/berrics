@@ -28,7 +28,6 @@
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name='keywords' content="<?php echo $meta_k; ?>" >
 	<meta name='decsription' content="<?php echo $meta_d; ?>" >
@@ -52,17 +51,19 @@
 					</div>
 					<div class="social-media">
 						<div class="top">
-
+							<div class="cart-widget">
+								&nbsp;<i class="icon icon-white icon-shopping-cart"></i> <a href='/canteen/cart' > Cart</a> <span class="badge"><?php echo count(CakeSession::read('CanteenOrder.CanteenOrderItem')) ?></span>
+							</div>
+							
 							<?php if (CakeSession::check("Auth.User.id")): ?>
 								<div class="dropdown account-top">
 									<a href='#' data-toggle='dropdown' class='dropdown-toggle'><i class="icon icon-caret-down icon-white"></i> <?php //echo CakeSession::read("Auth.User.first_name"); ?> <?php //echo CakeSession::read("Auth.User.last_name"); ?>Logged In</a>
 									<ul class="dropdown-menu pull-right">
 										<li>
-											<a href="/identity/login/logout/<?php echo base64_encode($this->request->here); ?>"><i class="icon icon-off"></i> Logout</a>
+											<a href="/identity/login/logout/<?php echo base64_encode($this->request->here); ?>"><i class="icon icon-off"></i> Logout</a> 
 										</li>
 									</ul>
 								</div>
-								
 							<?php else: ?>
 								<div class="login-top">
 									<a class='login-link' href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
@@ -70,6 +71,8 @@
 									</a>
 								</div>
 							<?php endif ?>
+							
+
 						</div>
 						<div class="bottom clearfix">
 							<div class="instagram">

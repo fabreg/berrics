@@ -83,8 +83,14 @@ $skip = array();
 					</div>
 					<?php echo $this->element("checkout-forms/cc-form"); ?>
 					<h3>BILLING ADDRESS</h3>
+
+						<div class="same-as-shipping-div">
+
+							<label><?php echo $this->Form->checkbox("CanteenOrder.same_as_shipping_checkbox",array("id"=>"same-as-shipping-check")); ?> Same As Shipping</label>
+
+						</div>
 						<?php 
-							echo $this->Form->input("same_as_shipping_checkbox",array("type"=>"checkbox","label"=>" Same As Shipping",'id'=>'same-as-shipping-check',"div"=>array("id"=>"same-as-shipping-div")));
+							//echo $this->Form->input("same_as_shipping_checkbox",array("type"=>"checkbox","label"=>" Same As Shipping",'id'=>'same-as-shipping-check',"div"=>array("id"=>"same-as-shipping-div")));
 						?>
 					
 					<div style='clear:both;'></div>
@@ -93,7 +99,7 @@ $skip = array();
 						TOTAL: <span><?php echo $this->Berrics->currency($this->request->data['CanteenOrder']['grand_total'],$user_currency_id); ?></span>
 					</div>
 					
-					<?php echo $this->Form->submit("COMPLETE ORDER",array("class"=>"btn btn-success")); ?>
+					<?php echo $this->Form->submit("COMPLETE ORDER",array("class"=>"btn btn-success","id"=>"checkout-submit")); ?>
 				</div>
 			</div>
 			<?php 
@@ -115,5 +121,6 @@ $skip = array();
 //print_r($this->request->data);
 //print_r($this->Session->read());
 //print_r($this->request->params);
+print_r(CakeSession::read("CanteenOrder"))
 ?>
 </pre>
