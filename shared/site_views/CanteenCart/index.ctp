@@ -70,6 +70,7 @@ $skip = array();
 					</div>
 				</div>
 			</div>
+			<?php echo $this->Session->flash(); ?>
 			<div class="row-fluid">
 				<div class='span6 shipping'>
 					<h3><?php echo strtoupper($l['shipaddress']); ?></h3>
@@ -119,8 +120,8 @@ $skip = array();
 
 //echo "Country: ".env("GEOIP_COUNTRY_CODE");
 //print_r($this->request->data);
-//print_r($this->Session->read());
+print_r($this->Session->read());
 //print_r($this->request->params);
-print_r(CakeSession::read("CanteenOrder"))
+//print_r(CakeSession::read("CanteenOrder"))
 ?>
 </pre>

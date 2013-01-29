@@ -1324,7 +1324,18 @@ hr.hr1 {
 }
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {  }
+@media (min-width: 768px) and (max-width: 979px) { 
+
+	.column-shadow {
+
+		  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	  	 -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	   	background-color:#fff;
+	   	border-radius: 4px;
+	}
+
+ }
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {  }
@@ -4334,6 +4345,43 @@ CANTEEN CART
 	}
 
 }
+
+/*
+##########################
+CANTEEN INVOICE
+########################
+*/
+
+#canteen-invoice {
+
+	padding:5px;
+
+}
+
+#canteen-invoice .message p {
+
+	padding:15px;
+
+}
+
+#canteen-invoice .cart-totals table tr td:first-child {
+
+	font-family: 'universcnb';
+
+}
+
+
+/*
+##########################
+CANTEEN ORDER STATUS
+########################
+*/
+#order-status {
+
+	padding:5px;
+
+}
+
 
 /*
 ##########################

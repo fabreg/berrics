@@ -43,6 +43,19 @@ $(document).ready(function() {
 		$('#checkout-submit').attr("disabled","disabled");
 
 	});
+
+	if($("#canteen-cart #flashMessage").length>0) {
+
+		$("#canteen-cart #flashMessage").removeClass("alert-info").addClass("alert-error")
+
+		//$.scrollTo(".checkout-form");
+
+		//var st = $('.checkout-form').position().top-80;
+
+		//alert(st);
+
+		//$.scrollTo(st);
+	}
 	
 	
 });

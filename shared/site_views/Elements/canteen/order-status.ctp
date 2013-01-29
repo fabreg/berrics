@@ -4,11 +4,11 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 
 
 ?>
-<div id='order-status'>
+<div id='order-status' class='column-shadow'>
 	<div>
 		<div class='order'>
-			<div class='heading'>
-				CANTEEN ORDER STATUS
+			<div class='large-heading'>
+				<h1>CANTEEN ORDER STATUS</h1>
 			</div>
 			<div class='order-bit'>
 				<div class='label'>ORDER #</div>
@@ -49,8 +49,8 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 			<div style='clear:both;'></div>
 		</div>
 		<div class='shipping-records'>
-			<div class='heading'>
-				SHIPPING STATUS
+			<div class='large-heading'>
+				<h1>SHIPPING STATUS</h1>
 			</div>
 			<?php 
 				if(count($order['CanteenShippingRecord'])>0):
@@ -143,7 +143,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 					<!-- Items -->
 					<div class='items'>
 						<div class='items-heading'>Contents</div>
-						<table cellspacing='0' class='canteen-table-items'>
+						<table cellspacing='0' class='canteen-table-items table table-bordered table-striped table-rounded'>
 							<tr>
 								<th>-</th>
 								<th>Item</th>
@@ -171,6 +171,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 			?>
 		</div>
 		<div style='clear:both;'></div>
+		<?php /* ?>
 		<div class='heading'>
 		ORDER NOTES
 		</div>
@@ -224,6 +225,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 				<div class='no-notes-div'>NO NOTES HAVE BEEN ATTACHED TO THIS ORDER</div>
 			<?php endif; ?>
 		</div>
+		<?php */ ?>
 	</div>
 	
 </div>
