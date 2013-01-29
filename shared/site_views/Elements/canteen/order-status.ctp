@@ -1,7 +1,9 @@
+
 <?php 
 
-$this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>false));
+$this->set("title_for_layout","The Berrics Canteen - Order Status");
 
+$this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>false));
 
 ?>
 <div id='order-status' class='column-shadow'>
@@ -10,16 +12,18 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 			<div class='large-heading'>
 				<h1>CANTEEN ORDER STATUS</h1>
 			</div>
-			<div class='order-bit'>
-				<div class='label'>ORDER #</div>
-				<div class='value'>
-					<?php echo $order['CanteenOrder']['id']; ?>
-				</div>
-			</div>
-			<div class='order-bit'>
-				<div class='label'>ORDER STATUS</div>
-				<div class='value'>
-					<?php 
+			<table cellspacing="0" class="table table-bordered table-striped table-rounded">
+				<thead>
+					<tr>
+						<th>Order #</th>
+						<th>Order Status</th>
+						<th>Order Date</th>
+						<th>Last Updated</th>
+					</tr>
+					<tr>
+						<td><?php echo $order['CanteenOrder']['id']; ?></td>
+						<td>
+							<?php 
 						switch(strtolower($order['CanteenOrder']['order_status'])) {
 							
 							case "approved":
@@ -31,22 +35,17 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 							
 						}
 					?>
-					<span style='<?php echo $status_style; ?>'><?php echo strtoupper($order['CanteenOrder']['order_status']); ?></span>
-				</div>
-			</div>
-			<div class='order-bit'>
-				<div class='label'>ORDER DATE</div>
-				<div class='value'>
-					<?php echo strtoupper($this->Time->niceShort($order['CanteenOrder']['created'])); ?>
-				</div>
-			</div>
-			<div class='order-bit'>
-				<div class='label'>LAST UPDATED</div>
-				<div class='value'>
-					<?php echo strtoupper($this->Time->niceShort($order['CanteenOrder']['created'])); ?>
-				</div>
-			</div>
-			<div style='clear:both;'></div>
+						<span style='<?php echo $status_style; ?>'><?php echo strtoupper($order['CanteenOrder']['order_status']); ?></span>
+						</td>
+						<td>
+							<?php echo strtoupper($this->Time->niceShort($order['CanteenOrder']['created'])); ?>
+						</td>
+						<td>
+							<?php echo strtoupper($this->Time->niceShort($order['CanteenOrder']['created'])); ?>
+						</td>
+					</tr>
+				</thead>
+			</table>
 		</div>
 		<div class='shipping-records'>
 			<div class='large-heading'>
@@ -56,93 +55,96 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 				if(count($order['CanteenShippingRecord'])>0):
 					foreach($order['CanteenShippingRecord'] as $k=>$v):
 			?>
-				<fieldset>
-					<legend>
+				<div class="shipment-heading clearfix">
+					<div>
 						Shipment <?php echo ($k+1); ?> of <?php echo count($order['CanteenShippingRecord']); ?> 
-					</legend>
-					<div class='order-bit'>
-						<div class='label'>STATUS</div>
-						<div class='value'>
-							<?php 
-								$shipping_color = "";
-								switch(strtoupper($v['shipping_status'])) {
-									
-									case "SHIPPED":
-										$shipping_color = "color:green; font-weight:bold;";
-									break;
-									
-								}
-							?>
-							<span style='<?php echo $shipping_color; ?>'><?php echo strtoupper($v['shipping_status']); ?></span>
-						</div>
 					</div>
-					<div class='order-bit'>
-						<div class='label'>LAST UPDATED</div>
-						<div class='value'>
-							<?php echo strtoupper($this->Time->niceShort($v['modified'])); ?>
-						</div>
-					</div>
-					<div class='order-bit'>
-						<div class='label'>CARRIER</div>
-						<div class='value'>
-							<?php
-							
-								if(!empty($v['carrier_name'])) {
-									
-									echo strtoupper($v['carrier_name']);
-									
-								} else {
-									
-									echo "N/A";
-									
-								}
-							
-							?>
-						</div>
-					</div>
-					<div class='order-bit'>
-						<div class='label'>TRACKING</div>
-						<div class='value'>
-							<?php
-							
-								if(!empty($v['shipment_number']) || !empty($v['tracking_number'])) {
-									
-									switch(strtoupper($v['carrier_name'])) {
-							
-											case "USPS":
-
-												if(!empty($v['tracking_number'])) {
-					
-													echo "<a target='_blank' href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['tracking_number']}'>{$v['tracking_number']}</a>";
-													
-												} else {
-													
-													echo "<a  target='_blank' href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['shipment_number']}'>{$v['shipment_number']}</a>";
-													
-												}
-												
+				</div>
+					<table cellspacing="0" class="table table-bordered table-striped table-rounded">
+						<thead>
+							<tr>
+								<th>Status</th>
+								<th>Last Updated</th>
+								<th>Carrier</th>
+								<th>Tracking</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<?php 
+										$shipping_color = "";
+										switch(strtoupper($v['shipping_status'])) {
+											
+											case "SHIPPED":
+												$shipping_color = "color:green; font-weight:bold;";
 											break;
 											
-											case "UPS":
-												echo "<a  target='_blank' href='http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums={$v['tracking_number']}'>UPS: {$v['tracking_number']}</a>";
-											break;
+										}
+									?>
+									<span style='<?php echo $shipping_color; ?>'><?php echo strtoupper($v['shipping_status']); ?></span>
+								</td>
+								<td>
+									<?php echo strtoupper($this->Time->niceShort($v['modified'])); ?>
+								</td>
+								<td>
+									<?php
+									
+										if(!empty($v['carrier_name'])) {
+											
+											echo strtoupper($v['carrier_name']);
+											
+										} else {
+											
+											echo "N/A";
+											
+										}
+									
+									?>
+								</td>
+								<td>
+									<?php
+									
+										if(!empty($v['shipment_number']) || !empty($v['tracking_number'])) {
+											
+											switch(strtoupper($v['carrier_name'])) {
+									
+													case "USPS":
+
+														if(!empty($v['tracking_number'])) {
 							
-									}
-									//echo strtoupper($v['tracking_number']);
+															echo "<a target='_blank' href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['tracking_number']}'>{$v['tracking_number']}</a>";
+															
+														} else {
+															
+															echo "<a  target='_blank' href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum={$v['shipment_number']}'>{$v['shipment_number']}</a>";
+															
+														}
+														
+													break;
+													
+													case "UPS":
+														echo "<a  target='_blank' href='http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums={$v['tracking_number']}'>UPS: {$v['tracking_number']}</a>";
+													break;
 									
-								} else {
+											}
+											//echo strtoupper($v['tracking_number']);
+											
+										} else {
+											
+											echo "N/A";
+											
+										}
 									
-									echo "N/A";
-									
-								}
-							
-							?>
-						</div>
-					</div>
-					<div style='clear:both;'></div>
+									?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
 					<!-- Items -->
 					<div class='items'>
-						<div class='items-heading'>Contents</div>
+						<div class='items-heading'>Shipment #<?php echo ($k+1); ?> Contents</div>
 						<table cellspacing='0' class='canteen-table-items table table-bordered table-striped table-rounded'>
 							<tr>
 								<th>-</th>
@@ -158,7 +160,7 @@ $this->Html->script(array("/theme/canteen/js/order-status"),array("inline"=>fals
 							<?php endforeach; ?>
 						</table>
 					</div>	
-				</fieldset>
+				
 			<?php 
 					endforeach;
 				else:	

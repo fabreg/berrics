@@ -4382,6 +4382,27 @@ CANTEEN ORDER STATUS
 
 }
 
+#order-status .shipment-heading {
+
+	border-bottom:1px solid #999;
+	margin-bottom: 4px;
+}
+
+#order-status .shipment-heading div {
+
+	padding:8px;
+	float:left;
+	background-color: #000;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	color:#fff;
+	font-size:18px;
+}
+
 
 /*
 ##########################
