@@ -29,7 +29,6 @@ if($post['Dailyop']['uri'] == "moose-gets-recruited.html") {
 				<img src='/img/layout/news/back-home.jpg' border='0'/>
 			</a>
 			<div style='float:right'>
-				
 				<fb:like href="<?php echo urlencode("http://".$_SERVER['SERVER_NAME'].$url); ?>" layout="button_count" show_faces="false" width="25" font="lucida grande"></fb:like>
 			</div>
 			<div class='twitter' style='float:right; padding-right:5px;'>
