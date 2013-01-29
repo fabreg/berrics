@@ -27,6 +27,28 @@ class UserAddress extends AppModel {
 		
 		
 	}
+	public function setBillingAddressValidation($activate = true) {
+
+
+		if(!$activate) return;
+
+		$this->validate = array(
+
+			"first_name"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Billing first name cannot be empty"
+			
+			),
+			"last_name"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Billing Last Name Cannot Be Empty"
+			),
+			"postal_code"=>"notEmpty",
+
+		);
+
+
+	}
 	
 
 }

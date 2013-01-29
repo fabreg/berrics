@@ -43,16 +43,17 @@ class CanteenCartController extends CanteenAppController {
 				
 			}
 			
-			
 			$order_id = $this->Session->read("CanteenOrder.CanteenOrder.id");
 			
 			$this->CanteenOrder->ShippingAddress->setOrderAddressValidation();
 			$this->CanteenOrder->ShippingAddress->set($this->request->data['ShippingAddress']);
+			$this->CanteenOrder->BillingAddress->setBillingAddressValidation($this->request->data['CanteenOrder']['same_as_shipping_checkbox']);
+			$this->CanteenOrder->BillingAddress->set($this->request->data['BillingAddress']);
 			$this->loadModel("CardData");
 			$this->CardData->setCardValidation();
 			$this->CardData->set($this->request->data['CardData']);
 			
-			if($this->CanteenOrder->ShippingAddress->validates() && $this->CardData->validates()) {
+			if($this->CanteenOrder->BillingAddress->validates() && $this->CanteenOrder->ShippingAddress->validates() &&  $this->CardData->validates()) {
 				
 				//check to see if we have a canteen order id in the session, if so then set it
 				if($this->Session->check("CanteenOrder.CanteenOrder.id")) 
