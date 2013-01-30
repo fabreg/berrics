@@ -230,5 +230,5 @@ function viewProductImage($file_name) {
 </div>
 <?php endif ?>
 <pre>
-	<?php print_r($p); ?>
+	<?php //print_r($p); ?>
 </pre>
