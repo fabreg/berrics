@@ -1011,7 +1011,9 @@ class CanteenProductsController extends LocalAppController {
 		unset(
 				$product['CanteenProduct']['id'],
 				$product['CanteenProduct']['modified'],
-				$product['CanteenProduct']['created']
+				$product['CanteenProduct']['created'],
+				$product['CanteenProduct']['style_code_image'],
+				$product['CanteenProduct']['active']
 		);
 		//prepare ChildCanteenProduct
 		foreach($product['ChildCanteenProduct'] as $k=>$v) {
@@ -1019,13 +1021,33 @@ class CanteenProductsController extends LocalAppController {
 			unset(
 					$product['ChildCanteenProduct'][$k]['id'],
 					$product['ChildCanteenProduct'][$k]['modified'],
-					$product['ChildCanteenProduct'][$k]['created']
+					$product['ChildCanteenProduct'][$k]['created'],
+					$product['ChildCanteenProduct'][$k]['CanteenProductInventory'],
+					$product['ChildCanteenProduct'][$k]['parent_canteen_product_id']
 			);
 			
 		}
+
+		foreach($product['CanteenProductPrice'] as $k=>$v) {
+			
+			unset(
+					$product['CanteenProductPrice'][$k]['id'],
+					$product['CanteenProductPrice'][$k]['modified'],
+					$product['CanteenProductPrice'][$k]['created']
+			);
+			
+		}
+
+		unset($product['CanteenProductImage']);
+
+
+		//die(pr($product));
+
+		$product['CanteenProduct']['name'] .= " COPY";
+
+		$this->CanteenProduct->saveAll($product);
 		
-		die(pr($product));
-		
+		$this->flash("Product Copied Successfully","/canteen_products/edit/".$this->CanteenProduct->id);
 		
 	}
 	

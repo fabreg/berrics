@@ -189,6 +189,7 @@ function openDetails(id,ele) {
 			<td class='actions'>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->request->here); ?>'>Edit</a>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->request->here); ?>' target='_blank'>Edit In New Window</a>
+				<a href='/canteen_products/copy_product/<?php echo $p['id']; ?>/cb:<?php echo base64_encode($this->request->here); ?>' onclick='return confirm("Are you sure you want to copy this product?");' target='_blank'>Copy Product</a>
 				<a target='_blank' href='http://dev.theberrics.com/canteen/item/<?php echo $p['uri']; ?>'>Dev Link</a>
 				<a href='javascript:return false;' class='quick-inv' canteen_product_id='<?php echo $p['id']; ?>'>Quick View: Options & Inv</a>
 				<a href='/canteen_products/copy_product/<?php echo $p['id']; ?>' onclick='return confirm("Are you sure you want to copy this product?"); '>Copy To New Product</a>
