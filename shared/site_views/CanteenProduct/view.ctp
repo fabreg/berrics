@@ -229,6 +229,3 @@ function viewProductImage($file_name) {
 	</div>
 </div>
 <?php endif ?>
-<pre>
-	<?php //print_r($p); ?>
-</pre>
