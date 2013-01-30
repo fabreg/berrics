@@ -1043,7 +1043,7 @@ class CanteenProductsController extends LocalAppController {
 
 		//die(pr($product));
 
-		$product['CanteenProduct']['name'] .= " COPY";
+		$product['CanteenProduct']['sub_title'] = " COPY";
 
 		$this->CanteenProduct->saveAll($product);
 		
