@@ -138,7 +138,7 @@ function viewProductImage($file_name) {
 						<?php 
 							foreach ($product['ChildCanteenProduct'] as $k => $v): 
 							$inv = Set::extract("/CanteenProductInventory/CanteenInventoryRecord",$v);
-							$inv = $inv[0]['CanteenInventoryRecord']['quantity'] - $inv[0]['CanteenInventoryRecord']['allocated'];
+							$inv = $inv[0]['CanteenInventoryRecord']['quantity']; //$inv[0]['CanteenInventoryRecord']['allocated'];
 						?>
 							<?php if ($inv>0): ?>
 							<option value="<?php echo $v['id']; ?>"><?php echo $v['opt_label']; ?> : <?php echo $v['opt_value']; ?></option>	
