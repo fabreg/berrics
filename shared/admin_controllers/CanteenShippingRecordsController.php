@@ -200,7 +200,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 		$this->set(compact("record"));
 		
-		$this->render("/elements/canteen_printing/usps-combo-label");
+		$this->render("/Elements/canteen_printing/usps-combo-label");
 		
 	}
 	

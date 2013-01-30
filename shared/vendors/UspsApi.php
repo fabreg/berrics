@@ -10,8 +10,8 @@ class UspsApi {
 	private $from_address = array(
 		"firm"=>"",
 		"name"=>"The Berrics Canteen",
-		"address1"=>"",
-		"address2"=>"1248 Palmetto St",
+		"address1"=>"#115",
+		"address2"=>"2121 E. 7TH St",
 		"city"=>"Los Angeles",
 		"zip"=>"90031",
 		"state"=>"CA" 
