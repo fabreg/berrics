@@ -25,16 +25,16 @@
 		));
 		/*
 
-//"https://www.google.com/uds/api/ima/1.8/84479ae78e2ae96fc191dae83ffb2033/default.IN.js",
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-  //google.setOnLoadCallback(onSdkLoaded);
-  google.load("ima", "1");
+		//"https://www.google.com/uds/api/ima/1.8/84479ae78e2ae96fc191dae83ffb2033/default.IN.js",
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+		  //google.setOnLoadCallback(onSdkLoaded);
+		  google.load("ima", "1");
 
-  function onSdkLoaded() {
-    //var adsLoader = new google.ima.AdsLoader();
-  }
-</script>
+		  function onSdkLoaded() {
+		    //var adsLoader = new google.ima.AdsLoader();
+		  }
+		</script>
  
 		*/
  ?>

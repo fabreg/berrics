@@ -821,7 +821,7 @@ TWO COLUMN BODY
 
 
 
-header {
+	header {
 		position: absolute;
 		margin-bottom:15px;
 		background-image: none;
@@ -863,7 +863,7 @@ header {
 
 	#body-row {
 
-		padding-top:150px;
+		padding-top:175px;
 
 	}
 	#two-column-body .right-column {
@@ -3695,7 +3695,11 @@ CANTEEN CATEGORY NAVIGATION
 
 
 }
+#canteen-category-nav .heading {
 
+	cursor:pointer;
+
+}
 
 #canteen-category-nav>ul {
 
@@ -3729,6 +3733,12 @@ CANTEEN CATEGORY NAVIGATION
 	display: block;
 
 }
+
+#canteen-category-nav.mobile>ul {
+
+	display:none;
+
+} 
 
 /* Large desktop */
 @media (min-width: 1200px) {  }

@@ -16,12 +16,24 @@ $(function() {
 			$("#top-nav-div").hide();
 			$("#top-nav-mobile").show();
 
+			//$('#canteen-category-nav').addClass('mobile');
+
 		} else {
 
 			$("#top-nav-div").show();
 			$("#top-nav-mobile").hide();
 
+			//$('#canteen-category-nav').removeClass('mobile').find('ul').show();
+
 		}
+
+		//triger some stuff
+
+		$("#canteen-category-nav.mobile .heading").unbind().bind('click',function() { 
+
+			//$("#canteen-category-nav.mobile>ul").toggle();
+
+		});
 		
 	}).trigger('resize');
 
