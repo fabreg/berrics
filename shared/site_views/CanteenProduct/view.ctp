@@ -28,7 +28,7 @@ $in_stock = false;
 
 foreach($product['ChildCanteenProduct'] as $v) {
 
-	$qty = $v['CanteenProductInventory'][0]['CanteenInventoryRecord']['quantity'] - $v['CanteenProductInventory'][0]['CanteenInventoryRecord']['allocated'];
+	$qty = $v['CanteenProductInventory'][0]['CanteenInventoryRecord']['quantity'];// - $v['CanteenProductInventory'][0]['CanteenInventoryRecord']['allocated'];
 
 	if($qty>0) $in_stock = true;
 
