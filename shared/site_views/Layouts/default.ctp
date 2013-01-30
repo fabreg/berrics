@@ -67,7 +67,7 @@
 							<?php else: ?>
 								<div class="login-top">
 									<a class='login-link' href='/identity/login/form/<?php echo base64_encode($this->here); ?>'>
-										<i class="icon icon-caret-down"></i> Account Login
+										<i class="icon icon-caret-down icon-white"></i>&nbsp;Account Login
 									</a>
 								</div>
 							<?php endif ?>

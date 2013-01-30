@@ -143,18 +143,6 @@ header .social-media .top .login-top .icon {
 
 }
 
-@-moz-document url-prefix() {
-
-    header .social-media .top .login-top .icon {
-
-		margin-top:-2px;
-		float: right;
-		font-family: 'Courier';
-		color:#fff;
-
-	}
-
-}
 
 header .social-media .top .cart-widget {
 
