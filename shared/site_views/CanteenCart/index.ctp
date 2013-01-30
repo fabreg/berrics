@@ -120,7 +120,7 @@ $skip = array();
 
 //echo "Country: ".env("GEOIP_COUNTRY_CODE");
 //print_r($this->request->data);
-print_r($this->Session->read());
+//print_r($this->Session->read());
 //print_r($this->request->params);
 //print_r(CakeSession::read("CanteenOrder"))
 ?>
