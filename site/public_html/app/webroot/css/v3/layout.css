@@ -153,7 +153,7 @@ header .social-media .top .cart-widget {
 
 header .social-media .top .cart-widget a,
 header .social-media .top .login-top a,
-header .social-media .top .account-top a {
+header .social-media .top .account-top>a {
 	height:20px;
 	line-height: 24px;
 	color:#fff;
