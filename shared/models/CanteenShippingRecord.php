@@ -584,7 +584,9 @@ class CanteenShippingRecord extends AppModel {
 		
 		$img_str = base64_decode($label);
 		
-		touch(TMP.$tmp_name);
+		$touch = TMP.$tmp_name;
+
+		echo `touch $touch`;
 		
 		file_put_contents(TMP.$tmp_name,$img_str);
 		

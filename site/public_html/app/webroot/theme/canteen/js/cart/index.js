@@ -40,7 +40,11 @@ $(document).ready(function() {
 
 	$('.checkout-form form').submit(function() { 
 
-		$('#checkout-submit').attr("disabled","disabled");
+		$('#checkout-submit').attr({
+
+			"disabled":"disabled",
+			"value":"PROCESSING ORDER"
+		});
 
 	});
 

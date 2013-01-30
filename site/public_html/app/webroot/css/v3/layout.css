@@ -4292,6 +4292,13 @@ CANTEEN CART
 
 }
 
+#canteen-cart .checkout-form .actions {
+
+	padding:8px;
+	text-align:center;
+
+}
+
 
 /* Large desktop */
 @media (min-width: 1200px) { 

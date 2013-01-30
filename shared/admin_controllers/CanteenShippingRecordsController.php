@@ -184,6 +184,14 @@ class CanteenShippingRecordsController extends LocalAppController {
 		
 		$record = $this->CanteenShippingRecord->process_usps_shipment($id);
 
+		$this->redirect(array(
+
+				"controller"=>"canteen_shipping_records",
+				"action"=>"usps_combo_label",
+				$id
+
+			));
+
 	}
 	
 	public function usps_combo_label($id) {

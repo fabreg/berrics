@@ -27,7 +27,7 @@ class UserAddress extends AppModel {
 		
 		
 	}
-	public function setBillingAddressValidation($activate = true) {
+	public function setBillingAddressValidation($activate = false) {
 
 
 		if(!$activate) return;

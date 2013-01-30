@@ -95,7 +95,7 @@ class CanteenOrder extends AppModel {
 	 */
 	public $taxZones = array(
 		"US"=>array(
-			"CA"=>9.75
+			"CA"=>10.00
 		)
 	);
 	
@@ -151,6 +151,10 @@ class CanteenOrder extends AppModel {
 	 */
 	public function calculateCartTotal($CanteenOrder = array()) {
 		
+		$same_as_shipping = (isset($CanteenOrder['CanteenOrder']['same_as_shipping_checkbox'])) ? $CanteenOrder['CanteenOrder']['same_as_shipping_checkbox']:1;
+
+		//die(pr($CanteenOrder));
+
 		$items = $CanteenOrder['CanteenOrderItem'];
 		
 		#zero it out
@@ -202,6 +206,8 @@ class CanteenOrder extends AppModel {
 														$CanteenOrder['CanteenOrder']['shipping_total'] + 
 														$CanteenOrder['CanteenOrder']['tax_total'];
 		
+
+		$CanteenOrder['CanteenOrder']['same_as_shipping_checkbox'] = $same_as_shipping;
 
 		return $CanteenOrder;
 		

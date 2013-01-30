@@ -47,13 +47,13 @@ class CanteenCartController extends CanteenAppController {
 			
 			$this->CanteenOrder->ShippingAddress->setOrderAddressValidation();
 			$this->CanteenOrder->ShippingAddress->set($this->request->data['ShippingAddress']);
-			$this->CanteenOrder->BillingAddress->setBillingAddressValidation($this->request->data['CanteenOrder']['same_as_shipping_checkbox']);
+			$this->CanteenOrder->BillingAddress->setBillingAddressValidation(($this->request->data['CanteenOrder']['same_as_shipping_checkbox']) ? false:true);
 			$this->CanteenOrder->BillingAddress->set($this->request->data['BillingAddress']);
 			$this->loadModel("CardData");
 			$this->CardData->setCardValidation();
 			$this->CardData->set($this->request->data['CardData']);
 			
-			if($this->CanteenOrder->BillingAddress->validates() && $this->CanteenOrder->ShippingAddress->validates() &&  $this->CardData->validates()) {
+			if($this->CanteenOrder->ShippingAddress->validates() &&  $this->CanteenOrder->BillingAddress->validates() && $this->CardData->validates()) {
 				
 				//check to see if we have a canteen order id in the session, if so then set it
 				if($this->Session->check("CanteenOrder.CanteenOrder.id")) 
@@ -115,22 +115,29 @@ class CanteenCartController extends CanteenAppController {
 		
 		$order = $this->Session->read("CanteenOrder");
 		
-		if(count($this->request->data)>0) {
-			
+		if($this->request->is("post") || $this->request->is("put")) {
+		
 			$order['ShippingAddress'] = $this->request->data['ShippingAddress'];
 			
 			$order['BillingAddress']  = $this->request->data['BillingAddress'];
 
-			
+			$order['CanteenOrder']['same_as_shipping_checkbox'] = $this->data['CanteenOrder']['same_as_shipping_checkbox'];
+		
+		} else {
+
+			$this->request->data['CanteenOrder']['same_as_shipping_checkbox'] = $order['CanteenOrder']['same_as_shipping_check'] = 1;
+
 		}
+
 		
 		$order['CanteenOrder']['currency_id'] = $this->getUserCurrency();
 		$geo_c = env("GEOIP_COUNTRY_CODE");
 		$order['ShippingAddress']['country_code'] = (strlen($geo_c)<=0) ? "US":$geo_c;
 		
 		
+
 		$this->request->data = $this->CanteenOrder->calculateCartTotal($order);
-		$this->request->data['CanteenOrder']['same_as_shipping_checkbox']=1;
+		
 		
 			
 		if(isset($_GET['x']) && $this->isAdmin()) {
