@@ -1038,7 +1038,7 @@ class CanteenProductsController extends LocalAppController {
 			
 		}
 
-		unset($product['CanteenProductImage']);
+		unset($product['CanteenProductImage'],$product['Meta']);
 
 
 		//die(pr($product));
