@@ -1313,6 +1313,7 @@ class Dailyop extends AppModel {
 					"Dailyop.active"=>1,
 					"Dailyop.hidden"=>0,
 					"YEAR(Dailyop.publish_date) = '{$year}'",
+					"Dailyop.publish_date < NOW()"
 				),
 				"contain"=>array(
 					"DailyopSection",
