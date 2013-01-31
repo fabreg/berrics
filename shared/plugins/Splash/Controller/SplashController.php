@@ -49,6 +49,15 @@ class SplashController extends SplashAppController {
 	public function view($hash = false) {
 		
 		$page = $this->SplashCreative->findByHashKey($hash);
+
+
+		if(!empty($page['SplashCreative']['directive'])) {
+
+			$this->view = $page['SplashCreative']['directive'];
+
+			return $this->{$page['SplashCreative']['directive']}();
+
+		} 
 		
 		$head_content = $page['SplashCreative']['head_content'];
 		
