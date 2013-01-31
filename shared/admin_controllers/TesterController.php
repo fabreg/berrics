@@ -2216,5 +2216,19 @@ class TesterController extends LocalAppController {
 		
 	}
 
+	public function instagram_comments() {
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+
+		$i = InstagramApi::berricsInstance();
+
+		$feed = $i->instagram->getCurrentUser();
+
+		die(pr($feed));
+
+
+
+	}
+
 	
 }
