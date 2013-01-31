@@ -168,7 +168,7 @@ class CanteenOrdersController extends LocalAppController {
 			"limit"=>50
 		);
 		
-		$this->setOrderSearchParams();
+		//$this->setOrderSearchParams();
 		
 		$orders = $this->Paginate("CanteenOrder");
 		
@@ -180,11 +180,15 @@ class CanteenOrdersController extends LocalAppController {
 	
 	private function setOrderSearchParams() {
 		
+		$this->loadModel('CanteenOrder');
+
+		$this->Paginator->settings = array("CanteenOrder");
+
 		if(!isset($this->request->params['named']['s'])) return false;
 		
 		if(isset($this->request->params['named']['CanteenOrder.order_status'])) {
 			
-			$this->paginate['CanteenOrder']['conditions']['CanteenOrder.order_status'] = base64_decode($this->request->params['named']['CanteenOrder.order_status']);
+			$this->Paginator->settings['CanteenOrder']['conditions']['CanteenOrder.order_status'] = base64_decode($this->request->params['named']['CanteenOrder.order_status']);
 			
 		}
 		
@@ -195,7 +199,7 @@ class CanteenOrdersController extends LocalAppController {
 			
 			$endDate = base64_decode($this->request->params['named']['CanteenOrder.end_date']);
 			
-			$this->paginate['CanteenOrder']['conditions'][] = "DATE(CanteenOrder.created) BETWEEN '{$startDate}' AND '{$endDate}'";
+			$this->Paginator->settings['CanteenOrder']['conditions'][] = "DATE(CanteenOrder.created) BETWEEN '{$startDate}' AND '{$endDate}'";
 			
 		}
 		
@@ -203,21 +207,21 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$order_ids = array();
 		
-		if(isset($this->request->params['named']['UserAddress.email']) || isset($this->request->params['named']['UserAddress.address_type'])) {
+		if(isset($this->request->params['named']['ShippingAddress.email']) || isset($this->request->params['named']['ShippingAddress.address_type'])) {
 			
-			if(isset($this->request->params['named']['UserAddress.email'])) {
+			if(isset($this->request->params['named']['ShippingAddress.email'])) {
 				
-				$a = $this->CanteenOrder->UserAddress->find("all",array(
+				$a = $this->CanteenOrder->ShippingAddress->find("all",array(
 					"contain"=>array(),
 					"conditions"=>array(
-						"UserAddress.model"=>"CanteenOrder",
-						"UserAddress.address_type"=>"shipping",
-						"UserAddress.email LIKE"=> "%".base64_decode($this->request->params['named']['UserAddress.email'])."%"
+						"ShippingAddress.model"=>"CanteenOrder",
+						"ShippingAddress.address_type"=>"shipping",
+						"ShippingAddress.email LIKE"=> "%".base64_decode($this->request->params['named']['ShippingAddress.email'])."%"
 					),
-					"fields"=>array("UserAddress.foreign_key")
+					"fields"=>array("ShippingAddress.foreign_key")
 				));
 			
-				$oids = Set::classicExtract($a,"{n}.UserAddress.foreign_key");
+				$oids = Set::classicExtract($a,"{n}.ShippingAddress.foreign_key");
 				
 				if(count($oids)<=0) {
 					
@@ -230,7 +234,7 @@ class CanteenOrdersController extends LocalAppController {
 				//remove any other address params
 				foreach($this->request->params['named'] as $k=>$v) {
 					
-					if(preg_match('/^UserAddress/',$k) && !preg_match('/(\.email|\.address_type)/',$k)) {
+					if(preg_match('/^ShippingAddress/',$k) && !preg_match('/(\.email|\.address_type)/',$k)) {
 						
 						unset($this->request->params['named'][$k]);
 						
@@ -246,7 +250,7 @@ class CanteenOrdersController extends LocalAppController {
 			
 		}
 		
-		if(count($order_ids)>0) $this->paginate['CanteenOrder']['conditions']['CanteenOrder.id'] = $order_ids;
+		if(count($order_ids)>0) $this->Paginator->settings['CanteenOrder']['conditions']['CanteenOrder.id'] = $order_ids;
 		
 		
 		

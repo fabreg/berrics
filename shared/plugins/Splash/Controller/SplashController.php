@@ -27,9 +27,21 @@ class SplashController extends SplashAppController {
 		
 		$page = $pages[$seed];
 		
-		$this->view = "view";
+		if(!empty($page['SplashCreative']['directive'])) {
+
+			$this->view = $page['SplashCreative']['directive'];
+
+			return $this->{$page['SplashCreative']['directive']}();
+
+		} else {
+
+
+			$this->view = "view";
 		
-		return $this->view($page['SplashCreative']['hash_key']);
+			return $this->view($page['SplashCreative']['hash_key']);
+
+		}
+
 		
 	}
 	
@@ -46,6 +58,34 @@ class SplashController extends SplashAppController {
 	
 		$this->set(compact("page","title_for_layout","head_content","meta_d","meta_k"));
 		
+	}
+
+	public function canteen() {
+		
+		
+		$this->loadModel('CanteenProduct');
+		
+
+		$product_id = $this->CanteenProduct->find("first",array(
+							"fields"=>array(
+								"CanteenProduct.id"
+							),
+							"conditions"=>array(
+								"CanteenProduct.active"=>1,
+								"CanteenProduct.brand_id"=>3,
+								"CanteenProduct.publish_date < NOW()"
+							),
+							"contain"=>array(),
+							"order"=>"RAND()",
+							"limit"=>1
+						));
+		$product = $this->CanteenProduct->returnProduct(array(
+						"conditions"=>array("CanteenProduct.id"=>$product_id['CanteenProduct']['id'])
+					));
+
+		$this->set(compact("product"));
+
+
 	}
 	
 	

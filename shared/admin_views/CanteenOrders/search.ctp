@@ -44,22 +44,22 @@ $(document).ready(function() {
 		</div>
 		<?php 
 			echo $this->Form->input("CanteenOrder.id",array("type"=>"text","label"=>"Order ID"));
-			echo $this->Form->input("UserAddress.email",array("label"=>"Email (*this will search address type 'shipping' records)"));
+			echo $this->Form->input("ShippingAddress.email",array("label"=>"Email (*this will search address type 'shipping' records)"));
 			echo $this->Form->submit("Search");
 		?>
 	</fieldset>
 	<fieldset>
 		<legend>Customer Information</legend>
 		<?php 
-			echo $this->Form->input("UserAddress.address_type",array("options"=>array("shipping"=>"SHIPPING","billing"=>"BILLING"),"empty"=>true,"label"=>"Address Type (*Must select an address type to search customer info)"));
-			echo $this->Form->input("UserAddress.first_name");
-			echo $this->Form->input("UserAddress.last_name");
-			echo $this->Form->input("UserAddress.street");
-			echo $this->Form->input("UserAddress.apt");
-			echo $this->Form->input("UserAddress.city");
-			echo $this->Form->input("UserAddress.state");
-			echo $this->Form->input("UserAddress.postal_code");
-			echo $this->Form->input("UserAddress.country_code",array("options"=>Arr::countries(),"empty"=>true));
+			echo $this->Form->input("ShippingAddress.address_type",array("options"=>array("shipping"=>"SHIPPING","billing"=>"BILLING"),"empty"=>true,"label"=>"Address Type (*Must select an address type to search customer info)"));
+			echo $this->Form->input("ShippingAddress.first_name");
+			echo $this->Form->input("ShippingAddress.last_name");
+			echo $this->Form->input("ShippingAddress.street");
+			echo $this->Form->input("ShippingAddress.apt");
+			echo $this->Form->input("ShippingAddress.city");
+			echo $this->Form->input("ShippingAddress.state");
+			echo $this->Form->input("ShippingAddress.postal_code");
+			echo $this->Form->input("ShippingAddress.country_code",array("options"=>Arr::countries(),"empty"=>true));
 		?>
 	</fieldset>
 	<?php echo $this->Form->end(); ?>
