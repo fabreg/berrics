@@ -3,6 +3,14 @@
 
 $dir = dirname(__FILE__)."/";
 
+//asset servers
+$asset = array(
+
+			"asset01"
+
+	);
+
+//app servers
 $servers = array(
 			"w1",
 			"w11",
@@ -18,6 +26,26 @@ $servers = array(
 			"w27"
 		);
 
+
+//sync asset servers
+
+foreach($asset as $server) {
+
+	echo "\n";
+	echo "########","\n";
+	echo $server,"\n";
+	echo "########","\n";
+	echo "\n";
+
+	echo `rsync -vaz --delete --exclude-from {$dir}exclude.txt {$dir}../ root@{$server}:/home/sites/berrics.v3/`;
+
+	echo "\n";
+
+}
+
+die("END ASSET SYNC");
+
+//sync app servers and graceful restart apache
 foreach($servers as $server) {
 	echo "\n";
 	echo "####### \n";
