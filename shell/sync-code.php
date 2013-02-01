@@ -15,9 +15,6 @@ $asset = array(
 //app servers
 $servers = array(
 			"w1",
-			"w11",
-			"w12",
-			"w13",
 			"w20",
 			"w21",
 			"w22",
