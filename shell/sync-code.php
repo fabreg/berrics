@@ -6,7 +6,9 @@ $dir = dirname(__FILE__)."/";
 //asset servers
 $asset = array(
 
-			"asset01"
+			"asset01",
+			"asset02"
+
 
 	);
 
@@ -42,8 +44,6 @@ foreach($asset as $server) {
 	echo "\n";
 
 }
-
-die("END ASSET SYNC");
 
 //sync app servers and graceful restart apache
 foreach($servers as $server) {
