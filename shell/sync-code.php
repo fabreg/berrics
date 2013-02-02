@@ -8,7 +8,8 @@ $asset = array(
 
 			"asset01",
 			"asset02",
-			"asset03"
+			"asset03",
+			"asset04"
 
 
 	);
