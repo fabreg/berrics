@@ -4,7 +4,7 @@ class DATABASE_CONFIG {
 	
 	public $default = array(
 		'datasource' => 'Database/Mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host'=>'10.176.164.233',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -14,7 +14,7 @@ class DATABASE_CONFIG {
 
 	public $master = array(
 		'datasource' => 'Database/Mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host'=>'10.176.129.133',
 		'login' => 'john',
 		'password' => '19Berrics82',
@@ -24,7 +24,7 @@ class DATABASE_CONFIG {
 	
 	public $sessions = array(
 		'datasource' => 'Database/Mysql',
-		'persistent' => false,
+		'persistent' => true,
 		'host' => '10.183.64.37',
 		'login' => 'john',
 		'password' => '19Berrics82',
