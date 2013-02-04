@@ -2209,9 +2209,6 @@ class TesterController extends LocalAppController {
 
 	}
 
-
-
-
 	public function static_test() {
 		
 	}
@@ -2221,6 +2218,8 @@ class TesterController extends LocalAppController {
 		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
 
 		$i = InstagramApi::berricsInstance();
+
+		//die(pr($i));
 
 		$feed = $i->instagram->getCurrentUser();
 
