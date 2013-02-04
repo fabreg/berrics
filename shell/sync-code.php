@@ -5,12 +5,8 @@ $dir = dirname(__FILE__)."/";
 
 //asset servers
 $asset = array(
-
 			"asset01",
-			"asset02",
-			
-
-
+			"asset02"
 	);
 
 //app servers
@@ -20,9 +16,7 @@ $servers = array(
 			"w21",
 			"w22",
 			"w23",
-			"w24",
-			
-			
+			"w24"
 		);
 
 
