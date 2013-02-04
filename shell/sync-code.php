@@ -8,8 +8,7 @@ $asset = array(
 
 			"asset01",
 			"asset02",
-			"asset03",
-			"asset04"
+			
 
 
 	);
@@ -22,11 +21,8 @@ $servers = array(
 			"w22",
 			"w23",
 			"w24",
-			"w25",
-			"w26",
-			"w27",
-			"w28",
-			"w29"
+			
+			
 		);
 
 
