@@ -10,7 +10,9 @@ class OndemandTitle extends AppModel {
 	public $hasAndBelongsToMany = array(
 		"Tag",
 	);
-	
+	public $hasMany = array(
+				"Dailyop"
+			);
 	
 	
 	

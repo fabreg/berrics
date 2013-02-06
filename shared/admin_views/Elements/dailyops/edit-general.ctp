@@ -233,7 +233,7 @@ function styleChecks() {
 					</div>
 					<div class='span6'>
 						<?php 
-						echo $this->Form->input("misc_category",array("options"=>Arr::dailyopsMiscCategories(),"empty"=>true,"label"=>"Misc. Category","help"=>"<small>Used for special posts including the news</small>"));
+						echo $this->Form->input("misc_category",array("options"=>Arr::dailyopsMiscCategories(),"empty"=>true,"label"=>"Misc. Category","help"=>"<small style='color:red;'>Used for special posts including the news * LEGACY</small>"));
 						?>
 					</div>
 				</div>
@@ -258,7 +258,7 @@ function styleChecks() {
 						?>
 					</div>
 					<div class='span6'>
-						
+						<?php echo $this->Form->input("ondemand_title_id",array("empty"=>true,"label"=>"On-Demand Title")); ?>
 					</div>
 				</div>
 				<?php 

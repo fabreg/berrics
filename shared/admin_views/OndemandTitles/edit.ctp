@@ -1,20 +1,6 @@
 <?php 
 
-$verb = "Edit On-Demand Title";
 
-if($this->request->params['action'] == "add") {
-	
-	$verb = "Add New On-Demand Title";
-	
-}
-
-
-
-$tag_str = '';
-
-if(isset($this->request->data['Tag'])) foreach($this->request->data['Tag'] as $tag) $tag_str .= $tag['name'].", ";
-
-$tag_str = ltrim($tag_str,",");
 
 $item_num = array();
 
@@ -25,10 +11,18 @@ for($i=1;$i<=99;$i++) $item_num[$i] = $i;
 
 $(document).ready(function() { 
 
+	var h = document.location.hash;
+
+	h = h.replace(/#/,'');
+
+	if(h.length <=0) h = "general";
+
+	$('.nav-tabs a[href=#'+h+']').tab('show'); 
+
+
 	$( "#OndemandTitlePubDate").datepicker({
 		"dateFormat":"yy-mm-dd"
 	});
-
 	$("#OndemandTitlePubTime").timepicker({
 	    showPeriod: false,
 	    showLeadingZero: false
@@ -40,64 +34,35 @@ $(document).ready(function() {
 });
 
 </script>
-<div class="ondemandTitles form ">
-<?php echo $this->Form->create('OndemandTitle',array("enctype"=>"multipart/form-data"));?>
-	<fieldset>
- 		<legend><?php echo $verb; ?></legend>
-	<?php
-	
-		echo $this->Form->input('id');
-		echo $this->Form->input('active');
-		echo $this->Form->input('hd');
-		echo $this->Form->input('pub_date');
-		echo $this->Form->input('pub_time');
-		echo $this->Form->input('release_date',array("type"=>"text"));
-		echo $this->Form->input('title');
-		echo $this->Form->input('description');
-		echo $this->Form->input("uri");
-		echo $this->Form->input('user_id',array("label"=>"Video Owner"));
-		echo $this->Form->input("tags",array("value"=>$tag_str));
-		echo $this->Form->input('image_cover',array("type"=>"file","label"=>"Cover Image"));
-		echo $this->Form->input('image_back',array("type"=>"file","label"=>"Back Cover Image"));
-		
-	?>
-	</fieldset>
-	<?php if(isset($this->request->data)): ?>
-	<fieldset>
-		<legend>
-			Media Items
-		</legend>
-		<div class='media-items index'>
-			<div>
-				<?php 
-					echo $this->Form->submit("Update");
-					echo $this->Form->submit("Add Media File",array("name"=>"data[AddMediaFile]"));
-					
-				?>
-			</div>
-			<table cellspacing='0'>
-				<?php foreach($this->request->data['OndemandTitleMediaItem'] as $key=>$item): $m = $item['MediaFile']; ?>
-				<tr>
-					<td nowrap width='1%'>
-						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.id"); ?>
-						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.display_weight",array("options"=>$item_num));?>
-					</td>
-					<td width='1%' nowrap>
-						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.active");?>
-					</td>
-					<td width='1%' nowrap>
-						<?php echo $this->Form->input("OndemandTitleMediaItem.{$key}.trailer");?>
-					</td>
-					<td width='1%'>
-						<?php echo $this->Media->mediaThumb(array("MediaFile"=>$m,"w"=>100)); ?>
-					</td>
-					<td><?php echo $m['name']; ?></td>
-					<td></td>
-				</tr>
-				<?php endforeach; ?>
-			</table>
-		</div>
-	</fieldset>
-	<?php endif; ?>
-<?php echo $this->Form->end(__('Submit'));?>
+<div class="page-header">
+	<h1>Edit On-Demand Title </h1>
+	<a href="/ondemand_titles" class="btn btn-primary">Back to listing</a>
 </div>
+
+
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li ><a href="#general" data-toggle="tab">General Info</a></li>
+		<li><a href="#images" data-toggle="tab">Images</a></li>
+		<li><a href="#posts" data-toggle="tab">Posts</a></li>
+	</ul>
+	<?php echo $this->Form->create('OndemandTitle',array(
+									"id"=>'OndemandTitleForm',
+									"url"=>$this->request->here
+								));	 ?>
+	<div class="tab-content">
+		<div class="tab-pane" id="general">
+			<?php echo $this->element("ondemand/edit-general"); ?>
+		</div>
+		<div class="tab-pane" id="images">
+			
+		</div>
+		<div class="tab-pane" id="posts">
+			<?php echo $this->element("ondemand/edit-posts"); ?>
+		</div>
+	</div>
+</div>
+
+<?php echo $this->Form->end(); ?>
+
+<pre><?php print_r($this->request->data); ?></pre>

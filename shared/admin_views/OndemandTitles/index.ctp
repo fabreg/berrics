@@ -16,11 +16,7 @@
 		<table cellspacing='0'>
 			<tr>
 				<th><?php echo $this->Paginator->sort("id"); ?></th>
-				<th>Cover Image</th>
-				<th>Back Cover Image</th>
 				<th><?php echo $this->Paginator->sort("active")?></th>
-				<th><?php echo $this->Paginator->sort("hd"); ?></th>
-				<th><?php echo $this->Paginator->sort("created"); ?></th>
 				<th><?php echo $this->Paginator->sort("modified"); ?></th>
 				<th><?php echo $this->Paginator->sort("publish_date"); ?></th>
 				<th><?php echo $this->Paginator->sort("release_date"); ?></th>
@@ -33,8 +29,7 @@
 			?>
 			<tr>
 				<td align='center' width='2%' nowrap><?php echo $t["id"]; ?></td>
-				<td  align='center' width='5%' nowrap>-</td>
-				<td align='center' width='5%' nowrap>-</td>
+				
 				<td  align='center' width='2%' nowrap>
 				<?php 
 				
@@ -51,15 +46,13 @@
 
 				?>
 				</td>
-				<td align='center' width='2%' nowrap><?php echo $t["hd"]; ?></td>
-				<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["created"]); ?></td>
 				<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["modified"]); ?></td>
 				<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["publish_date"]); ?></td>
 				<td align='center' width='5%' nowrap><?php echo $this->Time->niceShort($t["release_date"]); ?></td>
 				
 				<td><?php echo$t["title"]; ?></td>
 				<td class='actions'>
-					<a href='/ondemand_titles/edit/<?php echo $t['id']; ?>/<?php echo base64_encode($this->request->here); ?>'>Edit</a>
+					<a class='btn btn-primary' href='/ondemand_titles/edit/<?php echo $t['id']; ?>/<?php echo base64_encode($this->request->here); ?>'><i class="icon icon-white icon-edit"></i> Edit</a>
 				</td>
 			</tr>	
 			<?php endforeach; ?>

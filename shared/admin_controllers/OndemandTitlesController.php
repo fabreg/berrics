@@ -32,13 +32,11 @@ class OndemandTitlesController extends LocalAppController {
 		
 		if($this->request->is("post") || $this->request->is("put")) {
 			
-			$this->request->data['OndemanTitle'] = array(
-						"publish_date"=>date("Y-m-d 00:00:00")
-					);
+			$this->request->data['OndemandTitle']['publish_date'] = date("Y-m-d 00:00:00");
 
 			if($this->OndemandTitle->save($this->request->data)) {
 
-				$this->Session->setFlash("On Demand Title Updated Successfully");
+				$this->Session->setFlash("On Demand Title Added Successfully");
 
 				$this->redirect(array(
 							"action"=>"edit",
@@ -57,6 +55,7 @@ class OndemandTitlesController extends LocalAppController {
 	}
 
 	function edit($id = null) {
+
 		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid ondemand title'));
 			$this->redirect(array('action' => 'index'));
@@ -65,30 +64,11 @@ class OndemandTitlesController extends LocalAppController {
 			
 			$this->request->data['Tag'] = $this->OndemandTitle->Tag->parseTags($this->request->data['OndemandTitle']['tags']);
 			
-			$this->uploadCoverImage();
-			$this->uploadBackImage();
 			$this->fixPublishDate();
-			
+
 			if ($this->OndemandTitle->saveAll($this->request->data)) {
 				
 				$this->Session->setFlash(__('The ondemand title has been saved'));
-				
-				//attach media files
-				if(isset($this->request->data['AddMediaFile'])) {
-					
-					$this->redirect(array(
-					
-						"controller"=>"media_files",
-						"action"=>"attach_media",
-						"OndemandTitleMediaItem",
-						"ondemand_title_id",
-						$this->request->data['OndemandTitle']['id'],
-						base64_encode($this->request->here)
-					
-					));
-					
-				}
-				
 				
 				$this->redirect(array('action' => 'index'));
 				
@@ -97,14 +77,14 @@ class OndemandTitlesController extends LocalAppController {
 			}
 		}
 		if (empty($this->request->data)) {
+
 			$this->request->data = $this->OndemandTitle->find("first",array(
 			
 				"conditions"=>array("OndemandTitle.id"=>$id),
 				"contain"=>array(
-					"Brand",
 					"Tag",
-					"OndemandTitleMediaItem"=>array("MediaFile","order"=>array("OndemandTitleMediaItem.display_weight"=>"ASC")),
-					"User"
+					"Dailyop",
+
 				)
 			
 			));

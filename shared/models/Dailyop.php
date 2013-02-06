@@ -35,7 +35,8 @@ class Dailyop extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		"UnifiedStore"
+		"UnifiedStore",
+		"OndemandTitle"
 	);
 
 	var $hasAndBelongsToMany = array(
