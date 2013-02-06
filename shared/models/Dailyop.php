@@ -35,7 +35,6 @@ class Dailyop extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		"UnifiedStore",
 		"OndemandTitle"
 	);
 
@@ -144,8 +143,7 @@ class Dailyop extends AppModel {
 
 						),
 						"order"=>array("DailyopTextItem.display_weight"=>"ASC")
-					),
-					"UnifiedStore"
+					)
 			
 				);
 			

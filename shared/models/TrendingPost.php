@@ -53,7 +53,7 @@ class TrendingPost extends AppModel {
 		
 		$token = "trending-{$section}";
 
-		if(($posts = Cache::read($token,"5min"))===false) {
+		if(($posts = Cache::read($token,"1min"))===false) {
 
 			switch($section) {
 
