@@ -177,13 +177,11 @@
 						<li>
 							<a href='/dailyop_sections/add'>Create new section</a>
 						</li>
-						<li class='nav-header'>The News</li>
+						<li class='nav-header'>ON-Demand</li>
 						<li>
-							<a href='/dailyops/manage_news'>Manage news</a>
+							<a href='/ondemand_titles'>Manage Titles</a>
 						</li>
-						<li>
-							<a href='/dailyops/add_news_post'>Create News Post</a>
-						</li>
+						
 						<li class='nav-header'>Featured Menu</li>
 						<li>
 							<a href='/dailyop_sections/manage_menu'>Manage Menu</a>

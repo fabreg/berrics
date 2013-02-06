@@ -29,26 +29,31 @@ class OndemandTitlesController extends LocalAppController {
 	}
 
 	function add() {
-		if (!empty($this->request->data)) {
-			$this->OndemandTitle->create();
+		
+		if($this->request->is("post") || $this->request->is("put")) {
 			
-			$this->request->data['Tag'] = $this->OndemandTitle->Tag->parseTags($this->request->data['OndemandTitle']['tags']);
-			$this->fixPublishDate();
-			$this->uploadCoverImage();
-			$this->uploadBackImage();
-			if ($this->OndemandTitle->save($this->request->data)) {
-				$this->Session->setFlash(__('The ondemand title has been saved'));
-				
-				$id = $this->OndemandTitle->id;
-				
-				$this->redirect(array('action' => 'edit',$id));
+			$this->request->data['OndemanTitle'] = array(
+						"publish_date"=>date("Y-m-d 00:00:00")
+					);
+
+			if($this->OndemandTitle->save($this->request->data)) {
+
+				$this->Session->setFlash("On Demand Title Updated Successfully");
+
+				$this->redirect(array(
+							"action"=>"edit",
+							$this->OndemandTitle->id
+						));
+
 			} else {
-				$this->Session->setFlash(__('The ondemand title could not be saved. Please, try again.'));
+
+				$this->Session->setFlash("There was an error while adding the title");
+
 			}
+		
 		}
-		
-		$this->render("edit");
-		
+
+
 	}
 
 	function edit($id = null) {
