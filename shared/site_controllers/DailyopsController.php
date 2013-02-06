@@ -215,47 +215,65 @@ class DailyopsController extends LocalAppController {
 
 	public function section($year = false, $auto_render = true,$legacy = false) {
 		
-		$sections = $this->Dailyop->DailyopSection->returnSections();
+
+		$token = "dop-section-view-".md5($this->here);
+
+		if(($data = Cache::read($token,"1min")) === false) {
+
+
+			$sections = $this->Dailyop->DailyopSection->returnSections();
 		
-		$section_uri = $this->request->params['section'];
+			$section_uri = $this->request->params['section'];
+					
+			$section = Set::extract("/DailyopSection[uri={$section_uri}]",$sections);
+			
+			$section=$section[0]['DailyopSection'];
+			
+			if(!$year || !preg_match('/[0-9]{4}/',$year)) {
 				
-		$section = Set::extract("/DailyopSection[uri={$section_uri}]",$sections);
-		
-		$section=$section[0]['DailyopSection'];
-		
-		if(!$year || !preg_match('/[0-9]{4}/',$year)) {
+				$year = $this->Dailyop->getLatestYear($section['id']);
+				
+			}
 			
-			$year = $this->Dailyop->getLatestYear($section['id']);
+			$this->set(compact("year"));
 			
-		}
-		
-		$this->set(compact("year"));
-		
-		if(!empty($section['uri'])) {
-			
-			$this->theme = $section['uri'];
-			
-		}
+			if(!empty($section['uri'])) {
+				
+				$this->theme = $section['uri'];
+				
+			}
 
-		$posts = $this->Dailyop->getPostsBySectionYear($section,$year);
+			$posts = $this->Dailyop->getPostsBySectionYear($section,$year);
 
-		if(count($posts)<10) {
+			if(count($posts)<10) {
 
-			$extra = $this->Dailyop->getPostsBySectionYear($section,date("Y",strtotime("-1 Year",strtotime($year."-01-01"))));
+				$extra = $this->Dailyop->getPostsBySectionYear($section,date("Y",strtotime("-1 Year",strtotime($year."-01-01"))));
 
-			if(count($extra)>0) {
+				if(count($extra)>0) {
 
-				$posts = array_merge($posts,$extra);
+					$posts = array_merge($posts,$extra);
+
+				}
 
 			}
 
+			$year_select = $this->Dailyop->getYearsBySection($section['id']);
+
+			$year_select = array_combine($year_select, $year_select);
+
+			$data = array(
+						"posts"=>$posts,
+						"year_select"=>$year_select,
+						"section"=>$section
+					);
+
+			Cache::write($token,$data,"1min");
+
 		}
 
-		$year_select = $this->Dailyop->getYearsBySection($section['id']);
-
-		$year_select = array_combine($year_select, $year_select);
-
-
+		$posts = $data['posts'];
+		$year_select = $data['year_select'];
+		$section = $data['section'];
 
 		$this->set(compact("posts","section","year_select"));
 
