@@ -97,21 +97,15 @@ class UnifiedStoresController extends LocalAppController {
 			$this->Session->setFlash(__('Invalid unified store'));
 			$this->redirect(array('action' => 'index'));
 		}
-		if (!empty($this->request->data)) {
-			
-			
-			$this->uploadImageLogo();
-			
-			
-			if ($this->UnifiedStore->save($this->request->data)) {
-				$this->Session->setFlash(__('The unified store has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The unified store could not be saved. Please, try again.'));
-			}
+		
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$this->UnifiedStore->saveAll($this->request->data);
+		
 		}
+
 		if (empty($this->request->data)) {
-			$this->request->data = $this->UnifiedStore->read(null, $id);
+			$this->request->data = $this->UnifiedStore->returnStore($id,$this->isAdmin(),false);
 		}
 	}
 
