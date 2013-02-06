@@ -43,12 +43,6 @@ $this->set("title_for_layout","The Berrics - News - ".$post['Dailyop']['name']);
 
 $back_to_link = "/news/".date("Y",strtotime($this->request->params['date_in']))."/".date("m",strtotime($this->request->params['date_in']))."/".date("d",strtotime($this->request->params['date_in']));
 
-if($post['Dailyop']['best_of']) {
-	
-	$back_to_link = "/news/2012/01/08";
-	
-}
-
 ?>
 <?php echo $this->element("banners/728") ?>
 <div class='article article-standard' id='news-article'>

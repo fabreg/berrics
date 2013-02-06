@@ -1093,18 +1093,7 @@ class DailyopsController extends LocalAppController {
 		
 		
 	}
-	public function updateBestOfWeight() {
-		//die(pr($this->request->data));	
-		$this->Dailyop->id = $this->request->data['Dailyop']['id'];
-		
-		$this->Dailyop->save(array(
-			"best_of_weight"=>$this->request->data['Dailyop']['best_of_weight'],
-			"best_of"=>$this->request->data['Dailyop']['best_of']
-		));
-		
-		return $this->redirect(base64_decode($this->request->data['Dailyop']['postback']));
-
-	}
+	
 	
 	public function assigned() {
 		

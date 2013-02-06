@@ -150,18 +150,7 @@ class Newsv2Controller extends DailyopsController {
 		
 		
 		
-		if($this->request->params['date_in'] == '2012-01-08') {
-
-			$cond = array(
-					"Dailyop.dailyop_section_id"=>65,
-					"Dailyop.active"=>1,
-					"Dailyop.misc_category"=>"news-general",
-					"Dailyop.best_of"=>1
-				);
-			
-			$sort = array("Dailyop.best_of_weight"=>"ASC");
-			
-		}
+		
 		
 		//lets gather all the news posts
 		$token = "news_general_home_".$this->request->params['date_in'];
