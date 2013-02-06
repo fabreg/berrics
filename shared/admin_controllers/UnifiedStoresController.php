@@ -99,8 +99,18 @@ class UnifiedStoresController extends LocalAppController {
 		}
 		
 		if($this->request->is("post") || $this->request->is("put")) {
-		
-			$this->UnifiedStore->saveAll($this->request->data);
+
+			if($this->UnifiedStore->saveAll($this->request->data)) {
+
+				$this->Session->setFlash("Store updated successfuly");
+
+				$this->redirect($this->here."#".$this->request->data['submit']);
+
+			} else {
+
+
+
+			}
 		
 		}
 
