@@ -24,7 +24,6 @@ echo $head_content;
 		</div>
 		
 	</div>
-	
 	<?php echo $this->element("layout/v3/html-footer-scripts"); ?>
 </body>
 <!-- <?php echo php_uname('n'); ?> -->
