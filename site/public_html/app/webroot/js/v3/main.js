@@ -309,8 +309,8 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 	$(div).videoDiv('videoEndScreen',div);
 
 }
-
-function handleVideoEnd(media_file_id) {
+var handleVideoEnd;
+ handleVideoEnd = function(media_file_id) {
 
 	//alert($(".post-media-div[data-media-file-id="+media_file_id+"]").html());
 	var div = $("div[data-media-file-id="+media_file_id+"]");
@@ -336,6 +336,8 @@ function handleVideoEnd(media_file_id) {
 				return false;
 
 			});
+
+			lazyLoad();
 		}
 	);
 
