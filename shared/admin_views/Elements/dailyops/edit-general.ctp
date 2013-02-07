@@ -244,11 +244,7 @@ function styleChecks() {
 						?>
 					</div>
 					<div class='span6'>
-						<?php 
-						echo $this->Form->input("unified_store_id",array("empty"=>true));
-						
-							
-						?>
+						<?php echo $this->Form->input("ondemand_title_id",array("empty"=>true,"label"=>"On-Demand Title")); ?>
 					</div>
 				</div>
 				<div class='row-fluid'>
@@ -258,7 +254,7 @@ function styleChecks() {
 						?>
 					</div>
 					<div class='span6'>
-						<?php echo $this->Form->input("ondemand_title_id",array("empty"=>true,"label"=>"On-Demand Title")); ?>
+						
 					</div>
 				</div>
 				<?php 

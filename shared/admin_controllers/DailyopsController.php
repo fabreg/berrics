@@ -477,7 +477,7 @@ class DailyopsController extends LocalAppController {
 		$this->request->data['Dailyop']['pub_time'] = date("H:i",strtotime($this->request->data['Dailyop']['publish_date']));
 		$users = $this->Dailyop->User->returnAssignedUserList();
 		$dailyopSections = $this->Dailyop->DailyopSection->returnSelectList();
-		$unifiedStores = $this->Dailyop->UnifiedStore->find("list",array("order"=>array("UnifiedStore.shop_name"=>"ASC")));
+		
 		
 		$ondemandTitles = $this->Dailyop->OndemandTitle->find('list',array("order"=>array("OndemandTitle.title"=>"ASC")));
 		
@@ -487,7 +487,7 @@ class DailyopsController extends LocalAppController {
 
 		$postTemplates = Dailyop::postTemplates();
 		
-		$this->set(compact('users', 'dailyopSections', 'mediaFiles',"themes","episodes","unifiedStores","postTemplates","ondemandTitles"));
+		$this->set(compact('users', 'dailyopSections', 'mediaFiles',"themes","episodes","postTemplates","ondemandTitles"));
 		
 	}
 	
