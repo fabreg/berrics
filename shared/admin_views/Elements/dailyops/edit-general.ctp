@@ -223,8 +223,6 @@ function styleChecks() {
 				}
 				echo $this->Form->input('id');
 				?>
-				
-				
 				<div class='row-fluid'>
 					<div class='span6'>
 						<?php 
