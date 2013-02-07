@@ -3,7 +3,7 @@
 <title><?php echo $title_for_layout; ?>
 </title>
 <meta content="<?php echo $meta_k; ?>" name='keywords'>
-<meta name="description" content='<?php echo $meta_d; ?>'>
+<meta name="description" content="<?php echo $meta_d; ?>">
 <?php 
 
 
