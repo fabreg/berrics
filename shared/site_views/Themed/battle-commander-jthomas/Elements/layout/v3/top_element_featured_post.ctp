@@ -2,22 +2,22 @@
 
 	echo $this->Html->css(array("jt-dailyops"),null,array('inline'=>true));
 	
-	$TrendingPost = ClassRegistry::init("TrendingPost");
+	$Dailyop = ClassRegistry::init("Dailyop");
 
-	$post = $TrendingPost->featuredPost();
+	$post = $Dailyop->returnPost(array("Dailyop.id"=>6600),1);
+
 
 ?>
-
 <div class="row-fluid">
-	<div class="span2">
+	<div class="span2 hidden-phone">
 		<a>
 			<img src="/theme/battle-commander-jthomas/img/deck-left.png" alt="" border='0' />
 		</a>
 	</div>
-	<div class="span8">
-		
+	<div class="span8" id='bc-post'>
+		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
-	<div class="span2">
+	<div class="span2 hidden-phone">
 		<a>
 			<img src="/theme/battle-commander-jthomas/img/deck-right.png" alt="" border='0' />
 		</a>
