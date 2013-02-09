@@ -36,8 +36,10 @@
 	<meta property="og:type" content="website">
 	<?php 
 		echo $fb_meta_img;
-		echo $this->element("layout/v3/html-head-scripts"); 
-		echo $scripts_for_layout;
+		echo $this->element("layout/v3/html-head-scripts");
+		//echo $scripts_for_layout;
+		echo $this->fetch('css');
+		echo $this->fetch('script');
 	?>
 	<body>
 		<?php if (!isset($_GET['t'])): ?>

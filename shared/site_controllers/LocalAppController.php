@@ -18,7 +18,7 @@ class LocalAppController extends AppController {
 							 )
 					);
 
-	public $theme = "website";
+	//public $theme = "website";
 	
 	public $enforce_ssl = false;
 
@@ -27,29 +27,6 @@ class LocalAppController extends AppController {
 	public $top_element = "layout/v3/top_element";
 	
 	public function beforeFilter() {
-		
-		
-		//do a splash page check
-		
-		if(date("Y-m-d")=='2012-08-13') {
-			
-			if(!in_array($this->request->params['controller'],array("splash"))) {
-					
-				if(!$this->Session->check("visited_splash")) {
-			
-			
-					header("Location:/");
-					die();
-			
-				}
-					
-			} else {
-					
-				$this->Session->write("visited_splash",1);
-					
-			}
-			
-		}
 		
 		
 		parent::beforeFilter();
