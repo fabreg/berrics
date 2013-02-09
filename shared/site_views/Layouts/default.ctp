@@ -102,16 +102,17 @@
 			</div>
 		</header>
 		<?php endif ?>
-		
-		<div class="container" id='main-container'>
-			<div class="row-fluid" id='body-row'>
-				<div class="span12" id='body-div'>
-					<?php echo $this->element($top_element); ?>
-					<?php 
-						if(!isset($body_element) || empty($body_element)) $body_element = "layout/v3/two-column";
-						echo $this->element($body_element); 
+		<div id="main-wrapper">
+			<div class="container" id='main-container'>
+				<div class="row-fluid" id='body-row'>
+					<div class="span12" id='body-div'>
+						<?php echo $this->element($top_element); ?>
+						<?php 
+							if(!isset($body_element) || empty($body_element)) $body_element = "layout/v3/two-column";
+							echo $this->element($body_element); 
 
-					?>
+						?>
+					</div>
 				</div>
 			</div>
 		</div>

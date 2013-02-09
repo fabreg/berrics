@@ -122,7 +122,6 @@ class TrendingPost extends AppModel {
 
 		if(($tp = Cache::read($token,"1min")) === false) {
 
-
 			$tp = $this->find("first",array(
 				"conditions"=>array(
 					"TrendingPost.start_date <= NOW()",
