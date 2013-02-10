@@ -523,7 +523,7 @@ class String {
 						}
 					} else {
 						foreach ($droppedTags as $closingTag) {
-							$openTags[] = $closingTag[1];
+							array_push($openTags, $closingTag[1]);
 						}
 					}
 				}

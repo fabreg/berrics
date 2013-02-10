@@ -101,9 +101,7 @@ class MediaView extends View {
 
 		if ($this->_isActive()) {
 			$extension = strtolower($extension);
-			//@codingStandardsIgnoreStart
 			$fileSize = @filesize($path);
-			//@codingStandardsIgnoreEnd
 			$handle = fopen($path, 'rb');
 
 			if ($handle === false) {
@@ -222,9 +220,7 @@ class MediaView extends View {
  * @return boolean
  */
 	protected function _clearBuffer() {
-		//@codingStandardsIgnoreStart
 		return @ob_end_clean();
-		//@codingStandardsIgnoreEnd
 	}
 
 /**
@@ -233,10 +229,8 @@ class MediaView extends View {
  * @return void
  */
 	protected function _flushBuffer() {
-		//@codingStandardsIgnoreStart
 		@flush();
 		@ob_flush();
-		//@codingStandardsIgnoreEnd
 	}
 
 }

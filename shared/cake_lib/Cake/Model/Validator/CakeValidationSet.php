@@ -192,7 +192,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  * @return CakeValidationSet this instance
  */
 	public function setRule($name, $rule) {
-		if (!($rule instanceof CakeValidationRule)) {
+		if (!$rule instanceof CakeValidationRule) {
 			$rule = new CakeValidationRule($rule);
 		}
 		$this->_rules[$name] = $rule;
@@ -236,10 +236,9 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  */
 	public function setRules($rules = array(), $mergeVars = true) {
 		if ($mergeVars === false) {
-			$this->_rules = array();
-		}
-		foreach ($rules as $name => $rule) {
-			$this->setRule($name, $rule);
+			$this->_rules = $rules;
+		} else {
+			$this->_rules = array_merge($this->_rules, $rules);
 		}
 		return $this;
 	}
@@ -281,7 +280,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
 				$message = __d($this->_validationDomain, $name);
 			}
 		} else {
-			$message = __d('cake', 'This field cannot be left blank');
+			$message = __d('cake_dev', 'This field cannot be left blank');
 		}
 
 		return $message;

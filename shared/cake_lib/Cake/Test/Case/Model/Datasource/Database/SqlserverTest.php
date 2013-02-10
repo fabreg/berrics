@@ -574,7 +574,7 @@ class SqlserverTest extends CakeTestCase {
 
 		$indexes = array('client_id' => array('column' => 'client_id'));
 		$result = $this->db->buildIndex($indexes, 'items');
-		$this->assertSame(array(), $result);
+		$this->assertEquals(array(), $result);
 
 		$indexes = array('client_id' => array('column' => array('client_id', 'period_id'), 'unique' => 1));
 		$result = $this->db->buildIndex($indexes, 'items');

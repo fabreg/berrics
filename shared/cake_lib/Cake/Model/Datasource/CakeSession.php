@@ -421,10 +421,9 @@ class CakeSession {
  * @return void
  */
 	public static function destroy() {
-		if (!self::started()) {
-			self::start();
+		if (self::started()) {
+			session_destroy();
 		}
-		session_destroy();
 		self::clear();
 	}
 

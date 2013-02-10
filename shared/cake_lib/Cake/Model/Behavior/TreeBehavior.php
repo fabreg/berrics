@@ -52,7 +52,7 @@ class TreeBehavior extends ModelBehavior {
  *
  * @var array
  */
-	protected $_deletedRow = array();
+	protected $_deletedRow = null;
 
 /**
  * Initiate Tree behavior
@@ -107,7 +107,7 @@ class TreeBehavior extends ModelBehavior {
  * @return array
  */
 	public function beforeFind(Model $Model, $query) {
-		if ($Model->findQueryType === 'threaded' && !isset($query['parent'])) {
+		if ($Model->findQueryType == 'threaded' && !isset($query['parent'])) {
 			$query['parent'] = $this->settings[$Model->alias]['parent'];
 		}
 		return $query;
@@ -129,7 +129,7 @@ class TreeBehavior extends ModelBehavior {
 			'fields' => array($Model->escapeField($left), $Model->escapeField($right)),
 			'recursive' => -1));
 		if ($data) {
-			$this->_deletedRow[$Model->alias] = current($data);
+			$this->_deletedRow = current($data);
 		}
 		return true;
 	}
@@ -144,8 +144,8 @@ class TreeBehavior extends ModelBehavior {
  */
 	public function afterDelete(Model $Model) {
 		extract($this->settings[$Model->alias]);
-		$data = $this->_deletedRow[$Model->alias];
-		$this->_deletedRow[$Model->alias] = null;
+		$data = $this->_deletedRow;
+		$this->_deletedRow = null;
 
 		if (!$data[$right] || !$data[$left]) {
 			return true;
@@ -178,7 +178,7 @@ class TreeBehavior extends ModelBehavior {
 		extract($this->settings[$Model->alias]);
 
 		$this->_addToWhitelist($Model, array($left, $right));
-		if (!$Model->id || !$Model->exists()) {
+		if (!$Model->id) {
 			if (array_key_exists($parent, $Model->data[$Model->alias]) && $Model->data[$Model->alias][$parent]) {
 				$parentNode = $Model->find('first', array(
 					'conditions' => array($scope, $Model->escapeField() => $Model->data[$Model->alias][$parent]),
@@ -588,6 +588,7 @@ class TreeBehavior extends ModelBehavior {
  * 'parent' the values of the parent_id field will be used to populate the left and right fields. The missingParentAction
  * parameter only applies to "parent" mode and determines what to do if the parent field contains an id that is not present.
  *
+ * @todo Could be written to be faster, *maybe*. Ideally using a subquery and putting all the logic burden on the DB.
  * @param Model $Model Model instance
  * @param string $mode parent or tree
  * @param string|integer $missingParentAction 'return' to do nothing and return, 'delete' to
@@ -601,7 +602,7 @@ class TreeBehavior extends ModelBehavior {
 		}
 		extract($this->settings[$Model->alias]);
 		$Model->recursive = $recursive;
-		if ($mode === 'parent') {
+		if ($mode == 'parent') {
 			$Model->bindModel(array('belongsTo' => array('VerifyParent' => array(
 				'className' => $Model->name,
 				'foreignKey' => $parent,
@@ -615,15 +616,15 @@ class TreeBehavior extends ModelBehavior {
 			));
 			$Model->unbindModel(array('belongsTo' => array('VerifyParent')));
 			if ($missingParents) {
-				if ($missingParentAction === 'return') {
+				if ($missingParentAction == 'return') {
 					foreach ($missingParents as $id => $display) {
 						$this->errors[]	= 'cannot find the parent for ' . $Model->alias . ' with id ' . $id . '(' . $display . ')';
 					}
 					return false;
-				} elseif ($missingParentAction === 'delete') {
-					$Model->deleteAll(array($Model->escapeField($Model->primaryKey) => array_flip($missingParents)), false);
+				} elseif ($missingParentAction == 'delete') {
+					$Model->deleteAll(array($Model->primaryKey => array_flip($missingParents)));
 				} else {
-					$Model->updateAll(array($Model->escapeField($parent) => $missingParentAction), array($Model->escapeField($Model->primaryKey) => array_flip($missingParents)));
+					$Model->updateAll(array($parent => $missingParentAction), array($Model->escapeField($Model->primaryKey) => array_flip($missingParents)));
 				}
 			}
 			$count = 1;
@@ -985,14 +986,14 @@ class TreeBehavior extends ModelBehavior {
 		extract($this->settings[$Model->alias]);
 		$Model->recursive = $recursive;
 
-		if ($field === 'both') {
+		if ($field == 'both') {
 			$this->_sync($Model, $shift, $dir, $conditions, $created, $left);
 			$field = $right;
 		}
 		if (is_string($conditions)) {
 			$conditions = array($Model->escapeField($field) . " {$conditions}");
 		}
-		if (($scope !== '1 = 1' && $scope !== true) && $scope) {
+		if (($scope != '1 = 1' && $scope !== true) && $scope) {
 			$conditions[] = $scope;
 		}
 		if ($created) {

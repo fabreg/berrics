@@ -79,18 +79,6 @@ class ConsoleOptionParserTest extends CakeTestCase {
 	}
 
 /**
- * test adding an option with a zero value
- *
- * @return void
- */
-	public function testAddOptionZero() {
-		$parser = new ConsoleOptionParser('test', false);
-		$parser->addOption('count', array());
-		$result = $parser->parse(array('--count', '0'));
-		$this->assertEquals(array('count' => '0', 'help' => false), $result[0], 'Zero parameter did not parse out');
-	}
-
-/**
  * test addOption with an object.
  *
  * @return void
@@ -326,27 +314,8 @@ class ConsoleOptionParserTest extends CakeTestCase {
 		$parser = new ConsoleOptionParser('test', false);
 		$parser->addArgument(new ConsoleInputArgument('test'));
 		$result = $parser->arguments();
-		$this->assertCount(1, $result);
+		$this->assertEquals(1, count($result));
 		$this->assertEquals('test', $result[0]->name());
-	}
-
-/**
- * Test adding arguments out of order.
- *
- * @return void
- */
-	public function testAddArgumentOutOfOrder() {
-		$parser = new ConsoleOptionParser('test', false);
-		$parser->addArgument('name', array('index' => 1, 'help' => 'first argument'))
-			->addArgument('bag', array('index' => 2, 'help' => 'second argument'))
-			->addArgument('other', array('index' => 0, 'help' => 'Zeroth argument'));
-
-		$result = $parser->arguments();
-		$this->assertCount(3, $result);
-		$this->assertEquals('other', $result[0]->name());
-		$this->assertEquals('name', $result[1]->name());
-		$this->assertEquals('bag', $result[2]->name());
-		$this->assertSame(array(0, 1, 2), array_keys($result));
 	}
 
 /**

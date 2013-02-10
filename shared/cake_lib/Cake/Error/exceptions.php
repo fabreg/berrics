@@ -224,11 +224,9 @@ class MissingControllerException extends CakeException {
 
 	protected $_messageTemplate = 'Controller class %s could not be found.';
 
-//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 404) {
 		parent::__construct($message, $code);
 	}
-//@codingStandardsIgnoreEnd
 
 }
 
@@ -242,11 +240,9 @@ class MissingActionException extends CakeException {
 
 	protected $_messageTemplate = 'Action %s::%s() could not be found.';
 
-//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 404) {
 		parent::__construct($message, $code);
 	}
-//@codingStandardsIgnoreEnd
 
 }
 
@@ -260,11 +256,9 @@ class PrivateActionException extends CakeException {
 
 	protected $_messageTemplate = 'Private Action %s::%s() is not directly accessible.';
 
-//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 404, Exception $previous = null) {
 		parent::__construct($message, $code, $previous);
 	}
-//@codingStandardsIgnoreEnd
 
 }
 
@@ -578,10 +572,8 @@ class NotImplementedException extends CakeException {
 
 	protected $_messageTemplate = '%s is not implemented.';
 
-//@codingStandardsIgnoreStart
 	public function __construct($message, $code = 501) {
 		parent::__construct($message, $code);
 	}
-//@codingStandardsIgnoreEnd
 
 }

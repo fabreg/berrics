@@ -234,8 +234,7 @@ class PrototypeEngineHelper extends JsBaseEngineHelper {
  * @return string The completed ajax call.
  */
 	public function request($url, $options = array()) {
-		$url = html_entity_decode($this->url($url), ENT_COMPAT, Configure::read('App.encoding'));
-		$url = '"' . $url . '"';
+		$url = '"' . $this->url($url) . '"';
 		$options = $this->_mapOptions('request', $options);
 		$type = '.Request';
 		if (isset($options['type']) && strtolower($options['type']) == 'json') {

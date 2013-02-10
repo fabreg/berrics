@@ -199,7 +199,7 @@ class FormHelper extends AppHelper {
 					$this->fieldset[$object->alias]['fields'][$alias] = array('type' => 'multiple');
 				}
 			}
-			if ($field === null || $field === false) {
+			if (empty($field)) {
 				return $this->fieldset[$model]['fields'];
 			} elseif (isset($this->fieldset[$model]['fields'][$field])) {
 				return $this->fieldset[$model]['fields'][$field];
@@ -247,17 +247,13 @@ class FormHelper extends AppHelper {
 		if (empty($validationRules) || count($validationRules) === 0) {
 			return false;
 		}
-
-		$isUpdate = $this->requestType === 'put';
 		foreach ($validationRules as $rule) {
-			$rule->isUpdate($isUpdate);
-			if ($rule->skip()) {
-				continue;
+			$rule->isUpdate($this->requestType === 'put');
+			if ($rule->isEmptyAllowed()) {
+				return false;
 			}
-
-			return !$rule->allowEmpty;
 		}
-		return false;
+		return true;
 	}
 
 /**
@@ -303,10 +299,8 @@ class FormHelper extends AppHelper {
  *   can be overridden when calling input()
  * - `encoding` Set the accept-charset encoding for the form.  Defaults to `Configure::read('App.encoding')`
  *
- * @param mixed $model The model name for which the form is being defined. Should
- *   include the plugin name for plugin models. e.g. `ContactManager.Contact`.
- *   If an array is passed and $options argument is empty, the array will be used as options.
- *   If `false` no model is used.
+ * @param string $model The model object which the form is being defined for.  Should
+ *   include the plugin name for plugin forms.  e.g. `ContactManager.Contact`.
  * @param array $options An array of html attributes and options.
  * @return string An formatted opening FORM tag.
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/form.html#options-for-create
@@ -433,9 +427,7 @@ class FormHelper extends AppHelper {
 		$htmlAttributes = array_merge($options, $htmlAttributes);
 
 		$this->fields = array();
-		if ($this->requestType !== 'get') {
-			$append .= $this->_csrfField();
-		}
+		$append .= $this->_csrfField();
 
 		if (!empty($append)) {
 			$append = $this->Html->useTag('block', ' style="display:none;"', $append);
@@ -506,11 +498,7 @@ class FormHelper extends AppHelper {
 			}
 			$out .= $this->submit($submit, $submitOptions);
 		}
-		if (
-			$this->requestType !== 'get' &&
-			isset($this->request['_Token']) &&
-			!empty($this->request['_Token'])
-		) {
+		if (isset($this->request['_Token']) && !empty($this->request['_Token'])) {
 			$out .= $this->secure($this->fields);
 			$this->fields = array();
 		}
@@ -780,7 +768,7 @@ class FormHelper extends AppHelper {
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/form.html#FormHelper::label
  */
 	public function label($fieldName = null, $text = null, $options = array()) {
-		if ($fieldName === null) {
+		if (empty($fieldName)) {
 			$fieldName = implode('.', $this->entity());
 		}
 
@@ -1005,7 +993,7 @@ class FormHelper extends AppHelper {
 
 		if (
 			(!isset($options['options']) && in_array($options['type'], $types)) ||
-			(isset($magicType) && in_array($options['type'], array('text', 'number')))
+			(isset($magicType) && $options['type'] == 'text')
 		) {
 			$varName = Inflector::variable(
 				Inflector::pluralize(preg_replace('/_id$/', '', $fieldKey))
@@ -1017,17 +1005,12 @@ class FormHelper extends AppHelper {
 				}
 				$options['options'] = $varOptions;
 			}
-
-			if ($options['type'] === 'select' && array_key_exists('step', $options)) {
-				unset($options['step']);
-			}
 		}
 
 		$autoLength = (
 			!array_key_exists('maxlength', $options) &&
 			isset($fieldDef['length']) &&
-			is_scalar($fieldDef['length']) &&
-			$options['type'] !== 'select'
+			is_scalar($fieldDef['length'])
 		);
 		if ($autoLength && $options['type'] == 'text') {
 			$options['maxlength'] = $fieldDef['length'];
@@ -1343,7 +1326,7 @@ class FormHelper extends AppHelper {
 
 		$showEmpty = $this->_extractOption('empty', $attributes);
 		if ($showEmpty) {
-			$showEmpty = ($showEmpty === true) ? __d('cake', 'empty') : $showEmpty;
+			$showEmpty = ($showEmpty === true) ? __('empty') : $showEmpty;
 			$options = array('' => $showEmpty) + $options;
 		}
 		unset($attributes['empty']);
@@ -1390,10 +1373,6 @@ class FormHelper extends AppHelper {
 
 		$hiddenField = isset($attributes['hiddenField']) ? $attributes['hiddenField'] : true;
 		unset($attributes['hiddenField']);
-
-		if (isset($value) && is_bool($value)) {
-			$value = $value ? 1 : 0;
-		}
 
 		foreach ($options as $optValue => $optTitle) {
 			$optionsHere = array('value' => $optValue);
@@ -1542,8 +1521,7 @@ class FormHelper extends AppHelper {
 			$this->_secure($secure, array_merge($field, array($suffix)));
 		}
 
-		$exclude = array('name' => '', 'value' => '');
-		return $this->Html->useTag('file', $options['name'], array_diff_key($options, $exclude));
+		return $this->Html->useTag('file', $options['name'], array_diff_key($options, array('name' => '')));
 	}
 
 /**
@@ -2063,11 +2041,6 @@ class FormHelper extends AppHelper {
 		} elseif ($attributes['value'] === false) {
 			$attributes['value'] = null;
 		}
-
-		if ($attributes['value'] > 12 && !$format24Hours) {
-			$attributes['value'] -= 12;
-		}
-
 		return $this->select(
 			$fieldName . ".hour",
 			$this->_generateOptions($format24Hours ? 'hour24' : 'hour'),
@@ -2211,12 +2184,50 @@ class FormHelper extends AppHelper {
 		}
 
 		if (!empty($attributes['value'])) {
-			list($year, $month, $day, $hour, $min, $meridian) = $this->_getDateTimeValue(
-				$attributes['value'],
-				$timeFormat
-			);
+			if (is_array($attributes['value'])) {
+				extract($attributes['value']);
+			} else {
+				if (is_numeric($attributes['value'])) {
+					$attributes['value'] = strftime('%Y-%m-%d %H:%M:%S', $attributes['value']);
+				}
+				$meridian = 'am';
+				$pos = strpos($attributes['value'], '-');
+				if ($pos !== false) {
+					$date = explode('-', $attributes['value']);
+					$days = explode(' ', $date[2]);
+					$day = $days[0];
+					$month = $date[1];
+					$year = $date[0];
+				} else {
+					$days[1] = $attributes['value'];
+				}
+
+				if (!empty($timeFormat)) {
+					$time = explode(':', $days[1]);
+
+					if (($time[0] > 12) && $timeFormat == '12') {
+						$time[0] = $time[0] - 12;
+						$meridian = 'pm';
+					} elseif ($time[0] == '12' && $timeFormat == '12') {
+						$meridian = 'pm';
+					} elseif ($time[0] == '00' && $timeFormat == '12') {
+						$time[0] = 12;
+					} elseif ($time[0] >= 12) {
+						$meridian = 'pm';
+					}
+					if ($time[0] == 0 && $timeFormat == '12') {
+						$time[0] = 12;
+					}
+					$hour = $min = null;
+					if (isset($time[1])) {
+						$hour = $time[0];
+						$min = $time[1];
+					}
+				}
+			}
 		}
 
+		$elements = array('Day', 'Month', 'Year', 'Hour', 'Minute', 'Meridian');
 		$defaults = array(
 			'minYear' => null, 'maxYear' => null, 'separator' => '-',
 			'interval' => 1, 'monthNames' => true
@@ -2247,42 +2258,42 @@ class FormHelper extends AppHelper {
 			list($year, $month, $day, $hour, $min, $meridian) = $newTime;
 		}
 
-		$keys = array('Day', 'Month', 'Year', 'Hour', 'Minute', 'Meridian');
-		$attrs = array_fill_keys($keys, $attributes);
-
-		$hasId = isset($attributes['id']);
-		if ($hasId && is_array($attributes['id'])) {
-			// check for missing ones and build selectAttr for each element
-			$attributes['id'] += array(
-				'month' => '',
-				'year' => '',
-				'day' => '',
-				'hour' => '',
-				'minute' => '',
-				'meridian' => ''
-			);
-			foreach ($keys as $key) {
-				$attrs[$key]['id'] = $attributes['id'][strtolower($key)];
+		if (isset($attributes['id'])) {
+			if (is_string($attributes['id'])) {
+				// build out an array version
+				foreach ($elements as $element) {
+					$selectAttrName = 'select' . $element . 'Attr';
+					${$selectAttrName} = $attributes;
+					${$selectAttrName}['id'] = $attributes['id'] . $element;
+				}
+			} elseif (is_array($attributes['id'])) {
+				// check for missing ones and build selectAttr for each element
+				$attributes['id'] += array(
+					'month' => '', 'year' => '', 'day' => '',
+					'hour' => '', 'minute' => '', 'meridian' => ''
+				);
+				foreach ($elements as $element) {
+					$selectAttrName = 'select' . $element . 'Attr';
+					${$selectAttrName} = $attributes;
+					${$selectAttrName}['id'] = $attributes['id'][strtolower($element)];
+				}
 			}
-		}
-		if ($hasId && is_string($attributes['id'])) {
-			// build out an array version
-			foreach ($keys as $key) {
-				$attrs[$key]['id'] = $attributes['id'] . $key;
+		} else {
+			// build the selectAttrName with empty id's to pass
+			foreach ($elements as $element) {
+				$selectAttrName = 'select' . $element . 'Attr';
+				${$selectAttrName} = $attributes;
 			}
 		}
 
 		if (is_array($attributes['empty'])) {
 			$attributes['empty'] += array(
-				'month' => true,
-				'year' => true,
-				'day' => true,
-				'hour' => true,
-				'minute' => true,
-				'meridian' => true
+				'month' => true, 'year' => true, 'day' => true,
+				'hour' => true, 'minute' => true, 'meridian' => true
 			);
-			foreach ($keys as $key) {
-				$attrs[$key]['empty'] = $attributes['empty'][strtolower($key)];
+			foreach ($elements as $element) {
+				$selectAttrName = 'select' . $element . 'Attr';
+				${$selectAttrName}['empty'] = $attributes['empty'][strtolower($element)];
 			}
 		}
 
@@ -2290,96 +2301,45 @@ class FormHelper extends AppHelper {
 		foreach (preg_split('//', $dateFormat, -1, PREG_SPLIT_NO_EMPTY) as $char) {
 			switch ($char) {
 				case 'Y':
-					$attrs['Year']['value'] = $year;
+					$selectYearAttr['value'] = $year;
 					$selects[] = $this->year(
-						$fieldName, $minYear, $maxYear, $attrs['Year']
+						$fieldName, $minYear, $maxYear, $selectYearAttr
 					);
 				break;
 				case 'M':
-					$attrs['Month']['value'] = $month;
-					$attrs['Month']['monthNames'] = $monthNames;
-					$selects[] = $this->month($fieldName, $attrs['Month']);
+					$selectMonthAttr['value'] = $month;
+					$selectMonthAttr['monthNames'] = $monthNames;
+					$selects[] = $this->month($fieldName, $selectMonthAttr);
 				break;
 				case 'D':
-					$attrs['Day']['value'] = $day;
-					$selects[] = $this->day($fieldName, $attrs['Day']);
+					$selectDayAttr['value'] = $day;
+					$selects[] = $this->day($fieldName, $selectDayAttr);
 				break;
 			}
 		}
 		$opt = implode($separator, $selects);
 
-		$attrs['Minute']['interval'] = $interval;
+		$selectMinuteAttr['interval'] = $interval;
 		switch ($timeFormat) {
 			case '24':
-				$attrs['Hour']['value'] = $hour;
-				$attrs['Minute']['value'] = $min;
-				$opt .= $this->hour($fieldName, true, $attrs['Hour']) . ':' .
-				$this->minute($fieldName, $attrs['Minute']);
+				$selectHourAttr['value'] = $hour;
+				$selectMinuteAttr['value'] = $min;
+				$opt .= $this->hour($fieldName, true, $selectHourAttr) . ':' .
+				$this->minute($fieldName, $selectMinuteAttr);
 			break;
 			case '12':
-				$attrs['Hour']['value'] = $hour;
-				$attrs['Minute']['value'] = $min;
-				$attrs['Meridian']['value'] = $meridian;
-				$opt .= $this->hour($fieldName, false, $attrs['Hour']) . ':' .
-				$this->minute($fieldName, $attrs['Minute']) . ' ' .
-				$this->meridian($fieldName, $attrs['Meridian']);
+				$selectHourAttr['value'] = $hour;
+				$selectMinuteAttr['value'] = $min;
+				$selectMeridianAttr['value'] = $meridian;
+				$opt .= $this->hour($fieldName, false, $selectHourAttr) . ':' .
+				$this->minute($fieldName, $selectMinuteAttr) . ' ' .
+				$this->meridian($fieldName, $selectMeridianAttr);
+			break;
+			default:
+				$opt .= '';
 			break;
 		}
 		return $opt;
-	}
-
-/**
- * Parse the value for a datetime selected value
- *
- * @param string|array $value The selected value.
- * @param integer $timeFormat The time format
- * @return array Array of selected value.
- */
-	protected function _getDateTimeValue($value, $timeFormat) {
-		$year = $month = $day = $hour = $min = $meridian = null;
-		if (is_array($value)) {
-			extract($value);
-			if ($meridian === 'pm') {
-				$hour += 12;
-			}
-			return array($year, $month, $day, $hour, $min, $meridian);
-		}
-
-		if (is_numeric($value)) {
-			$value = strftime('%Y-%m-%d %H:%M:%S', $value);
-		}
-		$meridian = 'am';
-		$pos = strpos($value, '-');
-		if ($pos !== false) {
-			$date = explode('-', $value);
-			$days = explode(' ', $date[2]);
-			$day = $days[0];
-			$month = $date[1];
-			$year = $date[0];
-		} else {
-			$days[1] = $value;
-		}
-
-		if (!empty($timeFormat)) {
-			$time = explode(':', $days[1]);
-
-			if ($time[0] >= '12' && $timeFormat == '12') {
-				$meridian = 'pm';
-			} elseif ($time[0] == '00' && $timeFormat == '12') {
-				$time[0] = 12;
-			} elseif ($time[0] >= 12) {
-				$meridian = 'pm';
-			}
-			if ($time[0] == 0 && $timeFormat == '12') {
-				$time[0] = 12;
-			}
-			$hour = $min = null;
-			if (isset($time[1])) {
-				$hour = $time[0];
-				$min = $time[1];
-			}
-		}
-		return array($year, $month, $day, $hour, $min, $meridian);
 	}
 
 /**
@@ -2475,10 +2435,9 @@ class FormHelper extends AppHelper {
 			}
 
 			if ($name !== null) {
-				$isNumeric = is_numeric($name);
 				if (
 					(!$selectedIsArray && !$selectedIsEmpty && (string)$attributes['value'] == (string)$name) ||
-					($selectedIsArray && in_array($name, $attributes['value'], !$isNumeric))
+					($selectedIsArray && in_array($name, $attributes['value']))
 				) {
 					if ($attributes['style'] === 'checkbox') {
 						$htmlOptions['checked'] = true;
@@ -2619,8 +2578,7 @@ class FormHelper extends AppHelper {
 	}
 
 /**
- * Sets field defaults and adds field to form security input hash.
- * Will also add a 'form-error' class if the field contains validation errors.
+ * Sets field defaults and adds field to form security input hash
  *
  * ### Options
  *

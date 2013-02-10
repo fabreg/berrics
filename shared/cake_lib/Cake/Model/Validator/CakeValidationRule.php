@@ -163,9 +163,9 @@ class CakeValidationRule {
  */
 	public function checkRequired($field, &$data) {
 		return (
-			(!array_key_exists($field, $data) && $this->isRequired() === true) ||
+			(!isset($data[$field]) && $this->isRequired() === true) ||
 			(
-				array_key_exists($field, $data) && (empty($data[$field]) &&
+				isset($data[$field]) && (empty($data[$field]) &&
 				!is_numeric($data[$field])) && $this->allowEmpty === false
 			)
 		);

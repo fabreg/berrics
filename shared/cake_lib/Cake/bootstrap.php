@@ -145,12 +145,6 @@ App::$bootstrapping = true;
 
 Configure::bootstrap(isset($boot) ? $boot : true);
 
-if (function_exists('mb_internal_encoding')) {
-	$encoding = Configure::read('App.encoding');
-	if (!empty($encoding)) {
-		mb_internal_encoding($encoding);
-	}
-}
 
 /**
  *  Full url prefix

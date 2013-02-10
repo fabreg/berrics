@@ -55,7 +55,7 @@ class Inflector {
 			'/$/' => 's',
 		),
 		'uninflected' => array(
-			'.*[nrlm]ese', '.*deer', '.*fish', '.*measles', '.*ois', '.*pox', '.*sheep', 'people', 'cookie'
+			'.*[nrlm]ese', '.*deer', '.*fish', '.*measles', '.*ois', '.*pox', '.*sheep', 'people'
 		),
 		'irregular' => array(
 			'atlas' => 'atlases',
@@ -63,7 +63,6 @@ class Inflector {
 			'brother' => 'brothers',
 			'cafe' => 'cafes',
 			'child' => 'children',
-			'cookie' => 'cookies',
 			'corpus' => 'corpuses',
 			'cow' => 'cows',
 			'ganglion' => 'ganglions',
@@ -177,7 +176,7 @@ class Inflector {
 		'/Ä/' => 'Ae',
 		'/Ü/' => 'Ue',
 		'/Ö/' => 'Oe',
-		'/À|Á|Â|Ã|Å|Ǻ|Ā|Ă|Ą|Ǎ/' => 'A',
+		'/À|Á|Â|Ã|Ä|Å|Ǻ|Ā|Ă|Ą|Ǎ/' => 'A',
 		'/à|á|â|ã|å|ǻ|ā|ă|ą|ǎ|ª/' => 'a',
 		'/Ç|Ć|Ĉ|Ċ|Č/' => 'C',
 		'/ç|ć|ĉ|ċ|č/' => 'c',

@@ -433,14 +433,8 @@ class Scaffold {
 				$associations[$type][$assocKey]['foreignKey'] =
 					$assocData['foreignKey'];
 
-				list($plugin, $model) = pluginSplit($assocData['className']);
-				if ($plugin) {
-					$plugin = Inflector::underscore($plugin);
-				}
-				$associations[$type][$assocKey]['plugin'] = $plugin;
-
 				$associations[$type][$assocKey]['controller'] =
-					Inflector::pluralize(Inflector::underscore($model));
+					Inflector::pluralize(Inflector::underscore($assocData['className']));
 
 				if ($type == 'hasAndBelongsToMany') {
 					$associations[$type][$assocKey]['with'] = $assocData['with'];

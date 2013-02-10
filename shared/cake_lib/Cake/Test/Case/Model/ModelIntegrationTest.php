@@ -907,20 +907,6 @@ class ModelIntegrationTest extends BaseModelTest {
 	}
 
 /**
- * Check schema() on a model with useTable = false;
- *
- * @return void
- */
-	public function testSchemaUseTableFalse() {
-		$model = new TheVoid();
-		$result = $model->schema();
-		$this->assertNull($result);
-
-		$result = $model->create();
-		$this->assertEmpty($result);
-	}
-
-/**
  * data provider for time tests.
  *
  * @return array

@@ -177,7 +177,7 @@ class AclShellTest extends CakeTestCase {
 
 		$Aro = ClassRegistry::init('Aro');
 		$result = $Aro->findById(3);
-		$this->assertSame(array(), $result);
+		$this->assertFalse($result);
 	}
 
 /**

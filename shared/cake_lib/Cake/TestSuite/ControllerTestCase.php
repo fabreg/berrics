@@ -173,7 +173,7 @@ abstract class ControllerTestCase extends CakeTestCase {
  *
  * @var boolean
  */
-	protected $_dirtyController = false;
+	private $__dirtyController = false;
 
 /**
  * Used to enable calling ControllerTestCase::testAction() without the testing
@@ -252,7 +252,7 @@ abstract class ControllerTestCase extends CakeTestCase {
 			$this->headers = Router::currentRoute()->response->header();
 			return;
 		}
-		if ($this->_dirtyController) {
+		if ($this->__dirtyController) {
 			$this->controller = null;
 		}
 
@@ -275,7 +275,7 @@ abstract class ControllerTestCase extends CakeTestCase {
 		if (isset($this->controller->View)) {
 			$this->view = $this->controller->View->fetch('__view_no_layout__');
 		}
-		$this->_dirtyController = true;
+		$this->__dirtyController = true;
 		$this->headers = $Dispatch->response->header();
 
 		$_GET = $restore['get'];
@@ -371,7 +371,7 @@ abstract class ControllerTestCase extends CakeTestCase {
 		}
 
 		$_controller->constructClasses();
-		$this->_dirtyController = false;
+		$this->__dirtyController = false;
 
 		$this->controller = $_controller;
 		return $this->controller;

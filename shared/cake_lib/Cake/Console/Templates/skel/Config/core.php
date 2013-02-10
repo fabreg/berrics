@@ -42,8 +42,7 @@
  * Options:
  *
  * - `handler` - callback - The callback to handle errors. You can set this to any callable type,
- *   including anonymous functions.
- *   Make sure you add App::uses('MyHandler', 'Error'); when using a custom handler class
+ *    including anonymous functions.
  * - `level` - int - The level of errors you are interested in capturing.
  * - `trace` - boolean - Include stack traces for errors in log files.
  *
@@ -65,7 +64,6 @@
  *
  * - `handler` - callback - The callback to handle exceptions. You can set this to any callback type,
  *   including anonymous functions.
- *   Make sure you add App::uses('MyHandler', 'Error'); when using a custom handler class
  * - `renderer` - string - The class responsible for rendering uncaught exceptions.  If you choose a custom class you
  *   should place the file for that class in app/Lib/Error. This class needs to implement a render method.
  * - `log` - boolean - Should Exceptions be logged?
@@ -228,7 +226,7 @@
 	Configure::write('Acl.database', 'default');
 
 /**
- * Uncomment this line and correct your server timezone to fix
+ * Uncomment this line and correct your server timezone to fix 
  * any date & time related errors.
  */
 	//date_default_timezone_set('UTC');

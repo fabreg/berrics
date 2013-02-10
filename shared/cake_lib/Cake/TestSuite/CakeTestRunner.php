@@ -17,8 +17,6 @@
  */
 require_once 'PHPUnit/TextUI/TestRunner.php';
 
-App::uses('CakeFixtureManager', 'TestSuite/Fixture');
-
 /**
  * A custom test runner for Cake's use of PHPUnit.
  *

@@ -67,7 +67,7 @@ class BasicsTest extends CakeTestCase {
 		$one = array('minYear' => null, 'maxYear' => null, 'separator' => '-', 'interval' => 1, 'monthNames' => true);
 		$two = array('minYear' => null, 'maxYear' => null, 'separator' => '-', 'interval' => 1, 'monthNames' => true);
 		$result = array_diff_key($one, $two);
-		$this->assertSame(array(), $result);
+		$this->assertEquals(array(), $result);
 	}
 
 /**
@@ -282,9 +282,7 @@ class BasicsTest extends CakeTestCase {
 
 		$result = cache('basics_test');
 		$this->assertEquals('simple cache write', $result);
-		if (file_exists(CACHE . 'basics_test')) {
-			unlink(CACHE . 'basics_test');
-		}
+		@unlink(CACHE . 'basics_test');
 
 		cache('basics_test', 'expired', '+1 second');
 		sleep(2);
@@ -605,9 +603,7 @@ class BasicsTest extends CakeTestCase {
  * @return void
  */
 	public function testLogError() {
-		if (file_exists(LOGS . 'error.log')) {
-			unlink(LOGS . 'error.log');
-		}
+		@unlink(LOGS . 'error.log');
 
 		// disable stderr output for this test
 		if (CakeLog::stream('stderr')) {

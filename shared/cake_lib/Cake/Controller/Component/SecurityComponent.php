@@ -23,7 +23,7 @@ App::uses('Hash', 'Utility');
 App::uses('Security', 'Utility');
 
 /**
- * The Security Component creates an easy way to integrate tighter security in
+ * The Security Component creates an easy way to integrate tighter security in 
  * your application. It provides methods for various tasks like:
  *
  * - Restricting which HTTP methods your application accepts.
@@ -218,10 +218,6 @@ class SecurityComponent extends Component {
 			$controller->request->params['requested'] != 1
 		);
 
-		if ($this->_action == $this->blackHoleCallback) {
-			return $this->blackhole($controller, 'auth');
-		}
-
 		if ($isPost && $isNotRequestAction && $this->validatePost) {
 			if ($this->_validatePost($controller) === false) {
 				return $this->blackHole($controller, 'auth');
@@ -313,10 +309,11 @@ class SecurityComponent extends Component {
  * @throws BadRequestException
  */
 	public function blackHole(Controller $controller, $error = '') {
-		if (!$this->blackHoleCallback) {
+		if ($this->blackHoleCallback == null) {
 			throw new BadRequestException(__d('cake_dev', 'The request has been black-holed'));
+		} else {
+			return $this->_callback($controller, $this->blackHoleCallback, array($error));
 		}
-		return $this->_callback($controller, $this->blackHoleCallback, array($error));
 	}
 
 /**

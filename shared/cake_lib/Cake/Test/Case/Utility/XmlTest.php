@@ -177,7 +177,6 @@ class XmlTest extends CakeTestCase {
 			array(null),
 			array(false),
 			array(''),
-			array('http://localhost/notthere.xml'),
 		);
 	}
 

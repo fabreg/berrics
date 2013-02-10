@@ -111,11 +111,9 @@ class MemcacheEngineTest extends CakeTestCase {
 
 		foreach ($servers as $server) {
 			list($host, $port) = explode(':', $server);
-			//@codingStandardsIgnoreStart
 			if (!@$Memcache->connect($host, $port)) {
 				$available = false;
 			}
-			//@codingStandardsIgnoreEnd
 		}
 
 		$this->skipIf(!$available, 'Need memcache servers at ' . implode(', ', $servers) . ' to run this test.');
@@ -123,6 +121,7 @@ class MemcacheEngineTest extends CakeTestCase {
 		$Memcache = new MemcacheEngine();
 		$Memcache->init(array('engine' => 'Memcache', 'servers' => $servers));
 
+		$servers = array_keys($Memcache->__Memcache->getExtendedStats());
 		$settings = $Memcache->settings();
 		$this->assertEquals($settings['servers'], $servers);
 		Cache::drop('dual_server');
@@ -231,11 +230,12 @@ class MemcacheEngineTest extends CakeTestCase {
 		$result = Cache::write('other_test', $data, 'memcache');
 		$this->assertTrue($result);
 
-		sleep(3);
+		sleep(2);
 		$result = Cache::read('other_test', 'memcache');
 		$this->assertFalse($result);
 
 		Cache::config('memcache', array('duration' => '+1 second'));
+		sleep(2);
 
 		$result = Cache::read('other_test', 'memcache');
 		$this->assertFalse($result);
