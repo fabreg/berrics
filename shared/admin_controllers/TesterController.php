@@ -2229,5 +2229,13 @@ class TesterController extends LocalAppController {
 
 	}
 
-	
+	public function test_camel() {
+		
+		$t = "battle-commander-jthomas";
+
+		die(Inflector::camelize($t));
+
+	}
+
+
 }
