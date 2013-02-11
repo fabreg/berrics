@@ -68,7 +68,7 @@ $this->set(compact("title_for_layout"));
 	<div class="top-banner">
 		<script type="text/javascript">
 		  var ord = window.ord || Math.floor(Math.random() * 1e16);
-		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N5885/adj/batb5_dailyops_lo;sz=728x90;ord=' + ord + '?"><\/script>');
+		  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N5885/adj/VBATB6;sz=728x90;ord=' + ord + '?"><\/script>');
 		</script>
 		
 	</div>
@@ -215,7 +215,7 @@ $this->set(compact("title_for_layout"));
 			<div class="right">
 				<script type='text/javascript'>
 				var ord = window.ord || Math.floor(Math.random() * 1e16);
-			  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N5885/adj/batb5_dailyops;sz=300x250;ord=' + ord + '?"><\/script>');
+			  document.write('<script type="text/javascript" src="http://ad.doubleclick.net/N5885/adj/VBATB6;sz=300x250;ord=' + ord + '?"><\/script>');
 			</script>
 			</div>
 		</div>
