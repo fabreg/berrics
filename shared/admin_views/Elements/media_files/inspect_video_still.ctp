@@ -85,7 +85,7 @@ function handleStillUpload() {
 			<div style='padding-bottom:5px;'>
 				<div>
 					<?php 
-						$img_link = "http://img.theberrics.com/video/stills-large/".$this->data['MediaFile']['file_video_still'];
+						$img_link = "http://img.theberrics.com/video/stills-large/".$this->data['MediaFile']['file_video_still_large'];
 					?>
 					<a href='<?php echo $img_link; ?>' target='_blank'><?php echo $img_link; ?></a>
 				</div>
