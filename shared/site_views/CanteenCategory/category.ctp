@@ -40,13 +40,15 @@ $this->set("title_for_layout",strtoupper($category['Parent']['name'])." // ".str
 						<?php echo strtoupper($category['Parent']['name']); ?> // <?php echo strtoupper($category['CanteenCategory']['name']); ?>
 					</h1>
 				</div>
-				<?php 
-					foreach($products as $p):
-				?>
-					<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
-				<?php 
-					endforeach;
-				?>
+				<div class="product-thumb-collection">
+					<?php 
+						foreach($products as $p):
+					?>
+						<?php echo $this->element("canteen/product-thumb",array("product"=>$p)); ?>
+					<?php 
+						endforeach;
+					?>
+				</div>
 				
 			</div>
 		</div>
