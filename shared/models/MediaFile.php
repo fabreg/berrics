@@ -204,7 +204,7 @@ class MediaFile extends AppModel {
 	 * Returns a videoVO object that has an ad scedule attached to it
 	 * for double click advertising API's
 	 */
-	public function returnVideoVO($id = false) {
+	public function returnVideoVO($id = false,$dailyop_id = false) {
 		
 		$token = "videoVO-".$id;
 
@@ -241,6 +241,23 @@ class MediaFile extends AppModel {
 			if(!empty($preRollUnit)) $data['Ads']['preroll'] = self::formatVastUrl($preRollUnit);
 
 			if(!empty($postRollUnit)) $data['Ads']['postroll'] = self::formatVastUrl($postRollUnit);
+
+			if($dailyop_id) {
+
+				$data['Dailyop'] = $this->DailyopMediaItem->Dailyop->find("first",array(
+						"fields"=>array(
+							"Dailyop.id","Dailyop.name","Dailyop.sub_title","Dailyop.uri",
+							"DailyopSection.name","DailyopSection.uri"
+						),
+						"conditions"=>array(
+							"Dailyop.id"=>$dailyop_id
+						),
+						"contain"=>array(
+							"DailyopSection"
+						)
+					));
+
+			}
 
 			//Cache::write($token,$data,"1min");
 
