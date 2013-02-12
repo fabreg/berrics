@@ -199,6 +199,56 @@ class MediaFile extends AppModel {
 		return "/home/sites/tmpfiles/".$file['MediaFile']['limelight_file'];
 
 	}
+	/**
+	 * Return Video VO
+	 * Returns a videoVO object that has an ad scedule attached to it
+	 * for double click advertising API's
+	 */
+	public function returnVideoVO($id = false) {
+		
+		$token = "videoVO-".$id;
+
+		if(($data = Cache::read($token,"1min")) === false) {
+
+			$video = $this->find("first",array(
+						"fields"=>array(
+							"MediaFile.id","MediaFile.limelight_file","MediaFile.limelight_file_ogv","MediaFile.limelight_file_mobile",
+							"MediaFile.file_video_still","MediaFile.preroll_label","MediaFile.postroll_label","MediaFile.preroll_label_override",
+							"MediaFile.postroll_label_override","MediaFile.name"
+						),
+						"conditions"=>array(
+							"MediaFile.id"=>$id
+						),
+						"contain"=>array()
+
+					));
+
+			//get the ad units that are in-scope
+			$preRollUnit = $video['MediaFile']['preroll_label_override'];
+
+			if(empty($preRollUnit) && !empty($video['MediaFile']['preroll_label'])) $preRollUnit = $video['MediaFile']['preroll_label'];
+
+			$postRollUnit = $video['MediaFile']['postroll_label_override'];
+
+			if(empty($postRollUnit) && !empty($video['MediaFile']['postroll_label'])) $postRollUnit = $video['MediaFile']['postroll_label'];
+
+
+			//make the data object to return
+
+			$data['MediaFile'] = $video['MediaFile'];
+			$data['Ads'] = array();
+
+			if(!empty($preRollUnit)) $data['Ads']['preroll'] = self::formatVastUrl($preRollUnit);
+
+			if(!empty($postRollUnit)) $data['Ads']['postroll'] = self::formatVastUrl($postRollUnit);
+
+			//Cache::write($token,$data,"1min");
+
+		}
+
+		return $data;
+
+	}
 
 	public static function formatVastUrl($label = false, $tags = false) {
 		
@@ -209,6 +259,7 @@ class MediaFile extends AppModel {
 		return $url;
 
 	}
+
 	
 	
 	

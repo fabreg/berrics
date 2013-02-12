@@ -194,6 +194,64 @@ class MediaServiceController extends LocalAppController {
 
 	}
 
+	public function video_player_requestv3() {
+
+		$this->skip_page_view = true;
+
+		$this->layout = "ajax";
+
+		$data = array();
+
+		$data['playlist'] = array();
+
+		if(count($this->request->params['named'])>0) $this->request->data = $this->request->params['named'];
+
+		$media_file_id = (isset($this->request->data['media_file_id'])) ? 
+				$this->request->data['media_file_id']:'4d6ed946-4d48-4735-8272-37a20ab5431b';
+
+		$videos = array();
+
+		//die(print_r($this->request->data));
+
+		$videos[] = $this->MediaFile->returnVideoVO($media_file_id);
+
+		$post = false;
+
+		if(isset($this->request->data['dailyop_id'])) {
+
+			$post = $this->Dailyop->find("first",array(
+						"fields"=>array(
+							"Dailyop.id","Dailyop.name","Dailyop.sub_title","Dailyop.uri",
+							"DailyopSection.name","DailyopSection.uri"
+						),
+						"conditions"=>array(
+							"Dailyop.id"=>$this->request->data['dailyop_id']
+						),
+						"contain"=>array(
+							"DailyopSection"
+						)
+					));
+
+		}
+
+		$request = array();
+		//hardset some values
+		$request['start_pos'] = 0;
+
+		$request['playlist'] = $videos;
+
+		$request['post'] = $post;
+
+
+
+		die(json_encode($request));
+
+	}
+
+	public function beacon() {
+		# code...
+	}
+
 
 	public function end() {
 		
