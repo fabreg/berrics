@@ -247,6 +247,7 @@ class MediaFile extends AppModel {
 				$data['Dailyop'] = $this->DailyopMediaItem->Dailyop->find("first",array(
 						"fields"=>array(
 							"Dailyop.id","Dailyop.name","Dailyop.sub_title","Dailyop.uri",
+							"Dailyop.ondemand_video_id",
 							"DailyopSection.name","DailyopSection.uri"
 						),
 						"conditions"=>array(
@@ -264,6 +265,12 @@ class MediaFile extends AppModel {
 		}
 
 		return $data;
+
+	}
+
+	public function returnOndemanTitleVO($id) {
+
+			
 
 	}
 
