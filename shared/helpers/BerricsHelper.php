@@ -451,7 +451,6 @@ class BerricsHelper extends AppHelper {
 
 		}
 
-		
 		//merge in default attributes with sent in attr's
 		$opts = array_merge(array(
 			"data-media-file-id"=>$MediaFile['id'],

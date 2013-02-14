@@ -318,7 +318,8 @@
 
       var flashVars = {
 
-        'media_file_id':$data.target.attr("data-media-file-id")
+        'media_file_id':$data.target.attr("data-media-file-id"),
+        "domain":window.location.hostname
 
       };
 
@@ -330,7 +331,7 @@
       $data.target.html(swfDiv);
       
       swfobject.embedSWF(
-                "/swf/v3/VideoPlayerV3.swf?t=i",
+                "/swf/v3/VideoPlayerV3.swf?t=a",
                 swfDiv.attr("id"),
                 "100%",
                 "394",
