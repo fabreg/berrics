@@ -223,7 +223,7 @@ class MediaServiceController extends LocalAppController {
 		//$videos[2] = $videos[1];
 		$request = array();
 		//hardset some values
-		$request['start_pos'] = 0;
+		$request['start_pos'] = 1;
 
 		$request['playlist'] = $videos;
 
