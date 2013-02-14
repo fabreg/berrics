@@ -90,37 +90,22 @@ class DailyopSection extends AppModel {
 			
 			$cond = array("DailyopSection.active"=>1);
 			
-			
-			if(isset($_SERVER['DEVSERVER'])) {
-				$cond = array();
-				$cond['OR'] = array(
-					"DailyopSection.id"=>array(77),
-					"DailyopSection.active"=>1
-				);
-				
+			if(preg_match('/(dev\.|v3\.)/i',$_SERVER{'HTTP_HOST'})) {
+
+				$cond = array(
+						"OR"=>array(
+							array("DailyopSection.active"=>1),
+							array("DailyopSection.id"=>86)
+						)
+					);
+
 			}
-			
-			
+
 			$sections = $this->find("all",array(	
 				"conditions"=>$cond,
 				"contain"=>array(),
 				"order"=>array("DailyopSection.name"=>"ASC")
 			));
-			
-			if(isset($_SERVER['DEVSERVER'])) {
-				
-				foreach($sections as $k=>$v) {
-					
-					if($v['DailyopSection']['uri'] == 'younited-nations-3') {
-						
-						$sections[$k]['DailyopSection']['directive'] = "yn3_voting";
-						
-					}
-					
-				}
-				
-			}
-			
 			
 			Cache::write("dop_sections",$sections,"1min");
 			

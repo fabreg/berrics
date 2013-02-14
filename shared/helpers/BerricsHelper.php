@@ -464,6 +464,8 @@ class BerricsHelper extends AppHelper {
 			"id"=>"media-file-div-".$MediaFile['id']
 		),$opts);
 
+		if(isset($Dailyop['Dailyop']['ondemand_title_id']) && !empty($Dailyop['Dailyop']['ondemand_title_id'])) 
+			$opts['data-ondemand-title-id'] = $Dailyop['Dailyop']['ondemand_title_id'];
 
 		//check for lazy load
 		$lazy = false;

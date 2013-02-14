@@ -325,6 +325,7 @@
 
       if($data.target.attr('data-dailyop-id')) flashVars.dailyop_id = $data.target.attr('data-dailyop-id');
       if($data.target.attr('data-dailyop-display-weight')) flashVars.start_pos = $data.target.attr('data-dailyop-display-weight');
+      if($data.target.attr('data-ondemand-title-id')) flashVars.ondemand_title_id = $data.target.attr('data-ondemand-title-id');
 
       var swfDiv = $("<div />").attr("id","swf-"+$data.target.attr("id"));
 
