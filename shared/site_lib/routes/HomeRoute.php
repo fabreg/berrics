@@ -47,6 +47,11 @@ class HomeRoute extends CakeRoute {
 				$params['controller'] = "yn3_voting";
 				$params['action'] = "section";
 				break;
+
+			case "2013-02-15":
+				$params['controller'] = "bones_new_ground";
+				$params['action'] = "section";
+			break;
 					
 		}
 		
