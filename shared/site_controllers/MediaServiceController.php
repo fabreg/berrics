@@ -7,7 +7,8 @@ class MediaServiceController extends LocalAppController {
 
 	public $uses = array(
 		"MediaFile",
-		"OndemandTitle"
+		"OndemandTitle",
+		"Dailyop"
 	);
 
 
@@ -249,6 +250,25 @@ class MediaServiceController extends LocalAppController {
 	public function beacon($media_file_id) {
 		
 		$this->insertMediaHit($media_file_id);
+		die(1);
+	}
+
+	public function next_ondemand_post($dailyop_id) {
+
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>$dailyop_id),1);
+		
+		$next = $this->Dailyop->find("first",array(
+					"conditions"=>array(
+						"Dailyop.ondemand_title_id"=>$post['Dailyop']['ondemand_title_id'],
+						"Dailyop.display_weight >"=>$post['Dailyop']['display_weight']
+					),
+					"contain"=>array(
+						"DailyopSection"
+					),
+					"order"=>array("Dailyop.display_weight"=>"ASC")
+				));
+
+		die(json_encode($next));
 
 	}
 

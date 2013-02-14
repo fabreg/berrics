@@ -459,13 +459,13 @@ class BerricsHelper extends AppHelper {
 			"data-media-type"=>$MediaFile['media_type'],
 			"data-slide-show"=>$Dailyop['Dailyop']['slide_show'],
 			"data-platform"=>$platform,
-			"data-dailyop-display-weight"=>$Dailyop['Dailyop']['display_weight'],
+			"data-dailyop-display-weight"=>1,//$Dailyop['Dailyop']['display_weight'],
 			"class"=>"post-media-div",
 			"id"=>"media-file-div-".$MediaFile['id']
 		),$opts);
 
-		if(isset($Dailyop['Dailyop']['ondemand_title_id']) && !empty($Dailyop['Dailyop']['ondemand_title_id'])) 
-			$opts['data-ondemand-title-id'] = $Dailyop['Dailyop']['ondemand_title_id'];
+		//if(isset($Dailyop['Dailyop']['ondemand_title_id']) && !empty($Dailyop['Dailyop']['ondemand_title_id'])) 
+		//	$opts['data-ondemand-title-id'] = $Dailyop['Dailyop']['ondemand_title_id'];
 
 		//check for lazy load
 		$lazy = false;

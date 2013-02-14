@@ -16,6 +16,12 @@ class BonesNewGroundController extends LocalAppController {
 
 		$this->theme = "bones-new-ground";
 
+		if($this->request->params['action'] == "section") {
+
+			$this->setPost("bones-new-ground","intro.html");
+
+		}
+
 		if($this->request->params['action'] == "view") {
 
 			$this->request->params['action'] = 
@@ -24,13 +30,18 @@ class BonesNewGroundController extends LocalAppController {
 
 		}
 
+
+
 	}
 
-	private function setPost() {
+	private function setPost($section = false,$uri = false) {
+
+		if(!$section) $section = $this->request->params['section'];
+		if(!$uri) $uri = $this->request->params['uri'];
 
 		$post = $this->Dailyop->returnPost(array(
-					"Dailyop.uri"=>$this->request->params['uri'],
-					"DailyopSection.uri"=>$this->request->params['section']
+					"Dailyop.uri"=>$uri,
+					"DailyopSection.uri"=>$section
 				),$this->isAdmin());
 
 		$this->set(compact("post"));

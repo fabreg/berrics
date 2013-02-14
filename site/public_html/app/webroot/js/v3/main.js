@@ -309,10 +309,11 @@ function berricsRelatedVideoScreen (media_file_id,dailyop_id) {
 	$(div).videoDiv('videoEndScreen',div);
 
 }
-var handleVideoEnd;
- handleVideoEnd = function(media_file_id) {
 
-	//alert($(".post-media-div[data-media-file-id="+media_file_id+"]").html());
+
+function videoEndMethod(media_file_id) {
+
+		//alert($(".post-media-div[data-media-file-id="+media_file_id+"]").html());
 	var div = $("div[data-media-file-id="+media_file_id+"]");
 
 	var dailyop_id = div.attr("data-dailyop-id");
@@ -342,6 +343,9 @@ var handleVideoEnd;
 	);
 
 }
+
+var handleVideoEnd;
+handleVideoEnd = videoEndMethod;
 
 function initBrowserDetection () {
 
