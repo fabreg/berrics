@@ -225,17 +225,18 @@ class MediaServiceController extends LocalAppController {
 		if (isset($_REQUEST['ondemand_title_id'])) {
 			
 			$videos = $this->OndemandTitle->returnTitleMediaVO($_REQUEST['ondemand_title_id']);
-
+			
+			
 		} else {
 			
 			$videos[$i] = $this->MediaFile->returnVideoVO($media_file_id,$dailyop_id);
-
+			$request['start_pos'] = 1;
 		}
 		
 		
 
 		//hardset some values
-		$request['start_pos'] = 1;
+		
 
 		$request['playlist'] = $videos;
 

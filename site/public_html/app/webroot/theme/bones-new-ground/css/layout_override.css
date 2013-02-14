@@ -41,14 +41,16 @@ body {
 
 }
 
-#bones-new-ground .chapters .chapter {
+#bones-new-ground .chapters .chapter-thumb {
 
 	float:left;
-	width:32%;
-	margin-left:1.25%;
-	position: relative;
-
+	max-height:185px;
+	margin-bottom:15px;
+	width:33%;
+	
 }
+
+
 #bones-new-ground .chapters .chapter .play-icon {
 
 	position: absolute;
@@ -60,12 +62,7 @@ body {
 
 }
 
-#bones-new-ground .chapters .chapter:nth-child(3n+3) {
 
-	float:right;
-	margin:0;
-
-}
 
 
 /* Large desktop */
