@@ -19,7 +19,7 @@ $this->set(compact("title_for_layout"));
 			<img src="/theme/bones-new-ground/img/bones-logo.png" alt="" />
 		</div>
 		<div class="span6">
-			<img src="/theme/bones-new-ground/img/new-ground-logo.png" alt="" />
+			<a href='http://bones.com/' target='_blank'><img src="/theme/bones-new-ground/img/new-ground-logo.png" alt="" border='0' /> </a>
 		</div>
 		<div class="span3">
 			<img src="/theme/bones-new-ground/img/berrics-logo.png" alt="" />
@@ -33,7 +33,8 @@ $this->set(compact("title_for_layout"));
 	<div class="chapters clearfix">
 		<?php foreach ($title['Dailyop'] as $k => $v): ?>
 			<div class="chapter-thumb">
-				<a href="/bones-new-ground/<?php echo $v['uri']; ?>?autoplay">
+
+				<a href="/bones-new-ground/<?php echo $v['uri']; ?>?autoplay" >
 					<img src="http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>" alt="" border='0' />
 				</a>
 			</div>
