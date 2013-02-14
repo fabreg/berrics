@@ -13,10 +13,12 @@
 			<tbody>
 				<?php foreach ($this->request->data['Dailyop'] as $k => $v): ?>
 				<tr>
+					<td><?php echo $v['display_weight']; ?></td>
 					<td><?php echo $v['name'];  ?><?php echo (!empty($v['sub_title'])) ? " - {$v['sub_title']}":"";  ?></td>
 					<td></td>
-					<td></td>
-					<td></td>
+					<td class='actions'>
+						<a href="/dailyops/edit/<?php echo $v['id']; ?>" class="btn btn-primary" target='_blank'>Edit</a>
+					</td>
 				</tr>
 				<?php endforeach ?>
 			</tbody>
