@@ -50,7 +50,6 @@ class SplashController extends SplashAppController {
 		
 		$page = $this->SplashCreative->findByHashKey($hash);
 
-
 		if(!empty($page['SplashCreative']['directive'])) {
 
 			$this->view = $page['SplashCreative']['directive'];
@@ -95,6 +94,10 @@ class SplashController extends SplashAppController {
 		$this->set(compact("product"));
 
 
+	}
+
+	public function jt_bc_interview() {
+		
 	}
 	
 	
