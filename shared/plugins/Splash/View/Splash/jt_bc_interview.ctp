@@ -48,7 +48,7 @@ body {
 </style>
 <div class="title">
   <h1>
-    BATTLE COMMANDER INTEROGATION - JAMIE THOMAS
+    BATTLE COMMANDER INTERROGATION - JAMIE THOMAS
   </h1>
 </div>
 <div id="myCarousel" class="carousel slide">
