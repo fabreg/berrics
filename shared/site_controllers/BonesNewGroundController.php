@@ -66,5 +66,11 @@ class BonesNewGroundController extends LocalAppController {
 		
 	}
 
+	public function download() {
+
+
+		
+	}
+
 
 }

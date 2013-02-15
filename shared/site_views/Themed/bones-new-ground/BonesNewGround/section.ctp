@@ -67,7 +67,7 @@ $this->set(compact("title_for_layout"));
 			<img src="/theme/bones-new-ground/img/bones-logo.png" alt="" />
 		</div>
 		<div class="span6">
-			<a href='http://bones.com/' target='_blank'><img src="/theme/bones-new-ground/img/new-ground-logo.png" alt="" border='0' /> </a>
+			<a href='/bones-new-ground/download' target='_blank'><img src="/theme/bones-new-ground/img/new-ground-logo.png" alt="" border='0' /> </a>
 		</div>
 		<div class="span3 hidden-phone">
 			<img src="/theme/bones-new-ground/img/berrics-logo.png" alt="" />
