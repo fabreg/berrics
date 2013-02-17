@@ -51,6 +51,23 @@ body {
 
 }
 </style>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    
+    $('#myCarousel').on('slid', function() {
+        
+        var img = $(".active img",this);
+
+       img.attr({
+
+          "src":img.attr("data-lazy-src")
+
+       });
+        
+    });
+
+  });
+</script>
 <div class="title">
   <h1>
     BATTLE COMMANDER INTERROGATION - JAMIE THOMAS
@@ -59,19 +76,19 @@ body {
 <div id="myCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-    <div class="item active"><img src="/img/v3/jt-interview/JT-INTERROGATION-1.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-2.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-3.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-4.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-5.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-6.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-7.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-8.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-9.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-10.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-11.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-12.jpg" alt=""></div>
-    <div class="item"><img src="/img/v3/jt-interview/JT-INTERROGATION-13.jpg" alt=""></div>
+    <div class="item active"><img src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-1.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-2.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-3.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-4.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-5.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-6.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-7.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-8.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-9.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-10.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-11.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-12.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/jt-interview/JT-INTERROGATION-FINAL-13.jpg" alt=""></div>
   </div>
   <!-- Carousel nav -->
   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
