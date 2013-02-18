@@ -24,43 +24,39 @@ $(document).ready(function() {
 }
 
 </style>
-<div class='form index' style='width:750px; margin:0px;'>
-	<h2>Search Orders</h2>	
-	<?php echo $this->Form->create("CanteenOrder",array("url"=>$this->request->here)); ?>
-	<fieldset>
-		<legend>Order Information</legend>
-		<?php 
-			
-			echo $this->Form->input("CanteenOrder.order_status",array("options"=>$orderStatus,"empty"=>true));
-			
-		?>
-		
-		<div class='date-ranges'>
-		<?php 
-			echo $this->Form->input("CanteenOrder.start_date",array("type"=>"text"));
-			echo $this->Form->input("CanteenOrder.end_date",array("type"=>"text"));
-		?>	
-			<div style='clear:both;'></div>
-		</div>
-		<?php 
-			echo $this->Form->input("CanteenOrder.id",array("type"=>"text","label"=>"Order ID"));
-			echo $this->Form->input("ShippingAddress.email",array("label"=>"Email (*this will search address type 'shipping' records)"));
-			echo $this->Form->submit("Search");
-		?>
-	</fieldset>
-	<fieldset>
-		<legend>Customer Information</legend>
-		<?php 
-			echo $this->Form->input("ShippingAddress.address_type",array("options"=>array("shipping"=>"SHIPPING","billing"=>"BILLING"),"empty"=>true,"label"=>"Address Type (*Must select an address type to search customer info)"));
-			echo $this->Form->input("ShippingAddress.first_name");
-			echo $this->Form->input("ShippingAddress.last_name");
-			echo $this->Form->input("ShippingAddress.street");
-			echo $this->Form->input("ShippingAddress.apt");
-			echo $this->Form->input("ShippingAddress.city");
-			echo $this->Form->input("ShippingAddress.state");
-			echo $this->Form->input("ShippingAddress.postal_code");
-			echo $this->Form->input("ShippingAddress.country_code",array("options"=>Arr::countries(),"empty"=>true));
-		?>
-	</fieldset>
-	<?php echo $this->Form->end(); ?>
+<div class="page-header">
+	<h1>Search Canteen Orders</h1>
 </div>
+<?php echo $this->Form->create('CanteenOrder',array(
+	"id"=>'CanteenOrderForm',
+	"url"=>$this->request->here
+)); ?>
+<div class="row-fluid">
+	<div class="span6">
+		<h3>Shipping Address</h3>
+		<div class="well">
+			<?php echo $this->Form->input("UserAddress.first_name"); ?>
+			<?php echo $this->Form->input("UserAddress.last_name"); ?>
+			<?php echo $this->Form->input("UserAddress.street_address"); ?>
+			<?php echo $this->Form->input("UserAddress.apt"); ?>
+			<?php echo $this->Form->input("UserAddress.postal_code"); ?>
+			<?php echo $this->Form->input("UserAddress.country_code") ?>
+			<?php echo $this->Form->input("UserAddress.state") ?>
+			<?php echo $this->Form->input("UserAddress.email"); ?>
+			<?php echo $this->Form->input("UserAddress.phone"); ?>
+		</div>
+	</div>
+	<div class="span6">
+		<h3>Order Information</h3>
+		<div class="well">
+			<?php echo $this->Form->input("id",array("type"=>"text")); ?>
+			<?php echo $this->Form->input("order_status",array("options"=>$orderStatus,"empty"=>true)); ?>
+		</div>
+	</div>
+</div>
+<div class="form-actions">
+	<button class="btn btn-primary">
+		Run Search
+	</button>
+</div>
+<?php echo $this->Form->end(); ?>

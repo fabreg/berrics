@@ -76,8 +76,8 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$this->loadModel("CanteenOrder");
 		
-		if(count($this->request->data)>0) {
-			
+		if($this->request->is("post")) {
+		
 				$url = array(
 		
 					"action"=>"index",
@@ -89,15 +89,18 @@ class CanteenOrdersController extends LocalAppController {
 					
 					foreach($v as $kk=>$vv) {
 						
+						if(empty($vv)) return;
+
 						$url[$k.".".$kk]=base64_encode($vv);
 						
 					}
 					
 				}
 				
-				return $this->redirect($url);
-				
+				return $this->redirect($url);	
+		
 		}
+		
 		
 		//build some data menus
 		
