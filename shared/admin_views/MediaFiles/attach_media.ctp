@@ -13,10 +13,8 @@ function browseFiles(href,div) {
 
 	$(div).html("Loading Media Files....").load(href,{},function() {
 
-		
 		attachBehaviors();
 		
-
 	});
 	
 }

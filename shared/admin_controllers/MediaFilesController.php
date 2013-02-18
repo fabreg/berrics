@@ -1305,6 +1305,11 @@ class MediaFilesController extends LocalAppController {
 			
 			$this->request->data = $video;
 		}
+
+		//set the dropdown
+		$websites = $this->MediaFile->Website->dropdown();
+
+		$this->set(compact("websites"));
 		
 	}
 	
@@ -1573,8 +1578,10 @@ class MediaFilesController extends LocalAppController {
 			if(preg_match("/^({$uid})/i",$v)) $files[]=$v;
 			
 		}
-		
-		$this->set(compact("files"));
+
+		$websites = $this->MediaFile->Website->dropdown();
+
+		$this->set(compact("files","websites"));
 		
 	}
 	

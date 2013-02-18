@@ -96,20 +96,16 @@ $(document).ready(function() {
 			if(isset($this->request->data['MediaFile']['id'])):
 		?>
 		<div class='alert alert-error'>
-			* This will overrwrite the original file
+			* This will overrwrite the original file *
 		</div>
 		<?php 
 			endif;
 		?>
 		<div class='row-fluid'>
 			
-				<?php 
-					echo $this->Form->input("name");
-				?>
-			
-				<?php 
-					echo $this->Form->input("video_file",array("type"=>"file","label"=>"Select a Video File"));
-				?>
+			<?php echo $this->Form->input("name"); ?>
+			<?php echo $this->Form->input("website_id",array("options"=>$websites,'empty'=>true)); ?>
+			<?php echo $this->Form->input("video_file",array("type"=>"file","label"=>"Select a Video File")); ?>
 			
 		</div>
 		<div class='row-fluid' >

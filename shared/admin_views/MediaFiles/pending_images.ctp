@@ -58,6 +58,7 @@ $(document).ready(function() {
 				<div class='span8'>
 					<?php 
 						echo $this->Form->create("MediaFile",array("url"=>$url,"class"=>"form image-form"));
+						echo $this->Form->input("website_id",array("options"=>$websites));
 						echo $this->Form->input("name");
 						echo $this->Form->input("caption");
 						echo $this->Form->input("tags");
