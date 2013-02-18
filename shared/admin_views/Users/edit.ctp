@@ -40,6 +40,7 @@ jQuery(document).ready(function($) {
 		<li><a href="#3" data-toggle="tab">Profile</a></li>
 		<li><a href="#4" data-toggle="tab">Contact Info</a></li>
 		<li><a href="#5" data-toggle="tab">System Data</a></li>
+		<li><a href="#6" data-toggle="tab">Berrics Unified</a></li>
 	</ul>
 	<div class="tab-content">
 		<!-- General Info -->
@@ -155,6 +156,10 @@ jQuery(document).ready(function($) {
 				echo $this->Form->input("instagram_profile_image",array("disabled"=>true));
 				
 			?>
+		</div>
+		<div class="tab-pane" id="6">
+			<h3>Unified Stores</h3>
+			
 		</div>
 	</div>
 	<!-- end tab group -->

@@ -264,7 +264,7 @@ class UsersController extends LocalAppController {
 			
 			));*/
 			
-			$this->request->data = $this->User->returnProfile(array("User.id"=>$id));
+			$this->request->data = $this->User->returnAdminUser($id);
 			
 		}
 		

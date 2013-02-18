@@ -68,7 +68,8 @@ class User extends AppModel {
 		),
 		"BatbScore",
 		"UserBillingProfile",
-		"UserProfileImage"
+		"UserProfileImage",
+		"UserUnifiedStore"
 	);
 
 
@@ -401,6 +402,27 @@ class User extends AppModel {
 		
 		return $p;
 		
+	}
+
+	public function returnAdminUser($id = false) {
+
+		$user = $this->find("first",array(
+
+					"conditions"=>array(
+						"User.id"=>$id
+					),
+					"contain"=>array(
+						"UserProfile",
+						"UserGroup",
+						"UserProfileImage",
+						"Tag",
+						"UserUnifiedStore"
+					)
+
+				));
+
+		return $user;
+
 	}
 	
 	public function updateInstagramDetails($User = array(),$crontab = false) {
