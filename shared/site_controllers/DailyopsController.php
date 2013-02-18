@@ -211,17 +211,10 @@ class DailyopsController extends LocalAppController {
 
 		}
 
-		if(in_array(date("Y-m-d"),Array("2013-02-11","2013-02-12"))) {
+		if(in_array(date("Y-m-d"),Array("2013-02-18"))) {
 
-			//$this->theme = "battle-commander-jthomas";
+			$this->theme = "";
 			
-		}
-
-		if(preg_match('/(web2vm)/i',php_uname('n'))) {
-
-
-			//$this->theme = "battle-commander-jthomas";
-
 		}
 
 	}
