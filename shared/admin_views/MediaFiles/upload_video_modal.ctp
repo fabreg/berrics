@@ -104,7 +104,7 @@ $(document).ready(function() {
 		<div class='row-fluid'>
 			
 			<?php echo $this->Form->input("name"); ?>
-			<?php echo $this->Form->input("website_id",array("options"=>$websites,'empty'=>true)); ?>
+			<?php echo $this->Form->input("website_id",array("options"=>$websites)); ?>
 			<?php echo $this->Form->input("video_file",array("type"=>"file","label"=>"Select a Video File")); ?>
 			
 		</div>
