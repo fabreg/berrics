@@ -137,7 +137,7 @@ echo $this->Form->input("element",array("value"=>"edit-media","type"=>"hidden"))
 ?>
 <h3>Media Items</h3>
 <div>
-<a href='<?php echo $this->Admin->url(array("action"=>"attach_media",$this->request->data['Dailyop']['id'],"DailyopMediaItem")); ?>' class='btn btn-success'><i class='icon icon-plus icon-white'></i> Attach Media</a>
+
 <a href="<?php echo $this->Admin->url(array("controller"=>"attach_media","action"=>"index","DailyopMediaItem","dailyop_id",$this->data['Dailyop']['id'])); ?>?tab=media" class="btn btn-success">
 <i class="icon icon-white icon-edit"></i> New Attach Media
 </a>
