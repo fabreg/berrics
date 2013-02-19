@@ -1,5 +1,5 @@
 <?php 
-
+echo $this->element("layout/v3/html-head-scripts");
 $this->set("title_for_layout","The Berrics - BATTLE COMMANDER INTERROGATION");
 $this->layout = "blank";
 
