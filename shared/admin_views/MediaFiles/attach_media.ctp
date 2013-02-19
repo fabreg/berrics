@@ -4,8 +4,6 @@ $(document).ready(function() {
 
 	browseFiles('<?php echo $this->Admin->url(array("controller"=>"media_files","action"=>"index")); ?>',"#media-browser");
 
-	
-	
 });
 
 
