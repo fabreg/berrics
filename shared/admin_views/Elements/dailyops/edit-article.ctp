@@ -182,7 +182,7 @@ foreach($this->request->data['DailyopTextItem'] as $k=>$v):
 			<div class='span12'>
 				<div class=''>
 					<button class='btn btn-primary'><i class='icon icon-white icon-edit'></i> Update</button>
-					<a href='<?php echo $this->Admin->url(array("action"=>"attach_media",$this->request->data['Dailyop']['id'],"DailyopTextItem",$v['id'])); ?>' class='btn btn-success attach-media-button'><i class='icon icon-white icon-plus-sign'></i> Attach Media</a>
+					<a href='<?php echo $this->Admin->url(array("controller"=>"attach_media","action"=>"index","DailyopTextItem","dailyop_id",$v['id'])); ?>/tab:article' class='btn btn-success attach-media-button'><i class='icon icon-white icon-plus-sign'></i> Attach Media</a>
 					<?php if(!empty($v['MediaFile']['id'])): ?>
 					<button class='btn btn-danger remove-media' value='<?php echo $v['id']; ?>' ><i class='icon icon-white icon-minus-sign'></i> Remove Media</button>
 					<?php endif;?>

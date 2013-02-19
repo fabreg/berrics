@@ -38,6 +38,12 @@ class AttachMediaController extends LocalAppController {
 							"media_file_id"=>$v
 						));
 					break;
+					case "DAILYOPTEXTITEM":
+						$m->id = $foreignKey;
+						$m->save(array(
+							"media_file_id"=>$v
+						));
+					break;
 
 				}
 
@@ -45,7 +51,11 @@ class AttachMediaController extends LocalAppController {
 
 			$this->Session->setFlash("Media Files attached successfully");
 
-			$this->redirect(base64_decode($this->request->params['named']['cb'])."?tab=media");
+			$tab = "media";
+
+			if(isset($this->request->params['named']['tab'])) $tab = $this->request->params['named']['tab'];
+
+			$this->redirect(base64_decode($this->request->params['named']['cb'])."?tab=".$tab);
 
 		
 		}
