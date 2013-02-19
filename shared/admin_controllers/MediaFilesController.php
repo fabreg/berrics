@@ -1359,7 +1359,7 @@ class MediaFilesController extends LocalAppController {
 			$udata['limelight_file'] = $file_name;
 			
 			if($this->request->data['MediaFile']['name']) $udata['name'] = $this->request->data['MediaFile']['name'];
-			
+			$udata['website_id'] = $this->request->data['MediaFile']['website_id'];
 			$this->MediaFile->create();
 			$this->MediaFile->id = $id;
 			$this->MediaFile->save($udata);
