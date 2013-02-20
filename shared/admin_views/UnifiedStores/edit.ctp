@@ -18,8 +18,9 @@
 <div class="tabbable">
 	<ul class="nav nav-tabs">
 		<li><a href="#general" data-toggle="tab">General Info</a></li>
-		<li><a href="#images" data-toggle="tab">Images</a></li>
 		<li><a href="#hours" data-toggle="tab">Store Hours</a></li>
+		<li><a href="#employees" data-toggle="tab">Employees</a></li>
+		<li><a href="#media-items" data-toggle="tab">Media Items</a></li>
 		<li><a href="#billing" data-toggle="tab">Billing Info</a></li>
 		<li><a href="#2" data-toggle="tab">Address &amp; Mapping</a></li>
 	</ul>
@@ -32,12 +33,16 @@
 			<h3>General Info</h3>
 			<?php echo $this->element("unified/edit-general"); ?>
 		</div>
-		<div class="tab-pane" id="images">
-			<h3>Images</h3>
-		</div>
 		<div class="tab-pane" id="hours">
-			<h3>Billing Info</h3>
+			<h3>Store Hours</h3>
 		</div>
+		<div class="tab-pane" id="employees">
+			<h3>Employees</h3>
+		</div>
+		<div class="tab-pane" id="media-items">
+			<h3>Media Items</h3>
+		</div>
+		
 		<div class="tab-pane" id="billing">
 			<h3>Address & Mapping</h3>
 		</div>

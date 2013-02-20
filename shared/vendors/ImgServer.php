@@ -259,6 +259,26 @@ class ImgServer {
 		//$this->close();
 		
 	}
+
+	public function upload_unified_image($file_name,$file_path) {
+		
+		if(!self::$connected) { $this->connect(); }
+
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/unified-images");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+
+	}
+
+	public function upload_unified_employee($file_name,$file_path) {
+		
+		if(!self::$connected) { $this->connect(); }
+
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/unified-employees");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+
+	}
 	
 	public function upload_tmp_file($file_name,$file_path) {
 		

@@ -6,7 +6,8 @@ class UnifiedStore extends AppModel {
 
 	public $hasMany = array(
 				"UnifiedStoreHour",
-				"UserUnifiedStore"
+				"UserUnifiedStore",
+				"UnifiedStoreEmployee"
 			);
 
 	public $belongsTo = array(
