@@ -59,14 +59,13 @@ class UnifiedStoresController extends LocalAppController {
 			if (isset($this->request->params['named']['UnifiedStore.shop_name'])) {
 				
 				$this->Paginator->settings['conditions']['UnifiedStore.shop_name LIKE'] = 
-					"%".str_replace(" ","%",$this->request->params['named']['UnifiedStore.shop_name'])."%";
+					"%".str_replace(" ","%",urldecode($this->request->params['named']['UnifiedStore.shop_name']))."%";
 
-				$this->request->data['UnifiedStore']['shop_name'] = $this->request->params['named']['UnifiedStore.shop_name'];
+				$this->request->data['UnifiedStore']['shop_name'] = urldecode($this->request->params['named']['UnifiedStore.shop_name']);
 
 			}
 
 		}
-
 
 		$this->set('unifiedStores', $this->paginate());
 		
@@ -100,11 +99,16 @@ class UnifiedStoresController extends LocalAppController {
 		
 		if($this->request->is("post") || $this->request->is("put")) {
 
-			if($this->UnifiedStore->saveAll($this->request->data)) {
+			$validates = true;
+
+			//set validation
+			$this->UnifiedStore->setValidation($this->request->data);
+
+			if($this->UnifiedStore->saveAssociated($this->request->data)) {
 
 				$this->Session->setFlash("Store updated successfuly");
 
-				$this->redirect($this->here."#".$this->request->data['submit']);
+				$this->redirect($this->here."?tab=".$this->request->data['tab']);
 
 			} else {
 
@@ -117,6 +121,30 @@ class UnifiedStoresController extends LocalAppController {
 		if (empty($this->request->data)) {
 			$this->request->data = $this->UnifiedStore->returnStore($id,$this->isAdmin(),false);
 		}
+	}
+
+	public function add_new_employee() {
+		
+		$this->UnifiedStore->UnifiedStoreEmployee->setNewValidation($this->request->data);
+
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			if($this->UnifiedStore->UnifiedStoreEmployee->validates()) {
+
+				//$this->UnifiedStore->UnifiedStoreEmployee->addNew($this->request->data);
+
+				die("<script> $('#UnifiedStoreForm').trigger('submit'); </script>");
+
+			} else {
+
+				
+
+			}
+
+			
+		
+		}
+		
 	}
 
 	function delete($id = null) {

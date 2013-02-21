@@ -24,8 +24,3 @@
 		 ?>
 	</div>
 </div>
-<div class="form-actions">
-	<button class="btn btn-primary" name='submit' value="general">
-		Update General Info
-	</button>
-</div>

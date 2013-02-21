@@ -51,5 +51,20 @@ class UnifiedStore extends AppModel {
 
 	}
 
+	public function setValidation($data) {
+		
+		$this->set($data);
+
+		$this->validate = array(
+			"shop_name"=>array(
+				"rule"=>array("minLength",5),
+				"message"=>"Shop name must be at least xx"
+			)
+		);
+
+
+
+	}
+
 
 }
