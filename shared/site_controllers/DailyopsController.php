@@ -1127,6 +1127,26 @@ class DailyopsController extends LocalAppController {
 
 	}
 
+	public function random() {
+
+		//get a random post
+		$id = $this->Dailyop->find("first",array(
+					"conditions"=>array(
+						"Dailyop.dailyop_section_id !="=>65,
+						"DATE(publish_date) > '2011-06-20'",
+						"Dailyop.publish_date <= NOW()",
+						"Dailyop.active"=>1
+					),
+					"contain"=>array(
+						"DailyopSection"
+					),
+					"order"=>array("RAND()")
+				));
+
+		$this->redirect("/".$id['DailyopSection']['uri']."/".$id['Dailyop']['uri']);
+
+	}
+
 	
 	
 	
