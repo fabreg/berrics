@@ -23,6 +23,9 @@
 </script>
 <div class="page-header">
 	<h1>Edit Unified Store</h1>
+	<div>
+		<?php echo $this->request->data['UnifiedStore']['shop_name']; ?>
+	</div>
 </div>
 
 <div class="tabbable">
