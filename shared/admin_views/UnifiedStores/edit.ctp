@@ -68,3 +68,7 @@
 	<input type="hidden" value='general' name='tab' />
 	<?php echo $this->Form->end(); ?>
 </div>
+<pre>
+<?php print_r($this->request->data) ?>
+</pre>
+

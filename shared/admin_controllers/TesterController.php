@@ -2245,5 +2245,13 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_vars() {
+		
+		$z = Arr::timezoneList();
+
+		die(print_r($z));
+
+	}
+
 
 }

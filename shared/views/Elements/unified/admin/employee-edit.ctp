@@ -44,12 +44,17 @@
 	"class"=>"modal-form form-horizontal"
 )); ?>
 <div class="modal-header">
-	<h4>Add New Employee</h4>
+	<h4><?php echo (preg_match('/(add)/',$this->request->params['action'])) ? "Add New":"Edit" ?> Employee</h4>
 </div>
 <div class="modal-body">
 <div class="row-fluid">
 	<?php 
-	echo $this->Form->input("unified_store_id",array("type"=>"hidden","value"=>$this->data->request['UnifiedStore']['id']));
+	if(isset($this->request->data['UnifiedStoreEmployee']['id'])) {
+
+		echo $this->Form->input("id");
+
+	}
+	echo $this->Form->input("unified_store_id",array("type"=>"hidden","value"=>$this->request->data['UnifiedStore']['id']));
 	echo $this->Form->input("name");
 	echo $this->Form->input("title");
 	echo $this->Form->input("facebook_url");

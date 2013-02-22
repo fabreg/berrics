@@ -119,19 +119,21 @@ class UnifiedStoresController extends LocalAppController {
 		}
 
 		if (empty($this->request->data)) {
-			$this->request->data = $this->UnifiedStore->returnStore($id,$this->isAdmin(),false);
+			$this->request->data = $this->UnifiedStore->returnAdminStore($id);
 		}
 	}
 
-	public function add_new_employee() {
+	public function add_new_employee($store_id = false) {
 		
-		$this->UnifiedStore->UnifiedStoreEmployee->setNewValidation($this->request->data);
+		$store = $this->UnifiedStore->returnAdminStore($store_id);
+
+		$this->UnifiedStore->UnifiedStoreEmployee->setEmployeeValidation($this->request->data);
 
 		if($this->request->is("post") || $this->request->is("put")) {
 		
 			if($this->UnifiedStore->UnifiedStoreEmployee->validates()) {
 
-				//$this->UnifiedStore->UnifiedStoreEmployee->addNew($this->request->data);
+				$this->UnifiedStore->UnifiedStoreEmployee->addNew($this->request->data);
 
 				die("<script> $('#UnifiedStoreForm').trigger('submit'); </script>");
 
@@ -143,7 +145,14 @@ class UnifiedStoresController extends LocalAppController {
 
 			
 		
+		} else {
+
+			$this->request->data = $store;
+
 		}
+
+		
+		$this->view = "/Elements/unified/admin/employee-edit";
 		
 	}
 

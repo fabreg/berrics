@@ -32,14 +32,36 @@ class UnifiedStoreEmployee extends AppModel {
 		)
 	);
 
-
-	public function addNew($data = array()) {
+	public function returnAdminEmployee($id = false) {
 		
+		$data = $this->find("first",array(
+					"conditons"=>array(
+						"UnifiedStoreEmployee.id"=>$id
+					),
+					"contain"=>array(
+						"UnifiedStore"
+					)
+				));
 
+		return $data;
 
 	}
 
-	public function setNewValidation($data) {
+	public function addNew($data = array()) {
+		
+		$data = (!isset($data['UnifiedStoreEmployee'])) ? $data:$data['UnifiedStoreEmployee'];
+
+		$this->create();
+
+		$data['image_file'] = $this->uploadImage($data['image_file']);
+
+		$this->save($data,false);
+
+		return $this->id;
+
+	}
+
+	public function setEmployeeValidation($data) {
 
 		$this->set($data);
 
@@ -65,15 +87,16 @@ class UnifiedStoreEmployee extends AppModel {
 		
 		if(!empty($this->data['UnifiedStoreEmployee']['image_file'])) {
 
-			switch($this->data['UnifiedStoreEmployee']['image_file']['type']) {
+			$ext = pathinfo($this->data['UnifiedStoreEmployee']['image_file']['name'],PATHINFO_EXTENSION);
 
-				case "image/jpg":
-				case "image/jpeg":
-				case "image/png":
-				case "image/gif":
+			switch(strtoupper($ext)) {
+
+				case "JPEG":
+				case "JPG":
+				case "GIF":
+				case "PNG":
 					return true;
 				break;
-
 				default:
 					return false;
 				break;
@@ -84,6 +107,36 @@ class UnifiedStoreEmployee extends AppModel {
 		}
 
 		return true;
+
+	}
+
+	public function uploadImage($file) {
+		
+		if(!isset($file['tmp_name'])) return '';
+
+		//save to tmp
+		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+
+		$name = md5(time().mt_rand(999,9999)).".".$ext;
+
+		$tmp_path = TMP.$name;
+
+		if(move_uploaded_file($file['tmp_name'],$tmp_path)) {
+
+			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+
+			$img = ImgServer::instance();
+
+			$img->upload_unified_employee($name,$tmp_path);
+
+			unlink($tmp_path);
+
+			return $name;
+
+		}
+
+		return '';
+
 
 	}
 }

@@ -915,7 +915,7 @@ class Arr {
 	}
 	
 	public static function dailyopsMiscCategories() {
-		
+		  
 		$a = array(
 		
 			"younited-promo"=>"YOUnited Nations Promo",
@@ -948,6 +948,29 @@ class Arr {
 		
 		return $a;
 		
+	}
+
+	static function timezoneList() {
+
+		 $regions = array(
+		    'Africa' => DateTimeZone::AFRICA,
+		    'America' => DateTimeZone::AMERICA,
+		    'Antarctica' => DateTimeZone::ANTARCTICA,
+		    'Asia' => DateTimeZone::ASIA,
+		    'Atlantic' => DateTimeZone::ATLANTIC,
+		    'Australia' => DateTimeZone::AUSTRALIA,
+		    'Europe' => DateTimeZone::EUROPE,
+		    'Indian' => DateTimeZone::INDIAN,
+		    'Pacific' => DateTimeZone::PACIFIC
+		);
+
+
+		foreach ($regions as $name => $mask) {
+		    $tzlist[$name] = DateTimeZone::listIdentifiers($mask);
+		}
+
+		return $tzlist;
+
 	}
 	
 	

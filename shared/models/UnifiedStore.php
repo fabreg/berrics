@@ -7,7 +7,9 @@ class UnifiedStore extends AppModel {
 	public $hasMany = array(
 				"UnifiedStoreHour",
 				"UserUnifiedStore",
-				"UnifiedStoreEmployee"
+				"UnifiedStoreEmployee",
+				"UnifiedStoreMediaItem",
+				"UnifiedStoreEvent"
 			);
 
 	public $belongsTo = array(
@@ -38,7 +40,9 @@ class UnifiedStore extends AppModel {
 
 			$data = $this->find("first",array(
 						"conditions"=>$cond,
-						"contain"=>array()
+						"contain"=>array(
+
+						)
 					));
 
 
@@ -48,6 +52,26 @@ class UnifiedStore extends AppModel {
 		}
 
 		return $data;
+
+	}
+
+	public function returnAdminStore($id = false) {
+
+		if(!$id) throw new BadRequestException("Invalid Store Request");
+
+		$store = $this->find("first",array(
+					"conditions"=>array(
+						"UnifiedStore.id"=>$id
+					),
+					"contain"=>array(
+						"UnifiedStoreEmployee",
+						"UnifiedStoreMediaItem",
+						"UnifiedStoreHour",
+						"UnifiedStoreEvent"
+					)
+				));
+
+		return $store;
 
 	}
 
