@@ -172,7 +172,7 @@
       var videoTag = $("<video />").attr({
 
         "poster":ele.attr("data-poster-file"),
-        'controls':true,
+        'controls':true
         
 
       });
