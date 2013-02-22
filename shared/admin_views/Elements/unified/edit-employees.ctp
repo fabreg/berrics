@@ -15,6 +15,11 @@
 		
 		var url = "<?php echo $this->Html->url(array('action'=>'add_new_employee',$this->request->data['UnifiedStore']['id'])) ?>";
 		
+		if(arguments[0]) {
+
+			url = "<?php echo $this->Html->url(array('action'=>'edit_employee',$this->request->data['UnifiedStore']['id'])) ?>";
+
+		}
 
 		$modal.on('shown',function() {
 
