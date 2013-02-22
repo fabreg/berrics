@@ -29,7 +29,7 @@ $(document).ready(function() {
 	} else {
 	
 		//boot strap links
-		$('.play-button a').click(function() { 
+		$('.--play-button a').click(function() { 
 			
 			sc = $(window).scrollTop();
 			
@@ -179,7 +179,7 @@ if(empty($this->request->params['section'])) $this->request->params['section'] =
 								CREW NAME
 							</div>
 							<div class='play-button'>
-								<a href='/younited-nations-3/<?php echo $v['Post']['Dailyop']['uri']; ?>'>
+								<a href='/younited-nations-3/<?php echo $v['Post']['Dailyop']['uri']; ?>?autoplay'>
 									<img border='0' src='/theme/yn3-finals/img/play-video-button.jpg' />
 								</a>
 							</div>
