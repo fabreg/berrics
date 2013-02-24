@@ -8,6 +8,17 @@
 				$("#add-new-employee").html(d);
 
 
+			},
+			beforeSubmit:function() {
+
+				$("#submit-btn").attr({
+	
+					"disabled":"disabled"
+
+				});				
+
+				return true;
+
 			}
 
 		});
@@ -48,13 +59,14 @@
 </div>
 <div class="modal-body">
 <div class="row-fluid">
+	<?php echo $this->Session->flash(); ?>
 	<?php 
 	if(isset($this->request->data['UnifiedStoreEmployee']['id'])) {
 
 		echo $this->Form->input("id");
 
 	}
-	echo $this->Form->input("unified_store_id",array("type"=>"hidden","value"=>$this->request->data['UnifiedStore']['id']));
+	echo $this->Form->input("unified_store_id",array("type"=>"hidden"));
 	echo $this->Form->input("name");
 	echo $this->Form->input("title");
 	echo $this->Form->input("facebook_url");
@@ -66,7 +78,7 @@
 </div>
 </div>
 <div class="modal-footer">
-		<button class="btn btn-primary">
+		<button class="btn btn-primary" id='submit-btn'>
 			Add New Employee
 		</button>
 		<button class="btn btn-danger" type='button' data-dismiss='modal' >
@@ -74,3 +86,6 @@
 		</button>
 </div>
 <?php echo $this->Form->end(); ?>
+<script>
+	initBootstrap();
+</script>

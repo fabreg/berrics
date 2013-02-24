@@ -47,19 +47,6 @@ class UnifiedStoreEmployee extends AppModel {
 
 	}
 
-	public function addNew($data = array()) {
-		
-		$data = (!isset($data['UnifiedStoreEmployee'])) ? $data:$data['UnifiedStoreEmployee'];
-
-		$this->create();
-
-		$data['image_file'] = $this->uploadImage($data['image_file']);
-
-		$this->save($data,false);
-
-		return $this->id;
-
-	}
 
 	public function setEmployeeValidation($data) {
 

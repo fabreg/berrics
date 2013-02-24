@@ -530,6 +530,24 @@ class MediaHelper extends AppHelper {
 		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
 			
 	}
+
+	public function unifiedEmployeeThumb($data,$opt = array()) {
+
+		$employee = $data['UnifiedStoreEmployee'];
+
+		$query['src'] = "/unified-employees/".$employee['image_file'];
+		$query['w'] = (isset($data['w'])) ? $data['w']:'';
+		$query['h'] = (isset($data['h'])) ? $data['h']:'';
+		$query['zc'] = (isset($data['zc'])) ? $data['zc']:0;
+
+		//no border!
+		$opt['border'] = 0;
+
+		$img = $this->Html->image("//img.theberrics.com/i.php?".http_build_query($query),$opt);
+
+		return $img;
+
+	}
 	
 }
 

@@ -64,7 +64,11 @@ class UnifiedStore extends AppModel {
 						"UnifiedStore.id"=>$id
 					),
 					"contain"=>array(
-						"UnifiedStoreEmployee",
+						"UnifiedStoreEmployee"=>array(
+
+							"order"=>array("UnifiedStoreEmployee.display_weight"=>"ASC")
+
+						),
 						"UnifiedStoreMediaItem",
 						"UnifiedStoreHour",
 						"UnifiedStoreEvent"

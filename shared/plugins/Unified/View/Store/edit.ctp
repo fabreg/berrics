@@ -32,8 +32,8 @@
 	<ul class="nav nav-tabs">
 		<li><a href="#general" data-toggle="tab">General Info</a></li>
 		<li><a href="#hours" data-toggle="tab">Store Hours</a></li>
-		<li><a href="#employees" data-toggle="tab">Employees</a></li>
-		<li><a href="#media-items" data-toggle="tab">Media Items</a></li>
+		<li><a href="#employees" data-toggle="tab">Employees <span class="badge"><?php echo count($this->request->data['UnifiedStoreEmployee']); ?></span></a></li>
+		<li><a href="#media-items" data-toggle="tab">Media Items <span class="badge"><?php echo count($this->request->data['UnifiedStoreMediaItem']); ?></span></a></li>
 		<li><a href="#billing" data-toggle="tab">Billing Info</a></li>
 	</ul>
 	<?php echo $this->Form->create('UnifiedStore',array(
@@ -64,11 +64,11 @@
 		</div>
 	</div>
 	<div class="form-actions">
-		<button class="btn btn-primary" name='submit-btn'>
+		<button class="btn btn-primary" name='submit-btn[default]'>
 			Update Store
 		</button>
 	</div>
-	<input type="hidden" value='general' name='tab' />
+	<input type="hidden" value='<?php echo (!isset($_GET['tab'])) ? "general":$_GET['tab'] ?>' name='tab' />
 	<?php echo $this->Form->end(); ?>
 </div>
 <pre>
