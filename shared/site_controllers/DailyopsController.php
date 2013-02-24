@@ -211,11 +211,6 @@ class DailyopsController extends LocalAppController {
 
 		}
 
-		if(in_array(date("Y-m-d"),Array("2013-02-22","2013-02-23"))) {
-
-			$this->theme = "distreeto-ground-control-united";
-			
-		}
 
 	}
 
