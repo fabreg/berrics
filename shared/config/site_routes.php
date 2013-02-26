@@ -211,5 +211,11 @@ Router::connect(
 		)
 );
 
+CakePlugin::loadAll(array(
+	"Unified"=>array("routes"=>true)
+));
+
+CakePlugin::routes();
+
 
 require CAKE . 'Config' . DS . 'routes.php';

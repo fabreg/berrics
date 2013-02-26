@@ -79,7 +79,7 @@
 </div>
 <div class="modal-footer">
 		<button class="btn btn-primary" id='submit-btn'>
-			Add New Employee
+			<?php echo (isset($this->request->data['UnifiedStoreEmployee']['id'])) ? "Edit":"Add New"; ?> Employee
 		</button>
 		<button class="btn btn-danger" type='button' data-dismiss='modal' >
 			Cancel

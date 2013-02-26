@@ -42,7 +42,11 @@
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
  */
-	CakePlugin::routes();
+CakePlugin::loadAll(array(
+	"Unified"=>array("routes"=>true)
+));
+
+CakePlugin::routes('Unified');
 
 /**
  * Load the CakePHP default routes. Remove this if you do not want to use
