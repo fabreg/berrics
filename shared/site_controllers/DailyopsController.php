@@ -194,6 +194,14 @@ class DailyopsController extends LocalAppController {
 
 		}
 
+
+		if(in_array(date("Y-m-d"),array("2013-02-26"))) {
+
+			$this->theme = "";
+
+		}
+
+
 		//get the date from the last post
 
 		$post_total = count($posts['posts']);
