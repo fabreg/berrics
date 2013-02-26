@@ -18,5 +18,18 @@ class UnifiedStoreHour extends AppModel {
 
 	}
 
+	public function setCustomLabelValidation($data = array()) {
+		
+		$this->set($data);
+
+		$this->validate = array(
+			"custom_label"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Custom label cannot be empty"
+			)
+		);
+
+	}
+
 
 }

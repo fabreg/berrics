@@ -113,6 +113,12 @@ public function search() {
 							case "delete-employee":
 								$this->UnifiedStore->UnifiedStoreEmployee->delete($this->request->data['submit-btn']['delete-employee']);
 							break;
+							case 'delete-store-hour-label':
+								$this->UnifiedStore->UnifiedStoreHour->delete($this->request->data['submit-btn']['delete-store-hour-label']);
+							break;
+							case 'remove-brand':
+								$this->UnifiedStore->UnifiedStoreBrand->delete($this->request->data['submit-btn']['remove-brand']);
+							break;
 							default:
 							break;
 

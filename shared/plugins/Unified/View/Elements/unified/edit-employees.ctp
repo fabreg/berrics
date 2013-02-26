@@ -14,7 +14,7 @@
 				$(this).find("input[name*=display_weight]").val($(this).index()+1);
 
 			});
-
+			showFormChangeAlert();
 		});
 
 	});
@@ -30,7 +30,7 @@
 		
 		if(arguments[0]) {
 
-			url = "<?php echo $this->Html->url(array('controller'=>'employees','action'=>'edit',$this->request->data['UnifiedStore']['id'])) ?>"+arguments[0];
+			url = "<?php echo $this->Html->url(array('controller'=>'employees','action'=>'edit')) ?>/"+arguments[0];
 
 		}
 
@@ -77,9 +77,12 @@
 <style>
 
 </style>
-<div style='padding:15px;'>
-	<button class="btn btn-success" type='button' onclick='addUnifiedEmployee(); return false;'><i class="icon icon-white icon-plus-sign"></i> Add New Employee</button>
-</div>
+<h3>
+	Employee's 
+	<div>
+		<button class="btn btn-success btn-mini" type='button' onclick='addUnifiedEmployee(); return false;'><i class="icon icon-white icon-plus-sign"></i> Add New Employee</button>
+	</div>
+</h3>
 <?php if (count($this->request->data['UnifiedStoreEmployee'])>0): ?>
 	
 <small>
@@ -90,6 +93,9 @@
 		<table cellspacing="0" id='employee-table'>
 			<thead>
 				<tr>
+					<th>
+						<i class="icon icon-reorder"></i>
+					</th>
 					<th>Image</th>
 					<th>Name</th>
 					<th>Title</th>
@@ -100,6 +106,9 @@
 			<tbody>
 				<?php foreach ($this->request->data['UnifiedStoreEmployee'] as $k => $v): ?>
 				<tr>
+					<td width='1%'>
+						<i class="icon icon-reorder"></i>
+					</td>
 					<td width='4%'>
 						<?php echo $this->Media->unifiedEmployeeThumb(array(
 

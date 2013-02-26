@@ -65,13 +65,17 @@ class EmployeesController extends UnifiedAppController {
 				$this->UnifiedStoreEmployee->create();
 				$this->UnifiedStoreEmployee->id = $this->request->data['UnifiedStoreEmployee']['id'];
 
-				if(is_uploaded_file($this->request->data['UnifiedStoreEmployee']['image_file'])) {
+				if(isset($this->request->data['UnifiedStoreEmployee']['image_file']['tmp_name'])) {
 
 					$this->request->data['UnifiedStoreEmployee']['image_file'] = $this->UnifiedStoreEmployee->uploadImage($this->request->data['UnifiedStoreEmployee']['image_file']);
 
+				} else {
+
+					unset($this->request->data['UnifiedStoreEmployee']['image_file']);
+
 				}
 
-				$this->UnifiedStoreEmployee->save($this->request->data);
+				$this->UnifiedStoreEmployee->save($this->request->data,false);
 
 				die("<script> $('#UnifiedStoreForm').trigger('submit'); </script>");
 

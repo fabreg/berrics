@@ -9,14 +9,24 @@ class UnifiedStore extends AppModel {
 				"UserUnifiedStore",
 				"UnifiedStoreEmployee",
 				"UnifiedStoreMediaItem",
-				"UnifiedStoreEvent"
+				"UnifiedStoreEvent",
+				"UnifiedStoreBrand"
 			);
 
 	public $belongsTo = array(
 
 			);
 
-		
+	
+	public static function storeStatus() {
+
+		return array(
+			"approved"=>"Approved",
+			"pending"=>"Pending Approval",
+			"suspended"=>"Suspended"
+		);
+
+	}
 
 	public function returnStore($store_id = false,$isAdmin = false,$cache = true) {
 
@@ -71,7 +81,10 @@ class UnifiedStore extends AppModel {
 						),
 						"UnifiedStoreMediaItem",
 						"UnifiedStoreHour",
-						"UnifiedStoreEvent"
+						"UnifiedStoreEvent",
+						"UnifiedStoreBrand"=>array(
+							"Brand"
+						)
 					)
 				));
 

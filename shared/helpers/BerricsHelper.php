@@ -574,6 +574,20 @@ class BerricsHelper extends AppHelper {
 		return $o;
 
 	}
+
+	public function unifiedStoreTime($time) {
+		
+		$nums = explode(":", $time);
+
+		$merid = "am";
+
+		if($nums[0] >= 12) $merid = "pm";
+
+		if($nums[0] > 12) $nums[0] = "0".($nums[0] - 12);
+
+		return $nums[0].":".$nums[1]." ".$merid;
+
+	}
 	
 }
 

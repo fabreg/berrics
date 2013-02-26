@@ -328,10 +328,10 @@
 		-->
 			<li class='nav-header'>Unified Stores</li>
 			<li>
-				<a href='/unified_stores'>Manage STORES</a>
+				<a href='/unified/store'>Manage STORES</a>
 			</li>
 			<li>
-				<a href='/unified_stores/add'>Add New STORE</a>
+				<a href='/unified/store/add'>Add New STORE</a>
 			</li>
 		</ul>
 	</li>

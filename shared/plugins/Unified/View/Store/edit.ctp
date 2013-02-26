@@ -19,8 +19,24 @@
 
 		});
 
+		$("#UnifiedStoreForm").find('input,select').bind('change',function() { 
+		
+			showFormChangeAlert();
+
+		});
+
 	});
+	function showFormChangeAlert () {
+		$("#changes-alert").show();
+	}
 </script>
+<style>
+#changes-alert {
+
+	display: none;
+
+}
+</style>
 <div class="page-header">
 	<h1>Edit Unified Store</h1>
 	<div>
@@ -34,6 +50,7 @@
 		<li><a href="#hours" data-toggle="tab">Store Hours</a></li>
 		<li><a href="#employees" data-toggle="tab">Employees <span class="badge"><?php echo count($this->request->data['UnifiedStoreEmployee']); ?></span></a></li>
 		<li><a href="#media-items" data-toggle="tab">Media Items <span class="badge"><?php echo count($this->request->data['UnifiedStoreMediaItem']); ?></span></a></li>
+		<li><a href="#brands" data-toggle="tab">Brands <span class="badge"><?php echo count($this->request->data['UnifiedStoreBrand']) ?></span></a></li>
 		<li><a href="#billing" data-toggle="tab">Billing Info</a></li>
 	</ul>
 	<?php echo $this->Form->create('UnifiedStore',array(
@@ -41,22 +58,34 @@
 		"url"=>$this->request->here,
 		"enctype"=>"multipart/form-data"
 	)); ?>
+	<div class="row-fluid" id='changes-alert'>
+		<div class="span12">
+			<div class="alert alert-danger">
+				Changes Have Been Detected
+				<div style='padding:8px;'>
+					<button class="btn btn-primary btn-mini"><i class="icon icon-white icon-edit"></i>Click Here To Save</button> 
+					<a class="btn btn-danger btn-mini" href='<?php echo $this->request->here ?>'><i class="icon icon-white icon-remove-sign"></i> Cancel Changes</a>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="tab-content">
 		<div class="tab-pane active" id="general">
 			<h3>General Info</h3>
 			<?php echo $this->element("unified/edit-general"); ?>
 		</div>
 		<div class="tab-pane" id="hours">
-			<h3>Store Hours</h3>
 			<?php echo $this->element("unified/edit-store-hours"); ?>
 		</div>
 		<div class="tab-pane" id="employees">
-			<h3>Employees</h3>
 			<?php echo $this->element("unified/edit-employees") ?>
 		</div>
 		<div class="tab-pane" id="media-items">
 			<h3>Media Items</h3>
 			<?php echo $this->element("unified/edit-media"); ?>
+		</div>
+		<div class="tab-pane" id="brands">
+			<?php echo $this->element("unified/edit-brands"); ?>
 		</div>
 		<div class="tab-pane" id="billing">
 			<h3>Billing</h3>
@@ -69,6 +98,7 @@
 		</button>
 	</div>
 	<input type="hidden" value='<?php echo (!isset($_GET['tab'])) ? "general":$_GET['tab'] ?>' name='tab' />
+	<input type="hidden" name='submit-btn[default]' />
 	<?php echo $this->Form->end(); ?>
 </div>
 <pre>

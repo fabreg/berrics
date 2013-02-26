@@ -1,5 +1,11 @@
+
 $(document).ready(function()  { 
 	
+	jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {                                                                                                                                                                
+	    return function (elem) {                                                            
+	        return jQuery(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;        
+	    };                                                                                  
+	});	
 	
 	initBootstrap();
 	

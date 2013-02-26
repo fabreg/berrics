@@ -35,7 +35,7 @@ class UnifiedStoreEmployee extends AppModel {
 	public function returnAdminEmployee($id = false) {
 		
 		$data = $this->find("first",array(
-					"conditons"=>array(
+					"conditions"=>array(
 						"UnifiedStoreEmployee.id"=>$id
 					),
 					"contain"=>array(
