@@ -15,13 +15,16 @@ $(document).ready(function() {
 	
 });
 </script>
-<div class='form index'>
-	
-	<div style='float:left; width:45%;'>
-		<fieldset>
-			<legend>
+
+<div class="page-header">
+	<h1>USPS Rate Calculator</h1>
+</div>
+<div class="row-fluid">
+	<div class="span6">
+	<div class="well well-small">
+							<h3>
 				Domestic Rate
-			</legend>
+			</h3>
 			<?php 
 					echo $this->Form->create("CalcRate",array("url"=>"/canteen_shipping_records/usps_rate_calculator",'id'=>'dom-rate-form'));
 					echo $this->Form->input("origin_zip");
@@ -30,11 +33,11 @@ $(document).ready(function() {
 					echo $this->Form->input("command",array("type"=>"hidden","value"=>"dom"));
 					echo $this->Form->end("Calculate");
 				?>
-		</fieldset>
-		<fieldset>
-			<legend>
+	</div>
+	<div class="well well-small">
+					<h3>
 				International Rate
-			</legend>
+			</h3>
 			<?php 
 					echo $this->Form->create("CalcRate",array("url"=>"/canteen_shipping_records/usps_rate_calculator",'id'=>'int-rate-form'));
 					echo $this->Form->input("origin_zip");
@@ -43,15 +46,12 @@ $(document).ready(function() {
 					echo $this->Form->input("command",array("type"=>"hidden","value"=>"int"));
 					echo $this->Form->end("Calculate");
 				?>
-		</fieldset>
 	</div>
-	<div style='float:right; width:45%;'>
-		<fieldset>
-			<legend>Rate Results</legend>
+	</div>
+	<div class="span6">
+					<h3>Rate Results</h3>
 			<div id='dom-result'>
 			
 			</div>
-		</fieldset>
 	</div>
-	<div style='clear:both;'></div>
 </div>

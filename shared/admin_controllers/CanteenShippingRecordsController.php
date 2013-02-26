@@ -351,7 +351,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 	public function usps_rate_calculator() {
 		
 		
-		if(isset($this->request->data)) {
+		if($this->request->is('post')) {
 			
 			App::import("Vendor","Usps",array("file"=>"UspsApi.php"));
 			
@@ -366,7 +366,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 						
 						$this->set(compact("xml"));
 						
-						return $this->render("/elements/canteen_shipping_records/dom-rate-result");
+						return $this->render("/Elements/canteen_shipping_records/dom-rate-result");
 			
 					break;
 				case "int":
@@ -381,7 +381,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 						
 						$this->set(compact("xml"));
 						
-						return $this->render("/elements/canteen_shipping_records/int-rate-result");
+						return $this->render("/Elements/canteen_shipping_records/int-rate-result");
 					break;
 				
 			}
@@ -391,7 +391,7 @@ class CanteenShippingRecordsController extends LocalAppController {
 			
 			$this->set(compact("xml"));
 			
-			return $this->render("/elements/canteen_shipping_records/dom-rate-result");
+			return $this->render("/Elements/canteen_shipping_records/dom-rate-result");
 			
 		}
 		
