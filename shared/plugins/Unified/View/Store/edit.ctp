@@ -81,7 +81,6 @@
 			<?php echo $this->element("unified/edit-employees") ?>
 		</div>
 		<div class="tab-pane" id="media-items">
-			<h3>Media Items</h3>
 			<?php echo $this->element("unified/edit-media"); ?>
 		</div>
 		<div class="tab-pane" id="brands">

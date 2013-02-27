@@ -39,4 +39,17 @@ class UnifiedStoreMediaItem extends AppModel {
 			'order' => ''
 		)
 	);
+
+	public static function categories() {
+		
+		$a = array(
+			"main"=>"Main (Will be uses as your main display media)",
+			"store"=>"Store (Picutres and video depicting your store)",
+			"team"=>"Team Media",
+			"events"=>"Events"
+		);
+
+		return $a;
+
+	}
 }

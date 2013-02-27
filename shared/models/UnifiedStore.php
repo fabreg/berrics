@@ -44,20 +44,28 @@ class UnifiedStore extends AppModel {
 
 			if(!$isAdmin) {
 
-				$cond['UnifiedStore.active'] = 1;
+				$cond['UnifiedStore.store_status'] = "approved";
 
 			}
 
 			$data = $this->find("first",array(
 						"conditions"=>$cond,
 						"contain"=>array(
-
+							"UnifiedStoreEmployee"=>array(
+								"order"=>array("UnifiedStoreEmployee.display_weight"=>"ASC")
+							),
+							"UnifiedStoreMediaItem",
+							"UnifiedStoreHour",
+							"UnifiedStoreEvent",
+							"UnifiedStoreBrand"=>array(
+								"Brand"
+							)
 						)
 					));
 
 
 			//write to cache
-			Cache::write($token,$data,"1min");
+			//Cache::write($token,$data,"1min");
 
 		}
 
