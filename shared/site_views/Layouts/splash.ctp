@@ -5,9 +5,6 @@
 <meta content="<?php echo $meta_k; ?>" name='keywords'>
 <meta name="description" content="<?php echo $meta_d; ?>">
 <?php 
-
-
-
 echo $this->element("layout/v3/html-head-scripts");
 echo $head_content;
 ?>
@@ -19,7 +16,7 @@ echo $head_content;
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
-				<?php echo $content_for_layout; ?>
+				<?php echo $this->fetch("content"); ?>
 			</div>
 		</div>
 		
