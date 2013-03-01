@@ -52,4 +52,10 @@ class UnifiedStoreMediaItem extends AppModel {
 		return $a;
 
 	}
+
+	public function uploadImageFile() {
+
+
+
+	}
 }
