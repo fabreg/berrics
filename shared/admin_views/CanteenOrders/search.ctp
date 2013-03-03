@@ -37,7 +37,7 @@ echo $this->Form->create('CanteenOrder',array(
  ?>
 <div class="row-fluid">
 	<div class="span6">
-		<h3>Shipping Address</h3>
+		<h3>Address</h3>
 		<div class="well">
 			<?php echo $this->Form->input("UserAddress.first_name"); ?>
 			<?php echo $this->Form->input("UserAddress.last_name"); ?>

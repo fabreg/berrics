@@ -32,7 +32,7 @@ function loadNextPosts() {
 			initMediaDivs();
 			lazyLoad();
 			FB.XFBML.parse();
-			history.pushState({},"Dailyops",d_str);
+			//history.pushState({},"Dailyops",d_str);
 			$.ajax({ url: 'https://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
 		},
 		"dataType":"html"
