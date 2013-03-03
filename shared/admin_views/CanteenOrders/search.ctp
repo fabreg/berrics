@@ -27,10 +27,14 @@ $(document).ready(function() {
 <div class="page-header">
 	<h1>Search Canteen Orders</h1>
 </div>
-<?php echo $this->Form->create('CanteenOrder',array(
+<?php 
+
+echo $this->Form->create('CanteenOrder',array(
 	"id"=>'CanteenOrderForm',
 	"url"=>$this->request->here
-)); ?>
+));
+
+ ?>
 <div class="row-fluid">
 	<div class="span6">
 		<h3>Shipping Address</h3>
@@ -50,7 +54,12 @@ $(document).ready(function() {
 		<h3>Order Information</h3>
 		<div class="well">
 			<?php echo $this->Form->input("id",array("type"=>"text")); ?>
-			<?php echo $this->Form->input("order_status",array("options"=>$orderStatus,"empty"=>true)); ?>
+			<?php //echo $this->Form->input("order_status",array("options"=>$orderStatus,"empty"=>true)); ?>
+		</div>
+		<div class="form-actions">
+			<button class="btn btn-primary">
+				Run Search
+			</button>
 		</div>
 	</div>
 </div>

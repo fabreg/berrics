@@ -75,32 +75,31 @@ class CanteenOrdersController extends LocalAppController {
 	public function search() {
 		
 		$this->loadModel("CanteenOrder");
-		
-		if($this->request->is("post")) {
-		
+
+		if($this->request->is("post") || $this->request->is("put")) {
+
 				$url = array(
 		
 					"action"=>"index",
-					"s"=>true
+					"?"=>array("s"=>true)
 				);
-				
-				
+
+
 				foreach($this->request->data as $k=>$v) {
 					
 					foreach($v as $kk=>$vv) {
 						
-						if(empty($vv)) return;
+						if(empty($vv)) continue;
 
-						$url[$k.".".$kk]=base64_encode($vv);
+						$url["?"][$k][$kk]=urlencode($vv);
 						
 					}
 					
 				}
-				
+
 				return $this->redirect($url);	
 		
-		}
-		
+		}	
 		
 		//build some data menus
 		
@@ -165,13 +164,14 @@ class CanteenOrdersController extends LocalAppController {
 				"BillingAddress",
 				"ShippingAddress",
 				"CanteenShippingRecord",
-				"CanteenOrderItem",
-				"GatewayTransaction"=>array("GatewayAccount")
+				//"CanteenOrderItem",
+				//"GatewayTransaction"=>array("GatewayAccount")
 			),
+			"group"=>array("CanteenOrder.id"),
 			"limit"=>50
 		);
-		
-		//$this->setOrderSearchParams();
+
+		$this->setOrderSearchParams();
 		
 		$orders = $this->Paginate("CanteenOrder");
 		
@@ -185,78 +185,59 @@ class CanteenOrdersController extends LocalAppController {
 		
 		$this->loadModel('CanteenOrder');
 
-		$this->Paginator->settings = array("CanteenOrder");
+		if(!isset($this->request->query['s'])) return false;
+		
+		if(isset($this->request->query['CanteenOrder']['id'])) {
 
-		if(!isset($this->request->params['named']['s'])) return false;
-		
-		if(isset($this->request->params['named']['CanteenOrder.order_status'])) {
-			
-			$this->Paginator->settings['CanteenOrder']['conditions']['CanteenOrder.order_status'] = base64_decode($this->request->params['named']['CanteenOrder.order_status']);
-			
+			$cond = array(
+				"CanteenOrder.id"=>$this->request->query['CanteenOrder']['id']
+			);
+
+			$ids = $this->CanteenOrder->find('all',array(
+				"fields"=>array(
+					"CanteenOrder.id"
+				),
+				"conditions"=>$cond,
+				"contain"=>array()
+			));
+
+			$ids = Set::extract('/CanteenOrder/id',$ids);
+
+			$this->Paginator->settings['CanteenOrder']['conditons']['CanteenOrder.id']=$ids;
+
+			return;
 		}
-		
-		if(isset($this->request->params['named']['CanteenOrder.start_date']) && isset($this->request->params['named']['CanteenOrder.end_date'])) {
+
+		//search for addresses
+		if(isset($this->request->query['UserAddress'])) {
+
+			$this->loadModel('UserAddress');
 			
-			
-			$startDate = base64_decode($this->request->params['named']['CanteenOrder.start_date']);
-			
-			$endDate = base64_decode($this->request->params['named']['CanteenOrder.end_date']);
-			
-			$this->Paginator->settings['CanteenOrder']['conditions'][] = "DATE(CanteenOrder.created) BETWEEN '{$startDate}' AND '{$endDate}'";
-			
-		}
-		
-		//address stuff
-		
-		$order_ids = array();
-		
-		if(isset($this->request->params['named']['ShippingAddress.email']) || isset($this->request->params['named']['ShippingAddress.address_type'])) {
-			
-			if(isset($this->request->params['named']['ShippingAddress.email'])) {
-				
-				$a = $this->CanteenOrder->ShippingAddress->find("all",array(
-					"contain"=>array(),
-					"conditions"=>array(
-						"ShippingAddress.model"=>"CanteenOrder",
-						"ShippingAddress.address_type"=>"shipping",
-						"ShippingAddress.email LIKE"=> "%".base64_decode($this->request->params['named']['ShippingAddress.email'])."%"
-					),
-					"fields"=>array("ShippingAddress.foreign_key")
-				));
-			
-				$oids = Set::classicExtract($a,"{n}.ShippingAddress.foreign_key");
-				
-				if(count($oids)<=0) {
-					
-					$oids = array(1);
-					
-				}
-				
-				$order_ids = array_merge($order_ids,$oids);
-				
-				//remove any other address params
-				foreach($this->request->params['named'] as $k=>$v) {
-					
-					if(preg_match('/^ShippingAddress/',$k) && !preg_match('/(\.email|\.address_type)/',$k)) {
-						
-						unset($this->request->params['named'][$k]);
-						
-					}
-					
-				}
-				
-			} else {
-				
-				
-				
+			$cond = array();
+
+			foreach($this->request->query['UserAddress'] as $k=>$v) {
+
+				$cond['OR']["UserAddress.{$k} LIKE"] = "%".str_replace(" ","%",urldecode($v))."%";
+
 			}
+
+			$cond['UserAddress.model'] = "CanteenOrder";
+
+			$ids = $this->UserAddress->find('all',array(
+							"fields"=>array(
+								"UserAddress.foreign_key"
+							),
+							"conditions"=>$cond,
+							"contain"=>array()
+					));
+
+			$ids = Set::extract("/UserAddress/foreign_key",$ids);
 			
+			$this->Paginator->settings['CanteenOrder']['conditions']['CanteenOrder.id'] = $ids;
+
+			return;
 		}
-		
-		if(count($order_ids)>0) $this->Paginator->settings['CanteenOrder']['conditions']['CanteenOrder.id'] = $order_ids;
-		
-		
-		
+
 	}
 	
 	public function edit($order_id) {

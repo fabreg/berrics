@@ -48,7 +48,7 @@
 					
 					foreach($this->request->params['named'] as $k=>$v): 
 						if(!preg_match('/^(CanteenOrder|UserAddress)\./',$k)) continue;
-						$v = base64_decode($v);
+						$v = urldecode($v);
 				?>
 					<div class='search-bit'>
 						<?php echo "<strong>{$k}</strong> : {$v}"; ?>
