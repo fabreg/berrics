@@ -90,11 +90,7 @@ body {
 
   });
 </script>
-<div class="title">
-  <h1>
-    BATTLE COMMANDER INTERROGATION - JAMIE THOMAS
-  </h1>
-</div>
+
 <div id="myCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
