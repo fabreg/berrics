@@ -99,6 +99,13 @@ class SplashController extends SplashAppController {
 	public function jt_bc_interview() {
 		
 	}
+
+	public function boo_interview() {
+
+		$this->beforeRender();
+		$this->render("/StaticFiles/interrogation-boo-johnson");
+
+	}
 	
 	
 	

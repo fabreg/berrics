@@ -15,6 +15,14 @@ class SplashRoute extends CakeRoute {
 				
 		}
 
+		switch(date("Y-m-d")) {
+
+			case "2013-03-05":
+				
+			break;
+
+		}
+
 		$params['plugin'] = $params['controller'] = "splash";
 		$params['action'] = "index";	
 		

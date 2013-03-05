@@ -98,16 +98,15 @@ body {
 <div id="myCarousel" class="carousel slide">
   <!-- Carousel items -->
   <div class="carousel-inner">
-  <div class="item active"><img src="/img/v3/boo-interview/booJohnson_Interview.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview2.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview3.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview4.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview5.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview6.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview7.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview8.jpg" alt=""></div>
-<div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview9.jpg" alt=""></div>
-
+    <div class="item active"><img src="/img/v3/boo-interview/booJohnson_Interview_1.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_2.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_3.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_4.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_5.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_6.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_7.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_8.jpg" alt=""></div>
+    <div class="item"><img src='/img/v3/jt-interview/blank.jpg' data-lazy-src="/img/v3/boo-interview/booJohnson_Interview_9.jpg" alt=""></div>
   </div>
   <!-- Carousel nav -->
   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
