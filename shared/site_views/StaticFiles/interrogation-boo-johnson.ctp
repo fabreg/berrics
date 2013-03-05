@@ -72,6 +72,17 @@ body {
   text-align: center;
 
 }
+
+.carousel .carousel-control {
+
+  font-family: 'Arial';
+  font-size:42px;
+  height:60px;
+  width:60px;
+  line-height:45px;
+
+}
+
 </style>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
