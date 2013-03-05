@@ -4542,6 +4542,68 @@ CANTEEN BODY
 @media (max-width: 480px) {  }
 
 /*
+#########################
+UNIFIED GLOBAL ELEMENTS
+########################
+*/
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
+
+/*
+#########################
+UNIFIED HOME
+########################
+*/
+
+#unified-body-element #home-hero-unit {
+
+	
+
+}
+
+#unified-body-element #home-hero-unit .learn-more-div {
+
+	width:400px;
+	float:left;
+	background-color:#000;
+
+}
+
+#unified-body-element #home-hero-unit .home-hero-img-div {
+	
+	
+	float:right;
+	background-color:#000;
+	
+
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
+
+
+/*
 ##########################
 INTERROGATION
 ########################
