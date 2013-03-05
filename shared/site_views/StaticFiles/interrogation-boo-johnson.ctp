@@ -76,6 +76,10 @@ body {
 <script type="text/javascript">
   jQuery(document).ready(function($) {
     
+   $.fn.carousel.defaults = {
+    interval: false,pause: 'hover'
+  }
+
     $('#myCarousel').on('slid', function() {
         
         var img = $(".active img",this);
