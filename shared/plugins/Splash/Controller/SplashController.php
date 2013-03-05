@@ -101,9 +101,8 @@ class SplashController extends SplashAppController {
 	}
 
 	public function boo_interview() {
-
-		$this->beforeRender();
-		$this->render("/StaticFiles/interrogation-boo-johnson");
+		
+		$this->view = "/StaticFiles/interrogation-boo-johnson";
 
 	}
 	
