@@ -17,6 +17,14 @@ class StoreProfileController extends UnifiedAppController {
 
 	}
 
+	private function setStore($uri = false) {
+
+		if(!$uri) throw new BadRequestException("Invalid Store Request");
+
+		
+
+	}
+
 	//store methods
 
 	private function setHeroUnit() {

@@ -32,7 +32,7 @@ class SiteController extends UnifiedAppController {
 
 	public function index() {
 
-		$this->set("body_element","unified-body-element");
+		$this->set("body_element","layout/unified-body-element");
 
 	}
 

@@ -17,5 +17,23 @@ class MediaItemController extends UnifiedAppController {
 
 	}
 
+	public function add_image() {
+
+		
+
+	}
+
+	public function upload_video() {
+
+
+
+	}
+
+	public function attach_media_item() {
+
+
+
+	}
+
 
 }
