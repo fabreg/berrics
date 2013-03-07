@@ -96,7 +96,7 @@ function viewProductImage($file_name) {
 			<div class="product-img-thumbs">
 				<?php foreach ($product['CanteenProductImage'] as $k => $v): ?>
 					<a href="#">
-						<img src='//img.theberrics.com/i.php?src=/loading-imgs/loading-lazy.jpg&amp;w=45&amp;h=45&amp;zc=1' data-original="//img.theberrics.com/i.php?src=/product-img/<?php echo $v['file_name']; ?>&amp;w=45&amp;h=45&amp;zc=1" alt="" data-full-image='//img.theberrics.com/i.php?src=/product-img/<?php echo $v['file_name']; ?>&amp;h=485&amp;h=485&amp;zc=1' class='lazy' />
+						<img src='//img.theberrics.com/i.php?src=/loading-imgs/loading-lazy.jpg&amp;w=45&amp;h=45&amp;zc=1' data-original="//img.theberrics.com/i.php?src=/product-img/<?php echo $v['file_name']; ?>&amp;w=45&amp;h=45&amp;zc=1" alt="" data-full-image='//img.theberrics.com/i.php?src=/product-img/<?php echo $v['file_name']; ?>&amp;h=485&amp;w=485&amp;zc=1' class='lazy' />
 					</a>
 				<?php endforeach ?>
 			</div>
