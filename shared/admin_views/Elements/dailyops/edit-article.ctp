@@ -39,7 +39,16 @@ $(document).ready(function() {
 		return false;
 
 	});
+
+	initTextContentStyles();
 	
+
+	$(".text-content-style-select").change(function() { 
+	
+		initTextContentStyles();
+
+	});
+
 	
 });
 
@@ -76,6 +85,39 @@ function removeMedia($id) {
 	form.submit();
 	form.removeAttr("autosave");
 	
+}
+
+
+function initTextContentStyles() {
+
+	
+	$(".text-content-style-select").each(function() { 
+	
+		var ind = $(this).attr('data-index');
+		var val = $(this).val();
+		switch(val) {
+
+			case "interview-two-col":
+				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_2]"]').show();
+				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_3]"]').hide();
+			break;
+			case "interview-three-col":
+				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_2]"]').show();
+				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_3]"]').show();
+			break;
+			case "interview-one-col":
+			default:
+				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_2]"]').hide();
+				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_3]"]').hide();
+			break;
+
+
+		}
+
+	});
+	
+
+
 }
 
 
@@ -120,19 +162,16 @@ foreach($this->request->data['DailyopTextItem'] as $k=>$v):
 		?>
 		
 		<div class="row-fluid">
-			<div class="span8">
+			<div class="span12">
 				<?php echo $this->Form->input("DailyopTextItem.{$k}.heading"); ?>
-			</div>
-			<div class="span4">
-				<?php 
-				echo $this->Form->input("DailyopTextItem.{$k}.heading_style",array("options"=>DailyopTextItem::headingStyles()));
-			
-				 ?>
 			</div>
 		</div>
 		<?php
+			echo $this->Form->input("DailyopTextItem.{$k}.text_content_style",array("options"=>DailyopTextItem::textContentStyles(),'class'=>'text-content-style-select','data-index'=>$k));
 			echo $this->Form->input("DailyopTextItem.{$k}.text_content");
-			echo $this->Form->input("DailyopTextItem.{$k}.text_content_style",array("options"=>DailyopTextItem::textContentStyles()));
+			echo $this->Form->input("DailyopTextItem.{$k}.text_content_2",array("label"=>false));
+			echo $this->Form->input("DailyopTextItem.{$k}.text_content_3",array("label"=>false));
+			
 		?>
 		<button class='btn btn-primary'>Update Text</button>
 		<button class='btn btn-danger remove-text-item' value='<?php echo $v['id']; ?>' type='button' ><i class='icon icon-white icon-minus-sign'></i> Remove</button>
