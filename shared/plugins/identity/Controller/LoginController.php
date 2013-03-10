@@ -431,7 +431,7 @@ class LoginController extends IdentityAppController {
 	
 	public function resend_verification($user_id=false,$hash=false) {
 		
-		if(!$user_id || !$hash) return $this->cakeError("error404");
+		if(!$user_id || !$hash) throw new NotFoundException("Invalid Llink");
 		
 		$this->loadModel("EmailMessage");
 		

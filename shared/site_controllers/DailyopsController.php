@@ -177,7 +177,7 @@ class DailyopsController extends LocalAppController {
 
 		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
 		
-		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("SUN","MON")) && $home_mode) {
+		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("SUN","SAT")) && $home_mode) {
 
 			//only show posts that are from saturday or sunday
 
