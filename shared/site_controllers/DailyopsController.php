@@ -183,7 +183,7 @@ class DailyopsController extends LocalAppController {
 
 			foreach($posts['posts'] as $k=>$v) {
 
-				if(!in_array(strtoupper(date("D",strtotime($v['Dailyop']['publish_date']))),array("SUN","MON"))) {
+				if(!in_array(strtoupper(date("D",strtotime($v['Dailyop']['publish_date']))),array("SUN","SAT"))) {
 
 					unset($posts['posts'][$k]);
 
