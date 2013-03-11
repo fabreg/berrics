@@ -44,7 +44,30 @@ $tumblr_source = "";
 					TAGS// <?php echo $this->Berrics->parseTagLinks($dop['Tag']) ?>
 				</div>	
 		<?php endif ?>
+		<?php 
+			$report_queue = CakeSession::read("MediaFileReportQueue");
 
+			if(!is_array($report_queue)) {
+				
+				$report_queue = array();
+				
+			}
+
+			if($dop['DailyopMediaItem'][0]['MediaFile']['media_type'] == "bcove") {
+
+				$media_file_id = $dop['DailyopMediaItem'][0]['MediaFile']['id'];
+
+			} else {
+
+				$media_file_id = false;
+
+			}
+
+			if (CakeSession::read("is_admin") == 1 && $media_file_id && (!in_array($media_file_id,$report_queue))): 
+
+		?>
+		<a href="http://cp.theberrics.com/media_files/queue_video_for_report/<?php echo $media_file_id; ?>/<?php echo base64_encode("http://theberrics.com".$this->request->here); ?>" class="btn btn-warning"><i class="icon icon-white icon-plus-sign"></i> Add Video To Report Queue</a>	
+		<?php endif ?>
 		
 	</div>
 </div>
