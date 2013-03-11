@@ -76,7 +76,7 @@
 		<a data-toggle='dropdown' href="#" >Reports <b class='caret'></b></a>
 		<ul class='dropdown-menu'>
 			<li>
-				<a href='<?php echo $this->Admin->url(array("controller"=>"reports","action"=>"index")); ?>'>Report Generator</a>
+				<a href='/reports/index'>Report Generator</a>
 			</li>
 			<li class='nav-header'>DFP</li>
 			<li><?php echo $this->Admin->link("View Reports",array("controller"=>"dfp_reports","action"=>"index")); ?></li>
