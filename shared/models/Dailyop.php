@@ -1665,6 +1665,8 @@ class Dailyop extends AppModel {
 			foreach ($Dailyop['DailyopTextItem'] as $k => $v) {
 				
 				$kw.=strip_tags($v['text_content'])." ";
+				$kw.=strip_tags($v['text_content_2'])." ";
+				$kw.=strip_tags($v['text_content_3'])." ";
 				$kw.=strip_tags($v['heading'])." ";
 
 			}

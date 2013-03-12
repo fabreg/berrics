@@ -3,7 +3,7 @@
 
 	$media_file = $post['DailyopMediaItem'][0]['MediaFile'];
 
-	if($post['Dailyop']['dailyop_section_id'] == 65) {
+	if(in_array($post['Dailyop']['dailyop_section_id'],Array(65,89))) {
 
 		$media_file = $post['DailyopTextItem'][0]['MediaFile'];
 
@@ -12,6 +12,7 @@
 	$url = $this->Berrics->dailyopsPostUrl($post);
 
 	if($media_file['media_type'] == "bcove") $url .= "?autoplay";
+	
 ?>
 	<div class="post-date">
 		<?php echo date("m.d.Y",strtotime($post['Dailyop']['publish_date'])) ?>

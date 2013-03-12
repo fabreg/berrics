@@ -76,7 +76,8 @@ class DailyopSection extends AppModel {
 			"yn3_voting"=>"YOUnited Nations 3 Voting",
 			"levis"=>"Levis 511 Contest",
 			"bones_new_ground"=>"Bones New Ground Video",
-			"primitive_pain_is_beauty"=>"Primitive - Pain is Beauty"
+			"primitive_pain_is_beauty"=>"Primitive - Pain is Beauty",
+			"interrogation"=>"Interrogation Controller"
 			
 		);
 		

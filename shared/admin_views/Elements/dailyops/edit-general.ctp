@@ -259,7 +259,30 @@ function styleChecks() {
 				
 				echo $this->Form->input('name');
 				echo $this->Form->input("sub_title");
-				echo $this->Form->input("uri");
+				
+				?>
+				<div class="row-fluid">
+					<div class="span8">
+						<?php echo $this->Form->input("uri"); ?>
+					</div>
+					<div class="span4">
+						<div class="control-group">
+							<label for="" class='controls-label'>&nbsp;</label>
+							<div class="controls">
+								<?php 
+									$dev_domain = "dev.";
+									if(preg_match('/^(v3\.)/',$_SERVER['HTTP_HOST'])) {
+
+										$dev_domain = "v3.";
+
+									}
+								 ?>
+								<a target='_blank' href="http://<?php echo $dev_domain; ?>theberrics.com/<?php echo $this->request->data['DailyopSection']['uri']; ?>/<?php echo $this->request->data['Dailyop']['uri']; ?>" class="btn btn-success btn-mini">Preview Post On DEV</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php
 				echo $this->Form->input('add_tags',array("type"=>"text","label"=>"Add Tags (Comma sperate to attach multiple tags)"));
 				
 				?>
