@@ -4487,12 +4487,11 @@ INTERROGATION
 
 .interrogation-block {
 
-
-		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-	  	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-	   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
-	   	background-color:#fff;
-	   	margin-bottom:20px;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+  	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+   	background-color:#fff;
+   	margin-bottom:20px;
 
 }
 
