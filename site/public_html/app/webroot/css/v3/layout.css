@@ -4481,6 +4481,59 @@ CANTEEN BODY
 
 /*
 ##########################
+INTERROGATION
+########################
+*/
+
+.interrogation-block {
+
+
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	  	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	   	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.78);
+	   	background-color:#fff;
+	   	margin-bottom:20px;
+
+}
+
+.interrogation-block p {
+
+	font-size: 13px;
+	font-family: 'Times New Roman';
+	line-height:15px;
+	text-align:justify;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+}
+
+.interview-one-col p {
+
+	padding:25px;
+
+}
+
+.interview-one-col .row-fluid .span3.right {
+
+	margin:0;
+	margin-right:5px;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
+
+
+/*
+##########################
 BOOTSTRAP OVERRIDES
 ########################
 */

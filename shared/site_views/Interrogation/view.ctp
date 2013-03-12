@@ -1,5 +1,4 @@
 <?php 
-
 //set the body element to be a one column body
 
 $this->set("body_element","layout/v3/one-column");
@@ -22,7 +21,6 @@ $this->set(compact("title_for_layout"));
 
 			switch($item['text_content_style']) {
 
-				
 				default:
 					echo $this->element("interrogation/".$item['text_content_style'],array("item"=>$item));
 				break;
