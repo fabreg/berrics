@@ -4500,23 +4500,37 @@ INTERROGATION
 	font-size: 13px;
 	font-family: 'Times New Roman';
 	line-height:15px;
-	text-align:justify;
+	/*  text-align:justify; */
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 }
 
-.interview-one-col p {
+.interview-one-col p,
+.interview-two-col p,
+.interview-three-col p {
 
 	padding:25px;
 
 }
 
-.interview-one-col .row-fluid .span3.right {
+.interview-one-col-right p {
 
-	margin:0;
-	margin-right:5px;
+	padding-left:0;
 
 }
+
+.interview-one-col-left p {
+
+	padding-right:0;
+
+}
+
+.interview-two-col-right p {
+
+	padding-left:0;
+
+}
+
 
 /* Large desktop */
 @media (min-width: 1200px) {  }
@@ -4528,7 +4542,16 @@ INTERROGATION
 @media (max-width: 767px) {  }
  
 /* Landscape phones and down */
-@media (max-width: 480px) {  }
+@media (max-width: 480px) { 
+
+	.interview-one-col p,
+	.interview-two-col p {
+
+		padding:20px;
+
+	}
+
+}
 
 
 /*

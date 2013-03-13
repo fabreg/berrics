@@ -58,10 +58,14 @@ class DailyopTextItem extends AppModel {
 	public static function textContentStyles() {
 		return array(
 				"default"=>"default",
-				"interview-one-col"=>"Interview One Column",
-				"interview-two-col"=>"Interview Two Column",
-				"interview-three-col"=>"Interview Three Column",
-				"interview-full-image"=>"Interview Full Image"
+				"Interview Styles"=>array(
+					"interview-one-col-left"=>"Interview One Column ( Left Text )",
+					"interview-one-col-right"=>"Interview One Column ( Right Text )",
+					"interview-two-col-left"=>"Interview Two Column ( Left Text )",
+					"interview-two-col-right"=>"Interview Two Column ( Right Text )",
+					"interview-three-col"=>"Interview Three Column",
+					"interview-full-image"=>"Interview Full Image"
+				)
 			);
 	}
 	
