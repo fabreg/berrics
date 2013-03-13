@@ -4,7 +4,6 @@ App::uses('CakeRoute', 'Routing/Route');
 
 class SplashRoute extends CakeRoute {
 	
-	
 	public function parse($url) {
 		
 		$params = parent::parse($url);
@@ -16,6 +15,12 @@ class SplashRoute extends CakeRoute {
 		}
 
 		switch(date("Y-m-d")) {
+
+			case "2013-03-15":
+			case "2013-03-16":
+				header("Location:/dailyops");
+				exit();
+			break;
 
 			default:
 				$params['plugin'] = $params['controller'] = "splash";
