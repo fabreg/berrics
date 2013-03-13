@@ -18,7 +18,7 @@ class PrimitivePainIsBeautyController extends LocalAppController {
 
 		if($this->request->params['action'] == "section") {
 
-			$this->setPost("primitve-pain-is-beauty","intro.html");
+			$this->setPost("primitive-pain-is-beauty","intro.html");
 
 		}
 
@@ -29,8 +29,6 @@ class PrimitivePainIsBeautyController extends LocalAppController {
 			$this->setPost();
 
 		}
-
-
 
 	}
 
@@ -50,7 +48,9 @@ class PrimitivePainIsBeautyController extends LocalAppController {
 
 	public function section() {
 
-		$this->set("body_element","body-element");
+
+
+		$this->set("body_element","layout/v3/one-column");
 
 		$title = $this->OndemandTitle->returnTitle(2);
 

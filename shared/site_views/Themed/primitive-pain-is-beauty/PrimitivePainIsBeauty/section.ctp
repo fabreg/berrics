@@ -6,7 +6,7 @@ if(isset($post)) {
 
 } else {
 
-	$title_for_layout = "The Berrics - BONES NEW GROUND";
+	$title_for_layout = "The Berrics - PRIMITIVE: PAIN IS BEAUTY";
 
 }
 
@@ -61,38 +61,39 @@ $this->set(compact("title_for_layout"));
 
 	}
 </script>
-<div id="bones-new-ground">
+<div id="pain-is-beauty">
 	<div class="row-fluid header">
-		<div class="span3 hidden-phone">
-			<img src="/theme/bones-new-ground/img/bones-logo.png" alt="" />
-		</div>
-		<div class="span6">
-			<a href='/bones-new-ground/download' target='_blank'><img src="/theme/bones-new-ground/img/new-ground-logo.png" alt="" border='0' /> </a>
-		</div>
-		<div class="span3 hidden-phone">
-			<img src="/theme/bones-new-ground/img/berrics-logo.png" alt="" />
+		<div class="span12">
+			<img src="/theme/primitive-pain-is-beauty/img/top-heading.jpg" alt="">
 		</div>
 	</div>
 	<?php if (isset($post)): ?>
 	<div class="post-view">
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
-	<img src="/theme/bones-new-ground/img/lb.png" alt="">
+	<div>
+		<img src="/theme/primitive-pain-is-beauty/img/line-break.jpg" alt="">
+	</div>
 	<?php endif; ?>
 	<div class="chapters clearfix">
 		<?php foreach ($title['Dailyop'] as $k => $v): ?>
 			<div class="chapter-thumb">
-
-				<a href="/bones-new-ground/<?php echo $v['uri']; ?>?autoplay" >
+				<a href="/primitive-pain-is-beauty/<?php echo $v['uri']; ?>?autoplay" >
 					<div class="play-icon"></div>
 					<img src="http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>" alt="" border='0' />
 				</a>
 			</div>
 		<?php endforeach ?>
 	</div>
+	<div>
+		<img src="/theme/primitive-pain-is-beauty/img/line-break.jpg" alt="">
+	</div>
+	<div class='berrics-logo' >
+		<img src="/theme/primitive-pain-is-beauty/img/berrics-logo.jpg" alt="">
+	</div>
 	<div class="load-more">
-		<a href="/2013/02/14">
-			<img src="/theme/bones-new-ground/img/load-more-posts.png" alt="">
+		<a href="/2013/03/14">
+			<img src="/theme/primitive-pain-is-beauty/img/load-more.jpg" alt="">
 		</a>
 	</div>
 </div>
