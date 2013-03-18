@@ -1,6 +1,6 @@
 <?php
 
-class LjgShell extends Shell {
+class LjgToolsShell extends Shell {
 	
 	
 	public $uses = array("CanteenShippingRecord","CanteenInventoryRecord");
