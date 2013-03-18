@@ -29,7 +29,9 @@ class InterrogationController extends DailyopsController {
 				"DailyopSection.uri"=>$this->request->params['section']),
 				$this->isAdmin());
 
-		$this->set(compact("post"));
+		$related = $this->Dailyop->postViewRelated($post);
+
+		$this->set(compact("post","related"));
 
 	}
 
