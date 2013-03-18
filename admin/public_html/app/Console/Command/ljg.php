@@ -3,7 +3,7 @@
 class LjgShell extends Shell {
 	
 	
-	public $uses = array("CanteenShippingRecord");
+	public $uses = array("CanteenShippingRecord","CanteenInventoryRecord");
 	
 	
 	public function export() {
@@ -27,6 +27,12 @@ class LjgShell extends Shell {
 			"from"=>"LjgShell",
 			"crontab"=>1
 		));
+	}
+
+	public function update_inventory() {
+
+		$this->CanteenInventoryRecord->import_ljg_inventory();
+
 	}
 	
 }
