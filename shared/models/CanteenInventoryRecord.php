@@ -40,6 +40,12 @@ class CanteenInventoryRecord extends AppModel {
 		'Quantity',
 		'Available Date'
 	);
+
+		private $ljg_ftp = array(
+		"ip"=>"64.206.163.163",
+		"login"=>"ctweb",
+		"pass"=>"c@nt33N"
+	);
 	
 	public function allocateInventory($canteen_inventory_record_id=false,$qty = 0) {
 		
@@ -63,6 +69,18 @@ class CanteenInventoryRecord extends AppModel {
 		
 	}
 	
+	private function ljg_ftp_login() {
+		
+		$conn = ftp_connect($this->ljg_ftp['ip']);
+		
+		ftp_login($conn,$this->ljg_ftp['login'],$this->ljg_ftp['pass']);
+		
+		ftp_pasv($conn,true);
+		
+		return $conn;
+		
+	}
+
 	public function import_ljg_inventory() {
 		
 		set_time_limit(0);
