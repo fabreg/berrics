@@ -20,6 +20,8 @@ class InterrogationController extends DailyopsController {
 
 		}
 
+		
+
 	}
 
 	public function view() {
