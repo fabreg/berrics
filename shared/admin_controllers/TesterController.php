@@ -1484,6 +1484,14 @@ class TesterController extends LocalAppController {
 		
 	}
 
+	public function test_lajolla_inventory() {
+		
+		$this->loadModel('CanteenInventoryRecord');
+		
+		$this->CanteenInventoryRecord->import_ljg_inventory();
+
+	}
+
 	
 	public function test_goog() {
 		
