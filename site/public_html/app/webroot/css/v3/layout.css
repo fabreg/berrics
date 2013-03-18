@@ -4524,6 +4524,12 @@ INTERROGATION
 	padding-right:0;
 
 }
+.interview-one-col-left .image-col {
+
+	text-align:right;
+	margin-right:0;
+}
+
 
 .interview-two-col-right p {
 
