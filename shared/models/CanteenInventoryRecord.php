@@ -79,7 +79,7 @@ class CanteenInventoryRecord extends AppModel {
 			
 		}
 
-		ftp_chdir($ftp, "s")
+		ftp_chdir($ftp, "s");
 
 		ftp_get($ftp,"/home/sites/lajolla/inventory.txt","15_CTWEB_inventory.txt",FTP_BINARY);
 
