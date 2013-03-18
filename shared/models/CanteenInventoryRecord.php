@@ -67,6 +67,22 @@ class CanteenInventoryRecord extends AppModel {
 		
 		set_time_limit(0);
 		
+		if(preg_match('/(WEB2VM)/',php_uname("n"))) {
+			
+			$ftp = ftp_connect("127.0.0.1");
+			
+			ftp_login($ftp,"john","artosari");
+			
+		} else {
+			
+			$ftp = $this->ljg_ftp_login();
+			
+		}
+
+		ftp_chdir($ftp, "s")
+
+		ftp_get($ftp,"/home/sites/lajolla/inventory.txt","15_CTWEB_inventory.txt",FTP_BINARY);
+
 		//file
 		$file = "/home/sites/lajolla/inventory.txt";
 		
@@ -104,6 +120,8 @@ class CanteenInventoryRecord extends AppModel {
 				$s = "update canteen_inventory_records set
 						quantity = $uq 
 					WHERE id = {$record['CanteenInventoryRecord']['id']} LIMIT 1;";
+
+				$this->query($s);
 				echo $s;
 				echo "\n"; $counter++;
 			}

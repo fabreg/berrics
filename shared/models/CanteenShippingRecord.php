@@ -466,8 +466,6 @@ class CanteenShippingRecord extends AppModel {
 		
 		$res = $u->ship_delcon($record['UserAddress']);
 		
-		
-		
 		//parse xml response
 		$xml = simplexml_load_string($res);
 		

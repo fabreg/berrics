@@ -10,7 +10,7 @@ $title_for_layout = "The Berrics - Interrogation: ".$post['Dailyop']['name'];
 if(!empty($post['Dailyop']['sub_title'])) $title_for_layout .= " - ".$post['Dailyop']['sub_title'];
 
 $this->set(compact("title_for_layout"));
-
+	
 ?>
 <div id="interrogation-view">
 	<?php 
@@ -18,6 +18,7 @@ $this->set(compact("title_for_layout"));
 		foreach ($post['DailyopTextItem'] as $k => $item) {
 
 			if($k == 0) continue;
+
 
 			switch($item['text_content_style']) {
 
@@ -27,6 +28,7 @@ $this->set(compact("title_for_layout"));
 
 			}
 
+			if($k == 1) echo $this->element("dailyops/posts/post-footer",array("dop"=>$post));
 
 		}
 
