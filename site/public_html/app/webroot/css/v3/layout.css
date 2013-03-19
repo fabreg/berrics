@@ -4497,14 +4497,21 @@ INTERROGATION
 
 .interrogation-block p {
 
-	font-size: 13px;
+	font-size: 12px;
 	font-family: 'Times New Roman';
-	line-height:15px;
+	line-height:16px;
 	/*  text-align:justify; */
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
 }
 
+.interrogation-block p span.question {
+
+	font-weight:bold;
+	display: block;
+	margin-bottom:2px;
+
+}
 .interview-one-col p,
 .interview-two-col p,
 .interview-three-col p {

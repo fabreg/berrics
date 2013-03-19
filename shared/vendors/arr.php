@@ -941,6 +941,7 @@ class Arr {
 			"VBATB"=>"VBATB",
 			"VBATB5"=>"VBATB5",
 			"VBATB6"=>"VBATB6",
+			"VPROMO"=>"VPROMO",
 			"BYS3"=>"BYS3",
 			"YN3PRE"=>"YN3PRE",
 		);
