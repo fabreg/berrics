@@ -63,7 +63,8 @@ class DailyopTextItem extends AppModel {
 					"interview-one-col-right"=>"Interview One Column ( Right Text )",
 					"interview-two-col-right"=>"Interview Two Column ( Right Text )",
 					"interview-two-col"=>"Interview Two Column ( Left Text )",
-					"interview-three-col"=>"Interview Three Column",
+					"interview-three-col"=>"Interview Three Column ( Left Image )",
+					"interview-three-col-right"=>"Interview Three Column ( Right Image )",
 					"interview-full-image"=>"Interview Full Image"
 				)
 			);
