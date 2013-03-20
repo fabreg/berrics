@@ -97,7 +97,7 @@ function initTextContentStyles() {
 		var val = $(this).val();
 		switch(val) {
 
-			case "interview-two-col-left":
+			case "interview-two-col":
 			case "interview-two-col-right":
 				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_2]"]').show();
 				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_3]"]').hide();
