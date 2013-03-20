@@ -682,7 +682,7 @@ class CanteenProductsController extends LocalAppController {
 		
 		$file = $this->request->data['CanteenProduct']['style_code_image'];
 		
-		$ext = pathinfo($file['name'],PATHINFO_EXTENSION);
+		$ext = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
 		
 		if(!is_uploaded_file($file['tmp_name']) || !in_array($ext,array("jpg","jpeg","png","gif"))) {
 			
