@@ -103,6 +103,7 @@ function initTextContentStyles() {
 				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_3]"]').hide();
 			break;
 			case "interview-three-col":
+			case "interview-three-col-right":
 				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_2]"]').show();
 				$('textarea[name="data[DailyopTextItem]['+ind+'][text_content_3]"]').show();
 			break;
