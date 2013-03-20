@@ -1,13 +1,104 @@
+#main-container,
+#body-div {
+
+	width:100%;
+	margin:0;
+	padding:0;
+}
+
 #evan-smith-experience {
 
 
 
 }
+
 #evan-smith-experience .evan-smith {
 
 	background-image:url(/theme/evan-smith-experience/img/evan-bg.jpg);
 	background-repeat: no-repeat;
-	background-position: center top;
-	
+	background-position: center bottom;
+	min-height:1200px;
+	background-color:#000;
+	cursor: pointer;
 
 }
+
+#evan-smith-experience .creative-life {
+
+	background-image:url(/theme/evan-smith-experience/img/download-bg.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:404px;
+	background-color:#000;
+	cursor: pointer;
+
+}
+#evan-smith-experience .dc-shoe {
+
+	background-image:url(/theme/evan-smith-experience/img/shoe-bg.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:1095px;
+	background-color:#000;
+	cursor: pointer;
+
+}
+
+#evan-smith-experience .dc-shoe-info {
+
+	background-image:url(/theme/evan-smith-experience/img/shoe-info.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:338px;
+	background-color:#000;
+	cursor: pointer;
+
+}
+
+#evan-smith-experience .element {
+
+	background-image:url(/theme/evan-smith-experience/img/element-bg.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:1107px;
+	background-color:#000;
+	cursor: pointer;
+
+}
+
+#evan-smith-experience .interview {
+
+	background-image:url(/theme/evan-smith-experience/img/interview.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:1242px;
+	background-color:#000;
+	cursor: pointer;
+	
+}
+
+#evan-smith-experience .photos {
+
+	background-image:url(/theme/evan-smith-experience/img/photos.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:1958px;
+	background-color:#000;
+	cursor: pointer;
+	
+}
+
+
+#evan-smith-experience .enter {
+
+	background-image:url(/theme/evan-smith-experience/img/enter.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:275px;
+	background-color:#000;
+	cursor: pointer;
+	
+}
+
+
+

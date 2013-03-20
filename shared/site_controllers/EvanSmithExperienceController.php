@@ -3,7 +3,7 @@
 App::uses("LocalAppController","Controller");
 
 
-class EvanSmithExperience extends LocalAppController {
+class EvanSmithExperienceController extends LocalAppController {
 
 	public $uses = array();
 
@@ -13,12 +13,17 @@ class EvanSmithExperience extends LocalAppController {
 
 		$this->Auth->allow();
 
-		$this->Auth->initPermissions();
+		$this->initPermissions();
+
+		$this->theme = "evan-smith-experience";
+
 
 	}
 
 	public function section() {
 		
+		$this->set("body_element","layouts/evan-smith");
+
 		
 		
 	}
