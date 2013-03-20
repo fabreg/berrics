@@ -1,4 +1,4 @@
-<div class="interview-one-col interrogation-block">
+<div class="interview-two-col interview-two-col-left interrogation-block">
 	<div class="row-fluid">
 		<div class="span3">
 			<p><?php echo nl2br($item['text_content']); ?></p>

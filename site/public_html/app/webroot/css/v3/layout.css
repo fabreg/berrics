@@ -4516,9 +4516,11 @@ INTERROGATION
 .interview-two-col p,
 .interview-three-col p {
 
-	padding:15px;
-
+	padding:10px;
+	padding-top:25px;
 }
+
+
 
 .interview-one-col-right p {
 
