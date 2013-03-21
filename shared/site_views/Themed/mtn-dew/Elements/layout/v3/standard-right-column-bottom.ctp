@@ -91,7 +91,7 @@
 			<tr>
 				<td class='name'>
 					<a href='/search/results/<?php echo base64_encode("TULIO OLIVEIRA"); ?>'>
-					TRAVIS GLOVER
+					TULIO OLIVEIRA
 					</a>
 				</td>
 			</tr>
