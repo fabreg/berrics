@@ -78,7 +78,8 @@ class DailyopSection extends AppModel {
 			"bones_new_ground"=>"Bones New Ground Video",
 			"primitive_pain_is_beauty"=>"Primitive - Pain is Beauty",
 			"interrogation"=>"Interrogation Controller",
-			"evan_smith_experience"=>"Evan Smith Experience"
+			"evan_smith_experience"=>"Evan Smith Experience",
+			"mtn_dew"=>"Mountain Dew"
 			
 		);
 		

@@ -8,6 +8,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 //die(pr($trending_news));
 ?>
 <div id="standard-right-column" style='clearfix'>
+	<?php echo $this->element("layout/v3/standard-right-column-top"); ?>
 	<!--Trending Content!-->
 	<div id="trending-content">
 		<h2>TRENDING VIDEOS</h2>
