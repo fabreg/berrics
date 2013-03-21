@@ -27,7 +27,13 @@ class HomeRoute extends CakeRoute {
 		
 		
 		switch($date_in) {
-					
+				
+
+			case "2013-03-21":
+			case "2013-03-22":
+				$params['controller'] = "evan_smith_experience";
+				$params['action'] = "section";
+			break;
 
 					
 		}

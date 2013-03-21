@@ -1,3 +1,15 @@
+body {
+
+	background-color: #000;
+	background-image: none;
+
+}
+
+#body-row {
+
+	padding-top:75px;
+
+}
 #main-container,
 #body-div {
 
@@ -12,12 +24,36 @@
 
 }
 
+#post {
+
+	width:715px;
+	margin:auto;
+	background-color: #000;
+}
+
+#post .post-top {
+
+	display:none;
+
+}
+
+#post .post {
+
+	border:none;
+
+}
+#post .standard-post .post-media-div {
+
+	padding-top:8px;
+
+}
 #evan-smith-experience .evan-smith {
 
 	background-image:url(/theme/evan-smith-experience/img/evan-bg.jpg);
 	background-repeat: no-repeat;
 	background-position: center bottom;
-	min-height:1200px;
+	min-height:1250px;
+	padding-top:50px;
 	background-color:#000;
 	cursor: pointer;
 
@@ -85,9 +121,30 @@
 	height:1958px;
 	background-color:#000;
 	cursor: pointer;
+	position: relative;
 	
 }
 
+#evan-smith-experience .photos .thumbs {
+
+	width:900px;
+	margin:auto;
+	padding-top: 463px;
+
+}
+#evan-smith-experience .photos .thumbs .thumb {
+
+	float:left;
+	margin-right:34px;
+	margin-bottom:32px;
+}
+
+#evan-smith-experience .photos .thumbs .thumb:nth-child(4n+4) {
+
+	float:right;
+	margin-right:0;
+
+}
 
 #evan-smith-experience .enter {
 

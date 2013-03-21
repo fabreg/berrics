@@ -24,7 +24,9 @@ class EvanSmithExperienceController extends LocalAppController {
 		
 		$this->set("body_element","layouts/evan-smith");
 
-		
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>6784),1);
+
+		$this->set(compact("post"));
 		
 	}
 

@@ -16,8 +16,8 @@ class SplashRoute extends CakeRoute {
 
 		switch(date("Y-m-d")) {
 
-			case "2013-03-15":
-			case "2013-03-16":
+			case "2013-03-22":
+			case "2013-03-21":
 				header("Location:/dailyops");
 				exit();
 			break;
