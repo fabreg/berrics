@@ -44,7 +44,7 @@ jQuery(document).ready(function($) {
 	<div class="dc-shoe-info" data-href='http://www.dcshoes.com/product/index.jsp?productId=13233676'>
 		
 	</div>
-	<div class="element" data-href='http://elementskateboards.com'></div>
+	<div class="element" data-href='http://us.shop.elementbrand.com/p/skateboards/decks/evan-smith-welcome-8?st'></div>
 	<div class="photos">
 			
 		<div class="thumbs">
