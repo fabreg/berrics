@@ -16,7 +16,7 @@ class InterrogationController extends DailyopsController {
 
 		if($this->request->params['action'] == 'section') {
 
-			$this->view = "/dailyops/section";
+			$this->view = "/Dailyops/section";
 
 		}
 
