@@ -110,7 +110,16 @@ body {
 	height:1242px;
 	background-color:#000;
 	cursor: pointer;
+	position: relative;
+}
+
+#evan-smith-experience .interview .top {
+
 	
+	position: absolute;
+	bottom:0px;
+	right:30px;
+
 }
 
 #evan-smith-experience .photos {
@@ -156,6 +165,14 @@ body {
 	cursor: pointer;
 	
 }
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+	
+
+
+ }
 
 
 

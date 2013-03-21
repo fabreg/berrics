@@ -17,6 +17,11 @@ class EvanSmithExperienceController extends LocalAppController {
 
 		$this->theme = "evan-smith-experience";
 
+		if($this->request->params['action'] == "view") {
+
+			$this->view = $this->request->params['action'] = "section";
+
+		}
 
 	}
 

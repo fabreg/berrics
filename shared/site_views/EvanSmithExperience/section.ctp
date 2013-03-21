@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
 
 	</div>
 	<div class="interview" data-href='/interrogation/evan-smith.html'>
-		
+		<!-- <div class="top show-desktop"><a href='#'><img src='/theme/eva-smith-experience/back-button.jpg' border='0' /></a></div> -->
 	</div>
 	<div class="enter" data-href='http://theberrics.com/2013/03/20'></div>
 </div>
