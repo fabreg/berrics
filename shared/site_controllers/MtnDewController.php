@@ -2,7 +2,7 @@
 
 App::uses("DailyopsController","Controller");
 
-class MtnDewController extends LocalAppController {
+class MtnDewController extends DailyopsController {
 
 
 	public $uses = array("Dailyops");
@@ -16,8 +16,6 @@ class MtnDewController extends LocalAppController {
 	}
 
 	public function section() {
-		
-
 		
 		
 
