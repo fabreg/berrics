@@ -4505,6 +4505,14 @@ INTERROGATION
 
 }
 
+#interrogation-view .post-footer .fb-like,
+#interrogation-view .post-footer .twitter {
+	
+	float:right;
+	margin-right:8px;
+
+}
+
 .interrogation-block p span.question {
 
 	font-weight:bold;
