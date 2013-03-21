@@ -69,7 +69,11 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 		</div>
 	</div>
 	<hr class='hr1' />
+	<?php if ($this->theme == "mtn-dew"): ?>
+	<?php echo $this->element("layout/v3/standard-right-column-bottom"); ?>
+	<?php else: ?>
 	<?php echo $this->element("banners/300x250",array("unit"=>"dopsv3_300b")) ?>
+	<?php endif; ?>
 	<hr class='hr1' />
 	
 	<div id="calendar-widget">
