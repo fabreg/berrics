@@ -4533,6 +4533,19 @@ INTERROGATION
 .interview-one-col-right p {
 
 	padding-left:0;
+	
+
+}
+.interview-three-col-right p {
+
+	padding-right:0;
+	
+
+}
+.interview-three-col p {
+
+	padding-left:0;
+	
 
 }
 
@@ -4557,8 +4570,55 @@ INTERROGATION
 }
 
 
+/* Right Two Col */
+.interview-two-col-right .col1,
+.interview-two-col-right .col2 {
+
+	width:49.8%;
+
+}
+.interview-two-col-right .col1 {
+
+	float:left;
+
+}
+.interview-two-col-right .col2 {
+
+	float:right;
+
+}
+.interview-three-col .col1,
+.interview-three-col .col2 {
+
+	width:49.8%;
+
+}
+.interview-three-col .col1 {
+
+	float:left;
+
+}
+.interview-three-col .col2 {
+
+	float:right;
+
+}
+
+
+
+
 /* Large desktop */
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {  
+
+	.interview-two-col div[class*=span]:nth-child(2),
+	.interview-one-col div[class*=span]:nth-child(2),
+	.interview-three-col div[class*=span]:nth-child(2) {
+
+		margin-left:25px;
+
+	}
+
+}
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {  }
@@ -4573,6 +4633,13 @@ INTERROGATION
 	.interview-two-col p {
 
 		padding:20px;
+
+	}
+	.interview-two-col .col1,
+	.interview-two-col .col2 {
+
+		width:100%;
+		clear:both;
 
 	}
 

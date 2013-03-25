@@ -3,11 +3,13 @@
 		<div class="span6">
 			<img src="//img.theberrics.com/images/<?php echo $item['MediaFile']['file']; ?>" alt="">
 		</div>
-		<div class="span3" style=''>
-			<p><?php echo nl2br($item['text_content']); ?></p>
-		</div>
-		<div class="span3" style=''>
-			<p><?php echo nl2br($item['text_content_2']); ?></p>
+		<div class="span6 pull-right right-col" style=''>
+			<div class="col1">
+				<p><?php echo nl2br($item['text_content']); ?></p>
+			</div>
+			<div class="col2">
+				<p><?php echo nl2br($item['text_content_2']); ?></p>
+			</div>
 		</div>
 	</div>
 </div>

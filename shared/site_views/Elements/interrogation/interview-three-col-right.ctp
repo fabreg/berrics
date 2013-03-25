@@ -5,14 +5,16 @@
 		</div>
 	</div>
 	<div class="row-fluid">
-		<div class="span3">
-			<p><?php echo nl2br($item['text_content']); ?><p>
-		</div>
-		<div class="span3">
-			<p><?php echo nl2br($item['text_content_2']); ?></p>
-		</div>
 		<div class="span6">
-			<p><?php echo nl2br($item['text_content_3']); ?></p>
+			<div style='padding:25px; padding-right:0;'><?php echo nl2br($item['text_content']); ?></div>
+		</div>
+		<div class='span6'>
+			<div class="col1">
+				<p><?php echo nl2br($item['text_content_2']); ?></p>
+			</div>
+			<div class="col2">
+				<p><?php echo nl2br($item['text_content_3']); ?></p>
+			</div>
 		</div>
 	</div>
 </div>
