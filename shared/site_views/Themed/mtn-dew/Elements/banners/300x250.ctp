@@ -2,12 +2,12 @@
 
 if(!isset($unit))  { 
 
-	$unit = "Dewopsv3_728b";
+	$unit = "DewOpsv3_728b";
 	$tile = "tile=2;";
 } else {
 
 	$tile = "tile=4;";
-	$unit = "Dewopsv3_728";
+	$unit = "DewOpsv3_728";
 }
 
 ?>

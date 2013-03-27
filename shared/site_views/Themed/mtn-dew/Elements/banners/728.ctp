@@ -2,13 +2,13 @@
 $b_var = "banner-".md5(microtime().mt_rand(9999,99999));
 if(!isset($unit)) { 
 
-	$unit = "Dewopsv3_728b";
+	$unit = "DewOpsv3_728b";
 	$tile = "tile=1;";
 
 } else {
 
 	$tile = "tile=3;";
-	$unit = "Dewopsv3_728";
+	$unit = "DewOpsv3_728";
 }
 ?>
 <?php if (!$this->request->is('ajax')): ?>
