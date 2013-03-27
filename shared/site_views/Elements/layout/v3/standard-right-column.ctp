@@ -69,7 +69,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 		</div>
 	</div>
 	<hr class='hr1' />
-	<?php if ($this->theme == "mtn-dew"): ?>
+	<?php if ($this->theme == "mtn-dew" && $this->request->params['controller'] != "dailyops"): ?>
 	<?php echo $this->element("layout/v3/standard-right-column-bottom"); ?>
 	<?php else: ?>
 	<?php echo $this->element("banners/300x250",array("unit"=>"dopsv3_300b")) ?>
