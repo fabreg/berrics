@@ -4499,17 +4499,24 @@ INTERROGATION
 
 	font-size: 12px;
 	font-family: 'Times New Roman';
-	line-height:18px;
+	line-height:16px;
 	/*  text-align:justify; */
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
+}
+
+
+.interrogation-block p b {
+
+	line-height:19px;
+	
 }
 
 #interrogation-view .post-footer .fb-like,
 #interrogation-view .post-footer .twitter {
 	
 	float:right;
-	margin-right:8px;
+	margin-right:3px;
 
 }
 
@@ -4587,6 +4594,25 @@ INTERROGATION
 	float:right;
 
 }
+
+.interview-two-col-left .col1,
+.interview-two-col-left .col2 {
+
+	width:49.8%;
+
+}
+.interview-two-col-left .col1 {
+
+	float:left;
+
+}
+.interview-two-col-left .col2 {
+
+	float:right;
+
+}
+
+
 .interview-three-col .col1,
 .interview-three-col .col2 {
 
