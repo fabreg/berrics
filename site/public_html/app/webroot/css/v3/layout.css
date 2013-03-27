@@ -4501,14 +4501,15 @@ INTERROGATION
 	font-family: 'Times New Roman';
 	line-height:16px;
 	/*  text-align:justify; */
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	letter-spacing:1px;
+	font-family: Helvetica, Arial, "Lucida Grande", sans-serif; /*  "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",*/
+	
 }
 
 
 .interrogation-block p b {
 
-	line-height:19px;
+ 	display: block;
+ 	padding-bottom:3px;
 	
 }
 
