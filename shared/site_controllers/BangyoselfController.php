@@ -4,7 +4,6 @@ App::import("Controller","Dailyops");
 
 class BangyoselfController extends DailyopsController {
 	
-	
 	public $uses = array(
 		"BangyoselfEvent",
 		"BangyoselfEntry",
@@ -15,7 +14,6 @@ class BangyoselfController extends DailyopsController {
 
 	private $valid_ext = array("mov","mpeg","mp4","avi");
 	
-	
 	public function beforeFilter() {
 		
 		$this->body_element = "layout/v3/one-column";
@@ -24,6 +22,7 @@ class BangyoselfController extends DailyopsController {
 			
 			$this->Session->id($this->request->params['pass'][0]);
 			$this->Session->start();
+			
 		}
 		
 		parent::beforeFilter();
@@ -31,7 +30,6 @@ class BangyoselfController extends DailyopsController {
 		$this->initPermissions();
 
 		$this->Auth->allow("*");
-		
 		
 		if(isset($_SERVER['DEVSERVER'])) { 
 			
