@@ -3,7 +3,7 @@
 		<div class="span6">
 			<img src="//img.theberrics.com/images/<?php echo $item['MediaFile']['file']; ?>" alt="">
 		</div>
-		<div class="span6 pull-right right-col" style=''>
+		<div class="span6 pull-right right-col">
 			<div class="col1">
 				<p><?php echo nl2br($item['text_content']); ?></p>
 			</div>

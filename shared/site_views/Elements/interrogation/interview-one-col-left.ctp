@@ -6,6 +6,5 @@
 		<div class="span9 image-col pull-right">
 			<img src="//img.theberrics.com/images/<?php echo $item['MediaFile']['file']; ?>" alt="">
 		</div>
-		
 	</div>
 </div>

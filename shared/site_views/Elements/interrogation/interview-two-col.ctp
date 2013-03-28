@@ -8,7 +8,7 @@
 				<p><?php echo nl2br($item['text_content_2']); ?></p>
 			</div>
 		</div>
-		<div class="span6" style='margin-left:25px;'>
+		<div class="span6 pull-right">
 			<img src="//img.theberrics.com/images/<?php echo $item['MediaFile']['file']; ?>" alt="">
 		</div>
 	</div>
