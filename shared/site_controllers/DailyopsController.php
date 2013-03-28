@@ -175,7 +175,7 @@ class DailyopsController extends LocalAppController {
 		foreach($posts['posts'] as $post) //if(!empty($post['Dailyop']['theme_override'])) die($post['Dailyop']['theme_override']);
 			if(!empty($post['Dailyop']['theme_override'])) $this->theme = $post['Dailyop']['theme_override'];
 
-		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
+		
 		
 		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("SUN","SAT")) && $home_mode) {
 
@@ -201,6 +201,7 @@ class DailyopsController extends LocalAppController {
 
 		}
 
+		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
 
 		//get the date from the last post
 
