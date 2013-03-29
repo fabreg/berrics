@@ -28,7 +28,7 @@ class CommanderController extends LocalAppController {
 	public function view() {
 		
 		$posts = $this->returnPosts();
-	
+
 		$this->view = "view";
 		
 	}
@@ -68,6 +68,10 @@ class CommanderController extends LocalAppController {
 			case "united-nations":
 				$section_id = 39;
 			break;
+			case "camera-commander":
+				$section_id = 94;
+			break;
+			
 		}
 		
 		$cond['Dailyop.dailyop_section_id'] = $section_id;
