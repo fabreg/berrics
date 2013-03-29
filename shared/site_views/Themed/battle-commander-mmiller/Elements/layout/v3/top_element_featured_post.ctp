@@ -21,7 +21,6 @@
 </div>
 <div class="row-fluid column-shadow">
 	<div class="span12">
-		<div style='max-width:1114px; margin:auto; padding-top:10px; padding-bottom:10px' class='' id='bc-prod'>
 			<table cellspacing='0' width='100%'>
 				<tr>
 					<td>
@@ -36,8 +35,5 @@
 					</td>
 				</tr>
 			</table>
-			
-			
-		</div>
 	</div>
 </div>

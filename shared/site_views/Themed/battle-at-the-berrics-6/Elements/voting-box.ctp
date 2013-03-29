@@ -33,7 +33,7 @@ $letters_array = BatbMatch::winningLettersDrop();
 			</div>
 		</div>
 	</div>
-			<?php if(in_array(strtoupper(date("D")),array("SUN","MON"))):  ?>
+			<?php if(in_array(strtoupper(date("D")),array("SUN","SAT"))):  ?>
 			<div style='text-align:center; padding:5px;'>
 				<button class='btn' disabled='disabled'>VOTING CLOSED</button>
 			</div>
@@ -62,7 +62,6 @@ $letters_array = BatbMatch::winningLettersDrop();
 						</div>
 						<div class='tweet-button-div'>
 							<?php 
-							
 								//lets construct the tweet text
 								$winner = $user[$match['BatbVote']['match_winner_user_id']];
 								$winner_handle = (!empty($winner['twitter_handle'])) ? $winner['twitter_handle']:strtoupper($winner['first_name'])." ".strtoupper($winner['last_name']);
