@@ -195,9 +195,9 @@ class DailyopsController extends LocalAppController {
 		}
 
 
-		if(in_array(date("Y-m-d"),array("2013-03-29","2013-03-28"))) {
+		if(in_array(date("Y-m-d"),array("2013-04-01","2013-03-28"))) {
 
-			$this->theme = "battle-commander-mmiller";
+			$this->theme = "";
 
 		}
 
