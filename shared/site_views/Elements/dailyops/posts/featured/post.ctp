@@ -3,7 +3,7 @@
 	<div class="span12">
 		<div class="post featured-post clearfix">
 			<?php
-				$one = true;
+				$one = false;
 				 if ($one): ?>
 				<div style="text-align:center">
 					<a href='/primitive-pain-is-beauty'>
