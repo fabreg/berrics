@@ -13,8 +13,11 @@ class UnifiedStore extends AppModel {
 				"UnifiedStoreBrand"
 			);
 
-	public $belongsTo = array(
-
+	public $hasOne = array(
+				"GeoLocation"=>array(
+					"conditions"=>array("GeoLocation.model"=>"UnifiedStore"),
+					"foreignKey"=>"foreign_key"
+				)
 			);
 
 	
@@ -59,7 +62,8 @@ class UnifiedStore extends AppModel {
 							"UnifiedStoreEvent",
 							"UnifiedStoreBrand"=>array(
 								"Brand"
-							)
+							),
+							"GeoLocation"
 						)
 					));
 
@@ -92,7 +96,8 @@ class UnifiedStore extends AppModel {
 						"UnifiedStoreEvent",
 						"UnifiedStoreBrand"=>array(
 							"Brand"
-						)
+						),
+						"GeoLocation"
 					)
 				));
 

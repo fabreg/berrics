@@ -15,5 +15,13 @@ class GeoLocation extends AppModel {
 	);
 
 
+	public function lat_long_search($lat = false, $long = false, $distance = 10) {
+
+
+		
+		
+
+	}
+
 
 }

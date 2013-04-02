@@ -1,3 +1,6 @@
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOIaopnOYjAM917jmPKLK5Z8Spw58yIKM&sensor=true">
+</script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		
@@ -61,6 +64,7 @@
 		<li><a href="#general" data-toggle="tab">General Info</a></li>
 		<li><a href="#hours" data-toggle="tab">Store Hours</a></li>
 		<li><a href="#employees" data-toggle="tab">Employees <span class="badge"><?php echo count($this->request->data['UnifiedStoreEmployee']); ?></span></a></li>
+		<li><a href="#location" data-toggle="tab">Location</a></li>
 		<li><a href="#media-items" data-toggle="tab">Media Items <span class="badge"><?php echo count($this->request->data['UnifiedStoreMediaItem']); ?></span></a></li>
 		<li><a href="#brands" data-toggle="tab">Brands <span class="badge"><?php echo count($this->request->data['UnifiedStoreBrand']) ?></span></a></li>
 		<li><a href="#billing" data-toggle="tab">Billing Info</a></li>
@@ -91,6 +95,9 @@
 		</div>
 		<div class="tab-pane" id="employees">
 			<?php echo $this->element("unified/edit-employees") ?>
+		</div>
+		<div class="tab-pane" id="location">
+			<?php echo $this->element("unified/edit-location"); ?>
 		</div>
 		<div class="tab-pane" id="media-items">
 			<?php echo $this->element("unified/edit-media"); ?>
