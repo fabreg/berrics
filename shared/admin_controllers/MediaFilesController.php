@@ -1346,10 +1346,16 @@ class MediaFilesController extends LocalAppController {
 			
 			$file_name = $id.".".$ext;
 
+			//run qt fast start
+			$full_tmp_path = TMP."uploads/".$tmp_name;
+			`qtfaststart $full_tmp_path`;
+
 			App::import("Vendor","LLFTP",array("file"=>"LLFTP.php"));
 				
 			$ll = new LLFTP();
 				
+
+
 			//transfer file to limelight
 				
 			$result = $ll->ftpFile($file_name,TMP."uploads/".$tmp_name);
