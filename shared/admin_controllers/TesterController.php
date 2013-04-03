@@ -2253,5 +2253,14 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_geo_search() {
+		
+		$this->loadModel('GeoLocation');
+
+		$search = $this->GeoLocation->lat_long_search(34.1722,-118.3781,40);
+		
+
+	}
+
 
 }

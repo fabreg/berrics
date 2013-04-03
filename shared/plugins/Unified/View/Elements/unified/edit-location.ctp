@@ -61,6 +61,26 @@ function addMarker ($latLng) {
 
 }
 
+function setZoom($latLng) {
+
+	var miles = arguments[1] || .1;
+	
+	var radius = 1609.3 * miles;
+
+	var cOptions = {
+			center: $latLng,
+		    fillOpacity: 0,
+		    strokeOpacity:1,
+		    map: map,
+		    radius: radius /* 20 miles */
+	};
+
+	var cir = new google.maps.Circle(cOptions);
+
+	map.fitBounds(cir.getBounds());
+
+}
+
 function showAddressOnMap () {
 	
 	var a = $("#UnifiedStoreAddress1").val();
@@ -80,7 +100,8 @@ function showAddressOnMap () {
 	geocoder.geocode(r,function($geo,$res) { 
 	
 		map.setCenter($geo[0].geometry.location);
-		map.setZoom(19);
+		setZoom($geo[0].geometry.location);
+		//map.setZoom(19);
 		clearMarkers();
 		addMarker($geo[0].geometry.location);
 

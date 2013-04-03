@@ -1,6 +1,8 @@
-<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOIaopnOYjAM917jmPKLK5Z8Spw58yIKM&sensor=false">
-</script>
+<?php 
+
+$this->Unified->mapJsIncludes();
+
+ ?>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		

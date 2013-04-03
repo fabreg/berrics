@@ -6,6 +6,8 @@ class StoreController extends UnifiedAppController {
 
 	public $uses = array("UnifiedStore");
 
+	public $helpers = array("Unified.Unified");
+
 	public function beforeFilter() {
 
 		parent::beforeFilter();

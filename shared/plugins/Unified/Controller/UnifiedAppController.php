@@ -4,9 +4,13 @@ App::uses("LocalAppController","Controller");
 
 class UnifiedAppController extends LocalAppController {
 
+
+
 	public function beforeFilter() {
 
 		parent::beforeFilter();
+
+		$this->helpers[] = "Unified.Unified";
 
 	}
 
