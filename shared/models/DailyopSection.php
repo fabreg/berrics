@@ -79,7 +79,8 @@ class DailyopSection extends AppModel {
 			"primitive_pain_is_beauty"=>"Primitive - Pain is Beauty",
 			"interrogation"=>"Interrogation Controller",
 			"evan_smith_experience"=>"Evan Smith Experience",
-			"mtn_dew"=>"Mtn Dew"
+			"mtn_dew"=>"Mtn Dew",
+			"progression"=>"Progression Controller"
 			
 		);
 		
@@ -98,7 +99,7 @@ class DailyopSection extends AppModel {
 				$cond = array(
 						"OR"=>array(
 							array("DailyopSection.active"=>1),
-							array("DailyopSection.id"=>array("93","94"))
+							array("DailyopSection.id"=>array("93","94","95"))
 						)
 					);
 

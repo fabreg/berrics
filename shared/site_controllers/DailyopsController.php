@@ -98,7 +98,8 @@ class DailyopsController extends LocalAppController {
 				),
 				"order"=>array(
 					"Dailyop.pinned"=>"DESC",
-					"Dailyop.publish_date"=>"DESC"
+					"Dailyop.publish_date"=>"DESC",
+					"Dailyop.display_weight"=>"ASC"
 				)
 			));
 
