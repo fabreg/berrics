@@ -66,7 +66,7 @@ $tumblr_source = "";
 			if (CakeSession::read("is_admin") == 1 && $media_file_id && (!in_array($media_file_id,$report_queue))): 
 
 		?>
-		<a href="http://cp.theberrics.com/media_files/queue_video_for_report/<?php echo $media_file_id; ?>/<?php echo base64_encode("http://theberrics.com".$this->request->here); ?>" class="btn btn-warning"><i class="icon icon-white icon-plus-sign"></i> Add Video To Report Queue</a>	
+		<a id='report-queue-btn' href="http://cp.theberrics.com/media_files/queue_video_for_report/<?php echo $media_file_id; ?>/<?php echo base64_encode("http://theberrics.com".$this->request->here); ?>" class="btn btn-warning"><i class="icon icon-white icon-plus-sign"></i> Add Video To Report Queue</a>	
 		<?php endif ?>
 		
 	</div>

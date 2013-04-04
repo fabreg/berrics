@@ -2,25 +2,34 @@
 
 App::uses("DailyopsController","Controller");
 
-class ProgressionController extends DaiyopsController {
+class ProgressionController extends DailyopsController {
 
 
 	public function beforeFilter() {
 
 		parent::beforeFilter();
 
-		if($this->request->params['action'] == "view") {
+		$this->request->params['action'] = 
+		$this->view = "dailyops";
 
-			$this->request->params['action'] = $this->view = "section";
 
-		}
 
 	}
 
+	public function dailyops() {
 
-	public function section() { 
+		$this->theme = "progression";
 
+		$this->set("body_element","layout/v3/one-column");
 
+		//get the post
+		$this->loadModel('Dailyop');
+
+		$post = $this->Dailyop->returnPost(array(
+					"Dailyop.id"=>6848
+				),$this->isAdmin());
+		
+		$this->set(compact("post"));
 
 	}
 
