@@ -4,11 +4,11 @@ $b_var = "banner-".md5(microtime().mt_rand(9999,99999));
 
 if(!isset($unit)) { 
 
-	$unit = "PROMO_BANNERS_B";
+	$unit = "PROMO_BANNERS_A";
 	$tile = "tile=1;";
 
 } else {
-	$unit = "PROMO_BANNERS_A";
+	$unit = "PROMO_BANNERS_B";
 	$tile = "tile=3;";
 
 }

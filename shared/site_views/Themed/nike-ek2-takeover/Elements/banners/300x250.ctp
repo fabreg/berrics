@@ -1,10 +1,10 @@
 <?php 
 
 if(!isset($unit))  { 
-	$unit = "PROMO_BANNERS_B";
+	$unit = "PROMO_BANNERS_A";
 	$tile = "tile=2;";
 } else {
-	$unit = "PROMO_BANNERS_A";
+	$unit = "PROMO_BANNERS_B";
 	$tile = "tile=4;";
 }
 
