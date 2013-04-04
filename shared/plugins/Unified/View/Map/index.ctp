@@ -26,6 +26,23 @@ jQuery(document).ready(function($) {
 
 
 });
+
+function loadPins() {
+
+	var o = {
+
+		url:'/unified/map/load_pins',
+		success:function(d) {
+
+			
+
+		}
+
+	};
+
+	$.ajax(o);
+
+}
 	
 </script>
 <style>
