@@ -83,4 +83,11 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 
 		?>
 	</div>
+	<?php if (time()>strtotime("2013-04-06") || preg_match("/(admin|web2vm)/i",php_uname('n'))): ?>
+	<div id="mtn-dew-spec-link">
+		<a href="/mtn-dew">
+			<img src="/img/v3/layout/mtn-dew-spec-ops-link.jpg" alt="">
+		</a>
+	</div>
+	<?php endif ?>
 </div>
