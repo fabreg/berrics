@@ -22,7 +22,8 @@ LANDER
 
 #progression-lander #post {
 
-	
+	background-image:url(/theme/progression/img/wide-still.jpg);
+	background-repeat: no-repeat;
 
 }
 
@@ -78,7 +79,7 @@ LANDER
 	
 	max-width:900px;
 	max-height:374px;
-
+	height:374px;
 }
 
 #progression-lander #post .post .post-footer {

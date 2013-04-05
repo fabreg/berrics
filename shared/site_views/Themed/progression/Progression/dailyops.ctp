@@ -11,6 +11,12 @@
 		});
 
 		$("#post .post-media-div").trigger('click');
+		// /theme/progression/img/wide-still.jpg
+
+
+		$("#post .post-media-div img.swf").attr({
+			src:"/theme/progression/img/wide-still.jpg"
+		});
 
 	});
 </script>
