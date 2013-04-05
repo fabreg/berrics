@@ -38,6 +38,20 @@ class MapController extends UnifiedAppController {
 
 	}
 
+	public function search_shops_geo() {
+		
+
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$res = $this->GeoLocation->lat_long_search($this->request->data['GeoLocation']['lat'],$this->request->data['GeoLocation']['lng'],$this->request->data['GeoLocation']['distance']);
+			
+			die(print_r($res));
+
+		}
+
+
+	}
+
 
 
 }

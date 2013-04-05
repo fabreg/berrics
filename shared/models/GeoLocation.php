@@ -16,7 +16,7 @@ class GeoLocation extends AppModel {
 		
 		$res = $this->query($sql);
 
-		die(print_r($res));
+		return $res;
 
 	}
 

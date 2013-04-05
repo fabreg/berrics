@@ -10,6 +10,7 @@ var map,geocoder = null;
 var startLng = '<?php echo (!empty($this->request->data['GeoLocation']['lng'])) ? $this->request->data['GeoLocation']['lng']:'-118.2436849';?>';
 var startLat = '<?php echo (!empty($this->request->data['GeoLocation']['lat'])) ? $this->request->data['GeoLocation']['lat']:'34.0522342';?>';
 var markers = [];
+var circle = false;
 jQuery(document).ready(function($) {
 	var latLng = new google.maps.LatLng(startLat, startLng);
  	var mapOptions = {
@@ -19,9 +20,23 @@ jQuery(document).ready(function($) {
         };
         map = new google.maps.Map(document.getElementById("map_canvas"),
             mapOptions);
+
+        setZoom(latLng,10);
 	
+	
+
+	//zip search form
+
+	$("#StoreSearchForm").submit(function() { 
+
+		zipSearch($("#StoreSearchQuery").val(),$("#StoreSearchMiles").val());
+
+		return false;
+
+	});
+
+
 	//drop an initial pin
-	//addMarker(latLng);
 	
 	geocoder = new google.maps.Geocoder();
 	
@@ -30,6 +45,7 @@ jQuery(document).ready(function($) {
 		var latLng = new google.maps.LatLng(<?php echo $store['GeoLocation']['lat']; ?>,<?php echo $store['GeoLocation']['lng']; ?>);
 		addMarker(latLng);
 	<?php endforeach; ?>
+
 
 });
 
@@ -73,8 +89,8 @@ function addMarker ($latLng) {
 		
 			position:$latLng,
 			animation:google.maps.Animation.DROP,
-			map:map,
-			icon:"/img/v3/unified/marker.png"
+			map:map
+			//icon:"/img/v3/unified/marker.png"
 
 
 	}));
@@ -83,21 +99,79 @@ function addMarker ($latLng) {
 
 function setZoom($latLng) {
 
-	var miles = arguments[1] || .1;
+	var miles = arguments[1] || 10;
 	
 	var radius = 1609.3 * miles;
 
 	var cOptions = {
 			center: $latLng,
 		    fillOpacity: 0,
-		    strokeOpacity:1,
+		    strokeOpacity:.1,
 		    map: map,
-		    radius: radius /* 20 miles */
+		    radius: radius 
 	};
 
-	var cir = new google.maps.Circle(cOptions);
+	circle = new google.maps.Circle(cOptions);
 
-	map.fitBounds(cir.getBounds());
+	map.fitBounds(circle.getBounds());
+
+}
+
+function zipSearch($zip,$radius) {
+
+	var r = {};
+
+	r.address = $zip;
+
+	geocoder.geocode(r,function($geo,$res) { 
+	
+		map.setCenter($geo[0].geometry.location);
+		setZoom($geo[0].geometry.location,$radius);
+		//map.setZoom(19);
+		//clearMarkers();
+		//addMarker($geo[0].geometry.location);
+
+		//set the lat and long fields
+		//$("#GeoLocationLat").val($geo[0].geometry.location.lat());
+		//$("#GeoLocationLng").val($geo[0].geometry.location.lng());
+		//$("#GeoLocationStreetAddressFormatted").val($geo[0].formatted_address);
+
+		console.log($geo);
+		shopLatLong($geo[0].geometry.location.lat(),$geo[0].geometry.location.lng(),$radius);
+
+	});
+
+}
+
+function shopLatLong($lat,$lng,$distance) {
+
+	var o = {
+		"type":"post",
+		"url":"/unified/map/search_shops_geo",
+		"data":{
+
+			data:{
+
+				"GeoLocation":{
+
+					"lat":$lat,
+					"lng":$lng,
+					"distance":$distance
+
+				}
+
+			}
+
+		},
+		success:function(d) { 
+		
+			console.log(d);
+
+		}
+	
+	};
+
+	$.ajax(o);
 
 }
 
@@ -112,10 +186,36 @@ function setZoom($latLng) {
 
 	}
 </style>
+<?php 
+
+	$miles = array("10"=>"10 Miles");
+
+	for($i=25;$i<=100;$i+=25) {
+
+		$miles[$i] = $i." Miles";
+
+	}
+
+ ?>
 <div id="unified-map">
 	<div class="row-fluid">
 		<div class="span3">
-			aaa
+			<?php 
+				echo $this->Form->create('StoreSearch',array(
+					"id"=>'StoreSearchForm',
+					"url"=>$this->request->here
+				));
+			 ?>
+			 <?php echo $this->Form->input("query",array("label"=>false,"placeholder"=>"Zip/Postal Code or Address")); ?>
+			 <div class="row-fluid">
+			 	<div class="span6">
+			 		<?php echo $this->Form->input("miles",array("options"=>$miles,"label"=>false)); ?>
+			 	</div>
+			 	<div class="span6">
+			 		<button class="btn btn-inverse">Search</button>
+			 	</div>
+			 </div>
+			 <?php echo $this->Form->end(); ?>
 		</div>
 		<div class="span9">
 			<div id="map_canvas" style='min-height:650px;'></div>
