@@ -29,6 +29,8 @@ class ProgressionController extends DailyopsController {
 					"Dailyop.id"=>6848
 				),$this->isAdmin());
 		
+		$this->setFacebookMetaImg($post["DailyopMediaItem"][0]['MediaFile']);
+
 		$this->set(compact("post"));
 
 	}
