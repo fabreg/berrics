@@ -4,7 +4,7 @@ App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
 
 class LegacyShell extends Shell {
 	
-	public $uses = array("MediaFile");
+	public $uses = array("MediaFile","GeoLocation","UnifiedStore");
 	
 	public function main() {
 		
@@ -17,6 +17,36 @@ class LegacyShell extends Shell {
 		$this->out("[2]  ");
 		
 	}
+
+
+	public function import_lat_lng() {
+		
+		//get all the stores
+
+		$stores = $this->UnifiedStore->find('all');
+
+		$this->GeoLocation->query("truncate geo_locations");
+
+		foreach($stores as $store) {
+
+			$this->GeoLocation->create();
+
+			$data = array(
+				"model"=>"UnifiedStore",
+				"foreign_key"=>$store['UnifiedStore']['id'],
+				"lat"=>$store['UnifiedStore']['latitude'],
+				"lng"=>$store['UnifiedStore']['longitude']
+			);
+
+			$this->GeoLocation->save($data);
+			$this->out("Store Updated: [{$store['UnifiedStore']['id']}]");
+
+		}
+
+	}
+
+
+
 	
 	public function limelight() {
 		App::import("Vendor","BCAPI",array("file"=>"bc_api.php"));

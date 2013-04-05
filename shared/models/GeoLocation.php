@@ -6,13 +6,7 @@ App::uses('AppModel', 'Model');
  */
 class GeoLocation extends AppModel {
 
-
-	public $belongsTo = array(
-
-
-		
-
-	);
+	
 
 
 	public function lat_long_search($lat = false, $lng = false, $distance = 10) {
