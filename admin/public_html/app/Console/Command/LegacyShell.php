@@ -35,11 +35,24 @@ class LegacyShell extends Shell {
 				"model"=>"UnifiedStore",
 				"foreign_key"=>$store['UnifiedStore']['id'],
 				"lat"=>$store['UnifiedStore']['latitude'],
-				"lng"=>$store['UnifiedStore']['longitude']
+				"lng"=>$store['UnifiedStore']['longitude'],
+
 			);
 
 			$this->GeoLocation->save($data);
 			$this->out("Store Updated: [{$store['UnifiedStore']['id']}]");
+
+			$data = array(
+
+				"shop_bio"=>utf8_encode($store['UnifiedStore']['shop_bio']),
+				"shop_name"=>utf8_encode($store['UnifiedStore']['shop_name']),
+			);
+
+
+			$this->UnifiedStore->create();
+			$this->UnifiedStore->id = $store['UnifiedStore']['id'];
+			$this->UnifiedStore->save($data);
+
 
 		}
 

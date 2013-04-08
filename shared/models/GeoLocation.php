@@ -16,6 +16,28 @@ class GeoLocation extends AppModel {
 		
 		$res = $this->query($sql);
 
+		if(count($res)) {
+
+			$UnifiedStore = ClassRegistry::init("UnifiedStore");
+
+			foreach($res as $k=>$v) {
+
+				if($v['geo_locations']['model'] != 'UnifiedStore') {
+
+					unset($res[$k]);
+
+					continue;
+
+				}
+
+				$shop = $UnifiedStore->returnStore($v['geo_locations']['foreign_key'],1);
+				
+				$res[$k]['Store'] = $shop;
+
+			}
+
+		}
+
 		return $res;
 
 	}

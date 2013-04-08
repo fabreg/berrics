@@ -12,29 +12,8 @@ var startLat = '<?php echo (!empty($this->request->data['GeoLocation']['lat'])) 
 var markers = [];
 var circle = false;
 jQuery(document).ready(function($) {
-	var latLng = new google.maps.LatLng(startLat, startLng);
- 	var mapOptions = {
-          center: latLng,
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.HYBRID
-        };
-        map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
 
-        setZoom(latLng,10);
-	
-	
-
-	//zip search form
-
-	$("#StoreSearchForm").submit(function() { 
-
-		zipSearch($("#StoreSearchQuery").val(),$("#StoreSearchMiles").val());
-
-		return false;
-
-	});
-
+	bootstrapMap(startLat,startLng);
 
 	//drop an initial pin
 	
@@ -48,6 +27,35 @@ jQuery(document).ready(function($) {
 
 
 });
+
+function bootstrapMap($lat,$lng) {
+		
+		var latLng = new google.maps.LatLng($lat, $lng);
+ 		var mapOptions = {
+          center: latLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+
+        setZoom(latLng,10);
+	
+		
+		loadAllPins();
+
+	//zip search form
+
+	$("#StoreSearchForm").submit(function() { 
+
+		zipSearch($("#StoreSearchQuery").val(),$("#StoreSearchMiles").val());
+
+		return false;
+
+	});
+
+
+}
 
 function loadPins() {
 
@@ -101,15 +109,18 @@ function setZoom($latLng) {
 
 	var miles = arguments[1] || 10;
 	
-	var radius = 1609.3 * miles;
+	var radius = 1609.34 * miles;
 
 	var cOptions = {
 			center: $latLng,
 		    fillOpacity: 0,
-		    strokeOpacity:.1,
+		    strokeOpacity:.5,
 		    map: map,
-		    radius: radius 
+		    radius: radius ,
+		    strokeColor:"red"
 	};
+	
+	if(circle) circle.setMap(null);
 
 	circle = new google.maps.Circle(cOptions);
 
@@ -165,7 +176,7 @@ function shopLatLong($lat,$lng,$distance) {
 		},
 		success:function(d) { 
 		
-			console.log(d);
+			$("#shop-results").html(d);
 
 		}
 	
@@ -175,6 +186,23 @@ function shopLatLong($lat,$lng,$distance) {
 
 }
 
+function loadAllPins() {
+
+	var o = {
+		
+		url:"/unified/map/pins_json",
+		success:function(d) {
+
+			
+
+		}
+
+
+	};
+	
+	$.ajax(o);
+
+}
 
 
 </script>
@@ -183,12 +211,23 @@ function shopLatLong($lat,$lng,$distance) {
 
 		background-image:none;
 		background-color:#fff;
+		font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
 
+	}
+	.shop-result {
+
+
+	}
+
+	.shop-result .name {
+
+		font-size:15px;
+		
 	}
 </style>
 <?php 
 
-	$miles = array("10"=>"10 Miles");
+	$miles = array("5"=>"5 Miles","10"=>"10 Miles");
 
 	for($i=25;$i<=100;$i+=25) {
 
@@ -216,6 +255,9 @@ function shopLatLong($lat,$lng,$distance) {
 			 	</div>
 			 </div>
 			 <?php echo $this->Form->end(); ?>
+			 <div id="shop-results">
+			 	
+			 </div>
 		</div>
 		<div class="span9">
 			<div id="map_canvas" style='min-height:650px;'></div>

@@ -45,9 +45,31 @@ class MapController extends UnifiedAppController {
 		
 			$res = $this->GeoLocation->lat_long_search($this->request->data['GeoLocation']['lat'],$this->request->data['GeoLocation']['lng'],$this->request->data['GeoLocation']['distance']);
 			
-			die(print_r($res));
+			$this->set(compact("res"));
 
 		}
+
+		
+	}
+
+	public function pins_json() {
+		
+		$token = "unified-pins-json";
+
+
+		if(($pins = Cache::read($token,"1min")) === false) {
+
+			$pins = $this->UnifiedStore->find('all',array(
+						"contain"=>array("GeoLocation")
+					));
+			//die(print_r($pins));
+			$pins = json_encode($pins);
+
+			Cache::write($token,$pins,"1min");
+
+		}
+
+		die($pins);
 
 
 	}
