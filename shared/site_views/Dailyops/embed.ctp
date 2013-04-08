@@ -6,11 +6,16 @@ body {
 	background-color: white;
 }
 
+.post-embed {
+
+	max-width:730px;
+	max-height: 500px;
+}
+
 .post-embed .post {
 
 	border:none;
-	max-width:728px;
-	max-height: 500px;
+
 }
 #report-queue-btn {
 
