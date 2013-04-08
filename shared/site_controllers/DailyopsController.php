@@ -179,7 +179,7 @@ class DailyopsController extends LocalAppController {
 
 		
 		
-		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("MON","TUE")) && $home_mode) {
+		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("MON")) && $home_mode) {
 
 			//only show posts that are from saturday or sunday
 
@@ -197,7 +197,7 @@ class DailyopsController extends LocalAppController {
 		}
 
 
-		if(in_array(date("Y-m-d"),array("2013-04-05","2013-03-28"))) {
+		if(in_array(date("Y-m-d"),array("2013-04-09","2013-03-28"))) {
 
 			$this->theme = "";
 
@@ -1150,6 +1150,16 @@ class DailyopsController extends LocalAppController {
 				));
 
 		$this->redirect("/".$id['DailyopSection']['uri']."/".$id['Dailyop']['uri']);
+
+	}
+
+	public function embed($dailyop_id) {
+		
+		$this->layout = "empty";
+
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>$dailyop_id),$this->isAdmin());
+
+		$this->set(compact("post"));
 
 	}
 
