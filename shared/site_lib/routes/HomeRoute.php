@@ -38,6 +38,11 @@ class HomeRoute extends CakeRoute {
 
 				}
 			break;
+			default:
+				$params['controller'] = "dailyops";
+				$params['action'] = "index";
+
+				break;
 
 					
 		}
