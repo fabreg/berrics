@@ -5,12 +5,15 @@ $this->Unified->mapJsIncludes();
 
 ?>
 <script>
+
 //var markersJson = <?php echo json_encode($stores); ?>;
-var map,geocoder = null;
+var map,geocoder = false;
 var startLng = '<?php echo (!empty($this->request->data['GeoLocation']['lng'])) ? $this->request->data['GeoLocation']['lng']:'-118.2436849';?>';
 var startLat = '<?php echo (!empty($this->request->data['GeoLocation']['lat'])) ? $this->request->data['GeoLocation']['lat']:'34.0522342';?>';
 var markers = [];
 var circle = false;
+var centerMarker = false;
+
 jQuery(document).ready(function($) {
 
 	bootstrapMap(startLat,startLng);
@@ -36,23 +39,22 @@ function bootstrapMap($lat,$lng) {
           zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
+
+        if(!map) map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
         setZoom(latLng,10);
 	
-		
 		loadAllPins();
 
-	//zip search form
+		//zip search form
 
-	$("#StoreSearchForm").submit(function() { 
+		$("#StoreSearchForm").submit(function() { 
 
-		zipSearch($("#StoreSearchQuery").val(),$("#StoreSearchMiles").val());
+			zipSearch($("#StoreSearchQuery").val(),$("#StoreSearchMiles").val());
 
-		return false;
+			return false;
 
-	});
+		});
 
 
 }
@@ -63,8 +65,6 @@ function loadPins() {
 
 		url:'/unified/map/load_pins',
 		success:function(d) {
-
-			
 
 		}
 
@@ -147,7 +147,7 @@ function zipSearch($zip,$radius) {
 		//$("#GeoLocationLng").val($geo[0].geometry.location.lng());
 		//$("#GeoLocationStreetAddressFormatted").val($geo[0].formatted_address);
 
-		console.log($geo);
+		//console.log($geo);
 		shopLatLong($geo[0].geometry.location.lat(),$geo[0].geometry.location.lng(),$radius);
 
 	});
@@ -204,6 +204,21 @@ function loadAllPins() {
 
 }
 
+function setSearchMarker($lat,$lng) {
+
+	if(centerMarker) centerMarker.setMap(null);
+
+	//marker options
+	var o = {
+	
+		
+
+	};
+
+	centerMarker = new google.maps.Marker(o);
+
+}
+
 
 </script>
 <style>
@@ -215,7 +230,9 @@ function loadAllPins() {
 
 	}
 	.shop-result {
-
+	
+		border-bottom:1px solid #000;
+		margin-bottom:10px;
 
 	}
 
@@ -223,6 +240,23 @@ function loadAllPins() {
 
 		font-size:15px;
 		
+	}
+	#results-col {
+
+		position:relative;
+
+	}
+
+	#map-container {
+
+		
+
+	}
+
+	#map_canvas {
+
+		min-height:500px;
+
 	}
 </style>
 <?php 
@@ -238,29 +272,32 @@ function loadAllPins() {
  ?>
 <div id="unified-map">
 	<div class="row-fluid">
-		<div class="span3">
-			<?php 
-				echo $this->Form->create('StoreSearch',array(
-					"id"=>'StoreSearchForm',
-					"url"=>$this->request->here
-				));
-			 ?>
-			 <?php echo $this->Form->input("query",array("label"=>false,"placeholder"=>"Zip/Postal Code or Address")); ?>
-			 <div class="row-fluid">
-			 	<div class="span6">
-			 		<?php echo $this->Form->input("miles",array("options"=>$miles,"label"=>false)); ?>
-			 	</div>
-			 	<div class="span6">
-			 		<button class="btn btn-inverse">Search</button>
-			 	</div>
-			 </div>
-			 <?php echo $this->Form->end(); ?>
+		<div class="span3" id='results-col'>
+			
 			 <div id="shop-results">
 			 	
 			 </div>
 		</div>
-		<div class="span9">
-			<div id="map_canvas" style='min-height:650px;'></div>
+		<div class="span9" id='map-container'>
+			<div class="map-search-div">
+				<?php 
+					echo $this->Form->create('StoreSearch',array(
+						"id"=>'StoreSearchForm',
+						"url"=>$this->request->here
+					));
+				 ?>
+				 <?php echo $this->Form->input("query",array("label"=>false,"placeholder"=>"Zip/Postal Code or Address")); ?>
+				 <div class="row-fluid">
+				 	<div class="span6">
+				 		<?php echo $this->Form->input("miles",array("options"=>$miles,"label"=>false)); ?>
+				 	</div>
+				 	<div class="span6">
+				 		<button class="btn btn-inverse">Search</button>
+				 	</div>
+				 </div>
+				 <?php echo $this->Form->end(); ?>
+			</div>
+			<div id="map_canvas" ></div>
 		</div>
 	</div>
 	<div class="row-fluid">
