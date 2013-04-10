@@ -6,9 +6,6 @@ App::uses('AppModel', 'Model');
  */
 class GeoLocation extends AppModel {
 
-	
-
-
 	public function lat_long_search($lat = false, $lng = false, $distance = 10) {
 
 		if(!$lat || !$lng) throw new BadRequestException("GeoLocation::lat_long_search - Invalid Arguments");

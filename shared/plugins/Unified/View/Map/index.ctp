@@ -13,23 +13,50 @@ var startLat = '<?php echo (!empty($this->request->data['GeoLocation']['lat'])) 
 var markers = [];
 var circle = false;
 var centerMarker = false;
+var markersJson = <?php echo json_encode($stores); ?>;
 
 jQuery(document).ready(function($) {
+	
+	geocoder = new google.maps.Geocoder();
 
-	bootstrapMap(startLat,startLng);
+	if(navigator.geolocation) {
+
+		navigator.geolocation.getCurrentPosition(function(p) {
+
+			bootstrapMap(p.coords.latitude,p.coords.longitude);
+			shopLatLong(p.coords.latitude,p.coords.longitude,25);
+
+		},function() { });
+
+	} else {
+
+		bootstrapMap(startLat,startLng);
+
+	}
+
+	$(window).bind('resize.map',function() {
+
+		handleScreenResize();
+
+	}).trigger('resize');
 
 	//drop an initial pin
 	
-	geocoder = new google.maps.Geocoder();
 	
-	<?php foreach($stores as $store): ?>
-		<?php if(empty($store['GeoLocation']['lat']) || empty($store['GeoLocation']['lng'])) continue; ?>
-		var latLng = new google.maps.LatLng(<?php echo $store['GeoLocation']['lat']; ?>,<?php echo $store['GeoLocation']['lng']; ?>);
-		addMarker(latLng);
-	<?php endforeach; ?>
-
-
+	
 });
+
+function handleScreenResize() {
+	
+	var bw = $(window).width(); //browser width
+	var bh = $(window).height(); //browser height
+	
+	var mw = $('#map-row').width(); //map width
+	var mh = $("#map-row").height(); //map height
+
+	$("#shop-results").height(mh);
+
+}
 
 function bootstrapMap($lat,$lng) {
 		
@@ -42,7 +69,7 @@ function bootstrapMap($lat,$lng) {
 
         if(!map) map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-        setZoom(latLng,10);
+        setZoom(latLng,25);
 	
 		loadAllPins();
 
@@ -188,19 +215,13 @@ function shopLatLong($lat,$lng,$distance) {
 
 function loadAllPins() {
 
-	var o = {
-		
-		url:"/unified/map/pins_json",
-		success:function(d) {
-
-			
-
-		}
-
-
-	};
+	for(var a in markersJson) {
 	
-	$.ajax(o);
+		var latLng = new google.maps.LatLng(markersJson[a].GeoLocation.lat,markersJson[a].GeoLocation.lng);
+		addMarker(latLng);
+		
+
+	}
 
 }
 
@@ -231,16 +252,37 @@ function setSearchMarker($lat,$lng) {
 	}
 	.shop-result {
 	
-		border-bottom:1px solid #000;
-		margin-bottom:10px;
+		border-top:2px solid #000;
+		
+		padding:4px;
+	}
 
+	.shop-result:hover {
+	
+		background-color:#e9e9e9;
+		cursor: pointer;
 	}
 
 	.shop-result .name {
 
 		font-size:15px;
+		font-weight: bold;
 		
 	}
+	
+	.shop-result .address {
+
+		font-size:10px;
+		line-height: 13px;
+		padding-left:10px;
+	}
+
+	#shop-results {
+
+		overflow:auto;
+
+	}
+
 	#results-col {
 
 		position:relative;
@@ -271,9 +313,8 @@ function setSearchMarker($lat,$lng) {
 
  ?>
 <div id="unified-map">
-	<div class="row-fluid">
+	<div class="row-fluid" id='map-row'>
 		<div class="span3" id='results-col'>
-			
 			 <div id="shop-results">
 			 	
 			 </div>
