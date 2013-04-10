@@ -1,10 +1,10 @@
 <?php if (!isset($res) || empty($res)): ?>
-	<div class="label">
+	<div class="alert alert-danger">
 		No Stores Found
 	</div>
 <?php else: ?>
 	<div>
-		<?php echo count($res); ?>
+		<?php echo count($res); ?> Shops found within <?php echo $this->request->data['GeoLocation']['distance'] ?> miles
 	</div>
 	<?php 
 		foreach ($res as $k => $v): 
@@ -27,8 +27,8 @@
 					P: <?php echo $store['UnifiedStore']['phone'] ?>
 				</strong> 
 			</div>
-			<div class="distance">
-				<div class="label label-success">
+			<div class="distance-div clearfix">
+				<div class="distance-label">
 					<?php echo number_format($v[0]['distance']); ?> MILES
 				</div>
 			</div>

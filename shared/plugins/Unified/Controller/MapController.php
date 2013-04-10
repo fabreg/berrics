@@ -24,7 +24,7 @@ class MapController extends UnifiedAppController {
 		//get all the stores
 
 
-		$stores = $this->UnifiedStore->find("all",array(
+		$s = $this->UnifiedStore->find("all",array(
 						"contains"=>array(
 							"GeoLocation"
 						),
@@ -32,6 +32,10 @@ class MapController extends UnifiedAppController {
 							"UnifiedStore.shop_name"=>"ASC"
 						)
 				));
+
+		$stores = array();
+
+		foreach($s as $v) $stores[$v['UnifiedStore']['id']] = $v;
 
 		$this->set(compact("stores"));
 
@@ -63,7 +67,12 @@ class MapController extends UnifiedAppController {
 						"contain"=>array("GeoLocation")
 					));
 			//die(print_r($pins));
-			$pins = json_encode($pins);
+
+			$p = array();
+
+			foreach($pins as $v) $p[$v['UnifiedStore']['id']] = $v;
+
+			$pins = json_encode($p);
 
 			Cache::write($token,$pins,"1min");
 

@@ -4,7 +4,14 @@ App::uses('AppModel', 'Model');
  * GeoLocation Model
  *
  */
+
+
+
 class GeoLocation extends AppModel {
+
+	public $belongsTo = array(
+			"UnifiedStore"
+		);
 
 	public function lat_long_search($lat = false, $lng = false, $distance = 10) {
 

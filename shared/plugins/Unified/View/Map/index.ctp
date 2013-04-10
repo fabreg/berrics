@@ -53,8 +53,18 @@ function handleScreenResize() {
 	
 	var mw = $('#map-row').width(); //map width
 	var mh = $("#map-row").height(); //map height
+	
+	if(bw<=798) {
+	
+		$("#shop-results").css({"height":"auto"});
 
-	$("#shop-results").height(mh);
+	} else {
+
+		$("#shop-results").height(mh);
+
+	}
+
+	
 
 }
 
@@ -118,17 +128,37 @@ function clearMarkers () {
 
 }
 
-function addMarker ($latLng) {
+function addMarker ($latLng,$unified_store_id) {
 	
-	markers.push(new google.maps.Marker({
+	var mark = new google.maps.Marker({
 		
 			position:$latLng,
 			animation:google.maps.Animation.DROP,
-			map:map
-			//icon:"/img/v3/unified/marker.png"
+			map:map,
+			//icon:"/img/v3/unified/marker.png",
+			unified_store_id:$unified_store_id
+			
+	});
+	
+	google.maps.event.addListener(mark,'click',function() { 
+	
+		var store = markersJson[mark.unified_store_id];
 
 
-	}));
+
+	});
+
+	google.maps.event.addListener(mark,'dblclick',function() { 
+	
+		var store = markersJson[mark.unified_store_id];
+	
+		map.setZoom(17);
+
+		map.panTo(mark.position);
+
+	});
+
+	markers[mark.unified_store_id]=mark;
 
 }
 
@@ -218,7 +248,7 @@ function loadAllPins() {
 	for(var a in markersJson) {
 	
 		var latLng = new google.maps.LatLng(markersJson[a].GeoLocation.lat,markersJson[a].GeoLocation.lng);
-		addMarker(latLng);
+		addMarker(latLng,markersJson[a].UnifiedStore.id);
 		
 
 	}
@@ -240,6 +270,12 @@ function setSearchMarker($lat,$lng) {
 
 }
 
+function handleMarkerClick($marker) {
+
+	
+
+}
+
 
 </script>
 <style>
@@ -250,11 +286,19 @@ function setSearchMarker($lat,$lng) {
 		font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
 
 	}
+
+	#unified-map {
+
+		padding:10px;
+	
+
+	}
+
 	.shop-result {
 	
 		border-top:2px solid #000;
-		
 		padding:4px;
+		
 	}
 
 	.shop-result:hover {
@@ -280,6 +324,7 @@ function setSearchMarker($lat,$lng) {
 	#shop-results {
 
 		overflow:auto;
+		background-color:#fff;
 
 	}
 
@@ -291,7 +336,7 @@ function setSearchMarker($lat,$lng) {
 
 	#map-container {
 
-		
+		margin-left:5px;
 
 	}
 
@@ -300,6 +345,20 @@ function setSearchMarker($lat,$lng) {
 		min-height:500px;
 
 	}
+	
+	.distance-div .distance-label {
+		font-size:12px;
+		width:100px;
+		padding:5px;
+		background-color:#000;
+		line-height:18px;
+		text-align:center;
+		color:#fff;
+		margin-left:10px;
+		margin-top:5px;
+	}
+
+
 </style>
 <?php 
 
@@ -319,7 +378,7 @@ function setSearchMarker($lat,$lng) {
 			 	
 			 </div>
 		</div>
-		<div class="span9" id='map-container'>
+		<div class="span9 pull-right" id='map-container'>
 			<div class="map-search-div">
 				<?php 
 					echo $this->Form->create('StoreSearch',array(
@@ -341,6 +400,7 @@ function setSearchMarker($lat,$lng) {
 			<div id="map_canvas" ></div>
 		</div>
 	</div>
+</div>
 	<div class="row-fluid">
 		<div class="span12">
 			<?php foreach ($stores as $k => $v): ?>
@@ -350,4 +410,3 @@ function setSearchMarker($lat,$lng) {
 			<?php endforeach ?>
 		</div>
 	</div>
-</div>
