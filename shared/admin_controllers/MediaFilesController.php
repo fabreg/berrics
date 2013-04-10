@@ -50,7 +50,7 @@ class MediaFilesController extends LocalAppController {
 				
 				if(empty($vv)) continue;
 
-				$url[$k.".".$kk]=urlencode($vv);
+				$url[$k.".".$kk]=($vv);
 				
 			}
 			
@@ -75,6 +75,8 @@ class MediaFilesController extends LocalAppController {
 		//build searching arguments
 		if(isset($this->request->params['named']['search'])) {
 			
+
+
 			//check for mediaFile name
 			if(isset($this->request->params['named']['MediaFile.name'])) {
 				
