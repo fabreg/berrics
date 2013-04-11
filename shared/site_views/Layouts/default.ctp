@@ -89,7 +89,7 @@
 								</a>
 							</div>
 							<div class="fb-icon">
-								<a href="http://www.facebook.com/pages/The-Berrics/123390707714463" target='_blank'>
+								<a href="http://www.facebook.com/berrics" target='_blank'>
 									<img src="/img/v3/layout/fb-header-icon.jpg" alt="" border='0' />
 								</a>
 							</div>
