@@ -71,7 +71,7 @@ $back_to_link = "/news/".date("Y",strtotime($this->request->params['date_in'])).
 								"w"=>700,
 								"h"=>640
 							))."<div class='play-button'></div><div class='overlay'></div>";
-					$vid_file = "<div class='video-file img-polaroid'>".$this->Berrics->postMediaDiv($post,array("MediaFile"=>$t['MediaFile']))."</div>";
+					$vid_file = "<div class='video-file'>".$this->Berrics->postMediaDiv($post,array("MediaFile"=>$t['MediaFile']))."</div>";
 					
 				} else {
 					
