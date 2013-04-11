@@ -144,9 +144,16 @@ function addMarker ($latLng,$unified_store_id) {
 
 		}
 
+		var html = "<div>"+store.UnifiedStore.shop_name+"</div>";
+		html += "<div>"+store.UnifiedStore.address1+" "+store.UnifiedStore.address2+"</div>";
+		html += "<div>"+store.UnifiedStore.city+", "+store.UnifiedStore.state+" "+store.UnifiedStore.zip+"</div>";
+		html += "<div>"+store.UnifiedStore.phone+"</div>";
+		
+		html = "<div class='info-bubble'>"+html+"</div>";
+
 		infoWindow = new google.maps.InfoWindow({
 
-			"content":store.UnifiedStore.shop_name
+			"content":html
 
 		});
 
@@ -189,6 +196,22 @@ function setZoom($latLng) {
 
 	map.fitBounds(circle.getBounds());
 
+	if(centerMarker) {
+
+		centerMarker.setMap(null);
+
+	} 
+
+	centerMarker = new google.maps.Marker({
+
+			position:$latLng,
+			animation:google.maps.Animation.DROP,
+			map:map,
+			icon:"//maps.google.com/intl/en_us/mapfiles/ms/micons/purple-dot.png"
+
+
+
+		});
 }
 
 function zipSearch($zip,$radius) {
