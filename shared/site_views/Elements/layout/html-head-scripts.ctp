@@ -25,7 +25,7 @@ if(!isset($rss_feed)) {
 		echo $this->Html->script(array(
 			"https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js",
 			"https://platform.twitter.com/widgets.js",
-			"//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js",
+			"//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js",
 			"https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js",
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
 		)); 

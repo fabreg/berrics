@@ -1,5 +1,6 @@
 <?php
 	$this->Unified->mapJsIncludes();
+	//$this->Html->script(array("http://cdnjs.cloudflare.com/ajax/libs/jquery.selectboxit/3.3.0/jquery.selectBoxIt.min.js"),array("inline"=>false));
 ?>
 <script>
 
@@ -15,6 +16,8 @@ var infoWindow = false;
 
 jQuery(document).ready(function($) {
 	
+	//$('select').selectBoxIt();
+
 	geocoder = new google.maps.Geocoder();
 
 	if(navigator.geolocation) {
@@ -34,7 +37,7 @@ jQuery(document).ready(function($) {
 
 	$(window).bind('resize.map',function() {
 
-		handleScreenResize();
+		//handleScreenResize();
 
 	}).trigger('resize');
 	
@@ -130,6 +133,7 @@ function addMarker ($latLng,$unified_store_id) {
 			animation:google.maps.Animation.DROP,
 			map:map,
 			//icon:"/img/v3/unified/marker.png",
+			icon:"/img/v3/map/mapIcon.png",
 			unified_store_id:$unified_store_id
 			
 	});
@@ -149,7 +153,7 @@ function addMarker ($latLng,$unified_store_id) {
 		html += "<div>"+store.UnifiedStore.city+", "+store.UnifiedStore.state+" "+store.UnifiedStore.zip+"</div>";
 		html += "<div>"+store.UnifiedStore.phone+"</div>";
 		
-		html = "<div class='info-bubble'>"+html+"</div>";
+		html = "<div class=''>"+html+"</div>";
 
 		infoWindow = new google.maps.InfoWindow({
 
@@ -165,7 +169,7 @@ function addMarker ($latLng,$unified_store_id) {
 	
 		var store = markersJson[mark.unified_store_id];
 	
-		map.setZoom(12);
+		map.setZoom(20);
 
 		map.panTo(mark.position);
 
@@ -375,13 +379,13 @@ function handleMarkerClick($marker) {
 
 	#map-container {
 
-		margin-left:5px;
+		
 
 	}
 
 	#map_canvas {
 
-		min-height:500px;
+		height:500px;
 
 	}
 	
@@ -396,8 +400,59 @@ function handleMarkerClick($marker) {
 		margin-left:10px;
 		margin-top:5px;
 	}
+	
+	#map-row {
+
+		border:2px solid #000;
+		border-right:none;
+		border-left:none;
+		padding-top:8px;
+		padding-bottom:8px;
+
+	}
+
+	#search-bar .control-group {
+
+		margin:0;
+		height:30px;
+
+	}
 
 
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+	#map-container {
+		
+		float:right;
+		width:785px;
+		min-height:500px;
+	}
+
+	#results-col {
+
+		float:left;
+		width:340px;
+		height:500px;
+		overflow: auto;
+	}
+
+	#map_canvas {
+
+		
+
+	}
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
 </style>
 <?php 
 
@@ -411,32 +466,31 @@ function handleMarkerClick($marker) {
 
  ?>
 <div id="unified-map">
-	<div class="row-fluid" id='map-row'>
-		<div class="span3" id='results-col'>
+	<?php 
+		echo $this->Form->create('StoreSearch',array(
+			"id"=>'StoreSearchForm',
+			"url"=>$this->request->here
+		));
+	 ?>
+	<div id="search-bar" class="map-search-div row-fluid">
+		<div class="span8">
+			 <?php echo $this->Form->input("query",array("label"=>false,"placeholder"=>"Zip/Postal Code or Address")); ?>
+		</div>
+		<div class="span4">
+			<button class="btn btn-inverse">Search</button>
+			<?php echo $this->Form->select("miles",$miles,array("label"=>false,"div"=>false)); ?>
+		</div>
+	</div>
+	<?php echo $this->Form->end(); ?>
+	<div class="clearfix" id='map-row'>
+		<div class="" id='map-container'>
+			
+			<div id="map_canvas" ></div>
+		</div>
+		<div class="" id='results-col'>
 			 <div id="shop-results">
 			 	
 			 </div>
-		</div>
-		<div class="span9 pull-right" id='map-container'>
-			<div class="map-search-div">
-				<?php 
-					echo $this->Form->create('StoreSearch',array(
-						"id"=>'StoreSearchForm',
-						"url"=>$this->request->here
-					));
-				 ?>
-				 <?php echo $this->Form->input("query",array("label"=>false,"placeholder"=>"Zip/Postal Code or Address")); ?>
-				 <div class="row-fluid">
-				 	<div class="span6">
-				 		<?php echo $this->Form->input("miles",array("options"=>$miles,"label"=>false)); ?>
-				 	</div>
-				 	<div class="span6">
-				 		<button class="btn btn-inverse">Search</button>
-				 	</div>
-				 </div>
-				 <?php echo $this->Form->end(); ?>
-			</div>
-			<div id="map_canvas" ></div>
 		</div>
 	</div>
 </div>
