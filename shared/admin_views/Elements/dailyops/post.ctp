@@ -36,6 +36,7 @@
 
 		<?php if($post['Dailyop']['hidden']) echo "<span class='label label-inverse'>Hidden</span> "; ?>
 		<?php if($post['Dailyop']['pinned']) echo "<span class='label label-warning'>Pinned</span> "; ?>
+		<?php if($post['Dailyop']['active'] == 0) echo "<span class='label label-inverse'>Not Active</span> "; ?>
 	</div>
 	<?php if(count($post['UserAssignedPost'])>0): ?>
 	<div id='users-<?php echo $post['Dailyop']['id']; ?>' class='collapse' style='padding-top:5px;'>
