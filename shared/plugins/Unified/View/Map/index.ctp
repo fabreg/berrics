@@ -1,8 +1,5 @@
 <?php
-
-$this->Unified->mapJsIncludes();
-
-
+	$this->Unified->mapJsIncludes();
 ?>
 <script>
 
@@ -14,6 +11,7 @@ var markers = [];
 var circle = false;
 var centerMarker = false;
 var markersJson = <?php echo json_encode($stores); ?>;
+var infoWindow = false;
 
 jQuery(document).ready(function($) {
 	
@@ -39,10 +37,6 @@ jQuery(document).ready(function($) {
 		handleScreenResize();
 
 	}).trigger('resize');
-
-	//drop an initial pin
-	
-	
 	
 });
 
@@ -144,7 +138,19 @@ function addMarker ($latLng,$unified_store_id) {
 	
 		var store = markersJson[mark.unified_store_id];
 
+		if(infoWindow) {
 
+			infoWindow.close();
+
+		}
+
+		infoWindow = new google.maps.InfoWindow({
+
+			"content":store.UnifiedStore.shop_name
+
+		});
+
+		infoWindow.open(map,mark);
 
 	});
 
@@ -152,7 +158,7 @@ function addMarker ($latLng,$unified_store_id) {
 	
 		var store = markersJson[mark.unified_store_id];
 	
-		map.setZoom(17);
+		map.setZoom(12);
 
 		map.panTo(mark.position);
 
@@ -217,23 +223,32 @@ function shopLatLong($lat,$lng,$distance) {
 		"type":"post",
 		"url":"/unified/map/search_shops_geo",
 		"data":{
-
 			data:{
-
 				"GeoLocation":{
-
 					"lat":$lat,
 					"lng":$lng,
 					"distance":$distance
-
 				}
-
 			}
-
 		},
 		success:function(d) { 
 		
 			$("#shop-results").html(d);
+
+			$('.shop-result').bind('click',function() { 
+
+				var id = $(this).attr("data-unified-store-id");
+
+				var store = markersJson[id];
+				
+				map.setZoom(17);
+
+				map.panTo(markers[id].position);
+
+				google.maps.event.trigger(markers[id],'click');
+
+			});
+
 
 		}
 	
@@ -311,7 +326,8 @@ function handleMarkerClick($marker) {
 
 		font-size:15px;
 		font-weight: bold;
-		
+		margin-bottom:3px;
+
 	}
 	
 	.shop-result .address {
@@ -401,12 +417,12 @@ function handleMarkerClick($marker) {
 		</div>
 	</div>
 </div>
-	<div class="row-fluid">
-		<div class="span12">
-			<?php foreach ($stores as $k => $v): ?>
-			<div>
-				<h2><?php echo $v['UnifiedStore']['shop_name']; ?></h2>
-			</div>
-			<?php endforeach ?>
+<div class="row-fluid">
+	<div class="span12">
+		<?php foreach ($stores as $k => $v): ?>
+		<div>
+			<h2><?php echo $v['UnifiedStore']['shop_name']; ?></h2>
 		</div>
+		<?php endforeach ?>
 	</div>
+</div>
