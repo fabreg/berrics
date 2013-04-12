@@ -264,6 +264,15 @@
     #splash page legacy links
     RewriteRule ^(splash\/life) /splash/740cc0f35da295aa4b5a36fa88da34a0 [R=301,L]
     RewriteRule ^(splash\/hesh) /splash/b6e65bb9d4469ebf016554a4e092a766 [R=301,L]
+
+    #wear test
+    RewriteRule ^(gen-ops\/wear-test-ek1.html) /wear-test/wear-test-ek1.html [R=301,L]
+    RewriteRule ^(gen-ops\/wear-test-lakai-rick-howard.html) /wear-test/wear-test-lakai-rick-howard.html [R=301,L]
+    RewriteRule ^(gen-ops\/supra-hammer.html) /wear-test/supra-hammer.html [R=301,L]
+    RewriteRule ^(gen-ops\/wear-test-nike-sb-koston-2.html) /wear-test/wear-test-nike-sb-koston-2.html [R=301,L]
+    RewriteRule ^(gen-ops\/emerica-andrew-reynolds.html) /wear-test/emerica-andrew-reynolds.html [R=301,L]
+    
+
     
     
 ### END BERRICS URL FIXES

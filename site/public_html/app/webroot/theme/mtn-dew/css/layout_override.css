@@ -2,6 +2,7 @@ body {
 
 	background-image:url(/theme/mtn-dew/img/bg.jpg);
 	background-position: center center;
+
 }
 
 header {
@@ -31,6 +32,7 @@ header {
 	font-family: 'universcnb';
 	font-size: 16px;
 	line-height: 22px;
+	
 }
 
 #mtn-dew-team .team table {

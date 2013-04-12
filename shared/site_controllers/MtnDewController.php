@@ -53,8 +53,6 @@ class MtnDewController extends DailyopsController {
 
 	public function section() {
 		
-
-
 		$this->loadModel('Dailyop');
 		
 		$token = "mtn-dew-page";
