@@ -169,7 +169,7 @@ function addMarker ($latLng,$unified_store_id) {
 	
 		var store = markersJson[mark.unified_store_id];
 	
-		map.setZoom(20);
+		map.setZoom(12);
 
 		map.panTo(mark.position);
 
@@ -268,7 +268,7 @@ function shopLatLong($lat,$lng,$distance) {
 
 				var store = markersJson[id];
 				
-				map.setZoom(17);
+				//map.setZoom(17);
 
 				map.panTo(markers[id].position);
 
