@@ -169,7 +169,7 @@ App::uses("HomeRoute",'routes');
 //the day
 Router::connect(
     '/:year/:month/:day',
-    array('controller'=>'dailyops','action' => 'index'),
+    array('controller'=>'dailyops','action' => 'archive'),
     array(
         'year' => '[12][0-9]{3}',
         'month' => '0[1-9]|1[012]',

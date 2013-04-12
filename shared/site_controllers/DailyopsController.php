@@ -225,6 +225,12 @@ class DailyopsController extends LocalAppController {
 
 	}
 
+	public function archive() {
+
+		
+		
+	}
+
 	public function section($year = false, $auto_render = true,$legacy = false) {
 		
 
