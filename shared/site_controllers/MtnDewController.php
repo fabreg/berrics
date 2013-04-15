@@ -51,7 +51,7 @@ class MtnDewController extends DailyopsController {
 
 	}
 
-	public function section() {
+	public function ___section() {
 		
 		$this->loadModel('Dailyop');
 		
@@ -111,6 +111,97 @@ class MtnDewController extends DailyopsController {
 		}
 
 		$this->set(compact("posts"));
+
+	}
+
+	public function section() {
+		
+		$ids = $this->getDewTags();
+
+		$this->Paginator->settings = array();
+
+		$this->Paginator->settings['Dailyop'] = array(
+
+					"conditions"=>array(
+						"Dailyop.id"=>$ids,
+						"Dailyop.publish_date < NOW()",
+						"Dailyop.active"=>1
+					),
+					"contain"=>array(
+						"DailyopMediaItem"=>array(
+							"MediaFile",
+							"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+							"limit"=>1
+						),
+						"DailyopTextItem"=>array(
+							"MediaFile",
+							"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+							"limit"=>1
+						),
+						"DailyopSection",
+						"Tag"
+					),
+					"order"=>array("Dailyop.publish_date"=>"DESC"),
+					"limit"=>20
+
+				);
+
+
+		$posts = $this->paginate("Dailyop");
+
+		//die(pr($posts));
+
+
+		$this->set(compact("posts"));
+
+		//$this->view = "section";
+
+	}
+
+	private function getDewTags() {
+
+		$this->loadModel('Tag');
+		
+		$ids = $this->Tag->find("all",array(
+					"fields"=>array(
+						"Tag.id"
+						
+					),
+					"conditions"=>array(
+						"Tag.name"=>array(
+							"PAUL RODRIGUEZ",
+							"THEOTIS BEASLEY",
+							"KEELAN DADD",
+							"AM TEAM",
+							"BOO JOHNSON",
+							"NICK TUCKER",
+							"JUSTIN SCHULTE",
+							"CODY DAVIS",
+							"CARLOS ZARAZUA",
+							"CHRIS COLBOURN",
+							"JORDAN MAXHAM",
+							"TRAVIS GLOVER",
+							"TULIO OLIVEIRA",
+							"MIKE FRANKLIN",
+							"FLOW TEAM",
+							"REEMO PEARSON",
+							"URIEL ESQUIVITAS",
+							"DAVID HAFFSTEINSSON",
+							"MILES CANEVELLO",
+							"TOM ROHRER",
+							"mtn dew"
+						)
+					),
+					"contain"=>array(
+						"Dailyop"=>array(
+							"fields"=>array("Dailyop.id")
+						)
+					)
+				));
+		
+		$ids = Set::extract("/Dailyop/id",$ids);
+
+		return $ids;
 
 	}
 
