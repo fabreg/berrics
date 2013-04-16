@@ -59,6 +59,47 @@ class Dailyop extends AppModel {
 	//berrics news category
 	private $news_id = 65;
 	
+	/*
+	OVERLOADED METHODS
+	*/
+	public function afterSave($created) {
+		
+		$id = $this->id;
+
+		$_SERVER['FORCEMASTER'] = true;
+
+		$post = $this->returnPost(array(
+					"Dailyop.id"=>$id
+				),true,true);
+
+		//make the keywords
+		$s = $this->extractSearchValues($post);
+		
+		$SearchItem = ClassRegistry::init("SearchItem");
+
+		$SearchItem->insertItem($s);
+
+		return parent::afterSave();
+
+	}
+
+	public function afterDelete($created) {
+		
+		$SearchItem = ClassRegistry::init("SearchItem");
+
+		$SearchItem->deleteAll(array(
+			"model"=>"Dailyop",
+			"foreign_key"=>$this->id
+		));
+
+		return parent::afterDelete();
+
+	}
+
+	/**
+	 * returnPos
+	 * 
+	 */
 	public function returnPost($cond = array(),$admin = false,$no_cache = false,$contain = false) {
 		
 		if(!$admin) {
@@ -357,10 +398,6 @@ class Dailyop extends AppModel {
 	
 	
 	public function getNextDate($date = false, $older = true , $section_id = false) {
-		
-		//do a hack for bangyoself 3
-		
-		if(($older && ($date == '2011-09-18')) || (!$older && ($date == '2011-09-16'))) return "2011-09-17";
 		
 		$cond =	array(
 						"Dailyop.active"=>1,
@@ -1686,38 +1723,96 @@ class Dailyop extends AppModel {
 
 	}
 
-	public function afterSave($created) {
+
+
+	public function returnDailyopsHome($startDate = false,$numDays = 2,$isAdmin = false) {
 		
-		$id = $this->id;
+		if(!$startDate) $startDate = date("Y-m-d");
 
-		$_SERVER['FORCEMASTER'] = true;
+		$startDate = $this->checkDailyopsHomeDate($startDate);
 
-		$post = $this->returnPost(array(
-					"Dailyop.id"=>$id
-				),true,true);
+		$posts = array(
+					"posts"=>array(),
+					"news"=>array()
+				);
 
-		//make the keywords
-		$s = $this->extractSearchValues($post);
-		
-		$SearchItem = ClassRegistry::init("SearchItem");
+		for($i = 1;$i<=$numDays;$i++) {
 
-		$SearchItem->insertItem($s);
+			if($i > 1) $startDate = date('Y-m-d',strtotime('-1 Day',strtotime($startDate)));
+			
+			$startDate = $this->checkDailyopsHomeDate($startDate);
+			
+			$cond = array(
+						"Dailyop.active"=>1,
+						"Dailyop.hidden"=>0,
+						"DATE(Dailyop.publish_date) = '$startDate'"
+					);
 
-		return parent::afterSave();
+			//do an admin check
+			if (!$isAdmin) {
+				
+				$cond[] = "Dailyop.publish_date < NOW()";	
+
+			}
+
+			$dops = $this->find('all',array(
+						"conditions"=>$cond,
+						"contain"=>array(
+							"DailyopMediaItem"=>array(
+								"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+								"limit"=>1,
+								"MediaFile"
+							),
+							"DailyopTextItem"=>array(
+								"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+								"limit"=>1,
+								"MediaFile"
+							),
+							"DailyopSection",
+							"Tag"=>array(
+								"UnifiedStore",
+								"User",
+								"Brand"
+							)
+						),
+						"order"=>array(
+							"Dailyop.pinned"=>"DESC",
+							"Dailyop.publish_date"=>"DESC",
+							"Dailyop.display_weight"=>"ASC"
+						)
+
+					));
+
+					
+			
+			
+			$posts['posts'] = array_merge($posts['posts'],$dops);
+			
+		}
+
+		return $posts;
 
 	}
 
-	public function afterDelete($created) {
+	public function checkDailyopsHomeDate($dateIn = false) {
 		
-		$SearchItem = ClassRegistry::init("SearchItem");
-
-		$SearchItem->deleteAll(array(
-			"model"=>"Dailyop",
-			"foreign_key"=>$this->id
+		$chk = $this->find("count",array(
+			"conditions"=>array(
+				"DATE(Dailyop.publish_date) = '{$dateIn}'",
+				"Dailyop.active"=>1,
+				"Dailyop.hidden"=>0,
+				"Dailyop.publish_date <= NOW()"
+			),
+			"contain"=>array()
 		));
+		
+		if($chk<=0) return $this->checkDailyopsHomeDate(date("Y-m-d",strtotime("-1 Day",strtotime($dateIn))));
 
-		return parent::afterDelete();
+		return $dateIn;
 
 	}
+
+
+	
 	
 }

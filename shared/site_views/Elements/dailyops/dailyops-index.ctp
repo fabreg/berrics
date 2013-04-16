@@ -5,7 +5,7 @@
 <?php echo $this->element("banners/728") ?>
 <?php 
 	$lazy = true;
-	if($home_mode && !$this->request->is('ajax')) $lazy = false;
+	//if(!$this->request->is('ajax')) $lazy = false;
 
 	foreach ($posts['posts'] as $k => $v): 
 ?>
@@ -14,14 +14,4 @@
 			<?php echo $this->element("banners/728",array("unit"=>"dopsv3_728b")); ?>
 	<?php endif ?>
 	<?php endforeach ?>
-	<?php 
-		$lazy = true;
-		foreach ($posts['news'] as $k => $v):
-	 ?>
-		<?php if ($k==2): ?>
-			<?php echo $this->element("banners/728",array("unit"=>"dopsv3_728b")); ?>
-		<?php endif ?>
-		<?php echo $this->element("dailyops/post-bit",array("dop"=>$v,"lazy"=>$lazy)); ?>
-	<?php endforeach ?>
-
 </div>

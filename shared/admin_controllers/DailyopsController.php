@@ -5,6 +5,7 @@ App::import("Controller","LocalApp");
 class DailyopsController extends LocalAppController {
 
 	var $name = 'Dailyops';
+	
 	public function beforeFilter() {
 		
 		parent::beforeFilter();

@@ -11,6 +11,9 @@ class HomeRoute extends CakeRoute {
 			return false;
 			
 		}
+
+		$params['controller'] = "dailyops";
+		$params['action'] = "index";
 		
 		$date_in = date("Y-m-d");
 		
@@ -21,8 +24,9 @@ class HomeRoute extends CakeRoute {
 		(strtotime("{$params['year']}-{$params['month']}-{$params['day']}")<time())
 		) {
 			
-			$date_in = "{$params['year']}-{$params['month']}-{$params['day']}";
-			
+			$date_in = $params['dateIn'] = "{$params['year']}-{$params['month']}-{$params['day']}";
+			$params['action'] = "archive";
+
 		}
 		
 		
@@ -38,11 +42,7 @@ class HomeRoute extends CakeRoute {
 
 				}
 			break;
-			default:
-				$params['controller'] = "dailyops";
-				$params['action'] = "index";
 
-				break;
 
 					
 		}

@@ -26,210 +26,105 @@ class DailyopsController extends LocalAppController {
 	}
 	
 
+
+	public function archive() {
+		
+		$token = md5("dop-archive".$this->request->params['dateIn']."1".$this->isAdmin());
+
+		if(($posts = Cache::read($token,"1min")) === false) {
+
+			$posts = $this->Dailyop->returnDailyopsHome($this->request->params['dateIn'],1,$this->isAdmin());
+
+			Cache::write($token,$posts,"1min");
+
+		}
+
+		$post_total = count($posts['posts']);
+
+		$date_scope = $posts['posts'][($post_total-1)]['Dailyop']['publish_date'];
+
+		$dateIn = $date_scope;
+
+		$this->set(compact("posts","dateIn"));
+
+		if($this->request->is('ajax')) {
+
+			$this->beforeRender();
+			$this->render("/Elements/dailyops/dailyops-index");
+			return;
+			
+		} else {
+
+			$item=end($posts['posts']);
+
+			do {
+			
+				if(!empty($item['Dailyop']['theme_override'])) 
+					
+					$this->theme = $item['Dailyop']['theme_override'];
+					
+			} while ($item=prev($posts['posts']));
+
+		}
+
+		$this->view = "index";
+
+
+	}
+
 	public function index() {
 
 		$this->set("top_element","layout/v3/top_element_featured_post");
 
 		$title_for_layout = "The Berrics - Daily Ops";
 
-		$home_mode = false;
+		$dateIn = date("Y-m-d");
 
-		if(isset($this->request->params['year']) && isset($this->request->params['month']) && isset($this->request->params['day'])) {
+		$token = md5("dops-home".$dateIn.$this->isAdmin());
 
-			$dateIn = date("Y-m-d",strtotime($this->request->params['year']."-".$this->request->params['month']."-".$this->request->params['day']));
+		if(($posts = Cache::read($token,"1min")) === false) {
+
+			$this->loadModel('DailyopsConfig');
 			
-		} else {
+			$config = $this->DailyopsConfig->findByDailyopsDate($dateIn);
 
-			$dateIn = date("Y-m-d");
-			$home_mode = true;
+			$days = (isset($config['DailyopsConfig']['post_frequency'])) ? $config['DailyopsConfig']['post_frequency']:2;
 
-		}
+			$posts = $this->Dailyop->returnDailyopsHome($dateIn,$days,$this->isAdmin());
 
-		if($this->request->is('ajax')) {
-			$home_mode = true;
-		}
-
-		$token = "dailyops_{$dateIn}_{$home_mode}";
-
-		if(($posts=Cache::read($token,"1min"))===false || ($this->isAdmin() && isset($_GET['showall']))) {
-
-			if($home_mode) { //validate that the dateIn has posts, if not then shift it up
-
-				$dateIn = $this->checkHomeDateIn($dateIn);
-
-			}
-
-			$cond = array(
-				"Dailyop.active"=>1,
-				"Dailyop.hidden"=>0,
-				"DATE(Dailyop.publish_date) = '{$dateIn}'"
-				
-			);
-
-			if($this->isAdmin() && isset($_GET['showall'])) {
-
-				
-
-			} else {
-
-				$cond[] = "Dailyop.publish_date <= NOW()";
-
-			}
-
-			$p = $this->Dailyop->find("all",array(
-				"conditions"=>$cond,
-				"contain"=>array(
-					"DailyopMediaItem"=>array(
-						"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
-						"limit"=>1,
-						"MediaFile"
-					),
-					"DailyopTextItem"=>array(
-						"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
-						"limit"=>1,
-						"MediaFile"
-					),
-					"DailyopSection",
-					"Tag"=>array(
-						"UnifiedStore",
-						"User",
-						"Brand"
-					)
-				),
-				"order"=>array(
-					"Dailyop.pinned"=>"DESC",
-					"Dailyop.publish_date"=>"DESC",
-					"Dailyop.display_weight"=>"ASC"
-				)
-			));
-
-			if(count($p)<=3 && $home_mode && !$this->request->is('ajax')) {
-
-
-				$dateIn = $this->checkHomeDateIn(date('Y-m-d',strtotime("-1 Day",strtotime($dateIn))));
-
-				$ep = $this->Dailyop->find("all",array(
-							"conditions"=>array(
-								"Dailyop.active"=>1,
-								"Dailyop.hidden"=>0,
-								"DATE(Dailyop.publish_date) = '{$dateIn}'"
-								
-							),
-							"contain"=>array(
-								"DailyopMediaItem"=>array(
-									"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
-									"limit"=>1,
-									"MediaFile"
-								),
-								"DailyopTextItem"=>array(
-									"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
-									"limit"=>1,
-									"MediaFile"
-								),
-								"DailyopSection",
-								"Tag"=>array(
-									"UnifiedStore",
-									"User",
-									"Brand"
-								)
-							),
-							"order"=>array(
-								"Dailyop.pinned"=>"DESC",
-								"Dailyop.publish_date"=>"DESC",
-								"Dailyop.display_weight"=>"ASC"
-							)
-					));
-
-				$p = array_merge($p,$ep);
-			}
-
-			$posts = array();
-
-			foreach ($p as $k => $v) {
-
-				$posts['posts'][] = $v;
-
-				/*
-				
-				if(preg_match('/(aberrican|news)/i',$v['DailyopSection']['name'])) {
-
-					$posts['news'][] = $v;
-
-				} else {
-
-					$posts['posts'][] = $v;
-
-				}
-				*/
-
-			}
-
-			
+			$posts['config'] = $config;
 
 			Cache::write($token,$posts,"1min");
 
 		}
 
+		if(!isset($posts['config']['DailyopsConfig']['disable_themes']) || $posts['config']['DailyopsConfig']['disable_themes'] != 1) {
 
+			$item=end($posts['posts']);
 
-		//check to see if any of the posts have a theme override
-
-		foreach($posts['posts'] as $post) //if(!empty($post['Dailyop']['theme_override'])) die($post['Dailyop']['theme_override']);
-			if(!empty($post['Dailyop']['theme_override'])) $this->theme = $post['Dailyop']['theme_override'];
-
-		
-		
-		if($this->theme == "battle-at-the-berrics-6" && in_array(strtoupper(date("D")),array("MON")) && $home_mode) {
-
-			//only show posts that are from saturday or sunday
-
-			foreach($posts['posts'] as $k=>$v) {
-
-				if(!in_array(strtoupper(date("D",strtotime($v['Dailyop']['publish_date']))),array("MON"))) {
-
-					unset($posts['posts'][$k]);
-
-				}
-
-			}
-
+			do {
+			
+				if(!empty($item['Dailyop']['theme_override'])) 
+					
+					$this->theme = $item['Dailyop']['theme_override'];
+					
+			} while ($item=prev($posts['posts']));
 
 		}
-
-
-		if(in_array(date("Y-m-d"),array("2013-04-09","2013-03-28"))) {
-
-			$this->theme = "";
-
-		}
-
-		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
-
 		//get the date from the last post
 
 		$post_total = count($posts['posts']);
 
 		$date_scope = $posts['posts'][($post_total-1)]['Dailyop']['publish_date'];
 
-		$dateIn = $this->checkHomeDateIn(date("Y-m-d",strtotime($date_scope)));
-		$this->set(compact("posts","home_mode"));
-		$this->set(compact("title_for_layout","dateIn"));
+		$dateIn = $date_scope;
 
-		if($this->request->is('ajax')) {
+		$this->set(compact("posts","title_for_layout","dateIn"));
 
-			$this->beforeRender();
-			$this->render("/Elements/dailyops/dailyops-index");
-
-		}
-
+		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
 
 	}
 
-	public function archive() {
-
-		
-		
-	}
 
 	public function section($year = false, $auto_render = true,$legacy = false) {
 		

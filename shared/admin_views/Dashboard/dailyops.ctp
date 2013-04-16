@@ -51,6 +51,21 @@ $(document).ready(function() {
 
 	});
 
+	$('.dailyops-config').each(function() {
+
+		var date = $(this).attr('data-date');
+
+		$(this).load("/dailyops_configs/edit_date/"+date,function() {
+			
+			initBootstrap();
+			
+			initSubmitForm($(this));
+
+		});
+
+
+	});
+
 
 	$(document).bind('videoFileUploadComplete',function() { 
 
@@ -59,6 +74,29 @@ $(document).ready(function() {
 	});
 	
 });
+
+function initSubmitForm($ele) {
+
+			var $form = $ele;
+			$ele.find('.dailyops-config-form').ajaxForm({
+
+				"beforeSumbit":function() { 
+				
+					$ele.find('.submit-config-btn').hide();
+					$ele.find('.config-progress').show();
+
+					return true;
+				},
+				success:function(d) {
+
+					$ele.html(d);
+					initBootstrap();
+					initSubmitForm($ele);
+				}
+
+			});
+
+}
 
 </script>
 <style>
@@ -100,6 +138,19 @@ $(document).ready(function() {
 	border-radius:inherit;
 	border-bottom-right-radius:0px;
 	border-bottom-left-radius:0px;
+}
+
+.dailyops-config-form {
+
+	
+
+}
+
+.dailyops-config-form .control-group .control-label,
+.dailyops-config-form .control-group select {
+
+	font-size:12px;
+
 }
 
 </style>
@@ -199,6 +250,13 @@ $(document).ready(function() {
 									<?php endif; ?>
 								</div>
 						
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="dailyops-config" data-date='<?php echo $start_date; ?>'>
+								
+							</div>
 						</td>
 					</tr>
 					<tr>
