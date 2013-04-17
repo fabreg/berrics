@@ -1,3 +1,12 @@
+<?php 
+
+$num = array();
+
+for($i = 1; $i<=99; $i++) $num[$i] = $i;
+
+
+
+ ?>
 <?php echo $this->Session->flash(); ?>
 <?php echo $this->Form->create("Dailyop",array("url"=>array("action"=>"handle_tab_save",$this->request->data['Dailyop']['id']))); 
 echo $this->Form->input("element",array("type"=>"hidden","value"=>"edit-text"));
@@ -14,6 +23,24 @@ echo $this->Form->input("id");
 		?>
 	</div>
 	<div class='span6'>
+	
+		<h3>Episode Configuration</h3>
+		<div class="row-fluid">
+			<div class="span12">
+				<?php echo $this->Form->input("title_episode"); ?>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<?php echo $this->Form->input("parent_dailyop_id",array("options"=>$parentDailyops,"empty"=>true,"label"=>"Parent Daily Ops Post")) ?>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<?php echo $this->Form->input("episode_display_weight",array("options"=>$num)); ?>
+			</div>
+		</div>
+	
 		<h3>Linking</h3>
 		<?php 
 		echo $this->Form->input("fb_like_uri_override",array("label"=>"FB Like URI Override (URI that will be used for Facebook) ** must start with a FORWARD SLASH / **"));

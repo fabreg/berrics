@@ -1827,6 +1827,25 @@ class Dailyop extends AppModel {
 
 	}
 
+	public function returnTitleEpisodesDrop() {
+		
+		$posts = $this->find("all",array(
+					"conditions"=>array(
+						"Dailyop.title_episode"=>1
+					),
+					"contain"=>array(
+						"DailyopSection"
+					),
+					"order"=>array("DailyopSection.name"=>"ASC","Dailyop.publish_date"=>"DESC")
+				));
+		
+		$drop = array();
+
+		foreach($posts as $post) $drop[$post['Dailyop']['id']] = $post['DailyopSection']['name']." : ".$post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];	
+
+		return $drop;
+	}
+
 
 	
 	

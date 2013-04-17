@@ -487,8 +487,10 @@ class DailyopsController extends LocalAppController {
 		$episodes = $this->returnTitleEpisodes();
 
 		$postTemplates = Dailyop::postTemplates();
+
+		$parentDailyops = $this->Dailyop->returnTitleEpisodesDrop();
 		
-		$this->set(compact('users', 'dailyopSections', 'mediaFiles',"themes","episodes","postTemplates","ondemandTitles"));
+		$this->set(compact('users', 'dailyopSections', 'mediaFiles',"themes","episodes","postTemplates","ondemandTitles","parentDailyops"));
 		
 	}
 	
