@@ -23,7 +23,6 @@ echo $this->Form->input("id");
 		?>
 	</div>
 	<div class='span6'>
-	
 		<h3>Episode Configuration</h3>
 		<div class="row-fluid">
 			<div class="span12">
@@ -46,7 +45,6 @@ echo $this->Form->input("id");
 		echo $this->Form->input("fb_like_uri_override",array("label"=>"FB Like URI Override (URI that will be used for Facebook) ** must start with a FORWARD SLASH / **"));
 		echo $this->Form->input("url",array("help"=>"<small>** Post will click through to this URL</small>"));
 		echo $this->Form->input("window_target");
-		
 		?>
 	</div>
 </div>
