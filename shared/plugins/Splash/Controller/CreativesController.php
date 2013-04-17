@@ -46,7 +46,8 @@ class CreativesController extends SplashAppController {
 		
 		$this->Paginator->settings['SplashCreative'] = array(
 				
-					"limit"=>50
+					"limit"=>50,
+					"order"=>array("SplashCreative.id"=>"DESC")
 				
 				);
 		
