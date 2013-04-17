@@ -58,7 +58,25 @@ $v = $this->request->data['UserAddress'];
 			</tr>
 			<tr>
 				<td>Tracking #</td>
-				<td><?php echo $this->request->data['CanteenShippingRecord']['tracking_number']; ?></td>
+				<td>
+					<?php if(strtoupper($this->request->data['CanteenShippingRecord']['carrier_name']) == "USPS"): ?>
+						<?php 
+						
+						$tnum = $this->request->data['CanteenShippingRecord']['tracking_number'];
+						
+						if(empty($this->request->data['CanteenShippingRecord']['tracking_number'])) {
+							
+							$tnum = $this->request->data['CanteenShippingRecord']['shipment_number'];
+							
+						}
+						
+						?>
+						<a href='http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<?php echo $tnum; ?>' target='_blank'><?php echo $tnum; ?></a>
+				<?php elseif(strtoupper($this->request->data['CanteenShippingRecord']['carrier_name'])=="UPS"): ?>
+						<a  target='_blank' href='http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums=<?php echo $this->request->data['CanteenShippingRecord']['tracking_number']; ?>'><?php echo $this->request->data['CanteenShippingRecord']['tracking_number']; ?></a>
+				<?php endif; ?>
+
+				</td>
 			</tr>
 		</table>
 		<?php 
