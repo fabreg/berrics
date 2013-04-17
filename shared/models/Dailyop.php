@@ -1729,7 +1729,15 @@ class Dailyop extends AppModel {
 		
 		if(!$startDate) $startDate = date("Y-m-d");
 
-		$startDate = $this->checkDailyopsHomeDate($startDate);
+		$override = false;
+
+		if(($isAdmin && isset($_GET['showall']))) {
+
+			$override = true;
+
+		}
+
+		$startDate = $this->checkDailyopsHomeDate($startDate,$override);
 
 		$posts = array(
 					"posts"=>array(),
@@ -1740,7 +1748,7 @@ class Dailyop extends AppModel {
 
 			if($i > 1) $startDate = date('Y-m-d',strtotime('-1 Day',strtotime($startDate)));
 			
-			$startDate = $this->checkDailyopsHomeDate($startDate);
+			$startDate = $this->checkDailyopsHomeDate($startDate,$override);
 			
 			$cond = array(
 						"Dailyop.active"=>1,
@@ -1749,11 +1757,11 @@ class Dailyop extends AppModel {
 					);
 
 			//do an admin check
-			if (!$isAdmin) {
+			if (!$isAdmin || ($isAdmin && !$override)) {
 				
 				$cond[] = "Dailyop.publish_date < NOW()";	
 
-			}
+			} 
 
 			$dops = $this->find('all',array(
 						"conditions"=>$cond,
@@ -1794,15 +1802,22 @@ class Dailyop extends AppModel {
 
 	}
 
-	public function checkDailyopsHomeDate($dateIn = false) {
+	public function checkDailyopsHomeDate($dateIn = false,$override = false) {
 		
-		$chk = $this->find("count",array(
-			"conditions"=>array(
+		$cond = array(
 				"DATE(Dailyop.publish_date) = '{$dateIn}'",
 				"Dailyop.active"=>1,
-				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= NOW()"
-			),
+				"Dailyop.hidden"=>0
+			);
+
+		if(!$override) {
+
+			$cond[] = "Dailyop.publish_date <= NOW()";
+
+		}
+
+		$chk = $this->find("count",array(
+			"conditions"=>$cond,
 			"contain"=>array()
 		));
 		
