@@ -3,8 +3,8 @@
 		No Stores Found
 	</div>
 <?php else: ?>
-	<div>
-		<?php echo count($res); ?> Shops found within <?php echo $this->request->data['GeoLocation']['distance'] ?> miles of ""
+	<div class='alert alert-info'>
+		<strong><?php echo count($res); ?></strong> Shops found within <?php echo $this->request->data['GeoLocation']['distance'] ?> miles of ""
 	</div>
 	<?php 
 		foreach ($res as $k => $v): 

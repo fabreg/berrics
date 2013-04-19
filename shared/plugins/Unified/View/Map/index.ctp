@@ -20,20 +20,34 @@ jQuery(document).ready(function($) {
 
 	geocoder = new google.maps.Geocoder();
 
-	if(navigator.geolocation) {
+	
+		
+	$("#location-btn").show().bind('click',function() {
+		
+		if(navigator.geolocation) {
 
-		navigator.geolocation.getCurrentPosition(function(p) {
+			navigator.geolocation.getCurrentPosition(function(p) {
 
-			bootstrapMap(p.coords.latitude,p.coords.longitude);
-			shopLatLong(p.coords.latitude,p.coords.longitude,25);
+				bootstrapMap(p.coords.latitude,p.coords.longitude);
+				shopLatLong(p.coords.latitude,p.coords.longitude,25);
 
-		},function() { });
+			},function() { 
+		
 
-	} else {
 
-		bootstrapMap(startLat,startLng);
+			});
 
-	}
+		} else {
+
+			bootstrapMap(startLat,startLng);
+			$("#location-btn").hide();
+		}
+
+	});
+
+		
+	bootstrapMap(startLat,startLng);
+	
 
 	$(window).bind('resize.map',function() {
 
@@ -385,7 +399,7 @@ function handleMarkerClick($marker) {
 
 	#map_canvas {
 
-		height:500px;
+		height:600px;
 
 	}
 	
@@ -418,6 +432,15 @@ function handleMarkerClick($marker) {
 
 	}
 
+	#map_canvas img {
+ 		 max-width: none;
+	}
+html,
+body,
+.hero-unit {
+    width:100%;
+    height:100%;
+}
 
 /* Large desktop */
 @media (min-width: 1200px) { 
@@ -426,14 +449,14 @@ function handleMarkerClick($marker) {
 		
 		float:right;
 		width:785px;
-		min-height:500px;
+		min-height:600px;
 	}
 
 	#results-col {
 
 		float:left;
 		width:340px;
-		height:500px;
+		height:600px;
 		overflow: auto;
 	}
 
@@ -456,41 +479,57 @@ function handleMarkerClick($marker) {
 </style>
 <?php 
 
-	$miles = array("5"=>"5 Miles","10"=>"10 Miles");
+	$miles = array("5"=>"Within 5 Miles","10"=>"Within 10 Miles");
 
 	for($i=25;$i<=100;$i+=25) {
 
-		$miles[$i] = $i." Miles";
+		$miles[$i] = "Within ".$i." Miles";
 
 	}
 
  ?>
 <div id="unified-map">
-	<?php 
-		echo $this->Form->create('StoreSearch',array(
-			"id"=>'StoreSearchForm',
-			"url"=>$this->request->here
-		));
-	 ?>
-	<div id="search-bar" class="map-search-div row-fluid">
-		<div class="span8">
-			 <?php echo $this->Form->input("query",array("label"=>false,"placeholder"=>"Zip/Postal Code or Address")); ?>
-		</div>
-		<div class="span4">
-			<button class="btn btn-inverse">Search</button>
-			<?php echo $this->Form->select("miles",$miles,array("label"=>false,"div"=>false)); ?>
-		</div>
-	</div>
-	<?php echo $this->Form->end(); ?>
+	
+	
+	
 	<div class="clearfix" id='map-row'>
 		<div class="" id='map-container'>
 			
 			<div id="map_canvas" ></div>
 		</div>
 		<div class="" id='results-col'>
-			 <div id="shop-results">
+			<div id="search-bar" class="map-search-div row-fluid">
+				<?php echo $this->Form->create('StoreSearch',array(
+					"id"=>'StoreSearchForm',
+					"url"=>$this->request->here
+				)); ?>
+				<div class="row-fluid">
+					<div class="span12">
+					 
+					 <div class="row-fluid">
+					 	<div class="span12">
+					 		<input type="text" name='data[StoreSearch][query]' id='StoreSearchQuery' class='span12' placeholder='Enter Your City / Postal Code or Address' />
+					 	</div>
+					 	
+					 </div>
+					 <div class="row-fluid">
+					 	<div class="span6">
+							<?php echo $this->Form->select("miles",$miles,array("label"=>false,"div"=>false,"class"=>"span12")); ?>
+					 	</div>
+					 	<div class="span6">
+					 		<div class="btn-group pull-right">
+					 			<button class="btn" type='submit'><i class="icon  icon-search"></i> Search</button>
+					 			<button class="btn" type='button' id='location-btn'><i class='icon  icon-map-marker'></i></button>
+					 		</div>
+					 	</div>
+					 </div>
+				</div>
+				</div>
+				<?php echo $this->Form->end(); ?>
+			</div>
+			<div id="shop-results">
 			 	
-			 </div>
+			</div>
 		</div>
 	</div>
 </div>
