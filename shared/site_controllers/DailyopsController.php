@@ -123,6 +123,12 @@ class DailyopsController extends LocalAppController {
 
 		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
 
+		if(in_array(date("Y-m-d",array("2013-04-20","2013-04-21")))) {
+
+			$this->theme = "royal-united";
+
+		}
+
 	}
 
 
