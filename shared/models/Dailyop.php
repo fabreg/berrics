@@ -1816,12 +1816,13 @@ class Dailyop extends AppModel {
 
 		}
 
+
 		$chk = $this->find("count",array(
 			"conditions"=>$cond,
 			"contain"=>array()
 		));
 		
-		if($chk<=0) return $this->checkDailyopsHomeDate(date("Y-m-d",strtotime("-1 Day",strtotime($dateIn))));
+		if($chk<=0) return $this->checkDailyopsHomeDate(date("Y-m-d",strtotime("-1 Day",strtotime($dateIn))),$override);
 
 		return $dateIn;
 

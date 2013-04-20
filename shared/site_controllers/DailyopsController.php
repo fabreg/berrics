@@ -28,7 +28,7 @@ class DailyopsController extends LocalAppController {
 
 
 	public function archive() {
-		
+
 		$token = md5("dop-archive".$this->request->params['dateIn']."1".$this->isAdmin().isset($_GET['showall']));
 
 		if(($posts = Cache::read($token,"1min")) === false) {

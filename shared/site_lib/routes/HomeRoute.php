@@ -21,13 +21,14 @@ class HomeRoute extends CakeRoute {
 		isset($params['year']) && 
 		isset($params['month']) &&
 		isset($params['day']) &&
-		(strtotime("{$params['year']}-{$params['month']}-{$params['day']}")<time())
+		(strtotime("{$params['year']}-{$params['month']}-{$params['day']}")<time() || (isset($_GET['showall']) && preg_match('/(dev\.|v3\.)/',$_SERVER['HTTP_HOST'])))
 		) {
 			
 			$date_in = $params['dateIn'] = "{$params['year']}-{$params['month']}-{$params['day']}";
 			$params['action'] = "archive";
 
 		}
+
 		
 		
 		switch($date_in) {
