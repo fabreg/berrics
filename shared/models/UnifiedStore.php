@@ -39,11 +39,22 @@ class UnifiedStore extends AppModel {
 
 		$token = "return-un-store-{$isAdmin}-{$store_id}";
 
-		if(($data = Cache::read($token,"1min")) === false || !$cache) {
+		$cond = array(
+				"UnifiedStore.id"=>$store_id
+		);
+
+
+		//check if store_id = a url frag
+		if(preg_match('/(\.html)/',$store_id)) {
 
 			$cond = array(
-				"UnifiedStore.id"=>$store_id
+				"UnifiedStore.uri"=>$store_id
 			);
+
+		}
+
+
+		if(($data = Cache::read($token,"1min")) === false || !$cache) {
 
 			if(!$isAdmin) {
 

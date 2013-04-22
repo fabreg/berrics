@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 				<?php 
 					echo $this->Form->create('UnifiedStore',array(
 						"id"=>'UnifiedStoreForm',
-						"url"=>array("action"=>"search")
+						"url"=>array("action"=>"search","controller"=>"store","plugin"=>"unified")
 					));
 				 	echo $this->Form->input("shop_name");
 					

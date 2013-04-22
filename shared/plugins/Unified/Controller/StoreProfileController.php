@@ -15,13 +15,27 @@ class StoreProfileController extends UnifiedAppController {
 
 		$this->initPermissions();
 
+		if(isset($this->request->params['uri'])) {
+
+			$this->setHeroUnit();
+
+		}
+
+		$this->setStore();
+
+		//$this->set("body_element","layout/unified-store-body");
+
 	}
 
-	private function setStore($uri = false) {
+	private function setStore() {
 
-		if(!$uri) throw new BadRequestException("Invalid Store Request");
+		$uri = $this->request->params['uri'];
 
-		
+		if(empty($uri)) throw new BadRequestException("Invalid Store Request");
+
+		$store = $this->UnifiedStore->returnStore($uri,1);
+
+		$this->set(compact("store"));
 
 	}
 

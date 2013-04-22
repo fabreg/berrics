@@ -22,17 +22,15 @@ class SiteController extends UnifiedAppController {
 
 		$this->initPermissions();
 
-		if(isset($this->request->params['uri'])) {
 
-			$this->setHeroUnit();
-
-		}
 
 	}
 
 	public function index() {
 
 		$this->set("body_element","layout/unified-body-element");
+
+		
 
 	}
 

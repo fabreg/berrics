@@ -34,7 +34,7 @@ public function search() {
 						
 						if(empty($vv)) continue;
 
-						$url[$k.".".$kk]=urlencode($vv);
+						$url[$k.".".$kk]=($vv);
 						
 					}
 					
@@ -63,7 +63,7 @@ public function search() {
 				$this->Paginator->settings['conditions']['UnifiedStore.shop_name LIKE'] = 
 					"%".str_replace(" ","%",urldecode($this->request->params['named']['UnifiedStore.shop_name']))."%";
 
-				$this->request->data['UnifiedStore']['shop_name'] = urldecode($this->request->params['named']['UnifiedStore.shop_name']);
+				$this->request->data['UnifiedStore']['shop_name'] = ($this->request->params['named']['UnifiedStore.shop_name']);
 
 			}
 

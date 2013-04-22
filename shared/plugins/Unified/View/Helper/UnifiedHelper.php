@@ -12,4 +12,12 @@ class UnifiedHelper extends AppHelper {
 
 	}
 
+	public function storeProfileIncludes() {
+
+
+		$this->Html->css(array("v3/unified_layout","v3/unified_store_layout"),"stylesheet",array("inline"=>false));
+
+
+	}
+
 }
