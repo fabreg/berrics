@@ -33,6 +33,7 @@ class CanteenPromoCode extends AppModel {
 		}
 		
 		#Shipping Promo Code
+		/*
 		if(
 			env('GEOIP_COUNTRY_CODE') == "US" && 
 			$CanteenOrder['CanteenOrder']['sub_total'] >= 74.95
@@ -54,6 +55,7 @@ class CanteenPromoCode extends AppModel {
 			$CanteenOrder['ShippingCanteenPromoCode'] = $code['CanteenPromoCode'];
 			
 		}
+		*/
 		
 		#Promotion Promo Code
 		//check to see if there are more than three items
