@@ -2,6 +2,10 @@
 
 $storeStatus = UnifiedStore::storeStatus();
 
+$years = array();
+
+for($i=1970;$i<=date("Y");$i++) $years[$i] = $i;
+
 ?>
 <script>
 jQuery(document).ready(function($) {
@@ -27,7 +31,7 @@ function checkDupeUnifiedUri() {
 			echo $this->Form->input("shop_name"); 
 			echo $this->Form->input('shop_bio');
 			echo $this->Form->input("uri");
-			
+			echo $this->Form->input("established_year",array("options"=>$years));
 		?>
 		
 	</div>
