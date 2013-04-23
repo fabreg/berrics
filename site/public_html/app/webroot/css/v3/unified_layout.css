@@ -1,0 +1,62 @@
+#unified-store-body {
+
+
+
+}
+
+
+#unified-store-hero {
+
+
+
+}
+
+#unified-store-hero h1 {
+
+	font-size:28px;
+	margin:0px;
+	font-family: 'universcnb';
+}
+
+#unified-store-hero .info-div {
+
+	border:1px dotted #000;
+	border-left:none;
+	border-right:none;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+#unified-store-hero .info-frag {
+	
+	font-size:14px;
+
+}
+
+#unified-store-hero .info-frag strong {
+
+	font-family:'universcnb';
+
+}
+
+#unified-store-hero .info-frag span {
+
+	color:#ccc;
+
+}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+	
+	
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
