@@ -21,5 +21,5 @@
 			<?php endforeach ?>
 		<?php endif ?>
 	</div>
-	<?php echo $this->element("dailyops/posts/recent-related-posts",$posts['parent']); ?>
+	<?php //echo $this->element("dailyops/posts/recent-related-posts",$posts['parent']); ?>
 </div>
