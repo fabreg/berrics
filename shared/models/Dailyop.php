@@ -97,7 +97,7 @@ class Dailyop extends AppModel {
 	}
 
 	/**
-	 * returnPos
+	 * returnPost
 	 * 
 	 */
 	public function returnPost($cond = array(),$admin = false,$no_cache = false,$contain = false) {
