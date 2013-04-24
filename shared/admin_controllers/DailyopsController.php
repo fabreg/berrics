@@ -174,6 +174,10 @@ class DailyopsController extends LocalAppController {
 			} else {
 				$this->Session->setFlash(__('The dailyop could not be saved. Please, try again.'));
 			}
+		} else {
+
+			$this->request->data['Dailyop']['dailyop_section_id'] = "2";
+
 		}
 		
 		if(isset($this->request->params['named']['publish_date'])) {
