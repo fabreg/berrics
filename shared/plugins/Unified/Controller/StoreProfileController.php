@@ -39,6 +39,14 @@ class StoreProfileController extends UnifiedAppController {
 
 	}
 
+	public function view() {
+
+		
+
+		
+	}
+
+
 	//store methods
 
 	private function setHeroUnit() {

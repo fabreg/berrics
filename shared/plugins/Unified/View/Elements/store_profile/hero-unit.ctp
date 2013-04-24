@@ -25,6 +25,15 @@
 				<?php echo $store['UnifiedStore']['established_year'] ?> 
 			</div>
 		</div>
-
 	</div>
+</div>
+<div id="unified-store-tabs">
+	<ul class='unified-tab-list'>
+		<li>
+			<a href="/unified/">BIO</a>
+		</li>
+		<li>
+			<a href="/unified/">BIO</a>
+		</li>
+	</ul>
 </div>

@@ -14,7 +14,7 @@ Router::connect("/unified",array("controller"=>"site","plugin"=>"unified"));
 if(preg_match('/^(\/unified\/)(.*)(\.html)$/',$_SERVER['SCRIPT_URL'])) {
 
 	Router::connect("/unified/:uri",
-			array("plugin"=>"unified","controller"=>"store_profile","action"=>"bio"),
+			array("plugin"=>"unified","controller"=>"store_profile","action"=>"view"),
 			array(
 				"uri"=>"[a-zA-Z0-9\-_]{3,}.html"
 			)
