@@ -88,6 +88,8 @@ jQuery(document).ready(function($) {
 				if(!empty($unifiedStore['UnifiedStore']['image_logo'])):
 			?>
 			<img src='http://img.theberrics.com/i.php?src=/unified-logos/<?php echo $unifiedStore['UnifiedStore']['image_logo']; ?>&w=100' />
+			<br />
+			<a href='http://img.theberrics.com/unified-logos/<?php echo $unifiedStore['UnifiedStore']['image_logo']; ?>' target='_blank'>FULL SIZE</a>
 			<?php 
 				endif;
 			?>
