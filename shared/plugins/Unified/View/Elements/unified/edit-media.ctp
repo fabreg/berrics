@@ -110,13 +110,21 @@ function attachMediaItem() {
 
 								echo $this->Media->mediaThumb(array(
 												"MediaFile"=>$item,
-												"w"=>100,
-												"h"=>75
+												"w"=>175,
+												"h"=>100
 											));
-								pr($v);
+								
 							?>
 						<?php else: ?>
-							
+							<?php 
+
+								echo $this->Media->mediaThumb(array(
+												"MediaFile"=>$v['UnifiedStoreMediaItem']['MediaFile'],
+												"w"=>175,
+												"h"=>100
+											));
+
+							 ?>
 						<?php endif ?>
 					</div>
 
