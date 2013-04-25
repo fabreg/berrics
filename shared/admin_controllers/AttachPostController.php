@@ -124,6 +124,18 @@ class AttachPostController extends LocalAppController {
 		}
 
 
+		if(isset($this->request->params['named']['Dailyop.dailyop_section_id'])) {
+
+			$this->Paginator->settings['Dailyop']['conditions']['Dailyop.dailyop_section_id'] = 
+			$this->request->data['Dailyop']['dailyop_section_id'] = urldecode($this->request->params['named']['Dailyop.dailyop_section_id']);
+
+			
+
+		}
+
+
+
+
 		$posts = $this->paginate("Dailyop");
 
 		$dailyopSections = $this->Dailyop->DailyopSection->returnSelectList();
