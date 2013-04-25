@@ -31,6 +31,15 @@ class UnifiedStore extends AppModel {
 
 	}
 
+	public static function parkingSituation() {
+
+		return array(
+			"private"=>"Private Lot",
+			"street-parking"=>"Street Parking"
+		);
+
+	}
+
 	public function returnStore($store_id = false,$isAdmin = false,$cache = true) {
 
 		if(!$store_id) throw new BadRequestException();
@@ -68,7 +77,18 @@ class UnifiedStore extends AppModel {
 							"UnifiedStoreEmployee"=>array(
 								"order"=>array("UnifiedStoreEmployee.display_weight"=>"ASC")
 							),
-							"UnifiedStoreMediaItem",
+							"UnifiedStoreMediaItem"=>array(
+								"MediaFile",
+								"Dailyop"=>array(
+									"DailyopMediaItem"=>array(
+										"MediaFile",
+										"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+										"limit"=>1
+									),
+									"Tag",
+									"DailyopSection"
+								)
+							),
 							"UnifiedStoreHour",
 							"UnifiedStoreEvent",
 							"UnifiedStoreBrand"=>array(
@@ -102,7 +122,18 @@ class UnifiedStore extends AppModel {
 							"order"=>array("UnifiedStoreEmployee.display_weight"=>"ASC")
 
 						),
-						"UnifiedStoreMediaItem",
+						"UnifiedStoreMediaItem"=>array(
+								"MediaFile",
+								"Dailyop"=>array(
+									"DailyopMediaItem"=>array(
+										"MediaFile",
+										"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+										"limit"=>1
+									),
+									"Tag",
+									"DailyopSection"
+								)
+							),
 						"UnifiedStoreHour",
 						"UnifiedStoreEvent",
 						"UnifiedStoreBrand"=>array(

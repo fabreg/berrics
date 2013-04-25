@@ -32,6 +32,8 @@ function checkDupeUnifiedUri() {
 			echo $this->Form->input('shop_bio');
 			echo $this->Form->input("uri");
 			echo $this->Form->input("established_year",array("options"=>$years));
+			echo $this->Form->input("parking_situation",array("options"=>UnifiedStore::parkingSituation(),"empty"=>true));
+			
 		?>
 		
 	</div>

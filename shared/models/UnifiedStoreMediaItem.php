@@ -31,6 +31,7 @@ class UnifiedStoreMediaItem extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
+		"Dailyop",
 		'UnifiedStore' => array(
 			'className' => 'UnifiedStore',
 			'foreignKey' => 'unified_store_id',

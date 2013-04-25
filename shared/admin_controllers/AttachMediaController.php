@@ -31,7 +31,6 @@ class AttachMediaController extends LocalAppController {
 				switch(strtoupper($model)) {
 
 					case "DAILYOPMEDIAITEM":
-						
 						$m->save(array(
 							$field=>$foreignKey,
 							"display_weight"=>99,
@@ -43,6 +42,17 @@ class AttachMediaController extends LocalAppController {
 						$m->save(array(
 							"media_file_id"=>$v
 						));
+					break;
+					case "UNIFIEDSTOREMEDIAITEM":
+						$d = array(
+							$field=>$foreignKey,
+							"display_weight"=>99,
+							"media_file_id"=>$v
+						);
+						if(isset($this->request->params['named']['category']))
+							$d['category'] = $this->request->params['named']['category'];
+						$m->save($d);
+
 					break;
 
 				}
@@ -114,6 +124,9 @@ class AttachMediaController extends LocalAppController {
 
 		if(isset($this->request->params['named']['MediaFile.media_type'])) {
 
+			$this->request->data['MediaFile']['media_type'] = urldecode($this->request->params['named']['MediaFile.media_type']);
+
+			$this->Paginator->settings['MediaFile']['conditions']['MediaFile.media_type'] = urldecode($this->request->params['named']['MediaFile.media_type']);
 
 		}
 
@@ -125,11 +138,10 @@ class AttachMediaController extends LocalAppController {
 
 		} else { //default it at the berrics
 
-			$this->request->data['MediaFile']['website_id'] =
-			$this->Paginator->settings['MediaFile']['conditions']['MediaFile.website_id'] = 1;
+			//$this->request->data['MediaFile']['website_id'] =
+			//$this->Paginator->settings['MediaFile']['conditions']['MediaFile.website_id'] = 1;
 
 		}
-
 
 		$websites = $this->MediaFile->Website->dropdown();
 

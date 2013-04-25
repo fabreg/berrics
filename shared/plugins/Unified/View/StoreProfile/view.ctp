@@ -8,7 +8,7 @@ $this->Unified->mapJsIncludes();
 
 var geocoder = false;
 var map = false;
-var startLng = '<?php echo $store['GeoLocation']['long']; ?>';
+var startLng = '<?php echo $store['GeoLocation']['lng']; ?>';
 var startLat = '<?php echo $store['GeoLocation']['lat']; ?>';
 var markers = [];
 jQuery(document).ready(function($) {
