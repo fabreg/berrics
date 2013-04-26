@@ -34,7 +34,7 @@
     # Battle at the berrics 1
     RewriteRule ^(batb\.php) /battle-at-the-berrics-1 [R=301,L]
 	# Battle at the Berrics Index
-    RewriteRule ^(batb) /battle-at-the-berrics.html [R=301,L]
+    RewriteRule ^(batb)$ /battle-at-the-berrics.html [R=301,L]
 
     #header quarters legacy
     RewriteRule ^(headquarters\.php) /headquarters [R=301,L]

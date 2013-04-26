@@ -3824,6 +3824,12 @@ CANTEEN PRODUCT
 
 }
 
+#canteen-product b {
+
+	font-family: 'universcnb';
+
+}
+
 #canteen-product .product-row {
 
 	padding-left:5px;
