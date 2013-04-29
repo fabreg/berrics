@@ -45,20 +45,22 @@ class CanteenInventoryRecordsController extends LocalAppController {
 	}
 	
 	function index() {
+
+		$this->Paginator->settings = array();
 		
 		if(isset($this->request->params['named']['search'])) {
 			
-			if(isset($this->request->params['named']['CanteenInventoryRecord.name'])) {
+			if(!empty($this->request->params['named']['CanteenInventoryRecord.name'])) {
 				
-				$this->paginate['conditions']['CanteenInventoryRecord.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenInventoryRecord.name'])."%";
+				$this->Paginator->settings['CanteenInventoryRecord']['conditions']['CanteenInventoryRecord.name LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenInventoryRecord.name'])."%";
 				
 				$this->request->data['CanteenInventoryRecord']['name'] = $this->request->params['named']['CanteenInventoryRecord.name'];
 				
 			}
 			
-			if(isset($this->request->params['named']['CanteenInventoryRecord.foreign_key'])) {
+			if(!empty($this->request->params['named']['CanteenInventoryRecord.foreign_key'])) {
 			
-				$this->paginate['conditions']['CanteenInventoryRecord.foreign_key LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenInventoryRecord.foreign_key'])."%";
+				$this->Paginator->settings['CanteenInventoryRecord']['conditions']['CanteenInventoryRecord.foreign_key LIKE'] = "%".str_replace(" ","%",$this->request->params['named']['CanteenInventoryRecord.foreign_key'])."%";
 			
 				$this->request->data['CanteenInventoryRecord']['foreign_key'] = $this->request->params['named']['CanteenInventoryRecord.foreign_key'];
 			
