@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Canteen Inventory Record'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('canteen_product_id');
+		
 		echo $this->Form->input('foreign_key');
 		echo $this->Form->input('quantity');
 		echo $this->Form->input('warehouse_id');
