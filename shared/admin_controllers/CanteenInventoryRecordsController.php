@@ -29,7 +29,7 @@ class CanteenInventoryRecordsController extends LocalAppController {
 					
 					foreach($v as $kk=>$vv) {
 						
-						$url[$k.".".$kk]=urlencode($vv);
+						$url[$k.".".$kk]=($vv);
 						
 					}
 					
