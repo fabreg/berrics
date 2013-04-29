@@ -272,7 +272,7 @@
     RewriteRule ^(gen-ops\/wear-test-nike-sb-koston-2.html) /wear-test/wear-test-nike-sb-koston-2.html [R=301,L]
     RewriteRule ^(gen-ops\/emerica-andrew-reynolds.html) /wear-test/emerica-andrew-reynolds.html [R=301,L]
     
-
+    RewriteRule ^(vhs\/sewa-kroetkov-vs-paul-rodriguez.html) /battle-at-the-berrics-6/sewa-kroetkov-vs-paul-rodriguez.html [R=301,L]
     
     
 ### END BERRICS URL FIXES
