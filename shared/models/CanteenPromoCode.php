@@ -12,6 +12,13 @@ class CanteenPromoCode extends AppModel {
 		
 		//set all the promo codes on the order
 		$currency = ClassRegistry::init("Currency");
+		$user_id = false;
+
+		if(CakeSession::check("Auth.User.id")) {
+
+			$user_id = CakeSession::read("Auth.User.id");
+
+		}
 		
 		#User Account Promo Code
 		if(
@@ -33,6 +40,31 @@ class CanteenPromoCode extends AppModel {
 		}
 		
 		#Shipping Promo Code
+		### For Certain Users
+		$free_shipping_users = array(
+			'4d715e72-7124-486a-9129-7ace0ab55011',
+			'4d54b193-7c1c-4741-bdfe-0fe90a000269'
+		);
+		if(in_array($user_id,$free_shipping_users)) {
+
+			$CanteenOrder['CanteenOrder']['shipping_total'] = 0.00;
+			$CanteenOrder['CanteenOrder']['shipping_canteen_promo_code_id'] = 2;
+			
+			//get the promo code
+			
+			$code = $this->find("first",array(
+				"contain"=>array(),
+				"conditions"=>array(
+					"CanteenPromoCode.id"=>2		
+				)		
+					
+			));
+			
+			$CanteenOrder['ShippingCanteenPromoCode'] = $code['CanteenPromoCode'];
+
+		}
+
+
 		/*
 		if(
 			env('GEOIP_COUNTRY_CODE') == "US" && 
