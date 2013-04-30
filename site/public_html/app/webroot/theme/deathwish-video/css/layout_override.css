@@ -25,6 +25,26 @@ body {
 
 }
 
+#deathwish-video .text-content {
+
+	color:#fff;
+	width:700px;
+	margin:auto;
+}
+
+#deathwish-video .text-content p a {
+
+	color:#fff;
+	text-decoration: underline;
+
+}
+
+#deathwish-video .text-content p {
+
+	font-family: 'Arial';
+
+}
+
 #deathwish-video .itunes {
 
 	padding:15px;
@@ -50,7 +70,8 @@ body {
 
 #deathwish-video #post .post .post-top,
 #report-queue-btn,
-#deathwish-video #post .post .post-footer .tags {
+#deathwish-video #post .post .post-footer .tags,
+#deathwish-video #post .post .text-content {
 
 
 	display: none;

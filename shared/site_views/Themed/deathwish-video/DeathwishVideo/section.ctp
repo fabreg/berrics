@@ -28,6 +28,11 @@ jQuery(document).ready(function($) {
 			<?php echo $this->element('dailyops/post-bit',array('dop'=>$post,"lazy"=>true)); ?>
 		</div>
 	</div>
+	<div class="text-content">
+		<p>
+To celebrate the release of the new Deathwish video, Jim Greco has decided to gift all of you his part, and his part only, exclusively on the Berrics for a day. There will be no other parts fallin from the sky. If you wanna see Moose and Ellington and Furby and the rest of the crew, which you're gonna wanna see after you see this part, you gotta take your ass to <a href='https://itunes.apple.com/us/movie/deathwish-video-deathwish/id635160589' target='_blank'>iTunes</a> and give make a purchase. Share with your friends, your enemies, your friends friends and their enemies this part right here becuase everyone should see this because it truly is one of the best parts of the year. - sb 
+		</p>
+	</div>
 	<div class="jim">
 		<img src="/theme/deathwish-video/img/greco.png" alt="">
 	</div>
