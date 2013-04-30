@@ -1,0 +1,69 @@
+body {
+
+	background-color: #000;
+	background-image:url(/theme/deathwish-video/img/bg.jpg);
+	background-position: center top;
+	background-repeat: no-repeat;
+
+}
+
+
+#deathwish-video {
+
+	width:900px;
+	margin: auto;
+	padding-bottom:150px;
+}
+
+
+#deathwish-video .top,
+#deathwish-video .logo,
+#deathwish-video .load-more {
+
+	text-align: center;
+
+}
+
+#deathwish-video .itunes {
+
+	padding:15px;
+	text-align: center;
+
+}
+
+#deathwish-video #post {
+
+	background-image:url(/theme/deathwish-video/img/post.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height:527px;
+	
+}
+
+#deathwish-video #post .post-inner {
+
+	width:728px;
+	margin:auto;
+	padding-top:30px;
+}
+
+#deathwish-video #post .post .post-top,
+#report-queue-btn,
+#deathwish-video #post .post .post-footer .tags {
+
+
+	display: none;
+
+}
+
+#deathwish-video #post .post {
+
+	border:none;
+	
+}
+
+#deathwish-video .post .post-footer .social-media {
+
+	margin-top:25px;
+
+}

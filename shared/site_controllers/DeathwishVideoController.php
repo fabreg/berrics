@@ -1,6 +1,6 @@
 <?php
 
-App::uses('DaiyopsController','Controller');
+App::uses('DailyopsController','Controller');
 
 class DeathwishVideoController extends DailyopsController {
 
@@ -21,11 +21,17 @@ class DeathwishVideoController extends DailyopsController {
 
 		}
 
+		$this->theme = "deathwish-video";
+
+		$this->set('body_element','body-element');
+
 	}
 
 	public function section() {
 
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>6985),$this->isAdmin());
 
+		$this->set("post",$post);
 
 	}
 
