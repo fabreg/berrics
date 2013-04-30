@@ -20,16 +20,19 @@ jQuery(document).ready(function($) {
 });
 </script>
 <div id="deathwish-video">
-	<div class="top">
-		<img src="/theme/deathwish-video/img/top.png" alt="" />
+	<div class="logo">
+		<img src="/theme/deathwish-video/img/logoage.png" alt="">
 	</div>
 	<div id="post">
 		<div class="post-inner">
 			<?php echo $this->element('dailyops/post-bit',array('dop'=>$post,"lazy"=>true)); ?>
 		</div>
 	</div>
-	<div class="logo">
-		<img src="/theme/deathwish-video/img/video-logo.png" alt="">
+	<div class="jim">
+		<img src="/theme/deathwish-video/img/greco.png" alt="">
+	</div>
+	<div class="top">
+		<img src="/theme/deathwish-video/img/top.png" alt="" />
 	</div>
 	<div class="itunes">
 		<a href='https://itunes.apple.com/us/movie/deathwish-video-deathwish/id635160589' target='_blank'>
