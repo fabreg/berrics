@@ -72,7 +72,24 @@ $back_to_link = "/news/".date("Y",strtotime($this->request->params['date_in'])).
 								"h"=>640
 							))."<div class='play-button'></div><div class='overlay'></div>";
 					$vid_file = "<div class='video-file'>".$this->Berrics->postMediaDiv($post,array("MediaFile"=>$t['MediaFile']))."</div>";
-					
+					 
+			$report_queue = CakeSession::read("MediaFileReportQueue");
+
+			if(!is_array($report_queue)) {
+				
+				$report_queue = array();
+				
+			}
+
+			$media_file_id = $t['MediaFile']['id'];
+
+			if (CakeSession::read("is_admin") == 1 && $media_file_id && (!in_array($media_file_id,$report_queue))): 
+
+		?>
+		<a id='report-queue-btn' href="http://cp.theberrics.com/media_files/queue_video_for_report/<?php echo $media_file_id; ?>/<?php echo base64_encode("http://theberrics.com".$this->request->here); ?>" class="btn btn-warning"><i class="icon icon-white icon-plus-sign"></i> Add Video To Report Queue</a>	
+
+		<?php
+		 endif; 
 				} else {
 					
 					$style = '';
