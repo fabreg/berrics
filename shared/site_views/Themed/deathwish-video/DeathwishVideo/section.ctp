@@ -1,4 +1,8 @@
+<?php 
 
+$this->set("title_for_layout","The Berrics - JIM GRECO - DEATHWISH VIDEO");
+
+ ?>
 <script>
 jQuery(document).ready(function($) {
 	
