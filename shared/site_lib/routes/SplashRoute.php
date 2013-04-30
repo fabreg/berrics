@@ -16,14 +16,8 @@ class SplashRoute extends CakeRoute {
 
 		switch(date("Y-m-d")) {
 
-			case "2013-04-11":
-			case "2013-04-12":
-			case "2013-04-13":
-			case "2013-04-14":
-			case "2013-04-16":
-				$params['controller'] = "progression";
-				$params['action'] = "dailyops";
-				$params['splash_page'] = true;
+			case "2013-04-30":
+				die(header('Location:/dailyops'));
 			break;
 			default:
 				$params['plugin'] = $params['controller'] = "splash";
