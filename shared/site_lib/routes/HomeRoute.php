@@ -46,7 +46,7 @@ class HomeRoute extends CakeRoute {
 			case "2013-04-30":
 				if(in_array(date("Y-m-d"),array("2013-04-30"))) {
 
-					$params['controller'] = "deathwish_controller";
+					$params['controller'] = "deathwish_video";
 					$params['action'] = "section";
 
 				}
