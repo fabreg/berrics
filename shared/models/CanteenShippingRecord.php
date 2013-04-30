@@ -498,7 +498,7 @@ class CanteenShippingRecord extends AppModel {
 				"category"=>"USPSError",
 				"crontab"=>1,
 				"from"=>"CanteenShippingRecord",
-				"title"=>"USPS DOM Shipping Error: CanteenShippingRecordID: ".$record['CanteenShippingRecord']['id'],
+				"title"=>"USPS DOM Shipping Error: CanteenShippingRecordID: <a href='/canteen_shipping_records/edit/{$record['CanteenShippingRecord']['id']}' target='_blank'>".$record['CanteenShippingRecord']['id']."</a>",
 				"message"=>serialize($xml->asXml())
 			));
 			
