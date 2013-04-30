@@ -101,7 +101,7 @@ class DailyopSection extends AppModel {
 				$cond = array(
 						"OR"=>array(
 							array("DailyopSection.active"=>1),
-							array("DailyopSection.id"=>array("99"))
+							array("DailyopSection.id"=>array("100"))
 						)
 					);
 
