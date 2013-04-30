@@ -2281,5 +2281,20 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function usps_address() {
+			
+		$this->loadModel('Warehouse');
+
+		$wh = $this->Warehouse->findById(1);
+
+		App::import("Vendor","UspsApi",array("file"=>"UspsApi.php"));
+		
+		$u = new UspsApi(false,$wh);
+
+		$res = $u->validate_address();
+
+
+	}
+
 
 }

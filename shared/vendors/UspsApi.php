@@ -184,6 +184,32 @@ class UspsApi {
 	
 	}
 
+	public function validate_address($UserAddress = false) {
+		
+		$s = "<AddressValidateRequest%20USERID='{$this->login['username']}' PASSWORD='{$this->login['password']}' >
+					<Address ID='1'>
+						<Address1></Address1>
+						<Address2>8 Wildwood Drive</Address2>
+						<City>Old Lyme</City>
+						<State>CT</State>
+						<Zip5>06371</Zip5>
+						<Zip4></Zip4>
+					</Address>
+			</AddressValidateRequest>";
+
+		$url = "https://secure.shippingapis.com/ShippingAPI.dll";
+
+		$data = array(
+			"API"=>"Verify",
+			"XML"=>$s,
+		);
+
+		$res = $this->curlGet($url,$data);
+
+		die(print_r($res));
+
+	}
+
 
 	private function curlGet($url,$data) {
 			
