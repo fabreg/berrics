@@ -123,6 +123,32 @@ $v = $this->request->data['UserAddress'];
 		<?php echo $this->element("canteen_orders/address",array("address"=>$this->request->data['UserAddress'])) ;?>
 	</div>
 </div>
+<fieldset>
+		<legend>Items</legend>
+		<table cellspacing='0'>
+			<tr>
+				<th>Item</th>
+				<th>Warehouse Info</th>
+				<th>Qty</th>
+				<th>Weight</th>
+			</tr>
+		<?php 
+			foreach($this->request->data['CanteenOrderItem'] as $i):
+		?>
+			<tr>
+				<td><?php echo $i['title']; ?><div><?php echo $i['sub_title']; ?></div></td>
+				<td>
+				<div><strong>WH: </strong> <?php echo $this->request->data['Warehouse']['name']; ?></div>
+				<div><strong>ITEM#: </strong> <?php echo $i['CanteenInventoryRecord']['foreign_key']; ?></div>
+				</td>
+				<td align='center' width='1%'><?php echo $i['quantity']; ?></td>
+				<td align='center' width='1%'><?php echo $i['weight']; ?></td>
+			</tr>
+		<?php 
+			endforeach;
+		?>
+		</table>
+	</fieldset>
 <?php 
 pr($this->request->data);
 ?>
