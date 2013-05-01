@@ -1018,9 +1018,9 @@ class CanteenShippingRecord extends AppModel {
 		//send customer email
 		if($send_email) {
 			
-			//$this->loadModel("EmailMessage");
 			
-			//$this->CanteenOrder->EmailMessage->sendCanteenShippingConfirmation($record['CanteenShippingRecord']['id']);
+			
+			$this->CanteenOrder->EmailMessage->sendCanteenShippingConfirmation($record['CanteenShippingRecord']['id']);
 			
 		}
 		
