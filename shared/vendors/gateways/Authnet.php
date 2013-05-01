@@ -21,7 +21,7 @@ class Authnet extends GatewayBase {
 			
 		}
 
-		$this->test_url = "https://test.authorize.net/gateway/transact.dll";
+		
 	
 	}
 	
