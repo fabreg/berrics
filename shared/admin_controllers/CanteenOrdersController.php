@@ -633,7 +633,8 @@ class CanteenOrdersController extends LocalAppController {
 				"canteen_product_id"=>$item['CanteenProduct']['id'],
 				"parent_id"=>$parent_id,
 				"canteen_inventory_record_id"=>$inv['id'],
-				"quantity"=>1
+				"quantity"=>1,
+				"weight"=>$item['ParentCanteenProduct']['shipping_weight']
 					
 			));
 			
