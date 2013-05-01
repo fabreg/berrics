@@ -186,13 +186,13 @@ class UspsApi {
 
 	public function validate_address($UserAddress = false) {
 		
-		$s = "<AddressValidateRequest%20USERID='{$this->login['username']}' PASSWORD='{$this->login['password']}' >
+		$s = "<AddressValidateRequest USERID='{$this->login['username']}' PASSWORD='{$this->login['password']}' >
 					<Address ID='1'>
-						<Address1></Address1>
-						<Address2>8 Wildwood Drive</Address2>
-						<City>Old Lyme</City>
-						<State>CT</State>
-						<Zip5>06371</Zip5>
+						<Address1>{$UserAddress['apt']}</Address1>
+						<Address2>{$UserAddress['street']}</Address2>
+						<City>{$UserAddress['city']}</City>
+						<State>{$UserAddress['province']}</State>
+						<Zip5>{$UserAddress['postal_code']}</Zip5>
 						<Zip4></Zip4>
 					</Address>
 			</AddressValidateRequest>";
@@ -203,10 +203,10 @@ class UspsApi {
 			"API"=>"Verify",
 			"XML"=>$s,
 		);
-
+		
 		$res = $this->curlGet($url,$data);
 
-		die(print_r($res));
+		return $res;
 
 	}
 
@@ -726,7 +726,6 @@ class UspsApi {
 				"API"=>"ExpressMailCommitment",
 				"XML"=>$s
 			));	
-		
 		//	
 		$s = "<CarrierPickupAvailabilityRequest USERID='{$this->login['username']}'>
 				<FirmName>ABC Corp.</FirmName>

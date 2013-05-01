@@ -451,5 +451,21 @@ class CanteenShippingRecordsController extends LocalAppController {
 		return $this->redirect(base64_decode($cb));
 		
 	}
+
+	public function validate_address($id = false) {
+		
+		$this->loadModel('UserAddress');
+
+		$address = $this->UserAddress->findById($id);
+
+		App::import('Vendor','UspsApi',array('file'=>'UspsApi.php'));
+
+		$u = new UspsApi();
+
+		$res = $u->validate_address($address['UserAddress']);
+
+		die(print_r(simplexml_load_string($res)));
+
+	}
 	
 }

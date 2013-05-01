@@ -82,7 +82,7 @@ $v = $this->request->data['UserAddress'];
 						switch(strtoupper($this->request->data['CanteenShippingRecord']['shipping_status'])) {
 
 							case "PENDING":
-								echo "<a href='/canteen_shipping_records/process_usps_shipment/".$this->request->data['CanteenShippingRecord']['id']."/callback:".base64_encode($this->here)."' class='btn btn-mini' onclick='return confirm(\"Are you sure you want to generate a shipment?\");'>Ship VIA USPS</a>";
+								echo "<a href='/canteen_shipping_records/process_usps_shipment/".$this->request->data['CanteenShippingRecord']['id']."/callback:".base64_encode($this->here)."' class='btn btn-mini' onclick='return confirm(\"Are you sure you want to generate a shipment?\");'><i class='icon icon-envelope'></i> Ship VIA USPS</a>";
 							break;
 
 						}
@@ -121,6 +121,9 @@ $v = $this->request->data['UserAddress'];
 	<div class="span6">
 		<h2>Shipping Address</h2>
 		<?php echo $this->element("canteen_orders/address",array("address"=>$this->request->data['UserAddress'])) ;?>
+		<div>
+			<a href="/canteen_shipping_records/validate_address/<?php echo $this->request->data['UserAddress']['id']; ?>" class="btn btn-warning"><i class="icon icon-envelope"></i> Validate Address</a>
+		</div>
 	</div>
 </div>
 <fieldset>

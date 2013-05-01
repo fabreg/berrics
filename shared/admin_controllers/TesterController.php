@@ -2287,11 +2287,21 @@ class TesterController extends LocalAppController {
 
 		$wh = $this->Warehouse->findById(1);
 
+		$address = array(
+
+			"street"=>"2669 Nutmeg Cir",
+			"city"=>"Simi Valley",
+			"postal_code"=>"93065",
+			"province"=>"CA",
+			"apt"=>""
+
+		);
+
 		App::import("Vendor","UspsApi",array("file"=>"UspsApi.php"));
 		
 		$u = new UspsApi(false,$wh);
 
-		$res = $u->validate_address();
+		$res = $u->validate_address($address);
 
 
 	}
