@@ -315,6 +315,11 @@ function styleChecks() {
 										<button class="btn btn-small btn-primary"><i class="icon icon-flag icon-white"></i></button>
 									</span>
 								<?php endif ?>
+								<?php if (!empty($val['unified_store_id'])): ?>
+									<span class="dropdown">
+										<button class="btn btn-small btn-primary"><i class="icon icon-briefcase icon-white"></i></button>
+									</span>
+								<?php endif ?>
 								<?php if ($val['category']): ?>
 									<button class="btn btn-small btn-primary">
 										<i class="icon icon-star icon-white"></i>
