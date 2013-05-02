@@ -6,7 +6,7 @@ class UnifiedAppController extends LocalAppController {
 
 
 	public $featured_news_tag_id = 4574;
-	public $shop_news_tag_id = '';
+	public $shop_news_tag_id = 4575;
 
 	public function beforeFilter() {
 

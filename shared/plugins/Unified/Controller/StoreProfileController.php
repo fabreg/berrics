@@ -42,7 +42,6 @@ class StoreProfileController extends UnifiedAppController {
 	public function view() {
 
 		
-
 		
 	}
 
