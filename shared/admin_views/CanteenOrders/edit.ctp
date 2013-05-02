@@ -463,6 +463,13 @@ border-radius: 10px 10px 0px 0px;
 									<td>Tracking</td>
 									<td><?php echo $s['tracking_number']; ?></td>
 								</tr>
+								<tr>
+									<td colspan='2' class='actions' >
+										<a href="/canteen_shipping_records/edit/<?php echo $s['id'] ?>/cb:<?php echo base64_encode($this->here); ?>" class="btn btn-mini btn-primary">
+											<i class="icon icon-edit"></i> Edit
+										</a>
+									</td>
+								</tr>
 							</table>
 						</div>
 						<?php endforeach; ?>
