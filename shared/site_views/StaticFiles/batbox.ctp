@@ -543,6 +543,16 @@ border-top:1px solid #000;
     <td width=70% height=16>305 W Martin Luther King Jr Blvd&nbsp;&nbsp;Austin, TX 78701</td>
     <td width="30%">(512) 472-7343</td>
   </tr>
+    <tr height=16>
+    <td width="70%" height=16><strong>Edge of the World
+      Shop</strong></td>
+    <td width="30%">&nbsp;</td>
+  </tr>
+    <tr height=16>
+    <td width=70% height=16>
+618 S. Higgins Ave.  Missoula, MT 59801</td>
+    <td width="30%">406-721-7774</td>
+  </tr>
   <tr height=16>
     <td width="70%" height=16>&nbsp;</td>
     <td width="30%">&nbsp;</td>
