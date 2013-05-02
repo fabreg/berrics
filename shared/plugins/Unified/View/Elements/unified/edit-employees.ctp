@@ -1,3 +1,8 @@
+<?php 
+
+$titles = UnifiedStoreEmployee::titles();
+
+?>
 <script>
 	jQuery(document).ready(function($) {
 		
@@ -119,7 +124,7 @@
 									)); ?>
 					</td>
 					<td><?php echo $v['name']; ?></td>
-					<td><?php echo $v['title']; ?></td>
+					<td><?php echo $titles[$v['title']]; ?></td>
 					<td>
 						<div></div>
 						<div></div>

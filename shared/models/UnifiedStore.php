@@ -10,7 +10,8 @@ class UnifiedStore extends AppModel {
 				"UnifiedStoreEmployee",
 				"UnifiedStoreMediaItem",
 				"UnifiedStoreEvent",
-				"UnifiedStoreBrand"
+				"UnifiedStoreBrand",
+				"Tag"
 			);
 
 	public $hasOne = array(
@@ -20,7 +21,6 @@ class UnifiedStore extends AppModel {
 				)
 			);
 
-	
 	public static function storeStatus() {
 
 		return array(
@@ -139,11 +139,33 @@ class UnifiedStore extends AppModel {
 						"UnifiedStoreBrand"=>array(
 							"Brand"
 						),
-						"GeoLocation"
+						"GeoLocation",
+						"Tag"
 					)
 				));
 
 		return $store;
+
+	}
+
+	public function addTags($store_id = false,$str = '') {
+		
+		if(!$store_id) throw new BadRequestException("UnifiedStore::addTags - invalid store_id argument");
+
+		if(empty($str)) return;
+
+		$tags = $this->Tag->parseTags($str);
+
+		foreach($tags['Tag'] as $k=>$v) {
+
+			$this->Tag->create();
+			$this->Tag->id = $v;
+			$this->Tag->save(array(
+				"unified_store_id"=>$store_id
+			));
+
+		}
+
 
 	}
 
@@ -157,8 +179,6 @@ class UnifiedStore extends AppModel {
 				"message"=>"Shop name must be at least xx"
 			)
 		);
-
-
 
 	}
 

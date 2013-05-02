@@ -108,6 +108,8 @@ public function search() {
 			
 			if($this->UnifiedStore->saveAssociated($this->request->data)) {
 
+					$this->UnifiedStore->addTags($this->data['UnifiedStore']['id'],$this->request->data['UnifiedStore']['tags']);
+
 					foreach($this->request->data['submit-btn'] as $k=>$v) {
 
 						switch($k) {

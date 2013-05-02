@@ -75,7 +75,7 @@ class AdminHelper extends AppHelper {
 		
 	}
 	
-	public function quickTagEdit($Tags) {
+	public function quickTagEdit($Tags,$show_delete = false) {
 		
 		$str = '';
 		
@@ -86,6 +86,9 @@ class AdminHelper extends AppHelper {
 				$str .= "<i class='icon icon-user'></i> ";
 			}
 			$str .= $this->link($t['name'],array("controller"=>"tags","action"=>"edit",$t['id']),array("target"=>"_blank"));
+			if ($show_delete) {
+				$str .= "&nbsp; <button class='btn btn-mini btn-danger remove-tag-btn' data-tag-id='{$t['id']}' type='button'>x</button>";
+			}
 			$str .="</div>";
 		}
 		

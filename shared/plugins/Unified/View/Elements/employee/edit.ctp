@@ -68,7 +68,7 @@
 	}
 	echo $this->Form->input("unified_store_id",array("type"=>"hidden"));
 	echo $this->Form->input("name");
-	echo $this->Form->input("title");
+	echo $this->Form->input("title",array("options"=>UnifiedStoreEmployee::titles(),"empty"=>true));
 	echo $this->Form->input("email");
 	echo $this->Form->input("facebook_url");
 	echo $this->Form->input("twitter_handle");

@@ -176,7 +176,8 @@ class Dailyop extends AppModel {
 					),
 					"Tag"=>array(
 
-						"User"
+						"User",
+						"UnifiedStore"
 					),
 					"Meta",
 					"DailyopTextItem"=>array(

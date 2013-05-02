@@ -97,6 +97,17 @@ class UnifiedStoreEmployee extends AppModel {
 
 	}
 
+	public function titles() {
+		
+		return array(
+			"owner"=>"Owner",
+			"manager"=>"Store Manager",
+			"assistant-manager"=>"Assistant Manager",
+			"employee"=>"Employee"
+		);
+
+	}
+
 	public function uploadImage($file) {
 		
 		if(!isset($file['tmp_name'])) return '';
