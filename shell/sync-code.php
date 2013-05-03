@@ -14,7 +14,7 @@ $asset = array(
 $servers = array(
 			"w1",
 			"w20",
-			"w21",
+			//"w21",
 			"w22",
 			"w23",
 			"w24",
