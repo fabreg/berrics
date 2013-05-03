@@ -45,7 +45,7 @@ $this->Unified->mapJsIncludes();
 
 	});
 	function showFormChangeAlert () {
-		$("#changes-alert").show();
+		//$("#changes-alert").show();
 	}
 	
 	function getQueryVariable(variable)

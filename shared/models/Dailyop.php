@@ -1846,7 +1846,9 @@ class Dailyop extends AppModel {
 		foreach($posts as $post) $drop[$post['Dailyop']['id']] = $post['DailyopSection']['name']." : ".$post['Dailyop']['name']." ".$post['Dailyop']['sub_title'];	
 
 		return $drop;
+
 	}
+	
 
 
 	

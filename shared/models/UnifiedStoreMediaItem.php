@@ -44,10 +44,12 @@ class UnifiedStoreMediaItem extends AppModel {
 	public static function categories() {
 		
 		$a = array(
+			
 			"main"=>"Main (Will be uses as your main display media)",
-			"store"=>"Store (Picutres and video depicting your store)",
-			"team"=>"Team Media",
-			"events"=>"Events"
+			"video"=>"Video Posts",
+			"images"=>"Images",
+			"team"=>"Team Media"
+			
 		);
 
 		return $a;

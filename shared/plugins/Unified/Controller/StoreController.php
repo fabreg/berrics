@@ -123,6 +123,9 @@ public function search() {
 							case 'remove-brand':
 								$this->UnifiedStore->UnifiedStoreBrand->delete($this->request->data['submit-btn']['remove-brand']);
 							break;
+							case 'delete-media-item':
+								$this->UnifiedStore->UnifiedStoreMediaItem->delete($this->request->data['submit-btn']['delete-media-item']);
+							break;
 							default:
 							break;
 
