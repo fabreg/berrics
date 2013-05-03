@@ -19,10 +19,43 @@ jQuery(document).ready(function($) {
 
 });
 </script>
+<?php if (isset($this->params['splash'])): ?>
+<style>
+	header {
+
+		display: none;
+
+	}
+
+	#enter {
+
+		font-size:32px;
+		text-align: center;
+		padding-top:50px;
+	}	
+
+	#enter a {
+
+		color:#fff;
+
+	}
+	#deathwish-video-body {
+
+		margin-top: -70px;
+
+	}
+</style>
+<?php endif ?>
 <div id="deathwish-video">
+	<?php if (isset($this->request->params['splash'])): ?>
+	<div class="logo">
+		<img src="/theme/deathwish-video/img/greco.png" alt="">
+	</div>
+	<?php else: ?>
 	<div class="logo">
 		<img src="/theme/deathwish-video/img/logoage.png" alt="">
 	</div>
+	<?php endif ?>
 	<div id="post">
 		<div class="post-inner">
 			<?php echo $this->element('dailyops/post-bit',array('dop'=>$post,"lazy"=>true)); ?>
@@ -33,6 +66,13 @@ jQuery(document).ready(function($) {
 To celebrate the release of the new Deathwish video, Jim Greco has decided to gift all of you his part, and his part only, exclusively on the Berrics for a day. There will be no other parts fallin from the sky. If you wanna see Moose and Ellington and Furby and the rest of the crew, which you're gonna wanna see after you see this part, you gotta take your ass to <a href='https://itunes.apple.com/us/movie/deathwish-video-deathwish/id635160589' target='_blank'>iTunes</a> and make a purchase. Share with your friends, your enemies, your friends friends and their enemies this part right here becuase everyone should see this because it truly is one of the best parts of the year. - sb 
 		</p>
 	</div>
+	<?php if (isset($this->request->params['splash'])): ?>
+	<div id="enter">
+		<a href='/dailyops'>
+			ENTER THE BERRICS
+		</a>
+	</div>
+	<?php else: ?>
 	<div class="jim">
 		<img src="/theme/deathwish-video/img/greco.png" alt="">
 	</div>
@@ -49,4 +89,6 @@ To celebrate the release of the new Deathwish video, Jim Greco has decided to gi
 			<img src="/theme/deathwish-video/img/load-more.png" border='0' alt="">
 		</a>
 	</div>
+	<?php endif ?>
+	
 </div>
