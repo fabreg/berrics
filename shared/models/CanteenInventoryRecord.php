@@ -81,6 +81,40 @@ class CanteenInventoryRecord extends AppModel {
 		
 	}
 
+	public function parse_ljg_inv_file() {
+		
+
+		$file = "/home/sites/lajolla/inventory.txt";
+		
+		//$file_str = file_get_contents($file);
+		
+		//$file_str = trim($file_str);
+		
+		$csv_rows = $file_str = file($file);
+		
+		//$csv_rows = explode("\n",$file_str);
+		
+		//die(pr(count($csv_rows)));
+
+		$inv = array();
+		
+		foreach($csv_rows as $v) {
+				
+			$str = trim($v);
+			
+			$cols = array_combine($this->ljg_inv_schema,explode("\t",$str));
+			
+			$cols_raw = explode("\t",$str);
+
+			$inv[$cols['UPC Code']] = $cols;
+
+			
+		}
+
+		return $inv;
+
+	}
+
 	public function import_ljg_inventory() {
 		
 		set_time_limit(0);

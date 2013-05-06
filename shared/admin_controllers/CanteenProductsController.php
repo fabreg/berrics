@@ -950,16 +950,47 @@ class CanteenProductsController extends LocalAppController {
 	
 	public function view_ljg_products() {
 		
-		$ljg_products = $this->parse_ljg_products_file();
+		if(isset($_GET['inv'])) {
+
+				$ljg_products = $this->parse_ljg_products_file(true);
+				
+				$this->ljg_products_schema[] = "Qty";
+
+				$schema = $this->ljg_products_schema;
+
+				$inv = $this->CanteenProduct->CanteenProductInventory->CanteenInventoryRecord->parse_ljg_inv_file();
+
+				foreach($ljg_products as $k=>$p) {
+
+					if (array_key_exists($p['UPC Code'], $inv)) {
+						
+						$ljg_products[$k]['Qty'] = $inv[$p['UPC Code']]['Quantity'];
+
+					} else {
+						$ljg_products[$k]['Qty'] = 0;
+					}
+					
+				}
+
+		} else {
+
+			$ljg_products = $this->parse_ljg_products_file();
 		
-		$schema = $this->ljg_products_schema;
+			$schema = $this->ljg_products_schema;
+
+
+		}
+
+
 		
 		$this->set(compact("ljg_products","schema"));
 		
 		
 	}
+
+
 	
-	private function parse_ljg_products_file() {
+	private function parse_ljg_products_file($inv = false) {
 		
 		$ljg_products = array();
 		

@@ -2306,5 +2306,16 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_inv_parse($value='') {
+		
+		$this->loadModel('CanteenInventoryRecord');
+
+
+		$v = $this->CanteenInventoryRecord->parse_ljg_inv_file();
+
+		die(pr($v));
+
+	}
+
 
 }
