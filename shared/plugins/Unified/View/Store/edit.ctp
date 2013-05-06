@@ -83,7 +83,7 @@ $this->Unified->mapJsIncludes();
 		
 		<li><a href="#media-items" data-toggle="tab">Media Items <span class="badge"><?php echo count($this->request->data['UnifiedStoreMediaItem']); ?></span></a></li>
 		<li><a href="#brands" data-toggle="tab">Brands <span class="badge"><?php echo count($this->request->data['UnifiedStoreBrand']) ?></span></a></li>
-		<li><a href="#billing" data-toggle="tab">Billing Info</a></li>
+		<li><a href="#billing" data-toggle="tab">Users &amp; Billing Info</a></li>
 	</ul>
 	<?php echo $this->Form->create('UnifiedStore',array(
 		"id"=>'UnifiedStoreForm',
@@ -123,8 +123,8 @@ $this->Unified->mapJsIncludes();
 			<?php echo $this->element("unified/edit-brands"); ?>
 		</div>
 		<div class="tab-pane" id="billing">
-			<h3>Billing</h3>
-			<?php echo $this->element("unified/edit-media"); ?>
+			
+			<?php echo $this->element("unified/edit-users-billing"); ?>
 		</div>
 	</div>
 	<div class="form-actions">
