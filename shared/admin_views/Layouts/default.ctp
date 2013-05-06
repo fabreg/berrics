@@ -11,6 +11,13 @@
 		echo $this->element("layout/admin-head-includes");
 		echo $scripts_for_layout;
 	?>
+<script>
+$(document).ready(function() { 
+
+$(document).off('touchstart.dropdown.data-api');
+
+});
+</script>
 </head>
 <body>
 	<div class='navbar navbar-fixed-top'>
