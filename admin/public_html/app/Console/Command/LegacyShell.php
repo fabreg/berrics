@@ -58,6 +58,49 @@ class LegacyShell extends Shell {
 
 	}
 
+	public function fix_unified_country() {
+
+
+		$stores = $this->UnifiedStore->find('all',array("contain"=>array()));
+
+		foreach($stores as $store) {
+
+			$code = false;
+
+			switch(strtolower($store['UnifiedStore']['country'])) {
+
+				case "united states":
+				case "us":
+				case "usa":
+					$code = "US";
+				break;
+				case "ca":
+					$code = "CA";
+				break;
+			}
+
+			if($code) {
+
+				$this->UnifiedStore->create();
+
+				$this->UnifiedStore->id = $store['UnifiedStore']['id'];
+
+				$this->UnifiedStore->save(array(
+
+					"country_code"=>$code
+
+				));
+
+				$this->out("Updated: ".$store['UnifiedStore']['shop_name']);
+
+
+			}
+
+		}
+
+
+	}
+
 
 
 	
