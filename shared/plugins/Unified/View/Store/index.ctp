@@ -1,3 +1,10 @@
+<?php 
+
+$country = Arr::countries();
+
+
+
+ ?>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	var uri = document.location.href;
@@ -54,6 +61,7 @@ jQuery(document).ready(function($) {
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo  $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort('shop_name');?></th>
+			<th><?php echo $this->Paginator->sort("country_code"); ?></th>
 			<th>Image Logo</th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -69,7 +77,7 @@ jQuery(document).ready(function($) {
 		<td><?php echo $unifiedStore['UnifiedStore']['id']; ?>&nbsp;</td>
 		<td><?php echo $this->Time->niceShort($unifiedStore['UnifiedStore']['modified']);?></td>
 		<td><?php echo $unifiedStore['UnifiedStore']['shop_name']; ?>&nbsp;</td>
-		
+		<td><?php echo $country[$unifiedStore['UnifiedStore']['country_code']]; ?></td>
 		<td>
 			<?php 
 				if(!empty($unifiedStore['UnifiedStore']['image_logo'])):

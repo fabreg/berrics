@@ -1,3 +1,9 @@
+<?php 
+
+$country = Arr::countries();
+
+
+ ?>
 <script type="text/javascript">
 
 var geocoder = false;
@@ -130,7 +136,7 @@ function showAddressOnMap () {
 				echo $this->Form->input('state');
 				echo $this->Form->input('full_state');
 				echo $this->Form->input('zip');
-				echo $this->Form->input('country');
+				echo $this->Form->input('country_code',array("options"=>$country));
 				echo $this->Form->input('phone');
 
 			 ?>
