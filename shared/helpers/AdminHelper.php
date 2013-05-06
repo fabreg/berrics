@@ -85,7 +85,7 @@ class AdminHelper extends AppHelper {
 				
 				$str .= "<i class='icon icon-user'></i> ";
 			}
-			$str .= $this->link($t['name'],array("controller"=>"tags","action"=>"edit",$t['id']),array("target"=>"_blank"));
+			$str .= $this->link($t['name'],array("controller"=>"tags","action"=>"edit",$t['id'],"plugin"=>""),array("target"=>"_blank"));
 			if ($show_delete) {
 				$str .= "&nbsp; <button class='btn btn-mini btn-danger remove-tag-btn' data-tag-id='{$t['id']}' type='button'>x</button>";
 			}
@@ -121,7 +121,6 @@ class AdminHelper extends AppHelper {
 	}
 	
 	public function url($url) {
-	
 	
 		if(is_array($url) && !isset($ops['cb'])) $url['cb'] = base64_encode($this->request->here);
 	

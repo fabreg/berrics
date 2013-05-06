@@ -67,8 +67,8 @@
 			<legend>Unified Store</legend>
 			<div class="row-fluid">
 				<div class="span12">
-					<?php if (!empty($this->request->data['Tag']['unified_store'])): ?>
-						
+					<?php if (!empty($this->request->data['Tag']['unified_store_id'])): ?>
+						<a href='<?php echo $this->Admin->url(array("controller"=>"store","action"=>"edit","plugin"=>"unified",$this->request->data['Tag']['unified_store_id'])); ?>' target='_blank'><?php echo $this->request->data['UnifiedStore']['shop_name']; ?></a>
 					<?php else: ?>
 						<span class="label label-important">No Store Attached</span>
 					<?php endif ?>
