@@ -1,3 +1,9 @@
+<?php 
+
+$country = Arr::countries();
+
+
+ ?>
 <script type="text/javascript">
 
 var geocoder = false;
@@ -26,6 +32,27 @@ jQuery(document).ready(function($) {
 		showAddressOnMap();
 
 	});
+
+
+	///////
+	//state and country drop downs
+	/////
+
+	//get all the opt groups in an object
+	$("#UnifiedStoreState optgroup").each(function() { 
+
+		ship_to_states[$(this).attr("label")]=$(this).html();
+		
+	});
+
+
+	$("#UnifiedStoreCountryCode").change(function() { 
+
+		shipChangeState();
+
+	});
+	//$("#ShippingAddressCountry").change();
+	shipChangeState();
 	
 	
 
@@ -116,6 +143,43 @@ function showAddressOnMap () {
 
 }	
 
+var ship_to_states = {};
+$(document).ready(function() { 
+
+	
+	
+	
+});
+
+
+function shipChangeState() {
+
+	var country = $("#UnifiedStoreCountryCode").val();
+
+	//check to see if we have an already selected state or value
+	var sel = $("#UnifiedStoreState").val();
+	
+	if(ship_to_states[country]) {
+
+		
+		$("#UnifiedStoreState").html(ship_to_states[country]);
+		$("#form-shipping-state-text-div").hide().find('input').attr({"disabled":true});
+		$("#form-shipping-state-select-div").show().find('select').attr({"disabled":false});
+
+		//try and set the selected val
+		if(sel.length>0) {
+
+			$("#UnifiedStoreState[value="+sel+"]").attr({"selected":"selected"});
+			
+		}
+		
+	} else {
+
+		$("#form-shipping-state-select-div").hide().find('select').attr({"disabled":true});
+		$("#form-shipping-state-text-div").show().find('input').attr({"disabled":false});
+	}
+	
+}
 
 </script>
 <div id="unified-location">
@@ -123,14 +187,13 @@ function showAddressOnMap () {
 	<div class="row-fluid">
 		<div class="span6">
 			<?php 
-
 				echo $this->Form->input('address1');
 				echo $this->Form->input('address2');
 				echo $this->Form->input('city');
-				echo $this->Form->input('state');
-				echo $this->Form->input('full_state');
 				echo $this->Form->input('zip');
-				echo $this->Form->input('country');
+				echo $this->Form->input('country_code',array("options"=>$country));
+				echo $this->Form->input('state',array("options"=>Arr::states(),"div"=>array("id"=>"form-shipping-state-select-div")));
+				echo $this->Form->input("state-text",array("label"=>$l['state'],"name"=>"data[UnifiedStore][state]","div"=>array("id"=>"form-shipping-state-text-div")));
 				echo $this->Form->input('phone');
 
 			 ?>

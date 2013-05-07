@@ -1,3 +1,10 @@
+<?php 
+
+$country = Arr::countries();
+
+
+
+ ?>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 	var uri = document.location.href;
@@ -52,15 +59,9 @@ jQuery(document).ready(function($) {
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo  $this->Paginator->sort("modified"); ?></th>
 			<th><?php echo $this->Paginator->sort('shop_name');?></th>
-			<th><?php echo $this->Paginator->sort('address1');?></th>
-			<th><?php echo $this->Paginator->sort('address2');?></th>
-			<th><?php echo $this->Paginator->sort('city');?></th>
-			<th><?php echo $this->Paginator->sort('state');?></th>
-			<th><?php echo $this->Paginator->sort('full_state');?></th>
-			<th><?php echo $this->Paginator->sort('zip');?></th>
-			<th><?php echo $this->Paginator->sort('country');?></th>
-			<th><?php echo $this->Paginator->sort('phone');?></th>
+			<th><?php echo $this->Paginator->sort("country_code"); ?></th>
 			<th>Image Logo</th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -74,15 +75,9 @@ jQuery(document).ready(function($) {
 	?>
 	<tr<?php echo $class;?>>
 		<td><?php echo $unifiedStore['UnifiedStore']['id']; ?>&nbsp;</td>
+		<td><?php echo $this->Time->niceShort($unifiedStore['UnifiedStore']['modified']);?></td>
 		<td><?php echo $unifiedStore['UnifiedStore']['shop_name']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['address1']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['address2']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['city']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['state']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['full_state']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['zip']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['country']; ?>&nbsp;</td>
-		<td><?php echo $unifiedStore['UnifiedStore']['phone']; ?>&nbsp;</td>
+		<td><?php echo $country[$unifiedStore['UnifiedStore']['country_code']]; ?></td>
 		<td>
 			<?php 
 				if(!empty($unifiedStore['UnifiedStore']['image_logo'])):

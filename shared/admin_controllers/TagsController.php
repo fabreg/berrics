@@ -114,7 +114,8 @@ class TagsController extends LocalAppController {
 						"conditions"=>array("Tag.id"=>$id),
 						"contain"=>array(
 							"User",
-							"Brand"
+							"Brand",
+							"UnifiedStore"
 						)
 				));
 		}

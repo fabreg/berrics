@@ -21,7 +21,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 			<table cellspacing='0'>
 				<tbody class="content">
 					<?php foreach ($trending_posts as $k => $v): ?>
-					<?php echo $this->element("layout/v3/trending-tr",array("post"=>$v)) ?>
+					<?php echo $this->element("dailyops/table-rows/trending-tr",array("post"=>$v)) ?>
 					<?php endforeach ?>
 				</tbody>
 			</table>

@@ -1,5 +1,6 @@
 <?php 
 
+
 $link = "/".$post['Dailyop']['DailyopSection']['uri']."/".$post['Dailyop']['uri'];
 
 if($post['Dailyop']['DailyopSection']['uri'] != "news") {
@@ -8,7 +9,7 @@ if($post['Dailyop']['DailyopSection']['uri'] != "news") {
 
 }
 
-?>
+ ?>
 <tr>
 	<td width='100'>
 		<a href='<?php echo $link; ?>'>
