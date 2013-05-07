@@ -1,9 +1,10 @@
 <?php
 	$this->Unified->mapJsIncludes();
 	//$this->Html->script(array("http://cdnjs.cloudflare.com/ajax/libs/jquery.selectboxit/3.3.0/jquery.selectBoxIt.min.js"),array("inline"=>false));
+	
+
 ?>
 <script>
-
 //var markersJson = <?php echo json_encode($stores); ?>;
 var map,geocoder = false;
 var startLng = '<?php echo (!empty($this->request->data['GeoLocation']['lng'])) ? $this->request->data['GeoLocation']['lng']:'-118.2436849';?>';
@@ -17,6 +18,9 @@ var infoWindow = false;
 jQuery(document).ready(function($) {
 	
 	//$('select').selectBoxIt();
+
+	
+
 
 	geocoder = new google.maps.Geocoder();
 
@@ -274,7 +278,7 @@ function shopLatLong($lat,$lng,$distance) {
 		},
 		success:function(d) { 
 		
-			$("#shop-results").html(d);
+			$("#shop-results").html(d).tinyscrollbar_update();
 
 			$('.shop-result').bind('click',function() { 
 
@@ -439,13 +443,11 @@ function handleMarkerClick($marker) {
 	#news-row div[class*=span] {
 
 		background-color:red;
-
 		min-height: 300px;
-
+		
 	}
 
 	#unified-hero-unit {
-
 
 		min-height:200px;
 		background-color:#000;
@@ -486,13 +488,19 @@ body,
 }
  
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {  }
+@media (min-width: 768px) and (max-width: 979px) { 
+
+}
  
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {  }
+@media (max-width: 767px) {  
+
+}
  
 /* Landscape phones and down */
-@media (max-width: 480px) {  }
+@media (max-width: 480px) {  
+
+}
 </style>
 <?php 
 

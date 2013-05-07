@@ -18,13 +18,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 			<div class="tab" data-section='yearly'>This Year</div>
 		</div>
 		<div class='content'>
-			<table cellspacing='0'>
-				<tbody class="content">
-					<?php foreach ($trending_posts as $k => $v): ?>
-					<?php echo $this->element("dailyops/table-rows/trending-tr",array("post"=>$v)) ?>
-					<?php endforeach ?>
-				</tbody>
-			</table>
+			<?php echo $this->element("dailyops/post-table/table",array("posts"=>$trending_posts)) ?>
 		</div>
 	</div>
 	<hr class='hr1' />
@@ -32,40 +26,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 	<div id="trending-news">
 		<h2>LATEST NEWS:</h2>
 		<div class="content">
-			<table cellspacing="0">
-				<tbody class="content">
-					<?php 
-						foreach ($trending_news as $k => $v): 
-						$link = "/".$v['DailyopSection']['uri']."/".$v['Dailyop']['uri'];
-						$t = $v['DailyopTextItem'][0];
-					?>
-					<tr>
-						<td width='100'>
-							<a href='<?php echo $link; ?>'>
-							<?php 
-								$media_file = $v['DailyopTextItem'][0]['MediaFile'];
-								echo $this->Media->mediaThumb(array(
-									"MediaFile"=>$media_file,
-									"w"=>90
-								));
-							?>
-							</a>
-						</td>
-						<td>
-							<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['name'],26); ?></a>
-							<div>
-								<small>
-									<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($v['Dailyop']['sub_title'],54); ?></a>
-								</small>
-							</div>
-							<p>
-								<a href='<?php echo $link; ?>'><?php echo $this->Text->truncate($t['text_content'],60); ?></a>
-							</p>
-						</td>
-					</tr>
-					<?php endforeach ?>
-				</tbody>
-			</table>
+			<?php echo $this->element("dailyops/post-table/table",array("posts"=>$trending_news)); ?>
 		</div>
 	</div>
 	<hr class='hr1' />

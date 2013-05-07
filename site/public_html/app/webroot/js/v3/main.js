@@ -117,7 +117,7 @@ function initTrending () {
 			"url":"/dailyops/trending/"+s,
 			"success":function(d) {
 
-				$("#trending-content tbody.content").html(d);
+				$("#trending-content .content").html(d);
 				lazyLoad();
 				initTrending();
 				$("#trending-content .loading").fadeOut('fast',function() { $("#trending-content .loading").remove(); });
