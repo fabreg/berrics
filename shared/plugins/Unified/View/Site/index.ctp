@@ -278,7 +278,7 @@ function shopLatLong($lat,$lng,$distance) {
 		},
 		success:function(d) { 
 		
-			$("#shop-results").html(d).tinyscrollbar_update();
+			$("#shop-results").html(d);
 
 			$('.shop-result').bind('click',function() { 
 

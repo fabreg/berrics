@@ -2317,5 +2317,21 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function test_store_hrs() {
+		
+		$this->loadModel('UnifiedStore');
+		
+		$store = $this->UnifiedStore->returnStore(10,1);
+
+		$this->UnifiedStore->formatStoreHrs($store);
+
+
+	}
+
 
 }
+
+
+
+
+

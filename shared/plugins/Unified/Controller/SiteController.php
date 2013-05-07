@@ -22,8 +22,6 @@ class SiteController extends UnifiedAppController {
 
 		$this->initPermissions();
 
-
-
 	}
 
 	public function index() {
@@ -49,7 +47,7 @@ class SiteController extends UnifiedAppController {
 
 
 		//get the posts
-		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts($this->featured_news_tag_id);
+		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_news_tag_id,$this->shop_news_tag_id));
 
 		$this->set(compact("stores","featured_news"));
 

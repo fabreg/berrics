@@ -148,6 +148,28 @@ class UnifiedStore extends AppModel {
 
 	}
 
+	public function formatStoreHrs($UnifiedStore) {
+		
+		$hrs = array();
+
+		foreach($UnifiedStore['UnifiedStoreHour'] as $k=>$v) {
+
+			if(empty($v['custom_label'])) $hrs[] = $v;
+
+		}
+
+		$f = array(); //formatted hours
+
+		foreach($hrs as $v) {
+
+			
+
+		}
+
+		die(pr($hrs));
+		
+	}
+
 	public function addTags($store_id = false,$str = '') {
 		
 		if(!$store_id) throw new BadRequestException("UnifiedStore::addTags - invalid store_id argument");

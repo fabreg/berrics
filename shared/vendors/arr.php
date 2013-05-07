@@ -849,6 +849,47 @@ class Arr {
 		
 	}	
 	
+	public static function timezones() {
+
+		
+
+		$list = DateTimeZone::listAbbreviations();
+	    $idents = DateTimeZone::listIdentifiers();
+
+	    $data = $offset = $added = array();
+	    foreach ($list as $abbr => $info) {
+	        foreach ($info as $zone) {
+	            if ( ! empty($zone['timezone_id'])
+	                AND
+	                ! in_array($zone['timezone_id'], $added)
+	                AND 
+	                  in_array($zone['timezone_id'], $idents)) {
+	                $z = new DateTimeZone($zone['timezone_id']);
+	                $c = new DateTime(null, $z);
+	                $zone['time'] = $c->format('H:i a');
+	                $data[] = $zone;
+	                $offset[] = $z->getOffset($c);
+	                $added[] = $zone['timezone_id'];
+	            }
+	        }
+	    }
+
+
+
+	    array_multisort($offset, SORT_ASC, $data);
+
+	
+
+	    $options = array();
+	    foreach ($data as $key => $row) {
+	        $options[$row['timezone_id']] = $row['time'] . ' - '.
+	                                     ' ' . $row['timezone_id'];
+	    }
+
+	    return $options;
+
+	}
+
 	
 	public static function videoAdUrls($options = false) {
 		

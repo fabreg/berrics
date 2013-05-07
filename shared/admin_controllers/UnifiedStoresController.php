@@ -121,6 +121,17 @@ class UnifiedStoresController extends LocalAppController {
 		if (empty($this->request->data)) {
 			$this->request->data = $this->UnifiedStore->returnAdminStore($id);
 		}
+
+		$this->setSelects();
+
+	}
+
+	private function setSelects() {
+		
+		$timezones = Arr::timezones();
+
+		$this->set(compact("timezones"));
+
 	}
 
 	public function add_new_employee($store_id = false) {

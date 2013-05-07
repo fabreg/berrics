@@ -1852,10 +1852,16 @@ class Dailyop extends AppModel {
 	public function returnUnifiedTaggedPosts($tag_id = false,$extra = array(),$noCache = false) {
 
 		$ops = array_merge(array(
-								"limit"=>5
+								"limit"=>5,
+								"order"=>array("Dailyop.publish_date"=>"DESC")
 							),$extra);
 
-		$post_ids = $this->DailyopsTag->findAllByTagId($tag_id);
+		$post_ids = $this->DailyopsTag->find('all',array(
+												"conditions"=>array(
+													"DailyopsTag.tag_id"=>$tag_id
+												),
+												"contain"=>array()
+											));
 
 		$post_ids = Set::extract("/DailyopsTag/dailyop_id",$post_ids);
 
@@ -1885,7 +1891,8 @@ class Dailyop extends AppModel {
 									"limit"=>1
 								)
 							),
-							"limit"=>$ops['limit']
+							"limit"=>$ops['limit'],
+							"order"=>$ops['order']
 						));
 
 		return $posts;
