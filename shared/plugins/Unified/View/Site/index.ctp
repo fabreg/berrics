@@ -563,7 +563,7 @@ body,
 </div>
 <div class="row-fluid" id="news-row">
 	<div class="span4">
-		
+		<?php echo $this->element("dailyops/post-table/table",array("posts"=>$featured_news)); ?>
 	</div>
 	<div class="span4">
 		

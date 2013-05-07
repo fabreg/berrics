@@ -10,7 +10,9 @@
 			$media_file = $post['DailyopTextItem'][0]['MediaFile'];
 			echo $this->Media->mediaThumb(array(
 				"MediaFile"=>$media_file,
-				"w"=>90
+				"w"=>90,
+				"h"=>75,
+				"zc"=>1
 			));
 		?>
 		</a>

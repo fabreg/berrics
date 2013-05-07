@@ -53,6 +53,10 @@ $v = $this->request->data['UserAddress'];
 				<td><?php echo $this->request->data['CanteenShippingRecord']['carrier_name']; ?></td>
 			</tr>
 			<tr>
+				<td>Shipping Method</td>
+				<td><?php echo $this->request->data['CanteenShippingRecord']['shipping_method']; ?></td>
+			</tr>
+			<tr>
 				<td>Tracking #</td>
 				<td>
 					<?php if(strtoupper($this->request->data['CanteenShippingRecord']['carrier_name']) == "USPS"): ?>

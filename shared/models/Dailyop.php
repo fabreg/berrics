@@ -1848,6 +1848,49 @@ class Dailyop extends AppModel {
 		return $drop;
 
 	}
+
+	public function returnUnifiedTaggedPosts($tag_id = false,$extra = array(),$noCache = false) {
+
+		$ops = array_merge(array(
+								"limit"=>5
+							),$extra);
+
+		$post_ids = $this->DailyopsTag->findAllByTagId($tag_id);
+
+		$post_ids = Set::extract("/DailyopsTag/dailyop_id",$post_ids);
+
+		$token = 'unified-posts-'.md5(serialize($post_ids).serialize($ops));
+
+		
+
+		$posts = $this->find('all',array(
+							"conditions"=>array(
+								"Dailyop.id"=>$post_ids,
+								"Dailyop.publish_date < NOW()",
+								"Dailyop.active"=>1
+							),
+							"contain"=>array(
+								"Tag"=>array(
+									"UnifiedStore"
+								),
+								"DailyopSection",
+								"DailyopMediaItem"=>array(
+									"MediaFile",
+									"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+									"limit"=>1
+								),
+								"DailyopTextItem"=>array(
+									"MediaFile",
+									"order"=>array("DailyopTextItem.display_weight"=>"ASC"),
+									"limit"=>1
+								)
+							),
+							"limit"=>$ops['limit']
+						));
+
+		return $posts;
+
+	}
 	
 
 

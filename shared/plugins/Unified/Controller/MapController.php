@@ -49,8 +49,6 @@ class MapController extends UnifiedAppController {
 		
 			$res = $this->GeoLocation->lat_long_search($this->request->data['GeoLocation']['lat'],$this->request->data['GeoLocation']['lng'],$this->request->data['GeoLocation']['distance']);
 			
-			
-
 			$this->set(compact("res"));
 
 		}

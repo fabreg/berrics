@@ -4,7 +4,7 @@ App::uses("UnifiedAppController","Unified.Controller");
 
 class SiteController extends UnifiedAppController {
 
-	public $uses = array("UnifiedStore");
+	public $uses = array("UnifiedStore","Dailyop");
 
 	public function beforeFilter() {
 		
@@ -47,7 +47,11 @@ class SiteController extends UnifiedAppController {
 
 		foreach($s as $v) $stores[$v['UnifiedStore']['id']] = $v;
 
-		$this->set(compact("stores"));
+
+		//get the posts
+		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts($this->featured_news_tag_id);
+
+		$this->set(compact("stores","featured_news"));
 
 	}
 
