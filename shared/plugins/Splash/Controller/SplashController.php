@@ -125,7 +125,7 @@ class SplashController extends SplashAppController {
 							"limit"=>1
 						)
 					),
-					"limit"=>130,
+					"limit"=>100,
 					"order"=>array("RAND()")
 				));
 

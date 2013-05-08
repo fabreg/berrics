@@ -46,12 +46,21 @@ function cycleTile($tile) {
 
 	var tile = randomTile();
 
-	var oldTile = $tile.find('.tile-inner');
+	var oldTile = $tile.find('.tile-inner:eq(0)');
+
+	if(tile.length<=0) return;
+
+	if(oldTile.length<=0) {
+
+		$tile.append(tile);
+		return;
+
+	}
 
 	var z = $tile.find('.tile-inner').css('z-index')+1;
 	
 	var html = $(tile).css({
-			'z-index':z,
+			//'z-index':z,
 			'display':'none'
 	});	
 
@@ -60,7 +69,7 @@ function cycleTile($tile) {
 	
 	console.log(html);
 
-	$tile.prepend(html);
+	$tile.append(html);
 	
 	oldTile.fadeOut(function() { 
 	
@@ -86,7 +95,7 @@ function randTime () {
 	
 	var n = Math.floor(Math.random()*16);
 		
-	if(n<4) return randTime();
+	if(n<5) return randTime();
 
 	return n*1000;
 	
