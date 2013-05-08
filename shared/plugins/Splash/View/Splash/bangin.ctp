@@ -1,3 +1,9 @@
+<?php 
+
+$this->set("title_for_layout","THE BERRICS - BANGIN!");
+
+
+ ?>
 <script>
 var tiles = <?php echo json_encode($tiles); ?>;
 jQuery(document).ready(function($) {
@@ -175,6 +181,14 @@ body {
 
 }
 
+.enter a {
+
+	color:#b50000;
+	font-size:36px;
+	font-family: 'universcnb';
+	line-height: 65px;
+}
+
 /* Large desktop */
 @media (min-width: 1200px) { 
 
@@ -222,8 +236,8 @@ body {
 	<?php endforeach ?>
 	</div>
 	<div class="enter">
-		<div class="inner">
+		
 			<a href='/dailyops'>ENTER THE BERRICS</a>
-		</div>
+		
 	</div>
 </div>
