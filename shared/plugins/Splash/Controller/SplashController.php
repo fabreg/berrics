@@ -105,6 +105,40 @@ class SplashController extends SplashAppController {
 		$this->view = "/StaticFiles/interrogation-boo-johnson";
 
 	}
+
+	public function bangin() {
+		
+		$this->loadModel('Dailyop');
+
+		$token = "bangin-splash";
+
+		$posts = $this->Dailyop->find('all',array(
+					"conditions"=>array(
+						"Dailyop.active"=>1,
+						"Dailyop.publish_date < NOW()",
+						"Dailyop.dailyop_section_id"=>5
+					),
+					"contain"=>array(
+						"DailyopMediaItem"=>array(
+							"MediaFile",
+							"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+							"limit"=>1
+						)
+					),
+					"limit"=>130,
+					"order"=>array("RAND()")
+				));
+
+
+		foreach($posts as $post) {
+
+			$tiles[] = "<div class='tile-inner'><a href='/bangin/{$post['Dailyop']['uri']}?autoplay' target='_blank'><img class='lazy' src='//img.theberrics.com/i.php?w=275&src=/loading-imgs/loading-lazy.jpg' data-original='//img.theberrics.com/i.php?src=/video/stills/{$post['DailyopMediaItem'][0]['MediaFile']['file_video_still']}&w=275' border='0' /></a></div>";
+
+		}
+
+		$this->set(compact("tiles"));
+
+	}
 	
 	
 	
