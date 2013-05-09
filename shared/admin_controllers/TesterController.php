@@ -2354,6 +2354,52 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function tag_un_news() {
+		
+		$this->loadModel('Dailyop');
+		
+		$p = $this->Dailyop->find("all",array(
+							"fields"=>array("Dailyop.id"),
+							"conditions"=>array(
+								"Dailyop.dailyop_section_id"=>65,
+								"Dailyop.active"=>1
+							),
+							"contain"=>array(),
+							"limit"=>20,
+							"order"=>array("RAND()")
+						));
+
+		foreach ($p as $k => $v) {
+		
+			$this->Dailyop->DailyopsTag->create();
+			$this->Dailyop->DailyopsTag->save(array(
+
+				"dailyop_id"=>$v['Dailyop']['id'],
+				"tag_id"=>4574
+
+			));
+
+		}
+
+	}
+
+	public function tag_un_stores() {
+		
+		$this->loadModel('UnifiedStore');
+		
+
+		$s = $this->UnifiedStore->find('all',array("contain"=>array()));
+
+		foreach ($s as $k => $v) {
+			
+			$n = $v['UnifiedStore']['shop_name'];
+
+			$this->UnifiedStore->addTags($v['UnifiedStore']['id'],$n);
+
+		}
+
+	}
+
 
 }
 

@@ -440,17 +440,31 @@ function handleMarkerClick($marker) {
  		 max-width: none;
 	}
 
-	#news-row div[class*=span] {
 
-		background-color:red;
-		min-height: 300px;
-		
-	}
 
 	#unified-hero-unit {
 
 		min-height:200px;
 		background-color:#000;
+
+	}
+
+	.unified-post {
+
+		margin-bottom:10px;
+
+	}
+
+	.unified-post .name {
+
+		text-align: center;
+		font-family: 'universcnb';
+		font-size:20px;
+	}
+
+	.unified-post .name .sub-title {
+
+		font-size:14px;
 
 	}
  
@@ -562,12 +576,29 @@ body {
 </div>
 <div class="row-fluid" id="news-row">
 	<div class="span4">
+		
+	</div>
+	<div class="span4">
 		<?php echo $this->element("dailyops/post-table/table",array("posts"=>$featured_news)); ?>
 	</div>
 	<div class="span4">
-		
-	</div>
-	<div class="span4">
-		
+		<?php foreach ($featured_posts as $k => $v): ?>
+			<div class="unified-post">
+				<div class="name">
+					<?php echo $v['Dailyop']['name']; ?>
+					<?php if (!empty($v['Dailyop']['sub_title'])): ?>
+					<div class='sub-title'><small><em>
+						<?php echo $v['Dailyop']['sub_title'] ?>
+					</em></small></div>
+					<?php endif ?>
+				</div>
+				<div class="thumb">
+					<?php echo $this->Media->mediaThumb(array(
+						"MediaFile"=>$v['DailyopMediaItem'][0]['MediaFile'],
+						"w">350
+					)); ?>
+				</div>
+			</div>
+		<?php endforeach ?>
 	</div>
 </div>
