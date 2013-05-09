@@ -44,10 +44,12 @@ class SiteController extends UnifiedAppController {
 		foreach($s as $v) $stores[$v['UnifiedStore']['id']] = $v;
 
 		//get the posts
-		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_news_tag_id,$this->shop_news_tag_id));
+		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_news_tag_id,$this->shop_news_tag_id),array("limit"=>10));
 
 		//get all the field ops posts
-		$this->set(compact("stores","featured_news"));
+		$featured_posts = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_post_tag_id));
+
+		$this->set(compact("stores","featured_news","featured_posts"));
 
 	}
 
