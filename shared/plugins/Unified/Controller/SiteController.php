@@ -28,9 +28,7 @@ class SiteController extends UnifiedAppController {
 
 		$this->set("body_element","layout/unified-body-element");
 
-
 		//get all the stores
-
 
 		$s = $this->UnifiedStore->find("all",array(
 						"contains"=>array(
@@ -45,10 +43,10 @@ class SiteController extends UnifiedAppController {
 
 		foreach($s as $v) $stores[$v['UnifiedStore']['id']] = $v;
 
-
 		//get the posts
 		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_news_tag_id,$this->shop_news_tag_id));
 
+		//get all the field ops posts
 		$this->set(compact("stores","featured_news"));
 
 	}
