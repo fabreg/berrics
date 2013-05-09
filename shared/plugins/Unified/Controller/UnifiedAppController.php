@@ -5,8 +5,9 @@ App::uses("LocalAppController","Controller");
 class UnifiedAppController extends LocalAppController {
 
 
-	public $featured_news_tag_id = 4574;
-	public $shop_news_tag_id = 4575;
+	public $featured_news_tag_id = 4574; //featured unified news
+	public $shop_news_tag_id = 4575; //unified shop news
+	public $featured_post_tag_id = 4607; //featured unified
 
 	public function beforeFilter() {
 
@@ -28,7 +29,6 @@ class UnifiedAppController extends LocalAppController {
 		$store_ids = Set::extract("/UserUnifiedStore/id",$stores);
 
 		return in_array($store_ids,$unified_store_id);
-
 
 	}
 

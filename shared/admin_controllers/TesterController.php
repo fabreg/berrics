@@ -2328,6 +2328,32 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function tag_fo() {
+		
+		$this->loadModel('Dailyop');
+		
+		$p = $this->Dailyop->find("all",array(
+							"fields"=>array("Dailyop.id"),
+							"conditions"=>array(
+								"Dailyop.dailyop_section_id"=>16
+							),
+							"contain"=>array()
+						));
+
+		foreach ($p as $k => $v) {
+		
+			$this->Dailyop->DailyopsTag->create();
+			$this->Dailyop->DailyopsTag->save(array(
+
+				"dailyop_id"=>$v['Dailyop']['id'],
+				"tag_id"=>4607
+
+			));
+
+		}
+
+	}
+
 
 }
 

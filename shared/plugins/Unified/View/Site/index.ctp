@@ -403,7 +403,7 @@ function handleMarkerClick($marker) {
 
 	#map_canvas {
 
-		height:600px;
+		height:450px;
 
 	}
 	
@@ -455,8 +455,7 @@ function handleMarkerClick($marker) {
 	}
  
 html,
-body,
-.hero-unit {
+body {
     width:100%;
     height:100%;
 }
@@ -468,14 +467,14 @@ body,
 		
 		float:right;
 		width:785px;
-		min-height:600px;
+		min-height:450px;
 	}
 
 	#results-col {
 
 		float:left;
 		width:340px;
-		height:600px;
+		height:450px;
 		overflow: auto;
 	}
 
