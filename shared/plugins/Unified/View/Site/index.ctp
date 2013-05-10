@@ -2,6 +2,7 @@
 	$this->Unified->mapJsIncludes();
 	$this->Html->script(array("//google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble-compiled.js"),array("inline"=>false));
 	
+	$this->set("title_for_layout","THE BERRICS UNIFIED");
 
 ?>
 <script>
@@ -170,7 +171,7 @@ function createShopInfoBubble($store_id) {
 	$d.html(html);
 
 	var h = $d.outerHeight()+30;
-	var w = $d.outerWidth()+35;
+	var w = $d.outerWidth()+40;
 	
 	console.log(w);
 	console.log(h);
