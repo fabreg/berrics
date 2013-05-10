@@ -53,14 +53,23 @@ public function search() {
 
 		$this->Paginator->settings = array();
 
-		$this->Paginator->settings['limit'] = 50;
+		$this->Paginator->settings = array(
+
+			"UnifiedStore"=>array(
+
+				"limit"=>50,
+				"order"=>array("UnifiedStore.shop_name"=>"ASC")
+
+			)
+
+		);
 
 		if(isset($this->request->params['named']['search'])) {
 
 
 			if (isset($this->request->params['named']['UnifiedStore.shop_name'])) {
 				
-				$this->Paginator->settings['conditions']['UnifiedStore.shop_name LIKE'] = 
+				$this->Paginator->settings['UnifiedStore']['conditions']['UnifiedStore.shop_name LIKE'] = 
 					"%".str_replace(" ","%",urldecode($this->request->params['named']['UnifiedStore.shop_name']))."%";
 
 				$this->request->data['UnifiedStore']['shop_name'] = ($this->request->params['named']['UnifiedStore.shop_name']);
@@ -84,9 +93,12 @@ public function search() {
 	function add() {
 		if (!empty($this->request->data)) {
 			$this->UnifiedStore->create();
+
+			$this->request->data['UnifiedStore']['store_status'] = "pending";
+
 			if ($this->UnifiedStore->save($this->request->data)) {
 				$this->Session->setFlash(__('The unified store has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'edit',$this->UnifiedStore->id));
 			} else {
 				$this->Session->setFlash(__('The unified store could not be saved. Please, try again.'));
 			}

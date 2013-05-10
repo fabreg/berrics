@@ -1,6 +1,6 @@
 <?php
 	$this->Unified->mapJsIncludes();
-	//$this->Html->script(array("http://cdnjs.cloudflare.com/ajax/libs/jquery.selectboxit/3.3.0/jquery.selectBoxIt.min.js"),array("inline"=>false));
+	$this->Html->script(array("//google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble-compiled.js"),array("inline"=>false));
 	
 
 ?>
@@ -14,6 +14,7 @@ var circle = false;
 var centerMarker = false;
 var markersJson = <?php echo json_encode($stores); ?>;
 var infoWindow = false;
+var infoBubble = false;
 
 jQuery(document).ready(function($) {
 	
@@ -143,6 +144,50 @@ function clearMarkers () {
 
 }
 
+function createShopInfoBubble($store_id) {
+
+	var s = markersJson[$store_id];
+
+	var $d = $(".dummy");
+
+	var html = '';
+
+	html += "<div class='shop-address'>"+s.UnifiedStore.address1+s.UnifiedStore.address2+"<br />"+s.UnifiedStore.city+", "+s.UnifiedStore.state+" "+s.UnifiedStore.zip+"</div>";
+
+	html += "<div class='shop-phone'><strong>P:</strong> "+s.UnifiedStore.phone+"</div>";
+	
+	if(s.UnifiedStore.shop_email) {
+
+		html += "<div class='shop-email'>"+s.UnifiedStore.shop_email+"</div>";
+
+	}
+
+	
+
+	html = "<div class='shop-bubble'><div class='shop-name'>"+s.UnifiedStore.shop_name+"</div><div class='inner'>"+html+"</div></div>";
+	
+	//add in the html to dummy
+	$d.html(html);
+
+	var h = $d.outerHeight()+30;
+	var w = $d.outerWidth()+35;
+	
+	console.log(w);
+	console.log(h);
+
+	return new InfoBubble({
+
+		content:html,
+		minHeight:h,
+
+		minWidth:w
+
+	});
+
+	return b;
+
+}
+
 function addMarker ($latLng,$unified_store_id) {
 	
 	var mark = new google.maps.Marker({
@@ -155,9 +200,24 @@ function addMarker ($latLng,$unified_store_id) {
 			unified_store_id:$unified_store_id
 			
 	});
-	
+
 	google.maps.event.addListener(mark,'click',function() { 
+		
+		if(infoBubble) {
+
+			infoBubble.close();
+
+		}
+		
+		var bubble = createShopInfoBubble(mark.unified_store_id)
+
+		infoBubble = bubble;
+		infoBubble.open(map,mark);
+	});
 	
+	/*
+	google.maps.event.addListener(mark,'click',function() { 
+		
 		var store = markersJson[mark.unified_store_id];
 
 		if(infoWindow) {
@@ -182,6 +242,8 @@ function addMarker ($latLng,$unified_store_id) {
 		infoWindow.open(map,mark);
 
 	});
+
+	*/
 
 	google.maps.event.addListener(mark,'dblclick',function() { 
 	
@@ -406,6 +468,12 @@ function handleMarkerClick($marker) {
 		height:450px;
 
 	}
+
+	#map_canvas img {
+
+	max-width: none;
+
+	}
 	
 	.distance-div .distance-label {
 		font-size:12px;
@@ -467,7 +535,56 @@ function handleMarkerClick($marker) {
 		font-size:14px;
 
 	}
+
+	.dummy {
+
+		display:none;
+
+	}
+
+	.shop-bubble {
+
+
+
+	}
  
+	.shop-bubble .shop-name {
+
+
+		font-family:'universcnb';
+		font-size:18px;
+
+	}
+	
+	.shop-bubble .inner {
+
+		padding-left:5px;
+		font-family: 'universcn';
+
+	}
+
+	.shop-bubble .inner strong {
+
+		font-family:'universcnb';
+
+	}
+
+	.shop-bubble .shop-address {
+
+		font-size:12px;
+		/*font-family: 'courier';*/
+		line-height: 14px;
+		
+
+	}
+
+	.shop-bubble .shop-phone,
+	.shop-bubble .shop-email {
+
+		font-size:12px;
+
+	}
+
 html,
 body {
     width:100%;
@@ -602,3 +719,4 @@ body {
 		<?php endforeach ?>
 	</div>
 </div>
+<div class="dummy"></div>

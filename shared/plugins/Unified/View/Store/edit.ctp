@@ -72,6 +72,9 @@ $this->Unified->mapJsIncludes();
 	<div>
 		<?php echo $this->request->data['UnifiedStore']['shop_name']; ?>
 	</div>
+	<div style='padding:5px;'>
+		<a href="<?php echo $this->Html->url(array("plugin"=>"unified","controller"=>"store","action"=>"index")); ?>" class="btn btn-primary btn-mini"><i class="icon icon-circle-arrow-left"></i> Back To Listings</a>
+	</div>
 </div>
 
 <div class="tabbable">
