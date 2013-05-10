@@ -6,9 +6,18 @@ body {
 }
 #main-wrapper {
 
+	background-image:url(/theme/nordberg-recruited/img/bg.jpg);
+	background-repeat:no-repeat;
+	background-position:left top;
 	
-	background-repeat:repeat-x;
-	
+}
+
+#main-wrapper .post-title {
+
+	font-size:28px;
+	font-family: 'universcnb';
+	color:#fff;
+	text-align: center;
 }
 
 #bc-post {
@@ -16,6 +25,13 @@ body {
 	margin-top:30px;
 
 }
+
+#bc-post .post .post-top {
+
+	display: none;
+
+}
+
 #bc-post .post .post-top,
 #bc-post .post .post-top .time,
 #bc-post .post .post-top .date a  {
@@ -44,6 +60,22 @@ display:none;
 
 }
 
+#bc-post .post .post-media-div {
+
+	min-height:400px;
+
+}
+#bc-post .post .post-media-div img {
+
+	display: none;
+
+}
+
+#bc-post .post .text-content p {
+
+	color:#fff;
+
+}
 
 
 /* Large desktop */

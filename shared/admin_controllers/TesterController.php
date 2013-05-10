@@ -2400,6 +2400,29 @@ class TesterController extends LocalAppController {
 
 	}
 
+	public function fix_recruit() {
+		
+		$this->loadModel('Dailyop');
+
+		$p = $this->Dailyop->find('all',array(
+				"conditions"=>array(
+					"Dailyop.dailyop_section_id"=>27
+				),
+				"contain"=>array(
+
+
+				)
+			));
+		
+		foreach ($p as $k => $v) {
+			
+			
+
+		}
+
+
+	}
+
 
 }
 
