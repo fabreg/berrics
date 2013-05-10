@@ -5,9 +5,9 @@ App::uses("LocalAppController","Controller");
 class UnifiedAppController extends LocalAppController {
 
 
-	public $featured_news_tag_id = 4574; //featured unified news
-	public $shop_news_tag_id = 4575; //unified shop news
-	public $featured_post_tag_id = 4607; //featured unified
+	public $featured_news_tag_id = 4574; 	//featured unified news
+	public $shop_news_tag_id = 4575; 		//unified shop news
+	public $featured_post_tag_id = 4607; 	//featured unified
 
 	public function beforeFilter() {
 

@@ -2409,8 +2409,10 @@ class TesterController extends LocalAppController {
 					"Dailyop.dailyop_section_id"=>27
 				),
 				"contain"=>array(
-
-
+					"DailyopMediaItem"=>array(
+						"MediaFile",
+						"order"=>array("DailyopMediaItem.display_weight"=>"ASC")
+					)
 				)
 			));
 		

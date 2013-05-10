@@ -22,7 +22,7 @@ body {
 
 #bc-post {
 
-	margin-top:30px;
+	margin-top:10px;
 
 }
 
@@ -74,7 +74,7 @@ display:none;
 #bc-post .post .text-content p {
 
 	color:#fff;
-
+	padding-top:30px;
 }
 
 
