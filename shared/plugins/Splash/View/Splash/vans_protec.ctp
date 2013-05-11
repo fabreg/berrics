@@ -72,7 +72,7 @@ border:none;
 }
 #post .post .post-media-div {
 
-	min-height:400px;
+	height:400px;
 
 }
 
