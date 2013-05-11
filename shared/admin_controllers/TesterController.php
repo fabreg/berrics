@@ -2403,10 +2403,12 @@ class TesterController extends LocalAppController {
 	public function fix_recruit() {
 		
 		$this->loadModel('Dailyop');
+		$this->loadModel('DailyopMediaItem');
+		
 
 		$p = $this->Dailyop->find('all',array(
 				"conditions"=>array(
-					"Dailyop.dailyop_section_id"=>27
+					"Dailyop.dailyop_section_id"=>array(27,1,39)
 				),
 				"contain"=>array(
 					"DailyopMediaItem"=>array(
@@ -2418,7 +2420,26 @@ class TesterController extends LocalAppController {
 		
 		foreach ($p as $k => $v) {
 			
-			
+			if(count($v['DailyopMediaItem']) >= 4) {
+
+				$this->DailyopMediaItem->create();
+				$this->DailyopMediaItem->id = $v['DailyopMediaItem'][1]['id'];
+				$this->DailyopMediaItem->save(array("display_weight"=>4));
+
+				$this->DailyopMediaItem->create();
+				$this->DailyopMediaItem->id = $v['DailyopMediaItem'][2]['id'];
+				$this->DailyopMediaItem->save(array("display_weight"=>5));
+
+				$this->DailyopMediaItem->create();
+				$this->DailyopMediaItem->id = $v['DailyopMediaItem'][3]['id'];
+				$this->DailyopMediaItem->save(array("display_weight"=>2));
+
+
+				$this->DailyopMediaItem->create();
+				$this->DailyopMediaItem->id = $v['DailyopMediaItem'][4]['id'];
+				$this->DailyopMediaItem->save(array("display_weight"=>3));
+
+			}
 
 		}
 

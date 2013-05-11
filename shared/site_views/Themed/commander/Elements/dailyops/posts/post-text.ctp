@@ -1,5 +1,5 @@
 <?php 
-$img = $viewing['DailyopMediaItem'][3]['MediaFile']['file'];
+$img = $viewing['DailyopMediaItem'][2]['MediaFile']['file'];
 ?>
 
 <div class="commander-img">

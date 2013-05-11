@@ -50,7 +50,7 @@ $this->set(compact("title_for_layout","meta_k"));
 		<h3><?php echo $year ?> <?php echo strtoupper(Inflector::pluralize($viewing['DailyopSection']['name'])) ?></h3>
 		<?php 
 			foreach ($posts as $k => $post): 
-			$img = $post['DailyopMediaItem'][4]['MediaFile'];
+			$img = $post['DailyopMediaItem'][2]['MediaFile'];
 			$url = $this->Berrics->dailyopsPostUrl($post);
 		?>
 			<div class='menu-item'>
