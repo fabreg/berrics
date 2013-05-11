@@ -86,7 +86,7 @@ border:none;
  	</a>	
  	</div>
  	<div id="post">
- 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
+ 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post),1); ?>
  	</div>
 	<div id="enter">
 		<a href="/dailyops">ENTER THE BERRICS</a>
