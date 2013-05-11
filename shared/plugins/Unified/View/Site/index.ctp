@@ -151,24 +151,29 @@ function createShopInfoBubble($store_id) {
 
 	var $d = $(".dummy");
 
-	var html = '';
+	var html = $('.bubble-holder').clone();
 
-	html += "<div class='shop-address'>"+s.UnifiedStore.address1+s.UnifiedStore.address2+"<br />"+s.UnifiedStore.city+", "+s.UnifiedStore.state+" "+s.UnifiedStore.zip+"</div>";
-
-	html += "<div class='shop-phone'><strong>P:</strong> "+s.UnifiedStore.phone+"</div>";
-	
+	html.find('.shop-name').html(s.UnifiedStore.shop_name);
+	html.find('.shop-address').html(s.UnifiedStore.address1+" "+s.UnifiedStore.address2);
+	html.find('.shop-city').html(s.UnifiedStore.city+", "+s.UnifiedStore.state+" "+s.UnifiedStore.zip+" "+s.UnifiedStore.country_code);
+	html.find('.shop-phone').html("<strong>P:</strong>"+s.UnifiedStore.phone);
 	if(s.UnifiedStore.shop_email) {
 
-		html += "<div class='shop-email'>"+s.UnifiedStore.shop_email+"</div>";
+		html.find('.shop-phone').append(" <strong>E:</strong>"+s.UnifiedStore.shop_email)
 
 	}
-
 	
 
-	html = "<div class='shop-bubble'><div class='shop-name'>"+s.UnifiedStore.shop_name+"</div><div class='inner'>"+html+"</div></div>";
-	
+	//directions link
+	var link = $("<a />").attr({
+		"href":"http://maps.google.com?saddr=current+location&daddr="+encodeURIComponent(s.UnifiedStore.shop_name+", "+s.UnifiedStore.address1+" "+s.UnifiedStore.address2+" "+s.UnifiedStore.city+", "+s.UnifiedStore.state+" "+s.UnifiedStore.zip+" "+s.UnifiedStore.country_code),
+		"target":"_blank"
+	}).html("<i class='icon icon-road '></i> Get Directions");
+
+	html.find('.directions').html(link);
+
 	//add in the html to dummy
-	$d.html(html);
+	$d.html(html.html());
 
 	var h = $d.outerHeight()+30;
 	var w = $d.outerWidth()+40;
@@ -178,7 +183,7 @@ function createShopInfoBubble($store_id) {
 
 	return new InfoBubble({
 
-		content:html,
+		content:html.html(),
 		minHeight:h,
 
 		minWidth:w
@@ -557,20 +562,20 @@ function handleMarkerClick($marker) {
 
 	}
 	
-	.shop-bubble .inner {
+	.shop-bubble .shop-inner {
 
-		padding-left:5px;
 		font-family: 'universcn';
 
 	}
 
-	.shop-bubble .inner strong {
+	.shop-bubble .shop-inner strong {
 
 		font-family:'universcnb';
 
 	}
 
-	.shop-bubble .shop-address {
+	.shop-bubble .shop-address,
+	.shop-bubble .shop-city {
 
 		font-size:12px;
 		/*font-family: 'courier';*/
@@ -583,6 +588,13 @@ function handleMarkerClick($marker) {
 	.shop-bubble .shop-email {
 
 		font-size:12px;
+
+	}
+
+	.shop-bubble .directions {
+
+		padding-top:5px;
+		border-top:1px solid #333;
 
 	}
 
@@ -721,3 +733,15 @@ body {
 	</div>
 </div>
 <div class="dummy"></div>
+<div class="bubble-holder">
+	<div class="shop-bubble">
+		<div class="shop-name"></div>
+		<div class="shop-inner">
+			<div class="shop-address"></div>
+			<div class="shop-city"></div>
+			<div class="shop-phone"></div>
+			<div class="shop-email"></div>
+			<div class="directions"></div>
+		</div>
+	</div>
+</div>
