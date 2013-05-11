@@ -2,6 +2,7 @@
 
 $this->layout = "splash";
 
+$this->set("title_for_layout","THE BERRICS - VANS PROTEC POOL PARTY");
 
  ?>
  <style>
