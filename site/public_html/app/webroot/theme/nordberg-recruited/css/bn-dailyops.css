@@ -12,7 +12,7 @@ body {
 	
 }
 
-#main-wrapper .post-title {
+#main-wrapper .bc-post-title {
 
 	font-size:28px;
 	font-family: 'universcnb';
@@ -68,6 +68,12 @@ display:none;
 #bc-post .post .post-media-div img {
 
 	display: none;
+
+}
+
+#bc-post .post .post-media-div .video-hover {
+
+	background-image:url(/img/v3/layout/wht-px.png);
 
 }
 

@@ -32,7 +32,6 @@ class SplashController extends SplashAppController {
 			$this->view = $page['SplashCreative']['directive'];
 
 			return $this->{$page['SplashCreative']['directive']}();
-
 		} else {
 
 
@@ -145,6 +144,14 @@ class SplashController extends SplashAppController {
 
 
 		$this->set(compact("tiles"));
+
+	}
+
+	public function vans_protec() {
+		
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>7042));
+
+		$this->set(compact("post"));
 
 	}
 	
