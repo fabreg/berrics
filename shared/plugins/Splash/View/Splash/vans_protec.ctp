@@ -17,7 +17,8 @@ body {
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	background-position: center top;
-	min-height:700px;
+	min-height:950px;
+	height:100%;
 }
 
 .top-logo {
@@ -77,6 +78,13 @@ border:none;
 
 }
 
+#vans {
+
+	min-height: 950px;
+	position: relative;
+	height:100%;
+}
+
  </style>
  <div id="vans">
  	<div class="top-logo">
@@ -94,7 +102,7 @@ border:none;
  	<div id="post">
  		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
  	</div>
-	<div id="enter">
+ 	<div id="enter">
 		<a href="/dailyops">ENTER THE BERRICS</a>
 	</div>
  </div>
