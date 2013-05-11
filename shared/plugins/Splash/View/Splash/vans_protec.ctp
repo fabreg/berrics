@@ -70,6 +70,11 @@ border:none;
 	display:none;
 
 }
+#post .post .post-media-div {
+
+	min-height:400px;
+
+}
 
  </style>
  <div id="vans">
