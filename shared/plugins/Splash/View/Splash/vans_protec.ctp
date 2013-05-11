@@ -77,7 +77,7 @@ border:none;
  		<img src="/img/v3/splash/vans-protec/heading.png" alt="">
  	</div>
  	<div class="text">
- 	<a href="http://www.vans.com/eventsites/pool2013/?utm_source=berrics&utm_medium=300pool&utm_content=poolparty&utm_campaign=poolparty13">
+ 	<a href="http://www.vans.com/eventsites/pool2013/?utm_source=berrics&utm_medium=300pool&utm_content=poolparty&utm_campaign=poolparty13" target='_blank'>
  	<?php if ((date("G")>9 && date("i")>30) && (date("G")<19 && date("i")<15)): ?>
  		<img src="/img/v3/splash/vans-protec/live.png" border='0' alt="">
  	<?php else: ?>
