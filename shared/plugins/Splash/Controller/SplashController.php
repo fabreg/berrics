@@ -149,7 +149,7 @@ class SplashController extends SplashAppController {
 
 	public function vans_protec() {
 		
-		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>7042));
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>7042),1);
 
 		$this->set(compact("post"));
 
