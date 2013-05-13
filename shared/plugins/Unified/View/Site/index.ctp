@@ -177,6 +177,12 @@ function createShopInfoBubble($store_id) {
 
 	var h = $d.outerHeight()+30;
 	var w = $d.outerWidth()+40;
+
+	if(w<320) {
+
+		w = 320;
+
+	}
 	
 	console.log(w);
 	console.log(h);

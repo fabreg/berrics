@@ -17,11 +17,11 @@ class SplashRoute extends CakeRoute {
 		switch(date("Y-m-d")) {
 
 			
-			case "2013-05-10":
+			case "2013-05-13":
 
-				$params['controller'] = "static_files";
-				$params['action'] = "view";
-				$params['named']['file'] = "happy-birthday-steve-berra";
+				$params['controller'] = "progression";
+				$params['action'] = "dailyops";
+				$params['splash'] = true;
 
 			break;
 			default:
