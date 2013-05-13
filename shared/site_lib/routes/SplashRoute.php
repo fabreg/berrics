@@ -21,7 +21,7 @@ class SplashRoute extends CakeRoute {
 
 				$params['controller'] = "progression";
 				$params['action'] = "dailyops";
-				$params['splash'] = true;
+				$params['splash_page'] = true;
 
 			break;
 			default:
