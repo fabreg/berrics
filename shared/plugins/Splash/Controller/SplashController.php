@@ -147,6 +147,49 @@ class SplashController extends SplashAppController {
 
 	}
 
+	public function reda() {
+		
+		$this->loadModel('Dailyop');
+
+		$token = "reda-splash";
+
+		if(($tiles = Cache::read($token,"1min")) === false) {
+
+			$posts = $this->Dailyop->find('all',array(
+						"conditions"=>array(
+							"Dailyop.active"=>1,
+							"Dailyop.publish_date < NOW()",
+							"Dailyop.dailyop_section_id"=>3
+						),
+						"contain"=>array(
+							"DailyopMediaItem"=>array(
+								"MediaFile",
+								"order"=>array("DailyopMediaItem.display_weight"=>"ASC"),
+								"limit"=>1
+							)
+						),
+						"limit"=>100,
+						"order"=>array("RAND()")
+					));
+
+
+			foreach($posts as $post) {
+
+				$tiles[] = "<div class='tile-inner'><a href='/wednesdays-with-reda/{$post['Dailyop']['uri']}?autoplay'><img class='lazy' src='//img.theberrics.com/i.php?w=275&src=/loading-imgs/loading-lazy.jpg' data-original='//img.theberrics.com/i.php?src=/video/stills/{$post['DailyopMediaItem'][0]['MediaFile']['file_video_still']}&w=275' border='0' /></a></div>";
+
+			}
+
+			Cache::write($token,$tiles,"1min");
+
+		}
+
+
+
+		$this->set(compact("tiles"));
+
+	}
+
+
 	public function vans_protec() {
 		
 		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>7042),1);
