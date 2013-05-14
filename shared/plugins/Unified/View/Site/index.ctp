@@ -751,3 +751,4 @@ body {
 		</div>
 	</div>
 </div>
+<?php echo pr($stores); ?>

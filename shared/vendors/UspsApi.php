@@ -210,6 +210,25 @@ class UspsApi {
 
 	}
 
+	public function get_tracking($tracking = false) {
+		
+		$s = "<TrackRequest USERID='{$this->login['username']}'>
+					<TrackID ID='{$tracking}'></TrackID>
+				</TrackRequest>";
+
+		$url = "http://production.shippingapis.com/ShippingAPI.dll";
+
+		$data = array(
+			"API"=>"TrackV2",
+			"XML"=>$s,
+		);
+
+		$res = $this->curlGet($url,$data);
+
+		return $res;
+
+	}
+
 
 	private function curlGet($url,$data) {
 			

@@ -308,6 +308,28 @@ class LegacyShell extends Shell {
 		
 		
 	}
+
+	public function fix_store_hours() {
+		
+		//clear out all the store hours
+		$this->UnifiedStore->query("truncate unified_store_hours");
+
+		//get all the stores
+		$stores = $this->UnifiedStore->find('all',array("contain"=>array()));
+
+		foreach ($stores as $k => $v) {
+			
+			$days = array("SUN","MON","TUE","WED","THU","FRI","SAT");
+
+			foreach($days as $d) {
+
+				
+
+			}
+
+		}
+
+	}
 	
 	
 	
