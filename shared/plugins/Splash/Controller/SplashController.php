@@ -197,6 +197,14 @@ class SplashController extends SplashAppController {
 		$this->set(compact("post"));
 
 	}
+
+	public function xgames() {
+
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>7058),1);
+
+		$this->set(compact("post"));
+
+	}
 	
 	
 	
