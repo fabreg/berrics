@@ -314,16 +314,31 @@ class LegacyShell extends Shell {
 		//clear out all the store hours
 		$this->UnifiedStore->query("truncate unified_store_hours");
 
+		ClassRegistry::init("UnifiedStoreHour");
+
 		//get all the stores
 		$stores = $this->UnifiedStore->find('all',array("contain"=>array()));
 
 		foreach ($stores as $k => $v) {
 			
-			$days = array("SUN","MON","TUE","WED","THU","FRI","SAT");
+			$days = UnifiedStoreHour::daysOfWeek();
 
-			foreach($days as $d) {
+			foreach($days as $kd=>$d) {
 
-				//$this->UnifiedStore->
+				$this->UnifiedStore->UnifiedStoreHour->create();
+
+				$time = array(
+					"unified_store_id"=>$v['UnifiedStore']['id'],
+					"day_of_week"=>$kd,
+					"open"=>1,
+					"hours_open"=>"9:00",
+					"hours_close"=>"19:00"
+				);
+
+				$this->UnifiedStore->UnifiedStoreHour->save($time);
+
+				$this->out("==========");
+				$this->out("Unified Store [{$v['UnifiedStore']['shop_name']}]: {$d} ");
 
 			}
 

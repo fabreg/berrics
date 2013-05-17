@@ -1,3 +1,9 @@
+<?php 
+	
+
+	$ush = ClassRegistry::init("UnifiedStoreHour");
+
+ ?>
 <?php if (!isset($res) || empty($res)): ?>
 	<div class="alert alert-danger">
 		No Stores Found
@@ -9,10 +15,11 @@
 	<?php 
 		foreach ($res as $k => $v): 
 		$store = $v['Store'];
+		
 	?>
 		<div class='shop-result' data-unified-store-id='<?php echo $store['UnifiedStore']['id']; ?>' >
 			<div class="name">
-				<?php echo $k+1; ?>. <?php echo strtoupper($v['Store']['UnifiedStore']['shop_name']); ?>
+				<?php echo $k+1; ?>. <?php echo strtoupper($v['Store']['UnifiedStore']['shop_name']); ?> <div class="label"><?php echo number_format($v[0]['distance']); ?> MILES</div> 
 			</div>
 			
 			<div class="address">
@@ -27,11 +34,15 @@
 					P: <?php echo $store['UnifiedStore']['phone'] ?>
 				</strong> 
 			</div>
-			<div class="distance-div clearfix">
+			<div class="shop-hours">
+				<?php echo $ush->storeHoursTable($store['UnifiedStoreHour']) ?>
+			</div>
+			<!-- <div class="distance-div clearfix">
 				<div class="distance-label">
 					<?php echo number_format($v[0]['distance']); ?> MILES
 				</div>
 			</div>
+			-->
 		</div>
 	<?php endforeach ?>
 <?php endif ?>

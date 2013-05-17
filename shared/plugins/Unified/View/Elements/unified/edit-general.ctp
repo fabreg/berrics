@@ -40,6 +40,14 @@ function checkDupeUnifiedUri() {
 		
 	</div>
 	<div class="span6">
+		<h3>Social Networking</h3>
+		<?php 
+
+			echo $this->Form->input("facebook_url");
+			echo $this->Form->input("twitter_handle");
+			echo $this->Form->input("instagram_handle");
+
+		 ?>
 		<div class="well well-small">
 			<h3>Associate Tags</h3>
 			<?php echo $this->Form->input("tags",array("help"=>"<small>( Comma seperate multiple tags )</small>")); ?>

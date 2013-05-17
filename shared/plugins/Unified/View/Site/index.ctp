@@ -145,6 +145,8 @@ function clearMarkers () {
 
 }
 
+
+
 function createShopInfoBubble($store_id) {
 
 	var s = markersJson[$store_id];
@@ -163,6 +165,14 @@ function createShopInfoBubble($store_id) {
 
 	}
 	
+	var hrsTable = html.find('.shop-hours');
+
+	if(s.UnifiedStoreHour.length>0) {
+
+		hrsTable.append(s.HoursTable);
+
+	}
+
 
 	//directions link
 	var link = $("<a />").attr({
@@ -601,6 +611,40 @@ function handleMarkerClick($marker) {
 
 		padding-top:5px;
 		border-top:1px solid #333;
+		border-bottom:1px solid #333;
+
+	}
+	
+	.shop-hours {
+
+		padding-top:4px;
+
+	}
+	
+	.shop-hours .hrs-label {
+
+		font-size:12px;
+		font-family: 'universcnb';
+
+	}
+
+	.shop-hours table {
+
+		width:100%;
+
+	}
+	.shop-hours table td,
+	.shop-hours table th {
+
+		font-size:11px;
+		text-align: center;
+		padding:3px;
+	}
+
+	.shop-hours table th {
+
+		background-color:#000;
+		color:#fff;
 
 	}
 
@@ -747,7 +791,11 @@ body {
 			<div class="shop-city"></div>
 			<div class="shop-phone"></div>
 			<div class="shop-email"></div>
+			
 			<div class="directions"></div>
+			<div class="shop-hours">
+				<div class="hrs-label">Store Hours</div>
+			</div>
 		</div>
 	</div>
 </div>

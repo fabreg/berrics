@@ -31,9 +31,7 @@ class SiteController extends UnifiedAppController {
 		//get all the stores
 
 		$s = $this->UnifiedStore->find("all",array(
-						"contains"=>array(
-							"GeoLocation"
-						),
+					
 						"order"=>array(
 							"UnifiedStore.shop_name"=>"ASC"
 						)
@@ -41,7 +39,13 @@ class SiteController extends UnifiedAppController {
 
 		$stores = array();
 
-		foreach($s as $v) $stores[$v['UnifiedStore']['id']] = $v;
+		foreach($s as $v) { 
+
+			$stores[$v['UnifiedStore']['id']] = $v; 
+			$stores[$v['UnifiedStore']['id']]['HoursTable'] = $this->UnifiedStore->UnifiedStoreHour->storeHoursTable($v['UnifiedStoreHour']);
+
+
+		}
 
 		//get the posts
 		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_news_tag_id,$this->shop_news_tag_id),array("limit"=>10));

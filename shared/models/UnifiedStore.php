@@ -148,6 +148,16 @@ class UnifiedStore extends AppModel {
 
 	}
 
+	public function storeHoursTable($Hours) {
+		
+		
+
+		$html = "<table cellspacing='0'>";
+
+		$html .= "</table>";
+
+	}
+
 	public function formatStoreHrs($UnifiedStore) {
 		
 		$hrs = array();
