@@ -76,7 +76,7 @@ $this->set("title_for_layout","THE BERRICS - STREET LEAGUE XGAMES ");
 
 $link = "http://xgames.espn.go.com/skateboarding/";
 
-$img = "1-logos.jpg";
+$img = "2-times.jpg";
 
 $hr = date("G");
 
