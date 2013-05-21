@@ -131,34 +131,25 @@ class UspsApi {
 				
 		
 		$_s = "<FirstClassMailIntlRequest USERID='{$this->login['username']}' PASSWORD='{$this->login['password']}'>
-			
 			    <Option/>
-			
 			    <Revision>2</Revision>
-			
 			    <ImageParameters/>
-			
 			   ";
 		$_s.= $this->from_element_int();
 			
-		$_s .= "<ToName>{$a['first_name']} {$a['last_name']}</ToName>
-			
-			    <ToFirm></ToFirm>
-			
-			    <ToAddress1>{$a['street']}</ToAddress1>
-			
-			    <ToAddress2>{$a['apt']}</ToAddress2>
-			
-			    <ToCity>{$a['city']}</ToCity>
-			
-			    <ToCountry>{$countries[$a['country_code']]}</ToCountry>
-			
-			    <ToPostalCode>{$a['postal_code']}</ToPostalCode>
-			
-			    <ToPOBoxFlag>N</ToPOBoxFlag>
-			    <ToPhone />
-			    <ToFax />
-			    <ToEmail />
+		$_s .= "<ToFirstName>{$a['first_name']}</ToFirstName> 
+				<ToLastName>{$a['last_name']}</ToLastName> 
+				<ToFirm></ToFirm> 
+				<ToAddress1></ToAddress1> 
+				<ToAddress2>{$a['apt']}</ToAddress2> 
+				<ToAddress3>{$a['street']}</ToAddress3> 
+				<ToCity>{$a['city']}</ToCity> 
+				<ToCountry>{$countries[$a['country_code']]}</ToCountry> 
+				<ToPostalCode>{$a['postal_code']}</ToPostalCode>
+				<ToPOBoxFlag>N</ToPOBoxFlag> 
+				<ToPhone/> 
+				<ToFax/> 
+				<ToEmail/>
 			    <FirstClassMailType>PARCEL</FirstClassMailType>
 			    <ShippingContents>
 					{$items}
@@ -175,7 +166,7 @@ class UspsApi {
 			    <Size>REGULAR</Size>
 			</FirstClassMailIntlRequest>";
 
-					
+		
 		$url = "https://secure.shippingapis.com/ShippingAPI.dll";
 					
 		$res = $this->curlGet($url,array("API"=>"FirstClassMailIntl","XML"=>$_s));
@@ -257,21 +248,13 @@ class UspsApi {
 			$oz = floor($oz - ($lbs*16));
 			
 			$s = "<ItemDetail>
-			
 			            <Description>{$v['title']} {$v['sub_title']}</Description>
-			
 			            <Quantity>{$v['quantity']}</Quantity>
-			
 			            <Value>{$v['sub_total']}</Value>
-			
 			            <NetPounds>{$lbs}</NetPounds>
-			
 			            <NetOunces>{$oz}</NetOunces>
-			
 			            <HSTariffNumber></HSTariffNumber>
-			
 			            <CountryOfOrigin>United States</CountryOfOrigin>
-			
 			        </ItemDetail>";
 			$items .= $s;
 			
