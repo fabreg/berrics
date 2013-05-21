@@ -13,7 +13,7 @@ class UspsApi {
 		"address1"=>"#115",
 		"address2"=>"2121 E. 7TH St",
 		"city"=>"Los Angeles",
-		"zip"=>"90031",
+		"zip"=>"90021",
 		"state"=>"CA" 
 	);
 	
