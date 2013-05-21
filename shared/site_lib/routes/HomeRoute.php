@@ -43,6 +43,14 @@ class HomeRoute extends CakeRoute {
 
 				}
 			break;
+			case "2013-05-21":
+				if(in_array(date("Y-m-d"),array("2013-05-21"))) {
+
+					$params['controller'] = "bon_voyage";
+					$params['action'] = "view";
+
+				}
+			break;
 			case "2013-04-30":
 				if(in_array(date("Y-m-d"),array("2013-04-30"))) {
 

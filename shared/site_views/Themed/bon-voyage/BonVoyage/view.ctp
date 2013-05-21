@@ -1,3 +1,8 @@
+<?php
+
+$this->set("title_for_layout","The Berrics - Bon Voyage : Joey Brezinski");
+
+?>
 <script>
 	jQuery(document).ready(function($) {
 				
@@ -20,7 +25,7 @@
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
 	<div class="bottom">
-		<a href="" target='_blank'>
+		<a href="https://itunes.apple.com/us/movie/bon-voyage-cliche-skateboards/id638487361" target='_blank'>
 			<img src="/theme/bon-voyage/img/itunes.png" alt="" border='0'>
 		</a>
 	</div>
