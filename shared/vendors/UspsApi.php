@@ -138,33 +138,33 @@ class UspsApi {
 		$_s.= $this->from_element_int();
 			
 		$_s .= "<ToFirstName>{$a['first_name']}</ToFirstName> 
-				<ToLastName>{$a['last_name']}</ToLastName> 
-				<ToFirm></ToFirm> 
-				<ToAddress1></ToAddress1> 
-				<ToAddress2>{$a['apt']}</ToAddress2> 
-				<ToAddress3>{$a['street']}</ToAddress3> 
-				<ToCity>{$a['city']}</ToCity> 
-				<ToCountry>{$countries[$a['country_code']]}</ToCountry> 
-				<ToPostalCode>{$a['postal_code']}</ToPostalCode>
-				<ToPOBoxFlag>N</ToPOBoxFlag> 
-				<ToPhone/> 
-				<ToFax/> 
-				<ToEmail/>
-			    <FirstClassMailType>PARCEL</FirstClassMailType>
-			    <ShippingContents>
-					{$items}
-			    </ShippingContents>
-			    <GrossPounds>{$lbs}</GrossPounds>
-			    <GrossOunces>{$oz}</GrossOunces>
-			    <Machinable>false</Machinable>
-			    <ContentType>MERCHANDISE</ContentType>
-			    <Agreement>Y</Agreement>
-			    <Comments />
-			    <ImageType>TIF</ImageType>
-			    <ImageLayout>ONEPERFILE</ImageLayout>
-			    <HoldForManifest>N</HoldForManifest>
-			    <Size>REGULAR</Size>
-			</FirstClassMailIntlRequest>";
+					<ToLastName>{$a['last_name']}</ToLastName> 
+					<ToFirm></ToFirm> 
+					<ToAddress1></ToAddress1> 
+					<ToAddress2>{$a['apt']}</ToAddress2> 
+					<ToAddress3>{$a['street']}</ToAddress3> 
+					<ToCity>{$a['city']}</ToCity> 
+					<ToCountry>{$countries[$a['country_code']]}</ToCountry> 
+					<ToPostalCode>{$a['postal_code']}</ToPostalCode>
+					<ToPOBoxFlag>N</ToPOBoxFlag> 
+					<ToPhone/> 
+					<ToFax/> 
+					<ToEmail/>
+				    <FirstClassMailType>PARCEL</FirstClassMailType>
+				    <ShippingContents>
+						{$items}
+				    </ShippingContents>
+				    <GrossPounds>{$lbs}</GrossPounds>
+				    <GrossOunces>{$oz}</GrossOunces>
+				    <Machinable>false</Machinable>
+				    <ContentType>MERCHANDISE</ContentType>
+				    <Agreement>Y</Agreement>
+				    <Comments />
+				    <ImageType>TIF</ImageType>
+				    <ImageLayout>ONEPERFILE</ImageLayout>
+				    <HoldForManifest>N</HoldForManifest>
+				    <Size>REGULAR</Size>
+				</FirstClassMailIntlRequest>";
 
 		
 		$url = "https://secure.shippingapis.com/ShippingAPI.dll";

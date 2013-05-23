@@ -73,15 +73,16 @@ class PollsController extends LocalAppController {
 			throw new NotFoundException(__('Invalid poll'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Poll->save($this->request->data)) {
-				$this->Session->setFlash(__('The poll has been saved'));
-				$this->redirect(array('action' => 'index'));
+			if ($this->Poll->saveAll($this->request->data)) {
+				$this->Session->setFlash(__('The poll has been updated'));
+				$this->redirect($this->here);
 			} else {
 				$this->Session->setFlash(__('The poll could not be saved. Please, try again.'));
 			}
 		} else {
-			$this->request->data = $this->Poll->read(null, $id);
+			$this->request->data = $this->Poll->returnAdminPoll($id);
 		}
+
 		$websites = $this->Poll->Website->find('list');
 		$this->set(compact('websites'));
 	}

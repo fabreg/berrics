@@ -63,6 +63,10 @@
 					<li >
 						<?php echo $this->Admin->link("Manage Emails",array("controller"=>"email_messages","action"=>"index")); ?>
 					</li>
+					<li class='nav-header'>Polls</li>
+					<li >
+						<?php echo $this->Admin->link("Manage Polls",array("controller"=>"polls","action"=>"index","plugin"=>"")); ?>
+					</li>
 					</ul>
 				</div>
 				

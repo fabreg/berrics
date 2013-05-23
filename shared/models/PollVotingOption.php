@@ -16,7 +16,6 @@ class PollVotingOption extends AppModel {
  */
 	public $displayField = 'name';
 
-
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
@@ -67,5 +66,29 @@ class PollVotingOption extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+	public function returnOption($id,$cache = true) {
+		
+		$token = "poll-option-{$id}";
+
+		if(($data = Cache::read($token,"1min")) === false && $cache) {
+
+			$data = $this->find('first',array(
+						"conditions"=>array(
+							"PollVotingOption.id"=>$id
+						),
+						"contain"=>array(
+							"Poll"
+						)
+					));
+
+			Cache::write($token,$data,"1min");
+
+		}
+
+		return $data;
+
+
+	}
 
 }

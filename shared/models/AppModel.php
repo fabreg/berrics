@@ -115,9 +115,9 @@ class AppModel extends Model {
 		
 	}
 	
-	public function query($query) {
+	public function query($query,$forceMaster = true) {
 		
-		$this->useDbConfig = "master";
+		if($forceMaster) $this->useDbConfig = "master";
 		
 		$status = parent::query($query);
 		
@@ -126,9 +126,6 @@ class AppModel extends Model {
 			$this->useDbConfig = "default";
 			
 		}
-		
-		
-		
 		
 		return $status;
 		

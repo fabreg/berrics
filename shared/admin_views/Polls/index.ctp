@@ -1,5 +1,25 @@
+<div class="page-header">
+	<h1>Polls</h1>
+</div>
+<?php echo $this->Admin->adminPaging(); ?>
+<div>
+	<ul class='nav nav-tabs'>
+		<li class='dropdown'>
+			<a href='#' rel='noAjax' data-toggle='dropdown' class="dropdown-toggle">Actions <b class='caret'></b></a>
+			<ul class='dropdown-menu'>
+				<li>
+					<a rel='noAjax'  href='<?php echo $this->Html->url(array("action"=>"add","controller"=>"polls","plugin"=>"")); ?>'><i class='icon icon-plus-sign'></i> Add New Poll</a>
+				</li>
+			</ul>
+		</li>
+	
+	</ul>
+	<div class='tab-content'>
+		
+	</div>
+</div>
 <div class="polls index">
-	<h2><?php echo __('Polls'); ?></h2>
+
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -7,7 +27,6 @@
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('end_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
 			<th><?php echo $this->Paginator->sort('active'); ?></th>
 			<th><?php echo $this->Paginator->sort('website_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -20,7 +39,6 @@
 		<td><?php echo h($poll['Poll']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($poll['Poll']['end_date']); ?>&nbsp;</td>
 		<td><?php echo h($poll['Poll']['name']); ?>&nbsp;</td>
-		<td><?php echo h($poll['Poll']['description']); ?>&nbsp;</td>
 		<td><?php echo h($poll['Poll']['active']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($poll['Website']['name'], array('controller' => 'websites', 'action' => 'view', $poll['Website']['id'])); ?>
@@ -33,28 +51,12 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
-
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
+	<?php echo $this->Admin->adminPaging(); ?>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Poll'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Websites'), array('controller' => 'websites', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Website'), array('controller' => 'websites', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Poll Voting Options'), array('controller' => 'poll_voting_options', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Poll Voting Option'), array('controller' => 'poll_voting_options', 'action' => 'add')); ?> </li>
+		
 	</ul>
 </div>

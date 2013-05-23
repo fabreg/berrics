@@ -17,9 +17,11 @@ class SplashRoute extends CakeRoute {
 		switch(date("Y-m-d")) {
 
 			
-			case "2013-05-21":
+			case "2013-05-23":
 
-				die(header("Location:/dailyops"));
+				$params['controller'] = "poll";
+				$params['action'] = "splash_poll";	
+				$params['pass'][0] = 1;
 
 			break;
 			default:

@@ -2536,6 +2536,31 @@ class TesterController extends LocalAppController {
 	}
 
 
+	public function test_poll_vote() {
+		
+		$this->loadModel('Poll');
+		
+		for($i = 1;$i<=50;$i++) {
+
+			$op = mt_rand(2,4);
+
+			$this->Poll->PollVotingOption->PollVotingRecord->addVote($op,$i);
+
+		}
+
+	}
+
+	public function test_poll_results() {
+		
+		$this->loadModel('Poll');
+
+		$p = $this->Poll->pollResultsRealtime(1);
+
+		die(pr($p));
+
+	}
+
+
 }
 
 

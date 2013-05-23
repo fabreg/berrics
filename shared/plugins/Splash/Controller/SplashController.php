@@ -32,6 +32,7 @@ class SplashController extends SplashAppController {
 			$this->view = $page['SplashCreative']['directive'];
 
 			return $this->{$page['SplashCreative']['directive']}();
+			
 		} else {
 
 
@@ -205,6 +206,16 @@ class SplashController extends SplashAppController {
 		$this->set(compact("post"));
 
 	}
+
+	public function poll() {
+		
+		$poll_id = 1;
+
+		$this->set("poll_id",$poll_id);
+
+	}
+
+
 	
 	
 	
