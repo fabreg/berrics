@@ -39,6 +39,11 @@ function random_color() {
 	height:100%;
 }
 </style>
+<script>
+	jQuery(document).ready(function($) {
+		$('input[type=radio]:eq(0)').click();
+	});
+</script>
 <div class="poll-heading">
 	<h1>POLL RESULTS</h1>
 </div>
