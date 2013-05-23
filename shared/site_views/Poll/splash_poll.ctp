@@ -68,7 +68,7 @@ body {
 	font-size:24px;
 	color:white;
 	text-align: center;
-
+	padding:15px;
 }
 
 #enter {

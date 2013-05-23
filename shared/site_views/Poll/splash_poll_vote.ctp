@@ -7,6 +7,13 @@ jQuery(document).ready(function($) {
 
 	});
 
+	$("#PollVotingRecordForm").submit(function() { 
+
+		$(".vote-button-div button").attr('disabled',true);
+
+		return true;
+	});
+
 });
 </script>
 <style>
@@ -20,6 +27,16 @@ jQuery(document).ready(function($) {
 	cursor: pointer;
 	height:40px;
 	line-height: 44px;
+}
+
+.voting-option label {
+
+	width:100%;
+	height:100%;
+	line-height: 44px;
+	font-size:32px;
+	cursor:pointer;
+	text-indent: 15px;
 }
 
 .voting-option:hover {
@@ -63,7 +80,7 @@ echo $this->Form->input("poll_id",array("value"=>$poll['Poll']['id'],"type"=>"hi
 <div id="voting-options">
 	<?php foreach ($poll['PollVotingOption'] as $k => $v): ?>
 		<div class='voting-option'>
-			<input type="radio" name="data[PollVotingRecord][poll_voting_option_id]" value="<?php echo $v['id']; ?>" placeholder=""> <?php echo $v['name']; ?>
+			<label><input type="radio" name="data[PollVotingRecord][poll_voting_option_id]" value="<?php echo $v['id']; ?>" placeholder=""> <?php echo $v['name']; ?></label>
 		</div>
 	<?php endforeach ?>
 </div>
