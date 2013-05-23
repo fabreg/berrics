@@ -55,7 +55,7 @@ function random_color() {
 		
 		<div class="result-bar" >
 			<div class="result-heading">
-				<?php echo $v['PollVotingOption']['name']; ?> - <?php echo $v[0]['percent']; ?>%
+				<?php echo $v['PollVotingOption']['name']; ?> - <?php echo ceil($v[0]['percent']); ?>%
 			</div>
 			<div style='background-color:#<?php echo random_color(); ?>; width:<?php echo ceil($v[0]['percent']); ?>%; ' class="result-bar-inner">
 				

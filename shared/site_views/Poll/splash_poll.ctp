@@ -46,7 +46,7 @@ body {
 
 	position: relative;
 	height:500px;
-	width:800px;
+	width:600px;
 	margin:auto;
 
 }
