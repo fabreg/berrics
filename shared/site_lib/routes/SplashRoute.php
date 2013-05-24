@@ -17,7 +17,7 @@ class SplashRoute extends CakeRoute {
 		switch(date("Y-m-d")) {
 
 			
-			case "2013-05-23":
+			case "2013-05-24":
 
 				$params['controller'] = "poll";
 				$params['action'] = "splash_poll";	
