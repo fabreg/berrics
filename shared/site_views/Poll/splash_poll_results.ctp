@@ -45,7 +45,7 @@ function random_color() {
 	});
 </script>
 <div class="poll-heading">
-	<h1>POLL RESULTS</h1>
+	
 </div>
 <div id="poll-description">
 	<?php echo $poll['Poll']['description']; ?>

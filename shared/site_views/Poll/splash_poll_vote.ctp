@@ -23,10 +23,11 @@ jQuery(document).ready(function($) {
 	font-size:32px;
 	color:#fff;
 	margin-bottom:10px;
-	border:1px solid #999;
+	border-bottom:1px solid #999;
 	cursor: pointer;
 	height:40px;
 	line-height: 44px;
+	
 }
 
 .voting-option label {
@@ -72,7 +73,7 @@ echo $this->Form->input("poll_id",array("value"=>$poll['Poll']['id'],"type"=>"hi
 
 ?>
 <div class='poll-heading'>
-	<h1>POLL</h1>
+
 </div>
 <div id="poll-description">
 	<?php echo $poll['Poll']['description']; ?>
