@@ -18,11 +18,7 @@ $servers = array(
 			"w22",
 			"w23",
 			"w24",
-			"w25",
-			"w40",
-			"w41",
-			"w42",
-			"w43"
+			"w25"
 		);
 
 
@@ -55,6 +51,7 @@ foreach($servers as $server) {
 	echo "\n";
 	//stop apache 
 	echo `ssh root@{$server} 'apachectl -k graceful-stop'`;
+	echo `ssh root@{$server} 'rm -rf /var/log/http/error*'`;
 	echo "\n";
 	echo `rsync -vaz --delete --exclude-from {$dir}exclude.txt {$dir}../ root@{$server}:/home/sites/berrics.v3/`;
 	echo "\n";
