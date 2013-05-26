@@ -2,10 +2,11 @@
 echo $this->Html->meta('icon');
 
 echo $this->Html->css(array(
-		'bootstrap',
 		'font-awesome.min',
 		'main-v3',
-		'bootstrap-responsive',
+		'http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css',
+		
+		
 		'top-nav',
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/ui-lightness/jquery-ui.css',
 		'ui-lightness/jquery-ui-timepicker.css',
@@ -23,7 +24,8 @@ echo $this->Html->script(array(
 		"top-nav",
 		"/jw/jwplayer.js",
 		"swfupload/swfupload.js",
-		'bootstrap',
+		//'bootstrap',
+		'http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js',
 		"admin"
 ));
 

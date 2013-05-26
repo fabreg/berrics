@@ -12,15 +12,14 @@ function random_color() {
 <style>
 .result-heading {
 
-	position: absolute;
-	top:0px;
-	left:5px;
-	height:100%;
+
+
 	z-index: 101;
 	font-size: 24px;
 	color:#fff;
 	line-height: 40px;
 	font-family: 'universcnb';
+	text-align: center;
 }
 .result-bar {
 
@@ -38,17 +37,27 @@ function random_color() {
 	left:0px;
 	height:100%;
 }
+
+.poll-heading {
+
+	color:#fff;
+	font-size: 22px;
+	padding-bottom: 15px;
+	border-bottom: 2px solid #666;
+
+}
 </style>
 <script>
 	jQuery(document).ready(function($) {
-		$('input[type=radio]:eq(0)').click();
+		
 	});
 </script>
-<div class="poll-heading">
-	
-</div>
+
 <div id="poll-description">
 	<?php echo $poll['Poll']['description']; ?>
+</div>
+<div class="poll-heading">
+	Results So Far....
 </div>
 <div id="poll-results">
 	<?php foreach ($results as $k => $v): 
@@ -62,7 +71,7 @@ function random_color() {
 			<div class="result-heading">
 				<?php echo $v['PollVotingOption']['name']; ?> - <?php echo ceil($v[0]['percent']); ?>%
 			</div>
-			<div style='background-color:#<?php echo random_color(); ?>; width:<?php echo ceil($v[0]['percent']); ?>%; ' class="result-bar-inner">
+			<div style='background-color:#<?php //echo random_color(); ?>; width:<?php //echo ceil($v[0]['percent']); ?>%; ' class="result-bar-inner">
 				
 			</div>
 		</div>

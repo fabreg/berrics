@@ -36,6 +36,16 @@ function loadPoll($id) {
 
 </script>
 <style>
+
+@font-face {
+  font-family: 'FuturaWeb';
+
+      src: url('/fonts/futura.eot?') format('eot'),
+         url('/fonts/futura.woff') format('woff'),
+         url('/fonts/futura.ttf') format('truetype'),
+         url('/fonts/futura.svg') format('svg');
+}
+
 body {
 
 	background-color:#000;
@@ -45,9 +55,9 @@ body {
 #poll-container {
 
 	position: relative;
-	height:500px;
 	width:600px;
 	margin:auto;
+	font-family: 'FuturaWeb';
 
 }
 
@@ -69,13 +79,14 @@ body {
 	color:white;
 	text-align: center;
 	padding:15px;
+	margin-bottom: 15px;
 }
 
 #enter {
 
 	text-align: center;
 	font-size:32px;
-
+	padding-top:30px;
 }
 
 #enter a {

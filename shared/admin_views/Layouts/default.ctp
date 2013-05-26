@@ -14,7 +14,7 @@
 <script>
 $(document).ready(function() { 
 
-$(document).off('touchstart.dropdown.data-api');
+//$(document).off('touchstart.dropdown.data-api');
 
 });
 </script>
@@ -55,7 +55,7 @@ $(document).off('touchstart.dropdown.data-api');
 		      	</ul>
 		      	
 		      </div>
-		      <div class='nav-collapse'>
+		      <div class='nav-collapse collapse navbar-responsive-collapse'>
 		      	<?php echo $this->element("top-nav/top-nav"); ?>
 		      </div>
 		       
