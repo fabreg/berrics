@@ -2,10 +2,10 @@
 echo $this->Html->meta('icon');
 
 echo $this->Html->css(array(
-		'font-awesome.min',
+		
 		'main-v3',
 		'http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css',
-		
+		'font-awesome.min',
 		
 		'top-nav',
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/ui-lightness/jquery-ui.css',
