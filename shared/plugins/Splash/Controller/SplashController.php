@@ -20,9 +20,9 @@ class SplashController extends SplashAppController {
 	
 	
 	public function index() {
-		
+
 		$pages = $this->SplashDate->getTodaysPages();
-		
+
 		$seed = mt_rand(0,(count($pages)-1));
 		
 		$page = $pages[$seed];

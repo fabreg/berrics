@@ -47,11 +47,11 @@ foreach($servers as $server) {
 	echo "\n";
 	
 	//sync apache httpd.conf
-	echo `scp /tmp/httpd.conf root@{$server}:/etc/httpd/conf/.`;
+	//echo `scp /tmp/httpd.conf root@{$server}:/etc/httpd/conf/.`;
 	echo "\n";
 	//stop apache 
 	echo `ssh root@{$server} 'apachectl -k graceful-stop'`;
-	echo `ssh root@{$server} 'rm -rf /var/log/httpd/error*'`;
+	//echo `ssh root@{$server} 'rm -rf /var/log/httpd/error*'`;
 	echo "\n";
 	echo `rsync -vaz --delete --exclude-from {$dir}exclude.txt {$dir}../ root@{$server}:/home/sites/berrics.v3/`;
 	echo "\n";
