@@ -7,33 +7,56 @@ $player_drop = array(
 
 );
 
+$closed = false;
+if(!isset($match['Player1User']['id']) || !isset($match['Player2User']['id'])) {
+
+	$closed = true;
+
+}
+
 //letters
 $letters_array = BatbMatch::winningLettersDrop();
 
 ?>
 <div class="voting-box">
 	<div class="voting-heading">
-		UPCOMING BATTLE <?php echo $match_num; ?>
+		<?php echo $match_num; ?>
 	</div>
 	<div class="names">
 		<div class="name">
+			<?php if ($closed): ?>
+			<div class="first">&nbsp;</div>
+			<div class="last">
+				?
+			</div>
+			<?php else: ?>
 			<div class="first">
 				<?php echo strtoupper($match['Player1User']['first_name']); ?>
 			</div>
 			<div class="last">
 				<?php echo strtoupper($match['Player1User']['last_name']); ?>
 			</div>
+			<?php endif ?>
+			
 		</div>
 		<div class="name">
+			<?php if ($closed): ?>
+			<div class="first">&nbsp;</div>
+			<div class="last">
+				?
+			</div>
+			<?php else: ?>
 			<div class="first">
 				<?php echo strtoupper($match['Player2User']['first_name']); ?>
 			</div>
 			<div class="last">
 				<?php echo strtoupper($match['Player2User']['last_name']); ?>
 			</div>
+			<?php endif ?>
+			
 		</div>
 	</div>
-			<?php if(in_array(strtoupper(date("D")),array("MON","SAT","SUN","TUE","WED","THU","FRI"))):  ?>
+			<?php if(in_array(strtoupper(date("D")),array("SAT","SUN")) || $closed):  ?>
 			<div style='text-align:center; padding:5px;'>
 				<button class='btn' disabled='disabled'>VOTING CLOSED</button>
 			</div>

@@ -46,6 +46,10 @@ class BatbMatch extends AppModel {
 			"foreignKey"=>"postgame_dailyop_id"
 		)
 	);
+
+	public $hasMany = array(
+			"BatbVote"
+		);
 	
 	public $hasOne = array(
 		
@@ -455,6 +459,40 @@ class BatbMatch extends AppModel {
 		return $match;
 		
 		
+	}
+
+
+	public function getFinalsMatch($match_id,$p1,$p2,$user_id = false) {
+		
+		$match = $this->find('first',array("conditions"=>array("BatbMatch.id"=>$match_id),"contain"=>array()));
+
+		$User = ClassRegistry::init("User");
+
+		$player1 = $User->returnUserProfile($p1);
+		$player2 = $User->returnUserProfile($p2);
+
+		$match['Player1User'] = $player1['User'];
+		$match['Player2User'] = $player2['User'];
+
+		//check to see if there is a vote
+		$match['BatbVote'] = array();
+
+		if($user_id) { 
+
+			$vote =  $this->BatbVote->find('first',array(
+									"conditions"=>array(
+										"BatbVote.user_id"=>$user_id,
+										"BatbVote.batb_match_id"=>$match_id
+									),
+									"contain"=>array()
+								));
+
+			$match['BatbVote'] = $vote['BatbVote'];
+
+		}
+
+		return $match;
+
 	}
 	
 	

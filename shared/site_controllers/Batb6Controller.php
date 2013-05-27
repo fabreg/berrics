@@ -7,6 +7,9 @@ class Batb6Controller extends DailyopsController {
 
 	private $event_id = 50019;
 
+	private $thirdBattleId = 538;
+	private $champBattleId = 537;
+
 	public $helpers = array("Form");
 
 	public function beforeFilter() {
@@ -189,7 +192,9 @@ class Batb6Controller extends DailyopsController {
 		
 	}
 	
-	
+	private function checkIfVoted($votes) {
+		# code...
+	}
 	
 	private function setFeaturedMatches($event) {
 		
@@ -197,6 +202,22 @@ class Batb6Controller extends DailyopsController {
 		
 		$featured[] = $this->returnFeaturedMatch($event['BatbEvent']['featured_match2_id']);
 		
+		//check to see if we have voted on both battles
+		if(isset($featured[0]['BatbVote']['id']) && isset($featured[1]['BatbVote']['id'])) {
+
+			$finalsp1 = $featured[0]['BatbVote']['match_winner_user_id'];
+			$finalsp2 = $featured[1]['BatbVote']['match_winner_user_id'];
+
+			$featured['champ'] = $this->BatbMatch->getFinalsMatch($this->champBattleId,$finalsp1,$finalsp2,$this->Auth->user('id'));
+
+			$thirdp1 = ($featured[0]['BatbVote']['match_winner_user_id'] == $featured[0]['Player1User']['id']) ? $featured[0]['Player2User']['id']:$featured[0]['Player1User']['id'];
+			$thirdp2 = ($featured[1]['BatbVote']['match_winner_user_id'] == $featured[1]['Player1User']['id']) ? $featured[1]['Player2User']['id']:$featured[1]['Player1User']['id'];
+
+			$featured['third'] = $this->BatbMatch->getFinalsMatch($this->thirdBattleId,$thirdp1,$thirdp2,$this->Auth->user('id'));
+
+		}
+
+
 		$this->set(compact("featured"));
 		
 	}

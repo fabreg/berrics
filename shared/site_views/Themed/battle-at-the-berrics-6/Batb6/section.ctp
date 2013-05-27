@@ -220,8 +220,13 @@ $this->set(compact("title_for_layout"));
 			</div>
 		</div>
 		<div class="voting clearfix">
-			<?php echo $this->element('voting-box',array("match"=>$featured[0],"match_num"=>1)); ?>
-			<?php echo $this->element('voting-box',array("match"=>$featured[1],"match_num"=>2)); ?>
+			<?php echo $this->element('voting-box',array("match"=>$featured[0],"match_num"=>"UPCOMING BATTLE 1")); ?>
+			<?php echo $this->element('voting-box',array("match"=>$featured[1],"match_num"=>"UPCOMING BATTLE 2")); ?>
+		</div>
+		<div class="" style='height:25px;'></div>
+		<div class="voting clearfix">
+			<?php echo $this->element('voting-box',array("match"=>$featured['third'],"match_num"=>"THIRD PLACE")); ?>
+			<?php echo $this->element('voting-box',array("match"=>$featured['champ'],"match_num"=>"CHAMPIONSHIP")); ?>
 		</div>
 	</div>
 </div>
