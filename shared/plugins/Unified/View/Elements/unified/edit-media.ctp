@@ -97,7 +97,7 @@ function attachMediaItem() {
 		<div class="span12">
 			<h5><?php echo $v ?></h5>
 			<div class="well well-small">
-				<a href="<?php echo $this->Admin->attachMediaUrl("UnifiedStoreMediaItem","unified_store_id",$this->request->data['UnifiedStore']['id'],$this->here."?tab=media-items",array("category"=>$k)); ?>" class="btn btn-mini btn-success">
+				<a href="<?php echo $this->Admin->attachMediaUrl("UnifiedStoreMediaItem","unified_store_id",$this->request->data['UnifiedStore']['id'],$this->here."/?tab=media-items",array("category"=>$k,"filter"=>serialize(array("MediaFile.media_type"=>"img","search"=>true)))); ?>" class="btn btn-mini btn-success">
 					<i class="icon icon-white icon-plus-sign"></i> Attach Media
 				</a>
 				<a href="<?php echo $this->Admin->attachPostUrl("UnifiedStoreMediaItem","unified_store_id",$this->request->data['UnifiedStore']['id'],$this->here."/?tab=media-items",array("category"=>$k)); ?>" class="btn btn-success btn-mini">

@@ -425,8 +425,7 @@ function handleMarkerClick($marker) {
 <style>
 	body {
 
-		background-image:none;
-		background-color:#fff;
+
 		font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
 
 	}
@@ -668,7 +667,7 @@ body {
 
 		float:left;
 		width:340px;
-		height:450px;
+		height:100%
 		overflow: auto;
 	}
 
@@ -709,16 +708,12 @@ body {
 <div id="unified-hero-unit">
 	
 </div>
-<div id="unified-map">
+<div id="unified-map" class='column-shadow'>
 	
 	
 	
 	<div class="clearfix" id='map-row'>
 		<div class="" id='map-container'>
-			
-			<div id="map_canvas" ></div>
-		</div>
-		<div class="" id='results-col'>
 			<div id="search-bar" class="map-search-div row-fluid">
 				<?php echo $this->Form->create('StoreSearch',array(
 					"id"=>'StoreSearchForm',
@@ -748,6 +743,10 @@ body {
 				</div>
 				<?php echo $this->Form->end(); ?>
 			</div>
+			<div id="map_canvas" ></div>
+		</div>
+		<div class="" id='results-col'>
+			
 			<div id="shop-results">
 			 	
 			</div>
