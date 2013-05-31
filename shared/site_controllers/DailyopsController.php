@@ -1070,6 +1070,34 @@ class DailyopsController extends LocalAppController {
 
 	}
 
+	public function instagram() {
+		
+		App::import("Vendor","InstagramApi",array("file"=>"instagram/instagram_api.php"));
+		
+		$token = "instagram_splash";
+
+		if(($pics = Cache::read($token,"1min")) === false) {
+
+			$pics = array();
+					
+			$i = InstagramApi::berricsInstance();
+			
+			$p = $i->instagram->getUserRecent(InstagramApi::$berrics_id);
+
+			$p = json_decode($p);
+
+			foreach($p->data as $k=>$v) {
+
+				$pics[] = $v;
+
+			}
+
+		}
+
+		$this->set(compact("pics"));
+		
+	}
+
 	
 	
 	
