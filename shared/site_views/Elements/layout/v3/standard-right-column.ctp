@@ -8,11 +8,7 @@ $trending_news = $TrendingPost->currentTrending('featured-news');
 //die(pr($trending_news));
 ?>
 <div id="standard-right-column" style='clearfix'>
-	<div id='batb6-feed'>
-		<div style="text-align:center;">
-			<img src="/img/v3/layout/loader-clear.gif" alt="">
-		</div>
-	</div>
+
 	<?php echo $this->element("layout/v3/standard-right-column-top"); ?>
 	<!--Trending Content!-->
 	<div id="trending-content">
