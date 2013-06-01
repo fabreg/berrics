@@ -1,24 +1,3 @@
-<script>
-	jQuery(document).ready(function($) {
-		
-		//load in the batb6 instagram feed
-
-		var $batb6 = $("#batb6-feed");
-
-		$.ajax({
-
-			"url":"/dailyops/instagram",
-			"success":function(d) {
-
-				$batb6.html(d);
-
-			}
-
-
-		});
-
-	});
-</script>
 <?php 
 
 $TrendingPost = ClassRegistry::init("TrendingPost");
