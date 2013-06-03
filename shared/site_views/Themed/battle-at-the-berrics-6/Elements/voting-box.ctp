@@ -56,7 +56,7 @@ $letters_array = BatbMatch::winningLettersDrop();
 			
 		</div>
 	</div>
-			<?php if(in_array(strtoupper(date("D")),array("SAT","SUN")) || $closed):  ?>
+			<?php if(in_array(strtoupper(date("D")),array("SAT","SUN","MON","TUE","WED","THU","FRI")) || $closed):  ?>
 			<div style='text-align:center; padding:5px;'>
 				<button class='btn' disabled='disabled'>VOTING CLOSED</button>
 			</div>
