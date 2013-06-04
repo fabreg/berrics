@@ -35,7 +35,6 @@ class SplashController extends SplashAppController {
 			
 		} else {
 
-
 			$this->view = "view";
 		
 			return $this->view($page['SplashCreative']['hash_key']);
@@ -92,7 +91,6 @@ class SplashController extends SplashAppController {
 					));
 
 		$this->set(compact("product"));
-
 
 	}
 
@@ -215,7 +213,11 @@ class SplashController extends SplashAppController {
 
 	}
 
-
+	public function sls() {
+		
+		
+		
+	}
 	
 	
 	

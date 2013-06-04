@@ -33,22 +33,7 @@ $servers = array(
 			"w312",
 			"w313",
 			"w314",
-			"w315",
-			"wnode1",
-			"wnode2",
-			"wnode3",
-			"wnode4",
-			"wnode5",
-			"node1",
-			"node2",
-			"node3",
-			"node4",
-			"node5",
-			"node6",
-			"node7",
-			"node8",
-			"node9",
-			"node10"
+			"w315"
 		);
 
 
