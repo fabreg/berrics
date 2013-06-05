@@ -123,9 +123,9 @@ class DailyopsController extends LocalAppController {
 
 		if(isset($_GET['wheelbite']) && !empty($_GET['wheelbite'])) $this->theme = $_GET['wheelbite'];
 
-		if(in_array(date("Y-m-d"),array("2013-05-31"))) {
+		if(in_array(date("Y-m-d"),array("2013-06-06"))) {
 
-			$this->theme = "batb6-dailyops-finals";
+			$this->theme = "blind-tj-rogers";
 
 		}
 

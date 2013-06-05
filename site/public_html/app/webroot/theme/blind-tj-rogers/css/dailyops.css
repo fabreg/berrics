@@ -21,15 +21,23 @@ body {
 
 }
 
+#post-wrapper {
+
+	padding-top:180px;
+	background-image:url(/theme/blind-tj-rogers/img/top.png);
+	background-repeat:no-repeat;
+	background-position: 95px top;
+
+}
 
 
 #post {
 
-	height:609px;
+	height:619px;
 	background-image:url(/theme/blind-tj-rogers/img/post-bg.png);
 	background-position:center top;
 	background-repeat: no-repeat;
-	padding-top:42px;
+	padding-top:31px;
 }
 
 #post .post {
@@ -44,6 +52,24 @@ body {
 
 }
 
+#post .post-text-wrapper {
+
+	text-align: center;
+
+}
+
+#post .post-text {
+
+	width:780px;
+	margin:auto;
+	text-align: left;
+		color:#fff;
+	font-family: 'Arial';
+	font-size: 13px;
+	line-height: 16px;
+}
+
+
 #post .post .post-media-div,
 #post .post .post-media-div object,
 #post .post .post-media-div video {
@@ -55,12 +81,24 @@ body {
 
 }
 
-#post .post .post-text {
+#post .post-footer {
+
+	padding-top:25px;
+
+}
+
+
+#post .post .text-content {
 
 	display:none;
 
 }
 
+#tj-rogers .bottom {
+
+	text-align: center;
+
+}
 
 
 
