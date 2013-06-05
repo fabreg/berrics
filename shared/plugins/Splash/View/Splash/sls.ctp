@@ -32,10 +32,10 @@ body {
 .bottom .days-left {
 
 	color:#fff;
-	font-size:48px;
+	font-size:72px;
 	position: absolute;
-	bottom:62px;
-	left:190px;
+	top:58px;
+	right:146px;
 	
 	width:205px;
 	text-align: center;
@@ -81,9 +81,9 @@ $this->set("title_for_layout","THE BERRICS - STREET LEAGUE KANSAS SUNDAY JUNE 9t
 		</a>
 		<div class="days-left">
 			<?php if ($days_left<=1): ?>
-				TOMORROW
+				0
 			<?php else: ?>
-				IN <?php echo $days_left ?> DAYS
+				<?php echo $days_left ?>
 			<?php endif ?>
 		</div>
 	</div>
