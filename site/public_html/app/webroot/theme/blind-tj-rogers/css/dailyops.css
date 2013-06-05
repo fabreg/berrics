@@ -69,6 +69,12 @@ body {
 	line-height: 16px;
 }
 
+#post .post-text a {
+
+	color:#fff;
+
+}
+
 
 #post .post .post-media-div,
 #post .post .post-media-div object,
