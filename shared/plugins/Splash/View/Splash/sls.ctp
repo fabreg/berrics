@@ -2,9 +2,9 @@
 @font-face {
     font-family: 'constructa';
     src: url('/fonts/constructa/constructa.eot?') format('eot'),
-         url('/fonts/constructa/constructa.woff') format('woff'),
-         url('/fonts/constructa/constructa.ttf') format('truetype'),
-         url('/fonts/constructa/constructa.svg') format('svg');
+         url('/fonts/constructa/constructa.woff?') format('woff'),
+         url('/fonts/constructa/constructa.ttf?') format('truetype'),
+         url('/fonts/constructa/constructa.svg?') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -15,7 +15,11 @@ body {
 	background-image:none;
 
 }
+#wrapper {
 
+	text-align: center;
+
+}
 #sls {
 
 	width:1000px;
@@ -33,12 +37,14 @@ body {
 
 	color:#fff;
 	font-size:72px;
+	line-height:80px;
 	position: absolute;
-	top:58px;
+	top:30px;
 	right:146px;
-	
 	width:205px;
 	text-align: center;
+	height:80px;
+
 }
 
 #enter {
@@ -69,6 +75,8 @@ $days_left = $day_of - $day;
 $this->set("title_for_layout","THE BERRICS - STREET LEAGUE KANSAS SUNDAY JUNE 9th");
 
 ?>
+<div id="wrapper">
+	
 <div id='sls'>
 	<div class="top">
 		<a href="http://streetleague.com" target="_blank">
@@ -90,4 +98,5 @@ $this->set("title_for_layout","THE BERRICS - STREET LEAGUE KANSAS SUNDAY JUNE 9t
 	<div id="enter">
 		<a href="/dailyops">ENTER THE BERRICS</a>
 	</div>
+</div>
 </div>

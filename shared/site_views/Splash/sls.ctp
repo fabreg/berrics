@@ -29,7 +29,10 @@ if($days_to_finals >=1) {
 <style>
 body {
 	background-color:#000;
+	text-align: center;
 }
+
+
 #main-thing {
 
 	width:850px;
@@ -180,6 +183,8 @@ body {
 
 
 </style>
+<div id="wrapper">
+	
 <div id='main-thing'>
 	<div id='sls-banner'>
 		<img src='/img/splash/sls/ch-1.jpg' alt='' title='Street League Finals : New Jersey' />
@@ -207,4 +212,5 @@ body {
 			<a href='/dailyops'>ENTER THE BERRICS</a>
 		</div>
 	</div>
+</div>
 </div>
