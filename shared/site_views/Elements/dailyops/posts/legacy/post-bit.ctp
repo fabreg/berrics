@@ -12,7 +12,9 @@ if(isset($lazy)) $lz = $lazy;
 	
 	<?php 
 		
-		echo $this->Berrics->postMediaDiv($dop,array("lazy"=>$lz));
+		//echo $this->Berrics->postMediaDiv($dop,array("lazy"=>$lz));
+		echo $this->element("dailyops/post-media-div",array("Dailyop"=>$dop,"lazy"=>$lz));
+
 	?>
 	
 	<?php echo $this->element("dailyops/posts/post-text",array("dop"=>$dop)); ?>

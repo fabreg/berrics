@@ -45,6 +45,8 @@
     },
     initAppleVideo:function($context) {
 
+      return methods.initAndroidVideo($context);
+
       var $data = $context.data('videoPlayer');
 
       $data.target.bind('click',function() {
@@ -446,7 +448,7 @@
                 function(ee) {
                   
                   console.log("Ad Completed Playing");
-              
+                $data.target.find("video").get(0).play();
                 },
                 false
             );

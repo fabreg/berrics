@@ -414,6 +414,46 @@ class BerricsHelper extends AppHelper {
 		return $htm;
 		
 	}
+
+	public function __postMediaDiv($Dailyop,$opts = array()) {
+		
+		App::import("Vendor","Mobile_Detect",array("file"=>"Mobile_Detect.php"));
+
+		$MobileDetect = new Mobile_Detect();
+
+		$platform = "computer";
+
+		$os = "computer";
+
+		$template = $Dailyop['Dailyop']['post_template'];
+
+		if(isset($opts['MediaFile'])) {
+
+			$MediaFile = $opts['MediaFile'];
+			unset($opts['MediaFile']);
+
+		} else {
+
+			$MediaFile = $Dailyop['DailyopMediaItem'][0]['MediaFile'];
+
+		}
+
+		//merge in default attributes with sent in attr's
+		$opts = array_merge(array(
+			"data-media-file-id"=>$MediaFile['id'],
+			"data-dailyop-id"=>$Dailyop['Dailyop']['id'],
+			"data-dailyop-section-id"=>$Dailyop['Dailyop']['dailyop_section_id'],
+			"data-media-type"=>$MediaFile['media_type'],
+			"data-slide-show"=>$Dailyop['Dailyop']['slide_show'],
+			"data-platform"=>$platform,
+			"data-dailyop-display-weight"=>1,//$Dailyop['Dailyop']['display_weight'],
+			"class"=>"post-media-div",
+			"id"=>"media-file-div-".$MediaFile['id']
+		),$opts);
+
+
+
+	}
 	/**
 	 * Post Media Div - Media Div For Posts That Auto-bootstraps
 	 * OPTS: $opts['link'] = array("href"=>"","target"=>""); - Link Override For Image Post
