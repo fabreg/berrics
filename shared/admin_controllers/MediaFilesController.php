@@ -124,6 +124,9 @@ class MediaFilesController extends LocalAppController {
 	function add() {
 		if (!empty($this->request->data)) {
 			$this->MediaFile->create();
+
+			$this->request->data['MediaFile']['preroll_label'] = "VPRE001";
+
 			if ($this->MediaFile->save($this->request->data)) {
 				$this->Session->setFlash(__('The media file has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -1339,6 +1342,7 @@ class MediaFilesController extends LocalAppController {
 			} else {
 				
 				$udata['media_type'] = "bcove";
+				$udata['preroll_label'] = "VPRE001";
 				$this->MediaFile->save($udata);
 				
 				
