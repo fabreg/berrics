@@ -25,7 +25,7 @@
       var $data = $this.data('videoPlayer');
 
       $data.testing = "testing:"+$this.index();
-
+      /*
       switch($this.attr("data-platform")) {
 
         case 'android':
@@ -39,6 +39,22 @@
         break;
 
       }
+      */
+
+      if($this.attr("data-is-mobile")) {
+
+        methods.initAndroidVideo($this);
+
+      } else {
+
+        methods.initSwfVideo($this);
+
+
+      }
+
+
+
+      
 
       $this.attr("data-init",1);
 
