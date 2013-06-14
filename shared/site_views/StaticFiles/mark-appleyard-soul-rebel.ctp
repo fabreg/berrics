@@ -2,10 +2,12 @@
 
 $this->set("body_element","layout/v3/one-column");
 
+$this->set("title_for_layout","THE BERRICS - MARK APPLEYARD SOUL REBEL");
+
 $Dailyop = ClassRegistry::init("Dailyop");
 
 $post = $Dailyop->returnPost(array(
-			"Dailyop.id"=>7086
+			"Dailyop.id"=>7191
 		),1);
 
 ?>
@@ -19,6 +21,8 @@ $post = $Dailyop->returnPost(array(
 			"content":"width=1100px, initial-scale=0"
 
 		});
+
+		$("#post .post-media-div").trigger('click');
 
 
 	});
@@ -66,6 +70,18 @@ $post = $Dailyop->returnPost(array(
 	margin-top:-20px;
 }
 
+
+#post .post .post-media-div {
+
+	min-height:400px;
+
+}
+
+#post .post .post-media-div img {
+
+	display:none;
+
+}
 
 #post {
 
@@ -176,7 +192,9 @@ background-position: center center;
 		</a>
 	</div>
 	<div id="interogated">
-		<img src="/img/v3/layout/px.png" height='720' width='100' alt="">
+		<a href="/interrogation/mark-appleyard">
+		<img src="/img/v3/layout/px.png" height='720' width='1100' alt="">
+		</a>
 	</div>
 	<div id="load-more">
 		<div class="left-cap">
