@@ -18,7 +18,17 @@ $servers = array(
 			"w22",
 			"w23",
 			"w24",
-			"w25"
+			"w25",
+			"www1",
+			"www2",
+			"www3",
+			"www4",
+			"www5",
+			"www6",
+			"www7",
+			"www8",
+			"www9",
+			"www10"
 		);
 
 
