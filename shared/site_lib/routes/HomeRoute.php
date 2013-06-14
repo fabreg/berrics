@@ -51,6 +51,16 @@ class HomeRoute extends CakeRoute {
 
 				}
 			break;
+			case "2013-06-15":
+			case "2013-06-16":
+				if(in_array(date("Y-m-d"),array("2013-06-15","2013-06-16"))) {
+
+					$params['controller'] = "static_files";
+					$params['action'] = "view";
+					$params['named']['file'] = "mark-appleyard-soul-rebel.html";
+
+				}
+			break;
 			case "2013-04-30":
 				if(in_array(date("Y-m-d"),array("2013-04-30"))) {
 

@@ -116,7 +116,7 @@ $post = $Dailyop->returnPost(array(
 
 #white-bar img {
 
-	margin-top:10px;
+	margin-top:18px;
 
 }
 
@@ -184,7 +184,7 @@ background-position: center center;
 		</div>
 	</div>
 	<div id="white-bar">
-		<img src="/img/v3/soul-rebel/white-bar.jpg" alt="">
+		<img src="/img/v3/soul-rebel/newHash_Type.jpg" alt="">
 	</div>
 	<div id="deck">
 		<a href="">

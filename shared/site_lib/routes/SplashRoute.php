@@ -24,10 +24,17 @@ class SplashRoute extends CakeRoute {
 				$params['pass'][0] = 1;
 
 			break;
+			case "2013-06-15":
+			case "2013-06-16":
+				header('Location:/dailyops');
+				die();
+			break;
 			default:
 				$params['plugin'] = $params['controller'] = "splash";
 				$params['action'] = "index";	
 			break;
+
+			
 
 		}
 
