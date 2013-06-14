@@ -30,8 +30,7 @@ class StaticFilesController extends LocalAppController {
 		}
 		
 		$file_name = str_replace(".html","",$file_name);
-		
-		
+
 		return $this->render($file_name);
 		
 	}

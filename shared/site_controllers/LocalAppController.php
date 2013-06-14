@@ -53,8 +53,16 @@ class LocalAppController extends AppController {
 			
 		}
 
+		if(preg_match('/(mark-appleyard-soul-rebel)/',$this->here)) {
+
+			//$this->body_element = "one-column";
+
+		}
+
 		$this->set("body_element",$this->body_element);
 		$this->set("top_element",$this->top_element);
+
+
 		
 		
 	}
