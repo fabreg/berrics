@@ -57,7 +57,8 @@ foreach($servers as $server) {
 	echo "\n";
 	
 	//sync apache httpd.conf
-	//echo `scp /tmp/httpd.conf root@{$server}:/etc/httpd/conf/.`;
+	echo `scp /tmp/httpd.conf root@{$server}:/etc/httpd/conf/.`;
+	echo `scp /tmp/vhosts.conf root@{$server}:/etc/httpd/conf/.`;
 	echo "\n";
 	//stop apache 
 	echo `ssh root@{$server} 'apachectl -k graceful-stop'`;
