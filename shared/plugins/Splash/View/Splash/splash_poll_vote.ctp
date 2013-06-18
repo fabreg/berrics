@@ -117,7 +117,7 @@ function initRadios() {
 </style>
 <?php echo $this->Form->create('PollVotingRecord',array(
 	"id"=>'PollVotingRecordForm',
-	"url"=>"/poll/splash_handle_vote"
+	"url"=>"/splash/splash_handle_vote"
 )); 
 
 echo $this->Form->input("poll_id",array("value"=>$poll['Poll']['id'],"type"=>"hidden"));
