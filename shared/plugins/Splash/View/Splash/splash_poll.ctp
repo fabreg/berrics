@@ -1,5 +1,6 @@
 <?php 
 
+$this->set("title_for_layout","POLL JAM");
 
 ?>
 <script>
@@ -55,7 +56,7 @@ body {
 #poll-container {
 
 	position: relative;
-	width:600px;
+	width:275px;
 	margin:auto;
 	font-family: 'FuturaWeb';
 

@@ -73,7 +73,7 @@ function initRadios() {
 	line-height: 32px;
 	font-size:32px;
 	cursor:pointer;
-	text-align: center;
+	
 
 }
 
