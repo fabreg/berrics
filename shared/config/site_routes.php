@@ -35,7 +35,9 @@ if($_SERVER['REQUEST_URI']=="/splash/keep-going.html") {
 
 }
 
-Router::connect("/splash/*",array("controller"=>"splash","plugin"=>"splash","action"=>"view"));
+//Router::connect("/splash/*",array("controller"=>"splash","plugin"=>"splash","action"=>"view"));
+Router::connect("/splash/:action/*",array("controller"=>"splash","plugin"=>"splash"));
+
 
 //grab legacy links
 /////DAILY OPS POST

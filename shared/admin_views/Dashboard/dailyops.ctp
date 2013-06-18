@@ -238,7 +238,7 @@ function initSubmitForm($ele) {
 													break;
 											}
 											?>
-											<a class='btn btn-success btn-mini' href='http://dev.theberrics.com/splash/<?php echo $splash['SplashCreative']['hash_key']; ?>' target='_blank'><i
+											<a class='btn btn-success btn-mini' href='http://dev.theberrics.com/splash/view/<?php echo $splash['SplashCreative']['hash_key']; ?>' target='_blank'><i
 												class='icon icon-white icon-eye-open'></i> Preview</a> <a
 												class='btn btn-mini btn-primary'
 												href='<?php echo $this->Admin->url(array("plugin"=>"splash","controller"=>"creatives","action"=>"edit",$splash['SplashCreative']['id'],"cb"=>base64_encode($this->here))); ?>'><i
