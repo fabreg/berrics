@@ -232,7 +232,7 @@ class SplashController extends SplashAppController {
 	public function splash_handle_vote() {
 		
 		if($this->request->is("post") || $this->request->is("put")) {
-
+			
 			$user_id = (CakeSession::check("Auth.User.id"))  ? $this->Auth->user('id'):false;
 
 			$this->Poll->PollVotingRecord->addVote($this->request->data['PollVotingRecord']['poll_voting_option_id'],session_id(),$user_id);

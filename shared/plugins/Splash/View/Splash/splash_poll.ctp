@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 
 function loadPoll($id) {
 
-	var url = "/splash/splash_poll_ajax/"+$id;
+	var url = "/splash/splash_poll_ajax/"+$id+"?<?php echo mt_rand(9999,99999999); ?>";
 
 	var div = $("#poll-container");
 
