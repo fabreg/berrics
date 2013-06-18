@@ -81,6 +81,7 @@ body {
 	text-align: center;
 	padding:15px;
 	margin-bottom: 15px;
+	line-height: 34px;
 }
 
 #enter {
