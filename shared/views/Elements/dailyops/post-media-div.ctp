@@ -1,6 +1,6 @@
 <?php 
 
-if(!is_array($opts)) $opts = array();
+if(!isset($opts) || !is_array($opts)) $opts = array();
 
 $template = $Dailyop['Dailyop']['post_template'];
 
@@ -57,15 +57,15 @@ switch($MediaFile['media_type']) {
 
 		if($MobileDetect->isMobile()) {
 
-			$html = $this->element("dailyops/video/html5",compact("MediaFile","Dailyop","opts"));
+			//$html = $this->element("dailyops/video/html5",compact("MediaFile","Dailyop","opts"));
 
 		} else {
 
-			$html = $this->element("dailyops/video/swf",compact("MediaFile","Dailyop","opts"));
+			//$html = $this->element("dailyops/video/swf",compact("MediaFile","Dailyop","opts"));
 
 		}
-
-		//$html = $this->element("dailyops/video/html5",compact("MediaFile","Dailyop","opts"));
+		$opts['data-is-mobile'] = 1;
+		$html = $this->element("dailyops/video/html5",compact("MediaFile","Dailyop","opts"));
 
 	break;
 

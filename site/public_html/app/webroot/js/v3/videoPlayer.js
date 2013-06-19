@@ -43,7 +43,7 @@
 
       if($this.attr("data-is-mobile")) {
 
-        methods.initAndroidVideo($this);
+        methods.initHtmlVideo($this);
 
       } else {
 
@@ -57,6 +57,24 @@
       
 
       $this.attr("data-init",1);
+
+    },
+    initHtmlVideo:function($context) {
+
+      var $data = $context.data('videoPlayer');
+
+      var videoTag = $data.target.find('video');
+
+      var preroll = videoTag.attr("preroll");
+
+      console.log(preroll);
+
+
+
+    },
+    handleHtmlVideoEnd:function($context) {
+
+
 
     },
     initAppleVideo:function($context) {
