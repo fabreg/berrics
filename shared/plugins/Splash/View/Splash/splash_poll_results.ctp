@@ -69,7 +69,7 @@ function random_color() {
 		
 		<div class="result-bar" >
 			<div class="result-heading">
-				<?php echo $v['PollVotingOption']['name']; ?> - <?php echo floor($v[0]['percent']); ?>%
+				<?php echo $v['PollVotingOption']['name']; ?> - <?php echo number_format($v[0]['percent'],2); ?>%
 			</div>
 			<div style='background-color:#<?php //echo random_color(); ?>; width:<?php //echo ceil($v[0]['percent']); ?>%; ' class="result-bar-inner">
 				
