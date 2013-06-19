@@ -462,7 +462,7 @@ class Arr {
 				"KZ"=>"Kazakhstan",
 				"KE"=>"Kenya",
 				"KI"=>"Kiribati",
-				"KP"=>"Korea",
+				//"KP"=>"Korea",
 				"KR"=>"Korea",
 				"KW"=>"Kuwait",
 				"KG"=>"Kyrgyzstan",
