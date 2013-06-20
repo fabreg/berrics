@@ -216,7 +216,7 @@ class SplashController extends SplashAppController {
 
 			foreach($posts as $post) {
 
-				$tiles[] = "<div class='tile-inner'><a href='/wednesdays-with-reda/{$post['Dailyop']['uri']}?autoplay'><img class='lazy' src='//img.theberrics.com/i.php?w=275&src=/loading-imgs/loading-lazy.jpg' data-original='//img.theberrics.com/i.php?src=/video/stills/{$post['DailyopMediaItem'][0]['MediaFile']['file_video_still']}&w=275' border='0' /></a></div>";
+				$tiles[] = "<div class='tile-inner'><a href='/mikey-days/{$post['Dailyop']['uri']}?autoplay'><img class='lazy' src='//img.theberrics.com/i.php?w=275&src=/loading-imgs/loading-lazy.jpg' data-original='//img.theberrics.com/i.php?src=/video/stills/{$post['DailyopMediaItem'][0]['MediaFile']['file_video_still']}&w=275' border='0' /></a></div>";
 
 			}
 
