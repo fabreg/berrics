@@ -49,12 +49,7 @@
 
         methods.initSwfVideo($this);
 
-
       }
-
-
-
-      
 
       $this.attr("data-init",1);
 
@@ -69,7 +64,12 @@
 
       console.log(preroll);
 
+      if(preroll) {
 
+        //bootstrap video ad
+        methods.loadGoogleAd($context,urldecode(preroll));
+
+      }
 
     },
     handleHtmlVideoEnd:function($context) {
@@ -482,7 +482,7 @@
                 function(ee) {
                   
                   console.log("Ad Completed Playing");
-                $data.target.find("video").get(0).play();
+                //$data.target.find("video").get(0).play();
                 },
                 false
             );
@@ -491,7 +491,7 @@
             $data.GoogleAdsManager.setClickTrackingElement($("<div />"));
             
             //play the ad
-            $data.GoogleAdsManager.play($data.target.find("video").get(0));
+            //$data.GoogleAdsManager.play($data.target.find("video").get(0));
 
           },
           false);
