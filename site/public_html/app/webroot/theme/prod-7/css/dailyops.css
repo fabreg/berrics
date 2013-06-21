@@ -32,7 +32,9 @@ background-color:#000;
 
 }
 
-#bc-post .post .post-media-div {
+#bc-post .post .post-media-div,
+#bc-post .post .post-media-div object,
+#bc-post .post .post-media-div video {
 
 	min-height:396px;
 
@@ -160,6 +162,13 @@ background-position: center 135px;
 .dailyops-day {
 
 	padding:5px;
+
+}
+
+#bc-post .post .post-media-div video {
+
+
+	min-height:120px;
 
 }
 
