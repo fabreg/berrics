@@ -11,7 +11,7 @@
 	
 	$Dailyop = ClassRegistry::init("Dailyop");
 
-	$post = $Dailyop->returnPost(array("Dailyop.id"=>6788),1);
+	$post = $Dailyop->returnPost(array("Dailyop.id"=>7216),1);
 
 
 ?>
