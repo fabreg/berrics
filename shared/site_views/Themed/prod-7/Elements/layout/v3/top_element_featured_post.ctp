@@ -5,7 +5,7 @@
 
 		meta.attr({
 
-			"content":"width=1000px, initial-scale=0"
+			"content":"width=1300px, initial-scale=0"
 
 		});
 
