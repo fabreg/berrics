@@ -1,6 +1,13 @@
 <script>
 	jQuery(document).ready(function($) {
 		
+		var meta = $("meta[name=viewport]");
+
+		meta.attr({
+
+			"content":"width=1000px, initial-scale=0"
+
+		});
 
 
 	});
