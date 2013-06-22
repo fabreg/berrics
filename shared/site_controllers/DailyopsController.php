@@ -129,6 +129,12 @@ class DailyopsController extends LocalAppController {
 
 		}
 
+		if(in_array(date("Y-m-d"),array("2013-06-22"))) {
+
+			$this->theme = "i-am-chase-webb";
+
+		}
+
 	}
 
 
