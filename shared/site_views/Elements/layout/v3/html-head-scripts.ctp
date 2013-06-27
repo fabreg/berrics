@@ -20,7 +20,7 @@
 			"https://connect.facebook.net/en_US/all.js#xfbml=1&appId=128870297181216",
 			"https://platform.twitter.com/widgets.js",
 			//"https://www.google.com/uds?file=ima&v=1&nodependencyload=true",
-			"https://s0.2mdn.net/instream/html5/ima3.js",
+			"https://s0.2mdn.net/instream/html5/ima3_debug.js",
 			"v3/videoPlayer",
 			"v3/main"
 		));

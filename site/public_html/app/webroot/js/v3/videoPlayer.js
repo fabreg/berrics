@@ -15,7 +15,8 @@
         afterLoadData:function() {},
         videoEnd:function() {},
         requestData:{},
-        playCount:0
+        playCount:0,
+        adsDisplayContainer:false
       };
 
       if(opt) $.extend(options,opt);
@@ -60,21 +61,32 @@
 
       var videoTag = $data.target.find('video');
 
-      var preroll = videoTag.attr("preroll");
+      console.log(videoTag);
 
-      console.log(preroll);
+      methods.attachHtmlVideoEvents($context);
 
-      if(preroll) {
 
-        //bootstrap video ad
-        methods.loadGoogleAd($context,urldecode(preroll));
-
-      }
-
-    },
+    }, 
     handleHtmlVideoEnd:function($context) {
 
+      var $data = $context.data("videoPlayer");
 
+    },
+    attachHtmlVideoEvents:function($context) {
+
+      var $data = $context.data("videoPlayer");
+
+      var videoTag = $data.target.find(".html-video-player");
+
+      $(videoTag).bind('loadedmetadata',function() { 
+
+        console.log("Loaded Load");
+
+      });
+
+
+    },
+    handleHtmlMetaDataLoad:function($context) { 
 
     },
     initAppleVideo:function($context) {
