@@ -43,7 +43,7 @@ body {
 #bc-post .post .post-top .time,
 #bc-post .post .post-top .date {
 
-display:none;
+	display:none;
 
 }
 
@@ -190,7 +190,8 @@ display:none;
 }
 #main-wrapper .bc-post-title {
 
-display:none;
+	display:none;
+
 }
 
 #bc-post .post .post-title,
@@ -199,6 +200,7 @@ display:none;
 	display:block;
 
 }
+
 #bc-post .post .post-media-div {
 
 	min-height:auto;
