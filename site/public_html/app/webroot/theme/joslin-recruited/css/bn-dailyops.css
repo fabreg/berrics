@@ -83,6 +83,22 @@ display:none;
 	padding-top:30px;
 }
 
+#bc-post .post .tags,
+#bc-post .post .tags a {
+
+	color:#000;
+
+}
+
+#bc-post .post .text-content p {
+
+	color:#000;
+
+}
+
+
+
+
 
 /* Large desktop */
 @media (min-width: 1200px) { 
@@ -115,6 +131,7 @@ display:none;
 	display: none;
 
 }
+
 
 
  }
@@ -187,6 +204,14 @@ display:none;
 	min-height:auto;
 
 }
+
+#bc-post .post .text-content p {
+
+	color:#fff;
+
+}
+
+
 
 
  }
