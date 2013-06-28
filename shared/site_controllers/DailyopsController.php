@@ -110,6 +110,8 @@ class DailyopsController extends LocalAppController {
 					
 			} while ($item=prev($posts['posts']));
 
+			if(!empty($posts['config']['DailyopsConfig']['theme_override'])) $this->theme = $posts['config']['DailyopsConfig']['theme_override'];
+
 		}
 		//get the date from the last post
 

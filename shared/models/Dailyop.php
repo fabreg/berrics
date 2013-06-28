@@ -1898,6 +1898,22 @@ class Dailyop extends AppModel {
 		return $posts;
 
 	}
+
+	public static function returnThemes() {
+
+			$path = "/home/sites/berrics.v3/site/public_html/app/webroot/theme";
+		
+			$scan = scandir($path);
+			
+			foreach($scan as $k=>$v) if(!is_dir($path."/".$v) || ($v=='..' || $v=='.')) unset($scan[$k]);
+			
+			$dir = array();
+			
+			foreach($scan as $k=>$v) $dir[$v]=$v;
+			
+			return $dir;
+		
+	}
 	
 
 
