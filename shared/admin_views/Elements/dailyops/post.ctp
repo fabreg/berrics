@@ -25,7 +25,16 @@
 			href='<?php echo $this->Admin->url(array("controller"=>"dailyops","action"=>"edit",$post['Dailyop']['id'],"cb"=>$this->here)); ?>'><i
 			class='icon icon-edit icon-white'></i> Edit</a> 
 			<a href="<?php echo $this->Admin->url(array("controller"=>"trending_posts","action"=>"add_post",$post['Dailyop']['id'])); ?>" class="btn btn-success btn-mini"><i class="icon icon-white icon-plus-sign"></i> Make Tredning</a>
+		<?php
+			$tq = array(
+						"original_referer"=>"http://theberrics.com/{$post['DailyopSection']['uri']}/{$post['Dailyop']['uri']}",
+						"source"=>"tweetbutton",
+						"text"=>"http://theberrics.com/{$post['DailyopSection']['uri']}/{$post['Dailyop']['uri']}",
+						"hashtags"=>"berrics"
+					);
 			
+			?>
+			<a href='https://twitter.com/intent/tweet?<?php echo http_build_query($tq); ?>' target='_blank' class='btn btn-primary btn-mini'><i class="icon-twitter-sign"></i> Tweet </a>
 
 
 	</div>
