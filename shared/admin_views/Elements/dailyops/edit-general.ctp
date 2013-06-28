@@ -131,7 +131,7 @@ function styleChecks() {
 					<div class='row-fluid'>
 						<div class='span6 '>
 							<?php 
-							if(!in_array(CakeSession::read("Auth.User.id",array("51ce185a-bf7c-48cc-986c-0e36c6659e49")))) {
+							if(!in_array(CakeSession::read("Auth.User.id"),array("51ce185a-bf7c-48cc-986c-0e36c6659e49")))) {
 
 									echo $this->Form->input("active",array("label"=>"Active","help"=>"<small>Activate/DeActivate Post</small>"));
 
