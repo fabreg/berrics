@@ -24,7 +24,7 @@
 		<a class='btn btn-primary btn-mini'
 			href='<?php echo $this->Admin->url(array("controller"=>"dailyops","action"=>"edit",$post['Dailyop']['id'],"cb"=>$this->here)); ?>'><i
 			class='icon icon-edit icon-white'></i> Edit</a> 
-			<a href="<?php echo $this->Admin->url(array("controller"=>"trending_posts","action"=>"add_post",$post['Dailyop']['id'])); ?>" class="btn btn-success btn-mini"><i class="icon icon-white icon-plus-sign"></i> Make Tredning</a>
+			<a href="<?php echo $this->Admin->url(array("controller"=>"trending_posts","action"=>"add_post",$post['Dailyop']['id'])); ?>" class="btn btn-success btn-mini"><i class="icon icon-white icon-plus-sign"></i> Tredning</a>
 		<?php
 			$tq = array(
 						"original_referer"=>"http://theberrics.com/{$post['DailyopSection']['uri']}/{$post['Dailyop']['uri']}",
