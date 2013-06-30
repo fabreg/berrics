@@ -198,7 +198,7 @@ body {
 #bc-post .post .post-media-div img {
 
 	display:block;
-
+max-height:220px;
 }
 
 #bc-post .post .post-media-div {
@@ -216,7 +216,7 @@ body {
 #bc-post .post .post-media-div video,
 #bc-post .post .post-media-div { 
 
-	max-height:120px;
+	max-height:220px;
 
 }
 
