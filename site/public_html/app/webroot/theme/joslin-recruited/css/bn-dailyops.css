@@ -213,7 +213,8 @@ body {
 
 }
 
-#bc-post .post .post-media-div video {
+#bc-post .post .post-media-div video,
+#bc-post .post .post-media-div { {
 
 	height:120px;
 
