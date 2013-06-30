@@ -214,9 +214,9 @@ body {
 }
 
 #bc-post .post .post-media-div video,
-#bc-post .post .post-media-div { {
+#bc-post .post .post-media-div { 
 
-	height:120px;
+	max-height:120px;
 
 }
 
