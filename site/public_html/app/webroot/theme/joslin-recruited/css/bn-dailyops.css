@@ -204,7 +204,8 @@ max-height:220px;
 #bc-post .post .post-media-div {
 
 	min-height:auto;
-
+	height:220px;
+	max-height:220px;
 }
 
 #bc-post .post .text-content p {
