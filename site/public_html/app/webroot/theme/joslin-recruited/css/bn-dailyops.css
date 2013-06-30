@@ -206,6 +206,7 @@ max-height:220px;
 	min-height:auto;
 	height:220px;
 	max-height:220px;
+	min-height:220px;
 }
 
 #bc-post .post .text-content p {
