@@ -2,7 +2,7 @@
 
 $engine = "Memcache";
 
-$memcache_servers = array('10.177.5.233:11211');
+$memcache_servers = array('berrics.yqu2qe.cfg.usw2.cache.amazonaws.com:11211');
 	
 	if(preg_match('/(WEB2VM)|(WEB1)|(admin)|(V3)|(johncent)/i',php_uname('-n'))) {
 		
