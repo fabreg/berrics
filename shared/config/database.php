@@ -8,7 +8,7 @@ class DATABASE_CONFIG {
 		'host'=>'berrics-slave.cjt8oyzjbmpj.us-west-2.rds.amazonaws.com',
 		'login' => 'john',
 		'password' => '19Berrics82',
-		'database' => 'theberrics',
+		'database' => 'berrics',
 		'prefix' => '',
 	);
 
@@ -19,7 +19,7 @@ class DATABASE_CONFIG {
 		'host'=>'berrics-master.cjt8oyzjbmpj.us-west-2.rds.amazonaws.com',
 		'login' => 'john',
 		'password' => '19Berrics82',
-		'database' => 'theberrics',
+		'database' => 'berrics',
 		'prefix' => '',
 	);
 	
