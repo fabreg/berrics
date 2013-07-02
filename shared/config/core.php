@@ -194,7 +194,7 @@
  *
  */
 	Configure::write('Session', array(
-		'defaults' => 'database',
+		'defaults' => 'php',
 		"cookieTimeout"=>420000,
 		'timeout'=>240000,
 		'cookie'=>'berricsv3'
