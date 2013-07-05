@@ -3,7 +3,7 @@
 App::uses("DailyopsController","Controller");
 
 
-class ElementHolditDownController extends DailyopsController {
+class ElementHoldItDownController extends DailyopsController {
 
 	public $uses = array("Dailyop","OndemandTitle");
 
