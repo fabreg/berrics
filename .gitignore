@@ -9,3 +9,4 @@ admin.theberrics.com/public_html/app/webroot/cache/img/
 !.keep
 *.log
 .DS_Store
+.elasticbeanstalk/
