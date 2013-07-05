@@ -24,8 +24,8 @@ class SplashRoute extends CakeRoute {
 				$params['pass'][0] = 1;
 
 			break;
-			case "2013-06-29":
-			case "2013-06-30":
+			case "2013-07-07":
+			case "2013-07-06":
 				header('Location:/dailyops');
 				die();
 			break;
@@ -69,11 +69,11 @@ class SplashRoute extends CakeRoute {
 			
 			case "2012-07-09":
 				$params['action'] = "cons_kenny";
-				break;
+			break;
 
 			case "2012-07-10":
 				$params['action'] = "quik";
-				break;
+			break;
 			case "2012-07-16":
 			case "2012-07-17":
 				$params['action'] = "adidas_lucas";

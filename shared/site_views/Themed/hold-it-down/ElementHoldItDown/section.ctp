@@ -1,3 +1,17 @@
+<?php 
+
+$page_title = "ELEMENT - HOLD IT DOWN";
+
+if(isset($post)) {
+
+	$page_title .= " ".$post['Dailyop']['sub_title'];
+
+}
+
+$this->set("title_for_layout",$page_title);
+
+
+ ?>
 <script>
 	jQuery(document).ready(function($) {
 		
