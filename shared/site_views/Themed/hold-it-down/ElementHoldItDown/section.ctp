@@ -158,7 +158,7 @@ body {
 
 .post-id-7271 .sub-title {
 
-	font-size: 16px;
+	font-size: 14px;
 
 }
 
