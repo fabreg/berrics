@@ -204,7 +204,7 @@ body {
 		<?php foreach ($title['Dailyop'] as $k => $v): ?>
 			<div class="chapter-thumb post-id-<?php echo $v['id']; ?>">
 				
-				<a href="/<?php echo $this->request->params['section']; ?>/<?php echo $v['uri']; ?>?autoplay" >
+				<a href="/element-eu-hold-it-down/<?php echo $v['uri']; ?>?autoplay" >
 					<div class="play-icon"></div>
 					<?php echo $this->Media->mediaThumb(array(
 
