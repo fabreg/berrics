@@ -28,6 +28,14 @@ $this->set("title_for_layout",$page_title);
 
 		}
 
+				var meta = $("meta[name=viewport]");
+
+		meta.attr({
+
+			"content":"width=1100px, initial-scale=0"
+
+		});
+
 	});
 	handleVideoEnd = function(media_file_id,dailyop_id) {
 
