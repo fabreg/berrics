@@ -2,13 +2,13 @@
 
 
 App::build(array(
-		"Controller"=> array("/home/sites/berrics.v3/shared/controllers/"),
-		'Model'=> array("/home/sites/berrics.v3/shared/models/"),
-		'Plugin' => array('/home/sites/berrics.v3/shared/plugins/'),
-		'View/Helper' => array('/home/sites/berrics.v3/shared/helpers/'),
-		'Vendor'  => array('/home/sites/berrics.v3/shared/vendors/'),
-		'Controller/Component' => array('/home/sites/berrics.v3/shared/components/'),
-		'Model/Behavior'=>array("/home/sites/berrics.v3/shared/behaviors/"),
-		"View"	=>	array("/home/sites/berrics.v3/shared/views/"),
-		"Console"	=>	array("/home/sites/berrics.v3/shared/commands/")
+		"Controller"=> array($_SERVER['DOCUMENT_ROOT']."/../../shared/controllers/"),
+		'Model'=> array($_SERVER['DOCUMENT_ROOT']."/../../shared/models/"),
+		'Plugin' => array($_SERVER['DOCUMENT_ROOT']."/../../shared/plugins/"),
+		'View/Helper' => array($_SERVER['DOCUMENT_ROOT']."/../../shared/helpers/"),
+		'Vendor'  => array($_SERVER['DOCUMENT_ROOT']."/../../shared/vendors/"),
+		'Controller/Component' => array($_SERVER['DOCUMENT_ROOT']."/../../shared/components/"),
+		'Model/Behavior'=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/behaviors/"),
+		"View"	=>	array($_SERVER['DOCUMENT_ROOT']."/../../shared/views/"),
+		"Console"	=>	array($_SERVER['DOCUMENT_ROOT']."/../../shared/commands/")
 ));
