@@ -100,14 +100,14 @@
 
 define("APP_PREFIX","berrics_site");
 
-require "/home/sites/berrics.v3/shared/config/shared_bootstrap.php";
+require $_SERVER['DOCUMENT_ROOT']."/../../shared/config/shared_bootstrap.php";
 
-require "/home/sites/berrics.v3/shared/config/cache_config.php";
+require  $_SERVER['DOCUMENT_ROOT']."/../../shared/config/cache_config.php";
 
 App::build(array(
-		'View' => array('/home/sites/berrics.v3/shared/site_views/'),
-		"Controller"=>array("/home/sites/berrics.v3/shared/site_controllers/"),
-		"Lib"=>array("/home/sites/berrics.v3/shared/site_lib/")
+		'View' => array($_SERVER['DOCUMENT_ROOT'].'/../../shared/site_views/'),
+		"Controller"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_controllers/"),
+		"Lib"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_lib/")
 ));
 
 

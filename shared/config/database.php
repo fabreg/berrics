@@ -42,7 +42,7 @@ class DATABASE_CONFIG {
 		if(preg_match('/(WEB2VM)|(johncent)/',$uname)) {
 			
 			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
-
+			$this->sessions['database'] = $this->default['database'] = $this->master['database'] = 'theberrics';
 		}	
 
 
