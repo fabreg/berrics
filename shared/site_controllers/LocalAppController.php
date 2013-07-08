@@ -30,7 +30,8 @@ class LocalAppController extends AppController {
 		
 		
 		parent::beforeFilter();
-		
+
+		return;
 		if(isset($_SERVER['DEVSERVER']) && $_SERVER['DEVSERVER'] == 1) $this->fixGeoIp();
 		
 		//$this->setSections();
@@ -38,10 +39,12 @@ class LocalAppController extends AppController {
 		$this->setCanteenCategories();
 		
 		$this->setFeaturedPost();
-		
+
 		$this->getUserCurrency();
 		
 		$this->setCanteenProduct();
+
+
 		
 		if($this->enforce_ssl==true && ($_SERVER['HTTPS']!=1)) {
 			
@@ -53,15 +56,11 @@ class LocalAppController extends AppController {
 			
 		}
 
-		if(preg_match('/(mark-appleyard-soul-rebel)/',$this->here)) {
-
-			//$this->body_element = "one-column";
-
-		}
 
 		$this->set("body_element",$this->body_element);
 		$this->set("top_element",$this->top_element);
 
+		
 
 		
 		

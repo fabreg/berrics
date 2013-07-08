@@ -43,14 +43,16 @@ class DATABASE_CONFIG {
 			
 			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
 
-			
 		}	
+
 
 	}
 
 
 	function DATABASE_CONFIG() 
     { 
+
+
         $this->__construct(); 
     } 
 	
