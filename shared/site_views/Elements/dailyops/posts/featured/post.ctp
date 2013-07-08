@@ -3,15 +3,12 @@
 	<div class="span12">
 		<div class="post featured-post clearfix">
 			<?php
-				$one = false;
+				$one = true;
+
 				 if ($one): ?>
 				<div style="text-align:center">
-					<a href='/primitive-pain-is-beauty'>
-						<?php echo $this->Media->mediaThumb(array(
-													"MediaFile"=>$post['DailyopMediaItem'][0]['MediaFile'],
-													"w"=>1070,
-													"type"=>"large"
-												)); ?>
+					<a href='/element-eu-hold-it-down'>
+						<img src='/theme/hold-it-down/img/hero.jpg' border='0' />
 					</a>
 				</div>
 			<?php else: ?>
