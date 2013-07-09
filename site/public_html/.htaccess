@@ -3,3 +3,6 @@
    RewriteRule    ^$ app/webroot/    [L]
    RewriteRule    (.*) app/webroot/$1 [L]
 </IfModule>
+php_value date.timezone America/Los_Angeles
+php_value upload_max_filesize 100M
+php_value post_max_size 100M
