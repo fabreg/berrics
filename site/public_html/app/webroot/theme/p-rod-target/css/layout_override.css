@@ -1,0 +1,64 @@
+body {
+
+
+	background-image:none;
+	background-color:#000;
+
+		background-image:url(/theme/p-rod-target/img/bg.jpg);
+		background-attachment: fixed;
+		background-position: center top;
+		background-repeat: no-repeat;
+}
+#chima {
+
+height:625px;
+
+}
+
+#chima .post .post-top,
+#chima .post .post-footer,
+#chima .post-media-div img {
+
+display:none;
+
+}
+
+#chima .post-media-div,
+#chima .post-media-div object {
+
+min-height:400px;
+
+}
+
+#chima .post {
+
+border:none;
+
+
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+
+
+
+
+
+ }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+
+
+
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {  }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {  }
