@@ -33,7 +33,6 @@ class TesterController extends LocalAppController {
 		die(pr($_SERVER));
 
 	}
-	
 
 	public function info() {
 
