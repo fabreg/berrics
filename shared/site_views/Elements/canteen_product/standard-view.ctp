@@ -43,7 +43,7 @@ function initProductThumbs() {
 
 		var src = $(this).attr("img");
 
-		$(".product-img .main-image img").attr("src","http://img.theberrics.com/i.php?w=485&h=485&zc=1&src=/product-img/"+src);
+		$(".product-img .main-image img").attr("src","http://img01theberrics.com/i.php?w=485&h=485&zc=1&src=/product-img/"+src);
 
 		$("#product-standard-view .thumbs .img-thumb").attr("selected",0).css({"opacity":.5});
 
@@ -157,7 +157,7 @@ function initOptionClick() {
 									<div class='check'>
 										
 									</div>
-									<img src='http://img.theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35&w=35&zc=1' border='0' alt='' style='border:1px solid #333;' />
+									<img src='http://img01theberrics.com/i.php?src=/product-img/<?php echo $s['CanteenProduct']['style_code_image']; ?>&h=35&w=35&zc=1' border='0' alt='' style='border:1px solid #333;' />
 								</div>
 								<?php endforeach; ?>
 								<div style='clear:both;'></div>

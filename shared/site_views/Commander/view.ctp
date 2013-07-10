@@ -56,7 +56,7 @@ $this->set(compact("title_for_layout","meta_k"));
 			<div class='menu-item'>
 				<a href="<?php echo $url; ?>">
 					<?php if(!empty($img)): ?>
-						<img src="http://img.theberrics.com/images/<?php echo $img['file']; ?>" alt="" />
+						<img src="http://img01theberrics.com/images/<?php echo $img['file']; ?>" alt="" />
 					<?php else: ?>
 						<?php echo $post['Dailyop']['name']; ?> - <?php echo $post['Dailyop']['sub_title']; ?>
 					<?php endif ?>

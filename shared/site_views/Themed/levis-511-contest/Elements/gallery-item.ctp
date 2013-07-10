@@ -10,7 +10,7 @@ $ig_data = json_decode($m['instagram_data'],true);
 ?>
 <div class='image'>
 			
-				<img src='http://img.theberrics.com/i.php?w=400&h=350&src=/mediahunt-media/<?php echo $image['MediahuntMediaItem']['file_name']; ?>' border='0' />
+				<img src='http://img01theberrics.com/i.php?w=400&h=350&src=/mediahunt-media/<?php echo $image['MediahuntMediaItem']['file_name']; ?>' border='0' />
 			
 		</div>
 		<div class='task-div'>

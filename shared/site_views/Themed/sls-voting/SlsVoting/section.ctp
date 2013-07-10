@@ -32,7 +32,7 @@ $this->Html->script(array("jquery.cookie.js","section"),array("inline"=>false));
 				</div>
 				<div class='entry-div-wrapper'>
 				<?php foreach($entries as $v): ?>
-					<div class='entry-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>);' dailyop_id='<?php echo $v['Dailyop']['id']; ?>'>
+					<div class='entry-div' style='background-image:url(http://img01theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>);' dailyop_id='<?php echo $v['Dailyop']['id']; ?>'>
 						<div class='play-button'>
 							<a href='/street-league-selection-2012/<?php echo $v['Dailyop']['uri']; ?>'>Play Video</a>
 						</div>
@@ -75,7 +75,7 @@ You've heard of the 'sponsor me' tape, right?  Well guess what?  The Selection i
 								if($this->Session->check("Auth.User.id") && isset($votes[$i])): 
 									foreach($entries as $v) if($v['SlsEntry']['id'] == $votes[$i]) $e=$v;
 							?>
-							<div class='vote-result-div' style='background-image:url(http://img.theberrics.com/images/<?php echo $e['DailyopMediaItem'][2]['MediaFile']['file']; ?>);'>
+							<div class='vote-result-div' style='background-image:url(http://img01theberrics.com/images/<?php echo $e['DailyopMediaItem'][2]['MediaFile']['file']; ?>);'>
 								
 							</div>
 							<?php else: ?>

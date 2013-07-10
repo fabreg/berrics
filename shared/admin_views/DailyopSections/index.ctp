@@ -65,7 +65,7 @@ $directives = DailyopSection::directives();
 			<?php else: ?>
 				<?php 
 
-					$lnk = "http://img.theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_light_file'];
+					$lnk = "http://img01theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_light_file'];
 
 				 ?>
 				 <a href="<?php echo $lnk ?>" target='_blank'>View Image</a>
@@ -77,7 +77,7 @@ $directives = DailyopSection::directives();
 			<?php else: ?>
 				<?php 
 
-					$lnk = "http://img.theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_dark_file'];
+					$lnk = "http://img01theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_dark_file'];
 
 				 ?>
 				 <a href="<?php echo $lnk ?>" target='_blank'>View Image</a>
@@ -89,7 +89,7 @@ $directives = DailyopSection::directives();
 			<?php else: ?>
 				<?php 
 
-					$lnk = "http://img.theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_color_file'];
+					$lnk = "http://img01theberrics.com/berrics-icons/".$dailyopSection['DailyopSection']['icon_color_file'];
 
 				 ?>
 				 <a href="<?php echo $lnk ?>" target='_blank'>View Image</a>

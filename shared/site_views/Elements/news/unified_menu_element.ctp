@@ -10,7 +10,7 @@ if(!empty($p['UnifiedStore']['image_logo'])) {
 ?>
 <div class='unified-bit'>
 	<div class='logo'>
-		<img src='http://img.theberrics.com/i.php?src=<?php echo $logo; ?>&w=40&h=40'  />
+		<img src='http://img01theberrics.com/i.php?src=<?php echo $logo; ?>&w=40&h=40'  />
 	</div>
 	<div class='info'>
 		<div class='title'>

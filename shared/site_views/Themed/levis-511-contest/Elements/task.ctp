@@ -34,7 +34,7 @@ if(!$pub) $tc = "task-unpublished";
 	<div class='body'>
 		<div class='thumb'>
 			<?php if(isset($m['id'])): ?>
-			<img src='http://img.theberrics.com/i.php?src=/mediahunt-media/<?php echo $m['file_name']; ?>&w=30&h=30&zc=1' border='0'/>
+			<img src='http://img01theberrics.com/i.php?src=/mediahunt-media/<?php echo $m['file_name']; ?>&w=30&h=30&zc=1' border='0'/>
 			<?php else: ?>
 			<img src='/theme/levis-511-contest/img/no-thumb.png' />
 			<?php endif; ?>

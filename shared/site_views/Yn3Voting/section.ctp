@@ -173,7 +173,7 @@ if(empty($this->request->params['section'])) $this->request->params['section'] =
 						</div>
 						<div class='info'>
 							<div class='crew-name-img'>
-								<img border='0' src='http://img.theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>' />
+								<img border='0' src='http://img01theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>' />
 							</div>
 							<div class='crew-name-label'>
 								CREW NAME

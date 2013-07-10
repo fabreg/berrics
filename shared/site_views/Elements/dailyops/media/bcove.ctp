@@ -41,7 +41,7 @@
                 document.getElementById("status").innerHTML = "That's all folks!";
             }
         },
-        "image":"http://img.theberrics.com/video/stills/<?php echo $MediaFile['file_video_still']; ?>",
+        "image":"http://img01theberrics.com/video/stills/<?php echo $MediaFile['file_video_still']; ?>",
         "provider":"http",
         "allowFullscreen":false,
         "usefullscreen":false

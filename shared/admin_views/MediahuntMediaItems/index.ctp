@@ -61,8 +61,8 @@
 			<?php echo $u['first_name']; ?> <?php Echo $u['last_name']; ?>
 		</td>
 		<td>
-			<a href='http://img.theberrics.com/mediahunt-media/<?php echo $mi['file_name'];  ?>' target='_blank'>
-				<img border='0' src='http://img.theberrics.com/i.php?src=/mediahunt-media/<?php Echo $mi['file_name']; ?>&w=100'  />
+			<a href='http://img01theberrics.com/mediahunt-media/<?php echo $mi['file_name'];  ?>' target='_blank'>
+				<img border='0' src='http://img01theberrics.com/i.php?src=/mediahunt-media/<?php Echo $mi['file_name']; ?>&w=100'  />
 			</a>
 		</td>
 		<td>

@@ -207,7 +207,7 @@ $(document).ready(function() {
 					//get the second media item and show it
 					$img = $post['Post']['DailyopMediaItem'][1]['MediaFile']['file'];
 				?>
-				<img border='0' alt='' src='http://img.theberrics.com/images/<?php echo $img; ?>' />
+				<img border='0' alt='' src='http://img01theberrics.com/images/<?php echo $img; ?>' />
 			</a>
 		</div>
 		<?php  

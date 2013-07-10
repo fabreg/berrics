@@ -109,7 +109,7 @@ class MediaHelper extends AppHelper {
 		
 		$attr['border'] = 0;
 
-		$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
+		$img_src_str = "{$proto}://img01theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
 		
 		if(isset($opt['lazy']) && $opt['lazy'] == true) {
 
@@ -118,7 +118,9 @@ class MediaHelper extends AppHelper {
 			if($lazy_h) $sz.= "&h=".$lazy_h;
 
 			$attr['data-original'] = $img_src_str;
+
 			$img_src_str = "//img.theberrics.com/i.php?src=".$empty_img."&zc=1".$sz;
+
 			$attr['class'] = "lazy ".$attr['class'];
 			if(isset($lazy_w)) $attr['width'] = $lazy_w;
 			if(isset($lazy_h)) $attr['height'] = $lazy_h;
@@ -167,7 +169,11 @@ class MediaHelper extends AppHelper {
 			break;
 		}
 		
+<<<<<<< HEAD
 		return "//img.theberrics.com/i.php?src=".$opt['src'].$size;
+=======
+		return "http://img01theberrics.com/i.php?src=".$opt['src'].$size;
+>>>>>>> update img links
 		
 	}
 	
@@ -276,7 +282,7 @@ class MediaHelper extends AppHelper {
 			$proto = 'https';
 			
 		}
-		echo $this->Html->image("{$proto}://img.theberrics.com/i.php?src=/berrics-icons/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
+		echo $this->Html->image("{$proto}://img01theberrics.com/i.php?src=/berrics-icons/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
 		
 	}
 
@@ -307,7 +313,7 @@ class MediaHelper extends AppHelper {
 			$proto = 'https';
 			
 		}
-		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=/section-headings/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
+		return $this->Html->image("{$proto}://img01theberrics.com/i.php?src=/section-headings/".$img['src']."&w=".$img['w']."&h=".$img['h'],$options);
 
 	}
 	
@@ -344,7 +350,7 @@ class MediaHelper extends AppHelper {
 		
 		$img['src'] = "/brand-logos/".$file;
 		
-		$src = "http://img.theberrics.com/i.php?".http_build_query($img);
+		$src = "http://img01theberrics.com/i.php?".http_build_query($img);
 		
 		return $this->Html->image($src,$opt);
 		
@@ -463,7 +469,7 @@ class MediaHelper extends AppHelper {
 		
 		$attr['border'] = 0;
 		
-		$src = "{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
+		$src = "{$proto}://img01theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size;
 		
 		if(isset($opt['lazy'])) {
 			
@@ -527,7 +533,7 @@ class MediaHelper extends AppHelper {
 		$attr['border'] = 0;
 		
 		//return the thumbnail
-		return $this->Html->image("{$proto}://img.theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
+		return $this->Html->image("{$proto}://img01theberrics.com/i.php?src=".$opt['src']."&zc=".$opt['zc'].$size,$attr);
 			
 	}
 

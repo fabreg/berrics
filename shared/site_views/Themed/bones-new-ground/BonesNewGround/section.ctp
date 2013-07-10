@@ -85,7 +85,7 @@ $this->set(compact("title_for_layout"));
 
 				<a href="/bones-new-ground/<?php echo $v['uri']; ?>?autoplay" >
 					<div class="play-icon"></div>
-					<img src="http://img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>" alt="" border='0' />
+					<img src="http://img01theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file']; ?>" alt="" border='0' />
 				</a>
 			</div>
 		<?php endforeach ?>

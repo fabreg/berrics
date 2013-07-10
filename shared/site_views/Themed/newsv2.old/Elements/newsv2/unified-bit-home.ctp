@@ -11,7 +11,7 @@ if(!empty($p['UnifiedStore']['image_logo'])) {
 ?>
 <div class='unified-bit-home'>
 	<div class='logo'>
-		<a href='/news/<?php echo $p['Dailyop']['uri']; ?>'><img src='http://img.theberrics.com/i.php?src=<?php echo $logo; ?>&w=90&h=65'  border='0'/></a>
+		<a href='/news/<?php echo $p['Dailyop']['uri']; ?>'><img src='http://img01theberrics.com/i.php?src=<?php echo $logo; ?>&w=90&h=65'  border='0'/></a>
 	</div>
 	<div class='info'>
 		<div class='title'>

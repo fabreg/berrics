@@ -138,7 +138,7 @@ class CommanderController extends LocalAppController {
 		
 		//set the FB META TAG
 		
-		$fb_meta_img = "<meta property='og:image' content='http://img.theberrics.com/images/".$viewing['DailyopMediaItem'][2]['MediaFile']['file']."' />";
+		$fb_meta_img = "<meta property='og:image' content='http://img01theberrics.com/images/".$viewing['DailyopMediaItem'][2]['MediaFile']['file']."' />";
 		
 		$this->set(compact("posts","viewing","fb_meta_img"));
 		return $posts;

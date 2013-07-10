@@ -92,8 +92,8 @@
 				?>
 				<tr>
 					<td>
-						<a href='http://img.theberrics.com/mediahunt-media/<?php echo $m['file_name']; ?>' target='_blank'>
-							<img src='http://img.theberrics.com/i.php?src=/mediahunt-media/<?php echo $m['file_name']; ?>&h=75&w=75' border='0'/>
+						<a href='http://img01theberrics.com/mediahunt-media/<?php echo $m['file_name']; ?>' target='_blank'>
+							<img src='http://img01theberrics.com/i.php?src=/mediahunt-media/<?php echo $m['file_name']; ?>&h=75&w=75' border='0'/>
 						</a>
 					</td>
 					<td>

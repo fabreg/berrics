@@ -13,11 +13,11 @@ $tumblr_source = "";
 	switch(strtolower($f['media_type'])) {
 		
 		case "bcove":
-			$tumblr_source = "http://img.theberrics.com/video/stills/".$f['file_video_still'];
+			$tumblr_source = "http://img01theberrics.com/video/stills/".$f['file_video_still'];
 		break;
 		case "img":
 		case "image":
-			$tumblr_source = "http://img.theberrics.com/images/".$f['file'];
+			$tumblr_source = "http://img01theberrics.com/images/".$f['file'];
 			break;
 	}
 	*/

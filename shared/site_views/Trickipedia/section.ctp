@@ -73,7 +73,7 @@ unset($t,$trick,$who,$meta_k,$meta_d);
 			<div class="trick-div clearfix">
 				<div class="img">
 					<a href="<?php echo $link; ?>">
-					<img src='http://img.theberrics.com/i.php?src=/loading-imgs/loading-700.jpg&amp;h=60&amp;w=60&amp;zc=1' data-original="http://img.theberrics.com/i.php?src=/images/<?php echo $img['file']; ?>&amp;w=60&amp;h=60&amp;zc=1" alt="" class='lazy' />
+					<img src='http://img01theberrics.com/i.php?src=/loading-imgs/loading-700.jpg&amp;h=60&amp;w=60&amp;zc=1' data-original="http://img01theberrics.com/i.php?src=/images/<?php echo $img['file']; ?>&amp;w=60&amp;h=60&amp;zc=1" alt="" class='lazy' />
 					</a>
 				</div>
 				<div class="info">
