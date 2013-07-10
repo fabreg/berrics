@@ -127,6 +127,7 @@
 					<a href="/features.html">Features</a> | 
 					<a href="/headquarters">Headquarters</a> | 
 					<a href="/battle-at-the-berrics-6">Battle At The Berrics 6</a>
+					<a href='/terms.html'>Terms Of Service</a>
 				</div>
 			</div>
 		</footer>
