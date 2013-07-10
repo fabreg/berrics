@@ -23,7 +23,7 @@ $(document).ready(function() {
 		$('.berrics-player').attr({
 			"src":video['brightcove_url'],
 			"autoplay":false,
-			"poster":"http://img01theberrics.com/?w=728&h=500&zc=1&src=/video/stills/<?php echo $m['file_video_still']; ?>",
+			"poster":"http://img01.theberrics.com/?w=728&h=500&zc=1&src=/video/stills/<?php echo $m['file_video_still']; ?>",
 			"loop":false
 		});
 

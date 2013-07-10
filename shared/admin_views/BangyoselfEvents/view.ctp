@@ -106,7 +106,7 @@ $(document).ready(function() {
 				
 					endif; 
 				?>
-				<a href='http://img01theberrics.com/bang-yoself/<?php echo $e['file_name']; ?>' target='_blank'>View File</a>
+				<a href='http://img01.theberrics.com/bang-yoself/<?php echo $e['file_name']; ?>' target='_blank'>View File</a>
 				
 			</td>
 		</tr>

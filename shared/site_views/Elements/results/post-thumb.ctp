@@ -7,7 +7,7 @@ $style = '';
 
 if(!empty($dop['DailyopSection']['icon_light_file'])) {
 	
-	//$style='background-image:url(http://img01theberrics.com/i.php?src=/berrics-icons/'.$dop['DailyopSection']['icon_light_file'].'&w=24&h=24)';
+	//$style='background-image:url(http://img01.theberrics.com/i.php?src=/berrics-icons/'.$dop['DailyopSection']['icon_light_file'].'&w=24&h=24)';
 	
 }
 

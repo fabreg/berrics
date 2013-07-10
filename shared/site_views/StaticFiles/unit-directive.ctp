@@ -34,7 +34,7 @@ $this->set(compact("title_for_layout","meta_k","meta_d"));
 		<div class='container-top'>
 			<div class='ud-content'>
 				<div class='park-image'>
-									<img src="http://img01theberrics.com/c/210d7dbe83b4bc16f9887dd32279a35d-6f74942583aef05a3f1aef8c4be2d77a.jpg"/>
+									<img src="http://img01.theberrics.com/c/210d7dbe83b4bc16f9887dd32279a35d-6f74942583aef05a3f1aef8c4be2d77a.jpg"/>
 							</div>
 			</div>
 		</div>

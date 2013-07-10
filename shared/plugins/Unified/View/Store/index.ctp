@@ -82,9 +82,9 @@ jQuery(document).ready(function($) {
 			<?php 
 				if(!empty($unifiedStore['UnifiedStore']['image_logo'])):
 			?>
-			<img src='http://img01theberrics.com/i.php?src=/unified-logos/<?php echo $unifiedStore['UnifiedStore']['image_logo']; ?>&w=100' />
+			<img src='http://img01.theberrics.com/i.php?src=/unified-logos/<?php echo $unifiedStore['UnifiedStore']['image_logo']; ?>&w=100' />
 			<br />
-			<a href='http://img01theberrics.com/unified-logos/<?php echo $unifiedStore['UnifiedStore']['image_logo']; ?>' target='_blank'>FULL SIZE</a>
+			<a href='http://img01.theberrics.com/unified-logos/<?php echo $unifiedStore['UnifiedStore']['image_logo']; ?>' target='_blank'>FULL SIZE</a>
 			<?php 
 				endif;
 			?>

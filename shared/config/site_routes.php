@@ -6,7 +6,7 @@
 
 if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
-	header('Location: http://img01theberrics.com/images'.$_SERVER['REQUEST_URI']);
+	header('Location: http://img01.theberrics.com/images'.$_SERVER['REQUEST_URI']);
 	exit();
 	
 }

@@ -4,7 +4,7 @@
 
 $fb_meta_img = $post['DailyopTextItem'][0]['MediaFile']['file'];
 
-$fb_meta_img = "<meta property='og:image' content='http://img01theberrics.com/images/{$fb_meta_img}' />";
+$fb_meta_img = "<meta property='og:image' content='http://img01.theberrics.com/images/{$fb_meta_img}' />";
 
 $this->set(compact("fb_meta_img"));
 

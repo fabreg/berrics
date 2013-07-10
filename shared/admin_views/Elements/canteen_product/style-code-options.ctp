@@ -12,7 +12,7 @@
 <?php if(strlen($this->data['CanteenProduct']['style_code_image'])>0): ?>
 <div style=''>
 	<label>Style Code Image</label>
-	<img src='http://img01theberrics.com/i.php?src=/product-img/<?php echo $this->data['CanteenProduct']['style_code_image']; ?>&w=80' />
+	<img src='http://img01.theberrics.com/i.php?src=/product-img/<?php echo $this->data['CanteenProduct']['style_code_image']; ?>&w=80' />
 </div>
 <?php endif;?>
 	

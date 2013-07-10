@@ -250,7 +250,7 @@ border:3px solid #cc0033;
 				$m = $img['MediahuntMediaItem'];
 		?>
 			<div class='img-thumb' json-data="" item-id='<?php echo $m['id']; ?>'>
-				<img src='http://img01theberrics.com/i.php?w=100&h=100&zc=1&src=/mediahunt-media/<?php echo $m['file_name']; ?>'/>
+				<img src='http://img01.theberrics.com/i.php?w=100&h=100&zc=1&src=/mediahunt-media/<?php echo $m['file_name']; ?>'/>
 			</div>
 		<?php endforeach; ?>
 		<div style='clear:both;'></div>

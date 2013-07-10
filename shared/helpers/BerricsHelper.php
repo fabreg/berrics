@@ -96,7 +96,7 @@ class BerricsHelper extends AppHelper {
 		 	case "flash":
 		 		
 		 		$swf_file = $m['file'];	
-		 		$display = "<div class='dailyop-swf-file' file='http://img01theberrics.com/{$swf_file}'></div>";
+		 		$display = "<div class='dailyop-swf-file' file='http://img01.theberrics.com/{$swf_file}'></div>";
 		 	
 		 	break;
 		 }
@@ -327,7 +327,7 @@ class BerricsHelper extends AppHelper {
 		/*$month = strtolower(date("M",strtotime($date_time)));
 		$year = date("y",strtotime($date_time));
 		
-		$src = "http://img01theberrics.com/i.php?src=/date-img/{$month}{$year}.png&h={$h}";
+		$src = "http://img01.theberrics.com/i.php?src=/date-img/{$month}{$year}.png&h={$h}";
 		
 		return $this->Html->image($src,$options);*/
 		

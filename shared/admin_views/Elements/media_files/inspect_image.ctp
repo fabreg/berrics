@@ -27,7 +27,7 @@ function handleImageUpload() {
 				<label>Direct Link</label>
 				<div>
 					<?php 
-						$img_link = "http://img01theberrics.com/images/".$this->data['MediaFile']['file'];
+						$img_link = "http://img01.theberrics.com/images/".$this->data['MediaFile']['file'];
 					?>
 					<a href='<?php echo $img_link; ?>' target='_blank'><?php echo $img_link; ?></a>
 				</div>

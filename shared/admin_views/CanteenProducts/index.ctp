@@ -176,7 +176,7 @@ function openDetails(id,ele) {
 			<td align='center' nowrap width='1%' ><?php echo $p['style_code']; ?></td>
 			<td align='center' nowrap width='1%' >
 			<?php if(!empty($p['style_code_image'])): ?>
-			<img border='0' src='http://img01theberrics.com/i.php?src=/product-img/<?php echo $p['style_code_image']; ?>&w=50' />
+			<img border='0' src='http://img01.theberrics.com/i.php?src=/product-img/<?php echo $p['style_code_image']; ?>&w=50' />
 			<?php else: ?>
 			NO IMAGE
 			<?php endif; ?>

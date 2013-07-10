@@ -68,7 +68,7 @@ $(document).ready(function() {
 		?>
 			<div style='float:left; padding:3px;' class='brand-thumb'>
 				<a href='/trajectory/<?php echo $post['Dailyop']['uri']; ?>'>
-					<img src='http://img01theberrics.com/images/<?php echo $post['DailyopMediaItem'][1]['MediaFile']['file']; ?>' border='0' />
+					<img src='http://img01.theberrics.com/images/<?php echo $post['DailyopMediaItem'][1]['MediaFile']['file']; ?>' border='0' />
 				</a>
 			</div>
 		<?php 

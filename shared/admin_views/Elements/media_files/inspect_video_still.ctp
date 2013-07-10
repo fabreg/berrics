@@ -30,7 +30,7 @@ function handleStillUpload() {
 			<div style='padding-bottom:5px;'>
 				<div>
 					<?php 
-						$img_link = "http://img01theberrics.com/video/stills/".$this->data['MediaFile']['file_video_still'];
+						$img_link = "http://img01.theberrics.com/video/stills/".$this->data['MediaFile']['file_video_still'];
 					?>
 					<a href='<?php echo $img_link; ?>' target='_blank'><?php echo $img_link; ?></a>
 				</div>
@@ -59,7 +59,7 @@ function handleStillUpload() {
 			<div style='padding-bottom:5px;'>
 				<div>
 					<?php 
-						$img_link = "http://img01theberrics.com/video/stills-slim/".$this->data['MediaFile']['file_video_still_slim'];
+						$img_link = "http://img01.theberrics.com/video/stills-slim/".$this->data['MediaFile']['file_video_still_slim'];
 					?>
 					<a href='<?php echo $img_link; ?>' target='_blank'><?php echo $img_link; ?></a>
 				</div>
@@ -85,7 +85,7 @@ function handleStillUpload() {
 			<div style='padding-bottom:5px;'>
 				<div>
 					<?php 
-						$img_link = "http://img01theberrics.com/video/stills-large/".$this->data['MediaFile']['file_video_still_large'];
+						$img_link = "http://img01.theberrics.com/video/stills-large/".$this->data['MediaFile']['file_video_still_large'];
 					?>
 					<a href='<?php echo $img_link; ?>' target='_blank'><?php echo $img_link; ?></a>
 				</div>

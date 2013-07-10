@@ -135,7 +135,7 @@ $(document).ready(function() {
 		<div class='row-fluid'>
 			<div class='span8'>
 				<div style='text-align:center; background-color:#000; padding:10px; margin:auto;'>
-					<img src="http://img01theberrics.com/i.php?src=/video/stills/502d5547-a998-4d70-922f-551a323849cf.jpg&amp;zc=0&amp;h=400&amp;w=700" border="0" alt="">
+					<img src="http://img01.theberrics.com/i.php?src=/video/stills/502d5547-a998-4d70-922f-551a323849cf.jpg&amp;zc=0&amp;h=400&amp;w=700" border="0" alt="">
 				</div>
 				<div style='text-align:center;'>
 					<script>
@@ -144,7 +144,7 @@ $(document).ready(function() {
 						</script>
 				</div>
 				<div style='text-align:center;'>
-					<img src="http://img01theberrics.com/i.php?src=/video/stills/502d5547-a998-4d70-922f-551a323849cf.jpg&amp;zc=0&amp;h=400&amp;w=700" border="0" alt="">
+					<img src="http://img01.theberrics.com/i.php?src=/video/stills/502d5547-a998-4d70-922f-551a323849cf.jpg&amp;zc=0&amp;h=400&amp;w=700" border="0" alt="">
 				</div>
 			</div>
 			<div class='span4'>

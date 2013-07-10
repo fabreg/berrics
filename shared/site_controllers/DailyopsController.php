@@ -502,7 +502,7 @@ class DailyopsController extends LocalAppController {
 			break;
 		}
 		
-		$img = "http://img01theberrics.com".$img;
+		$img = "http://img01.theberrics.com".$img;
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
 		
@@ -535,7 +535,7 @@ class DailyopsController extends LocalAppController {
 				break;
 			}
 			
-			$img = "http://img01theberrics.com".$img;
+			$img = "http://img01.theberrics.com".$img;
 		
 		} elseif($img_str) {
 			

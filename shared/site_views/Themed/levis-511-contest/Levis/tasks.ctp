@@ -80,7 +80,7 @@ if(!empty($mediaItem['MediahuntMediaItem']['id'])) {
 
 function showTmpThumb(file) {
 
-	var url = "http://img01theberrics.com/i.php?src=/tmp/"+file+"&w=337&h=234&zc=0";
+	var url = "http://img01.theberrics.com/i.php?src=/tmp/"+file+"&w=337&h=234&zc=0";
 
 	var img = $("<img />").attr({
 			"src":url,

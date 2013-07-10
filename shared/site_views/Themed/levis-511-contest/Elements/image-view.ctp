@@ -3,7 +3,7 @@ $ig_data = json_decode($image['MediahuntMediaItem']['instagram_data'],true);
 ?>
 <div class='image-view'>
 	<div class='image-file'>
-		<img border='0' src='http://img01theberrics.com/i.php?src=/mediahunt-media/<?php echo $image['MediahuntMediaItem']['file_name']; ?>&w=275' />
+		<img border='0' src='http://img01.theberrics.com/i.php?src=/mediahunt-media/<?php echo $image['MediahuntMediaItem']['file_name']; ?>&w=275' />
 	</div>
 	<div class='image-user'>
 		<div class='image-task'><span>CHALLENGE: </span><?php echo $image['MediahuntTask']['name']; ?></div>

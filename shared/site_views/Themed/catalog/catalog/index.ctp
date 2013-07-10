@@ -39,7 +39,7 @@ function setImage(display_weight) {
 	var file = $('.page-thumb[display_weight='+display_weight+']').attr('file');
 
 	$("#tile-view").css({
-		"background-image":"url(http://img01theberrics.com/images/"+file+")"
+		"background-image":"url(http://img01.theberrics.com/images/"+file+")"
 	});
 
 	var next = $('.page-thumb[display_weight='+Number(display_weight+1)+"]").attr("file") || '';

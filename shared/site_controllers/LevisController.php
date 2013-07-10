@@ -95,7 +95,7 @@ class LevisController extends DailyopsController {
 		
 		//set facebook image
 		
-		$facebook_img = "http://img01theberrics.com/mediahunt-media/".$image['MediahuntMediaItem']['file_name'];
+		$facebook_img = "http://img01.theberrics.com/mediahunt-media/".$image['MediahuntMediaItem']['file_name'];
 		
 		$this->setFacebookMetaImg(false,$facebook_img);
 		

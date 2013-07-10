@@ -14,7 +14,7 @@
 	?>
 		<?php if(!empty($this->request->data['CanteenPromoCode']['icon_file'])): ?>
 		<div>
-			<img border='0' src='http://img01theberrics.com/canteen-promo-icons/<?php echo $this->request->data['CanteenPromoCode']['icon_file']; ?>' />
+			<img border='0' src='http://img01.theberrics.com/canteen-promo-icons/<?php echo $this->request->data['CanteenPromoCode']['icon_file']; ?>' />
 		</div>
 		<?php endif; ?>
 	<?php 

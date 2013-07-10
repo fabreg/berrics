@@ -107,7 +107,7 @@ body {
 				</div>
 				<?php foreach($s['in'] as $v):  ?>
 				<div>
-					<img src='http://img01theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>'  border='0'/>
+					<img src='http://img01.theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>'  border='0'/>
 				</div>
 				<?php endforeach; ?>
 			</div>
@@ -117,7 +117,7 @@ body {
 				</div>
 			<?php foreach($s['out'] as $v):  ?>
 				<div>
-					<img src='http://img01theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>'  border='0'/>
+					<img src='http://img01.theberrics.com/images/<?php echo $v['Post']['DailyopMediaItem'][2]['MediaFile']['file']; ?>'  border='0'/>
 				</div>
 				<?php endforeach; ?>
 			</div>

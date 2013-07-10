@@ -40,8 +40,8 @@
 	<?php foreach($items as $i): ?>
 	<div class='media-item'>
 		<div class='img'>
-			<a href='http://img01theberrics.com/mediahunt-media/<?php echo $i['MediahuntMediaItem']['file_name']; ?>' target='_blank'>
-				<img src='http://img01theberrics.com/i.php?src=/mediahunt-media/<?php echo $i['MediahuntMediaItem']['file_name']; ?>&h=100' border='0'/>
+			<a href='http://img01.theberrics.com/mediahunt-media/<?php echo $i['MediahuntMediaItem']['file_name']; ?>' target='_blank'>
+				<img src='http://img01.theberrics.com/i.php?src=/mediahunt-media/<?php echo $i['MediahuntMediaItem']['file_name']; ?>&h=100' border='0'/>
 			</a>
 		</div>
 		<div class='task'>

@@ -29,7 +29,7 @@ $(document).ready(function() {
 		function() { 	
 
 			var media_file_id = $(this).attr("media_file_id");
-			var img = "<div class='img'><img src='http://img01theberrics.com/i.php?src=/images/"+$(this).attr("media_file")+"&h=450&w=450' /></div>";
+			var img = "<div class='img'><img src='http://img01.theberrics.com/i.php?src=/images/"+$(this).attr("media_file")+"&h=450&w=450' /></div>";
 			$(".img-preview-wrapper[media_file_id="+media_file_id+"]").html(img);
 	
 		},
@@ -136,7 +136,7 @@ function imageHover() {
 						echo "<br />".$this->Admin->link("Preview Video",array("action"=>"preview_video",$mediaFile['MediaFile']['id']),array("target"=>"_blank","rel"=>"no-ajax"));
 					break;
 					case "img":
-						echo "<br /><div class='img-preview-wrapper' media_file_id='".$mediaFile['MediaFile']['id']."'></div><a href='http://img01theberrics.com/images/".$mediaFile['MediaFile']['file']."' target='_blank' rel='no-ajax' media_file_id='".$mediaFile['MediaFile']['id']."' class='img-preview-link' media_file='".$mediaFile['MediaFile']['file']."'>Preview Image</a>";
+						echo "<br /><div class='img-preview-wrapper' media_file_id='".$mediaFile['MediaFile']['id']."'></div><a href='http://img01.theberrics.com/images/".$mediaFile['MediaFile']['file']."' target='_blank' rel='no-ajax' media_file_id='".$mediaFile['MediaFile']['id']."' class='img-preview-link' media_file='".$mediaFile['MediaFile']['file']."'>Preview Image</a>";
 					break;
 					
 				}
