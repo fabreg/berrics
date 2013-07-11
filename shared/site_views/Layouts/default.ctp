@@ -138,8 +138,10 @@
 			</div>
 		</footer>
 		<div style='text-align:right; font-size:10px; clear:both;'><?php echo php_uname('n'); ?></div>
+		<?php pr(CakeSession::read()); ?>
 		<?php echo $this->element('sql_dump'); ?>
 		<?php echo $this->element("layout/v3/html-footer-scripts"); ?>
 		<!-- The Berrics - June 16 2011 - NOW() - John.hardy@me.com -->
+
 	</body>
 </html>
