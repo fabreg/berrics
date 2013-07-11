@@ -51,8 +51,6 @@ class DATABASE_CONFIG {
 
 	function DATABASE_CONFIG() 
     { 
-
-
         $this->__construct(); 
     } 
 	
