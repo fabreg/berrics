@@ -12,8 +12,7 @@
 	#login-wrapper #login-buttons {
 	
 	
-		width:50%;
-		margin:auto;
+		width:50%;		margin:auto;
 	
 	}
 	
@@ -121,7 +120,7 @@ $this->Html->css("login-form","stylesheet",array("inline"=>false));
 
 
 <?php 
-
+CakeSession::write("Testing","FUCK");
 pr($this->Session->read());
 
 
