@@ -99,16 +99,13 @@
 
 define("APP_PREFIX","berrics_admin");
 
-$my_dir = dirname(__FILE__);
-
-
 require $_SERVER['DOCUMENT_ROOT']."/../../shared/config/shared_bootstrap.php";
 
 require  $_SERVER['DOCUMENT_ROOT']."/../../shared/config/cache_config.php";
 
 App::build(array(
-		'View' => array($_SERVER['DOCUMENT_ROOT'].'/../../shared/site_views/'),
-		"Controller"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_controllers/"),
+		'View' => array($_SERVER['DOCUMENT_ROOT'].'/../../shared/admin_views/'),
+		"Controller"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/admin_controllers/"),
 		"Lib"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_lib/")
 ));
 
