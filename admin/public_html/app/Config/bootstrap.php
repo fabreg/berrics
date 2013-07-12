@@ -105,8 +105,8 @@ require  $_SERVER['DOCUMENT_ROOT']."/../../shared/config/cache_config.php";
 
 App::build(array(
 		'View' => array($_SERVER['DOCUMENT_ROOT'].'/../../shared/admin_views/'),
-		"Controller"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/admin_controllers/"),
-		"Lib"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_lib/")
+		"Controller"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/admin_controllers/")
+		//"Lib"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_lib/")
 ));
 
 
