@@ -99,6 +99,8 @@
 
 define("APP_PREFIX","berrics_admin");
 
+
+
 require $_SERVER['DOCUMENT_ROOT']."/../../shared/config/shared_bootstrap.php";
 
 require  $_SERVER['DOCUMENT_ROOT']."/../../shared/config/cache_config.php";
