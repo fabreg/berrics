@@ -199,7 +199,7 @@
 		'timeout'=>20000,
 		'cookie'=>'berricsv3'
 	));
-	ini_set("session.cookie_domain",".theberrics.com");
+	//ini_set("session.cookie_domain",".theberrics.com");
 /**
  * The level of CakePHP security.
  */
