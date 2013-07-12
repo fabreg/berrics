@@ -26,14 +26,8 @@ define('GRAPH_SIZE',200);
 define('MAX_ITEM_DUMP',50);
 
 switch(strtoupper(php_uname('n'))) {
-	
-	case 'ADMIN':
-		$MEMCACHE_SERVERS[] = 'mem1:11211';
-	break;
-	case "WEB2VM":
-		$MEMCACHE_SERVERS[] = '127.0.0.1:11211';
-	break;
-	case "AWS-SESSION":
+
+	default:
 		$MEMCACHE_SERVERS[] = 'berrics-ses.yqu2qe.cfg.usw2.cache.amazonaws.com:11211';
 	break;
 }
