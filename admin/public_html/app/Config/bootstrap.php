@@ -99,15 +99,14 @@
 
 define("APP_PREFIX","berrics_admin");
 
-$my_dir = dirname(__FILE__);
+require $_SERVER['DOCUMENT_ROOT']."/../../shared/config/shared_bootstrap.php";
 
-require "/home/sites/berrics.v3/shared/config/shared_bootstrap.php";
-
-require "/home/sites/berrics.v3/shared/config/cache_config.php";
+require  $_SERVER['DOCUMENT_ROOT']."/../../shared/config/cache_config.php";
 
 App::build(array(
-		'View' => array('/home/sites/berrics.v3/shared/admin_views/'),
-		"Controller"=>array("/home/sites/berrics.v3/shared/admin_controllers/")
+		'View' => array($_SERVER['DOCUMENT_ROOT'].'/../../shared/admin_views/'),
+		"Controller"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/admin_controllers/"),
+		"Lib"=>array($_SERVER['DOCUMENT_ROOT']."/../../shared/site_lib/")
 ));
 
 
@@ -157,7 +156,7 @@ App::build(array(
  *
  */
 
-CakePlugin::loadAll();
+
 
 /**
  * You can attach event listeners to the request lifecyle as Dispatcher Filter . By Default CakePHP bundles two filters:

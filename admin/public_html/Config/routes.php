@@ -1,1 +1,0 @@
-../../../../shared/config/admin_routes.php
