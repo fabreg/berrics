@@ -33,7 +33,9 @@ switch(strtoupper(php_uname('n'))) {
 	case "WEB2VM":
 		$MEMCACHE_SERVERS[] = '127.0.0.1:11211';
 	break;
-	
+	case "AWS-SESSION":
+		$MEMCACHE_SERVERS[] = 'berrics-ses.yqu2qe.cfg.usw2.cache.amazonaws.com:11211';
+	break;
 }
 
 //$MEMCACHE_SERVERS[] = 'mymemcache-server1:11211'; // add more as an array
