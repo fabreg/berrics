@@ -195,8 +195,8 @@
  */
 	Configure::write('Session', array(
 		'defaults' => 'php',
-		"cookieTimeout"=>420000,
-		'timeout'=>240000,
+		"cookieTimeout"=>1209600,
+		'timeout'=>20000,
 		'cookie'=>'berricsv3'
 	));
 	ini_set("session.cookie_domain",".theberrics.com");
