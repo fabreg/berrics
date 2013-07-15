@@ -118,6 +118,11 @@ $dow = UnifiedStoreHour::daysOfWeek();
 <div class="row-fluid">
 	<div class="span6">
 		<h3>Store Hours</h3>
+		<?php 
+
+			echo $this->Form->input("store_hours_text",array("help"=>"<small>(Line Breaks Are Preserved)</small>"));
+
+		 ?>
 		<table cellspacing='0' id='store-hours-table' class='table table-bordered table-rounded table-striped'>
 			<tr>
 				<th>Open?</th>
