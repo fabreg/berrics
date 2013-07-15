@@ -9,6 +9,11 @@ if (preg_match('/(v3\.admin\.|cp\.)/', $_SERVER['HTTP_HOST'])) {
 
 	if(preg_match('/(v3\.|dev\.)/',$_SERVER['HTTP_HOST'])) {
 
+
+	}
+
+}
+
 		//site index
 		Router::connect("/unified",array("controller"=>"site","plugin"=>"unified"));
 
@@ -30,7 +35,3 @@ if (preg_match('/(v3\.admin\.|cp\.)/', $_SERVER['HTTP_HOST'])) {
 			);
 
 		}
-
-	}
-
-}
