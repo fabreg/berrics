@@ -1,0 +1,100 @@
+header {
+
+	background-image:url(/theme/unified/img/top-bar-bg.png);
+
+
+}
+
+#top-nav-div #top-nav-list li.spacer {
+
+	background-image:url(/theme/unified/img/nav-spacer.png);
+
+}
+
+
+
+/*
+######################\
+PROFILE STUFF
+#######################
+*/
+
+#unified-store-profile {
+
+	position: relative;
+
+}
+
+#profile-header {
+
+	position:absolute;
+	width:100%;
+	top:20px;
+}
+
+#profile-header .left {
+
+	float:left;
+
+}
+
+#profile-header .right {
+
+	float:right;
+
+}
+
+#profile-header .center {
+
+	margin-left:35px;
+	margin-right:72px;
+	background-image:url(/theme/unified/img/profile-header-bg.png);
+	background-repeat:repeat-x;
+	height:76px;
+	color:#ccc;
+	font-size:33px;
+	font-family:'universcnb';
+	line-height:62px;
+
+}
+
+#unified-store-profile .profile-body-container {
+
+	width:1130px;
+	margin:auto;
+	background-color:#fff;
+	min-height:500px;
+	padding-top:85px;
+	padding-right:15px;
+	padding-left:15px;
+}
+
+#unified-store-profile .top-info {
+
+
+}
+
+#unified-store-profile .top-info .left {
+
+	width:325px;
+	float:left;
+	background-color:red;
+	
+	min-height:50px;
+}
+
+#unified-store-profile .top-info .right {
+
+	width:760px;
+	float:right;
+	background-color:red;
+	
+	min-height:50px;
+
+}
+
+
+
+
+
+

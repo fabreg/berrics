@@ -23,7 +23,9 @@ class StoreProfileController extends UnifiedAppController {
 
 		$this->setStore();
 
-		//$this->set("body_element","layout/unified-store-body");
+		$this->set("body_element","layout/unified-store-body");
+
+		$this->theme = "unified";
 
 	}
 

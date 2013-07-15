@@ -118,6 +118,8 @@ public function search() {
 			//set validation
 			$this->UnifiedStore->setValidation($this->request->data);
 			
+			$this->uploadImageLogo();
+
 			if($this->UnifiedStore->saveAssociated($this->request->data)) {
 
 					$this->UnifiedStore->addTags($this->data['UnifiedStore']['id'],$this->request->data['UnifiedStore']['tags']);
@@ -223,15 +225,17 @@ public function search() {
 		
 		if(is_uploaded_file($this->request->data['UnifiedStore']['image_logo']['tmp_name'])) {
 			
+			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
+
 			$ext = pathInfo($this->request->data['UnifiedStore']['image_logo']['name'],PATHINFO_EXTENSION);
 			
 			$fileName = md5(time()).".".$ext;
 			
-			move_uploaded_file($this->request->data['UnifiedStore']['image_logo']['tmp_name'],TMP."upload/".$fileName);
+			move_uploaded_file($this->request->data['UnifiedStore']['image_logo']['tmp_name'],TMP."uploads/".$fileName);
 			
-			ImgServer::instance()->upload_unified_logo($fileName,TMP."upload/".$fileName);
+			ImgServer::instance()->upload_unified_logo($fileName,TMP."uploads/".$fileName);
 			
-			unlink(TMP."upload/".$fileName);
+			unlink(TMP."uploads/".$fileName);
 			
 			$this->request->data['UnifiedStore']['image_logo'] = $fileName;
 			

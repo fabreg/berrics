@@ -118,11 +118,7 @@ $dow = UnifiedStoreHour::daysOfWeek();
 <div class="row-fluid">
 	<div class="span6">
 		<h3>Store Hours</h3>
-		<?php 
 
-			echo $this->Form->input("store_hours_text",array("help"=>"<small>(Line Breaks Are Preserved)</small>"));
-
-		 ?>
 		<table cellspacing='0' id='store-hours-table' class='table table-bordered table-rounded table-striped'>
 			<tr>
 				<th>Open?</th>
@@ -172,7 +168,12 @@ $dow = UnifiedStoreHour::daysOfWeek();
 		</table>
 	</div>
 	<div class="span6">
-		<h3>Custom Dates
+		<?php 
+
+			echo $this->Form->input("store_hours_text",array("help"=>"<small>(Line Breaks Are Preserved)</small>"));
+
+		 ?>
+		<h3>Custom Dates</h3>
 		<div>
 			<button class="btn btn-success btn-mini" type='button' onclick='addCustom();'>
 			<i class="icon icon-white icon-plus-sign"></i> New Custom Date

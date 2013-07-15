@@ -28,7 +28,7 @@ function checkDupeUnifiedUri() {
 				echo $this->Form->input("store_status",array("options"=>$storeStatus));
 
 			}
-			echo $this->Form->input("shop_name"); 
+			echo $this->Form->input("shop_name");
 			echo $this->Form->input('shop_bio');
 			echo $this->Form->input("timezone",array("options"=>$timezones));
 			echo $this->Form->input("shop_email");
@@ -40,6 +40,22 @@ function checkDupeUnifiedUri() {
 		
 	</div>
 	<div class="span6">
+		<h3>Image Logo</h3>
+		<div class="row-fluid">
+			<div class="span4">
+				<?php if (!empty($this->request->data['UnifiedStore']['image_logo'])): ?>
+					  <img src="//img.theberrics.com/i.php?src=/unified-logos/<?php echo $this->request->data['UnifiedStore']['image_logo']; ?>&w=75" alt="">
+					  <div><a href='//img.theberrics.com/unified-logos/<?php echo $this->request->data['UnifiedStore']['image_logo']; ?>' target='_blank'>View Full Size</a></div>
+				<?php else: ?>
+						<span class="label label-important">
+							No Image Icon Uploaded
+						</span>
+				<?php endif; ?>
+			</div>
+			<div class="span8">
+				<?php echo $this->Form->input("image_logo",array("type"=>"file")); ?>
+			</div>
+		</div>
 		<h3>Social Networking</h3>
 		<?php 
 
