@@ -72,6 +72,8 @@ PROFILE STUFF
 #unified-store-profile .top-info {
 
 	padding-top:15px;
+	background-image:url(/theme/unified/img/profile-div-bg.jpg);
+	background-repeat:repeat-y;
 
 }
 
@@ -133,9 +135,17 @@ PROFILE STUFF
 	border-top:1px solid #000;
 	border-bottom:1px solid #000;
 	font-family:'Times New Roman';
-	padding:8px;
+	padding:5px;
 	font-size:15px;
+	margin-top:4px;
 
+
+}
+
+#unified-store-profile .top-info .left .store-details  .website-url {
+
+	padding-top:5px;
+	padding-bottom:5px;
 
 }
 
@@ -146,6 +156,31 @@ PROFILE STUFF
 	
 	
 	min-height:50px;
+
+}
+
+#unified-store-profile .map-wrapper {
+
+	
+	padding:10px;
+	border:1px solid #ccc;
+
+}
+
+#unified-store-profile .map-wrapper {
+
+	height:290px;
+	width:275px;
+	margin:auto;
+
+}
+
+#unified-store-profile #map_canvas {
+
+	height:280px;
+	width:265px;
+	margin:auto;
+
 
 }
 
