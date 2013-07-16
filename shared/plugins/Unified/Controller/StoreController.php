@@ -222,16 +222,16 @@ public function search() {
 	}
 	
 	private function uploadImageLogo() {
-		
-		if(is_uploaded_file($this->request->data['UnifiedStore']['image_logo']['tmp_name'])) {
-			
+
+		if(is_uploaded_file($this->request->data['UnifiedStore']['image_logo_file']['tmp_name'])) {
+
 			App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
 
-			$ext = pathInfo($this->request->data['UnifiedStore']['image_logo']['name'],PATHINFO_EXTENSION);
+			$ext = pathInfo($this->request->data['UnifiedStore']['image_logo_file']['name'],PATHINFO_EXTENSION);
 			
 			$fileName = md5(time()).".".$ext;
 			
-			move_uploaded_file($this->request->data['UnifiedStore']['image_logo']['tmp_name'],TMP."uploads/".$fileName);
+			move_uploaded_file($this->request->data['UnifiedStore']['image_logo_file']['tmp_name'],TMP."uploads/".$fileName);
 			
 			ImgServer::instance()->upload_unified_logo($fileName,TMP."uploads/".$fileName);
 			
@@ -239,7 +239,7 @@ public function search() {
 			
 			$this->request->data['UnifiedStore']['image_logo'] = $fileName;
 			
-		}
+		} 
 		
 	}
 

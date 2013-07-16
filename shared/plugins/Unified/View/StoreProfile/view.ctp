@@ -30,6 +30,9 @@
 						<div><?php echo $store['UnifiedStore']['city']; ?>, <?php echo $store['UnifiedStore']['state']; ?> <?php echo $store['UnifiedStore']['zip']; ?></div>
 						<div><?php echo $store['UnifiedStore']['phone']; ?></div>
 					</div>
+					<div class="store-hours-text">
+						<?php echo nl2br($store['UnifiedStore']['store_hours_text']); ?>
+					</div>
 				</div>
 			</div>
 			<div class="right">

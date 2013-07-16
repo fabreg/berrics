@@ -87,8 +87,8 @@ PROFILE STUFF
 #unified-store-profile .top-info .left .shop-name {
 
 	clear:both;
-	font-size:32px;
-	text-align:center;
+	font-size:24px;
+	text-align:left;
 	font-family:'universcnb';
 	padding-bottom:10px;
 }
@@ -122,8 +122,21 @@ PROFILE STUFF
 
 #unified-store-profile .top-info .left .store-details .street-address {
 
-	font-size:22px;
-	line-height:26px;
+	font-size:18px;
+	line-height:22px;
+}
+
+
+#unified-store-profile .top-info .left .store-details .store-hours-text {
+
+	
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	font-family:'Times New Roman';
+	padding:8px;
+	font-size:15px;
+
+
 }
 
 #unified-store-profile .top-info .right {

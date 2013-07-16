@@ -32,7 +32,8 @@ function checkDupeUnifiedUri() {
 			echo $this->Form->input('shop_bio');
 			echo $this->Form->input("timezone",array("options"=>$timezones));
 			echo $this->Form->input("shop_email");
-			echo $this->Form->input("uri");
+			echo $this->Form->input("website_url",array("help"=>"<small>(USE: http://)</small>"));
+			echo $this->Form->input("uri",array("help"=>"<small>(IE: theberrics.com/unified/{URI})</small>"));
 			echo $this->Form->input("established_year",array("options"=>$years));
 			echo $this->Form->input("parking_situation",array("options"=>UnifiedStore::parkingSituation(),"empty"=>true));
 			
@@ -53,7 +54,7 @@ function checkDupeUnifiedUri() {
 				<?php endif; ?>
 			</div>
 			<div class="span8">
-				<?php echo $this->Form->input("image_logo",array("type"=>"file")); ?>
+				<?php echo $this->Form->input("image_logo_file",array("type"=>"file")); ?>
 			</div>
 		</div>
 		<h3>Social Networking</h3>
