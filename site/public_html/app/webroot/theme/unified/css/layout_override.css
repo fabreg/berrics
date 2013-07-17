@@ -135,7 +135,8 @@ PROFILE STUFF
 	border-top:1px solid #000;
 	border-bottom:1px solid #000;
 	font-family:'Times New Roman';
-	padding:5px;
+	padding-top:5px;
+	padding-bottom:5px;
 	font-size:15px;
 	margin-top:4px;
 
@@ -149,6 +150,14 @@ PROFILE STUFF
 
 }
 
+#unified-store-profile .social-networks {
+
+	padding-top:5px;
+	padding-bottom:5px;
+
+}
+
+
 #unified-store-profile .top-info .right {
 
 	width:760px;
@@ -159,20 +168,15 @@ PROFILE STUFF
 
 }
 
-#unified-store-profile .map-wrapper {
 
-	
-	padding:10px;
-	border:1px solid #ccc;
 
-}
+#unified-store-profile .map-container {
 
-#unified-store-profile .map-wrapper {
-
-	height:290px;
-	width:275px;
-	margin:auto;
-
+	clear:both;
+	background-image:url(/theme/unified/img/profile-map-bg.jpg);
+	background-repeat:no-repeat;
+	background-position:center top;
+	padding:8px;
 }
 
 #unified-store-profile #map_canvas {
