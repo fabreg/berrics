@@ -16,6 +16,15 @@ class TesterController extends LocalAppController {
 		$this->Auth->allow("*");
 		
 	}
+
+
+	public function test_unified_store() {
+		
+		$this->loadModel("UnfiedStore");
+
+		
+
+	}
 	
 	public function info() {
 

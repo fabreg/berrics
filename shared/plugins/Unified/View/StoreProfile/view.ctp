@@ -182,6 +182,12 @@ function shipChangeState() {
 }
 
 </script>
+<?php 
+
+$addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedStore']['address2']} {$store['UnifiedStore']['city']} {$store['UnifiedStore']['state']}");
+
+
+ ?>
 <div id="unified-store-profile">
 	<div id="profile-header" class='clearfix'>
 		<div class="left">
@@ -242,7 +248,7 @@ function shipChangeState() {
 					<div id="map_canvas" class='clearfix' style=''></div>
 				</div>
 				<div class="directions-link clearfix">
-					<a href="">Get Directions ></a>
+					<a href="https://maps.google.com/maps?saddr=current+location&daddr=<?php echo $addr_string; ?>&hl=en" target='_blank'>Get Directions ></a>
 				</div>
 			</div>
 			<div class="right">
