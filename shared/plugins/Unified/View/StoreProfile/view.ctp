@@ -218,7 +218,7 @@ function shipChangeState() {
 						<?php echo nl2br($store['UnifiedStore']['store_hours_text']); ?>
 					</div>
 					<div class="website-url">
-						<?php echo $this->Text->autoLinkUrls($store['UnifiedStore']['website_url']); ?>
+						<a href="<?php echo $store['UnifiedStore']['website_url']; ?>" target='_blank'><?php echo $store['UnifiedStore']['website_url']; ?></a>
 					</div>
 					<div class="social-networks">
 						<?php if (!empty($store['UnifiedStore']['facebook_url'])): ?>
