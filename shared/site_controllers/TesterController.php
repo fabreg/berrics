@@ -17,6 +17,13 @@ class TesterController extends LocalAppController {
 		
 	}
 	
+	public function info() {
+
+		phpinfo();
+		die();
+
+	}
+
 	public function test_html5() {
 		
 		$this->loadModel("Dailyop");
