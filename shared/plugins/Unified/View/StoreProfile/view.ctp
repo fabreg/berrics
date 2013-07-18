@@ -2,6 +2,11 @@
 
 $this->Unified->mapJsIncludes();
 
+//set the page title
+
+$pt = "THE BERRICS UNIFIED - {$store['UnifiedStore']['shop_name']}";
+
+$this->set("title_for_layout",$pt);
 
  ?>
 <script type="text/javascript">
@@ -252,7 +257,11 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 				</div>
 			</div>
 			<div class="right">
-				
+				<div class="bio">
+					<p>
+						<?php echo nl2br($store['UnifiedStore']['shop_bio']); ?>
+					</p>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -58,7 +58,7 @@ public function search() {
 			"UnifiedStore"=>array(
 
 				"limit"=>50,
-				"order"=>array("UnifiedStore.shop_name"=>"ASC")
+				"order"=>array("UnifiedStore.id"=>"desc")
 
 			)
 

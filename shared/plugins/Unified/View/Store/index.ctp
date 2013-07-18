@@ -90,9 +90,10 @@ jQuery(document).ready(function($) {
 			?>
 		</td>
 		<td class="actions">
-			<a href="//dev.theberrics.com/unified/<?php echo $unifiedStore['UnifiedStore']['uri']; ?>" class="btn btn-success btn-mini" target='_blank'>Preview</a>
+			
 			<?php echo $this->Admin->link(__('Edit'), array('action' => 'edit', $unifiedStore['UnifiedStore']['id'])); ?>
 			<?php echo $this->Admin->link(__('Delete'), array('action' => 'delete', $unifiedStore['UnifiedStore']['id']), null, sprintf(__('Are you sure you want to delete # %s?'), $unifiedStore['UnifiedStore']['id'])); ?>
+			<a href="//dev.theberrics.com/unified/<?php echo $unifiedStore['UnifiedStore']['uri']; ?>" class="btn btn-success btn-small" target='_blank'>Preview</a>
 		</td>
 	</tr>
 <?php endforeach; ?>
