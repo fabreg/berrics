@@ -3,7 +3,7 @@
 Router::connect("/unified",array("controller"=>"site","plugin"=>"unified"));
 
 //profile pages
-if(preg_match('/^(\/unified\/)(.*)(\.html)$/',$_SERVER['SCRIPT_URL'])) {
+if(preg_match('/^(\/unified\/)(.*)(\.html)$/',$_SERVER['REQUEST_URI'])) {
 	
 	Router::connect("/unified/:uri",
 			array("plugin"=>"unified","controller"=>"store_profile","action"=>"view"),
