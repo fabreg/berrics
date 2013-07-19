@@ -1,0 +1,116 @@
+
+#chima {
+
+display:none;
+
+}
+
+#chima .post .post-top,
+#chima .post .post-footer {
+
+display:none;
+
+}
+
+#chima .post-media-div,
+#chima .post-media-div object,
+#chima .post-media-div video {
+
+min-height:400px;
+
+}
+
+#chima .post {
+
+border:none;
+
+
+}
+
+#chima {
+
+	display:block;
+
+}
+
+
+body {
+
+	background-image:url(http://img.theberrics.com/images/de1f78f0a064cc18202b6804497c3652.jpg);
+	background-size:cover;
+	background-attachment:fixed;
+
+
+}
+
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+
+	body {
+
+		background-image:url(http://img.theberrics.com/images/de1f78f0a064cc18202b6804497c3652.jpg);
+		background-size:cover;
+		background-attachment:fixed;
+
+	}
+
+
+
+
+
+ }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+
+	body {
+
+		background-image:url(http://img.theberrics.com/images/de1f78f0a064cc18202b6804497c3652.jpg);
+		background-size:cover;
+		background-attachment:fixed;
+
+
+	}
+
+	#chima .post-media-div,
+	#chima .post-media-div object,
+	#chima .post-media-div video {
+
+		min-height:280px;
+
+	}
+
+
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+	body {
+
+		background-image:none;
+		background-size:cover;
+		background-attachment:fixed;
+
+
+	}
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+#chima .post-media-div,
+#chima .post-media-div object,
+#chima .post-media-div video {
+
+	min-height:220px;
+
+}
+
+
+
+ }
