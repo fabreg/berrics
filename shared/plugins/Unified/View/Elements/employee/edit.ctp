@@ -67,6 +67,7 @@
 
 	}
 	echo $this->Form->input("unified_store_id",array("type"=>"hidden"));
+	echo $this->Form->input("team_rider");
 	echo $this->Form->input("name");
 	echo $this->Form->input("title",array("options"=>UnifiedStoreEmployee::titles(),"empty"=>true));
 	echo $this->Form->input("email");

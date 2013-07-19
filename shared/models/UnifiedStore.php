@@ -40,6 +40,8 @@ class UnifiedStore extends AppModel {
 
 	}
 
+	
+
 	public function returnStore($store_id = false,$isAdmin = false,$cache = true) {
 
 		if(!$store_id) throw new BadRequestException();

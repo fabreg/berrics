@@ -101,6 +101,7 @@ $titles = UnifiedStoreEmployee::titles();
 					<th>
 						<i class="icon icon-reorder"></i>
 					</th>
+					<th>TeamRider</th>
 					<th>Image</th>
 					<th>Name</th>
 					<th>Title</th>
@@ -113,6 +114,13 @@ $titles = UnifiedStoreEmployee::titles();
 				<tr>
 					<td width='1%'>
 						<i class="icon icon-reorder"></i>
+					</td>
+					<td width='1%'>
+						<?php if ($v['team_rider']): ?>
+							<span class="label label-success">YES</span>
+						<?php else: ?>
+							<span class="label label-important">NO</span>
+						<?php endif ?>
 					</td>
 					<td width='4%'>
 						<?php echo $this->Media->unifiedEmployeeThumb(array(

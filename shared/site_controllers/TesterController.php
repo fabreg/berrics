@@ -20,9 +20,11 @@ class TesterController extends LocalAppController {
 
 	public function test_unified_store() {
 		
-		$this->loadModel("UnfiedStore");
+		$this->loadModel("UnifiedStore");
 
-		
+		$store =$this->UnifiedStore->returnStore(226);
+
+		die(pr($store));
 
 	}
 	

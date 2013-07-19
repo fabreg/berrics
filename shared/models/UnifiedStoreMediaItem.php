@@ -45,7 +45,7 @@ class UnifiedStoreMediaItem extends AppModel {
 		
 		$a = array(
 			
-			"main"=>"Main (Will be uses as your main display media)",
+			"main"=>"Main (Will be used as your main display media)",
 			"video"=>"Video Posts",
 			"images"=>"Images",
 			"team"=>"Team Media"

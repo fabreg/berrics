@@ -8,6 +8,17 @@ $pt = "THE BERRICS UNIFIED - {$store['UnifiedStore']['shop_name']}";
 
 $this->set("title_for_layout",$pt);
 
+
+//format media
+$mediaItems = array();
+
+foreach($store['UnifiedStoreMediaItem'] as $k=>$v) {
+
+	$mediaItems[$v['category']][] = $v;
+
+}
+
+
  ?>
 <script type="text/javascript">
 
@@ -59,6 +70,28 @@ jQuery(document).ready(function($) {
 	//$("#ShippingAddressCountry").change();
 	shipChangeState();
 	
+
+	//tabs
+	$("#profile-tab-nav li.tab-b").click(function() { 
+
+		$('.tab-container').hide();
+
+		var token = $(this).attr('data-tab');
+
+		//show the tab
+
+		$('.tab-container#'+token).show();
+
+		$('#profile-tab-nav li.active').removeClass('active');
+
+		$(this).addClass('active');
+
+	});
+
+	$("#profile-tab-nav li.tab-b:first").trigger('click');
+
+
+
 	
 
 });
@@ -186,6 +219,9 @@ function shipChangeState() {
 	
 }
 
+//tabs stuff
+
+
 </script>
 <?php 
 
@@ -225,6 +261,11 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 						<div><?php echo strtoupper($store['UnifiedStore']['city']); ?>, <?php echo strtoupper($store['UnifiedStore']['state']); ?> <?php echo strtoupper($store['UnifiedStore']['zip']); ?></div>
 						<div><?php echo strtoupper($store['UnifiedStore']['phone']); ?></div>
 					</div>
+					<?php if (!empty($store['UnifiedStore']['parking_situation'])): ?>
+					<div class="parking-situation">
+						PARKING - <?php echo strtoupper($store['UnifiedStore']['parking_situation']); ?>
+					</div>
+					<?php endif; ?>
 					<div class="store-hours-text">
 						<?php echo nl2br($store['UnifiedStore']['store_hours_text']); ?>
 					</div>
@@ -257,15 +298,71 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 				</div>
 			</div>
 			<div class="right">
-				<div class="bio">
-					<p>
-						<?php echo nl2br($store['UnifiedStore']['shop_bio']); ?>
-					</p>
+				<div class="inner">
+					<div class="bio">
+						<!-- IMAGE -->
+						<div class="main-img">
+							<?php echo $this->Media->mediaThumb(array(
+								"MediaFile"=>$mediaItems['main'][0]['MediaFile'],
+								"w"=>700
+							)); ?>
+						</div>
+						<p>
+							<?php echo nl2br($store['UnifiedStore']['shop_bio']); ?>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div id='profile-tab-nav' class='clearfix'>
+		<ul>
+			<li class='left'></li>
+			<li class='tab-b' data-tab='brands'>BRANDS</li>
+			<li class='tab-s'></li>
+			<li class='tab-b' data-tab='team'>TEAM</li>
+			<li class='tab-s'></li>
+			<li class='tab-b' data-tab='employees'>EMPLOYEES</li>
+			<li class='tab-s'></li>
+			<li class='tab-b' data-tab='news'>NEWS</li>
+			<li class='right'></li>
+		</ul>
+	</div>
+	<div class="tab-body-container clearfix">
+		<!-- BRANDS -->
+		<div id="brands" class="tab-container clearfix">
+			<?php foreach ($store['UnifiedStoreBrand'] as $k => $v): ?>
+				<div class="brand">
+					<img src="//img.theberrics.com/i.php?src=/brand-logos/<?php echo $v['Brand']['image_logo'] ?>&h=85" alt="">
+				</div>
+			<?php endforeach ?>
+		</div>
+		<!-- END BRANDS -->
+
+		<!-- EMPLOYEES -->
+		<div id="employees" class='tab-container clearfix'>
+			<?php foreach ($store['UnifiedStoreEmployee'] as $k => $v): ?>
+			<div class="employee">
+				<div class="profile-img">
+					<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=235&h=150&zc=1" alt="">
+				</div>
+				<div class="name">
+					<?php echo $v['name']; ?>
+				</div>
+				<div class="title">
+					<?php echo ucfirst($v['title']); ?>
+				</div>
+			</div>
+			<?php endforeach ?>
+		</div>
+		<!-- END EMPLOYEES -->
+	</div>
 </div>
+
+<!-- end -->
+<pre>
+<?php print_r($mediaItems) ?>
+</pre>
 <pre>
 <?php print_r($store); ?>
 </pre>
