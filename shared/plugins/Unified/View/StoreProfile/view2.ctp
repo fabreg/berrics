@@ -2,14 +2,13 @@
 
 $this->Unified->mapJsIncludes();
 
-$this->Html->css("store_profile","stylesheet",array("inline"=>false));
+$this->Html->css("store_profile2","stylesheet",array("inline"=>false));
 
 //set the page title
 
 $pt = "THE BERRICS UNIFIED - {$store['UnifiedStore']['shop_name']}";
 
 $this->set("title_for_layout",$pt);
-
 
  ?>
 <script type="text/javascript">
@@ -230,7 +229,7 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 			<img src="/theme/unified/img/profile-header-right.png" alt="">
 		</div>
 		<div class="center">
-			SHOP PROFILE
+			SHOP PROFILE 2
 		</div>
 	</div>
 	<div class="profile-body-container clearfix">
@@ -288,6 +287,15 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 				<div class="directions-link clearfix">
 					<a href="https://maps.google.com/maps?saddr=current+location&daddr=<?php echo $addr_string; ?>&hl=en" target='_blank'>GET DIRECTIONS &gt;</a>
 				</div>
+				<!-- BRANDS -->
+				<div id="brands" class="tab-container clearfix">
+					<?php foreach ($store['UnifiedStoreBrand'] as $k => $v): ?>
+						<div class="brand">
+							<img src="//img.theberrics.com/i.php?src=/brand-logos/<?php echo $v['Brand']['image_logo'] ?>&h=65&w=65" alt="<?php echo $v['Brand']['name']; ?>">
+						</div>
+					<?php endforeach ?>
+				</div>
+				<!-- END BRANDS -->
 			</div>
 			<div class="right">
 				<div class="inner">
@@ -321,15 +329,7 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 		</ul>
 	</div>
 	<div class="tab-body-container clearfix">
-		<!-- BRANDS -->
-		<div id="brands" class="tab-container clearfix">
-			<?php foreach ($store['UnifiedStoreBrand'] as $k => $v): ?>
-				<div class="brand">
-					<img src="//img.theberrics.com/i.php?src=/brand-logos/<?php echo $v['Brand']['image_logo'] ?>&h=85" alt="<?php echo $v['Brand']['name']; ?>">
-				</div>
-			<?php endforeach ?>
-		</div>
-		<!-- END BRANDS -->
+		
 
 		<!-- EMPLOYEES -->
 		<div id="employees" class='tab-container clearfix'>

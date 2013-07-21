@@ -82,7 +82,7 @@ $this->Unified->mapJsIncludes();
 		<li><a href="#general" data-toggle="tab">General Info</a></li>
 		<li><a href="#location" data-toggle="tab">Location</a></li>
 		<li><a href="#hours" data-toggle="tab">Store Hours</a></li>
-		<li><a href="#employees" data-toggle="tab">Employees <span class="badge"><?php echo count($this->request->data['UnifiedStoreEmployee']); ?></span></a></li>
+		<li><a href="#employees" data-toggle="tab">Employees & Team <span class="badge"><?php echo count($this->request->data['UnifiedStoreEmployee']); ?></span></a></li>
 		
 		<li><a href="#media-items" data-toggle="tab">Media Items <span class="badge"><?php echo count($this->request->data['UnifiedStoreMediaItem']); ?></span></a></li>
 		<li><a href="#brands" data-toggle="tab">Brands <span class="badge"><?php echo count($this->request->data['UnifiedStoreBrand']) ?></span></a></li>

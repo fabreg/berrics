@@ -67,7 +67,14 @@
 
 	}
 	echo $this->Form->input("unified_store_id",array("type"=>"hidden"));
-	echo $this->Form->input("team_rider");
+	?>
+	<div class='control-group'>
+		<label for="">Team Rider?</label>
+		<div class="controls">
+			<?php echo $this->Form->checkbox("team_rider") ?>
+		</div>
+	</div>	
+	<?php
 	echo $this->Form->input("name");
 	echo $this->Form->input("title",array("options"=>UnifiedStoreEmployee::titles(),"empty"=>true));
 	echo $this->Form->input("email");

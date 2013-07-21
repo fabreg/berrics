@@ -58,10 +58,10 @@ class UnifiedStoreEmployee extends AppModel {
 				"message"=>"Name cannot be empty",
 				"required"=>true
 			),
-			"title"=>array(
+			/*"title"=>array(
 				"rule"=>"notEmpty",
 				"message"=>"Title cannot be empty"
-			),
+			), */
 			"image_file"=>array(
 				"rule"=>"validateImage",
 				"message"=>"Invalid Image"

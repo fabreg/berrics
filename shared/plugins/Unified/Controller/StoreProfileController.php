@@ -6,6 +6,7 @@ class StoreProfileController extends UnifiedAppController {
 
 	public $uses = array("UnifiedStore");
 
+	private $store = false;
 
 	public function beforeFilter() {
 		
@@ -35,7 +36,16 @@ class StoreProfileController extends UnifiedAppController {
 
 		if(empty($uri)) throw new BadRequestException("Invalid Store Request");
 
-		$store = $this->UnifiedStore->returnStore($uri,1);
+		$cache = true;
+
+		if(preg_match('/(dev|v3)/',$_SERVER['HTTP_HOST'])) {
+
+
+			$cache = false;
+
+		}
+
+		$this->store = $store = $this->UnifiedStore->returnStore($uri,1);
 
 		$this->set(compact("store"));
 
@@ -43,7 +53,46 @@ class StoreProfileController extends UnifiedAppController {
 
 	public function view() {
 
-		
+		if(isset($_GET['view'])) $this->view = "view2";
+
+		//get the news
+
+		$store = $this->store;
+
+		$this->UnifiedStore->getStoreNewsItems($this->store['UnifiedStore']['id']);
+
+		//format media
+		$mediaItems = array();
+
+		foreach($store['UnifiedStoreMediaItem'] as $k=>$v) {
+
+			$mediaItems[$v['category']][] = $v;
+
+		}
+
+		//format employees
+		$employees = array();
+
+		foreach($store['UnifiedStoreEmployee'] as $v) {
+
+			if($v['team_rider']) continue;
+
+			$employees[] = $v;
+
+		}
+
+		$team = array();
+
+		foreach ($store['UnifiedStoreEmployee'] as $k => $v) {
+			
+			if(!$v['team_rider']) continue;
+
+			$team[] = $v;
+
+		}
+
+		$this->set(compact("mediaItems","employees","team"));
+
 		
 	}
 

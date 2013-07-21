@@ -83,7 +83,7 @@ $titles = UnifiedStoreEmployee::titles();
 
 </style>
 <h3>
-	Employee's 
+	Employee's & Team
 </h3>
 <div class="well well-small">
 	<button class="btn btn-success btn-mini" type='button' onclick='addUnifiedEmployee(); return false;'><i class="icon icon-white icon-plus-sign"></i> Add New Employee</button>

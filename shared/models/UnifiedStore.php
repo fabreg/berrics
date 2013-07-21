@@ -110,6 +110,23 @@ class UnifiedStore extends AppModel {
 
 	}
 
+	public function getStoreNewsItems($store_id = false) {
+
+		//get the tags associcated with a store
+
+		$tags = $this->Tag->find("all",array(
+			"conditions"=>array(
+				"Tag.unified_store_id"=>$store_id
+			)
+		));
+
+		$tag_ids = Set::extract("/Tag/id",$tags);
+
+		//die(print_r($tag_ids));
+
+
+	}
+
 	public function returnAdminStore($id = false) {
 
 		if(!$id) throw new BadRequestException("Invalid Store Request");
