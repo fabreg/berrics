@@ -16,6 +16,12 @@
 		$fb_meta_img = '';
 		
 	}
+
+	if(!isset($fb_meta_img)) {
+		
+		$fb_meta_img = '';
+		
+	}
 	
 	if(!isset($rss_feed)) {
 		

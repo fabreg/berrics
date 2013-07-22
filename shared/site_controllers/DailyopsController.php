@@ -504,7 +504,7 @@ class DailyopsController extends LocalAppController {
 		
 		if(!empty($post['Dailyop']['sub_title'])) $title .=" ".stripslashes($post['Dailyop']['sub_title']);
 		
-		//$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
+		$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
 		
 		
 		$this->set(compact("fb_meta_img"));
@@ -539,6 +539,11 @@ class DailyopsController extends LocalAppController {
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
 		
+		$title = htmlentities(addslashes($post['Dailyop']['name']));
+		
+		if(!empty($post['Dailyop']['sub_title'])) $title .=" ".stripslashes($post['Dailyop']['sub_title']);
+		
+		$fb_meta_img .= "<meta property='og:title' content='The Berrics - {$title}' />";	
 			
 		$this->set(compact("fb_meta_img"));
 		
