@@ -107,14 +107,18 @@ function clearMarkers () {
 
 function addMarker ($latLng) {
 	
-	markers.push(new google.maps.Marker({
+	var $mark = new google.maps.Marker({
 		
 			position:$latLng,
 			animation:google.maps.Animation.DROP,
-			map:map
+			map:map,
+			//icon:"/img/v3/unified/marker.png",
+			icon:"/theme/unified/img/marker-new.png",
+			
+			
+	});
 
-
-	}));
+	markers.push($mark);
 
 }
 
@@ -244,7 +248,11 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 						  	<img src="//img.theberrics.com/i.php?src=/unified-logos/<?php echo $store['UnifiedStore']['image_logo']; ?>&w=100" alt="">
 					<?php endif; ?>
 					<div class="open-closed">
-						<span class="open">OPEN</span>
+						<?php if ($store['StoreOpen']): ?>
+							<span class="open">OPEN</span>
+						<?php else: ?>
+							<span class="closed">CLOSED</span>
+						<?php endif ?>
 					</div>
 				</div>
 				<div class="store-details">
@@ -363,13 +371,15 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 			<?php endforeach ?>
 		</div>
 		<!-- END TEAM -->
+
+
+		<!-- NEWS -->
+		<div id="news" class="tab-container">
+			<?php foreach ($news as $k => $v): ?>
+			<?php echo $this->element("dailyops/post-bit",array("dop"=>$v,"lazy"=>false)) ?>
+			<?php endforeach ?>
+		</div>
+		<!-- END NEWS -->
+
 	</div>
 </div>
-
-<!-- end -->
-<pre>
-<?php //print_r($mediaItems) ?>
-</pre>
-<pre>
-<?php print_r($store); ?>
-</pre>

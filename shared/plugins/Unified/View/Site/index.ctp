@@ -218,7 +218,7 @@ function addMarker ($latLng,$unified_store_id) {
 			animation:google.maps.Animation.DROP,
 			map:map,
 			//icon:"/img/v3/unified/marker.png",
-			icon:"/img/v3/map/mapIcon.png",
+			icon:"/theme/unified/img/marker-new.png",
 			unified_store_id:$unified_store_id
 			
 	});
@@ -379,7 +379,13 @@ function shopLatLong($lat,$lng,$distance) {
 			});
 
 
-		}
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+          // alert(xhr.status);
+          // alert(xhr.responseText);
+          // alert(thrownError);
+          console.log(xhr.responseText);
+       }
 	
 	};
 

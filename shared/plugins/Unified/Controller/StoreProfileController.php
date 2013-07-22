@@ -91,7 +91,11 @@ class StoreProfileController extends UnifiedAppController {
 
 		}
 
-		$this->set(compact("mediaItems","employees","team"));
+		$posts = $this->UnifiedStore->getStorePosts($store['UnifiedStore']['id']);
+
+		$news = $this->UnifiedStore->getStoreNewsItems($store['UnifiedStore']['id']);
+
+		$this->set(compact("mediaItems","employees","team","posts","news"));
 
 		
 	}

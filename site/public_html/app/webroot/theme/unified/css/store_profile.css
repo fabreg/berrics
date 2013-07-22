@@ -115,6 +115,13 @@ PROFILE STUFF
 
 }
 
+
+#unified-store-profile .top-info .left .logo .open-closed .closed {
+
+	color:red;
+
+}
+
 #unified-store-profile .top-info .left .store-details {
 
 	float:right;
@@ -171,6 +178,7 @@ PROFILE STUFF
 	text-align:right;
 	width:265px;
 	margin:auto;
+	font-family: 'universcnb';
 
 }
 

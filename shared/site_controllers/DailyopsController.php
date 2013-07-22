@@ -500,7 +500,7 @@ class DailyopsController extends LocalAppController {
 		
 		$fb_meta_img = "<meta property='og:image' content='{$img}' />";
 		
-		$title = addslashes($post['Dailyop']['name']);
+		$title = htmlentities(addslashes($post['Dailyop']['name']));
 		
 		if(!empty($post['Dailyop']['sub_title'])) $title .=" ".stripslashes($post['Dailyop']['sub_title']);
 		

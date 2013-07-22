@@ -11,3 +11,48 @@ header {
 
 }
 
+/*
+BTN HGADING
+*/
+.btn-heading {
+
+	float:left;
+	height:46px;
+	clear:both;
+	margin-left:-5px;
+}
+
+.btn-heading-container {
+
+	background-image:url(/theme/unified/img/profile-bottom-line-break.jpg);
+	background-position: left bottom;
+	background-repeat:repeat-x;
+
+}
+
+.btn-heading .center {
+
+	background-image:url(/theme/unified/img/btn-header-bg.png);
+	margin-left:16px;
+	margin-right:25px;
+	height:46px;
+	color:#fff;
+	font-family: 'universcnb';
+	font-size:20px;
+	line-height:50px;
+}
+
+.btn-heading .h-left {
+	height:46px;
+	background-image:url(/theme/unified/img/btn-header-left.png);
+	width:16px;
+	float:left;
+}
+
+.btn-heading .h-right {
+	height:46px;
+	background-image:url(/theme/unified/img/btn-header-right.png);
+	float:right;
+	width:25px;
+
+}

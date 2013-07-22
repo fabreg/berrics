@@ -31,19 +31,18 @@ class SiteController extends UnifiedAppController {
 		//get all the stores
 
 		$s = $this->UnifiedStore->find("all",array(
-					
+						"fields"=>array("UnifiedStore.id"),
 						"order"=>array(
 							"UnifiedStore.shop_name"=>"ASC"
-						)
+						),
+						"contain"=>array()
 				));
 
 		$stores = array();
 
 		foreach($s as $v) { 
-
-			$stores[$v['UnifiedStore']['id']] = $v; 
-			$stores[$v['UnifiedStore']['id']]['HoursTable'] = $this->UnifiedStore->UnifiedStoreHour->storeHoursTable($v['UnifiedStoreHour']);
-
+			
+			$stores[$v['UnifiedStore']['id']] = $this->UnifiedStore->returnStore($v['UnifiedStore']['id'],1); 
 
 		}
 

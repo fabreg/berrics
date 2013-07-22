@@ -24,6 +24,14 @@ class TesterController extends LocalAppController {
 		
 	}
 	
+	public function test_time() {
+		
+		$this->loadModel("UnifiedStore");
+
+		die(print_r($this->UnifiedStore->isStoreOpen(226)));
+
+	}
+
 	public function test_dom() {
 		
 		$str = "

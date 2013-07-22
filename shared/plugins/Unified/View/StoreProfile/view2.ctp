@@ -83,6 +83,12 @@ jQuery(document).ready(function($) {
 
 
 
+	//truncate the bio
+
+	var $bio = $(".bio p").html().split(" ");
+
+	console.log($bio)
+
 	
 
 });
@@ -106,14 +112,18 @@ function clearMarkers () {
 
 function addMarker ($latLng) {
 	
-	markers.push(new google.maps.Marker({
+	var $mark = new google.maps.Marker({
 		
 			position:$latLng,
 			animation:google.maps.Animation.DROP,
-			map:map
+			map:map,
+			//icon:"/img/v3/unified/marker.png",
+			icon:"/theme/unified/img/marker-new.png",
+			
+			
+	});
 
-
-	}));
+	markers.push($mark);
 
 }
 
@@ -243,7 +253,11 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 						  	<img src="//img.theberrics.com/i.php?src=/unified-logos/<?php echo $store['UnifiedStore']['image_logo']; ?>&w=100" alt="">
 					<?php endif; ?>
 					<div class="open-closed">
-						<span class="open">OPEN</span>
+						<?php if ($store['StoreOpen']): ?>
+							<span class="open">OPEN</span>
+						<?php else: ?>
+							<span class="closed">CLOSED</span>
+						<?php endif ?>
 					</div>
 				</div>
 				<div class="store-details">
@@ -263,23 +277,29 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 					<div class="website-url">
 						<a href="<?php echo $store['UnifiedStore']['website_url']; ?>" target='_blank'><?php echo $store['UnifiedStore']['website_url']; ?></a>
 					</div>
-					<div class="social-networks">
-						<?php if (!empty($store['UnifiedStore']['facebook_url'])): ?>
+					
+				</div>
+				<div class="clearfix"></div>
+				<div class="social-networks clearfix">
+					<?php if (!empty($store['UnifiedStore']['facebook_url'])): ?>
+						<div class="social-divr cleafix">
 							<a href="<?php echo $store['UnifiedStore']['facebook_url']; ?>" target='_blank'>
-								<img src="/theme/unified/img/profile-fb.png" border='0' alt="">
+								<img src="/theme/unified/img/profile-fb.png" border='0' alt=""> <?php echo $store['UnifiedStore']['facebook_url']; ?>
 							</a>
-						<?php endif; ?>
-						<?php if (!empty($store['UnifiedStore']['instagram_handle'])): ?>
+						</div>
+					<?php endif; ?>
+					<?php if (!empty($store['UnifiedStore']['instagram_handle'])): ?>
+						<div class="social-div">
 							<a href="//instagram.com/<?php echo $store['UnifiedStore']['instagram_handle']; ?>" target='_blank'>
-								<img src="/theme/unified/img/profile-instagram.png" border='0' alt="">
+								<img src="/theme/unified/img/profile-instagram.png" border='0' alt=""> @<?php echo $store['UnifiedStore']['instagram_handle']; ?>
 							</a>
-						<?php endif; ?>
-						<?php if (!empty($store['UnifiedStore']['twitter_handle'])): ?>
-							<a href="//twitter.com/<?php echo $store['UnifiedStore']['twitter_handle']; ?>" target='_blank'>
-								<img src="/theme/unified/img/profile-twitter.png" border='0' alt="">
-							</a>
-						<?php endif; ?>
-					</div>
+						</div>
+					<?php endif; ?>
+					<?php if (!empty($store['UnifiedStore']['twitter_handle'])): ?>
+						<a href="//twitter.com/<?php echo $store['UnifiedStore']['twitter_handle']; ?>" target='_blank'>
+							<img src="/theme/unified/img/profile-twitter.png" border='0' alt=""> @<?php echo $store['UnifiedStore']['twitter_handle']; ?>
+						</a>
+					<?php endif; ?>
 				</div>
 				<div class="map-container clearfix">
 					<div id="map_canvas" class='clearfix' style=''></div>
@@ -288,10 +308,11 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 					<a href="https://maps.google.com/maps?saddr=current+location&daddr=<?php echo $addr_string; ?>&hl=en" target='_blank'>GET DIRECTIONS &gt;</a>
 				</div>
 				<!-- BRANDS -->
-				<div id="brands" class="tab-container clearfix">
+				<?php echo $this->element("misc/btn-heading",array("heading"=>"BRANDS")) ?>
+				<div id="brands" class="clearfix">
 					<?php foreach ($store['UnifiedStoreBrand'] as $k => $v): ?>
 						<div class="brand">
-							<img src="//img.theberrics.com/i.php?src=/brand-logos/<?php echo $v['Brand']['image_logo'] ?>&h=65&w=65" alt="<?php echo $v['Brand']['name']; ?>">
+							<img src="//img.theberrics.com/i.php?src=/brand-logos/<?php echo $v['Brand']['image_logo'] ?>&h=65&w=65" alt="<?php echo $v['Brand']['name']; ?>" title='<?php echo $v['Brand']['name']; ?>'>
 						</div>
 					<?php endforeach ?>
 				</div>
@@ -299,18 +320,77 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 			</div>
 			<div class="right">
 				<div class="inner">
-					<div class="bio">
-						<!-- IMAGE -->
-						<div class="main-img">
+					<div class="main-img">
 							<?php echo $this->Media->mediaThumb(array(
 								"MediaFile"=>$mediaItems['main'][0]['MediaFile'],
 								"w"=>700
 							)); ?>
 						</div>
+					
+
+					
+
+					<!-- BIO -->
+					<div class="bio">
+						<!-- IMAGE -->
+						
+						<?php echo $this->element("misc/btn-heading",array("heading"=>"SHOP BIO")) ?>
 						<p>
 							<?php echo nl2br($store['UnifiedStore']['shop_bio']); ?>
 						</p>
 					</div>
+					<!-- END BIO -->
+
+					<!-- FEATURED POSTS -->
+					<?php if (count($posts)>0): ?>
+						<?php echo $this->element("misc/btn-heading",array("heading"=>"FEATURED ON THE BERRICS")) ?>
+						<div class="thumb-collection clearfix">
+							<?php foreach ($posts as $k => $v): ?>
+								<?php echo $this->element("dailyops/thumbs/standard-post-thumb",array("post"=>$v)); ?>
+							<?php endforeach ?>
+						</div>
+					<?php endif; ?>
+					<!-- END FEATURED POSTS -->
+
+					<!-- EMPLOYEES -->
+					<?php echo $this->element("misc/btn-heading",array("heading"=>"EMPLOYEES")) ?>
+					<div id="employees" class='clearfix'>
+						<?php foreach ($employees as $k => $v): ?>
+						<div class="employee clearfix">
+							<div class="profile-img">
+								<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=150&h=120&zc=1" alt="">
+							</div>
+							<div class="info">
+								<div class="name">
+									<?php echo $v['name']; ?>
+								</div>
+								<div class="title">
+									<?php echo ucfirst($v['title']); ?>
+								</div>
+								<?php if (!empty($v['facebook_url'])): ?>
+									<div class="social-div">
+										<a href="<?php echo $v['facebook_url']; ?>" target='_blank'>
+											<img src="/theme/unified/img/profile-fb.png" border='0' alt="">
+										</a>
+									</div>
+								<?php endif; ?>
+								<?php if (!empty($v['instagram_handle'])): ?>
+									<div class="social-div">
+										<a href="//instagram.com/<?php echo $v['instagram_handle']; ?>" target='_blank'>
+											<img src="/theme/unified/img/profile-instagram.png" border='0' alt=""> 
+										</a>
+									</div>
+								<?php endif; ?>
+								<?php if (!empty($v['twitter_handle'])): ?>
+									<a href="//twitter.com/<?php echo $v['twitter_handle']; ?>" target='_blank'>
+										<img src="/theme/unified/img/profile-twitter.png" border='0' alt="">
+									</a>
+								<?php endif; ?>
+							</div>
+						</div>
+						<?php endforeach ?>
+					</div>
+					<!-- END EMPLOYEES -->
 				</div>
 			</div>
 		</div>
@@ -331,23 +411,7 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 	<div class="tab-body-container clearfix">
 		
 
-		<!-- EMPLOYEES -->
-		<div id="employees" class='tab-container clearfix'>
-			<?php foreach ($employees as $k => $v): ?>
-			<div class="employee">
-				<div class="profile-img">
-					<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=235&h=150&zc=1" alt="">
-				</div>
-				<div class="name">
-					<?php echo $v['name']; ?>
-				</div>
-				<div class="title">
-					<?php echo ucfirst($v['title']); ?>
-				</div>
-			</div>
-			<?php endforeach ?>
-		</div>
-		<!-- END EMPLOYEES -->
+		
 
 		<!-- TEAM -->
 		<div id="team" class="tab-container">

@@ -5,7 +5,20 @@ jQuery(document).ready(function($) {
 
 
 	$("#attached-brands ul").sortable({
-			axis:"y"
+			axis:"y",
+			 update: function( event, ui ) {
+
+			 	var $i = 1;
+			 	console.log("fuck");
+			 	$(".brand-li").each(function() { 
+
+			 		$(this).find('input.brand-display-weight').val($i);
+			 		$i++;
+
+			 	});
+
+
+			 }
 		});
 		$("#attached-brands ul").disableSelection();
 
@@ -148,9 +161,11 @@ function showBrandChange() {
 		<?php else: ?>
 			<ul class='nav nav-tabs nav-stacked'>
 				<?php foreach ($this->request->data['UnifiedStoreBrand'] as $k => $v): ?>
-				<li data-brand-id='<?php echo $v['Brand']['id']; ?>'>
+				<li data-brand-id='<?php echo $v['Brand']['id']; ?>' class='brand-li'>
 					<a>
 						<i class="icon icon-reorder"></i>	<?php echo $v['Brand']['name']; ?>
+						<?php echo $this->Form->input("UnifiedStoreBrand.{$k}.id"); ?>
+						<?php echo $this->Form->input("UnifiedStoreBrand.{$k}.display_weight",array("class"=>"brand-display-weight","type"=>"hidden")); ?>
 						<div class="pull-right">
 							<button class="btn btn-danger btn-mini" name='submit-btn[remove-brand]' value='<?php echo $v['id']; ?>'>
 								<i class="icon icon-white icon-remove-sign"></i> Remove
