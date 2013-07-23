@@ -7,8 +7,8 @@
 
 				 if ($one): ?>
 				<div style="text-align:center">
-					<a href='/element-eu-hold-it-down'>
-						<img src='/theme/hold-it-down/img/hero.jpg' border='0' />
+					<a href='/canteen/item/dave-swift-shoot-all-skaters-dave-swift.html'>
+						<img src='//img.theberrics.com/images/77b109bd008b57db81ac677c75b5d5da.jpg' border='0' />
 					</a>
 				</div>
 			<?php else: ?>

@@ -10,8 +10,7 @@ $pt = "THE BERRICS UNIFIED - {$store['UnifiedStore']['shop_name']}";
 
 $this->set("title_for_layout",$pt);
 
-
- ?>
+?>
 <script type="text/javascript">
 
 var geocoder = false;
@@ -226,17 +225,7 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 
  ?>
 <div id="unified-store-profile">
-	<div id="profile-header" class='clearfix'>
-		<div class="left">
-			<img src="/theme/unified/img/profile-header-left.png" alt="">
-		</div>
-		<div class="right">
-			<img src="/theme/unified/img/profile-header-right.png" alt="">
-		</div>
-		<div class="center">
-			SHOP PROFILE
-		</div>
-	</div>
+	<?php echo $this->element("misc/ribbon-heading",array("heading"=>"SHOP PROFILE")); ?>
 	<div class="profile-body-container clearfix">
 		<div class="top-info clearfix">
 			<div class="left clearfix">

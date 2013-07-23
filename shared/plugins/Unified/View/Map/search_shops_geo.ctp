@@ -35,7 +35,11 @@
 				</strong> 
 			</div>
 			<div class="shop-hours">
-				<?php echo $ush->storeHoursTable($store['UnifiedStoreHour']) ?>
+				<?php if ($store['StoreOpen']): ?>
+					OPEN
+				<?php else: ?>
+					CLOSED
+				<?php endif ?>
 			</div>
 			<!-- <div class="distance-div clearfix">
 				<div class="distance-label">

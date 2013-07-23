@@ -26,25 +26,13 @@ class SiteController extends UnifiedAppController {
 
 	public function index() {
 
+		$this->theme = "unified";
+
 		$this->set("body_element","layout/unified-body-element");
 
-		//get all the stores
+		//get all the store pins
 
-		$s = $this->UnifiedStore->find("all",array(
-						"fields"=>array("UnifiedStore.id"),
-						"order"=>array(
-							"UnifiedStore.shop_name"=>"ASC"
-						),
-						"contain"=>array()
-				));
-
-		$stores = array();
-
-		foreach($s as $v) { 
-			
-			$stores[$v['UnifiedStore']['id']] = $this->UnifiedStore->returnStore($v['UnifiedStore']['id'],1); 
-
-		}
+		$store_pins = $this->UnifiedStore->returnMapPins();
 
 		//get the posts
 		$featured_news = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_news_tag_id,$this->shop_news_tag_id),array("limit"=>10));
@@ -52,7 +40,7 @@ class SiteController extends UnifiedAppController {
 		//get all the field ops posts
 		$featured_posts = $this->Dailyop->returnUnifiedTaggedPosts(array($this->featured_post_tag_id));
 
-		$this->set(compact("stores","featured_news","featured_posts"));
+		$this->set(compact("store_pins","featured_news","featured_posts"));
 
 	}
 

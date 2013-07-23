@@ -19,40 +19,6 @@ PROFILE STUFF
 
 }
 
-#profile-header {
-
-	position:absolute;
-	width:100%;
-	top:20px;
-}
-
-#profile-header .left {
-
-	float:left;
-
-}
-
-#profile-header .right {
-
-	float:right;
-
-}
-
-#profile-header .center {
-
-	margin-left:35px;
-	margin-right:72px;
-	background-image:url(/theme/unified/img/profile-header-bg.png);
-	background-repeat:repeat-x;
-	
-	height:76px;
-	color:#ccc;
-	font-size:33px;
-	font-family:'universcnb';
-	line-height:62px;
-
-}
-
 #unified-store-profile .profile-body-container {
 
 	width:1130px;

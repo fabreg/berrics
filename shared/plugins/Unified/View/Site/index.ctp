@@ -1,7 +1,7 @@
 <?php
 	$this->Unified->mapJsIncludes();
 	$this->Html->script(array("//google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble-compiled.js"),array("inline"=>false));
-	
+	$this->Html->css(array("site_index"),"stylesheet",array("inline"=>false));	
 	$this->set("title_for_layout","THE BERRICS UNIFIED");
 
 ?>
@@ -13,9 +13,28 @@ var startLat = '<?php echo (!empty($this->request->data['GeoLocation']['lat'])) 
 var markers = [];
 var circle = false;
 var centerMarker = false;
-var markersJson = <?php echo json_encode($stores); ?>;
+var markersJson = <?php echo json_encode($store_pins); ?>;
 var infoWindow = false;
 var infoBubble = false;
+
+var BerricsGoogleMap = {
+
+	geocode:false,
+	map:false,
+	startLng:false,
+	startLat:false,
+	markers:[],
+	circle:false,
+	centerMarker:false,
+	infoWindow:false,
+	infoBubble:false,
+	initUnifiedLocator:function() {
+
+
+
+	}
+
+};
 
 jQuery(document).ready(function($) {
 	
@@ -165,14 +184,6 @@ function createShopInfoBubble($store_id) {
 
 	}
 	
-	var hrsTable = html.find('.shop-hours');
-
-	if(s.UnifiedStoreHour.length>0) {
-
-		hrsTable.append(s.HoursTable);
-
-	}
-
 
 	//directions link
 	var link = $("<a />").attr({
@@ -429,276 +440,7 @@ function handleMarkerClick($marker) {
 
 </script>
 <style>
-	body {
-
-
-		font-family: Helvetica, Arial, "Lucida Grande", sans-serif; 
-
-	}
-
-	#unified-map {
-
-		padding:10px;
 	
-
-	}
-
-	.shop-result {
-	
-		border-top:2px solid #000;
-		padding:4px;
-		
-	}
-
-	.shop-result:hover {
-	
-		background-color:#e9e9e9;
-		cursor: pointer;
-	}
-
-	.shop-result .name {
-
-		font-size:15px;
-		font-weight: bold;
-		margin-bottom:3px;
-
-	}
-	
-	.shop-result .address {
-
-		font-size:10px;
-		line-height: 13px;
-		padding-left:10px;
-	}
-
-	#shop-results {
-
-		overflow:auto;
-		background-color:#fff;
-
-	}
-
-	#results-col {
-
-		position:relative;
-
-	}
-
-	#map-container {
-
-		
-
-	}
-
-	#map_canvas {
-
-		height:450px;
-
-	}
-
-	#map_canvas img {
-
-	max-width: none;
-
-	}
-	
-	.distance-div .distance-label {
-		font-size:12px;
-		width:100px;
-		padding:5px;
-		background-color:#000;
-		line-height:18px;
-		text-align:center;
-		color:#fff;
-		margin-left:10px;
-		margin-top:5px;
-	}
-	
-	#map-row {
-
-		border:2px solid #000;
-		border-right:none;
-		border-left:none;
-		padding-top:8px;
-		padding-bottom:8px;
-
-	}
-
-	#search-bar .control-group {
-
-		margin:0;
-		height:30px;
-
-	}
-
-	#map_canvas img {
- 		 max-width: none;
-	}
-
-
-
-	#unified-hero-unit {
-
-		min-height:200px;
-		background-color:#000;
-
-	}
-
-	.unified-post {
-
-		margin-bottom:10px;
-
-	}
-
-	.unified-post .name {
-
-		text-align: center;
-		font-family: 'universcnb';
-		font-size:20px;
-	}
-
-	.unified-post .name .sub-title {
-
-		font-size:14px;
-
-	}
-
-	.dummy {
-
-		display:none;
-
-	}
-
-	.shop-bubble {
-
-
-
-	}
- 
-	.shop-bubble .shop-name {
-
-
-		font-family:'universcnb';
-		font-size:18px;
-
-	}
-	
-	.shop-bubble .shop-inner {
-
-		font-family: 'universcn';
-
-	}
-
-	.shop-bubble .shop-inner strong {
-
-		font-family:'universcnb';
-
-	}
-
-	.shop-bubble .shop-address,
-	.shop-bubble .shop-city {
-
-		font-size:12px;
-		/*font-family: 'courier';*/
-		line-height: 14px;
-		
-
-	}
-
-	.shop-bubble .shop-phone,
-	.shop-bubble .shop-email {
-
-		font-size:12px;
-
-	}
-
-	.shop-bubble .directions {
-
-		padding-top:5px;
-		border-top:1px solid #333;
-		border-bottom:1px solid #333;
-
-	}
-	
-	.shop-hours {
-
-		padding-top:4px;
-
-	}
-	
-	.shop-hours .hrs-label {
-
-		font-size:12px;
-		font-family: 'universcnb';
-
-	}
-
-	.shop-hours table {
-
-		width:100%;
-
-	}
-	.shop-hours table td,
-	.shop-hours table th {
-
-		font-size:11px;
-		text-align: center;
-		padding:3px;
-	}
-
-	.shop-hours table th {
-
-		background-color:#000;
-		color:#fff;
-
-	}
-
-html,
-body {
-    width:100%;
-    height:100%;
-}
-
-/* Large desktop */
-@media (min-width: 1200px) { 
-
-	#map-container {
-		
-		float:right;
-		width:785px;
-		min-height:450px;
-	}
-
-	#results-col {
-
-		float:left;
-		width:340px;
-		height:100%
-		overflow: auto;
-	}
-
-	#map_canvas {
-
-		
-
-	}
-
-}
- 
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) { 
-
-}
- 
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {  
-
-}
- 
-/* Landscape phones and down */
-@media (max-width: 480px) {  
-
-}
 </style>
 <?php 
 
@@ -711,9 +453,11 @@ body {
 	}
 
  ?>
-<div id="unified-hero-unit">
-	
+
+<div id="unified-site-index">
+	<?php echo $this->element("misc/ribbon-heading",array("heading"=>"UNIFIED STORE LOCATOR")); ?>
 </div>
+
 <div id="unified-map" class='column-shadow'>
 	
 	
@@ -757,34 +501,6 @@ body {
 			 	
 			</div>
 		</div>
-	</div>
-</div>
-<div class="row-fluid" id="news-row">
-	<div class="span4">
-		
-	</div>
-	<div class="span4">
-		<?php echo $this->element("dailyops/post-table/table",array("posts"=>$featured_news)); ?>
-	</div>
-	<div class="span4">
-		<?php foreach ($featured_posts as $k => $v): ?>
-			<div class="unified-post">
-				<div class="name">
-					<?php echo $v['Dailyop']['name']; ?>
-					<?php if (!empty($v['Dailyop']['sub_title'])): ?>
-					<div class='sub-title'><small><em>
-						<?php echo $v['Dailyop']['sub_title'] ?>
-					</em></small></div>
-					<?php endif ?>
-				</div>
-				<div class="thumb">
-					<?php echo $this->Media->mediaThumb(array(
-						"MediaFile"=>$v['DailyopMediaItem'][0]['MediaFile'],
-						"w">350
-					)); ?>
-				</div>
-			</div>
-		<?php endforeach ?>
 	</div>
 </div>
 <div class="dummy"></div>

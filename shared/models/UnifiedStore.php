@@ -107,31 +107,125 @@ class UnifiedStore extends AppModel {
 
 		}
 
-		//check if opened or closed
+		//attach store hours and isOpen
+		$data = $this->attachStoreOpenValues($data);
 
-		if(empty($data['UnifiedStore']['timezibe'])) $data['UnifiedStore']['timezone'] = "America/Los_Angeles";
-
-		$localTime = new DateTime();
-		$localTime->setTimezone(new DateTimeZone($data['UnifiedStore']['timezone']));
-		$dow = $localTime->format("D");
-
-		$storeHoursToday = Set::extract("/UnifiedStoreHour[day_of_week=/{$dow}/i]", $data);
-
-		$data['StoreHoursToday'] = $storeHoursToday;
-
-		if(count($storeHoursToday)<=0 || $storeHoursToday[0]['UnifiedStoreHour']['open'] != 1) {
-
-			 $data['StoreOpen'] = false;
-
-		} else {
-
-			$data['StoreOpen'] = $this->isStoreOpen($data['UnifiedStore']['timezone'], $storeHoursToday[0]['UnifiedStoreHour']['hours_open'], $storeHoursToday[0]['UnifiedStoreHour']['hours_close']);
-
-		}
+		
 
 		return $data;
 
 	}
+
+	public function returnMapPins() {
+		
+		$token = "unified-map-pins";
+
+		if(($store_pins = Cache::read($token,"1min")) === false) {
+
+			$store_pins = array();
+
+			$stores = $this->find("all", array(
+
+				"conditions"=>array(
+
+				),
+				"contain"=>array(
+
+					"UnifiedStoreHour",
+					"GeoLocation"
+
+				)
+
+			));
+
+			foreach($stores as $k=>$store) {
+
+				$stores[$k] = $this->attachStoreOpenValues($store);
+
+				//unset some of the stuff that we dont need to lean it up!
+				unset($stores[$k]['UnifiedStoreHour']);
+
+				$store_pins[$stores[$k]['UnifiedStore']['id']] = $stores[$k];
+
+			}
+
+			Cache::write($token, $store_pins, "1min");
+
+		}
+
+		return $store_pins;
+
+	}
+
+	/**
+	 * Pass in UnifiedStore array model as Argument and return it with StoreOpen & StoreHoursToday array keys
+	 * !!! Must have store hours attached if not then will throw invalid arguments exception
+	 * 
+	 */
+	public function attachStoreOpenValues($UnifiedStore = false) {
+		
+		//check to make sure that we have "$UnifiedStore['UnifiedStoreHours']" attached, if not then lets throw an exception
+
+		if(!isset($UnifiedStore['UnifiedStoreHour'])) {
+
+			throw new BadRequestException("UnifiedStore::attachStoreOpenValues - No UnifiedStoreHour attached to $UnifiedStore argument");
+
+		}
+
+		if(empty($UnifiedStore['UnifiedStore']['timezone']))  { //store does not have timezone set, set it as closed and hours today as false
+
+			$UnifiedStore['StoreHoursToday'] = $UnifiedStore['StoreOpen'] = false;
+
+			return $UnifiedStore;
+
+		} 
+
+		$localTime = new DateTime();
+		$localTime->setTimezone(new DateTimeZone($UnifiedStore['UnifiedStore']['timezone']));
+		$dow = $localTime->format("D");
+
+		$storeHoursToday = Set::extract("/UnifiedStoreHour[day_of_week=/{$dow}/i]", $UnifiedStore);
+
+		$UnifiedStore['StoreHoursToday'] = $storeHoursToday;
+
+		if(count($storeHoursToday)<=0 || $storeHoursToday[0]['UnifiedStoreHour']['open'] != 1) {
+
+			 $UnifiedStore['StoreOpen'] = false;
+
+		} else {
+
+			$UnifiedStore['StoreOpen'] = $this->isStoreOpen($UnifiedStore['UnifiedStore']['timezone'], $storeHoursToday[0]['UnifiedStoreHour']['hours_open'], $storeHoursToday[0]['UnifiedStoreHour']['hours_close']);
+
+		}
+
+		return $UnifiedStore;
+
+	}
+
+	public function isStoreOpen($timezone,$hours_open,$hours_closed) {
+		
+
+		$storeTime = new DateTime();
+		$storeTime->setTimezone(new DateTimeZone($timezone));
+			
+
+		$currentTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
+
+		//get the opening timestamp
+		$openTime = explode(":", $hours_open);
+		$storeTime->setTime($openTime[0],$openTime[1]);
+		$openTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
+
+		//get the closing timestamp
+		$closeTime = explode(":", $hours_closed);
+		$storeTime->setTime($closeTime[0],$closeTime[1]);
+		$closeTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
+
+		if($currentTimestamp > $openTimestamp && $currentTimestamp < $closeTimestamp) return true;
+
+		return false;
+
+	}	
 
 	public function getStoreTagIds($store_id = false) {
 		
@@ -186,86 +280,6 @@ class UnifiedStore extends AppModel {
 
 	}
 
-	public function isStoreOpen($timezone,$hours_open,$hours_closed) {
-		
-
-		$storeTime = new DateTime();
-		$storeTime->setTimezone(new DateTimeZone($timezone));
-			
-
-		$currentTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
-
-		//get the opening timestamp
-		$openTime = explode(":", $hours_open);
-		$storeTime->setTime($openTime[0],$openTime[1]);
-		$openTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
-
-		//get the closing timestamp
-		$closeTime = explode(":", $hours_closed);
-		$storeTime->setTime($closeTime[0],$closeTime[1]);
-		$closeTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
-
-		if($currentTimestamp > $openTimestamp && $currentTimestamp < $closeTimestamp) return true;
-
-		return false;
-
-	}	
-
-	public function isStoreOpen__($store_id = false) {
-
-		$dow = date("D");
-
-		$store = $this->find("first",array(
-					"contain"=>array(
-						"UnifiedStoreHour"=>array(
-							"conditions"=>array(
-								"UnifiedStoreHour.unified_store_id"=>$store_id,
-								"UnifiedStoreHour.day_of_week"=>$dow
-							)
-						)
-					),
-					"conditions"=>array("UnifiedStore.id"=>$store_id)
-					
-				));
-		
-		$hours = $store['UnifiedStoreHour'][0];
-
-		if(!isset($hours['id'])) return false;
-
-
-		$storeTime = new DateTime();
-		$storeTime->setTimezone(new DateTimeZone($store['UnifiedStore']['timezone']));
-			
-
-		$currentTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
-
-		//get the opening timestamp
-		$openTime = explode(":", $hours['hours_open']);
-		$storeTime->setTime($openTime[0],$openTime[1]);
-		$openTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
-
-		//get the closing timestamp
-		$closeTime = explode(":", $hours['hours_close']);
-		$storeTime->setTime($closeTime[0],$closeTime[1]);
-		$closeTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
-		
-		/* DEBUG
-		echo "Now Time:".$currentTimestamp;
-		echo "<br />";
-		echo "Open Time:".$openTimestamp;
-		echo "<br />";
-		echo "Close Time:".$closeTimestamp;
-
-
-		die();
-		*/
-
-		if($currentTimestamp > $openTimestamp && $currentTimestamp < $closeTimestamp) return true;
-
-		return false;
-
-
-	}
 
 	public function getStorePosts($store_id = false) {
 
