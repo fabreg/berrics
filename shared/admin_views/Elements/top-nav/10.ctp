@@ -35,7 +35,10 @@
 					<li >
 						<?php echo $this->Admin->link("Borwse Locales",array("controller"=>"locales","action"=>"index")); ?>
 					</li>
-					
+					<li class='nav-header'>Misc</li>
+					<li >
+						<?php echo $this->Admin->link("Fb Tab Upload",array("controller"=>"cdn","action"=>"upload_fb_assets")); ?>
+					</li>
 					
 				</ul>
 				</div>

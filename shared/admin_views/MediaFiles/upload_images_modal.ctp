@@ -71,7 +71,7 @@ $url = array(
 			"action"=>"handle_image_upload_modal"
 		);
 
-echo $this->Form->create("MediaFile",array("url"=>$url,"class"=>"modal-form","endtype"=>"multipart/form-data","id"=>"image-form"));
+echo $this->Form->create("MediaFile",array("url"=>$url,"class"=>"modal-form","enctype"=>"multipart/form-data","id"=>"image-form"));
 
 ?>
 <div class='modal-header'>

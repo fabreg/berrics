@@ -66,6 +66,18 @@ class ImgServer {
 		$this->sftp->disconnect();
 		
 	}
+
+	public function upload_fb_tab_assets($file_name, $file_path,$auto_close = true) {
+		
+		$this->connect();
+		
+		$this->sftp->chdir("/home/sites/berrics.static/img.theberrics.com/public_html/fb-tab-assets");
+		
+		$this->sftp->put($file_name,$file_path,NET_SFTP_LOCAL_FILE);
+		
+		if($auto_close) $this->close();
+		
+	}
 	
 	public function upload_video_still($file_name, $file_path,$auto_close = true) {
 		
