@@ -221,7 +221,16 @@ class UnifiedStore extends AppModel {
 		$storeTime->setTime($closeTime[0],$closeTime[1]);
 		$closeTimestamp = strtotime($storeTime->format("Y-m-d H:i:s"));
 
-		if($currentTimestamp > $openTimestamp && $currentTimestamp < $closeTimestamp) return true;
+		if($currentTimestamp > $openTimestamp && $currentTimestamp < $closeTimestamp) {
+
+			return array(
+
+				"hours_open"=>date("ga",$openTimestamp),
+				"hours_close"=>date("ga",$closeTimestamp)
+
+			);
+
+		}
 
 		return false;
 

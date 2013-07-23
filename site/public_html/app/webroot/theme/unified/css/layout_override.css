@@ -27,6 +27,7 @@ PROFILE HEADER
 	position:absolute;
 	width:100%;
 	top:20px;
+	left:0px;
 }
 
 #profile-header .left {
@@ -63,7 +64,7 @@ BTN HGADING
 */
 .btn-heading {
 
-	float:left;
+	
 	height:46px;
 	clear:both;
 	margin-left:-5px;
@@ -84,7 +85,7 @@ BTN HGADING
 	margin-right:25px;
 	height:46px;
 	color:#fff;
-	font-family: 'universcnb';
+	
 	font-size:20px;
 	line-height:50px;
 }

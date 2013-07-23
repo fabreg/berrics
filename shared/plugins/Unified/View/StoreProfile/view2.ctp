@@ -277,30 +277,30 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 					<div class="website-url">
 						<a href="<?php echo $store['UnifiedStore']['website_url']; ?>" target='_blank'><?php echo $store['UnifiedStore']['website_url']; ?></a>
 					</div>
-					
+					<div class="social-networks clearfix">
+						<?php if (!empty($store['UnifiedStore']['facebook_url'])): ?>
+							<div class="social-divr cleafix">
+								<a href="<?php echo $store['UnifiedStore']['facebook_url']; ?>" target='_blank'>
+									<img src="/theme/unified/img/profile-fb.png" border='0' alt=""> <?php echo $store['UnifiedStore']['facebook_url']; ?>
+								</a>
+							</div>
+						<?php endif; ?>
+						<?php if (!empty($store['UnifiedStore']['instagram_handle'])): ?>
+							<div class="social-div">
+								<a href="//instagram.com/<?php echo $store['UnifiedStore']['instagram_handle']; ?>" target='_blank'>
+									<img src="/theme/unified/img/profile-instagram.png" border='0' alt=""> @<?php echo $store['UnifiedStore']['instagram_handle']; ?>
+								</a>
+							</div>
+						<?php endif; ?>
+						<?php if (!empty($store['UnifiedStore']['twitter_handle'])): ?>
+							<a href="//twitter.com/<?php echo $store['UnifiedStore']['twitter_handle']; ?>" target='_blank'>
+								<img src="/theme/unified/img/profile-twitter.png" border='0' alt=""> @<?php echo $store['UnifiedStore']['twitter_handle']; ?>
+							</a>
+						<?php endif; ?>
+					</div>
 				</div>
 				<div class="clearfix"></div>
-				<div class="social-networks clearfix">
-					<?php if (!empty($store['UnifiedStore']['facebook_url'])): ?>
-						<div class="social-divr cleafix">
-							<a href="<?php echo $store['UnifiedStore']['facebook_url']; ?>" target='_blank'>
-								<img src="/theme/unified/img/profile-fb.png" border='0' alt=""> <?php echo $store['UnifiedStore']['facebook_url']; ?>
-							</a>
-						</div>
-					<?php endif; ?>
-					<?php if (!empty($store['UnifiedStore']['instagram_handle'])): ?>
-						<div class="social-div">
-							<a href="//instagram.com/<?php echo $store['UnifiedStore']['instagram_handle']; ?>" target='_blank'>
-								<img src="/theme/unified/img/profile-instagram.png" border='0' alt=""> @<?php echo $store['UnifiedStore']['instagram_handle']; ?>
-							</a>
-						</div>
-					<?php endif; ?>
-					<?php if (!empty($store['UnifiedStore']['twitter_handle'])): ?>
-						<a href="//twitter.com/<?php echo $store['UnifiedStore']['twitter_handle']; ?>" target='_blank'>
-							<img src="/theme/unified/img/profile-twitter.png" border='0' alt=""> @<?php echo $store['UnifiedStore']['twitter_handle']; ?>
-						</a>
-					<?php endif; ?>
-				</div>
+				
 				<div class="map-container clearfix">
 					<div id="map_canvas" class='clearfix' style=''></div>
 				</div>

@@ -12,7 +12,13 @@ class DailyopsController extends LocalAppController {
 		if($this->request->params['action'] == "index") {
 
 			//$this->top_element = "layout/v3/top_element_featured_post";
+			//
+		}
 
+		if(isset($_GET['source']) && $_GET['source'] == "facebook_tab" && $this->request->params['action'] == "index") {
+			
+			$this->enforce_ssl = true;
+			
 		}
 
 		parent::beforeFilter();

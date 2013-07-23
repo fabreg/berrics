@@ -174,13 +174,22 @@ function createShopInfoBubble($store_id) {
 
 	var html = $('.bubble-holder').clone();
 
-	html.find('.shop-name').html(s.UnifiedStore.shop_name);
+	html.find('.shop-name').html("<a href='/unified/"+s.UnifiedStore.uri+"'>"+s.UnifiedStore.shop_name+"</a>");
 	html.find('.shop-address').html(s.UnifiedStore.address1+" "+s.UnifiedStore.address2);
 	html.find('.shop-city').html(s.UnifiedStore.city+", "+s.UnifiedStore.state+" "+s.UnifiedStore.zip+" "+s.UnifiedStore.country_code);
-	html.find('.shop-phone').html("<strong>P:</strong>"+s.UnifiedStore.phone);
+	html.find('.shop-phone').html("<strong>"+s.UnifiedStore.phone+"</strong>");
+
+	console.log(s.StoreOpen);
+
+	if(typeof s.StoreOpen=="object") {
+
+		html.find('.hours-today').html("<strong>Hours Today</strong> <br /> "+s.StoreOpen.hours_open+" - "+s.StoreOpen.hours_close);
+
+	} 
+
 	if(s.UnifiedStore.shop_email) {
 
-		html.find('.shop-phone').append(" <strong>E:</strong>"+s.UnifiedStore.shop_email)
+		//html.find('.shop-phone').append(" <strong>E:</strong>"+s.UnifiedStore.shop_email)
 
 	}
 	
@@ -189,19 +198,19 @@ function createShopInfoBubble($store_id) {
 	var link = $("<a />").attr({
 		"href":"http://maps.google.com?saddr=current+location&daddr="+encodeURIComponent(s.UnifiedStore.address1+" "+s.UnifiedStore.address2+" "+s.UnifiedStore.city+", "+s.UnifiedStore.state+" "+s.UnifiedStore.zip+" "+s.UnifiedStore.country_code),
 		"target":"_blank"
-	}).html("<i class='icon icon-road '></i> Get Directions");
+	}).html("GET DIRECTIONS &gt;");
 
 	html.find('.directions').html(link);
 
 	//add in the html to dummy
 	$d.html(html.html());
 
-	var h = $d.outerHeight()+30;
+	var h = $d.outerHeight()+5;
 	var w = $d.outerWidth()+40;
+	h ="auto";
+	if(w<260) {
 
-	if(w<320) {
-
-		w = 320;
+		w = 260;
 
 	}
 	
@@ -212,7 +221,6 @@ function createShopInfoBubble($store_id) {
 
 		content:html.html(),
 		minHeight:h,
-
 		minWidth:w
 
 	});
@@ -439,9 +447,6 @@ function handleMarkerClick($marker) {
 
 
 </script>
-<style>
-	
-</style>
 <?php 
 
 	$miles = array("5"=>"Within 5 Miles","10"=>"Within 10 Miles");
@@ -455,53 +460,43 @@ function handleMarkerClick($marker) {
  ?>
 
 <div id="unified-site-index">
-	<?php echo $this->element("misc/ribbon-heading",array("heading"=>"UNIFIED STORE LOCATOR")); ?>
-</div>
-
-<div id="unified-map" class='column-shadow'>
-	
-	
-	
-	<div class="clearfix" id='map-row'>
-		<div class="" id='map-container'>
-			<div id="search-bar" class="map-search-div row-fluid">
-				<?php echo $this->Form->create('StoreSearch',array(
-					"id"=>'StoreSearchForm',
-					"url"=>$this->request->here
-				)); ?>
-				<div class="row-fluid">
-					<div class="span12">
-					 
-					 <div class="row-fluid">
-					 	<div class="span12">
-					 		<input type="text" name='data[StoreSearch][query]' id='StoreSearchQuery' class='span12' placeholder='Enter Your City / Postal Code or Address' />
-					 	</div>
+	<div class="index-body-container">
+		<?php echo $this->element("misc/ribbon-heading",array("heading"=>"UNIFIED STORE LOCATOR")); ?>
+		<!-- start map locator -->
+			<div id="locator" class='clearfix'>
+				<div class="results-column">
+					<div id="shop-results">
 					 	
-					 </div>
-					 <div class="row-fluid">
-					 	<div class="span6">
-							<?php echo $this->Form->select("miles",$miles,array("label"=>false,"div"=>false,"class"=>"span12")); ?>
-					 	</div>
-					 	<div class="span6">
-					 		<div class="btn-group pull-right">
-					 			<button class="btn" type='submit'><i class="icon  icon-search"></i> Search</button>
-					 			<button class="btn" type='button' id='location-btn'><i class='icon  icon-map-marker'></i></button>
-					 		</div>
-					 	</div>
-					 </div>
+					</div>
 				</div>
+				<div class="map-column">
+					<div class="" id='map-container'>
+						<div id="search-bar" class="map-search-div row-fluid">
+							<?php echo $this->Form->create('StoreSearch',array(
+								"id"=>'StoreSearchForm',
+								"url"=>$this->request->here
+							)); ?>
+							<div class="row-fluid">
+								<div class="span4">
+									<?php echo $this->Form->select("miles",$miles,array("empty"=>false,"label"=>false,"div"=>false,"class"=>"span12")); ?>
+								</div>
+								<div class="span8">
+									<div class="input-append">
+										<input type="text" name='data[StoreSearch][query]' id='StoreSearchQuery' class='span10' placeholder='Enter Your City / Postal Code or Address' />
+										<button class="btn" type='submit'><i class="icon  icon-search"></i> </button>
+								 			<button class="btn" type='button' id='location-btn'><i class='icon  icon-map-marker'></i></button>
+									</div>
+								</div>
+							</div>
+							<?php echo $this->Form->end(); ?>
+						</div>
+						<div id="map_canvas" ></div>
+					</div>
 				</div>
-				<?php echo $this->Form->end(); ?>
 			</div>
-			<div id="map_canvas" ></div>
-		</div>
-		<div class="" id='results-col'>
-			
-			<div id="shop-results">
-			 	
-			</div>
-		</div>
+		<!-- end map locator -->
 	</div>
+	
 </div>
 <div class="dummy"></div>
 <div class="bubble-holder">
@@ -511,11 +506,13 @@ function handleMarkerClick($marker) {
 			<div class="shop-address"></div>
 			<div class="shop-city"></div>
 			<div class="shop-phone"></div>
-			<div class="shop-email"></div>
-			
-			<div class="directions"></div>
-			<div class="shop-hours">
-				<div class="hrs-label">Store Hours</div>
+			<div class="hours-directions clearfix">
+				<div class="hours-today">
+				
+				</div>
+				<div class="directions">
+					
+				</div>
 			</div>
 		</div>
 	</div>

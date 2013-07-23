@@ -237,10 +237,10 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 						  	<img src="//img.theberrics.com/i.php?src=/unified-logos/<?php echo $store['UnifiedStore']['image_logo']; ?>&w=100" alt="">
 					<?php endif; ?>
 					<div class="open-closed">
-						<?php if ($store['StoreOpen']): ?>
-							<span class="open">OPEN</span>
-						<?php else: ?>
+						<?php if (!$store['StoreOpen']): ?>
 							<span class="closed">CLOSED</span>
+						<?php else: ?>							
+							<span class="open">OPEN</span>
 						<?php endif ?>
 					</div>
 				</div>
@@ -255,9 +255,11 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 						PARKING - <?php echo strtoupper($store['UnifiedStore']['parking_situation']); ?>
 					</div>
 					<?php endif; ?>
-					<div class="store-hours-text">
-						<?php echo nl2br($store['UnifiedStore']['store_hours_text']); ?>
-					</div>
+					<?php if (!empty($store['UnifiedStore']['store_hours_text'])): ?>
+						 <div class="store-hours-text">
+							<?php echo nl2br($store['UnifiedStore']['store_hours_text']); ?>
+						</div>	 	 
+					<?php endif; ?>
 					<div class="website-url">
 						<a href="<?php echo $store['UnifiedStore']['website_url']; ?>" target='_blank'><?php echo $store['UnifiedStore']['website_url']; ?></a>
 					</div>
@@ -348,16 +350,20 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 
 		<!-- TEAM -->
 		<div id="team" class="tab-container">
-			<?php foreach ($team as $k => $v): ?>
-			<div class="team">
-				<div class="profile-img">
-					<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=235&h=150&zc=1" alt="">
-				</div>
-				<div class="name">
-					<?php echo $v['name']; ?>
-				</div>
-			</div>
-			<?php endforeach ?>
+			<?php if (count($team)>0): ?>
+				  	 <?php foreach ($team as $k => $v): ?>
+					<div class="team">
+						<div class="profile-img">
+							<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=235&h=150&zc=1" alt="">
+						</div>
+						<div class="name">
+							<?php echo $v['name']; ?>
+						</div>
+					</div>
+					<?php endforeach ?>
+			<?php else: ?>
+				No Team
+			<?php endif; ?>
 		</div>
 		<!-- END TEAM -->
 

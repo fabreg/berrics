@@ -345,6 +345,39 @@ class LegacyShell extends Shell {
 		}
 
 	}
+
+	public function fix_store_urls() {
+			
+		App::import("Vendor","Tools",array("file"=>"Tools.php"));
+
+		$stores = $this->UnifiedStore->find("all",array(
+						"conditions"=>array(
+							
+						),
+						"contain"=>array()
+					));
+		
+		foreach ($stores as $k => $v) {
+			
+			if(!empty($v['UnifiedStore']['uri'])) continue;
+
+			$data = array(
+
+				"uri"=>Tools::safeUrl($v['UnifiedStore']['shop_name']).".html"
+
+			);
+
+			$this->UnifiedStore->create();
+
+			$this->UnifiedStore->id = $v['UnifiedStore']['id'];
+
+			$this->UnifiedStore->save($data);
+
+
+
+		}
+
+	}
 	
 	
 	

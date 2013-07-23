@@ -118,7 +118,7 @@ class MediaHelper extends AppHelper {
 			if($lazy_h) $sz.= "&h=".$lazy_h;
 
 			$attr['data-original'] = $img_src_str;
-			$img_src_str = "{$proto}://img.theberrics.com/i.php?src=".$empty_img."&zc=1".$sz;
+			$img_src_str = "//img.theberrics.com/i.php?src=".$empty_img."&zc=1".$sz;
 			$attr['class'] = "lazy ".$attr['class'];
 			if(isset($lazy_w)) $attr['width'] = $lazy_w;
 			if(isset($lazy_h)) $attr['height'] = $lazy_h;
@@ -167,7 +167,7 @@ class MediaHelper extends AppHelper {
 			break;
 		}
 		
-		return "http://img.theberrics.com/i.php?src=".$opt['src'].$size;
+		return "//img.theberrics.com/i.php?src=".$opt['src'].$size;
 		
 	}
 	
