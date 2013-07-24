@@ -64,42 +64,45 @@ BTN HGADING
 */
 .btn-heading {
 
-	
-	height:46px;
+	height:36px;
 	clear:both;
-	margin-left:-5px;
+	margin-left:-15px;
+	margin-right:-15px;
 }
 
 .btn-heading-container {
 
-	background-image:url(/theme/unified/img/profile-bottom-line-break.jpg);
+	/*background-image:url(/theme/unified/img/profile-bottom-line-break.jpg); */
 	background-position: left bottom;
 	background-repeat:repeat-x;
-
+	padding-top:5px;
 }
 
 .btn-heading .center {
 
-	background-image:url(/theme/unified/img/btn-header-bg.png);
-	margin-left:16px;
+	background-image:url(/theme/unified/img/heading-bg.png);
+	margin-left:34px;
 	margin-right:25px;
-	height:46px;
-	color:#fff;
-	
-	font-size:20px;
-	line-height:50px;
+	height:36px;
+	font-family: 'Times New Roman';
+	color:#330000;
+	font-size:16px;
+	line-height:36px;
+	letter-spacing: 1px;
+	text-indent: 3px;
 }
 
 .btn-heading .h-left {
-	height:46px;
-	background-image:url(/theme/unified/img/btn-header-left.png);
-	width:16px;
+	height:36px;
+	background-image:url(/theme/unified/img/heading-left.png);
+	width:34px;
 	float:left;
 }
 
 .btn-heading .h-right {
-	height:46px;
-	background-image:url(/theme/unified/img/btn-header-right.png);
+	height:36px;
+	background-image:url(/theme/unified/img/heading-right.png);
+	
 	float:right;
 	width:25px;
 

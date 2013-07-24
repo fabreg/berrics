@@ -239,7 +239,7 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 			<img src="/theme/unified/img/profile-header-right.png" alt="">
 		</div>
 		<div class="center">
-			SHOP PROFILE 2
+			BERRICS UNIFIED SHOP
 		</div>
 	</div>
 	<div class="profile-body-container clearfix">
