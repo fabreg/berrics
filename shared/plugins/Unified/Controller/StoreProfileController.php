@@ -53,8 +53,8 @@ class StoreProfileController extends UnifiedAppController {
 
 	public function view() {
 
-		if(isset($_GET['view'])) $this->view = "view2";
-
+		//if(isset($_GET['view'])) 
+		$this->view = "view2";
 		//get the news
 
 		$store = $this->store;
