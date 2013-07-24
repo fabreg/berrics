@@ -60,9 +60,12 @@ function checkDupeUnifiedUri() {
 		<h3>Social Networking</h3>
 		<?php 
 
-			echo $this->Form->input("facebook_url");
-			echo $this->Form->input("twitter_handle");
-			echo $this->Form->input("instagram_handle");
+			$this->Form->formSpan = "span9";
+			echo $this->Form->input("facebook_url",array("prepend"=>"http://facebook.com/"));
+			$this->Form->formSpan = "span11";
+			echo $this->Form->input("twitter_handle",array("prepend"=>"@"));
+			echo $this->Form->input("instagram_handle",array("prepend"=>"@"));
+			$this->Form->formSpan = "span12";
 
 		 ?>
 		<div class="well well-small">
