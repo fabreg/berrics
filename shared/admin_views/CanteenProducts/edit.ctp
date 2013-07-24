@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$('form').prepend("<div id='tab-nav'><ul></ul><div style='clear:both;'></div></div>");
 	
 	$('fieldset').each(function() { 
-		var l = $(this).find("legend");
+		var l = $(this).find("h3");
 		$('#tab-nav ul').append("<li>"+$(l).text()+"</li>");
 	});
 
@@ -97,39 +97,67 @@ border-radius: 10px 10px 0px 0px;
 	echo $this->Form->create("CanteenProduct",array("enctype"=>"multipart/form-data","id"=>"CanteenProductEditForm"));
 	echo $this->Form->input("id");
 ?>
-
-	<fieldset>
-		<legend>General Info</legend>
+<div class="tabbable">
+	<ul class="nav nav-tabs">
+		<li class='active'><a href="#general" data-toggle="tab">General Info</a></li>
+		<li><a href="#images" data-toggle="tab">Images</a></li>
+		<li><a href="#options" data-toggle="tab">Options & Inventory</a></li>
+		<li><a href="#pricing" data-toggle="tab">Pricing</a></li>
+		<li><a href="#style-code" data-toggle="tab">Style Code Options</a></li>
+		<li><a href="#meta" data-toggle="tab">Meta Data</a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="general">
+		<h3>General Info</h3>
 		<?php echo $this->element("canteen_product/general-info"); ?>
-	</fieldset>
-	<fieldset>
-		<legend>Images</legend>
+		</div>
+		
+		<div class="tab-pane" id="images">
+		<h3>Images</h3>
 		<?php echo $this->element("canteen_product/images"); ?>
-	</fieldset>
+		</div>
 
 
-	<fieldset>
-		<legend>Options & Inventory</legend>
+		<div class="tab-pane" id="options">
+		<h3>Options & Inventory</h3>
 		<?php echo $this->element("canteen_product/qty-options"); ?>
-	</fieldset>
-	<fieldset>
-		<legend>Pricing</legend>
+		</div>
+		
+		<div class="tab-pane" id="pricing">
+		<h3>Pricing</h3>
 		<?php 
 			echo $this->element("canteen_product/pricing");
 		?>
-	</fieldset>
-	<fieldset>
-		<legend>Style Code Options</legend>
-		<?php echo $this->element("canteen_product/style-code-options")?>
-	</fieldset>
+		</div>
 	
-	<fieldset>
-		<legend>Meta Data</legend>
+		<div class="tab-pane" id="style-code">
+		<h3>Style Code Options</h3>
+		<?php echo $this->element("canteen_product/style-code-options")?>
+		</div>
+	
+		<div class="tab-pane" id="meta">
+		<h3>Meta Data</h3>
 		<?php echo $this->element("canteen_product/meta-data"); ?>
-	</fieldset>
+		</div>
+
+	</div>
+</div>
+		
+	<!-- 
+	
+		<h3>Warehouse Info</h3>
+		<?php echo $this->element("canteen_product/wh-info"); ?>
+	
+ 	-->
+<div style='clear:both;'></div>
+<?php 
+	echo $this->Form->end();
+?>
+</div>
+	
 	<?php if(count($this->request->data['ValidateMessage'])>0): ?>
-	<fieldset>
-		<legend>Errors</legend>
+	
+		<h3>Errors</h3>
 		<div>
 			<ul>
 				<?php foreach($this->request->data['ValidateMessage'] as $v): ?>
@@ -137,16 +165,5 @@ border-radius: 10px 10px 0px 0px;
 				<?php endforeach; ?>
 			</ul>
 		</div>
-	</fieldset>
+	
 	<?php endif; ?>
-	<!-- 
-	<fieldset>
-		<legend>Warehouse Info</legend>
-		<?php echo $this->element("canteen_product/wh-info"); ?>
-	</fieldset>
- 	-->
-<div style='clear:both;'></div>
-<?php 
-	echo $this->Form->end();
-?>
-</div>

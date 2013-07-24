@@ -391,6 +391,49 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 						<?php endforeach ?>
 					</div>
 					<!-- END EMPLOYEES -->
+
+					<!-- TEAM -->
+					<?php if (count($team)>0): ?>
+					<?php echo $this->element("misc/btn-heading",array("heading"=>"TEAM")) ?>
+					<div id="employees" class='clearfix'>
+						<?php foreach ($team as $k => $v): ?>
+						<div class="employee clearfix">
+							<div class="profile-img">
+								<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=150&h=120&zc=1" alt="">
+							</div>
+							<div class="info">
+								<div class="name">
+									<?php echo $v['name']; ?>
+								</div>
+								<div class="title">
+									<?php echo ucfirst($v['title']); ?>
+								</div>
+								<?php if (!empty($v['facebook_url'])): ?>
+									<div class="social-div">
+										<a href="<?php echo $v['facebook_url']; ?>" target='_blank'>
+											<img src="/theme/unified/img/profile-fb.png" border='0' alt="">
+										</a>
+									</div>
+								<?php endif; ?>
+								<?php if (!empty($v['instagram_handle'])): ?>
+									<div class="social-div">
+										<a href="//instagram.com/<?php echo $v['instagram_handle']; ?>" target='_blank'>
+											<img src="/theme/unified/img/profile-instagram.png" border='0' alt=""> 
+										</a>
+									</div>
+								<?php endif; ?>
+								<?php if (!empty($v['twitter_handle'])): ?>
+									<a href="//twitter.com/<?php echo $v['twitter_handle']; ?>" target='_blank'>
+										<img src="/theme/unified/img/profile-twitter.png" border='0' alt="">
+									</a>
+								<?php endif; ?>
+							</div>
+						</div>
+						<?php endforeach ?>
+					</div>
+					<?php endif; ?>
+					<!-- END TEAM -->
+
 				</div>
 			</div>
 		</div>
