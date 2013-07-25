@@ -474,9 +474,3 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 </div>
 
 <!-- end -->
-<pre>
-<?php //print_r($mediaItems) ?>
-</pre>
-<pre>
-<?php print_r($store); ?>
-</pre>
