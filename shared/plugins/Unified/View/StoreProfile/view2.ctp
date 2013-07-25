@@ -19,6 +19,15 @@ var startLng = '<?php echo $store['GeoLocation']['lng']; ?>';
 var startLat = '<?php echo $store['GeoLocation']['lat']; ?>';
 var markers = [];
 jQuery(document).ready(function($) {
+
+	var meta = $("meta[name=viewport]");
+
+		meta.attr({
+
+			"content":"width=1100px, initial-scale=0"
+
+		});
+
 	var latLng = new google.maps.LatLng(startLat, startLng);
  	var mapOptions = {
           center: latLng,
