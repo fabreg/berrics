@@ -438,39 +438,7 @@ $addr_string = urlencode("{$store['UnifiedStore']['address1']} {$store['UnifiedS
 			</div>
 		</div>
 	</div>
-	<div id='profile-tab-nav' class='clearfix'>
-		<ul>
-			<li class='left'></li>
-			<li class='tab-b' data-tab='brands'>BRANDS</li>
-			<li class='tab-s'></li>
-			<li class='tab-b' data-tab='team'>TEAM</li>
-			<li class='tab-s'></li>
-			<li class='tab-b' data-tab='employees'>EMPLOYEES</li>
-			<li class='tab-s'></li>
-			<li class='tab-b' data-tab='news'>NEWS</li>
-			<li class='right'></li>
-		</ul>
-	</div>
-	<div class="tab-body-container clearfix">
-		
-
-		
-
-		<!-- TEAM -->
-		<div id="team" class="tab-container">
-			<?php foreach ($team as $k => $v): ?>
-			<div class="team">
-				<div class="profile-img">
-					<img src="//img.theberrics.com/i.php?src=/unified-employees/<?php echo $v['image_file']; ?>&w=235&h=150&zc=1" alt="">
-				</div>
-				<div class="name">
-					<?php echo $v['name']; ?>
-				</div>
-			</div>
-			<?php endforeach ?>
-		</div>
-		<!-- END TEAM -->
-	</div>
+	
 </div>
 
 <!-- end -->
