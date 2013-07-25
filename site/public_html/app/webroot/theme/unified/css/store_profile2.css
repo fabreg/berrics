@@ -321,7 +321,7 @@ PROFILE STUFF
 
 #unified-store-profile #employees {
 
-	width:1000px;
+	
 	margin:auto;
 
 }
@@ -373,7 +373,7 @@ PROFILE STUFF
 
 #unified-store-profile #team {
 
-	width:1000px;
+
 	margin:auto;
 
 }
@@ -389,9 +389,16 @@ PROFILE STUFF
 #unified-store-profile #team .team .profile-img {
 
 	margin-bottom:5px;
-
+	width:25%;
+	float:left;
 }
 
+#unified-store-profile #team .team .info {
+
+	float:right;
+	width:73%;
+
+}
 
 #unified-store-profile #team .team .name {
 
