@@ -1131,7 +1131,7 @@ class CanteenProductsController extends LocalAppController {
 						"contain"=>array()
 					));
 
-			die("Already Attached");
+			if($chk>0) die();
 
 			$this->CanteenProductUnifiedItem->create();
 
