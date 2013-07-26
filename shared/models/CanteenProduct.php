@@ -16,6 +16,7 @@ class CanteenProduct extends AppModel {
 		"CanteenProductPrice",
 		"CanteenProductImage",
 		"CanteenProductInventory",
+		"CanteenProductUnifiedItem"
 	
 	);
 	
@@ -93,7 +94,10 @@ class CanteenProduct extends AppModel {
 					"CanteenInventoryRecord"
 				),
 				"Meta",
-				"Brand"
+				"Brand",
+				"CanteenProductUnifiedItem"=>array(
+					"UnifiedStore"
+				)
 			)
 		
 		));

@@ -450,6 +450,21 @@ class CanteenProductsController extends LocalAppController {
 		
 		
 	}
+
+	public function attached_stores($canteen_product_id = false) {
+		
+		$stores = $this->CanteenProduct->CanteenProductUnifiedItem->find('all',array(
+						"conditions"=>array(
+							"CanteenProductUnifiedItem.canteen_product_id"=>$canteen_product_id
+						),
+						"contain"=>array(
+							"UnifiedStore"
+						)
+					));
+		$this->set(compact("stores"));
+
+		$this->render("/Elements/canteen_product/attached_stores");
+	}
 	
 	
 	private function canteenProductSelects() {
@@ -459,7 +474,15 @@ class CanteenProductsController extends LocalAppController {
 		$this->set("brands",$this->CanteenProduct->Brand->find("list",array("order"=>array("Brand.name"=>"ASC"))));
 		
 		$this->set("currencies",$this->CanteenProduct->CanteenProductPrice->Currency->find("list",array("order"=>array("Currency.name"=>"ASC"))));
+
+		/*$unifiedStores = $this->CanteenProduct->CanteenProductUnifiedItem->UnifiedStore->find("all",array(
+							"fields"=>array("UnifiedStore.shop_name","UnifiedStore.id"),
+							"order"=>array("UnifiedStore.shop_name"=>"ASC")
+						)); */
 		
+		$unifiedStores = $this->CanteenProduct->CanteenProductUnifiedItem->UnifiedStore->find('list',array("order"=>array("UnifiedStore.shop_name"=>"ASC")));
+
+		$this->set(compact("unifiedStores"));
 	}
 	
 	
@@ -1080,6 +1103,39 @@ class CanteenProductsController extends LocalAppController {
 		
 		$this->flash("Product Copied Successfully","/canteen_products/edit/".$this->CanteenProduct->id);
 		
+	}
+
+	public function attach_store() {
+		
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$this->loadModel("CanteenProductUnifiedItem");
+
+			$this->CanteenProductUnifiedItem->create();
+
+			$this->CanteenProductUnifiedItem->save(array(
+				"canteen_product_id"=>$this->request->data['canteen_product_id'],
+				"unified_store_id"=>$this->request->data['unified_store_id']
+			));
+		
+		}
+
+		die("Store Attached");
+
+	}
+
+	public function remove_store($item_id) {
+
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$this->loadModel("CanteenProductUnifiedItem");
+
+			$this->CanteenProductUnifiedItem->delete($this->request->data['id']);
+
+		}
+
+		die("Item Deleted");
+
 	}
 	
 	

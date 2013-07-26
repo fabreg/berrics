@@ -11,7 +11,8 @@ class UnifiedStore extends AppModel {
 				"UnifiedStoreMediaItem",
 				"UnifiedStoreEvent",
 				"UnifiedStoreBrand",
-				"Tag"
+				"Tag",
+				"CanteenProductUnifiedItem"
 			);
 
 	public $hasOne = array(
@@ -20,6 +21,8 @@ class UnifiedStore extends AppModel {
 					"foreignKey"=>"foreign_key"
 				)
 			);
+
+
 
 	public static function storeStatus() {
 
