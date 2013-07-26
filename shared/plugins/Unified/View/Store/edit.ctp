@@ -139,7 +139,4 @@ $this->Unified->mapJsIncludes();
 	<input type="hidden" name='submit-btn[default]' />
 	<?php echo $this->Form->end(); ?>
 </div>
-<pre>
-<?php print_r($this->request->data) ?>
-</pre>
 
