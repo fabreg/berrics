@@ -6,7 +6,7 @@
 		</tr>
 		<?php foreach ($stores as $k => $v): ?>
 		<tr>
-			<td><?php echo $v['UnifiedStore']['shop_name']; ?></td>
+			<td><?php echo $v['UnifiedStore']['shop_name']; ?> (<?php echo $v['UnifiedStore']['city'] ?>)</td>
 			<td>
 				<button class="btn btn-danger" type='button' onclick='removeStoreItem(<?php echo $v['CanteenProductUnifiedItem']['id'] ?>);'>Remove</button>
 			</td>

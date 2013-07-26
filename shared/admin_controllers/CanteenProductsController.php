@@ -480,7 +480,19 @@ class CanteenProductsController extends LocalAppController {
 							"order"=>array("UnifiedStore.shop_name"=>"ASC")
 						)); */
 		
-		$unifiedStores = $this->CanteenProduct->CanteenProductUnifiedItem->UnifiedStore->find('list',array("order"=>array("UnifiedStore.shop_name"=>"ASC")));
+		$unStores = $this->CanteenProduct->CanteenProductUnifiedItem->UnifiedStore->find('all',array(
+									"order"=>array("UnifiedStore.shop_name"=>"ASC"),
+									"fields"=>array("UnifiedStore.id","UnifiedStore.shop_name","UnifiedStore.city"),
+									"contain"=>array()
+								));	
+
+		$unifiedStores = array();
+
+		foreach ($unStores as $k => $v) {
+			
+			$unifiedStores[$v['UnifiedStore']['id']] = $v['UnifiedStore']['shop_name']." ({$v['UnifiedStore']['city']})";
+
+		}
 
 		$this->set(compact("unifiedStores"));
 	}
