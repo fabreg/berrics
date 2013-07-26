@@ -105,7 +105,7 @@ border-radius: 10px 10px 0px 0px;
 		<li><a href="#pricing" data-toggle="tab">Pricing</a></li>
 		<li><a href="#style-code" data-toggle="tab">Style Code Options</a></li>
 		<li><a href="#meta" data-toggle="tab">Meta Data <span class="badge"><?php echo count($this->request->data['Meta']); ?></span></a></li>
-		<li><a href="#unified" data-toggle='tab'>Unified Stores</a></li>
+		<li><a href="#unified" data-toggle='tab'>Unified Stores <span class="badge" id='unified-badge'>0</span></a></li>
 	</ul>
 	<div class="tab-content">
 		<div class="tab-pane active" id="general">

@@ -1,4 +1,7 @@
 <?php if (count($stores)>0): ?>
+	<script>
+		$("#unified-badge").html(<?php echo count($stores); ?>);
+	</script>
 	<table cellspacing='0'>
 		<tr>
 			<th>Store</th>

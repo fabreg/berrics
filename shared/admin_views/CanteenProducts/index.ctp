@@ -186,7 +186,7 @@ function openDetails(id,ele) {
 			<td align='left' nowrap ><?php echo $p['name']; ?> - <?php echo $p['sub_title']; ?></td>
 			<td><?php echo $prod['CanteenProductPrice'][0]['price']; ?></td>
 			
-			<td class='actions'>
+			<td class='actions' nowrap>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->request->here); ?>'>Edit</a>
 				<a href='/canteen_products/edit/<?php echo $p['id']; ?>/<?php echo base64_encode($this->request->here); ?>' target='_blank'>Edit In New Window</a>
 				<a href='/canteen_products/copy_product/<?php echo $p['id']; ?>/cb:<?php echo base64_encode($this->request->here); ?>' onclick='return confirm("Are you sure you want to copy this product?");' target='_blank'>Copy Product</a>
