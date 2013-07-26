@@ -38,6 +38,13 @@ display:none;
 
 }
 
+#bc-post .tags,
+#bc-post .tags a {
+
+	color:#333;
+
+}
+
 
 
 /* Large desktop */
