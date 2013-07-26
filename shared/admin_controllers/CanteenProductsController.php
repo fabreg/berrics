@@ -1123,6 +1123,16 @@ class CanteenProductsController extends LocalAppController {
 		
 			$this->loadModel("CanteenProductUnifiedItem");
 
+			$chk = $this->CanteenProductUnifiedItem->find('count',array(
+						"conditions"=>array(
+							"CanteenProductUnifiedItem.canteen_product_id"=>$this->request->data['canteen_product_id'],
+							"CanteenProductUnifiedItem.unified_store_id"=>$this->request->data['unified_store_id']
+						),
+						"contain"=>array()
+					));
+
+			die("Already Attached");
+
 			$this->CanteenProductUnifiedItem->create();
 
 			$this->CanteenProductUnifiedItem->save(array(
