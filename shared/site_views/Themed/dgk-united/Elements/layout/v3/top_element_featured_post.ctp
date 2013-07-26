@@ -11,7 +11,10 @@
 <div class="row-fluid">
 	<div class="span2 hidden-phone">
 		<a href='/canteen/item/dgk-skateboards-dgk-united-nations.html'>
-			<img src="/theme/battle-commander-jthomas/img/deck-left.png" alt="" border='0' />
+			<img src="/theme/dgk-united/img/deck-top.png" alt="" border='0' />
+			<div>
+				<img src='/theme/dgk-united/img/dgk-text-top_02.png' border='0' />
+			</div>
 		</a>
 	</div>
 	<div class="span8" id='bc-post'>
@@ -19,7 +22,10 @@
 	</div>
 	<div class="span2 hidden-phone">
 		<a href='/canteen/item/dgk-skateboards-dgk-united-nations.html'>
-			<img src="/theme/battle-commander-jthomas/img/deck-right.png" alt="" border='0' />
+			<img src="/theme/dgk-united/img/dgk-deck-bottom.png" alt="" border='0' />
+			<div>
+				<img src='/theme/dgk-united/img/dgk-text-bottom_02.png' border='0' />
+			</div>
 		</a>
 	</div>
 </div>
