@@ -10,7 +10,7 @@
 ?>
 <div class="row-fluid">
 	<div class="span2 hidden-phone">
-		<a href='theberrics.com/canteen/item/dgk-skateboards-dgk-united-nations.html'>
+		<a href='/canteen/item/dgk-skateboards-dgk-united-nations.html'>
 			<img src="/theme/battle-commander-jthomas/img/deck-left.png" alt="" border='0' />
 		</a>
 	</div>
@@ -18,7 +18,7 @@
 		<?php echo $this->element("dailyops/post-bit",array("dop"=>$post)); ?>
 	</div>
 	<div class="span2 hidden-phone">
-		<a href='theberrics.com/canteen/item/dgk-skateboards-dgk-united-nations.html'>
+		<a href='/canteen/item/dgk-skateboards-dgk-united-nations.html'>
 			<img src="/theme/battle-commander-jthomas/img/deck-right.png" alt="" border='0' />
 		</a>
 	</div>
