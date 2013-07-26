@@ -1,0 +1,102 @@
+#main-wrapper {
+
+	background-image:url(/theme/battle-commander-jthomas/img/feather-bg.png);
+	background-repeat:repeat-x;
+	
+}
+
+#bc-post {
+
+	margin-top:30px;
+
+}
+#bc-post .post .post-top,
+#bc-post .post .post-top .time,
+#bc-post .post .post-top .date a  {
+
+	color:#fff;
+
+}
+
+#bc-post .post .post-top .time,
+#bc-post .post .post-top .date {
+
+display:none;
+
+}
+
+#bc-post .post .post-top h1 a,
+#bc-post .post .post-top h2 a {
+
+	color:#fff;
+
+}
+
+#bc-post .post {
+
+	border-bottom:none;
+
+}
+
+
+
+/* Large desktop */
+@media (min-width: 1200px) {  }
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  }
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+
+
+#main-wrapper {
+
+	background-image:none;
+	background-repeat:repeat-x;
+	background-position: bottom center;
+}
+
+#bc-post .post .post-top,
+#bc-post .post .post-top .time,
+#bc-post .post .post-top .date a  {
+
+	color:#000;
+
+}
+
+#bc-post .post .post-top h1 a,
+#bc-post .post .post-top h2 a {
+
+	color:#000;
+
+}
+
+ }
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+
+#main-wrapper {
+
+	background-image:none;
+	background-repeat:repeat-x;
+	background-position: bottom center;
+}
+#bc-post .post .post-top,
+#bc-post .post .post-top .time,
+#bc-post .post .post-top .date a  {
+
+	color:#000;
+
+}
+
+#bc-post .post .post-top h1 a,
+#bc-post .post .post-top h2 a {
+
+	color:#000;
+
+}
+
+ }
