@@ -18,8 +18,6 @@
 				</div>	
 				<?php echo $this->element("dailyops/posts/post-footer",array("dop"=>$post)); ?>
 			<?php endif ?>
-			
 		</div>
-		
 	</div>
 </div>
