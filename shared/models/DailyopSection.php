@@ -84,7 +84,8 @@ class DailyopSection extends AppModel {
 			"watch_this"=>"Watch This Controller",
 			"deathwish_video"=>"Deathwish Video Controller",
 			"bon_voyage"=>"Bon Voyage Controller",
-			"element_hold_it_down"=>"Element Hold It Down"
+			"element_hold_it_down"=>"Element Hold It Down",
+			"run_and_gun"=>"Run And Gun Controller"
 			
 		);
 		
