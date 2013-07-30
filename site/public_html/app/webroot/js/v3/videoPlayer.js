@@ -180,7 +180,7 @@
 
       ele.html(videoTag);
 
-      ele.prepend($("<div />").addClass("android-play-button"));
+     // ele.prepend($("<div />").addClass("android-play-button"));
 
       methods.initAndroidVideoEvents($context);
 
