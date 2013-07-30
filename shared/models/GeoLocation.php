@@ -13,7 +13,7 @@ class GeoLocation extends AppModel {
 			"UnifiedStore"
 		);
 
-	public function lat_long_search($lat = false, $lng = false, $distance = 10) {
+	public function lat_long_search($lat = false, $lng = false, $distance = 10,$models = array("UnifiedStore")) {
 
 		if(!$lat || !$lng) throw new BadRequestException("GeoLocation::lat_long_search - Invalid Arguments");
 

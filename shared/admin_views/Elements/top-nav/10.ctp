@@ -197,6 +197,10 @@
 				</div>
 				<div class='span6'>
 					<ul class='unstyled'>
+						<li class='nav-header'>Run & Gun</li>
+						<li>
+							<a href='/run_and_gun'>View Entries</a>
+						</li>
 						<li class='nav-header'>For The Record</li>
 						<li>
 							<a href='/berrics_records'>Manage Records</a>
@@ -204,10 +208,7 @@
 						<li>
 							<a href='/berrics_records/add'>Add New Record</a>
 						</li>
-						<li class='nav-header'>SLS Qualifying</li>
-						<li>
-							<a href='/sls'>Manage Entries</a>
-						</li>
+						
 						<li class='nav-header'>Battle At The Berrics</li>
 						<li>
 							<a href='/batb_events'>Manage Events</a>
