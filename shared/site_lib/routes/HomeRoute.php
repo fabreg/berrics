@@ -34,12 +34,12 @@ class HomeRoute extends CakeRoute {
 		switch($date_in) {
 				
 
-			case "2013-04-06":
-			case "2013-04-07":
-				if(in_array(date("Y-m-d"),array("2013-04-06","2013-04-07"))) {
+			case "2013-08-03":
+			case "2013-08-04":
+				if(in_array(date("Y-m-d"),array("2013-08-03","2013-08-04"))) {
 
-					$params['controller'] = "progression";
-					$params['action'] = "dailyops";
+					$params['controller'] = "run_and_gun";
+					$params['action'] = "section";
 
 				}
 			break;

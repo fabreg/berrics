@@ -1,7 +1,5 @@
 (function( $ ){
 
-
-
   var methods = {
     init:function(opt) {
 
