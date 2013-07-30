@@ -29,11 +29,12 @@
       switch($this.attr("data-platform")) {
 
         case 'android':
+        case 'ios':
           methods.initAndroidVideo($this);
         break;
-        case 'ios':
-          methods.initAppleVideo($this);
-        break;
+       
+        //  methods.initAppleVideo($this);
+       // break;
         default:
           methods.initSwfVideo($this);
         break;
