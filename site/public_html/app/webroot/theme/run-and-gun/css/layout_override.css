@@ -171,6 +171,59 @@ body {
 
 }
 
+#post .voting-div .vote-box .select-menu {
+
+float:left;
+
+
+}
+
+#post .voting-div .vote-box .submit-btn {
+
+	float:right;
+
+}
+
+#post .voting-div .vote-box .submit-btn button {
+
+	border:none;
+	background-color:transparent;
+
+}
+
+
+
+/*
+Entry Rows
+
+*/
+
+#rg-section .entry {
+
+	width:735px;
+	margin:auto;
+
+}
+
+#rg-section .entry .portrait {
+
+width:90px;
+float:left;
+
+}
+
+
+#rg-sectoin .entry .name-img {
+
+
+
+}
+
+#rg-section .entry .score-col {
+
+
+
+}
 
 
 /* custom sleect box */

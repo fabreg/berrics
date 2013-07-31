@@ -14,17 +14,22 @@ for($i=1.0;$i<=10;($i = number_format(($i+.1),1))) {
 
 
 ?>
-<div class="vote-box">
-	<div class="select-menu">
+<div class="vote-box clearfix">
 		<?php echo $this->Form->create('RgVote',array(
-			"id"=>'RgVoteForm',
-			"url"=>$this->request->here
-		)); 
+						"id"=>'RgVoteForm',
+						"url"=>$this->request->here
+					)); 
 
-		echo $this->Form->input("dailyop_id",array("type"=>"hidden","value"=>$post_id));
+				echo $this->Form->input("dailyop_id",array("type"=>"hidden","value"=>$post_id));
 		?>
+	<div class="select-menu">
 		<?php echo $this->Form->select("score",$nums,array("id"=>"score-drop-{$num}","empty"=>false)) ?>
-		<?php echo $this->Form->end(); ?>
 	</div>
+	<div class="submit-btn">
+		<button type="submit">
+			<img src="/theme/run-and-gun/img/submit-btn.png" alt="">
+		</button>
+	</div>
+	<?php echo $this->Form->end(); ?>
 </div>
 

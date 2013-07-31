@@ -113,7 +113,7 @@ function formatSelectFont__ ($score,$num) {
 				Prizes:
 			</div>
 			<p>
-				The winner takes home $25k and a special Run & Gun clock.
+				The winner takes home $25k and a special Run &amp; Gun clock.
 There is also a best trick bonus for $1k for whoever does the best single trick in their run as decided by a Berrics panel.
 			</p>
 		</div>
@@ -147,15 +147,7 @@ There is also a best trick bonus for $1k for whoever does the best single trick 
 	<?php endif; ?>
 	<div class="entries">
 		<?php foreach ($posts as $k => $v): ?>
-			<div class="entry">
-				<div class="portrait">
-					<img src="//img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][1]['MediaFile']['file'] ?>" alt="">
-				</div>
-				<div class="name">
-					<img src="//img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][3]['MediaFile']['file']; ?>" alt="">
-				</div>
-				
-			</div>
+			<?php echo $this->element("entry-row",array("post"=>$v)) ?>
 		<?php endforeach ?>
 	</div>
 </div>
