@@ -39,8 +39,10 @@ class RunAndGunController extends LocalAppController {
 		$post = array();
 
 		if(!$uri) {
-
+		
 			$post[] = $posts[0];
+			
+			$post[] = $posts[1];
 
 
 		} else {
