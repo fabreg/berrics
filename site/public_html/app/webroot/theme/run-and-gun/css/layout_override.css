@@ -1,0 +1,169 @@
+body {
+
+	background-color:#000;
+	background-image:url(/theme/run-and-gun/img/bg.jpg);
+	background-attachment: fixed;
+	background-size:cover;
+	background-position: left top;
+
+
+}
+
+#report-queue-btn {
+
+	display:none;
+
+}
+
+#rg-body {
+
+	width:770px;
+	margin:auto;
+	background-color:#fff;
+}
+
+
+#post {
+
+	width:728px;
+	background-color:#000;
+	margin:auto;
+
+}
+
+#post .name-img {
+
+	height:35px;
+
+}
+
+#post .post {
+
+	border:none;
+
+}
+
+#post .post .post-top,
+#post .post .post-footer .tags {
+
+	display:none;
+
+}
+
+#post .voting {
+
+	
+
+}
+
+#post .voting .copy {
+
+	float:left;
+	width:515px;
+	text-align: center;
+}
+
+#post .voting .voting-div {
+
+	float:right;
+	width:200px;
+}
+
+
+
+#post .voting .voting-div .login-btn {
+
+	text-align:center;
+	
+}
+
+#post .voting-div .vote-box {
+
+	position: relative;
+	width:81px;
+	height:40px;
+
+}
+
+#post .voting-div .vote-box .voting-box-top {
+
+	background-image:url(/theme/run-and-gun/img/score-div-bg.png);
+	width:81px;
+	height:40px;
+	position: absolute;
+	top:0px;
+	left:0px;
+	z-index: 1100;
+
+}
+
+#post .voting-div .vote-box .voting-box-top #score-text-box {
+
+	border:none;
+	width:81px;
+	height:40px;
+	font-size:32px;
+	line-height:40px;
+	background-color:transparent;
+}
+
+
+#post .voting-div .vote-box .select-drop {
+
+	position: absolute;
+	top:0px;
+	left:0px;
+
+}
+
+
+
+/* custom sleect box */
+
+.customSelect { 
+
+	background-image:url(/theme/run-and-gun/img/score-div-bg.png);
+	width:81px;
+	height:40px;
+	
+	line-height:40px;
+	
+
+}
+
+
+
+.customSelect.customSelectHover {
+/* Styles for when the select box is hovered */
+}
+
+.customSelect.customSelectOpen {
+
+	
+
+}
+
+.customSelect.customSelectFocus {
+
+	
+
+}
+
+.customSelect.customSelectDisabledOption {
+/* Styles for when the selected item is a disabled one */
+}
+
+.customSelect.customSelectDisabled {
+/* Styles for when the select box itself is disabled */
+}
+
+.customSelectInner {
+	
+	font-size:32px;
+
+}
+
+
+
+
+

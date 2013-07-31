@@ -2569,6 +2569,22 @@ class TesterController extends LocalAppController {
 	}
 
 
+	public function test_drop() {
+		
+		$nums = array();
+
+		for($i=1;$i<=10;($i = number_format(($i+.1),1))) {
+
+			$nums[$i] = $i;
+
+		}
+
+		print_r($nums);
+
+		die();
+
+	}
+
 }
 
 

@@ -35,7 +35,7 @@ class RgVote extends AppModel {
 		return array(
 			"total_votes"=>$total_votes,
 			"total_score"=>$total_score,
-			"average"=>number_format($total_votes/$total_score,1);
+			"average"=>number_format($total_votes/$total_score,1)
 		);
 
 	}
