@@ -30,12 +30,12 @@ class RgVote extends AppModel {
 			)
 		));
 
-		$total_score = $this->query("SELECT SUM(score) FROM rg_votes WHERE dailyop_id='{$dailyop_id}'");
-
+		$total_score = $this->query("SELECT SUM(score) AS `total` FROM rg_votes WHERE dailyop_id='{$post_id}'");
+		
 		return array(
 			"total_votes"=>$total_votes,
-			"total_score"=>$total_score,
-			"average"=>number_format($total_votes/$total_score,1)
+			"total_score"=>$total_score[0][0]['total'],
+			"average"=>number_format($total_score[0][0]['total']/$total_votes,1)
 		);
 
 	}

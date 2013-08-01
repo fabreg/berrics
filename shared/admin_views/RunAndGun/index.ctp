@@ -1,13 +1,53 @@
 <script>
+jQuery(document).ready(function($) {
 	
+	grabScores();
+
+});
 	
-function grabScore ($dailyop_id) {
+function grabScores () {
 	
-	
+	$('tr[data-post-id]').each(function() {
+
+		var $scoreTd = $(this).find('.average-score');
+		var $totalTd = $(this).find('.total-votes');
+		var $id = $(this).attr('data-post-id');
+
+		$scoreTd.html('Loading...');
+		$totalTd.html('Loading...');
+
+
+		$.ajax({
+
+			dataType:'json',
+			url:"/run_and_gun/grab_score/"+$id+"?t=1",
+			success:function(d) {
+
+				console.log(d);
+				$scoreTd.html(d.average);
+				$totalTd.html(d.total_votes);
+
+			}
+
+
+		});
+
+	});
 	
 }
 
 </script>
+<style>
+
+.total-votes,.average-score {
+
+	text-align: center;
+	font-size:22px;
+	font-weight: bold;
+
+}	
+
+</style>
 <div class="page-header">
 	<h1>Run And Gun</h1>
 </div>

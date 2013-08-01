@@ -36,6 +36,14 @@ class RunAndGunController extends LocalAppController {
 
 	}
 
+	public function grab_score($dailyop_id) {
+		
+		$score = $this->RgVote->getPostAverage($dailyop_id);
+
+		die(json_encode($score));
+
+	}
+
 
 
 }
