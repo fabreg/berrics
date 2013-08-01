@@ -10,6 +10,8 @@ class RunAndGunController extends LocalAppController {
 	public $uses = array("Dailyop","RgVote");
 
 	private $section_id = 103;
+
+	private $userVotes = false;
 	
 	public function beforeFilter() {
 
@@ -51,6 +53,14 @@ class RunAndGunController extends LocalAppController {
 				"Dailyop.uri"=>$this->request['uri']
 			),$this->isAdmin());
 
+			$post = $this->attachScores($post);
+
+		}
+
+		if(count($post)<=0) {
+
+			$this->redirect("/run-and-gun");
+
 		}
 
 		$this->set(compact("post"));
@@ -60,22 +70,54 @@ class RunAndGunController extends LocalAppController {
 	}
 
 	public function dailyops() {
-		
-		$days = 1;
-
-		if(strtoupper(date("D")) == "SUN") $days = 2; 
 
 		$dateIn = date("Y-m-d");
 
-		$p = $this->Dailyop->returnDailyopsHome($dateIn,$days,$this->isAdmin());
-		
-		$post = $p['posts'];
+		$posts = $this->getPosts();
 
-		$this->getPosts();
+		$post = $this->dailyopsPosts();
 
-		$this->set(compact("post","dateIn"));
+		$this->set(compact("post","dateIn","posts"));
 
 		$this->view = "section";
+
+	}
+
+	private function dailyopsPosts() {
+
+		$dates = array(date("Y-m-d"));
+
+		if(strtoupper(date("D")) == "THU") $dates[] = date("Y-m-d",strtotime("-1 Days"));
+
+		$token = "rg-dops-".md5(serialize($dates));
+
+		if (($post = Cache::read($token, "1min")) === false) {
+			
+			$post = array();
+
+			$post_ids = $this->Dailyop->find('all',array(
+						"conditions"=>array(
+							"DATE(Dailyop.publish_date)"=>$dates,
+							"Dailyop.dailyop_section_id"=>$this->section_id
+						),
+						"contain"=>array(),
+						"order"=>array("Dailyop.publish_date"=>"DESC"),
+						"fields"=>array("Dailyop.id")
+					));
+
+			foreach($post_ids as $k=>$v) {
+
+				$post[] = $this->Dailyop->returnPost(array("Dailyop.id"=>$v['Dailyop']['id']),$this->isAdmin());
+
+			}
+
+			Cache::write($token, $post, "1min");
+
+		}
+
+		$post = $this->attachScores($post);
+
+		return $post;
 
 	}
 
@@ -130,16 +172,28 @@ class RunAndGunController extends LocalAppController {
 
 		}
 
+		$posts = $this->attachScores($posts);
+
+		//die(pr($posts));
+
+		$this->set(compact("posts"));
+
+		return $posts;
+
+	}
+
+	private function attachScores($posts) {
+
 		//check if logged in and attach votes
 		if(CakeSession::check("Auth.User.id")) {
 
-			$userVotes = $this->RgVote->getUserVotes(CakeSession::Read("Auth.User.id"));
+			if(!$this->userVotes) $this->userVotes = $this->RgVote->getUserVotes(CakeSession::read("Auth.User.id"));
 
 			//die(print_r($userVotes));
 
 			foreach($posts as $k=>$v) {
 
-				$vote = Set::extract("/RgVote[dailyop_id={$v['Dailyop']['id']}]", $userVotes);
+				$vote = Set::extract("/RgVote[dailyop_id={$v['Dailyop']['id']}]", $this->userVotes);
 
 				if(count($vote)>0) {
 
@@ -150,8 +204,6 @@ class RunAndGunController extends LocalAppController {
 			}
 
 		}
-
-		$this->set(compact("posts"));
 
 		return $posts;
 

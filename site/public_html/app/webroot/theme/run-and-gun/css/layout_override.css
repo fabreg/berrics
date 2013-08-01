@@ -204,14 +204,15 @@ Entry Rows
 
 	width:735px;
 	margin:auto;
-	height:80px;
+	height:90px;
+	margin-bottom: 5px;
 }
 
 #rg-section .entry .portrait {
 
 width:90px;
 float:left;
-
+text-align: center;
 }
 
 
@@ -219,13 +220,13 @@ float:left;
 
 	float:left;
 	width:450px;
-	line-height: 80px;
+	line-height: 90px;
 }
 
 #rg-section .entry .score-col {
 
 	float:right;
-	line-height: 80px;
+	line-height: 90px;
 			font-size:32px;
 	font-family: 'avantbold';
 }

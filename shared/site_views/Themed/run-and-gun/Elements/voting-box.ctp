@@ -1,5 +1,7 @@
 <?php 
 
+
+
 $nums = array();
 
 for($i=1.0;$i<=10;($i = number_format(($i+.1),1))) {
@@ -15,11 +17,14 @@ for($i=1.0;$i<=10;($i = number_format(($i+.1),1))) {
 
 ?>
 <?php 
-		if(isset($post['RgVote']['score']) && !empty($post['RgVote']['score'])) {
+		if(isset($post['RgVote']['id'])) {
 
-					$this->request->data['RgVote']['score'] = $post['RgVote']['score'];
-					
-		}
+			$this->request->data['RgVote']['score'] = $post['RgVote']['score'];
+			
+		} 
+
+
+
 
 		echo $this->Form->create('RgVote',array(
 						"id"=>'RgVoteForm',

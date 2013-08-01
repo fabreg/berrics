@@ -3,14 +3,14 @@
 $pub_timestamp = strtotime($post['Dailyop']['publish_date']);
 $now_timestamp = time();
 
-$is_published = ($pub_timestamp<$now_time) ? true:false;
+$is_published = ($pub_timestamp<$now_timestamp) ? true:false;
 
-$is_published = true;
+//$is_published = true;
 
 ?>
 <div class="entry clearfix">
 	<div class="portrait">
-		<img src="//img.theberrics.com/i.php?src=/images/<?php echo $post['DailyopMediaItem'][1]['MediaFile']['file']; ?>&w=90" alt="">		
+		<img src="//img.theberrics.com/images/<?php echo $post['DailyopMediaItem'][1]['MediaFile']['file']; ?>" alt="">		
 	</div>
 	<div class="name-img">
 		<?php if ($is_published): ?>
