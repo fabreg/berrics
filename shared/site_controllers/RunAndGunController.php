@@ -42,7 +42,6 @@ class RunAndGunController extends LocalAppController {
 		
 			$post[] = $posts[0];
 			
-			$post[] = $posts[1];
 
 
 		} else {
@@ -50,7 +49,7 @@ class RunAndGunController extends LocalAppController {
 			$post[] = $this->Dailyop->returnPost(array(
 				"Dailyop.dailyop_section_id"=>$this->section_id,
 				"Dailyop.uri"=>$this->request['uri']
-			),1);
+			),$this->isAdmin());
 
 		}
 
@@ -62,7 +61,21 @@ class RunAndGunController extends LocalAppController {
 
 	public function dailyops() {
 		
+		$days = 1;
 
+		if(strtoupper(date("D")) == "SUN") $days = 2; 
+
+		$dateIn = date("Y-m-d");
+
+		$p = $this->Dailyop->returnDailyopsHome($dateIn,$days,$this->isAdmin());
+		
+		$post = $p['posts'];
+
+		$this->getPosts();
+
+		$this->set(compact("post","dateIn"));
+
+		$this->view = "section";
 
 	}
 
@@ -75,6 +88,18 @@ class RunAndGunController extends LocalAppController {
 
 	public function place_vote() {
 		
+		if(!CakeSession::check("Auth.User.id")) die("nope");
+
+		if($this->request->is("post") || $this->request->is("put")) {
+		
+			$this->RgVote->placeVote(CakeSession::read("Auth.User.id"), $post_id = $this->request->data['RgVote']['dailyop_id'], $this->request->data['RgVote']['score']);
+			
+			die("1");
+
+		}
+
+		die("0");
+
 	}
 
 	private function getPosts() {
@@ -109,6 +134,20 @@ class RunAndGunController extends LocalAppController {
 		if(CakeSession::check("Auth.User.id")) {
 
 			$userVotes = $this->RgVote->getUserVotes(CakeSession::Read("Auth.User.id"));
+
+			//die(print_r($userVotes));
+
+			foreach($posts as $k=>$v) {
+
+				$vote = Set::extract("/RgVote[dailyop_id={$v['Dailyop']['id']}]", $userVotes);
+
+				if(count($vote)>0) {
+
+					$posts[$k]['RgVote'] = $vote[0]['RgVote'];
+
+				}
+
+			}
 
 		}
 

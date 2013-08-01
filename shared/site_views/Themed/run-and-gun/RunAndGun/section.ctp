@@ -1,4 +1,10 @@
-<?php echo $this->Html->script(array("/js/v3/jquery.customSelect.min.js"),array("inline"=>false)) ?>
+<?php
+
+$this->set("title_for_layout","THE BERRICS - RUN & GUN");
+
+?>
+
+<?php echo $this->Html->script(array("/js/v3/jquery.customSelect.min.js","/js/jquery.form.js"),array("inline"=>false)) ?>
 <script>
 
 jQuery(document).ready(function($) {
@@ -19,21 +25,12 @@ jQuery(document).ready(function($) {
 
 		});
 
-		
-		//select scoring box actions
-		/*
-		$("#score-drop").customSelect();
-		$("#score-drop").bind('change',function() { 
 
-			var $score = $(this).val();
-			formatSelectFont($score);
-
-		});
-
-*/
 		formatSelectFont();
-		//formatSelectFont($("#score-drop-0").val(),"0");
-		//formatSelectFont($("#score-drop-1").val(),"1");
+
+
+		//bind the voting forms
+		bootstrapForms();
 
 		var meta = $("meta[name=viewport]");
 
@@ -46,11 +43,50 @@ jQuery(document).ready(function($) {
 
 });	
 
+
+function bootstrapForms () {
+	
+	$('.rg-vote-form').ajaxForm({
+
+			beforeSubmit:function(arr, $form, options) {
+
+				
+				$($form).find('.submit-btn').hide();
+				$($form).find('.loader-gif').show();
+
+				return true;
+
+			},
+			"success":function(d,status,$xhr,$form) {
+
+				//alert("Vote Accpeted");
+				$($form).find('.submit-btn').show();
+				$($form).find('.loader-gif').hide();
+				$($form).find('.vote-accepted').fadeIn('normal',function() { 
+
+					setTimeout(function() { 
+
+						$($form).find('.vote-accepted').fadeOut();
+
+					},2500);
+
+				});
+
+			}
+
+
+	});
+	
+
+}
+
 function formatSelectFont (argument) {
 		
 		$(".customSelectInner").each(function() { 
 
 			var $score = $(this).text();
+
+			$(this).css({"width":"81px"});
 
 			if($score == 10) {
 
@@ -138,7 +174,7 @@ There is also a best trick bonus for $1k for whoever does the best single trick 
 						<?php if (!CakeSession::check("Auth.User.id")): ?>
 							<?php echo $this->element("login-btn"); ?>
 						<?php else: ?>
-							<?php echo $this->element("voting-box",array("post_id"=>$v['Dailyop']['id'],"num"=>$k)); ?>
+							<?php echo $this->element("voting-box",array("post"=>$v,"num"=>$k)); ?>
 						<?php endif ?>
 					</div>
 				</div>
