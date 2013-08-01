@@ -34,7 +34,7 @@ for($i=1.0;$i<=10;($i = number_format(($i+.1),1))) {
 		?>
 <div class="vote-box clearfix">
 	<div class="vote-accepted">
-		SCORE ACCEPTED!
+		<img src="/theme/run-and-gun/img/success-button.png" alt="">
 	</div>
 	<table cellspacing='0' cellpadding='0' width='175'>
 		<tr>

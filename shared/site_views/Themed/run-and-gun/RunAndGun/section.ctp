@@ -63,14 +63,19 @@ function bootstrapForms () {
 				$($form).find('.submit-btn').show();
 				$($form).find('.loader-gif').hide();
 				$($form).find('.vote-accepted').fadeIn('normal',function() { 
-
-					setTimeout(function() { 
+				//update the scoring row below!
+				var $post_id = $($form).find('input[type=hidden][name="data[RgVote][dailyop_id]"]').val();
+				var $score = $($form).find('select[name="data[RgVote][score]"]').val();
+				setTimeout(function() { 
 
 						$($form).find('.vote-accepted').fadeOut();
-
+						$('.score-col[data-post-id='+$post_id+']').html($score);
 					},2500);
 
 				});
+
+				
+				
 
 			}
 
