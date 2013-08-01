@@ -5,10 +5,18 @@ $now_timestamp = time();
 
 $is_published = ($pub_timestamp<$now_timestamp) ? true:false;
 
+$dataLink = '';
+
+if($is_published) {
+
+	$dataLink = "data-link='/run-and-gun/{$post['Dailyop']['uri']}'";
+
+}
+
 //$is_published = true;
 
 ?>
-<div class="entry clearfix">
+<div class="entry clearfix" <?php echo $dataLink; ?> >
 	<div class="portrait">
 		<img src="//img.theberrics.com/images/<?php echo $post['DailyopMediaItem'][1]['MediaFile']['file']; ?>" alt="">		
 	</div>

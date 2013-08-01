@@ -113,7 +113,7 @@ body {
 
 #post .post .post-footer .social-media {
 
-	margin-right:245px;
+	margin-right:270px;
 	
 
 }
@@ -206,6 +206,8 @@ Entry Rows
 	margin:auto;
 	height:90px;
 	margin-bottom: 5px;
+	cursor: pointer;
+	
 }
 
 #rg-section .entry .portrait {
@@ -234,6 +236,13 @@ text-align: center;
 #rg-section .entry .score-div {
 
 
+
+}
+
+.load-more-button {
+
+	text-align: center;
+	padding:15px;
 
 }
 

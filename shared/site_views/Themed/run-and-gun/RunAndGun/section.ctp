@@ -40,6 +40,14 @@ jQuery(document).ready(function($) {
 
 		});
 
+		$('.entry[data-link]').click(function() { 
+
+			var $ref = $(this).attr("data-link");
+
+			document.location.href=$ref;
+
+		});
+
 
 });	
 
@@ -192,6 +200,3 @@ There is also a best trick bonus for $1k for whoever does the best single trick 
 		<?php endforeach ?>
 	</div>
 </div>
-<pre>
-<?php print_r($posts); ?>
-</pre>
