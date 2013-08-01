@@ -47,8 +47,26 @@ body {
 
 }
 
+#rg-section .view-rules-link {
+
+	font-size:22px;
+	font-family: 'avantbold';
+	text-align: center;
+	color:#c41230;
+	padding-top:10px;
+
+}
+
+#rg-section .view-rules-link:hover {
+
+	text-decoration: underline;
+	cursor: pointer;
+
+}
+
 #rg-section .text-content {
 
+	display: none;
 
 }
 
@@ -207,7 +225,7 @@ Entry Rows
 	height:90px;
 	margin-bottom: 5px;
 	cursor: pointer;
-	
+
 }
 
 #rg-section .entry .portrait {

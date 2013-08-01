@@ -48,6 +48,13 @@ jQuery(document).ready(function($) {
 
 		});
 
+		$('.view-rules-link').click(function() { 
+
+			$('.text-content').slideDown();
+			$(this).remove();
+
+		});
+
 
 });	
 
@@ -139,6 +146,9 @@ function formatSelectFont__ ($score,$num) {
 <div id='rg-section'>
 	<div class="heading">
 		<img src="/theme/run-and-gun/img/heading.jpg" alt="">
+	</div>
+	<div class="view-rules-link">
+		&#x25BC; VIEW THE RULES &#x25BC;
 	</div>
 	<div class="text-content">
 		<div class="para">
