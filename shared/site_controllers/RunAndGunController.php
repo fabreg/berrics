@@ -57,7 +57,7 @@ class RunAndGunController extends LocalAppController {
 
 		}
 
-		if(count($post)<=0) {
+		if(!isset($post[0]['Dailyop']['id'])) {
 
 			$this->redirect("/run-and-gun");
 
