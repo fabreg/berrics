@@ -5,6 +5,8 @@ $now_timestamp = time();
 
 $is_published = ($pub_timestamp<$now_timestamp) ? true:false;
 
+$is_published = true;
+
 $dataLink = '';
 
 if($is_published) {
@@ -13,7 +15,7 @@ if($is_published) {
 
 }
 
-//$is_published = true;
+
 
 ?>
 <div class="entry clearfix" <?php echo $dataLink; ?> >
