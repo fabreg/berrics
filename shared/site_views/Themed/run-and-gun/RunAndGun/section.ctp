@@ -204,6 +204,9 @@ There is also a best trick bonus for $1k for whoever does the best single trick 
 			</div>		
 		<?php endforeach ?>		  	 
 	<?php endif; ?>
+	<div class="banner">
+		<?php echo $this->element("banners/728",array("unit"=>"Run_Gun_Week_1_Run_1")) ?>
+	</div>
 	<div class="entries">
 		<?php foreach ($posts as $k => $v): ?>
 			<?php echo $this->element("entry-row",array("post"=>$v)) ?>

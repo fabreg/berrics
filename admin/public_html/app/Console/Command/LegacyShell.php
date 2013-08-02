@@ -1,10 +1,10 @@
 <?php
 
 App::import("Vendor","ImgServer",array("file"=>"ImgServer.php"));
-
+App::import("Vendor","Tools",array("file"=>"Tools.php"));
 class LegacyShell extends Shell {
 	
-	public $uses = array("MediaFile","GeoLocation","UnifiedStore");
+	public $uses = array("MediaFile","GeoLocation","UnifiedStore","Dailyop");
 	
 	public function main() {
 		
@@ -374,6 +374,36 @@ class LegacyShell extends Shell {
 			$this->UnifiedStore->save($data);
 
 
+
+		}
+
+	}
+
+	public function rg_static_posts() {
+		
+		$posts = $this->Dailyop->find('all',array(
+					"conditions"=>array(
+						"Dailyop.dailyop_section_id"=>103
+					),
+					"contain"=>array()
+				));
+
+		foreach ($posts as $k => $v) {
+			
+			$data = array(
+				"name"=>$v['Dailyop']['name'],
+				"sub_title"=>$v['Dailyop']['sub_title'],
+				"uri"=>Tools::safeUrl($v['Dailyop']['name']." ".$v['Dailyop']['sub_title']).".html",
+				"fb_like_uri_override"=>"/run-and-gun/".$v['Dailyop']['uri'],
+				"url"=>"/run-and-gun/".$v['Dailyop']['uri'],
+				"active"=>1,
+				"dailyop_section_id"=>2,
+				"publish_date"=>$v['Dailyop']['publish_date']
+			);
+
+			$this->Dailyop->create();
+
+			$this->Dailyop->save($data);
 
 		}
 

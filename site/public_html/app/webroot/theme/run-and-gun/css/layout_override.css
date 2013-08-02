@@ -46,6 +46,13 @@ body {
 
 
 }
+#rg-section .banner {
+
+	text-align:center;
+	padding-top:10px;
+	padding-bottom: 10px;
+
+}
 
 #rg-section .view-rules-link {
 

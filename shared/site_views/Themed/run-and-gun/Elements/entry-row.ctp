@@ -5,7 +5,7 @@ $now_timestamp = time();
 
 $is_published = ($pub_timestamp<$now_timestamp) ? true:false;
 
-//$is_published = true;
+$is_published = true;
 
 $dataLink = '';
 
