@@ -156,7 +156,7 @@ function formatSelectFont__ ($score,$num) {
 				The Idea:
 			</div>
 			<p>
-				Each skater gets The Berrics to himself for a 24 hour period to film the best 60 second run he can without knowing anything about what the other skaters have filmed.
+				Each skater gets The Berrics to himself for a 24 hour period to film his best 60 second run without knowing anything about what the other skaters have filmed.
 			</p>
 		</div>
 		<div class="para">
@@ -164,7 +164,7 @@ function formatSelectFont__ ($score,$num) {
 				Scoring:
 			</div>
 			<p>
-				The runs are scored by you.  You can change the score you submitted by logging into your account and changing it as you see fit.  Once we close scoring (at the very end) we'll average all the submitted scores together per skater to determine the winner.
+				The runs are scored by you on a scale from 1 to 10. You can change the score you submitted at any time by logging into your account and changing it as you see fit. Once we close scoring (at the very end) we'll average all the submitted scores together per skater to determine the winner.
 			</p>
 		</div>
 		<div class="para">
