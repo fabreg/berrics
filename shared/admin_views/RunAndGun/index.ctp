@@ -48,28 +48,43 @@ function grabScores () {
 }	
 
 </style>
+<?php if (!$this->request->is('ajax')): ?>
 <div class="page-header">
 	<h1>Run And Gun</h1>
-</div>
+</div>  	 
+<?php else: ?>
+<h3>Run & Gun</h3>
+<?php endif; ?>
+
 <table cellpadding='0'>
 	<tr>
+		<?php if (!$this->request->is('ajax')): ?>
 		<th>PostID</th>
-		<th>Publish Date</th>
+		<th>Publish Date</th>	  	 
+		<?php endif; ?>
+		
 		<th>Title</th>
 		<th>Total Votes</th>
 		<th>Average Score</th>
-		<th>Actions</th>
+		<?php if (!$this->request->is('ajax')): ?>
+		<th>Actions</th>  	 
+		<?php endif; ?>
+		
 	</tr>
 	<?php foreach ($posts as $k => $v): ?>
 	<tr data-post-id='<?php echo $v['Dailyop']['id']; ?>'>
+		<?php if (!$this->request->is('ajax')): ?>
 		<td><?php echo $v['Dailyop']['id']; ?></td>
 		<td><?php echo $this->Time->niceShort($v['Dailyop']['publish_date']) ?></td>
+		<?php endif; ?>
 		<td><?php echo $v['Dailyop']['name'] ?> - <?php echo $v['Dailyop']['sub_title']; ?></td>
 		<td class='total-votes'></td>
 		<td class='average-score'></td>
+		<?php if (!$this->request->is('ajax')): ?>
 		<td>
 			<a href="/dailyops/edit/<?php echo $v['Dailyop']['id']; ?>" class="btn btn-primary">Edit</a>
 		</td>
+		<?php endif; ?>
 	</tr>
 	<?php endforeach ?>
 </table>

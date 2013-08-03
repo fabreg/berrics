@@ -12,8 +12,15 @@ $(document).ready(function() {
 	loadCanteenOrderStats();
 	loadUserUploads();
 	loadBerricsRecords();
+	loadRg();
 });
 
+
+function loadRg() {
+
+	$("#rg-votes").html(loading_htm).load("/run_and_gun",function(d) { initBootstrap(); });
+	
+}
 
 function loadDailyops() {
 
@@ -134,6 +141,7 @@ function loadBerricsRecords () {
 			</div>
 			<div class='span6'>
 				<div id='canteen-order-stats'></div>
+				<div id="rg-votes"></div>
 				<div id='user-uplaods'></div>
 				<div id="berrics-records"></div>
 			</div>
