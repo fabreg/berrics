@@ -101,7 +101,7 @@ $total_per_row = ceil(count($f_sections)/3);
 	<li class="spacer"></li>
 	<li class='nav-btn'><a href='/canteen'>CANTEEN</a></li>
 	<li class="spacer"></li>
-	<li class='nav-btn'><a href='/battle-at-the-berrics-6'>BATB VI</a></li>
+	<li class='nav-btn'><a href='/run-and-gun'>RUN &amp; GUN</a></li>
 	<li class="spacer"></li>
 	<li class='nav-btn'><a href='/headquarters'>HEADQUARTERS</a></li>
 	<li class="spacer"></li>
