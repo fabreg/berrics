@@ -87,7 +87,7 @@ class RunAndGunController extends LocalAppController {
 
 		$dates = array(date("Y-m-d"));
 
-		if(strtoupper(date("D")) == "THU") $dates[] = date("Y-m-d",strtotime("-1 Days"));
+		if(strtoupper(date("D")) == "SUN") $dates[] = date("Y-m-d",strtotime("-1 Days"));
 
 		$token = "rg-dops-".md5(serialize($dates));
 
