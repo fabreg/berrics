@@ -4,7 +4,7 @@ $engine = "Memcache";
 
 $memcache_servers = array('10.177.5.233:11211');
 	
-	if(preg_match('/(WEB2VM)|(WEB1)|(admin)|(V3)/i',php_uname('-n'))) {
+	if(preg_match('/(WEB2VM)|(WEB1)|(admin)|(V3)|(johncent)/i',php_uname('-n'))) {
 		
 		$memcache_servers = array('127.0.0.1:11211');	
 		

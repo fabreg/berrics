@@ -39,7 +39,7 @@ class DATABASE_CONFIG {
 
 		$uname = php_uname('n');
 
-		if($uname == 'WEB2VM') {
+		if(preg_match('/(WEB2VM)|(johncent)/',$uname)) {
 			
 			$this->sessions['host'] = $this->default['host'] = $this->master['host'] = '127.0.0.1';
 
