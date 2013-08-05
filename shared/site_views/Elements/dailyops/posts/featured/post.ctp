@@ -3,12 +3,12 @@
 	<div class="span12">
 		<div class="post featured-post clearfix">
 			<?php
-				$one = false;
+				$one = true;
 
 				 if ($one): ?>
 				<div style="text-align:center">
-					<a href='/canteen/item/dave-swift-shoot-all-skaters-dave-swift.html'>
-						<img src='//img.theberrics.com/images/77b109bd008b57db81ac677c75b5d5da.jpg' border='0' />
+					<a href='/run-and-gun'>
+						<img src='//img.theberrics.com/images/662d8a550a48e86596f965fe46385485.jpg' border='0' />
 					</a>
 				</div>
 			<?php else: ?>

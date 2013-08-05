@@ -30,6 +30,9 @@ class TesterController extends LocalAppController {
 	
 	public function info() {
 
+		echo Configure::version();
+		die();
+
 		phpinfo();
 		die();
 
