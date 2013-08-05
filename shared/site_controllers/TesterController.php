@@ -28,13 +28,13 @@ class TesterController extends LocalAppController {
 
 	}
 
-
 	public function geo_test() {
 		
 		die(pr($_SERVER));
 
 	}
 	
+
 	public function info() {
 
 		echo Configure::version();
