@@ -39,6 +39,20 @@ class SplashController extends SplashAppController {
 
 		}
 
+		$ca_states = array(
+			"AB","BC","YT"
+		);
+
+		if(in_array($_SERVER['GEOIP_COUNTRY_CODE'],array("CA"))) {
+
+			if (in_array($user_state,$ca_states)) {
+				
+				return true;
+
+			}
+
+		}
+
 		return false;
 
 	}
