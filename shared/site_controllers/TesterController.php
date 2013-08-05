@@ -27,6 +27,13 @@ class TesterController extends LocalAppController {
 		die(pr($store));
 
 	}
+
+
+	public function geo_test() {
+		
+		die(pr($_SERVER));
+
+	}
 	
 	public function info() {
 
