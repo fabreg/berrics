@@ -11,9 +11,9 @@ if(preg_match('/(\/img\/|\/pho\/)/',$_SERVER['REQUEST_URI'])) {
 	
 }
 
-
+$URL = parse_url($_SERVER['REQUEST_URI']);
 //splash page router
-if($_SERVER['REQUEST_URI'] == "/") {
+if($URL['path'] == "/") {
 	
 	App::uses("SplashRoute",'routes');
 	

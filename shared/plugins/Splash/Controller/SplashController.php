@@ -17,9 +17,42 @@ class SplashController extends SplashAppController {
 		$this->layout = "splash";
 		
 	}
+
+
+	private function geo_check() {
+		
+		$user_state = (isset($_SERVER['GEOIP_REGION'])) ? $_SERVER['GEOIP_REGION']:"CA";
+
+		if(isset($_GET['geo_override'])) $user_state = $_GET['geo_override'];
+
+		$states = array(
+			"WA","ID","OR","AK","MT","WY"
+		);
+
+		if(in_array($_SERVER['GEOIP_COUNTRY_CODE'],array("US"))) {
+
+			if (in_array($user_state,$states)) {
+				
+				return true;
+
+			}
+
+		}
+
+		return false;
+
+	}
+
+
 	
 	
 	public function index() {
+
+		if($this->geo_check()) {
+
+			return $this->skate_lite();
+
+		}
 
 		$pages = $this->SplashDate->getTodaysPages();
 
@@ -284,6 +317,16 @@ class SplashController extends SplashAppController {
 			$this->redirect("/");
 
 		}
+
+	}
+
+	public function skate_lite() {
+		
+		$post = $this->Dailyop->returnPost(array("Dailyop.id"=>7440),1);
+
+		$this->set(compact("post"));
+
+		$this->view = "skate_lite";
 
 	}
 
