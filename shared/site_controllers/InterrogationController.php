@@ -26,6 +26,9 @@ class InterrogationController extends DailyopsController {
 
 	public function view() {
 
+		$this->loadModel('Dailyop');
+		
+
 		$post = $this->Dailyop->returnPost(array(
 				"Dailyop.uri"=>$this->request->params['uri'],
 				"DailyopSection.uri"=>$this->request->params['section']),

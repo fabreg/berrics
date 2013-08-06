@@ -153,7 +153,8 @@ class DailyopsController extends LocalAppController {
 
 		if(($data = Cache::read($token,"1min")) === false) {
 
-
+			$this->loadModel('Dailyop');
+			$this->loadModel('DailyopSection');
 			$sections = $this->Dailyop->DailyopSection->returnSections();
 		
 			$section_uri = $this->request->params['section'];
@@ -216,6 +217,8 @@ class DailyopsController extends LocalAppController {
 	public function view() {
 		
 		$this->loadModel("DailyopSection");
+		$this->loadModel('"Dailyop"');
+		
 		
 		$post = $this->Dailyop->returnPost(array(
 		
