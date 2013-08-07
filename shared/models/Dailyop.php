@@ -104,7 +104,7 @@ class Dailyop extends AppModel {
 		
 		if(!$admin) {
 			
-			$cond[]="Dailyop.publish_date < '{self::}'";
+			$cond[]="Dailyop.publish_date < '".self::awsNow()."'";
 			$cond['Dailyop.active'] = 1;
 			
 		}
@@ -1608,7 +1608,7 @@ class Dailyop extends AppModel {
 			"conditions"=>array(
 				"Dailyop.active"=>1,
 				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= NOW()",
+				"Dailyop.publish_date <= '".self::awsNow()."'",
 				"Dailyop.dailyop_section_id !="=>65,
 				"Dailyop.id"=>$ids
 			),
@@ -1764,7 +1764,7 @@ class Dailyop extends AppModel {
 
 			}
 
-			die(print_r($cond));
+			
 
 			$dops = $this->find('all',array(
 						"conditions"=>$cond,
