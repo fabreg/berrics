@@ -2585,6 +2585,22 @@ class TesterController extends LocalAppController {
 
 	}
 
+
+	public function test_aws() {
+		
+		include "AWSSDKforPHP/aws.phar";
+
+		$aws = Aws::factory(array(
+					"key"=>"AKIAISW6SJ2JLXCKPT6A",
+					"secret"=>"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",
+					"region"=>Region::OREGON
+
+				));
+
+		die(pr($aws));
+
+	}
+
 }
 
 
