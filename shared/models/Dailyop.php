@@ -104,7 +104,7 @@ class Dailyop extends AppModel {
 		
 		if(!$admin) {
 			
-			$cond[]="Dailyop.publish_date < '{self::awsNow()}'";
+			$cond[]="Dailyop.publish_date < '{self::}'";
 			$cond['Dailyop.active'] = 1;
 			
 		}
@@ -1760,7 +1760,7 @@ class Dailyop extends AppModel {
 			//do an admin check
 			if (!$isAdmin || ($isAdmin && !$override)) {
 				
-				$cond[] = "Dailyop.publish_date < NOW()";	
+				$cond[] = "Dailyop.publish_date < '{self::awsNow()}'";	
 
 			} 
 
