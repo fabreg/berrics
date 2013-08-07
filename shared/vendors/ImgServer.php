@@ -47,7 +47,7 @@ class ImgServer {
 		
 		if(!self::$connected) {
 
-			if(!$this->sftp->login('root','WEB2B7eMsiJ43')) {
+			if(!$this->sftp->login('imguser','19Berrics82')) {
 			
 			die("Failed to connect to img.theberrics.com");
 			
