@@ -1813,7 +1813,7 @@ class Dailyop extends AppModel {
 
 		if(!$override) {
 
-			$cond[] = "Dailyop.publish_date <= NOW()";
+			$cond[] = "Dailyop.publish_date <= '{self::awsNow()}'";
 
 		}
 
