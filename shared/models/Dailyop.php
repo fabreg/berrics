@@ -104,7 +104,7 @@ class Dailyop extends AppModel {
 		
 		if(!$admin) {
 			
-			$cond[]='Dailyop.publish_date < NOW()';
+			$cond[]="Dailyop.publish_date < '{self::awsNow()}'";
 			$cond['Dailyop.active'] = 1;
 			
 		}

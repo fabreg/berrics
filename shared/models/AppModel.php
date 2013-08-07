@@ -22,6 +22,12 @@ class AppModel extends Model {
 		parent::__construct($options);
 		
 	}
+
+	static function awsNow() {
+
+		return date("Y-m-d H:i:s");
+
+	}
 	
 	public function find($conditions = null, $fields = array(), $order = null, $recursive = null) {
 
