@@ -76,7 +76,7 @@ class MtnDewController extends DailyopsController {
 						"conditions"=>array(
 							"Dailyop.id"=>$post_ids,
 							"Dailyop.active"=>1,
-							"Dailyop.publish_date < NOW()"
+							"Dailyop.publish_date < '".AppModel::awsNow()."'"
 						),
 						"contain"=>array(
 								"DailyopMediaItem"=>array(

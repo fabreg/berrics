@@ -35,7 +35,7 @@ class CalendarController extends LocalAppController {
 						"MONTH(Dailyop.publish_date) = '{$month}'",
 						"Dailyop.active"=>1,
 						"Dailyop.hidden"=>0,
-						"Dailyop.publish_date < NOW()"
+						"Dailyop.publish_date < '".AppModel::awsNow()."'"
 					),
 					"contain"=>array(
 						"DailyopSection"

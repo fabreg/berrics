@@ -51,7 +51,7 @@ class CommanderController extends LocalAppController {
 		
 		if(!$this->isAdmin()) {
 			
-			$cond[] = 'Dailyop.publish_date < NOW()';
+			$cond[] = "Dailyop.publish_date < '".AppModel::awsNow()."'";
 			
 		}
 		

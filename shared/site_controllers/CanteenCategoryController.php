@@ -76,7 +76,7 @@ class CanteenCategoryController extends CanteenAppController {
 		$pcond = array(
 	
 				"CanteenProduct.active"=>1,
-				"DATE(CanteenProduct.publish_date)<NOW()",
+				"DATE(CanteenProduct.publish_date)<'".AppModel::awsNow()."'",
 				"CanteenProduct.canteen_category_id"=>$this->category['CanteenCategory']['id']
 		);
 	

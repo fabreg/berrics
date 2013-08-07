@@ -1486,7 +1486,7 @@ class LegacyController extends LocalAppController {
 		
 			"conditions"=>array(
 				"Dailyop.dailyop_section_id"=>4,
-				"Dailyop.publish_date < NOW()",
+				"Dailyop.publish_date < '".self::awsNow()."'",
 				"Dailyop.active"=>1
 			),
 			"contain"=>array(

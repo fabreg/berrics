@@ -269,7 +269,7 @@ class DailyopsController extends LocalAppController {
 				"DATE(Dailyop.publish_date) = '{$dateIn}'",
 				"Dailyop.active"=>1,
 				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= NOW()"
+				"Dailyop.publish_date <= '".AppModel::awsNow()."'"
 			),
 			"contain"=>array()
 		));
@@ -291,7 +291,7 @@ class DailyopsController extends LocalAppController {
 		
 		$conditions = array(
 							"Dailyop.active"=>1,
-							"Dailyop.publish_date <= NOW()",
+							"Dailyop.publish_date <='".AppModel::awsNow()."'",
 							"Dailyop.hidden"=>0
 						);
 		$limit = 10;
@@ -310,7 +310,7 @@ class DailyopsController extends LocalAppController {
 			
 				"DATE(Dailyop.publish_date) = '{$dateIn}'",
 				"Dailyop.active"=>1,
-				"Dailyop.publish_date <= NOW()",
+				"Dailyop.publish_date <= '".AppModel::awsNow()."'",
 				"Dailyop.hidden"=>0
 				
 			);
@@ -391,7 +391,7 @@ class DailyopsController extends LocalAppController {
 					"order"=>array("Dailyop.publish_date"=>"DESC"),
 					"conditions"=>array(
 						$dateCond,
-						"Dailyop.publish_date < NOW()",
+						"Dailyop.publish_date < '".AppModel::awsNow()."'",
 						"Dailyop.active"=>1,
 						"Dailyop.hidden"=>0
 						
@@ -599,7 +599,7 @@ class DailyopsController extends LocalAppController {
 					"conditions"=>array(
 						"Dailyop.dailyop_section_id"=>$section['id'],
 						"Dailyop.active"=>1,
-						"Dailyop.publish_date < NOW()",
+						"Dailyop.publish_date < '".AppModel::awsNow()."'",
 						"YEAR(Dailyop.publish_date) = '{$year}'"
 						
 					),
@@ -717,7 +717,7 @@ class DailyopsController extends LocalAppController {
 				"limit"=>50,
 				"conditions"=>array(
 					"Dailyop.active"=>1,
-					"Dailyop.publish_date < NOW()"
+					"Dailyop.publish_date < '".AppModel::awsNow()."'"
 				)
 			
 			));
@@ -782,7 +782,7 @@ class DailyopsController extends LocalAppController {
 	private function get_latest_month($section_id = false) {
 		
 		$cond = array(
-						"Dailyop.publish_date < NOW()",
+						"Dailyop.publish_date < '".AppModel::awsNow()."'",
 						"Dailyop.active"=>1
 					);
 					
@@ -845,7 +845,7 @@ class DailyopsController extends LocalAppController {
 					"DAY(Dailyop.publish_date) AS `d`"
 				),
 				"conditions"=>array(
-					"Dailyop.publish_date < NOW()",
+					"Dailyop.publish_date < '".AppModel::awsNow()."'",
 					"Dailyop.active"=>1,
 					"Dailyop.hidden"=>0
 				),
@@ -1064,7 +1064,7 @@ class DailyopsController extends LocalAppController {
 					"conditions"=>array(
 						"Dailyop.dailyop_section_id !="=>65,
 						"DATE(publish_date) > '2011-06-20'",
-						"Dailyop.publish_date <= NOW()",
+						"Dailyop.publish_date <= '".AppModel::awsNow()."'",
 						"Dailyop.active"=>1
 					),
 					"contain"=>array(

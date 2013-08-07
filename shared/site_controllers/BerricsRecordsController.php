@@ -74,7 +74,7 @@ class BerricsRecordsController extends DailyopsController {
 			"conditions"=>array(
 				"BerricsRecord.id"=>$record_id,
 				"BerricsRecord.active"=>1,
-				"BerricsRecord.publish_date<NOW()"
+				"BerricsRecord.publish_date<'".self::awsNow()."'"
 			),
 			"contain"=>array(
 				"BerricsRecordsItem"=>array(

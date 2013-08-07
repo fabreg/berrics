@@ -1449,7 +1449,7 @@ class TesterController extends LocalAppController {
 	
 				$this->EmailMessage->create();
 				$this->EmailMessage->id = $e['id'];
-				$this->EmailMessage->save(array("processed"=>1,"sent_date"=>"NOW()"));
+				$this->EmailMessage->save(array("processed"=>1,"sent_date"=>"'".self::awsNow()."'"));
 				$success++;
 	
 			} else {
