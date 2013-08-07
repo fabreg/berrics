@@ -469,7 +469,7 @@ class User extends AppModel {
 		
 		$this->UserProfile->save(array(
 			"instagram_followers"=>$instaData['data']['counts']['followed_by'],
-			"instagra_last_updated"=>''".self::awsNow()."''
+			"instagra_last_updated"=>self::awsNow()
 		));
 		
 		SysMsg::add(array(
