@@ -1762,7 +1762,9 @@ class Dailyop extends AppModel {
 				
 				$cond[] = "Dailyop.publish_date < '{self::awsNow()}'";	
 
-			} 
+			}
+
+			die(print_r($cond));
 
 			$dops = $this->find('all',array(
 						"conditions"=>$cond,
