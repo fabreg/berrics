@@ -51,7 +51,9 @@ class BangyoselfController extends DailyopsController {
 		$this->theme = 'bang-yoself-3';
 		//update
 		$this->set("title_for_layout","LRG Presents: BANG YOSELF! 3");
-		
+			
+		$this->set("body_element","layout/v3/one-column");
+
 	}
 	
 	public function view() {
