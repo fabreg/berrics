@@ -163,7 +163,7 @@ class CanteenProduct extends AppModel {
 			
 				if(!$isAdmin) {
 					
-					$_cond[] = 'CanteenProduct.publish_date < NOW()';
+					$_cond[] = "CanteenProduct.publish_date < '".self::awsNow()."'";
 					$_cond['CanteenProduct.active'] = 1;
 					
 				}
@@ -387,7 +387,7 @@ class CanteenProduct extends AppModel {
 				"CanteenProduct.active"=>1,
 				"CanteenProduct.featured"=>1,
 				//"CanteenProduct.brand_id"=>3,
-				"CanteenProduct.publish_date < NOW()"
+				"CanteenProduct.publish_date < '".self::awsNow()."'"
 			),
 			"contain"=>array(),
 			"order"=>array("CanteenProduct.publish_date"=>"DESC"),
@@ -521,7 +521,7 @@ class CanteenProduct extends AppModel {
 							"CanteenProduct.id"
 					),
 					"conditions"=>array(
-							"CanteenProduct.publish_date<NOW()",
+							"CanteenProduct.publish_date<'".self::awsNow()."'",
 							"CanteenProduct.active"=>1,
 							"CanteenProduct.parent_canteen_product_id"=>null
 					),
@@ -558,7 +558,7 @@ class CanteenProduct extends AppModel {
 						"conditions"=>array(
 							"CanteenProduct.canteen_category_id"=>$category_id,
 							"CanteenProduct.active"=>1,
-							"CanteenProduct.publish_date < NOW()",
+							"CanteenProduct.publish_date < '".self::awsNow()."'",
 							"NOT"=>array(
 								"CanteenProduct.id"=>$exclude_ids
 							)

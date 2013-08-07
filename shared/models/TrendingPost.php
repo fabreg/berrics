@@ -61,7 +61,7 @@ class TrendingPost extends AppModel {
 				$Dailyop = ClassRegistry::init("Dailyop");
 				$posts = $Dailyop->find("all",array(
 					"conditions"=>array(
-						"Dailyop.publish_date < NOW()",
+						"Dailyop.publish_date < '".self::awsNow()."'",
 						"Dailyop.active"=>1,
 						"Dailyop.dailyop_section_id"=>65
 					),
@@ -83,8 +83,8 @@ class TrendingPost extends AppModel {
 				$posts = $this->find("all",array(
 							"conditions"=>array(
 								"TrendingPost.section"=>$section,
-								"TrendingPost.start_date < NOW()",
-								"TrendingPost.end_date > NOW()"
+								"TrendingPost.start_date < '".self::awsNow()."'",
+								"TrendingPost.end_date > '".self::awsNow()."'"
 							),
 							"contain"=>array(
 								"Dailyop"=>array(
@@ -124,8 +124,8 @@ class TrendingPost extends AppModel {
 
 			$tp = $this->find("first",array(
 				"conditions"=>array(
-					"TrendingPost.start_date <= NOW()",
-					"TrendingPost.end_date > NOW()",
+					"TrendingPost.start_date <= '".self::awsNow()."'",
+					"TrendingPost.end_date > '".self::awsNow()."'",
 					"TrendingPost.section"=>"featured-post"
 				)
 			));

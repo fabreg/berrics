@@ -142,7 +142,7 @@ class CanteenCategory extends AppModel {
 				"conditions"=>array(
 					"CanteenProduct.canteen_category_id"=>$canteen_category_id,
 					"CanteenProduct.active"=>1,
-					"DATE(CanteenProduct.publish_date) < NOW()"
+					"DATE(CanteenProduct.publish_date) < '".self::awsNow()."'"
 				),
 				"contain"=>array()
 			));

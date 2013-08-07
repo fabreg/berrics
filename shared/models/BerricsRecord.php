@@ -16,7 +16,7 @@ class BerricsRecord extends AppModel {
 			$records = $this->find("all",array(
 				"conditions"=>array(
 					"BerricsRecord.active"=>1,
-					"BerricsRecord.publish_date<NOW()"
+					"BerricsRecord.publish_date<'".self::awsNow()."'"
 				),
 				"contain"=>array(
 					"BerricsRecordsItem"=>array(
