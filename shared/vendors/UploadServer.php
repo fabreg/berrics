@@ -18,16 +18,16 @@ class UploadServer {
 		switch($uname) {
 			
 			case "WEB2VM":
-				$this->sftp = new Net_SFTP('50.57.104.64');
+				$this->sftp = new Net_SFTP('54.213.130.5');
 			break;
 			default:
-				$this->sftp = new Net_SFTP('10.182.97.38');
+				$this->sftp = new Net_SFTP('172.31.26.63');
 			break;
 			
 		}
 		
 		//login to the server
-		if(!$this->sftp->login('theberrics','19Berrics82')) {
+		if(!$this->sftp->login('uploader','19Berrics82')) {
 			
 			throw new UploadServerException("Failed To Connect To Uploading Server");
 			
