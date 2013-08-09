@@ -184,7 +184,6 @@ There is also a best trick bonus for $1k for whoever does the best single trick 
 		<?php foreach ($post as $k => $v): ?>
 			<div class="main-name-img">
 					<img src="//img.theberrics.com/images/<?php echo $v['DailyopMediaItem'][3]['MediaFile']['file']; ?>" alt="">
-					
 			</div>
 			<div id="post">
 				
