@@ -104,7 +104,7 @@ class TrickipediaController extends DailyopsController {
 			
 				"conditions"=>array(
 					"Dailyop.dailyop_section_id"=>4,
-					"Dailyop.publish_date < NOW()",
+					"Dailyop.publish_date < '".AppModel::awsNow()."'",
 					"Dailyop.active"=>1
 				),
 				"contain"=>array(
@@ -208,7 +208,7 @@ class TrickipediaController extends DailyopsController {
 		
 				"Dailyop.uri"=>$uri,
 				"Dailyop.dailyop_section_id"=>4,
-				"Dailyop.publish_date < NOW()",
+				"Dailyop.publish_date < '".AppModel::awsNow()."'",
 				"Dailyop.active"=>1
 		
 			),

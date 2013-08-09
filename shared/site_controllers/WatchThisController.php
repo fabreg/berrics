@@ -53,7 +53,7 @@ class WatchThisController extends DailyopsController {
 
 			if(!$this->isAdmin()) { 
 
-				$cond[] = "Dailyop.publish_date < NOW()";
+				$cond[] = "Dailyop.publish_date < '".AppModel::awsNow()."'";
 				$cond['Dailyop.active'] = 1;
 
 			}

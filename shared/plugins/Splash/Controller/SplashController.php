@@ -127,7 +127,7 @@ class SplashController extends SplashAppController {
 							"conditions"=>array(
 								"CanteenProduct.active"=>1,
 								"CanteenProduct.brand_id"=>3,
-								"CanteenProduct.publish_date < NOW()"
+								"CanteenProduct.publish_date < '".AppModel::awsNow()."'"
 							),
 							"contain"=>array(),
 							"order"=>"RAND()",
@@ -162,7 +162,7 @@ class SplashController extends SplashAppController {
 			$posts = $this->Dailyop->find('all',array(
 						"conditions"=>array(
 							"Dailyop.active"=>1,
-							"Dailyop.publish_date < NOW()",
+							"Dailyop.publish_date < '".AppModel::awsNow()."'",
 							"Dailyop.dailyop_section_id"=>5
 						),
 						"contain"=>array(
@@ -204,7 +204,7 @@ class SplashController extends SplashAppController {
 			$posts = $this->Dailyop->find('all',array(
 						"conditions"=>array(
 							"Dailyop.active"=>1,
-							"Dailyop.publish_date < NOW()",
+							"Dailyop.publish_date < '".AppModel::awsNow()."'",
 							"Dailyop.dailyop_section_id"=>3
 						),
 						"contain"=>array(
@@ -246,7 +246,7 @@ class SplashController extends SplashAppController {
 			$posts = $this->Dailyop->find('all',array(
 						"conditions"=>array(
 							"Dailyop.active"=>1,
-							"Dailyop.publish_date < NOW()",
+							"Dailyop.publish_date < '".AppModel::awsNow()."'",
 							"Dailyop.dailyop_section_id"=>6
 						),
 						"contain"=>array(

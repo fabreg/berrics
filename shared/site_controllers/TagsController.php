@@ -56,7 +56,7 @@ class TagsController extends LocalAppController {
 							),
 							"conditions"=>array(
 								"Dailyop.active"=>1,
-								"Dailyop.publish_date < NOW()",
+								"Dailyop.publish_date < '".AppModel::awsNow()."'",
 								//"Dailyop.dailyop_section_id !="=>65,
 								"Dailyop.id"=>$ids
 							),

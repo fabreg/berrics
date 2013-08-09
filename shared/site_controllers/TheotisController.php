@@ -192,7 +192,7 @@ class TheotisController extends LocalAppController {
 			"conditions"=>array(
 				"Dailyop.contest_post"=>1,
 				"Dailyop.active"=>1,
-				"Dailyop.publish_date < NOW()",
+				"Dailyop.publish_date < '".AppModel::awsNow()."'",
 				"Dailyop.id"=>$cipher['dailyop_id']
 			),
 			"contain"=>array()
@@ -279,7 +279,7 @@ class TheotisController extends LocalAppController {
 				"conditions"=>array(
 					"Dailyop.active"=>1,
 					"DailyopSection.uri"=>"31-days-of-theotis",
-					"Dailyop.publish_date < NOW()"
+					"Dailyop.publish_date < '".AppModel::awsNow()."'"
 				),
 				"contain"=>array("DailyopSection")
 			

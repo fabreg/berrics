@@ -49,7 +49,7 @@ class ProfilesController extends LocalAppController {
 		$this->Paginator->settings['Dailyop']['conditions'] = array(
 					"Dailyop.id"=>$post_ids,
 					"Dailyop.active"=>1,
-					"Dailyop.publish_date < NOW()",
+					"Dailyop.publish_date < '".AppModel::awsNow()."'",
 					"Dailyop.promo"=>0
 				);
 		$this->Paginator->settings['Dailyop']['order'] = array("Dailyop.publish_date"=>"DESC");

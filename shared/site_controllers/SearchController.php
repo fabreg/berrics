@@ -66,7 +66,7 @@ class SearchController extends LocalAppController {
 				'Dailyop.id'=>$post_ids,
 				//"Dailyop.dailyop_section_id !="=>65,
 				"Dailyop.active"=>1,
-				"Dailyop.publish_date < NOW()",
+				"Dailyop.publish_date < '".AppModel::awsNow()."'",
 				"Dailyop.promo !="=>1
 			),
 			"order"=>array(

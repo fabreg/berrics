@@ -53,7 +53,7 @@ class Newsv2Controller extends DailyopsController {
 				"conditions"=>array(
 					"Dailyop.active"=>1,
 					"Dailyop.dailyop_section_id"=>65,
-					"Dailyop.publish_date < NOW()"
+					"Dailyop.publish_date < '".AppModel::awsNow()."'"
 				),
 				"contain"=>array(
 					"DailyopTextItem"=>array(

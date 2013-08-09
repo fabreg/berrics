@@ -32,7 +32,7 @@ class TrajectoryController extends DailyopsController {
 			"conditions"=>array(
 				"Dailyop.dailyop_section_id"=>20,
 				"Dailyop.active"=>1,
-				"Dailyop.publish_date < NOW()",
+				"Dailyop.publish_date < '".AppModel::awsNow()."'",
 				"Dailyop.title_episode"=>1
 			),
 			"contain"=>array(
@@ -90,7 +90,7 @@ class TrajectoryController extends DailyopsController {
 					"Dailyop.parent_dailyop_id"=>$related_id
 				),
 				"Dailyop.active"=>1,
-				"Dailyop.publish_date < NOW()"
+				"Dailyop.publish_date < '".AppModel::awsNow()."'"
 			),
 			"contain"=>array(
 				"DailyopMediaItem"=>array(

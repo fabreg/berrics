@@ -228,7 +228,7 @@ class Dailyop extends AppModel {
 		
 		$cond = array(
 		
-				"Dailyop.publish_date < NOW()",
+				"Dailyop.publish_date < '".self::awsNow()."'",
 				"Dailyop.active"=>1,
 		        "Dailyop.promo !="=>1,
 				"Dailyop.dailyop_section_id"=>$section_id,
@@ -294,7 +294,7 @@ class Dailyop extends AppModel {
 			
 					"conditions"=>array(
 						"Dailyop.active"=>1,
-						"Dailyop.publish_date <= NOW()",
+						"Dailyop.publish_date <= '".self::awsNow()."'",
 						"Dailyop.uri"=>$uri,
 						"DailyopSection.uri"=>$section
 					),
@@ -351,7 +351,7 @@ class Dailyop extends AppModel {
 						),
 						"conditions"=>array(
 							"Dailyop.dailyop_section_id"=>$section_id,
-							"DATE(Dailyop.publish_date)<NOW()"
+							"DATE(Dailyop.publish_date)<'".self::awsNow()."'"
 						),
 						"contain"=>array(),
 						"order"=>array("year"=>"DESC")
@@ -378,7 +378,7 @@ class Dailyop extends AppModel {
 			
 		}
 		
-		$cond[] = "DATE(Dailyop.publish_date)<NOW()";
+		$cond[] = "DATE(Dailyop.publish_date)<'".self::awsNow()."'";
 		$cond['Dailyop.active'] = 1;
 		
 		$year = $this->find("all",array(
@@ -547,7 +547,7 @@ class Dailyop extends AppModel {
 		
 		$cond = array(
 			"Dailyop.dailyop_section_id"=>$section_id,
-			"Dailyop.publish_date < NOW()",
+			"Dailyop.publish_date < '".self::awsNow()."'",
 			"Dailyop.active"=>1
 		);
 		
@@ -647,7 +647,7 @@ class Dailyop extends AppModel {
 							"Dailyop.id"=>$ids,
 							"Dailyop.active"=>1,
 							"Dailyop.promo"=>0,
-							"Dailyop.publish_date < NOW()"
+							"Dailyop.publish_date < '".self::awsNow()."'"
 						),
 						"contain"=>array(
 							"DailyopMediaItem"=>array(
@@ -707,7 +707,7 @@ class Dailyop extends AppModel {
 				),
 				"conditions"=>array(
 					"Dailyop.dailyop_section_id"=>4,
-					"Dailyop.publish_date<NOW()",
+					"Dailyop.publish_date<'".self::awsNow()."'",
 					"Dailyop.active"=>1
 				),	
 				"contain"=>array(
@@ -776,7 +776,7 @@ class Dailyop extends AppModel {
 			$posts = $this->find('all',array(
 				"conditions"=>array(
 					"DailyopSection.id"=>4,
-					"Dailyop.publish_date<NOW()",
+					"Dailyop.publish_date<'".self::awsNow()."'",
 					"Dailyop.active"=>1,
 					"Dailyop.hidden !="=>1
 				),
@@ -808,7 +808,7 @@ class Dailyop extends AppModel {
 		$cond = array(
 		
 			"Dailyop.active"=>1,
-			"Dailyop.publish_date > NOW()",
+			"Dailyop.publish_date >'".self::awsNow()."'",
 			"Dailyop.hidden"=>0
 		
 		);
