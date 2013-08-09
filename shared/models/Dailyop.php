@@ -1012,7 +1012,7 @@ class Dailyop extends AppModel {
 					"Dailyop.dailyop_section_id"=>$section_id,
 					"YEAR(Dailyop.publish_date) = '{$year}'",
 					"Dailyop.active"=>1,
-					"Dailyop.publish_date < NOW()"	
+					"Dailyop.publish_date < '".self::aswModel()."'"	
 			
 				),
 				"order"=>array(
@@ -1053,7 +1053,7 @@ class Dailyop extends AppModel {
 				"conditions"=>array(
 					"Dailyop.dailyop_section_id"=>$this->news_id,
 					"Dailyop.active"=>1,
-					"Dailyop.publish_date < NOW()"
+					"Dailyop.publish_date < '".self::aswModel()."'"
 				),
 				"contain"=>array(),
 				"order"=>array("Dailyop.publish_date"=>"DESC")
@@ -1072,7 +1072,7 @@ class Dailyop extends AppModel {
 		//get all the upcoming posts
 		$posts = $this->find("all",array(
 			"conditions"=>array(
-				"Dailyop.publish_date > NOW()",
+				"Dailyop.publish_date > '".self::aswModel()."'",
 					"DailyopSection.id !="=>65
 			),
 			"contain"=>array(
@@ -1173,7 +1173,7 @@ class Dailyop extends AppModel {
 			$data = $this->find("all",array(
 			
 				"conditions"=>array(
-					"Dailyop.publish_date <= NOW()",
+					"Dailyop.publish_date <= '".self::aswModel()."'",
 					"Dailyop.active"=>1,
 					"Dailyop.misc_category"=>"news-general",
 					"Dailyop.dailyop_section_id"=>65,
@@ -1351,7 +1351,7 @@ class Dailyop extends AppModel {
 					"Dailyop.active"=>1,
 					"Dailyop.hidden"=>0,
 					"YEAR(Dailyop.publish_date) = '{$year}'",
-					"Dailyop.publish_date < NOW()"
+					"Dailyop.publish_date < '".self::aswModel()."'"
 				),
 				"contain"=>array(
 					"DailyopSection",
@@ -1386,7 +1386,7 @@ class Dailyop extends AppModel {
 			"Dailyop.active"=>1,
 			"Dailyop.hidden"=>0,
 			"Dailyop.dailyop_section_id"=>65,
-			"Dailyop.publish_date < NOW()"
+			"Dailyop.publish_date < '".self::aswModel()."'"
 		);
 
 		$contain = array(
@@ -1445,7 +1445,7 @@ class Dailyop extends AppModel {
 					"DATE(Dailyop.publish_date) <='{$datein}'",
 					"Dailyop.dailyop_section_id"=>65,
 					"Dailyop.active"=>1,
-					"Dailyop.publish_date < NOW()"
+					"Dailyop.publish_date < '".self::aswModel()."'"
 				),
 				"contain"=>array(),
 				"order"=>array(
@@ -1478,7 +1478,7 @@ class Dailyop extends AppModel {
 							"Dailyop.publish_date"
 						),
 						"conditions"=>array(
-							"Dailyop.publish_date < NOW()",
+							"Dailyop.publish_date < '".self::aswModel()."'",
 							"Dailyop.active"=>1,
 							"Dailyop.hidden"=>0,
 							"Dailyop.dailyop_section_id"=>65
@@ -1518,7 +1518,7 @@ class Dailyop extends AppModel {
 					"Dailyop.id !="=>$post['Dailyop']['id'],
 					"Dailyop.active"=>1,
 					"Dailyop.hidden"=>0,
-					"Dailyop.publish_date <= NOW()"
+					"Dailyop.publish_date <= '".self::aswModel()."'"
 				),
 				"contain"=>array(
 					"DailyopSection",
@@ -1557,7 +1557,7 @@ class Dailyop extends AppModel {
 				"Dailyop.id !="=>$post['Dailyop']['id'],
 				"Dailyop.active"=>1,
 				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= NOW()"
+				"Dailyop.publish_date <= '".self::aswModel()."'"
 			),
 			"contain"=>array(
 				"DailyopSection",
@@ -1662,7 +1662,7 @@ class Dailyop extends AppModel {
 							"MONTH(Dailyop.publish_date) = '{$month}'",
 							"Dailyop.active"=>1,
 							"Dailyop.hidden"=>0,
-							"Dailyop.publish_date < NOW()"
+							"Dailyop.publish_date < '".self::aswModel()."'"
 						),
 						"contain"=>array(
 							"DailyopSection"
@@ -1874,7 +1874,7 @@ class Dailyop extends AppModel {
 		$posts = $this->find('all',array(
 							"conditions"=>array(
 								"Dailyop.id"=>$post_ids,
-								"Dailyop.publish_date < NOW()",
+								"Dailyop.publish_date < NOW()'".self::aswModel()."'",
 								"Dailyop.active"=>1
 							),
 							"contain"=>array(
