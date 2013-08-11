@@ -1557,7 +1557,7 @@ class Dailyop extends AppModel {
 				"Dailyop.id !="=>$post['Dailyop']['id'],
 				"Dailyop.active"=>1,
 				"Dailyop.hidden"=>0,
-				"Dailyop.publish_date <= '".self::aswModel()."'"
+				"Dailyop.publish_date <= '".self::awsNow()."'"
 			),
 			"contain"=>array(
 				"DailyopSection",
