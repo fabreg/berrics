@@ -165,30 +165,30 @@ class MediaServiceController extends LocalAppController {
 
 		}
 
-		if(!empty($MediaFile['MediaFile']['preroll_label'])) {
+		// if(!empty($MediaFile['MediaFile']['preroll_label'])) {
 
-			$data['playlist'][]['prerollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
+		// 	$data['playlist'][]['prerollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['preroll_label']);
 		
-		}
+		// }
 
-		unset($MediaFile['MediaFile']['created'],$MediaFile['MediaFile']['modified']);
-		$MediaFile['MediaFile']['jw_url'] = $MediaFile['MediaFile']['file_url'] = "http://berrics.vo.llnwd.net/o45/".$MediaFile['MediaFile']['limelight_file'];
-		$data['playlist'][] = array(
+		// unset($MediaFile['MediaFile']['created'],$MediaFile['MediaFile']['modified']);
+		// $MediaFile['MediaFile']['jw_url'] = $MediaFile['MediaFile']['file_url'] = "http://berrics.vo.llnwd.net/o45/".$MediaFile['MediaFile']['limelight_file'];
+		// $data['playlist'][] = array(
 
-			"Video"=>array(
-				"MediaFile"=>$MediaFile['MediaFile'],
-				'Dailyop'=> (isset($Post['Dailyop']['id'])) ? false:$Post['Dailyop']
-			)
+		// 	"Video"=>array(
+		// 		"MediaFile"=>$MediaFile['MediaFile'],
+		// 		'Dailyop'=> (isset($Post['Dailyop']['id'])) ? false:$Post['Dailyop']
+		// 	)
 
-		);
+		// );
 
-		if(!empty($MediaFile['MediaFile']['postroll_label'])) {
+		// if(!empty($MediaFile['MediaFile']['postroll_label'])) {
 
-			$data['playlist'][]['postrollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['postroll_label']);
+		// 	$data['playlist'][]['postrollUrl'] = MediaFile::formatVastUrl($MediaFile['MediaFile']['postroll_label']);
 
-		}
+		// }
 
-		$this->insertMediaHit($MediaFile['MediaFile']['id']);
+		//$this->insertMediaHit($MediaFile['MediaFile']['id']);
 
 		$this->set(compact("data"));
 
