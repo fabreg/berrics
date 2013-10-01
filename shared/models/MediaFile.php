@@ -238,9 +238,9 @@ class MediaFile extends AppModel {
 			$data['MediaFile'] = $video['MediaFile'];
 			$data['Ads'] = array();
 
-			//if(!empty($preRollUnit)) $data['Ads']['preroll'] = self::formatVastUrl($preRollUnit);
+			if(!empty($preRollUnit)) $data['Ads']['preroll'] = self::formatVastUrl($preRollUnit);
 			//if(!empty($preRollUnit)) $data['Ads']['postroll'] = self::formatVastUrl($preRollUnit);
-			//if(!empty($postRollUnit)) $data['Ads']['postroll'] = self::formatVastUrl($postRollUnit);
+			if(!empty($postRollUnit)) $data['Ads']['postroll'] = self::formatVastUrl($postRollUnit);
 
 			if($dailyop_id) {
 
